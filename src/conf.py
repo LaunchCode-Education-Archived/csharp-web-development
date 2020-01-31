@@ -9,12 +9,12 @@ sys.path.append(os.path.abspath('../exts'))
 # Customize for the specific site. Any options in the html_theme_options
 # dictionary below may be overriden here
 site_theme_options = {
-    'navbar_title': 'Curriculum Book',
+    'navbar_title': 'C# Web Development',
     'navbar_site_name': "",
     'bootswatch_theme': 'launchcode',
 }
 
-project = 'LaunchCode Curriculum Book'
+project = 'C# Web Development'
 
 # -- Project information -----------------------------------------------------
 

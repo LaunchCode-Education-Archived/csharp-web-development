@@ -54,5 +54,5 @@ sphinxcontrib-websupport==1.1.2
 stevedore==1.31.0
 tornado==6.0.3
 traitlets==4.3.2
-urllib3==1.22
+urllib3==1.24.2
 watchdog==0.9.0

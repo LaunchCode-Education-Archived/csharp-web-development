@@ -3,8 +3,10 @@ Chapters
 
 .. toctree::
    :numbered:
-   :maxdepth: 1
+   :maxdepth: 2
    :name: chapterstoc
+
+   chapters/introduction-and-setup/index
 
 .. toctree::
 

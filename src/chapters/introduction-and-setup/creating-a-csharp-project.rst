@@ -32,3 +32,12 @@ Following the "Hello, World" trend, let's create a new Visual Studio project.
       :alt: Name a new Visual Studio Project.
 
       Name a new Visual Studio project.
+
+#. Once created, Visual Studio opens a new project window. You'll see the project
+   file tree on the left and a file called ``Program.cs``.
+
+   .. figure:: figures/vsmac-new-project.png
+      :alt: A new Visual Studio Project.
+
+      A new Visual Studio project.
+      

@@ -77,7 +77,7 @@ Check Your Understanding
 
    Given the code below, which line is responsible for printing a message?
 
-   .. sourcecode:: C#
+   .. sourcecode:: csharp
       :linenos:
 
       class HelloWorld 
@@ -99,7 +99,7 @@ Check Your Understanding
 
    In the sourcecode, which line is responsible for defining the class?
 
-   .. sourcecode:: C#
+   .. sourcecode:: csharp
       :linenos:
 
       class HelloWorld 

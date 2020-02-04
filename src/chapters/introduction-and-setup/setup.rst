@@ -31,25 +31,41 @@ this course, so it's time to get familiar with some of the basics.
 
 **.NET Core** is a set of tools for developing software in a number of different programming languages, including C#.
 The tools together make what is known as a **software development kit**, or **SDK**.
-Unlike it's predecessor, just called .NET, .NET Core is open-source and available for development on several 
+Unlike it's predecessor, just called .NET or .NET Framework, .NET Core is open-source and available for development on several 
 operating systems. The SDK provides the runtime environment, as well as the virtual machine for compiling 
 and running C# programs. 
+.NET Core also notably contains the class library. This is the built-in code that takes care of common programming items
+like date object formatting, for example. 
 
 .. _compiling-csharp:
 
 A step-by-step walk-through of the process:
 
-#. We write code in C#, 
-#. The source code is compiled (like translating) into another intermediate language,
-#. The intermediate code is read by a runtime program included in the .NET SDK
-#. The runtime environement translates the intermediate code into machine-readable language
+#. We write code in C#.
+#. The source code is compiled (like translating) into another intermediate language.
+#. The intermediate code is read by a runtime program included in the .NET SDK.
+#. The runtime environment translates the intermediate code into machine-readable language.
 
 Fortunately for us, .NET Core can be installed along with Visual Studio IDE.
 
-TODO: Check Windows installation steps - and screenshots? do they match the next steps section?
+Windows Users vs. Mac Users
+---------------------------
 
-First Steps: Windows Users
---------------------------
+Windows users will setup their C# development environment with a community version of Visual Studio IDE. Mac users
+need to download and install a related, yet different, tool called Visual Studio for Mac. 
+
+An important note for this class: The content of this book is designed to inform both Windows and Mac users on the 
+basics of web programming in C#. There are sometimes significant, and other times more minor, discrepancies between 
+how to use the IDE tools provided in Visual Studio on Windows machines and Visual Studio for Mac. We will do our 
+best to provide either instructions that are application neutral, or instructions that are tailored to the development
+experiences on both operating systems. There may be times when your C# project view will not look exactly like that in
+the book because you are on a different operating system and are therefore using a different Visual Studio application.
+The actions you take or buttons to click may be slightly different from what you see in the book.
+
+Windows Users: Visual Studio Community Edition
+----------------------------------------------
+
+TODO: Check Windows installation steps - and screenshots? do they match any of the next steps section?
 
 #. Download the Community version of Visual Studio IDE from `this page <https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2019>`__.
 
@@ -58,16 +74,13 @@ First Steps: Windows Users
       There are options for other software downloads on this page, Visual Studio Code and Visual Studio for Mac.
       Do not select either of these.
 
-First Steps: Mac Users
-----------------------
+Mac Users: Visual Studio for Mac
+--------------------------------
 
 #. Check that you are using supported MacOS version `here <https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?pivots=os-macos&tabs=netcore31#supported-operating-systems>`__.
 
 #. Download `Visual Studio for Mac <https://visualstudio.microsoft.com/vs/mac/net/>`__. You may be prompted for your 
    computer's password to complete the download and begin installation.
-
-Next Steps: All Users
----------------------
 
 #. The first choice you will need to make in the setup process are the development platforms you want to include in 
    the install with Visual Studio. Select **.NET Core** only.
@@ -107,253 +120,26 @@ Next Steps: All Users
 You've installed Visual Studio IDE, and you're ready to start exploring its many features.
 
 
-
-
-
-.. #. In the second window, select *Create project from template*. This gives us
-..    some of the C# project scaffolding to save us some time with project infrastructure. 
-
-..    .. figure:: figures/projectTemplate.png
-..       :alt: Select project template
-
-..       Select project template
-
-.. #. On the next window, enter ``HelloWorld`` for the name of the project.
-..    Click on the "3-dot" button to select a location to save the project. Here you can
-..    choose the C# projects folder you created in step one. Leave the base package as
-..    ``com.company``. 
-
-..    .. figure:: figures/newProjectName.png
-..       :alt: New project window for IntelliJ
-
-..       Create the ``HelloWorld`` project in your C# projects folder.
-
-.. #. Click *Finish* to create the project. Below is the view of your new project:
-
-..    .. figure:: figures/newProjectView.png
-..       :alt: New project view
-
-..       Initial IntelliJ project view
-
-..    The section on the left is the project's file tree. 
-
-..    Clicking the triangle next to the project name, ``HelloWorld``, displays the ``src`` file, 
-..    followed by the base package we created, and finally our ``Main.C#`` file. 
-   
-..    ``Main.C#`` is also opened on the right in this initial project view. 
-   
-..    In line 1, ``package com.company``, establishes a *package*, which C# uses to help
-..    organize and encapsulate our code. 
-
-.. #. We'll dive into the use of a ``main`` function and ``Main`` class later. At this point,
-..    let's just get right to printing our greeting. Where the project template tells you to write your
-..    code on line 6, add the following:
-
-..    .. sourcecode:: C#
-
-..       System.out.println("Hello, world!");
-
-..    Ok sure, we haven't gone over this exact syntax yet. But you can take a guess at what this line will do.
-
-.. #. To run your program in IntelliJ, you have several options.
-
-..    .. figure:: figures/runProgram.png
-..       :alt: Run code options
-
-..       IntelliJ run code options
-
-..    You can click on either of the green arrows indicated above, or 
-..    choose *Run* from your top menu bar.
-
-.. #. Once run, IntelliJ will generate a third panel in your view, with your program's output:
-
-..    .. figure:: figures/output.png
-..       :alt: Run code output
-
-..       IntelliJ output
-
-.. This is just the start of your relationship with IntelliJ. Not that we know the fundamentals,
-.. let's return to C# basics so we can start writing more code.
-
 Check Your Understanding
 ------------------------
 
 .. admonition:: Question
 
-   Given the code below, which line is responsible for printing a message?
+   True/False: .NET Core is the MacOS version of .NET Framework
 
-   .. sourcecode:: C#
-      :linenos:
+   #. True
+   #. False
 
-      public class HelloWorld {
-
-         public static void main(String[] args) {
-            System.out.println("Hello, World");
-         }
-
-      }
-
-   #. line 1
-   #. line 3
-   #. line 4
+.. ans: False, while .NET Core can operate in MacOS, it is not specific to that operating system
 
 .. admonition:: Question
 
-   In the sourcecode above, which line is responsible for defining the class?
+   .NET Core contains:
 
-   #. line 1
-   #. line 3
-   #. line 4
+   #. A C# compiler
+   #. A virtual machine
+   #. Visual Studio IDE
+   #. C# class library
 
-   .. index:: ! .NET SDK
+.. ans: a, b, d. C# compiler, virtual machine, C# class library
 
-.. C# Development Kit
-.. ------------------
-
-.. Installing C# means downloading a package of software called the **C# Development Kit**. The development kit contains software the tools needed 
-.. to develop and run C# code. These tools 
-.. together, give us the means to write, compile, and run C#
-.. on our machines.
-
-.. Install the SDK
-.. ---------------
-
-.. Open a terminal window on your machine and enter the following command:
-
-.. .. sourcecode:: bash
-
-..    C# -version
-
-.. If the response returns a version 13 or higher, you can move on to the section below,
-.. :ref:`terminal-C#`.
-
-.. If you do not have a version of C# at 13 or higher or the command does not work, you can download 
-.. it `here <https://www.oracle.com/technetwork/C#/C#se/downloads/jdk13-downloads-5672538.html>`__.
-.. The relevant install link for your operating system is on the bottom of the page:
-
-.. .. figure:: figures/installC#.png
-..    :alt: Install C#
-
-..    Install C#
-
-.. To install, you must first select *Accept License Agreement*, then select any of 
-.. the file type options for your operating system. 
-
-.. .. tip::
-
-..    - Mac users, we recommend the ``.dmg`` option
-..    - Windows users, we recommend the ``.exe`` option
-
-.. Once you have completed the 
-.. installation steps, move onto the next section.
-
-.. .. admonition:: Note
-
-..    When installing C# on Windows, the installer will tell you where it wants to install C#.
-..    The default is in the C: Drive under ``Program Files``. Make note of the destination as we will be using it later.
-
-.. .. _terminal-C#:
-
-.. C# in the Terminal
-.. --------------------
-
-.. Mac Users
-.. ^^^^^^^^^
-
-.. Let's write a simple "Hello, World" program and watch the JDK in action. 
-
-.. In the future, we'll be doing most of our C# coding with the IntelliJ IDE. 
-.. IntelliJ contains many features to help us write C# properly and easily, 
-.. including its own compiler. For now though, we'll use a simpler text editor 
-.. so we can demonstrate what we get with the JDK.
-
-.. In the text editor of your choice, create and save a file called 
-.. ``HelloWorld.C#`` and include the code below:
-
-.. .. sourcecode:: C#
-..    :linenos:
-
-..    public class HelloWorld {
-
-..       public static void main(String[] args) {
-
-..          System.out.println("Hello, World");
-..       }
-
-..    }
-
-.. We'll discuss the syntax of this program soon, but you can likely trust your gut
-.. that this program has an expected output of "Hello, World". To test this hypothesis,
-.. open a terminal window and navigate to the parent directory of your new file. Run:
-
-.. .. sourcecode:: bash
-
-..    C# HelloWorld.C#
-
-.. You should see your greeting printed! 
-
-.. Recall from the walk-through :ref:`above <compiling-C#>`, C# needs to be be compiled before executing. C# version 11 introduced 
-.. the capability to compile single-file C# programs without explicitly running a command to compile. If our 
-.. ``Hello, World`` program were more complex and contained another file, we would need to first run 
-.. ``C#c HelloWorld.C#``, to compile, followed by ``C# HelloWorld.C#``.
-
-.. Windows Users
-.. ^^^^^^^^^^^^^
-
-.. Let's write a simple "Hello, World" program and watch the JDK in action. 
-
-.. In the future, we'll be doing most of our C# coding with the IntelliJ IDE. 
-.. IntelliJ contains many features to help us write C# properly and easily, 
-.. including its own compiler. For now though, we'll use a simpler text editor 
-.. so we can demonstrate what we get with the JDK.
-
-.. In the text editor of your choice, create and save a file called 
-.. ``HelloWorld.C#`` and include the code below:
-
-.. .. sourcecode:: C#
-..    :linenos:
-
-..    public class HelloWorld {
-
-..       public static void main(String[] args) {
-
-..          System.out.println("Hello, World");
-..       }
-
-..    }
-
-.. We'll discuss the syntax of this program soon, but you can likely trust your gut
-.. that this program has an expected output of "Hello, World". 
-
-.. To test this hypothesis, open a terminal window and navigate to the parent directory of your new file.
-.. In a separate window, navigate to the ``bin`` folder in the C# Development Kit to get the file path (the image below shows you how to get there from the C: Drive). Copy the file path.
-
-.. .. figure:: figures/windowsC#filepath.png
-..    :alt: Image showing that the JDK can be found inside the Program Files directory in the C: Drive.
-
-.. Run the following command, replacing the ``{filepath}`` with the file path to your JDK that you just copied:
-
-.. .. sourcecode:: bash
-
-..    set path=%path%;{filepath}
-
-.. This command sets a path in our system for ``C#`` so that we can compile and run C# programs.
-
-.. .. sourcecode:: bash
-
-..    C# HelloWorld.C#
-
-.. You should see your greeting printed! 
-
-.. Recall from the walk-through :ref:`above <compiling-C#>`, C# needs to be be compiled before executing. C# version 11 introduced 
-.. the capability to compile single-file C# programs without explicitly running a command to compile. If our 
-.. ``Hello, World`` program were more complex and contained another file, we would need to first run 
-.. ``C#c HelloWorld.C#``, to compile, followed by ``C# HelloWorld.C#``.
-
-.. .. admonition:: Note
-
-..    These steps change the path in just that directory.
-..    While this is sufficient to get us through the rest of the course, you may want change the system path for your whole system.
-..    Check out these `instructions <https://www.C#.com/en/download/help/path.xml>`_ to change the path globally.
-
-.. .. index:: ! integrated development environment, IDE

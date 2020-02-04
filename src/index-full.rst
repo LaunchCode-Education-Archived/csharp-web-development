@@ -7,6 +7,7 @@ Chapters
    :name: chapterstoc
 
    chapters/introduction-and-setup/index
+   chapters/data-types/index
 
 .. toctree::
 
@@ -18,6 +19,8 @@ Studios
 .. toctree::
    :maxdepth: 1
    :name: studiostoc
+
+   chapters/data-types/studio
 
 Assignments
 ===========

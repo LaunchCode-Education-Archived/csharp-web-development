@@ -3,7 +3,7 @@
 Creating a C# Project
 =====================
 
-Following the "Hello, World" trend, let's create a new Visual Studio project.
+Following the "Hello World" trend, let's create a new Visual Studio project.
 
 #. Create a new folder to hold your C# practice files. Since you will be
    creating lots of small projects as you move through this course, we
@@ -40,4 +40,79 @@ Following the "Hello, World" trend, let's create a new Visual Studio project.
       :alt: A new Visual Studio Project.
 
       A new Visual Studio project.
-      
+
+#. You are new to C# the language and we'll go over the syntax present in ``Program.cs``
+   in time. For now, can you guess what line 9 accomplishes?
+
+   .. sourcecode:: csharp
+      :linenos:
+
+      using System;
+
+      namespace HelloWorld
+      {
+         class Program
+         {
+            static void Main(string[] args)
+            {
+               Console.WriteLine("Hello World!");
+            }
+         }
+      }
+
+   Click on the triangle button to run the project and see the output.
+
+   .. admonition:: Tip
+   
+      The first time you run a console app in Visual Studio, you may be prompted
+      to allow VS to access the terminal. This is ok.
+
+#. A console window should pop up with the line "Hello World"" printed. 
+   That's it. You have created your first C# application.
+
+Check Your Understanding
+------------------------
+
+.. admonition:: Question
+
+   Given the code below, which line is responsible for printing a message?
+
+   .. sourcecode:: C#
+      :linenos:
+
+      class HelloWorld 
+      {
+         static void Main(string[] args)
+         {
+            Console.WriteLine("Hello C# Students");
+         }
+      }
+
+   #. Line 1
+   #. Line 3
+   #. Line 5
+   #. None of the above
+
+.. ans: c, Line 5
+
+.. admonition:: Question
+
+   In the sourcecode, which line is responsible for defining the class?
+
+   .. sourcecode:: C#
+      :linenos:
+
+      class HelloWorld 
+      {
+         static void Main(string[] args)
+         {
+            Console.WriteLine("Hello C# Students");
+         }
+      }
+
+   #. line 1
+   #. line 3
+   #. line 5
+   #. None of the above
+
+.. ans: a, Line 1

@@ -72,7 +72,7 @@ Next Steps: All Users
 #. The first choice you will need to make in the setup process are the development platforms you want to include in 
    the install with Visual Studio. Select **.NET Core** only.
 
-   .. figure:: ./figures/vs-dotnetcore-install.png
+   .. figure:: ./figures/vsmac-dotnetcore-install.png
       :alt: Visual Studio .NET Core package.
 
       Select .NET Core package to install.
@@ -81,7 +81,7 @@ Next Steps: All Users
    see a window asking you to login to your Microsoft account. You do not need to sign-in in order to use the 
    IDE for this class and can select *I'll do this later* to continue setup.
 
-   .. figure:: ./figures/vs-microsoft-account.png
+   .. figure:: ./figures/vsmac-microsoft-account.png
       :alt: Visual Studio Microsoft sign-in page.
 
       Visual Studio Microsoft sign-in page.
@@ -90,7 +90,7 @@ Next Steps: All Users
    change this later. If you are familiar with the text editor Visual Studio Code, this may be a good starting option
    for you.
 
-   .. figure:: ./figures/vs-shortcut-selection.png
+   .. figure:: ./figures/vsmac-shortcut-selection.png
       :alt: Visual Studio keyboard shortcut selection.
 
       Visual Studio keyboard shortcut selection.
@@ -98,7 +98,7 @@ Next Steps: All Users
 #. Finally, you have made it to the project selection window. This will be the item you will see when you open 
    Visual Studio . You do not need to create or open a new project just yet.
 
-   .. figure:: ./figures/vs-project-opener.png
+   .. figure:: ./figures/vsmac-project-opener.png
       :alt: Visual Studio opening project selection pane.
 
       Visual Studio opening project selection pane.
@@ -106,36 +106,9 @@ Next Steps: All Users
 
 You've installed Visual Studio IDE, and you're ready to start exploring its many features.
 
-.. .. _create-new-csharp-project:
 
-.. Your First C# Project
-.. ------------------------
 
-.. Following the "Hello, World" trend, let's create a new IntelliJ project.
 
-.. #. Create a new folder to hold your C# practice files. Since you will be
-..    creating lots of small projects as you move through this course, we
-..    suggest that you also add sub-folders with names corresponding to the
-..    related chapters and projects. Something like
-..    ``C#-practice/chapter-name/project-name``.
-.. #. Select the *Create New Project* option from the welcome
-..    screen.
-
-..    .. figure:: figures/IntelliJWelcome.png
-..       :scale: 80%
-..       :alt: Welcome window for IntelliJ
-
-..       Create new project
-
-.. #. Clicking *New Project* opens a window with a series of project settings to
-..    select. For this first setting, make sure your selected project SDK is the JDK
-..    you have installed. This allows IntelliJ to compile our C# code in-app. 
-..    Click *Next* in the lower right corner of the window to continue selecting settings.
-
-..    .. figure:: figures/projectSDK.png
-..       :alt: Select project SDK
-
-..       Select project SDK
 
 .. #. In the second window, select *Create project from template*. This gives us
 ..    some of the C# project scaffolding to save us some time with project infrastructure. 

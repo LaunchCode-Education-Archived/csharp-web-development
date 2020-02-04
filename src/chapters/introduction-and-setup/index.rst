@@ -4,7 +4,7 @@ Introduction and Setup
 .. toctree::
    :maxdepth: 3
 
-   why-c#
+   why-csharp
    setup
-   c#-web-dev-exercises
+   csharp-web-dev-exercises
    naming-conventions

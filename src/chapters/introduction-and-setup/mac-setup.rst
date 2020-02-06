@@ -40,28 +40,3 @@ Mac Users: Visual Studio for Mac
 
       Visual Studio opening project selection pane.
 
-GitHub Project Setup
-~~~~~~~~~~~~~~~~~~~~
-TODO: update repo name
-
-#. Visit the `LaunchCodeEducation/csharp-exercises <https://github.com/LaunchCodeEducation/csharp-exercises>`__
-   repository page and fork the repository into your own GitHub account by
-   selecting *Fork* from the top right of the page.
-
-#. With Visual Studio open, select *Version Control > Checkout* from the menu bar. 
-
-#. This opens a window to connect to a remote repository. Copy the address for your forked exercises repository 
-   and enter it into the *url* section of the form. The rest of the form fields will auto-populate:
-
-   .. figure:: ./figures/vsmac-checkout-github.png
-      :alt: Visual Studio for Mac checkout Github repository
-
-      Visual Studio for Mac checkout Github repository
-
-#. Enter the *Target Directory* where you would like to keep your project
-
-   .. admonition:: Tip
-   
-      Make this a new, empty folder that you will easily find when you want to open the project next.
-
-

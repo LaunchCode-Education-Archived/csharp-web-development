@@ -1,7 +1,7 @@
 Why Learn C#?
 =============
 
-.. index:: ! C#
+.. index:: ! C#, csharp
 
 This course is an introduction to **C#** and the .NET framework. C# is a
 programming language developed by Microsoft and used in almost all of its products. 

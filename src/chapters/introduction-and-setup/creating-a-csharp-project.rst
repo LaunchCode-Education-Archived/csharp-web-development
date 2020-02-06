@@ -70,6 +70,39 @@ Following the "Hello World" trend, let's create a new Visual Studio project.
 #. A console window should pop up with the line "Hello World"" printed. 
    That's it. You have created your first C# application.
 
+.. index:: ! solution
+
+Hello, Solution!
+----------------
+
+You've just created your first C# project. Congrats! In fact, you've also just created your own C# **solution**.
+Your ``HelloWorld`` project is nested within a solution called ``HelloWorld``. A solution behaves like a container for
+related projects and other Visual Studio settings. 
+
+A C# project contains all the code to run a particular application. Along with ``Program.cs`` file you ran just a 
+moment ago, you may have also noticed a ``Dependencies`` folder. Many applications require extra code like dependencies
+or other compiling configurations to execute. 
+
+You can create another project inside ``HelloWorld`` very easily:
+
+.. figure:: figures/vsmac-new-project-2.png
+      :alt: Add a new project
+
+      Add a new project
+
+Right click on the solution name to add a new project, another console app as above, and name it ``Hello<YourName>``. 
+Change the starter code in ``Program.cs`` to greet you by name.
+
+Now that you have more than one project in your solution, you need to select which one you want to run. Either click
+on the project name and select *Run Project*, or select the project name from the menu next to the *Run* button.
+
+.. figure:: figures/vsmac-run-project.png
+      :alt: Select a project to run.
+
+      Select a project to run.
+
+
+
 Check Your Understanding
 ------------------------
 

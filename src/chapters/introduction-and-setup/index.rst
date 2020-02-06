@@ -6,6 +6,8 @@ Introduction and Setup
 
    why-csharp
    setup
+   windows-setup
+   mac-setup
    creating-a-csharp-project
    csharp-web-dev-exercises
    naming-conventions

@@ -76,21 +76,20 @@ GitHub Project Setup
 ~~~~~~~~~~~~~~~~~~~~
 TODO: update this repo name
 
-Visit the
-`LaunchCodeEducation/csharp-exercises <https://github.com/LaunchCodeEducation/csharp-exercises>`__
-repository page and fork the repository into your own GitHub account by
-selecting *Fork* from the top right of the page.
+#. Visit the `LaunchCodeEducation/csharp-exercises <https://github.com/LaunchCodeEducation/csharp-exercises>`__
+   repository page and fork the repository into your own GitHub account by
+   selecting *Fork* from the top right of the page.
 
-After forking, open Visual Studio. From within Visual Studio, choose the
-*Team Explorer* tab near the bottom of the *Solution Explorer* pane. If
-you don’t see this tab, you can open it via the application menu: *View
-> Team Explorer*. The first time you do this, you will need to click
-*Connect…* and then sign in to GitHub.
+#. After forking, open Visual Studio. From within Visual Studio, choose the
+   *Team Explorer* tab near the bottom of the *Solution Explorer* pane. If
+   you don’t see this tab, you can open it via the application menu: *View
+   > Team Explorer*. The first time you do this, you will need to click
+   *Connect…* and then sign in to GitHub.
 
-Select *Clone* from the GitHub section of the *Team Explorer* and select
-your ``csharp-exercises`` copy from the modal window. **Be sure to
-change the Path field** to the location you would like the project to
-live, ideally inside of a folder you’ve been using to store other
-projects.
+#. Select *Clone* from the GitHub section of the *Team Explorer* and select
+   your ``csharp-exercises`` copy from the modal window. **Be sure to
+   change the Path field** to the location you would like the project to
+   live, ideally inside of a folder you’ve been using to store other
+   projects.
 
 

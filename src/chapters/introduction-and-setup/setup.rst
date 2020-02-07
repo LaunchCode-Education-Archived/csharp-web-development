@@ -24,6 +24,8 @@ this course, so it's time to get familiar with some of the basics.
    as Visual Studio.
 
 
+.. _dotnet-intro: 
+
 .. index:: ! .NET Core, ! Software Development Kit, ! SDK
 
 .NET Core
@@ -35,7 +37,7 @@ Unlike it's predecessor, just called .NET or .NET Framework, .NET Core is open-s
 operating systems. The SDK provides the runtime environment, as well as the virtual machine for compiling 
 and running C# programs. 
 .NET Core also notably contains the class library. This is the built-in code that takes care of common programming items
-like date object formatting, for example. 
+like object types, for example. 
 
 .. _compiling-csharp:
 

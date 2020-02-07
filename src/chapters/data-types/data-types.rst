@@ -209,36 +209,26 @@ C#. For these examples, we use the string variable
 
    * - C# Syntax
      - Description
-   * - ``str.charAt(3)``
-     - Returns the character at index 3, (``'a'``).
-   * - ``str.substring(2,4)``
-     - Returns the characters from indexes 2 - 4, (``"tab"``).
-   * - ``str.length()``
-     - Returns the length of the string.
-   * - ``str.indexOf('a')``
+   * - ``str.Substring(3,1)`` 
+     - Returns the character in 3rd position, (``a``).
+   * - ``str.Substring(2,3)``
+     - Return substring from 2nd to 4th, i.e. substring starting at 
+       index 2 and 3 characters long, (``tab``).
+   * - ``str.Length()``
+     - Returns the length of the string, (``9``).
+   * - ``str.IndexOf('a')``
      - Returns the index for the first occurrence of 'a', (``3``).
-   * - ``str.split("delimiter")``
+   * - ``str.Split("delimiter")``
      - Splits the string into sections at each ``delimiter`` and stores the
        sections as elements in an array.
-   * - ``str.concat(string2).concat(string3)``
-     - In C#, ``concat`` concatenates only two strings. To join multiple
-       strings, method chaining is required.
-   * - ``str.trim()``
+   * - ``str + str``
+     - Concatenate two strings together 
+   * - ``str.Trim()``
      - Removes any whitespace at the beginning or end of the string.
-   * - ``str.toUpperCase(), str.toLowerCase()``
+   * - ``str.ToUpper(), str.ToLower()``
      - Changes all alphabetic characters in the string to UPPERCASE or
        lowercase, respectively.
-   * - ``str.contains("text")``
-     - Searches for the specified text within a string and returns ``true`` or
-       ``false``.
-   * - ``str.equals(otherString)``
-     - Compares strings for equality and returns a boolean.
-
-.. admonition:: Note
-
-   We will explore the differences between using ``==`` and ``.equals()`` when
-   we discuss C# operators. For now, use ``.equals()`` if you need to compare
-   two strings.
+   
 
 Primitive Types
 ----------------

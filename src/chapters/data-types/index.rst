@@ -7,7 +7,7 @@ Data Types
    :maxdepth: 3
 
    data-types
-   some-java-practice
+   some-csharp-practice
    more-data-types
    exercises
    studio

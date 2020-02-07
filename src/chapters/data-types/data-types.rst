@@ -163,8 +163,19 @@ The types in the table above are known as **primitive types**. A primitive data 
 building block of a programming language. Using primitive data types, we
 can build more complex data structures.
 
-Operators
-^^^^^^^^^
+Non-primitive Types
+^^^^^^^^^^^^^^^^^^^
+
+Primitive data types are *immutable* and can be combined to build larger data
+structures. One example is forming the ``string`` "LaunchCode" from multiple
+``char`` characters ('L', 'a', 'u', etc.).
+
+``string`` is another built-in type in C# and it is also a non-primitive data type. We'll delve into 
+how strings work in C# on the next page, as well as other complex data types.
+
+
+Operations
+^^^^^^^^^^
 
 Operators - such as ``+`` and ``*`` - are type-dependent.
 That is, we can only use them on allowed types, and their effects are
@@ -262,6 +273,16 @@ but can be difficult to wrap your brain around at first. We will see
 that reference types are handled differently in essential and important
 ways in a lot of different situations.
 
+.. index:: ! boxing, ! unboxing 
+
+Boxing
+^^^^^^
+
+As we mention above, all types in C# are treated as objects. Even value types. This can be accomplished 
+through processes called boxing and unboxing. Converting from a value type to a reference type is called 
+**boxing**, and the reverse process (reference to value) is called **unboxing**. C# is known as a unified 
+type system because it implicitly boxes values types to be treated as objects. 
+
 
 Check Your Understanding
 -------------------------
@@ -275,110 +296,15 @@ Check Your Understanding
    #. ``float``
    #. ``double``
 
+.. ans: a, ``number``
+
 .. admonition:: Question
 
-   Name the C# method responsible for checking string equality:
+   Which of the following terms refers to C#'s behavior of treating all types as objects:
 
-   #. ``.isEqualTo()``
-   #. ``.sameAs()``
-   #. ``.equals()``
-   #. ``===``
+   #. static type system
+   #. dynamic type system
+   #. reference type system
+   #. unified type system
 
-
-
-
-
-
-.. Non-primitive Types
-.. -------------------
-
-.. Primitive data types are *immutable* and can be combined to build larger data
-.. structures. One example is forming the ``string`` "LaunchCode" from multiple
-.. ``char`` characters ('L', 'a', 'u', etc.).
-
-.. ``string`` is a non-primitive data type, also called an *object type*. As we
-.. saw in the ``string`` table above, object types have methods which we can call
-.. using dot notation. Primitive data types do not have methods.
-
-.. Later in this chapter, we will explore the array and class object types.
-
-.. Boxing
-.. ------
-
-.. There may be situations when we call a method that expects an object as an
-.. argument, but we pass it a primitive type instead (or vice versa). In these
-.. cases, we need to convert the primitive type to an object, or convert an object
-.. type into a primitive.
-
-.. .. index:: ! boxing, ! unboxing
-
-.. In older versions of C#, it was the programmer’s responsibility to convert
-.. back and forth between primitive types and object types whenever necessary.
-.. Converting from a primitive type to an object type was called **boxing**, and
-.. the reverse process (object to primitive) was called **unboxing**.
-
-.. .. admonition:: Examples
-
-..    **Boxing:**
-
-..    .. sourcecode:: C#
-..       :linenos:
-
-..       int someInteger = 5;
-..       Integer someIntegerObject = Integer.valueOf(someInteger);
-..       ClassName.methodName(someIntegerObject);
-
-..    #. Line 1 declares and initializes the variable ``someInteger``.
-..    #. Line 2 and converts the primitive ``int`` to the ``Integer`` object type.
-..    #. Line 3 calls ``methodName`` and passes ``someIntegerObject`` as the
-..       argument. If ``methodName`` expects an object type and we tried sending
-..       an ``int`` instead, we would generate an error message.
-
-..    **Unboxing:**
-
-..    Let's assume that a method returns a random number of
-..    ``Integer`` type, and we want to combine it with a value of ``int`` type.
-
-..    .. sourcecode:: C#
-..       :linenos:
-
-..       int ourNumber = 5;
-..       Integer randomNumber = ClassName.randomNumberGenerator();
-..       int randomInt = (int) randomNumber;
-..       int sum = ourNumber + randomInt;
-
-..    #. Line 2 declares and initializes ``randomNumber`` as an ``Integer`` type.
-..    #. Line 3 converts ``randomNumber`` to an ``int`` and stores the value in
-..       the ``randomInt`` variable.
-
-.. .. index:: ! autoboxing
-
-.. Converting between data types in order to pass values between methods quickly
-.. became tedious and error prone. In the newer versions of C#, the compiler is
-.. smart enough to know when to convert back and forth, and this is called
-.. **autoboxing**.
-
-.. For us, the consequence of autoboxing is that in many situations, we can use
-.. primitive and object types interchangeably when calling methods or returning
-.. data from those methods.
-
-.. .. admonition:: Tip
-
-..    It’s a best practice to use primitives whenever possible. The primary
-..    exception to this occurs when storing values in collections, which we’ll
-..    learn about in a future lesson.
-
-.. Each of the primitive data types has a corresponding object type:
-
-.. #. ``int`` ---> ``Integer``
-.. #. ``float`` ---> ``Float``
-.. #. ``double`` ---> ``Double``
-.. #. ``char`` ---> ``Character``
-.. #. ``boolean`` ---> ``Boolean``
-
-.. References
-.. ----------
-
-.. #. `Primitive Data Types (docs.oracle.com) <http://docs.oracle.com/C#se/tutorial/C#/nutsandbolts/datatypes.html>`__
-.. #. `Autoboxing and Unboxing (docs.oracle.com) <http://docs.oracle.com/C#se/tutorial/C#/data/autoboxing.html>`__
-.. #. `Variables (docs.oracle.com) <https://docs.oracle.com/C#se/tutorial/C#/nutsandbolts/variables.html>`__
+.. ans: d, unified type system

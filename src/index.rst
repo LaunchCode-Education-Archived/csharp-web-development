@@ -6,6 +6,8 @@ Chapters
    :maxdepth: 1
    :name: chapterstoc
 
+   chapters/control-flow-and-collections/index
+
 .. toctree::
 
    genindex

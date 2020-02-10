@@ -2,9 +2,10 @@ Chapters
 ========
 
 .. toctree::
-   :numbered:
-   :maxdepth: 1
-   :name: chapterstoc
+   :maxdepth: 2
+   :name: fulltoc
+
+   chapters/control-flow-and-collections/index
 
 .. toctree::
 

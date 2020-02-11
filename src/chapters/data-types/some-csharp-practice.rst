@@ -269,3 +269,13 @@ Check Your Understanding
 
 .. ans: False, if the class is available at your current location, you can use the full namespace and class name.
 
+.. admonition:: Question
+
+   What is the name of the method used to convert input strings to different types?
+
+   #. ``.Convert()``
+   #. ``.ToString()``
+   #. ``.Parse()``
+   #. ``.ReadLine()``
+
+.. ans: c, ``.Parse()``

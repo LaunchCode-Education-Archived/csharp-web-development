@@ -19,7 +19,7 @@ Windows Users
    *Connect…* and then sign in to GitHub.
 
 #. Select *Clone* from the GitHub section of the *Team Explorer* and select
-   your ``csharp-exercises`` copy from the modal window. **Be sure to
+   your ``csharp-web-dev-exercises`` copy from the modal window. **Be sure to
    change the Path field** to the location you would like the project to
    live, ideally inside of a folder you’ve been using to store other
    projects.

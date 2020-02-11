@@ -10,8 +10,6 @@ Celsius.
 Temperature Conversion
 -----------------------
 
-TODO: add this example to csharp-web-dev-exercises and get screenshots
-
 #. Open the ``TempConverter`` file in the ``csharp-web-dev-exercises`` project in Visual Studio.
 
    .. figure:: figures/tempConverterTree.png

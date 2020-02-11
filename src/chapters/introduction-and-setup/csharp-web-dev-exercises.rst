@@ -5,8 +5,6 @@ The steps here walk you through setting up a repository that you’ll
 use to study example code, work on studios, and complete your first
 assignment of this unit.
 
-TODO: update this repo name
-
 #. Visit the `LaunchCodeEducation/csharp-web-dev-exercises <https://github.com/LaunchCodeEducation/csharp-web-dev-exercises>`__
    repository page and fork the repository into your own GitHub account by
    selecting *Fork* from the top right of the page.

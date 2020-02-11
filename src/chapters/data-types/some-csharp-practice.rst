@@ -15,9 +15,9 @@ TODO: add this example to csharp-web-dev-exercises and get screenshots
 #. Open the ``TempConverter`` file in the ``csharp-web-dev-exercises`` project in Visual Studio.
 
    .. figure:: figures/tempConverterTree.png
-      :alt: The ``TempConverter`` file
+      :alt: The ``TempConverter`` project.
 
-      The ``TempConverter`` file
+      The ``TempConverter`` project.
 
 #. Here's what the file should look like. We will analyze the different statements 
    in a moment.

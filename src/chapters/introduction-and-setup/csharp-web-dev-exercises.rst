@@ -7,7 +7,7 @@ assignment of this unit.
 
 TODO: update this repo name
 
-#. Visit the `LaunchCodeEducation/csharp-exercises <https://github.com/LaunchCodeEducation/csharp-exercises>`__
+#. Visit the `LaunchCodeEducation/csharp-web-dev-exercises <https://github.com/LaunchCodeEducation/csharp-web-dev-exercises>`__
    repository page and fork the repository into your own GitHub account by
    selecting *Fork* from the top right of the page.
 

@@ -87,10 +87,8 @@ We will explore exactly what ``static`` does in more detail in later lessons.
 ``HelloMethods``
 ----------------
 
-TODO: add this example to web-dev-exercises
-
 Let’s examine two classes in C# to explore defining and using methods. Open the 
-``HelloMethods`` project in ``csharp-web-dev-exercises``.
+``HelloMethods`` project in ``csharp-web-dev-exercises/demos/lsn1datatypes``.
 
 The first class is defined in the ``HelloMethods/Program.cs`` file, and it has a
 ``Main`` method. The second class is defined in a separate ``HelloMethods/Message.cs``
@@ -103,6 +101,8 @@ file, and it contains a ``GetMessage`` method that we want to call from within
 
    .. sourcecode:: c#
       :linenos:
+
+      using System;
 
       namespace HelloMethods
       {

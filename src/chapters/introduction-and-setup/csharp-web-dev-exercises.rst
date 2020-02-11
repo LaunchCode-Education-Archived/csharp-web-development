@@ -5,9 +5,7 @@ The steps here walk you through setting up a repository that you’ll
 use to study example code, work on studios, and complete your first
 assignment of this unit.
 
-TODO: update this repo name
-
-#. Visit the `LaunchCodeEducation/csharp-exercises <https://github.com/LaunchCodeEducation/csharp-exercises>`__
+#. Visit the `LaunchCodeEducation/csharp-web-dev-exercises <https://github.com/LaunchCodeEducation/csharp-web-dev-exercises>`__
    repository page and fork the repository into your own GitHub account by
    selecting *Fork* from the top right of the page.
 
@@ -21,7 +19,7 @@ Windows Users
    *Connect…* and then sign in to GitHub.
 
 #. Select *Clone* from the GitHub section of the *Team Explorer* and select
-   your ``csharp-exercises`` copy from the modal window. **Be sure to
+   your ``csharp-web-dev-exercises`` copy from the modal window. **Be sure to
    change the Path field** to the location you would like the project to
    live, ideally inside of a folder you’ve been using to store other
    projects.

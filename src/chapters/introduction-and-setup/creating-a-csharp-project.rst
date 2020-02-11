@@ -67,7 +67,7 @@ Following the "Hello World" trend, let's create a new Visual Studio project.
       The first time you run a console app in Visual Studio, you may be prompted
       to allow VS to access the terminal. This is ok.
 
-#. A console window should pop up with the line "Hello World"" printed. 
+#. A console window should pop up with the line "Hello World" printed. 
    That's it. You have created your first C# application.
 
 .. index:: ! solution
@@ -79,7 +79,7 @@ You've just created your first C# project. Congrats! In fact, you've also just c
 Your ``HelloWorld`` project is nested within a solution called ``HelloWorld``. A solution behaves like a container for
 related projects and other Visual Studio settings. 
 
-A C# project contains all the code to run a particular application. Along with ``Program.cs`` file you ran just a 
+A C# project contains all the code to run a particular application. Along with the ``Program.cs`` file you ran just a 
 moment ago, you may have also noticed a ``Dependencies`` folder. Many applications require extra code like dependencies
 or other compiling configurations to execute. 
 

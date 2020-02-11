@@ -8,7 +8,8 @@ Data Types
 
    data-types
    some-csharp-practice
-   more-data-types
+   strings-chars-and-arrays
+   objects-primer
    exercises
    studio
-	
+   

@@ -209,12 +209,14 @@ their data, and include numeric types (``int``, ``double``, etc.),
 ``bool``, and a handful of others that we won’t encounter in this
 course. The primitive, built-in types we list above are all value types.
 
+.. index:: ! class
+
 Class Types
 ^^^^^^^^^^^
 
-In addition to the built-in types provided by .NET, any class in C# 
-defines its own type. A class is a template, or blueprint, for creating 
-objects. We’ll have much more to say about classes and objects --- this 
+A **class** is a template for creating objects. In addition to the built-in 
+types provided by .NET, any class in C# defines its own type. A class is a template, 
+or blueprint, for creating objects. We’ll have much more to say about classes and objects --- this 
 is an object-oriented course, after all. For now, you need to be 
 comfortable seeing the basic syntax of class types and class creation.
 
@@ -225,7 +227,13 @@ declare and create a new instance of ``Cat`` using its constructor.
 
    Cat myCat = new Cat();
 
-Each of these statements creates a new variable that is initialized to
+#. ``Cat myCat`` declares the variable ``myCat`` and sets it to be of type
+   ``Cat``.
+#. ``= new Cat()`` initializes the variable with a new ``Cat`` object.
+#. Any arguments that are required to build the new ``Cat`` object must be
+   included within the parentheses. In this case, there are no required arguments.
+
+This statement creates a new variable that is initialized to
 hold a new ``Cat`` object. Note that in C#, we must declare the
 variable’s type. Also note that we precede the constructor with the
 ``new`` keyword. And, as we'll see with all C# statements, the 
@@ -259,14 +267,14 @@ Visually, we can represent these three variables as shown here.
 
 Since ``int`` is a value type, the variable ``catAge`` functions as a
 box holding the integer value 11. On the other hand, ``myCat`` is a
-reference variable, since it holds an object. The variable actually
-stores the address of the object, which we visualize as an arrow from
-the variable box to the object.
+reference variable, since it refers to an object of type ``Cat``. The 
+variable actually stores the memory address of the object, which we visualize 
+as an arrow from the variable box to the object. Instead of holding the actual ``Cat``
+data, ``myCat`` stores *directions* for finding the data in memory.
 
-When we assign a value to a reference type, as in
-``Cat sameCat = myCat``, we are not creating a second copy of the
-object, but instead are creating a second *pointer* to the same
-object.
+When we to assign ``myCat`` to another variable, as in ``Cat sameCat = myCat``,
+we do NOT create a second copy of the object or its data. Instead, we make a
+second *pointer* to the same memory location.
 
 The distinction between reference types and value types is important,
 but can be difficult to wrap your brain around at first. We will see

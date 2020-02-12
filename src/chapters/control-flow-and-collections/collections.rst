@@ -11,19 +11,19 @@ is a programming construct to aggregate lots of values into one value. Many
 types of data structures exist in various languages. A few examples are 
 lists, dictionaries, arrays, tuples, etc. 
 
-.. index:: ! collections, ! C# Collections Framework
+.. index:: ! collections, ! C# Collections Namespace
 
-C# Collections Framework
----------------------------
+C# Collections Namespace
+------------------------
 
 C# provides powerful and flexible structures to store data, known as
-**collections**. The **C# collections framework** refers to the various interfaces
+**collections**. The **C# collections namespace** refers to the various interfaces
 the language provides for implementing collection types. 
 
 Here, we'll discuss a collection called ``ArrayList`` and compare it to the 
-``Array`` class. We'll then introduce a third collection type called ``HashMap``. 
+``Array`` class. We'll then introduce a third collection type called ``Dictionary``. 
 These three collection types will be sufficient for our basic C# needs. 
-For more, refer to the official C# documentation on `collections <http://docs.oracle.com/C#se/8/docs/api/C#/util/Collections.html>`__.
+For more, refer to the official C# documentation on `collections <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/collections>`__.
 
 Gradebook, Three Ways
 ---------------------

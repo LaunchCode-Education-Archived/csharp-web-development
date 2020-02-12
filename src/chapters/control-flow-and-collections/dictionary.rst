@@ -4,11 +4,11 @@ Dictionary
 ==========
 
 C# also provides us a structure to store data as key/value pairs. C# calls
-these objects **Dictionarys** (or **maps**, more generally), and they are
+these objects **dictionaries**, and they are
 provided by the ``Dictionary`` class.
 
 Considering the gradebook example, we can improve our program using a
-map. We'll store the students’ grades along with their names in the same
+dictionary. We'll store the students’ grades along with their names in the same
 data structure. The names will be the keys, and the grades will be the
 values.
 
@@ -20,52 +20,41 @@ to be different types for a given map.
 .. sourcecode:: C#
    :linenos:
 
-   package org.launchcode.C#.demos.collections;
+   Dictionary<string, double> students = new Dictionary<string, double>();
+   string newStudent;
 
-   import C#.util.Dictionary;
-   import C#.util.Map;
-   import C#.util.Scanner;
+   Console.WriteLine("Enter your students (or ENTER to finish):");
 
-   public class DictionaryGradebook {
+   // Get student names and grades
+   do {
 
-      public static void main(String[] args) {
+      Console.WriteLine("Student: ");
+      string input = Console.ReadLine();
+      newStudent = input;
 
-         Dictionary<String, Double> students = new Dictionary<>();
-         Scanner input = new Scanner(System.in);
-         String newStudent;
+      if (!newStudent.equals("")) {
+         Console.WriteLine("Grade: ");
+         input = Console.ReadLine()
+         double newGrade = Double.Parse(input);
+         students.Add(newStudent, newGrade);
 
-         System.out.println("Enter your students (or ENTER to finish):");
-
-         // Get student names and grades
-         do {
-
-            System.out.print("Student: ");
-            newStudent = input.nextLine();
-
-            if (!newStudent.equals("")) {
-               System.out.print("Grade: ");
-               Double newGrade = input.nextDouble();
-               students.put(newStudent, newGrade);
-
-               // Read in the newline before looping back
-               input.nextLine();
-            }
-
-         } while(!newStudent.equals(""));
-
-         // Print class roster
-         System.out.println("\nClass roster:");
-         double sum = 0.0;
-
-         for (Map.Entry<String, Double> student : students.entrySet()) {
-            System.out.println(student.getKey() + " (" + student.getValue() + ")");
-            sum += student.getValue();
-         }
-
-         double avg = sum / students.size();
-         System.out.println("Average grade: " + avg);
+         // Read in the newline before looping back
+         Console.ReadLine();
       }
+
+   } while(!newStudent.equals(""));
+
+   // Print class roster
+   Console.WriteLine("\nClass roster:");
+   double sum = 0.0;
+
+   foreach (KeyValuePair<string, double> student in students) {
+      Console.WriteLine(student.Key + " (" + student.Value + ")");
+      sum += student.Value;
    }
+
+   double avg = sum / students.Count;
+   Console.WriteLine("Average grade: " + avg);
 
 
 Notice how a ``Dictionary`` called ``students`` is declared on line 11:
@@ -73,73 +62,72 @@ Notice how a ``Dictionary`` called ``students`` is declared on line 11:
 .. sourcecode:: C#
    :lineno-start: 11
 
-   Dictionary<String, Double> students = new Dictionary<>();
+   Dictionary<string, double> students = new Dictionary<string, double>();
 
-Here, ``<String, Double>`` defines the data types for this map's
+Here, ``<string, double>`` defines the data types for this map's
 ``<key, value>`` pairs. Like the ``ArrayList``, when we call the ``Dictionary``
 constructor on the right side of the assignment, we don’t need to specify
 type.
 
-We can add a new item with a ``.put()`` method, specifying both key and
+We can add a new item with a ``.Add()`` method, specifying both key and
 value:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :lineno-start: 26
 
-   students.put(newStudent, newGrade);
+   students.Add(newStudent, newGrade);
 
 And while we don’t do so in this example, we may also access ``Dictionary``
-elements using the ``get`` method. If we had a key/value pair of
-``"jesse"/4.0`` in the ``students`` map, we could access the grade with:
+elements using bracket notation. If we had a key/value pair of
+``"jesse"/4.0`` in the ``students`` dictionary, we could access the grade with:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
 
-   Double jesseGrade = students.get("jesse");
+   double jesseGrade = students["jesse"];
 
 Variables may be used to access elements:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :linenos:
 
-   String name = "jesse";
-   Double jesseGrade = students.get(name);
+   string name = "jesse";
+   double jesseGrade = students[name];
 
-Looping through a map is slightly more complex than it is for ordered lists.
-Let’s look at the ``for-each`` loop from this example:
+Looping through a dictionary is slightly more complex than it is for ordered lists.
+Let’s look at the ``foreach`` loop from this example:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :lineno-start: 38
 
-   for (Map.Entry<String, Double> student : students.entrySet()) {
-      System.out.println(student.getKey() + " (" + student.getValue() + ")");
-      sum += student.getValue();
+   for (KeyValuePair<string, double> student in students) {
+      Console.WriteLine(student.Key + " (" + student.Value + ")");
+      sum += student.Value;
    }
 
 The iterator variable, ``student``, is of type
-``Map.Entry<String, Double>``. The class ``Map.Entry`` is specifically
+``KeyValuePair<string, double>``. The class ``KeyValuePair`` is specifically
 constructed to be used in this fashion, to represent key/value pairs
-within Dictionarys. Each ``Map.Entry`` object has a ``getKey`` method and a
-``getValue`` method, which represent (surprisingly enough!), the key and
-value of the map item.
+within dictionaries. Each ``KeyValuePair`` object has a ``Key`` property and a
+``Value`` property.
 
-If you only need to access the key of each item in a map, you can
+If you only need to access the key of each item, you can
 construct a simpler loop:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :linenos:
 
-   for (String student : students.keySet()) {
-      System.out.println(student);
+   foreach (String student in students.Keys) {
+      Console.WriteLine(student);
    }
 
 A similar structure applies if you only need the values, using
-``students.values()``:
+``students.Values``:
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :linenos:
 
-   for (double grade : students.values()) {
-      System.out.println(grade);
+   foreach (double grade in students.Values) {
+      Console.WriteLine(grade);
    }
 
 Dictionary Methods
@@ -153,18 +141,18 @@ below for official documentation on the ``Dictionary`` class.
 For the purposes of this table, we'll create a map to hold our solar system's
 planets and the number of moons associated with each.
 
-.. sourcecode:: C#
+.. sourcecode:: csharp
    :linenos:
 
-   Dictionary<String, Integer> moons = new Dictionary<>();
-   moons.put("Mercury", 0);
-   moons.put("Venus", 0);
-   moons.put("Earth", 1);
-   moons.put("Mars", 2);
-   moons.put("Jupiter", 79);
-   moons.put("Saturn", 82);
-   moons.put("Uranus", 27);
-   moons.put("Neptune", 14);
+   Dictionary<string, int> moons = new Dictionary<string, int>();
+   moons.Add("Mercury", 0);
+   moons.Add("Venus", 0);
+   moons.Add("Earth", 1);
+   moons.Add("Mars", 2);
+   moons.Add("Jupiter", 79);
+   moons.Add("Saturn", 82);
+   moons.Add("Uranus", 27);
+   moons.Add("Neptune", 14);
 
 
 .. list-table::
@@ -173,39 +161,33 @@ planets and the number of moons associated with each.
    * - C# Syntax
      - Description
      - Example
-   * - ``size()``
+   * - ``Count``
      - Returns the number of items in the map, as an ``int``.
-     - ``moons.size()`` returns ``8``
-   * - ``keySet()``
+     - ``moons.Count`` returns ``8``
+   * - ``Keys``
      - Returns a collection containing all keys in the map. This collection may be used in a
-       ``for-each`` loop just as lists are, but the map *may not be modified* within such a loop.
-     - ``moons.keySet()`` returns
+       ``foreach`` loop just as lists are, but the map *may not be modified* within such a loop.
+     - ``moons.Keys`` returns
        ``["Earth", "Mars", "Neptune", "Jupiter", "Saturn", "Venus", "Uranus", "Mercury"]``
-   * - ``values()``
+   * - ``Values``
      - Returns a collection containing all values in the map. This collection may be used in a
-       ``for-each`` loop just as lists are.
-     - ``moons.values()`` returns ``[1, 2, 14, 79, 82, 0, 27, 0]``
-   * - ``put()``
+       ``foreach`` loop just as lists are.
+     - ``moons.Values`` returns ``[1, 2, 14, 79, 82, 0, 27, 0]``
+   * - ``Add()``
      - Add a key/value pair to a map.
-     - ``moons.put("Pluto", 5)`` adds ``"Pluto": 5`` to the ``moons``
-   * - ``containsKey()``
+     - ``moons.Add("Pluto", 5)`` adds ``"Pluto": 5`` to the ``moons``
+   * - ``ContainsKey()``
      - Returns a boolean indicating whether or not the map contains a given key.
-     - ``moons.containsKey("Earth")`` returns ``true``
-   * - ``containsValue()``
+     - ``moons.ContainsKey("Earth")`` returns ``true``
+   * - ``ContainsValue()``
      - Returns a boolean indicating whether or not the map contains a given value.
-     - ``moons.containsValue(79)`` returns ``true``
+     - ``moons.ContainsValue(79)`` returns ``true``
 
-We have only brushed the surface of how arrays, ``ArrayLists``, and maps work.
+We have only brushed the surface of how arrays, ``ArrayLists``, and dictionaries work.
 We leave it to you to refer to the official documentation linked below for more
-details. You’ll certainly be using ``ArrayLists`` and maps in more ways than
+details. You’ll certainly be using ``ArrayLists`` and dictionaries in more ways than
 those covered in this lesson, but with the knowledge you have now, you
 should be able to use C# collections and learn new uses as you go.
-
-References
-----------
-
--  `Dictionary Class
-   (docs.oracle.com) <https://docs.oracle.com/en/C#/C#se/13/docs/api/C#.base/C#/util/Dictionary.html>`__
 
 Check Your Understanding
 -------------------------
@@ -214,7 +196,7 @@ Check Your Understanding
 
    Given our ``Dictionary``,
 
-   .. sourcecode:: C#
+   .. sourcecode:: csharp
       :linenos:
 
       moons = {
@@ -228,20 +210,20 @@ Check Your Understanding
          "Neptune" = 14
       }
 
-   What is the method to return the key names?
+   What is the syntax to get the key names?
 
-   #. ``Map.keys(moons);``
-   #. ``moons.keys();``
-   #. ``moons.keySet(moons);``
-   #. ``moons.keySet();``
+   #. ``Dictionary.Keys(moons);``
+   #. ``moons.Keys();``
+   #. ``moons.Keys;``
+   #. ``moons.KeySet();``
 
-.. ans - ``moons.keySet();``
+.. ans - ``moons.Keys;``
 
 .. admonition:: Question
 
    Given our ``Dictionary``,
 
-   .. sourcecode:: C#
+   .. sourcecode:: csharp
       :linenos:
 
       moons = {
@@ -255,7 +237,7 @@ Check Your Understanding
          "Neptune" = 14
       }
 
-   What will ``moons.get("Mars");`` return?
+   What will ``moons["Mars"];`` return?
 
    #. ``2``
 

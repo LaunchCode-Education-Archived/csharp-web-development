@@ -10,7 +10,7 @@ Celsius.
 Temperature Conversion
 -----------------------
 
-#. Open the ``TempConverter`` file in the ``csharp-web-dev-exercises`` project in Visual Studio.
+#. Open the ``TempConverter`` project in your ``csharp-web-dev-lsn1datatypes`` solution in Visual Studio.
 
    .. figure:: figures/tempConverterTree.png
       :alt: The ``TempConverter`` project.

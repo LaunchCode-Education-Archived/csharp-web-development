@@ -31,17 +31,24 @@ Some questions to ask yourself:
 
 .. admonition:: Note
 
-   Use the ``Math`` class in C# to get the value of pi and square the radius. 
+   Use the ``System.Math`` class in C# to get the value of pi and square the radius. 
    The `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.math?view=netframework-4.8>`_ has guidance on how to use the ``PI`` field and the ``Pow`` method.
 
-Add a Little Validation
------------------------
+More Calculations
+-----------------
 
-Extend your program further by using a `while or do-while loop <https://www.w3schools.com/cs/cs_while_loop.asp>`__, so that when the user enters a negative number they are re-prompted for a radius.
+#. Using the same radius calculate the circumference (``2*pi*r``) and diameter of the circle (``2*r``).
+#. Output the results.
 
-Bonus Mission
--------------
+Road Trip!
+----------
 
-Add additional validation to your program.
-If the user enters a non-numeric character or a empty string?
-Print an error message and quit. You’ll need to peek ahead to learn about `conditional syntax in C# <https://www.w3schools.com/cs/cs_conditions.asp>`__.
+#. Ask the user for the miles per gallon of their car. 
+#. If the radius that they entered is in miles, output how many gallons of gas they will use to go around this circle. 
+
+Bonus Missions
+--------------
+
+#. Put the necessary properties and methods into a separate class.
+#. Extend your program further by using a `while or do-while loop <https://www.w3schools.com/cs/cs_while_loop.asp>`__, so that when the user enters a negative number they are re-prompted for a radius.
+#. Add additional validation to your program. If the user enters a non-numeric character or a empty string? Print an error message and quit. You’ll need to peek ahead to learn about `conditional syntax in C# <https://www.w3schools.com/cs/cs_conditions.asp>`__.

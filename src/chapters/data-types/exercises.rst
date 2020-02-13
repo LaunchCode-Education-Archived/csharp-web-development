@@ -1,12 +1,18 @@
 Exercises: Data Types
 =====================
 
-To get started, open up Visual Studio and create a new console program by clicking *New* and selecting *Console Application* under *.Net Core App*.
+To get started, open up Visual Studio and create a new console program.
 
-For each part of the exercises, carefully note in code comments which part of the exercises you are working on. 
-When you are done with that particular section of the exercises, comment out your solution and start working on the next one!
+.. admonition:: Tip
 
-#. **Input/output**: Write a new "Hello, World" program to prompt the
+   If you do not recall how to create a new console program or need a quick refresher to get started, check out the section on :ref:`creating a C# project <create-new-csharp-project>`.
+
+For each part of the exercises, create a new project in your solution. When you are done, push your solution up to a repository on your Github account!
+
+Input/Output
+------------
+
+#. Write a new "Hello, World" program to prompt the
    user for their name and greet them by name.
 
    #. Add a question to ask the user:
@@ -27,10 +33,12 @@ When you are done with that particular section of the exercises, comment out you
 
          Console.WriteLine("Hello " + name);
 
-   #. Click on the arrow in the top left to run your program.
+   #. Run your program.
 
+Numeric Types
+-------------
 
-#. **Numeric types**: Write a program to calculate the area of a
+#. Write a program to calculate the area of a
    rectangle and print the answer to the console. You should prompt the
    user for the dimensions. (What data types should the dimensions be?)
 
@@ -42,10 +50,17 @@ When you are done with that particular section of the exercises, comment out you
       their rectangle is.
    #. Run the program to verify your code.
 
-#. **Numeric types**: Write a program that asks a user for the number of
+More on Numeric Types
+---------------------
+
+#. Write a program that asks a user for the number of
    miles they have driven and the amount of gas they’ve consumed (in
    gallons), and print their miles-per-gallon.
-#. **Strings**: The first sentence of *Alice’s Adventures in Wonderland*
+
+Strings
+-------
+
+#. The first sentence of *Alice’s Adventures in Wonderland*
    is below. Store this sentence in a string, and then prompt the user
    for a term to search for within this string. Print whether or not the
    search term was found. Make the search case-insensitive, so that searching
@@ -57,7 +72,7 @@ When you are done with that particular section of the exercises, comment out you
       it, 'and what is the use of a book,' thought Alice 'without pictures or
       conversation?'``
 
-#. **Strings**: Extend the previous exercise. Assume the user enters a word that is
+#. Extend the previous exercise. Assume the user enters a word that is
    in the sentence. Print out its index within the string and its length. Next,
    remove the word from the string and print the sentence again to confirm your
    code. Remember that strings are *immutable*, so you will need to reassign

@@ -7,7 +7,7 @@ Control Flow and Collections
    conditionals
    loops
    collections
-   arraylist
+   list
    arrays
    dictionary
    exercises

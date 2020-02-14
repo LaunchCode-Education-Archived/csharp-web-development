@@ -20,7 +20,7 @@ C# provides powerful and flexible structures to store data, known as
 **collections**. The **C# collections namespace** refers to the various interfaces
 the language provides for implementing collection types. 
 
-Here, we'll discuss a collection called ``ArrayList`` and compare it to the 
+Here, we'll discuss a collection called ``List`` and compare it to the 
 ``Array`` class. We'll then introduce a third collection type called ``Dictionary``. 
 These three collection types will be sufficient for our basic C# needs. 
 For more, refer to the official C# documentation on `collections <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/collections>`__.
@@ -56,5 +56,5 @@ A test run of the program might yield the following:
 
    Average grade: 3.5
 
-We’ll look at the gradebook using an ``Arraylist`` first. 
+We’ll look at the gradebook using an ``List`` first. 
 

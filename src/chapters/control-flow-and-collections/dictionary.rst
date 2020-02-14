@@ -1,4 +1,4 @@
-.. index:: ! Dictionary, ! map
+.. index:: ! Dictionary
 
 Dictionary
 ==========

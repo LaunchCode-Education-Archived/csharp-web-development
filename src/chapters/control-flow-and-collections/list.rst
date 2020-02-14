@@ -1,22 +1,24 @@
-.. _array-list:
+.. _List:
 
-ArrayList
-=========
+.. index:: ! List
 
-To write an **ArrayList** version of the program, we will have to introduce
-several new C# concepts, including the class ``ArrayList``. We will also
+Lists
+=====
+
+To write a **List** version of the program, we will have to introduce
+several new C# concepts, including the class ``List``. We will also
 review different kinds of ``for`` loops used in C#.
 
-Before going any further, we suggest you run the ``ArrayListGradebook``
-program in IntelliJ. You can view this program in ``csharp-web-dev-exercises``.
+Before going any further, we suggest you run the ``ListGradebook``
+program in Visual Studio Code. You can view this program in `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_.
 Once you’ve done that, let’s look at what is happening in the C#
 source code.
 
 .. sourcecode:: csharp
    :linenos:
 
-   ArrayList<string> students = new ArrayList<>();
-   ArrayList<double> grades = new ArrayList<>();
+   List<string> students = new List<string>();
+   List<double> grades = new List<double>();
    string newStudent;
    string input;
 
@@ -37,7 +39,7 @@ source code.
    foreach (string student in students) {
       Console.WriteLine("Grade for " + student + ": ");
       input = Console.ReadLine();
-      double grade = Double.Parse();
+      double grade = Double.Parse(input);
       grades.Add(grade);
    }
 
@@ -53,47 +55,35 @@ source code.
    double avg = sum / students.Count;
    Console.WriteLine("Average grade: " + avg);
 
-
-.. index:: ! ArrayList
-
 Here we declare and initialize two objects, ``students`` and ``grades``,
-which appear to be of type ``ArrayList<string>`` and
-``ArrayList<double>``, respectively. An ``ArrayList`` in C# is very
+which appear to be of type ``List<string>`` and
+``List<double>``, respectively. An ``List`` in C# is very
 similar to an Array. Like an ``Array``, we must let
-the compiler know what kind of objects our ``ArrayList`` is going to
-contain. In the case of ``students``, the ``ArrayList`` will contain
+the compiler know what kind of objects our ``List`` is going to
+contain. In the case of ``students``, the ``List`` will contain
 values of type
 ``string`` (representing the names of the students), so we use the
-``ArrayList<string>`` syntax to inform the compiler that we intend to
-fill our list with strings. Similarly, ``grades`` will hold exclusively
+``List<string>`` syntax to inform the compiler that we intend to
+fill our List with strings. Similarly, ``grades`` will hold exclusively
 values of type ``double`` and is declared to be of type
-``ArrayList<double>``.
+``List<double>``.
 
-.. admonition:: Warning
-
-   Notice that we declared ``grades`` to be of type ``ArrayList<double>``,
-   using the wrapper class ``Double`` rather than the primitive type
-   ``double``. All values stored in C# collections must be objects, so
-   we’ll have to use object types in those situations.
-
-In lines 10 and 11, we also initialize each list by creating a new, empty
-list. Note that when we call the ``ArrayList`` constructor, as in
-``new ArrayList<>()``, we don’t need to specify type (it’s implicit in the
-left-hand side of the assignment).
+In lines 10 and 11, we also initialize each List by creating a new, empty
+List.
 
 .. index:: ! generic class, generic type
 
 .. admonition:: Note
 
-   You will sometimes see the ``ArrayList`` class written as ArrayList<E>,
-   where ``E`` represents a placeholder for the type that a programmer will
-   declare a given list to hold. This is especially true in documentation.
-   You can think of ``E`` as representing an arbitrary type.
+   You will sometimes see the ``List`` class written as List<T>,
+   where ``T`` represents a placeholder for the type that a programmer will
+   declare a given List to hold. This is especially true in documentation.
+   You can think of ``T`` as representing an arbitrary type.
 
-   Classes like ArrayList<E> that take another type or class as a parameter
+   Classes like ``List<T>`` that take another type or class as a parameter
    are referred to as **generic classes** or **generic types**.
 
-``ArrayList`` Iteration
+``List`` Iteration
 -----------------------
 
 ``do-while``
@@ -110,7 +100,7 @@ in the class.
       newStudent = Console.ReadLine();
 
       if (!newStudent.equals("")) {
-         students.add(newStudent);
+         students.Add(newStudent);
       }
 
    } while(!newStudent.equals(""));
@@ -122,26 +112,26 @@ prompt the user for a name, which C# processes via ``Console.ReadLine()`` when
 the user hits the enter key. To finish entering names, the user enters a blank
 line.
 
-.. index:: ! ArrayList.Add()
+.. index:: ! List.Add()
 
 For each student that is entered (that is, each non-empty line), we add
-the new ``String`` to the end of our list with ``students.Add(newStudent)``.
-The ``.Add()`` method is provided by the ArrayList Class.
-There are lots of other ArrayList methods to get familiar with, some of which
+the new ``string`` to the end of our List with ``students.Add(newStudent)``.
+The ``.Add()`` method is provided by the ``List`` Class.
+There are lots of other List methods to get familiar with, some of which
 we will discuss in more detail below.
 
 ``foreach``
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
 Below the ``do-while`` loop are two different loops that demonstrate two ways
-you can loop through a list in C#. Here’s the first, which collects the
+you can loop through a List in C#. Here’s the first, which collects the
 numeric grade for each student:
 
 .. sourcecode:: csharp
    :lineno-start: 27
 
    // Get student grades
-   foreach (String student in students) {
+   foreach (string student in students) {
       Console.WriteLine("Grade for " + student + ": ");
       string input = Console.ReadLine();
       double grade = Double.Parse(input);
@@ -165,15 +155,15 @@ The next loop on display prints out each student’s name and grade:
    double sum = 0.0;
 
    for (int i = 0; i < students.Count; i++) {
-      Console.WriteLine(students.Get(i) + " (" + grades.Get(i) + ")");
-      sum += grades.Get(i);
+      Console.WriteLine(students[i] + " (" + grades[i] + ")");
+      sum += grades[i];
    }
 
-.. index:: ! ArrayList.size()
+.. index:: ! List.Count
 
 Here, we introduce the syntax ``students.Count`` which utilizes the ``Count``
-property of ``ArrayList``. This method returns the integer representing the
-number of items in the list. This is similar to string's ``.length()`` method.
+property of ``List``. This property holds the integer representing the
+number of items in the List. This is similar to string's ``.length()`` method.
 
 In this ``for`` loop, we use a *loop index* to define the starting point,
 ending point, and increment for iteration. It may be helpful for you to
@@ -195,32 +185,32 @@ students:
 .. sourcecode:: csharp
    :lineno-start: 43
 
-   double avg = sum / students.size();
+   double avg = sum / students.Count;
    Console.WriteLine("Average grade: " + avg);
 
-ArrayList Methods
+List Methods
 -----------------
 
-Let’s gather up a few of the ``ArrayList`` methods that we’ve encountered so
+Let’s gather up a few of the ``List`` methods that we’ve encountered so
 far, along with a few new ones. While these will be the most common methods and
 properties that you use with this class, they by no means represent a complete
-list. Refer to the `official documentation on the ArrayList
-class <https://docs.microsoft.com/en-us/dotnet/api/system.collections.arraylist?view=netframework-4.8>`__
-for such a list, and for more details.
+List. Refer to the `official documentation on the List
+class <https://docs.microsoft.com/en-us/dotnet/api/system.collections.List?view=netframework-4.8>`__
+for such a List, and for more details.
 
-To demonstrate the use of these methods, we'll create a new ``ArrayList``
+To demonstrate the use of these methods, we'll create a new ``List``
 called ``planets``.
 
 .. sourcecode:: csharp
 
-   ArrayList<string> planets = new ArrayList<>();
+   List<string> planets = new List<string>();
 
-Ok, we've got an empty ArrayList. We need to use the class's ``.Add()`` method
+Ok, we've got an empty List. We need to use the class's ``.Add()`` method
 to populate this collection with items.
 
 .. admonition:: Note
 
-   There are other means to declare and initialize an ArrayList in fewer lines.
+   There are other means to declare and initialize an List in fewer lines.
    These require knowledge of other collections types, so we'll stick with ``.Add()``
    for the time being.
 
@@ -240,39 +230,39 @@ Using ``.Add()`` to populate ``planets``:
 
 Thus, the first item in this table:
 
-.. _arraylist-methods:
+.. _list-methods:
 
-.. list-table:: ArrayList methods in C#
+.. list-table:: List methods in C#
    :header-rows: 1
 
    * - C# Syntax
      - Description
      - Example
    * - ``Add()``
-     - Adds an item to the ArrayList
+     - Adds an item to the List
      - ``planets.Add("Pluto")`` adds ``Pluto`` to ``planets``
    * - ``Count``
-     - Returns the number of items in an ArrayList, as an ``int``
+     - Returns the number of items in an List, as an ``int``
      - ``planets.Count`` returns ``9``
    * - ``Contains()``
-     - Checks to see if the ArrayList contains a given item, returning a Boolean
+     - Checks to see if the List contains a given item, returning a Boolean
      - ``planets.Contains("Earth")`` returns ``true``
    * - ``IndexOf()``
-     - Looks for an item in an ArrayList, returns the index of the first occurrence of the item if it exists, returns -1 otherwise
+     - Looks for an item in an List, returns the index of the first occurrence of the item if it exists, returns -1 otherwise
      - ``planets.IndexOf("Jupiter")`` returns ``4``
 
 Here's a couple more methods that require slightly longer descriptions:
 
-.. _arraylistsort:
+.. _listsort:
 
-.. list-table:: ArrayList.Sort()
+.. list-table:: List.Sort()
    :header-rows: 1
 
    * - C# Syntax
      - Description
      - Example
    * - ``.Sort()``
-     - Rearranges the elements of an ``ArrayList`` into ascending order.
+     - Rearranges the elements of an ``List`` into ascending order.
      - ``planets.Sort()`` produces ``["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"]``
 
 .. list-table:: ToArray()
@@ -282,7 +272,7 @@ Here's a couple more methods that require slightly longer descriptions:
      - Description
      - Example
    * - ``ToArray()``
-     - Returns an Array containing the elements of the ArrayList
+     - Returns an Array containing the elements of the List
      - ``planets.ToArray()`` returns
        ``{"Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"}``
 
@@ -303,7 +293,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   The number of entries in an ``ArrayList`` may not be modified.
+   The number of entries in an ``List`` may not be modified.
 
    #. True
    #. False
@@ -312,14 +302,14 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Create an ``ArrayList`` called ``charStars`` containing ``a``, ``b``, and ``c``.
+   Create an ``List`` called ``charStars`` containing ``a``, ``b``, and ``c``.
 
    #.
 
       .. sourcecode:: C#
          :linenos:
 
-         ArrayList<String> charStars = new ArrayList<>();
+         List<string> charStars = new List<string>();
          charStars.add('a');
          charStars.add('b');
          charStars.add('c');
@@ -328,7 +318,7 @@ Check Your Understanding
       .. sourcecode:: C#
          :linenos:
 
-         ArrayList<Char> charStars = new ArrayList<>();
+         List<char> charStars = new List<string>();
          charStars.add('a');
          charStars.add('b');
          charStars.add('c');
@@ -336,18 +326,18 @@ Check Your Understanding
    #.
       .. sourcecode:: C#
 
-         ArrayList<char> charStars = new ArrayList<char>('a', 'b', 'c');
+         List<char> charStars = new List<char>('a', 'b', 'c');
 
    #.
       .. sourcecode:: C#
          :linenos:
 
-         ArrayList<String> charStars = new ArrayList<>();
+         List<string> charStars = new List<string>();
          charStars.add("a");
          charStars.add("b");
          charStars.add("c");
 
-.. ans: ArrayList<String> charStars = new ArrayList<>();
+.. ans: List<string> charStars = new List<string>();
          charStars.add("a");
          charStars.add("b");
          charStars.add("c");

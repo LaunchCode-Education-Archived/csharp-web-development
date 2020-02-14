@@ -16,13 +16,14 @@ In C# this pattern is simply written as:
 .. sourcecode:: csharp
    :linenos:
 
-   if (condition) {
+   if (condition)
+   {
       statement1
       statement2
       ...
    }
 
-You can see that in C# the curly braces define a block.
+You can see that in C#, the curly braces define a block.
 Parentheses around the condition are required.
 
 .. index:: ! else clause
@@ -69,6 +70,11 @@ An **else if** construction in C#:
    } else {
          Console.WriteLine('A');
    }
+
+.. admonition:: Note
+
+   On line 3 in the code block above, we use ``Int32.Parse()``. ``Int32`` represents a 32-bit integer which is more than enough to cover the numbers we will be using in this course.
+   For more information on ``Int32``, check out Microsoft's `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netframework-4.8>`_.
 
 .. index:: ! switch, ! case, ! break
 

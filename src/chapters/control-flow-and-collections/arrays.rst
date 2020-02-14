@@ -69,7 +69,7 @@ using ``Arrays`` instead of ``ArrayLists``:
 Note that we have to decide up front how large our ``Arrays`` ``students``
 and ``grades`` are going to be. Thus, this program sets an arbitrary maximum amount
 of students, likely larger than any user will enter. It may seem obvious, then, 
-that ``Array`` has no equivalent :ref:`Add() method <arraylist-methods>`. The only 
+that ``Array`` has no equivalent :ref:`Add() method <list-methods>`. The only 
 way to access and alter an element in an ``Array`` is with **bracket notation**, 
 using an explicit index. For example, gradebook defines a counter variable, ``numStudents``.
 When the first student is entered by the user, the value is stored in ``newStudent``.

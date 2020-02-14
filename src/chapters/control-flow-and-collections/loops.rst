@@ -6,7 +6,7 @@ Loops
 ``for`` Loop
 -------------
 
-In C# we write a definite loop (aka a **for loop**) as:
+In C#, we write a definite loop (aka a **for loop**) as:
 
 .. sourcecode:: csharp
    :linenos:
@@ -87,13 +87,13 @@ C# also provides a syntax to iterate over any sequence or collection, such as an
       Console.WriteLine(i);
    }
 
-Here, the loop variable moves through the items in the Array of integers, ``nums[]``. The syntax
+Here, the loop variable moves through the items in the array of integers, ``nums[]``. The syntax
 here uses the word, ``in``. This type of loop is known as a **foreach loop**.
 
 .. tip::
 
    When considering this structure, it can be helpful to read the code sample above to yourself
-   as "For each integer in ``Array nums``...".
+   as "For each integer in array ``nums``...".
 
 This loop version also works with a string, where we
 can convert the string to an Array of characters:
@@ -133,7 +133,7 @@ A ``while`` loop in C#:
 
 C# adds an additional, if seldom used, variation of the ``while`` loop
 called the **do-while loop**. The ``do-while`` loop is very similar to
-``while`` except that the condition is evaluated at the end of the loop
+``while``, except that the condition is evaluated at the end of the loop
 rather than the beginning. This ensures that a loop *will be executed at
 least one time*. In some situations, the ``do-while`` loop is preferable, because it avoids an additional assignment prior to the loop.
 

@@ -32,7 +32,7 @@ to be different types for a given map.
       string input = Console.ReadLine();
       newStudent = input;
 
-      if (!newStudent.equals("")) {
+      if (!Equals(newStudent, "")) {
          Console.WriteLine("Grade: ");
          input = Console.ReadLine()
          double newGrade = Double.Parse(input);
@@ -42,7 +42,7 @@ to be different types for a given map.
          Console.ReadLine();
       }
 
-   } while(!newStudent.equals(""));
+   } while(!Equals(newStudent, ""));
 
    // Print class roster
    Console.WriteLine("\nClass roster:");

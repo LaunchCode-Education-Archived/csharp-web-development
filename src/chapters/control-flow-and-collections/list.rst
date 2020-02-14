@@ -29,11 +29,11 @@ source code.
       input = Console.ReadLine();
       newStudent = input;
 
-      if (!newStudent.equals("")) {
+      if (!Equals(newStudent, "")) {
          students.Add(newStudent);
       }
 
-   } while(!newStudent.equals(""));
+   } while(!Equals(newStudent, ""));
 
    // Get student grades
    foreach (string student in students) {

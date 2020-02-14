@@ -2,21 +2,21 @@ Array
 =====
 
 We learned about arrays in C# in :ref:`a previous lesson <array>`, 
-so let’s spend a moment comparing them to ``ArrayLists``. ``ArrayLists``  
+so let’s spend a moment comparing them to ``Lists``. ``Lists``  
 are generally easier to use than C#'s ``Array``. Let's see why this is.
 
-Why does C# have both ``Arrays`` and ``ArrayLists``? The answer is
+Why does C# have both ``Arrays`` and ``Lists``? The answer is
 historical, at least in part. C# is a C-style language, and arrays are
 the most basic data structure in C. Using an ``Array`` over an
-``ArrayList`` might be preferred in some circumstances, primarily for
-performance reasons (array operations are generally faster than ``ArrayList``
+``List`` might be preferred in some circumstances, primarily for
+performance reasons (array operations are generally faster than ``List``
 operations). Also note that *Arrays are of fixed size*. You cannot
 expand or contract an ``Array`` after it is created, so you must know
 exactly how many elements it will need to hold when you create it. This
-fact is reason enough to use ``ArrayLists`` in most scenarios.
+fact is reason enough to use ``Lists`` in most scenarios.
 
 To illustrate ``Array`` usage, here is a version of the Gradebook program
-using ``Arrays`` instead of ``ArrayLists``:
+using ``Arrays`` instead of ``Lists``:
 
 .. sourcecode:: csharp
    :linenos:
@@ -37,12 +37,12 @@ using ``Arrays`` instead of ``ArrayLists``:
       string input = Console.ReadLine();
       newStudent = input
 
-      if (!newStudent.equals("")) {
+      if (!Equals(newStudent, "")) {
          students[numStudents] = newStudent;
          numStudents++;
       }
 
-   } while(!newStudent.equals(""));
+   } while(!Equals(newStudent, ""));
 
    // Get student grades
    for (int i = 0; i < numStudents; i++) {
@@ -81,7 +81,7 @@ explicit index, our code can seem littered with ``Array``
 counter variables (like our friends ``i`` and ``j``), making it more difficult to
 read (not to mention more error-prone).
 
-Like ``ArrayLists``, however, we can loop through an ``Array`` using a ``foreach``
+Like ``Lists``, however, we can loop through an ``Array`` using a ``foreach``
 loop as long as we don’t need to use the index of the current item. If
 we only wanted to print each student’s name, and not their grade, at the
 end of our program, we could do the following:
@@ -94,7 +94,7 @@ end of our program, we could do the following:
    }
 
 We’ll use ``Arrays`` in C# from time-to-time, but for the most part you should
-rely on ``ArrayLists`` to store collections of values, or ordered data.
+rely on ``Lists`` to store collections of values, or ordered data.
 
 Check Your Understanding
 -------------------------

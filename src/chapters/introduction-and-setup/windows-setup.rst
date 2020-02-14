@@ -1,8 +1,6 @@
 Windows Users: Visual Studio Community Edition
 ==============================================
 
-TODO: Check Windows installation steps - and screenshots? do they match any of the next steps section?
-
 #. Download the Community version of Visual Studio IDE from `this page <https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2019>`__.
 
    .. admonition:: Note
@@ -31,11 +29,14 @@ TODO: Check Windows installation steps - and screenshots? do they match any of t
 
       Install packages
 
-#. When the install finishes running, select *Launch* and then close the installer window.
+#. When the install finishes running, Visual Studio will open by default.
 
-TODO: do we need this step?
+#. You can skip the Microsoft Developer sign-in/sign-up step, opting for "Not now, maybe later."
 
-#. When prompted, create a Microsoft Developer account and use it to sign in to Visual Studio.
+   .. figure:: figures/vs-windows-welcome.png
+      :alt: VS windows welcome
+
+      Visual Studio welcome window.	
 
 #. The launcher window will prompt you with some choices via a window
    similar to what you see below. Select the displayed options. (If you
@@ -47,6 +48,16 @@ TODO: do we need this step?
       :alt: Launch Options
 
       Launch Options
+
+#. Finally, you have made it to the project selection window. 
+   This will be the item you will see when you open Visual Studio. 
+   You do not need to create or open a new project just yet.
+
+   .. figure:: figures/vs-windows-installed.png
+      :scale: 40%
+      :alt: VS Windows Project Opener
+
+      VS Windows Project Opener
 
 .. admonition:: Note
 

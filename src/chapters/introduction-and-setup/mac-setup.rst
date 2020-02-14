@@ -33,7 +33,7 @@ Mac Users: Visual Studio for Mac
       Visual Studio keyboard shortcut selection.
 
 #. Finally, you have made it to the project selection window. This will be the item you will see when you open 
-   Visual Studio . You do not need to create or open a new project just yet.
+   Visual Studio. You do not need to create or open a new project just yet.
 
    .. figure:: ./figures/vsmac-project-opener.png
       :alt: Visual Studio opening project selection pane.

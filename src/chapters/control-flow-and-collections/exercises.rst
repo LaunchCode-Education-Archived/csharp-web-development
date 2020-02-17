@@ -32,7 +32,7 @@ String Practice
        
 #. Use the ``Split`` method to divide the string at
    each space and store the individual words in an array. If you need to review
-   the method syntax, look back at the :ref:`String methods <string-methods>`
+   the method syntax, look back at the :ref:`string methods <string-methods>`
    table.
 #. Print the array of words to verify that your code works. The syntax is:
 

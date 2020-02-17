@@ -1,14 +1,12 @@
 Windows Users: Visual Studio Community Edition
 ==============================================
 
-TODO: Check Windows installation steps - and screenshots? do they match any of the next steps section?
-
 #. Download the Community version of Visual Studio IDE from `this page <https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2019>`__.
 
    .. admonition:: Note
 
-      There are options for other software downloads on this page, Visual Studio Code and Visual Studio for Mac.
-      Do not select either of these.
+      Users can select from multiple options for software downloads, such as Visual Studio Code and 
+      Visual Studio for Mac, on this page. Do NOT select either of these options!
 
       Allow at least an hour for the installation process.
 
@@ -22,20 +20,24 @@ TODO: Check Windows installation steps - and screenshots? do they match any of t
    Your selections will look like these screens:
 
    .. figure:: figures/vs-packages.png
-      :alt: Install packages
+      :alt: VS install ASP.NET and web development, Azure development, and data storage and processing packages.
 
-      Install packages
+      VS install ASP.NET and web development, Azure development, and data storage and processing packages.
 
    .. figure:: figures/vs-packages-2.png
-      :alt: Install packages
+      :alt: VS install .NET core cross-platform development package.
 
-      Install packages
 
-#. When the install finishes running, select *Launch* and then close the installer window.
+      VS install .NET core cross-platform development package.
 
-TODO: do we need this step?
+#. When the install finishes running, Visual Studio will open by default.
 
-#. When prompted, create a Microsoft Developer account and use it to sign in to Visual Studio.
+#. You can skip the Microsoft Developer sign-in/sign-up step, opting for "Not now, maybe later."
+
+   .. figure:: figures/vs-windows-welcome.png
+      :alt: VS welcome modal for windows.
+
+      Visual Studio welcome window.	
 
 #. The launcher window will prompt you with some choices via a window
    similar to what you see below. Select the displayed options. (If you
@@ -44,9 +46,19 @@ TODO: do we need this step?
 
    .. figure:: figures/launch-options.png
       :scale: 40%
-      :alt: Launch Options
+      :alt: Visual Studio Launch Options, Visual C# selected
 
-      Launch Options
+      Launch Options, , Visual C# selected
+
+#. Finally, you have made it to the project selection window. 
+   This will be the item you will see when you open Visual Studio. 
+   You do not need to create or open a new project just yet.
+
+   .. figure:: figures/vs-windows-installed.png
+      :scale: 40%
+      :alt: VS Windows Project Opener
+
+      VS Windows Project Opener
 
 .. admonition:: Note
 

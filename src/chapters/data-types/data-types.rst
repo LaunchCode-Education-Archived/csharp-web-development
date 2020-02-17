@@ -6,7 +6,7 @@ Static vs. Dynamic Typing
 
 .. index:: ! dynamically typed, ! statically typed
 
-In a **dynamically typed** programming language (like C#Script or Python), a
+In a **dynamically typed** programming language (like JavaScript or Python), a
 variable or parameter can refer to a value of any data type (string, number,
 object, etc.) at any time. When the variable is used, the interpreter figures
 out what type it is and behaves accordingly.
@@ -79,7 +79,7 @@ variable or parameter BEFORE its name, as we did in the example above:
    value ``"dog"``, which is a ``string``. Thus, ``x`` has type ``string``
    and attempting to assign ``x = 42`` will still result in a build error.
 
-   We recommend avoiding use of ``var`` while you are learning C#, and even
+   We recommend avoiding use of ``var`` while you are learning C#. Even
    after you become more experienced with the language you will still only
    want to use it sparingly and in specific circumstances. Explicitly
    declaring the type of your variables makes for more readable code, in
@@ -102,15 +102,16 @@ let’s begin by exploring the most common data types in this language.
 Built-In Types
 --------------
 
-In C#, all of the basic data types are objects. Though the so-called built-in
-data types also have short names that differ from typical class name
+In C#, all of the basic data types are objects --- we'll get into this idea shortly. Though the so-called 
+built-in data types also have short names that differ from typical class name
 conventions.
 
-We provide here a list of some of the most common types, along with both
-short and class names. We’ll generally prefer to use the short names for
+We provide here a list of some of the most common types, along with the official .NET class name. 
+Recall that .NET gives us a class library with 
+object types. We’ll generally prefer to use the short names for
 each of these.
 
-.. list-table:: Built-In Types in C#
+.. list-table:: Some Built-In Types in C#
    :header-rows: 1
 
    * - Short name
@@ -134,21 +135,49 @@ each of these.
      - ‘a’, ‘!’ 
      - A single Unicode character. Must be enclosed in single quotes ``''`` to be a character; double 
        quotes ``""`` indicate a string 
-   * - ``string``
-     - ``String``
-     - “LaunchCode”, “a”
-     - A sequent of characters. Must be enclosed in double quotes ``"``; single quotes ``'`` indicate a character
    * - ``bool``
      - ``Boolean``
      - ``true``, ``false``
      - Note that booleans in C# are not capitalized as they are in Python 
+
+.. admonition:: Warning
+
+   As we will see in a later section, the ``float`` data type sacrifices some
+   accuracy for speed of calculation. Thus, evaluating 1.11111 + 3 results in an
+   answer of 4.1111097 instead of 4.11111.
+
+   Anytime you need to perform calculations with decimal values, consider using
+   the ``double`` type instead of ``float``.
 
 Not all built-in data types in C# are listed here, only the most
 commonly used types that beginners are likely to encounter. If you’re
 curious, `read more about built-in types in
 C# <https://msdn.microsoft.com/en-us/library/ya5y69ds.aspx>`__.
 
-Operators - such as ``+`` and ``*`` - are type-dependent.
+.. index:: ! primitive type
+
+Primitive Types
+^^^^^^^^^^^^^^^
+
+The types in the table above are known as **primitive types**. A primitive data type is a basic 
+building block of a programming language. Using primitive data types, we
+can build more complex data structures.
+
+Non-primitive Types
+^^^^^^^^^^^^^^^^^^^
+
+Primitive data types are *immutable* and can be combined to build larger data
+structures. One example is forming the ``string`` "LaunchCode" from multiple
+``char`` characters (``'L'``, ``'a'``, ``'u'``, etc.).
+
+``string`` is another built-in type in C# and it is also a non-primitive data type. We'll delve into 
+how strings work in C# on the next page, as well as other complex data types.
+
+
+Operations
+^^^^^^^^^^
+
+Operators, such as ``+`` and ``*``, are type-dependent.
 That is, we can only use them on allowed types, and their effects are
 different depending on which types we use them on. The ``+`` operator is
 a good example of this. We can use ``+`` to add numeric types together,
@@ -171,205 +200,97 @@ compiler error).
       double b = 3;
       Console.WriteLine((a + b).GetType());
 
-Strings and Single Characters
-------------------------------
+Reference and Value Types
+-------------------------
 
-Immutability
-^^^^^^^^^^^^^
+We can group types in C# into two categories: **value types** and
+**reference types**. Variables holding value types directly contain
+their data, and include numeric types (``int``, ``double``, etc.),
+``bool``, and a handful of others that we won’t encounter in this
+course. The primitive, built-in types we list above are all value types.
 
-Strings in C# are *immutable*, which means that the characters within a
-string cannot be changed.
+.. index:: ! class
 
-Single vs. Double Quotation Marks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Class Types
+^^^^^^^^^^^
 
-C# syntax requires double quotation marks when declaring strings.
+A **class** is a template for creating objects. In addition to the built-in 
+types provided by .NET, any class in C# defines its own type. A class is a template, 
+or blueprint, for creating objects. We’ll have much more to say about classes and objects --- this 
+is an object-oriented course, after all. For now, you need to be 
+comfortable seeing the basic syntax of class types and class creation.
 
-C# has another variable type, ``char``, which is used for a single character.
-``char`` uses single quotation marks. The single character can be a letter,
-digit, punctuation, or whitespace like tab (``'\t'``).
+If we have a class ``Cat`` with a constructor that takes no arguments, we
+declare and create a new instance of ``Cat`` using its constructor.
 
-.. sourcecode:: C#
-   :linenos:
+.. sourcecode:: c#
 
-   string staticVariable = "dog";
-   char charVariable = 'd';
+   Cat myCat = new Cat();
 
-.. _string-methods:
+#. ``Cat myCat`` declares the variable ``myCat`` and sets it to be of type
+   ``Cat``.
+#. ``= new Cat()`` initializes the variable with a new ``Cat`` object.
+#. Any arguments that are required to build the new ``Cat`` object must be
+   included within the parentheses. In this case, there are no required arguments.
 
-Manipulation
-^^^^^^^^^^^^
+This statement creates a new variable that is initialized to
+hold a new ``Cat`` object. Note that in C#, we must declare the
+variable’s type. Also note that we precede the constructor with the
+``new`` keyword. And, as we'll see with all C# statements, the 
+declaration ends with a semi-colon.
 
-The table below summarizes some of the most common string methods available in
-C#. For these examples, we use the string variable
-``string str = "Rutabaga"``.
+Variables and parameters that are of the type of a class are said to be
+of **reference type** (in contrast to **primitive type**). In plain
+English, we would say of the C# example: “``myCat`` is a reference
+variable of type ``Cat``.”
 
-.. list-table:: String methods in C#
-   :header-rows: 1
+As mentioned above, classes define reference types. A variable of a
+reference type (such as ``myCat`` above) does not actually store the
+object in question. Instead, it stores a **reference** to the object. A
+reference is literally a memory address. We visualize references as an
+arrow pointing to the object in memory.
 
-   * - C# Syntax
-     - Description
-   * - ``str.Substring(3,1)`` 
-     - Returns the character in 3rd position, (``a``).
-   * - ``str.Substring(2,3)``
-     - Return substring from 2nd to 4th, i.e. substring starting at 
-       index 2 and 3 characters long, (``tab``).
-   * - ``str.Length()``
-     - Returns the length of the string, (``9``).
-   * - ``str.IndexOf('a')``
-     - Returns the index for the first occurrence of 'a', (``3``).
-   * - ``str.Split("delimiter")``
-     - Splits the string into sections at each ``delimiter`` and stores the
-       sections as elements in an array.
-   * - ``str + str``
-     - Concatenate two strings together 
-   * - ``str.Trim()``
-     - Removes any whitespace at the beginning or end of the string.
-   * - ``str.ToUpper(), str.ToLower()``
-     - Changes all alphabetic characters in the string to UPPERCASE or
-       lowercase, respectively.
-   
+Consider this code:
 
-Primitive Types
-----------------
+.. sourcecode:: c#
 
-A primitive data type is a basic building block. Using primitive data types, we
-can build more complex data structures called *object* data types.
+   int catAge = 11;
+   Cat myCat = new Cat();
+   Cat sameCat = myCat;
 
-C# uses its own a set of primitive data types. The table below shows the most
-common types that beginners are likely to encounter. A more complete list can
-be found on the
-`Oracle website <http://docs.oracle.com/C#se/tutorial/C#/nutsandbolts/datatypes.html>`__.
+Visually, we can represent these three variables as shown here.
 
-.. list-table:: C# Primitive Data Types
-   :header-rows: 1
+.. figure:: figures/references.png
+   :alt: Reference Types
 
-   * - Data Type
-     - Examples
-     - Notes
-   * - ``int``
-     - 42
-     - Represents positive and negative whole numbers.
-   * - ``float``
-     - 3.141593 and 1234.567 and 2.0
-     - Represents positive and negative decimal numbers with up to 7 digits.
-   * - ``double``
-     - 3.14159265358979 and 10000.12345678912
-     - Represents positive and negative decimal numbers with 15-16 digits.
-   * - ``char``
-     - 'a' and '9' and '\n'
-     - A single unicode character enclosed in single quotes ``''``.
-   * - ``boolean``
-     - ``true`` and ``false``
-     - Booleans in C# are NOT capitalized.
+   Reference Types
 
-.. admonition:: Warning
+Since ``int`` is a value type, the variable ``catAge`` functions as a
+box holding the integer value 11. On the other hand, ``myCat`` is a
+reference variable, since it refers to an object of type ``Cat``. The 
+variable actually stores the memory address of the object, which we visualize 
+as an arrow from the variable box to the object. Instead of holding the actual ``Cat``
+data, ``myCat`` stores *directions* for finding the data in memory.
 
-   As we will see in a later section, the ``float`` data type sacrifices some
-   accuracy for speed of calculation. Thus, evaluating 1.11111 + 3 results in an
-   answer of 4.1111097 instead of 4.11111.
+When we assign ``myCat`` to another variable, as in ``Cat sameCat = myCat``,
+we do NOT create a second copy of the object or its data. Instead, we make a
+second *pointer* to the same memory location.
 
-   Anytime you need to perform calculations with decimal values, consider using
-   the ``double`` type instead of ``float``.
+The distinction between reference types and value types is important,
+but can be difficult to wrap your brain around at first. We will see
+that reference types are handled differently in essential and important
+ways in a lot of different situations.
 
-Non-primitive Types
---------------------
+.. index:: ! boxing, ! unboxing 
 
-Primitive data types are *immutable* and can be combined to build larger data
-structures. One example is forming the ``String`` "LaunchCode" from multiple
-``char`` characters ('L', 'a', 'u', etc.).
+Boxing
+^^^^^^
 
-``String`` is a non-primitive data type, also called an *object type*. As we
-saw in the ``String`` table above, object types have methods which we can call
-using dot notation. Primitive data types do not have methods.
+As we mention above, all types in C# are treated as objects. Even value types. This can be accomplished 
+through processes called boxing and unboxing. Converting from a value type to a reference type is called 
+**boxing**, and the reverse process (reference to value) is called **unboxing**. C# is known as a unified 
+type system because it implicitly boxes values types to be treated as objects. 
 
-.. admonition:: Note
-
-   Primitive data types in C# begin with a lower case letter, while object
-   data types in C# begin with a capital letter.
-
-Later in this chapter, we will explore the Array and Class object types.
-
-Autoboxing
------------
-
-There may be situations when we call a method that expects an object as an
-argument, but we pass it a primitive type instead (or vice versa). In these
-cases, we need to convert the primitive type to an object, or convert an object
-type into a primitive.
-
-.. index:: ! boxing, ! unboxing
-
-In older versions of C#, it was the programmer’s responsibility to convert
-back and forth between primitive types and object types whenever necessary.
-Converting from a primitive type to an object type was called **boxing**, and
-the reverse process (object to primitive) was called **unboxing**.
-
-.. admonition:: Examples
-
-   **Boxing:**
-
-   .. sourcecode:: C#
-      :linenos:
-
-      int someInteger = 5;
-      Integer someIntegerObject = Integer.valueOf(someInteger);
-      ClassName.methodName(someIntegerObject);
-
-   #. Line 1 declares and initializes the variable ``someInteger``.
-   #. Line 2 and converts the primitive ``int`` to the ``Integer`` object type.
-   #. Line 3 calls ``methodName`` and passes ``someIntegerObject`` as the
-      argument. If ``methodName`` expects an object type and we tried sending
-      an ``int`` instead, we would generate an error message.
-
-   **Unboxing:**
-
-   Let's assume that a method returns a random number of
-   ``Integer`` type, and we want to combine it with a value of ``int`` type.
-
-   .. sourcecode:: C#
-      :linenos:
-
-      int ourNumber = 5;
-      Integer randomNumber = ClassName.randomNumberGenerator();
-      int randomInt = (int) randomNumber;
-      int sum = ourNumber + randomInt;
-
-   #. Line 2 declares and initializes ``randomNumber`` as an ``Integer`` type.
-   #. Line 3 converts ``randomNumber`` to an ``int`` and stores the value in
-      the ``randomInt`` variable.
-
-.. index:: ! autoboxing
-
-Converting between data types in order to pass values between methods quickly
-became tedious and error prone. In the newer versions of C#, the compiler is
-smart enough to know when to convert back and forth, and this is called
-**autoboxing**.
-
-For us, the consequence of autoboxing is that in many situations, we can use
-primitive and object types interchangeably when calling methods or returning
-data from those methods.
-
-.. admonition:: Tip
-
-   It’s a best practice to use primitives whenever possible. The primary
-   exception to this occurs when storing values in collections, which we’ll
-   learn about in a future lesson.
-
-Each of the primitive data types has a corresponding object type:
-
-#. ``int`` ---> ``Integer``
-#. ``float`` ---> ``Float``
-#. ``double`` ---> ``Double``
-#. ``char`` ---> ``Character``
-#. ``boolean`` ---> ``Boolean``
-
-References
-----------
-
-#. `Primitive Data Types (docs.oracle.com) <http://docs.oracle.com/C#se/tutorial/C#/nutsandbolts/datatypes.html>`__
-#. `Autoboxing and Unboxing (docs.oracle.com) <http://docs.oracle.com/C#se/tutorial/C#/data/autoboxing.html>`__
-#. `Variables (docs.oracle.com) <https://docs.oracle.com/C#se/tutorial/C#/nutsandbolts/variables.html>`__
 
 Check Your Understanding
 -------------------------
@@ -383,11 +304,15 @@ Check Your Understanding
    #. ``float``
    #. ``double``
 
+.. ans: a, ``number``
+
 .. admonition:: Question
 
-   Name the C# method responsible for checking string equality:
+   Which of the following terms refers to C#'s behavior of treating all types as objects:
 
-   #. ``.isEqualTo()``
-   #. ``.sameAs()``
-   #. ``.equals()``
-   #. ``===``
+   #. static type system
+   #. dynamic type system
+   #. reference type system
+   #. unified type system
+
+.. ans: d, unified type system

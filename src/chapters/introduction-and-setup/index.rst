@@ -9,5 +9,5 @@ Introduction and Setup
    windows-setup
    mac-setup
    creating-a-csharp-project
-   csharp-web-dev-exercises
+   cloning-a-csharp-project
    naming-conventions

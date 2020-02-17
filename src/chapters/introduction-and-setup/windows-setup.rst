@@ -5,8 +5,8 @@ Windows Users: Visual Studio Community Edition
 
    .. admonition:: Note
 
-      There are options for other software downloads on this page, Visual Studio Code and Visual Studio for Mac.
-      Do not select either of these.
+      Users can select from multiple options for software downloads, such as Visual Studio Code and 
+		Visual Studio for Mac, on this page. Do NOT select either of these options!
 
       Allow at least an hour for the installation process.
 

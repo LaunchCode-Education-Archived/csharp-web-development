@@ -74,7 +74,7 @@ Following the "Hello World" trend, let's create a new Visual Studio project.
 
       WINDOWS: A new Visual Studio project.
 
-#. You are new to C# the language and we'll go over the syntax present in ``Program.cs``
+#. You are new to C# and we'll go over the syntax present in ``Program.cs``
    in time. For now, can you guess what line 9 accomplishes?
 
    .. sourcecode:: csharp

@@ -14,8 +14,8 @@ values.
 
 As with the other collection structures, in C# we must specify the types of
 the objects we’ll be storing when we declare a variable or parameter to be a
-map. This means specifying both key and value data types, which are allowed
-to be different types for a given map.
+dictionary. This means specifying both key and value data types, which are allowed
+to be different types for a given dictionary.
 
 .. sourcecode:: C#
    :linenos:
@@ -64,8 +64,8 @@ Notice how a ``Dictionary`` called ``students`` is declared on line 11:
 
    Dictionary<string, double> students = new Dictionary<string, double>();
 
-Here, ``<string, double>`` defines the data types for this map's
-``<key, value>`` pairs. Like the ``ArrayList``, when we call the ``Dictionary``
+Here, ``<string, double>`` defines the data types for this dictionary's
+``<key, value>`` pairs. Like the ``List``, when we call the ``Dictionary``
 constructor on the right side of the assignment, we don’t need to specify
 type.
 
@@ -133,12 +133,12 @@ A similar structure applies if you only need the values, using
 Dictionary Methods
 ------------------
 
-Let’s collect some ``Dictionary`` methods as we have for ``ArrayList``. As we
-said about ``ArrayLists``, this is by no means a comprehensive list. For full
+Let’s collect some ``Dictionary`` methods as we have for ``List``. As we
+said about ``Lists``, this is by no means a comprehensive list. For full
 details on all properties and methods available, see the reference section
 below for official documentation on the ``Dictionary`` class.
 
-For the purposes of this table, we'll create a map to hold our solar system's
+For the purposes of this table, we'll create a dictionary to hold our solar system's
 planets and the number of moons associated with each.
 
 .. sourcecode:: csharp
@@ -162,30 +162,30 @@ planets and the number of moons associated with each.
      - Description
      - Example
    * - ``Count``
-     - Returns the number of items in the map, as an ``int``.
+     - Returns the number of items in the dictionary, as an ``int``.
      - ``moons.Count`` returns ``8``
    * - ``Keys``
-     - Returns a collection containing all keys in the map. This collection may be used in a
-       ``foreach`` loop just as lists are, but the map *may not be modified* within such a loop.
+     - Returns a collection containing all keys in the dictionary. This collection may be used in a
+       ``foreach`` loop just as lists are, but the dictionary *may not be modified* within such a loop.
      - ``moons.Keys`` returns
        ``["Earth", "Mars", "Neptune", "Jupiter", "Saturn", "Venus", "Uranus", "Mercury"]``
    * - ``Values``
-     - Returns a collection containing all values in the map. This collection may be used in a
+     - Returns a collection containing all values in the dictionary. This collection may be used in a
        ``foreach`` loop just as lists are.
      - ``moons.Values`` returns ``[1, 2, 14, 79, 82, 0, 27, 0]``
    * - ``Add()``
-     - Add a key/value pair to a map.
+     - Add a key/value pair to a dictionary.
      - ``moons.Add("Pluto", 5)`` adds ``"Pluto": 5`` to the ``moons``
    * - ``ContainsKey()``
-     - Returns a boolean indicating whether or not the map contains a given key.
+     - Returns a boolean indicating whether or not the dictionary contains a given key.
      - ``moons.ContainsKey("Earth")`` returns ``true``
    * - ``ContainsValue()``
-     - Returns a boolean indicating whether or not the map contains a given value.
+     - Returns a boolean indicating whether or not the dictionary contains a given value.
      - ``moons.ContainsValue(79)`` returns ``true``
 
-We have only brushed the surface of how arrays, ``ArrayLists``, and dictionaries work.
+We have only brushed the surface of how arrays, ``Lists``, and dictionaries work.
 We leave it to you to refer to the official documentation linked below for more
-details. You’ll certainly be using ``ArrayLists`` and dictionaries in more ways than
+details. You’ll certainly be using ``Lists`` and dictionaries in more ways than
 those covered in this lesson, but with the knowledge you have now, you
 should be able to use C# collections and learn new uses as you go.
 

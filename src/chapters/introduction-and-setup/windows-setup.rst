@@ -5,8 +5,8 @@ Windows Users: Visual Studio Community Edition
 
    .. admonition:: Note
 
-      There are options for other software downloads on this page, Visual Studio Code and Visual Studio for Mac.
-      Do not select either of these.
+      Users can select from multiple options for software downloads, such as Visual Studio Code and 
+      Visual Studio for Mac, on this page. Do NOT select either of these options!
 
       Allow at least an hour for the installation process.
 
@@ -20,21 +20,22 @@ Windows Users: Visual Studio Community Edition
    Your selections will look like these screens:
 
    .. figure:: figures/vs-packages.png
-      :alt: Install packages
+      :alt: VS install ASP.NET and web development, Azure development, and data storage and processing packages.
 
-      Install packages
+      VS install ASP.NET and web development, Azure development, and data storage and processing packages.
 
    .. figure:: figures/vs-packages-2.png
-      :alt: Install packages
+      :alt: VS install .NET core cross-platform development package.
 
-      Install packages
+
+      VS install .NET core cross-platform development package.
 
 #. When the install finishes running, Visual Studio will open by default.
 
 #. You can skip the Microsoft Developer sign-in/sign-up step, opting for "Not now, maybe later."
 
    .. figure:: figures/vs-windows-welcome.png
-      :alt: VS windows welcome
+      :alt: VS welcome modal for windows.
 
       Visual Studio welcome window.	
 
@@ -45,9 +46,9 @@ Windows Users: Visual Studio Community Edition
 
    .. figure:: figures/launch-options.png
       :scale: 40%
-      :alt: Launch Options
+      :alt: Visual Studio Launch Options, Visual C# selected
 
-      Launch Options
+      Launch Options, , Visual C# selected
 
 #. Finally, you have made it to the project selection window. 
    This will be the item you will see when you open Visual Studio. 

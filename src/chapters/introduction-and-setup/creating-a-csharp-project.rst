@@ -60,9 +60,9 @@ Following the "Hello World" trend, let's create a new Visual Studio project.
    You'll see the project file tree on the left and a file called ``Program.cs``.
 
    .. figure:: figures/vsmac-new-project.png
-      :alt: MAC: A new Visual Studio Project.
+      :alt: MAC: A new Visual Studio Project with run button indicated.
 
-      MAC: A new Visual Studio project.
+      MAC: A new Visual Studio project with run button indicated.
 
    **Windows Users:**
 
@@ -70,11 +70,11 @@ Following the "Hello World" trend, let's create a new Visual Studio project.
    in a pane called *Solution Explorer*.
    
    .. figure:: figures/vs-windows-new-project.png
-      :alt: WINDOWS: A new Visual Studio Project.
+      :alt: WINDOWS: A new Visual Studio Project with run button indicated.
 
-      WINDOWS: A new Visual Studio project.
+      WINDOWS: A new Visual Studio project with run button indicated.
 
-#. You are new to C# the language and we'll go over the syntax present in ``Program.cs``
+#. You are new to C# and we'll go over the syntax present in ``Program.cs``
    in time. For now, can you guess what line 9 accomplishes?
 
    .. sourcecode:: csharp

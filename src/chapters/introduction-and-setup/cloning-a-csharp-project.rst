@@ -1,4 +1,4 @@
-.. _create-new-csharp-project:
+.. _clone-csharp-project:
 
 Cloning a C# Project
 ====================

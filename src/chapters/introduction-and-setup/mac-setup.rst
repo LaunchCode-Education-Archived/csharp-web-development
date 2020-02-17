@@ -10,7 +10,7 @@ Mac Users: Visual Studio for Mac
    the install with Visual Studio. Select **.NET Core** only.
 
    .. figure:: ./figures/vsmac-dotnetcore-install.png
-      :alt: Visual Studio .NET Core package.
+      :alt: Select Visual Studio .NET Core package to install.
 
       Select .NET Core package to install.
 

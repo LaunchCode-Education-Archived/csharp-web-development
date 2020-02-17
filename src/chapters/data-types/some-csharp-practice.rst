@@ -207,7 +207,7 @@ to bring back.
 
 .. index:: ! comments
 
-Best practice encourages us to add **comments** to our programs. These are
+Best practice encourages us to add **comments** to our programs. Comments are
 notes that clearly explain what the code is doing.
 
 A comment is text within a program intended only for a human reader—--it is

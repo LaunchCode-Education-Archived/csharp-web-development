@@ -6,7 +6,7 @@ Static vs. Dynamic Typing
 
 .. index:: ! dynamically typed, ! statically typed
 
-In a **dynamically typed** programming language (like C#Script or Python), a
+In a **dynamically typed** programming language (like JavaScript or Python), a
 variable or parameter can refer to a value of any data type (string, number,
 object, etc.) at any time. When the variable is used, the interpreter figures
 out what type it is and behaves accordingly.
@@ -79,7 +79,7 @@ variable or parameter BEFORE its name, as we did in the example above:
    value ``"dog"``, which is a ``string``. Thus, ``x`` has type ``string``
    and attempting to assign ``x = 42`` will still result in a build error.
 
-   We recommend avoiding use of ``var`` while you are learning C#, and even
+   We recommend avoiding use of ``var`` while you are learning C#. Even
    after you become more experienced with the language you will still only
    want to use it sparingly and in specific circumstances. Explicitly
    declaring the type of your variables makes for more readable code, in
@@ -106,8 +106,8 @@ In C#, all of the basic data types are objects --- we'll get into this idea shor
 built-in data types also have short names that differ from typical class name
 conventions.
 
-We provide here a list of some of the most common types, along with both
-short and class names. Recall that .NET gives us a class library with 
+We provide here a list of some of the most common types, along with the official .NET class name. 
+Recall that .NET gives us a class library with 
 object types. We’ll generally prefer to use the short names for
 each of these.
 
@@ -168,7 +168,7 @@ Non-primitive Types
 
 Primitive data types are *immutable* and can be combined to build larger data
 structures. One example is forming the ``string`` "LaunchCode" from multiple
-``char`` characters ('L', 'a', 'u', etc.).
+``char`` characters (``'L'``, ``'a'``, ``'u'``, etc.).
 
 ``string`` is another built-in type in C# and it is also a non-primitive data type. We'll delve into 
 how strings work in C# on the next page, as well as other complex data types.
@@ -177,7 +177,7 @@ how strings work in C# on the next page, as well as other complex data types.
 Operations
 ^^^^^^^^^^
 
-Operators - such as ``+`` and ``*`` - are type-dependent.
+Operators, such as ``+`` and ``*``, are type-dependent.
 That is, we can only use them on allowed types, and their effects are
 different depending on which types we use them on. The ``+`` operator is
 a good example of this. We can use ``+`` to add numeric types together,
@@ -272,7 +272,7 @@ variable actually stores the memory address of the object, which we visualize
 as an arrow from the variable box to the object. Instead of holding the actual ``Cat``
 data, ``myCat`` stores *directions* for finding the data in memory.
 
-When we to assign ``myCat`` to another variable, as in ``Cat sameCat = myCat``,
+When we assign ``myCat`` to another variable, as in ``Cat sameCat = myCat``,
 we do NOT create a second copy of the object or its data. Instead, we make a
 second *pointer* to the same memory location.
 

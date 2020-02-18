@@ -29,6 +29,9 @@ Assignments
    :maxdepth: 1
    :name: assignmentstoc
 
+   assignments/how-to-submit
+   assignments/tech-jobs-console
+
 Appendices
 ==========
 

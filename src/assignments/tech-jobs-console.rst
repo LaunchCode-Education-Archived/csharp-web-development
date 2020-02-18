@@ -1,7 +1,7 @@
 .. _tech-jobs-console:
 
 Assignment #1: Tech Jobs (Console Edition)
-===========================================
+==========================================
 
 Introduction
 ------------
@@ -22,9 +22,11 @@ some initial concepts and get feedback from LaunchCode staff.
 
 Your mentor on this project is Blake.
 
-.. figure:: figures/LC-mentor.png
+.. figure:: figures/LC-Blake.png
    :scale: 50%
-   :alt: LaunchCode mentor image.
+   :alt: LaunchCode mentor Blake.
+
+Your LaunchCOde mentor, Blake.
 
 Learning Objectives
 --------------------
@@ -32,9 +34,9 @@ Learning Objectives
 In this project, you will show that you can:
 
 #. Read and understand code written by others.
-#. Use core Java syntax (methods, variables, loops, conditionals).
-#. Utilize ``ArrayList`` and ``HashMap`` collection types.
-#. Work with console I/O via the ``Scanner`` class.
+#. Use core C# syntax (methods, variables, loops, conditionals).
+#. Utilize ``List`` and ``Dictionary`` collection types.
+#. Work with console I/O via the ``Console`` class.
 #. Work with data types and arrays.
 
 TechJobs (Console Edition)
@@ -66,41 +68,28 @@ or more of the :ref:`bonus missions <tech-jobs-console-bonus-missions>`.
 Getting Started
 ----------------
 
-#. Set up a local copy of the project: Visit the `repository page <https://github.com/LaunchCodeEducation/techjobs-console-java>`__
+#. Visit the `repository page <https://github.com/LaunchCodeEducation/TechJobsConsole>`__
    for this project and fork the repository to create a copy under your own
    GitHub account.
-#. Open IntelliJ. If IntelliJ is currently open, save your work, close the
-   program, and then reopen it.
-#. If the app opens up to an existing project, select *IntelliJ > Preferences >
-   Appearance & Behavior > System Settings* and uncheck *Reopen last project on
-   startup*. Close and reopen IntelliJ.
-#. From the *Welcome to IntelliJ* dialog box, select *Check out from Version
-   Control > GitHub*.
-#. Choose your fork from the repository dropdown, select the parent directory
-   where you’d like to store your project, and hit *Clone*.
-#. When asked *Would you like to create an IDEA project…* select *Yes*, and
-   then accept all of the default options presented.
-#. In the screens that follow, be sure to choose *Create Project From Existing
-   Sources* on the first pane, and select the default values of all following
-   panes.
+#. Open Visual Studio and follow the :ref:`clone-csharp-project` instructions for your operating system. 
+
 
 Before diving in and starting to code, make sure you understand what the code
 you’ve been given does. Since you’re starting with a functioning---albeit
-unfinished---program, go ahead and run it to get an idea of how it works. To do
-this, right-click on the ``main`` method in the ``TechJobs`` class and select
-*Run TechJobs.main()*.
+unfinished---program, go ahead and run it to get an idea of how it works. 
 
 .. admonition:: Warning
 
    The application will run until you force it to quit, re-prompting time
-   after time. To kill it, press the red “stop” icon in the Run pane. We’ll
-   learn precisely how the program manages to work this way below.
+   after time. To kill it, enter *ctrl+C* in the terminal or use the square 
+   *stop* icon where the triangle *run* icon had been. We’ll learn precisely 
+   how the program manages to work this way below.
 
 Let’s explore the code by starting with the source of the data our program is
 providing access to.
 
 The Data File: ``jobs_data.csv``
----------------------------------
+--------------------------------
 
 Our simple app doesn’t connect to a database. If the prototype proves
 useful and we continue development, we’ll add that functionality later.
@@ -115,8 +104,7 @@ organize data in rows and columns. The major difference is that they
 don’t have the ability to carry out calculations the way spreadsheets
 do, and you can easily open, read, and edit them in plain text editors.
 
-Open up ``jobs_data.csv``, which is in the ``resources`` folder at the
-top level of the project. You’ll see that the first line is:
+Open up ``jobs_data.csv``. You’ll see that the first line is:
 
 .. sourcecode:: bash
 
@@ -124,7 +112,7 @@ top level of the project. You’ll see that the first line is:
 
 While it isn’t required, the first line of a CSV file often represents
 the column names. We have 5 names here, which indicates that each of our
-rows in the CSV file should have 5 fields. In this file format, a “row”
+rows in the CSV file should have 5 fields. In this file format, a *row*
 corresponds to a new line. So each line below the first will constitute
 a row of data, or a record.
 
@@ -136,25 +124,25 @@ questions:
    commas are supposed to separate columns?
 #. What role do the double-quotes play?
 
-The TechJobs Class
--------------------
+The ``Program`` Class
+---------------------
 
-The ``TechJobs`` class contains the ``main`` method that will drive our
+The ``Program`` class contains the ``Main`` method that will drive our
 program’s functionality. It contains three methods:
 
-#. ``main`` - The main application runner.
-#. ``getUserSelection`` - A utility method that displays a menu of choices and
+#. ``Main`` - The main application runner.
+#. ``GetUserSelection`` - A utility method that displays a menu of choices and
    returns the user’s selection.
-#. ``printJobs`` - This is meant to print a list of jobs to the console in a
+#. ``PrintJobs`` - This is meant to print a list of jobs to the console in a
    nicely formatted manner, but hasn’t been implemented yet. This will be part
    of your job.
 
 Let’s look at each of these.
 
-The ``main`` Method
-^^^^^^^^^^^^^^^^^^^^
+The ``Main`` Method
+^^^^^^^^^^^^^^^^^^^
 
-The logic within ``main`` presents menus in turn, and based on the
+The logic within ``Main`` presents menus in turn and based on the
 user’s choice, takes appropriate action.
 
 It begins by declaring two local variables: ``columnChoices`` and
@@ -165,12 +153,16 @@ Next, we notice a ``while loop`` that starts ``while (true)``. While we usually
 want to avoid creating infinite loops, we have a good reason for doing so in
 this case! We want our application to continually run until the user decides
 they want to quit. The simplest way to do this is to loop forever. When the
-user wants to quit, they can kill our program by pressing ctrl-C (a
-widely-known command to kill a console application). As you saw above, however,
-IntelliJ’s Run pane works slightly differently and you’ll need to rely on the
-red “stop” icon to stop the program.
+user wants to quit, they can kill our program by pressing *ctrl+C* (a
+widely-known command to kill a console application). 
 
-The ``main`` method can be summarized as follows:
+.. TODO: This doesn't need to happen in VS for Mac. Check Windows for this
+
+.. As you saw above, however,
+.. IntelliJ’s Run pane works slightly differently and you’ll need to rely on the
+.. red “stop” icon to stop the program.
+
+The ``Main`` method can be summarized as follows:
 
 #. Present the user with choices on how to view data: *list* or *search*.
 #. Based on that choice, prompt them for the column to apply the choice to. In
@@ -180,39 +172,41 @@ The ``main`` method can be summarized as follows:
 #. Display the results of the request.
 #. Repeat.
 
-``main`` simulates a *query* to an external source:
+``Main`` simulates a *query* to an external data source:
 
-#. We ask the method for data that originates from a non-Java source.
+#. We ask the method for data that originates from a non-C# source.
 #. The method parses and filters that data.
 #. The method presents the data in a useful manner.
 
-The ``getUserSelection`` Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ``GetUserSelection`` Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``getUserSelection`` method takes in a String to display above the
-menu, to provide context for what they are being asked. It also takes in
-a ``HashMap`` with String keys and String values. How is this used? What
-will this ``HashMap`` contain when the method runs?
+The ``GetUserSelection`` method takes in a string to display above the
+menu, to provide context for what the user is being asked. It also takes in
+a dictionary with string keys and string values. How is this used? What
+will this dictionary contain when the method runs?
+
+.. TODO: determine if VS on windows allows for right click like this for find usages
 
 To figure this out, right-click on the method name and select *Find
-Usages*. This will open a pane and display each location in the program
-where ``getUserSelection`` is called. The first such usage is the first
+References*. This will open a pane and display each location in the program
+where ``GetUserSelection`` is invoked. The first such usage is the first
 line of the main ``while loop``:
 
-.. sourcecode:: java
+.. sourcecode:: c#
 
-   String actionChoice = getUserSelection("View jobs by:", actionChoices);
+   string actionChoice = GetUserSelection("View jobs by:", actionChoices);
 
-What is this ``HashMap`` named ``actionChoices``? If we look a few lines
+What is this dictionary named ``actionChoices``? If we look a few lines
 above, we see:
 
-.. sourcecode:: java
-   :lineno-start: 24
+.. sourcecode:: csharp
+   :lineno-start: 13
 
    // Top-level menu options
-   HashMap<String, String> actionChoices = new HashMap<>();
-   actionChoices.put("search", "Search");
-   actionChoices.put("list", "List");
+   Dictionary<string, string> actionChoices = new Dictionary<string, string>();
+   actionChoices.Add("search", "Search");
+   actionChoices.Add("list", "List");
 
 If you recall how the program worked when you ran it, the first menu
 that you chose had two options, *Search* and *List*, which seem to
@@ -220,15 +214,15 @@ correspond to the entries in ``actionChoices``. This is, in fact, the
 case. This is the data that is used to generate the first menu we see
 when running the program.
 
-The second usage of ``getUserSelection`` is a few lines below:
+The second usage of ``GetUserSelection`` is a few lines below:
 
-.. sourcecode:: java
-   :lineno-start: 38
+.. sourcecode:: c#
+   :lineno-start: 35
 
-   String columnChoice = getUserSelection("List", columnChoices);
+   string columnChoice = GetUserSelection("List", columnChoices);
 
 This references ``columnChoices``, which is declared at the top of
-``main`` and has a similar structure to ``actionChoices`` (they’re the
+``Main`` and has a similar structure to ``actionChoices`` (they’re the
 same data type and are used in calls to the same method, so this
 shouldn’t be surprising). Most of the entries in ``columnChoices``
 correspond to columns in the jobs data set, but there’s one additional
@@ -238,13 +232,15 @@ correspond to searching within a given column, or searching all columns
 at once.
 
 The keys in ``actionChoices`` and ``columnChoices`` represent the
-“internal” String we’ll use to refer to these options (e.g. when representing
-the user’s menu choice, or querying data). The values in the map represent the
-“external” way that these are represented to the user.
+*internal* strings we’ll use to refer to these options (e.g. when representing
+the user’s menu choice, or querying data). The values in the dictionary represent the
+*external* way that these are represented to the user.
 
-Within ``getUserSelection`` itself, most of the code is within a
-``do-while loop``. A `do-while
-loop <https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html>`__
+.. TODO: replace this microsoft link with an internal ref to the dowhile section
+
+Within ``GetUserSelection`` itself, most of the code is within a
+``do-while loop``. Recall that a `do-while
+loop <https://msdn.microsoft.com/en-us/library/370s1zax.aspx>`__
 is similar to a ``while`` loop, but the conditional check is at the
 *end* of the loop’s code block. This has the net consequence that the
 loop’s code block *always runs at least once*. At the end of the block’s
@@ -253,19 +249,19 @@ again. This nicely mimics the behavior of simple menu-driven
 applications.
 
 Within this loop, menu options are printed to the screen, and user input
-is collected. If the input is valid, it returns the choice as a ``String``
-to the caller. This ``String`` corresponds to the chosen key (from
+is collected. If the input is valid, it returns the choice as a string
+to the caller. This string corresponds to the chosen key (from
 ``choices``, which will be either ``actionChoices`` or
 ``columnChoices``) of the item the user selected. If invalid, it
 re-prompts the user.
 
 The local variable ``choiceKeys`` is used to easily enumerate the
-``choices`` ``HashMap``. In other words, it gives us a simple way to
+``choices`` dictionary. In other words, it gives us a simple way to
 provide an ordering to ``choices``, which doesn’t have an ordering of
 its own.
 
-The JobData Class
-------------------
+The ``JobData`` Class
+---------------------
 
 The ``JobData`` class is responsible for importing the data from the CSV
 file and parsing it into a Java-friendly format, that is, into

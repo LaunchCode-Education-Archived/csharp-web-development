@@ -15,8 +15,7 @@ The process for submitting your work is always the same:
 TechJobs (Console Edition)
 --------------------------
 
-Graded assignment #1:
-:ref:`Work on TechJobs (Console Edition) <tech-jobs-console>`.
+:ref:`tech-jobs-console`
 
 TechJobs (Object-Oriented Edition)
 ----------------------------------

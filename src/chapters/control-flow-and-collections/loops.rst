@@ -96,7 +96,7 @@ here uses the word, ``in``. This type of loop is known as a **foreach loop**.
    as "For each integer in array ``nums``...".
 
 This loop version also works with a string, where we
-can convert the string to an Array of characters:
+can convert the string to an array of characters:
 
 .. sourcecode:: csharp
    :linenos:
@@ -108,7 +108,7 @@ can convert the string to an Array of characters:
    }
 
 As you see, to iterate through a string in this way, C# requires an extra string method,
-``.ToCharArray()``, to convert the string to an Array of characters.
+``.ToCharArray()``, to convert the string to an array of characters.
 
 .. index:: ! while loop
 
@@ -159,7 +159,7 @@ Break Statements in Loops
 
 There are instances where you may want to terminate a loop if a given
 condition is met. In these instances, the ``break`` statement comes in
-handy. For example, say you want to loop through an Array of integers
+handy. For example, say you want to loop through an array of integers
 to search for a given value. Once that number is found, you want to quit
 the loop. You can do the following:
 
@@ -246,8 +246,41 @@ printouts):
    Found it!
    Not here
 
+Concatenating Strings in Loops
+------------------------------
+
+A use case of loops may be to concatenate strings.
+For example, if we have a list of strings containing each word in a sentence, we may want to concatenate each value in the list to reform our sentence.
+
+.. sourcecode:: csharp
+   :linenos:
+
+   string finalSentence = "";
+
+   foreach (string i in listOfWords) {
+      finalSentence += i;
+   }
+
+This code would work well for this situation.
+However, the more strings we want to add to ``finalSentence`` or if we do not even know how many strings we want to add to ``finalSentence``, we can use the ``StringBuilder`` class.
+The longer ``listOfWords`` is, the slower our program will get. While at this level, we may not be too concerned with a program's performance, in enterprise applications, performance can be everything.
+``StringBuilder`` objects are *mutable* strings of characters and the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=netframework-4.8>`_ contains a full list of important properties and methods.
+
+If we wanted to use a ``StringBuilder`` object instead of a simple string in the above code, we would modify it like so:
+
+.. sourcecode:: csharp
+   :linenos:
+
+   StringBuilder finalSentence = new StringBuilder();
+
+   foreach (string i in listOfWords) {
+      finalSentence.Append(i);
+   }
+
+The ``Append()`` method in the ``StringBuilder`` class adds the value of ``i`` to the end of the ``finalSentence`` object.
+
 Check Your Understanding
--------------------------
+------------------------
 
 .. admonition:: Question
 
@@ -267,7 +300,7 @@ Check Your Understanding
    #. ``char i in chars``
    #. ``char i in chars[]``
 
-.. ans: ``char i : chars``
+.. ans: ``char i in chars``
 
 .. admonition:: Question
 

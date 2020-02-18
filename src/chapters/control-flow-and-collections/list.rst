@@ -2,8 +2,8 @@
 
 .. index:: ! List
 
-Lists
-=====
+List
+====
 
 To write a **List** version of the program, we will have to introduce
 several new C# concepts, including the class ``List``. We will also
@@ -11,60 +11,73 @@ review different kinds of ``for`` loops used in C#.
 
 Before going any further, we suggest you run the ``ListGradebook``
 program in Visual Studio Code. You can view this program in `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_.
-Once you’ve done that, let’s look at what is happening in the C#
+Once you’ve forked and cloned the repository, let’s look at what is happening in the C#
 source code.
 
 .. sourcecode:: csharp
    :linenos:
 
-   List<string> students = new List<string>();
-   List<double> grades = new List<double>();
-   string newStudent;
-   string input;
+   using System;
+   using System.Collections.Generic;
 
-   Console.WriteLine("Enter your students (or ENTER to finish):");
+   namespace ListGradebook
+   {
+      class Program
+      {
+         static void Main(string[] args)
+         {
+            List<string> students = new List<string>();
+            List<double> grades = new List<double>();
+            string newStudent;
+            string input;
 
-   // Get student names
-   do {
-      input = Console.ReadLine();
-      newStudent = input;
+            Console.WriteLine("Enter your students (or ENTER to finish):");
 
-      if (!Equals(newStudent, "")) {
-         students.Add(newStudent);
+            // Get student names
+            do
+            {
+               input = Console.ReadLine();
+               newStudent = input;
+
+               if (!Equals(newStudent, "")) {
+                  students.Add(newStudent);
+               }
+
+            } while(!Equals(newStudent, ""));
+
+            // Get student grades
+            foreach (string student in students) {
+               Console.WriteLine("Grade for " + student + ": ");
+               input = Console.ReadLine();
+               double grade = double.Parse(input);
+               grades.Add(grade);
+            }
+
+            // Print class roster
+            Console.WriteLine("\nClass roster:");
+            double sum = 0.0;
+
+            for (int i = 0; i < students.Count; i++) {
+               Console.WriteLine(students[i] + " (" + grades[i] + ")");
+               sum += grades[i];
+            }
+
+            double avg = sum / students.Count;
+            Console.WriteLine("Average grade: " + avg);
+         }
       }
-
-   } while(!Equals(newStudent, ""));
-
-   // Get student grades
-   foreach (string student in students) {
-      Console.WriteLine("Grade for " + student + ": ");
-      input = Console.ReadLine();
-      double grade = Double.Parse(input);
-      grades.Add(grade);
    }
-
-   // Print class roster
-   Console.WriteLine("\nClass roster:");
-   double sum = 0.0;
-
-   for (int i = 0; i < students.Count; i++) {
-      Console.WriteLine(students[i] + " (" + grades[i] + ")");
-      sum += grades[i];
-   }
-
-   double avg = sum / students.Count;
-   Console.WriteLine("Average grade: " + avg);
 
 Here we declare and initialize two objects, ``students`` and ``grades``,
 which appear to be of type ``List<string>`` and
-``List<double>``, respectively. An ``List`` in C# is very
-similar to an Array. Like an ``Array``, we must let
-the compiler know what kind of objects our ``List`` is going to
-contain. In the case of ``students``, the ``List`` will contain
+``List<double>``, respectively. A list in C# is very
+similar to an array. Like an ``Array``, we must let
+the compiler know what kind of objects our list is going to
+contain. In the case of ``students``, the list will contain
 values of type
 ``string`` (representing the names of the students), so we use the
 ``List<string>`` syntax to inform the compiler that we intend to
-fill our List with strings. Similarly, ``grades`` will hold exclusively
+fill our list with strings. Similarly, ``grades`` will hold exclusively
 values of type ``double`` and is declared to be of type
 ``List<double>``.
 
@@ -96,14 +109,15 @@ in the class.
    :lineno-start: 18
 
    // Get student names
-   do {
+   do
+   {
       newStudent = Console.ReadLine();
 
-      if (!newStudent.equals("")) {
+      if (!Equals(newStudent, "")) {
          students.Add(newStudent);
       }
 
-   } while(!newStudent.equals(""));
+   } while(!Equals(newStudent, ""));
 
 Recall that a ``do-while`` loop is very similar to a ``while`` loop, but the
 execution condition is checked at the end of the loop block. This has the net
@@ -115,7 +129,7 @@ line.
 .. index:: ! List.Add()
 
 For each student that is entered (that is, each non-empty line), we add
-the new ``string`` to the end of our List with ``students.Add(newStudent)``.
+the new string to the end of our List with ``students.Add(newStudent)``.
 The ``.Add()`` method is provided by the ``List`` Class.
 There are lots of other List methods to get familiar with, some of which
 we will discuss in more detail below.
@@ -134,7 +148,7 @@ numeric grade for each student:
    foreach (string student in students) {
       Console.WriteLine("Grade for " + student + ": ");
       string input = Console.ReadLine();
-      double grade = Double.Parse(input);
+      double grade = double.Parse(input);
       grades.add(grade);
    }
 
@@ -170,7 +184,7 @@ ending point, and increment for iteration. It may be helpful for you to
 consider this kind of construction as something like,  ``for integer i in the
 range of the number of items in students...``. The first statement inside the
 parenthesis declares and initializes a loop index variable ``i``. The second
-statement is a Boolean expression that is our exit condition. In other words,
+statement is a boolean expression that is our exit condition. In other words,
 we will keep looping as long as this expression evaluates to ``true``. The
 third statement is used to increment the value of the loop index variable at
 the end of iteration through the loop.
@@ -194,9 +208,9 @@ List Methods
 Let’s gather up a few of the ``List`` methods that we’ve encountered so
 far, along with a few new ones. While these will be the most common methods and
 properties that you use with this class, they by no means represent a complete
-List. Refer to the `official documentation on the List
-class <https://docs.microsoft.com/en-us/dotnet/api/system.collections.List?view=netframework-4.8>`__
-for such a List, and for more details.
+list. Refer to the `official documentation on the List
+class <https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netframework-4.8>`__
+for such a list, and for more details.
 
 To demonstrate the use of these methods, we'll create a new ``List``
 called ``planets``.
@@ -207,12 +221,6 @@ called ``planets``.
 
 Ok, we've got an empty List. We need to use the class's ``.Add()`` method
 to populate this collection with items.
-
-.. admonition:: Note
-
-   There are other means to declare and initialize an List in fewer lines.
-   These require knowledge of other collections types, so we'll stick with ``.Add()``
-   for the time being.
 
 Using ``.Add()`` to populate ``planets``:
 
@@ -232,7 +240,7 @@ Thus, the first item in this table:
 
 .. _list-methods:
 
-.. list-table:: List methods in C#
+.. list-table:: List Methods in C#
    :header-rows: 1
 
    * - C# Syntax
@@ -241,14 +249,11 @@ Thus, the first item in this table:
    * - ``Add()``
      - Adds an item to the List
      - ``planets.Add("Pluto")`` adds ``Pluto`` to ``planets``
-   * - ``Count``
-     - Returns the number of items in an List, as an ``int``
-     - ``planets.Count`` returns ``9``
    * - ``Contains()``
      - Checks to see if the List contains a given item, returning a Boolean
      - ``planets.Contains("Earth")`` returns ``true``
    * - ``IndexOf()``
-     - Looks for an item in an List, returns the index of the first occurrence of the item if it exists, returns -1 otherwise
+     - Looks for an item in a List, returns the index of the first occurrence of the item if it exists, returns -1 otherwise
      - ``planets.IndexOf("Jupiter")`` returns ``4``
 
 Here's a couple more methods that require slightly longer descriptions:
@@ -286,7 +291,11 @@ create it. So we'll need to first define the new Array before we can use
    string[] planetsArray = new string[planets.Count];
    planetsArray = planets.ToArray();
 
-Speaking of Arrays, let's see the Array version of Gradebook next.
+In addition to these different methods we can use, the ``List`` class has a number of properties that are very helpful.
+You may find yourself using the ``Count`` property quite a bit. This property holds the number of values in the list.
+In our example, after we add all of the planets in the solar system, ``planets.Count`` has a value of 9.
+
+Speaking of arrays, let's see the array version of Gradebook next.
 
 Check Your Understanding
 -------------------------
@@ -302,7 +311,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Create an ``List`` called ``charStars`` containing ``a``, ``b``, and ``c``.
+   Create a ``List`` called ``charStars`` containing ``a``, ``b``, and ``c``.
 
    #.
 

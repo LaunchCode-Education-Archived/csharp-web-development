@@ -56,5 +56,5 @@ A test run of the program might yield the following:
 
    Average grade: 3.5
 
-We’ll look at the gradebook using an ``List`` first. 
+We’ll look at the gradebook using a ``List`` first. 
 

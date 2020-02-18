@@ -65,9 +65,7 @@ Notice how a ``Dictionary`` called ``students`` is declared on line 11:
    Dictionary<string, double> students = new Dictionary<string, double>();
 
 Here, ``<string, double>`` defines the data types for this dictionary's
-``<key, value>`` pairs. Like the ``List``, when we call the ``Dictionary``
-constructor on the right side of the assignment, we don’t need to specify
-type.
+``<key, value>`` pairs.
 
 We can add a new item with a ``.Add()`` method, specifying both key and
 value:
@@ -104,6 +102,8 @@ Let’s look at the ``foreach`` loop from this example:
       sum += student.Value;
    }
 
+.. index:: ! KeyValuePair<T,T>
+
 The iterator variable, ``student``, is of type
 ``KeyValuePair<string, double>``. The class ``KeyValuePair`` is specifically
 constructed to be used in this fashion, to represent key/value pairs
@@ -111,7 +111,7 @@ within dictionaries. Each ``KeyValuePair`` object has a ``Key`` property and a
 ``Value`` property.
 
 If you only need to access the key of each item, you can
-construct a simpler loop:
+construct a simpler loop and use the ``Keys`` property of the ``Dictionary`` class:
 
 .. sourcecode:: csharp
    :linenos:
@@ -134,9 +134,8 @@ Dictionary Methods
 ------------------
 
 Let’s collect some ``Dictionary`` methods as we have for ``List``. As we
-said about ``Lists``, this is by no means a comprehensive list. For full
-details on all properties and methods available, see the reference section
-below for official documentation on the ``Dictionary`` class.
+said about ``Lists``, this is by no means a comprehensive catalog. For full
+details on all properties and methods available, see the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=netframework-4.8>`_ on the ``Dictionary`` class.
 
 For the purposes of this table, we'll create a dictionary to hold our solar system's
 planets and the number of moons associated with each.
@@ -155,7 +154,7 @@ planets and the number of moons associated with each.
    moons.Add("Neptune", 14);
 
 
-.. list-table::
+.. list-table:: Dictionary Methods and Properties
    :header-rows: 1
 
    * - C# Syntax

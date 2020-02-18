@@ -11,7 +11,7 @@ straightforward.
 
 Let’s consider an **if statement** with no ``else`` clause.
 
-In C# this pattern is simply written as:
+In C#, this pattern is simply written as:
 
 .. sourcecode:: csharp
    :linenos:
@@ -187,8 +187,9 @@ Fallthrough
 Many C-based languages utilize switch statements.
 However, not all languages share the same behavior when it comes to **fallthrough**.
 Fallthrough is what happens when a ``break`` statement is omitted and is described in detail in this article on `switch statements <https://en.wikipedia.org/wiki/Switch_statement#Fallthrough>`_.
-In C#, when we omit a ``break`` statement, the program jumps to the next case and executes that particular block of code.
-Because of this behavior, we only would want to omit a ``break`` statement, if the behavior we want matches for two cases.
+In C#, you will experience a runtime error if any cases do not contain the necessary break statement.
+Unless, however, that case is left entirely blank.
+If the behavior we want matches for two cases, then we can take advantage of this fallthrough action.
 
 .. admonition:: Example
 

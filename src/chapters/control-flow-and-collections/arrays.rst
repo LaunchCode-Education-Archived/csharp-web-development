@@ -7,7 +7,7 @@ are generally easier to use than C#'s ``Array``. Let's see why this is.
 
 Why does C# have both ``Arrays`` and ``Lists``? The answer is
 historical, at least in part. C# is a C-style language, and arrays are
-the most basic data structure in C. Using an ``Array`` over an
+the most basic data structure in C. Using an ``Array`` over a
 ``List`` might be preferred in some circumstances, primarily for
 performance reasons (array operations are generally faster than ``List``
 operations). Also note that *Arrays are of fixed size*. You cannot
@@ -66,8 +66,8 @@ using ``Arrays`` instead of ``Lists``:
 
 .. index:: ! bracket notation
 
-Note that we have to decide up front how large our ``Arrays`` ``students``
-and ``grades`` are going to be. Thus, this program sets an arbitrary maximum amount
+Note that we have to decide up front how large our arrays, ``students``
+and ``grades``, are going to be. Thus, this program sets an arbitrary maximum amount
 of students, likely larger than any user will enter. It may seem obvious, then, 
 that ``Array`` has no equivalent :ref:`Add() method <list-methods>`. The only 
 way to access and alter an element in an ``Array`` is with **bracket notation**, 
@@ -116,9 +116,9 @@ Check Your Understanding
 
       int[] randomNumbers = new int[5];
 
-   #. ``randomNumbers.add(3);``
+   #. ``randomNumbers.Add(3);``
    
-   #. ``randomNumbers.add("one");``
+   #. ``randomNumbers.Add("one");``
 
    #. ``randomNumbers[0] = "three";``
 

@@ -264,30 +264,30 @@ The ``JobData`` Class
 ---------------------
 
 The ``JobData`` class is responsible for importing the data from the CSV
-file and parsing it into a Java-friendly format, that is, into
-``HashMap`` and ``ArrayList`` form. Look toward the bottom of the class
-and you will see a method named ``loadData``, which does just what it
+file and parsing it into a C#-friendly format; that is, into
+``Dictionary`` and ``List`` form. Look toward the bottom of the class
+and you will see a method named ``LoadData``, which does just what it
 advertises. After parsing the file data, it stores the data in the
-private property ``allJobs`` which is of type
-``ArrayList<HashMap<String, String>>``.
+private property ``AllJobs`` which is of type
+``List<Dictionary<string, string>>``.
 
 .. admonition:: Note
 
    We haven’t covered static properties and methods in-depth yet. For this
    assignment, know simply that they allow us to use properties and methods
    of a class without creating an object from that class. For example, we
-   can call ``JobData.findAll()`` from the ``TechJob`` class.
+   can call ``JobData.FindAll()`` from the ``Program`` class.
 
    If you want to create a new method in ``JobData``, or add a property, be
    sure to declare it as ``static``.
 
-Let’s look more closely at the data type of ``allJobs``. It purports to
-be an ``ArrayList`` that stores ``HashMap`` objects which have
-``String`` keys and ``String`` values. If we were to represent some of
-this data visually, using ``[]`` for an ``ArrayList`` and ``{}`` with
-key/value pairs, it would look like this:
+Let’s look more closely at the data type of ``AllJobs``. It purports to
+be a ``List`` that stores ``Dictionary`` objects which have
+``string`` keys and ``string`` values. If we were to represent some of
+this data visually, using ``[]`` for a ``List`` and ``{}`` for a collection of
+key/value pairs (i.e., a dictionary), it would look like this:
 
-.. sourcecode:: java
+.. sourcecode:: bash
    :linenos:
 
    [
@@ -308,46 +308,54 @@ key/value pairs, it would look like this:
        ...
    ]
 
-If you look at the ``loadData`` method you’ll see a lot of unfamiliar code.
+If you look at the ``LoadData`` method you’ll see a lot of unfamiliar code.
 Blake wrote this essential piece of code for you, and while you won’t have to
 modify it, it will be useful to have an idea of how it works. Read
 through the code until you feel like you can describe its functionality
 at a basic level.
 
-.. index:: overloading
+.. index:: ! overloading
 
 There are three more methods in ``JobData``, each of which is public
-(and ``static``, per our earlier note): ``findAll()``,
-``findAll(String)``, and ``findByColumnAndValue(String, String)``. Note
-that there are two methods named ``findAll``, but this is allowed in
-Java via a feature called **overloading**. Overloading happens when
+(and ``static``, per our earlier note): 
+
+- ``FindAll()``,
+- ``FindAll(string)``, 
+- ``FindByColumnAndValue(string, string)`` 
+
+Note that there are two methods named ``FindAll``, but this is allowed in
+C# via a feature called **overloading**. Overloading happens when
 multiple methods have the same name, but they each have different input
-parameters (also called argument lists). Read more about
-`overloading <http://beginnersbook.com/2013/05/method-overloading/>`__.
+parameters. Read more about overloading
+`here <https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/member-overloading>`__.
+
+.. admonition:: Note
+
+   We'll dive deeper into overloading when we discuss classes in C#.
 
 Here are some questions to ask yourself while reading this code:
 
-#. What is the data type of a “job” record?
-#. Why does ``findAll(String)`` return something of type ``ArrayList<String>``
-   while ``findByColumnAndValue(String, String)`` and ``findAll()`` return
-   something of type ``ArrayList<HashMap<String, String>>``?
-#. Why is ``loadData()`` called at the top of each of these four methods? Does
+#. What is the data type of a *job*?
+#. Why does ``FindAll(string)`` return something of type ``List<string>``
+   while ``FindByColumnAndValue(string, string)`` and ``FindAll()`` return
+   something of type ``List<Dictionary<string, string>>``?
+#. Why is ``LoadData()`` called at the top of each of these four methods? Does
    this mean that we load the data from the CSV file each time one of them
    is called?
 
 Your Tasks
------------
+----------
 
 Here are the tasks for you to carry out for your first apprenticeship
 assignment.
 
-Implement ``printJobs``
-^^^^^^^^^^^^^^^^^^^^^^^^
+Implement ``PrintJobs``
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When trying out the program, and later when reading the code, you
-hopefully noticed that there’s some work to do in the ``printJobs``
+hopefully noticed that there’s some work to do in the ``PrintJobs``
 method. As it stands, it currently just prints a message:
-``"printJobs is not implemented yet"``.
+``"PrintJobs is not implemented yet"``.
 
 Complete this method. It should print out something like this:
 
@@ -365,30 +373,26 @@ If there are no results, it should print an appropriate message.
 
 .. admonition:: Tip
 
-   To do this, you’ll need to iterate over an ``ArrayList`` of jobs. Each
-   job is itself a ``HashMap``. While you can get each of the items out of
-   the ``HashMap`` using the known keys (``employer``, ``location``, etc.),
-   think instead about creating a nested loop to loop over each
-   ``HashMap``. If a new field is added to the job records, this approach
-   will print out the new field without any updates to ``printJobs``.
+   To do this, you’ll need to iterate over a ``List`` of jobs. Each
+   job is itself a ``Dictionary``. While you can get each of the items out of
+   the dictionary using the known keys (``employer``, ``location``, etc.),
+   think instead about creating a nested loop to iterate over each
+   dictionary key. If a new field is added to the job records, this approach
+   will print out the new field without any updates to ``PrintJobs``.
 
 Test this method before moving on to your next step:
 
-#. Save your changes.
-#. Select *Run* from the Run menu and choose to run the ``TechJobs`` class (or
-   if you have recently run it, just select the green arrow in the top right
-   corner of the screen).
-#. Select “1” to list the jobs, and then “0” to list them all.
+#. Run your program with your changes. Select “1” to list the jobs, and then “0” to list them all.
 #. Make sure the printout matches the styling above.
-#. Test that it prints a descriptive message if no jobs are found by selecting
-   “0” to search and then “3” to search for a location. Then enter a location
+#. To test what happens if no jobs are found, select
+   “0” to search and then “3” to search for a location. Then, enter a location
    that is not in the data (e.g. “Cancun”). Your message should be displayed.
 
-Create Method ``findByValue``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create Method ``FindByValue``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At this stage, the application will allow users to search a *given
-column* of the data for a given String. Your next task is to enable a
+column* of the data for a given string. Your next task is to enable a
 search that looks for the search term in *all* of the columns.
 
 In the ``JobData`` class, create a new (``public static``) method that

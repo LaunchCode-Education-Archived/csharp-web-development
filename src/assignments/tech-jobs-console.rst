@@ -156,12 +156,6 @@ they want to quit. The simplest way to do this is to loop forever. When the
 user wants to quit, they can kill our program by pressing *ctrl+C* (a
 widely-known command to kill a console application). 
 
-.. TODO: This doesn't need to happen in VS for Mac. Check Windows for this
-
-.. As you saw above, however,
-.. IntelliJ’s Run pane works slightly differently and you’ll need to rely on the
-.. red “stop” icon to stop the program.
-
 The ``Main`` method can be summarized as follows:
 
 #. Present the user with choices on how to view data: *list* or *search*.
@@ -186,9 +180,7 @@ menu, to provide context for what the user is being asked. It also takes in
 a dictionary with string keys and string values. How is this used? What
 will this dictionary contain when the method runs?
 
-.. TODO: determine if VS on windows allows for right click like this for find usages
-
-To figure this out, right-click on the method name and select *Find
+To figure this out, right-click on the method name and select *Find (All)
 References*. This will open a pane and display each location in the program
 where ``GetUserSelection`` is invoked. The first such usage is the first
 line of the main ``while loop``:

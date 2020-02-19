@@ -50,12 +50,14 @@ Windows Users: Visual Studio Community Edition
 
       Launch Options, , Visual C# selected
 
+.. _vs-windows-project-opener:
+
 #. Finally, you have made it to the project selection window. 
    This will be the item you will see when you open Visual Studio. 
    You do not need to create or open a new project just yet.
 
    .. figure:: figures/vs-windows-installed.png
-      :scale: 40%
+      :scale: 70%
       :alt: VS Windows Project Opener
 
       VS Windows Project Opener

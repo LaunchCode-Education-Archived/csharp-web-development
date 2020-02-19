@@ -464,15 +464,13 @@ Before submitting, make sure that your application:
 #. Allows the user to search for a string across all columns.
 #. Returns case-insensitive results.
 
-TODO: watch this video
-
 Solution Demo
 -------------
 
 Watch a demo of a working solution.
 
 .. youtube::
-   :video_id: Ai9ceGDWkac
+   :video_id: mKXOXVeeqOg
 
 How to Submit
 -------------

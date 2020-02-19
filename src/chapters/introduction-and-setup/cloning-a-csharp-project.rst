@@ -24,6 +24,13 @@ Windows Users
 
       Visual Studio Team Explorer Connect to GitHub
 
+   .. admonition:: Tip
+
+      If you are currently viewing the 
+      :ref:`project opener pane <vs-windows-project-opener>`, you can
+      open the editor to access the Team Explorer tab by choosing 
+      "Continue without code ->".
+
    
 
 #. Once connected, select *Clone* from the GitHub section of the *Team Explorer* and select

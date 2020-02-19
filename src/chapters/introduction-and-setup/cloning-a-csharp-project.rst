@@ -31,8 +31,6 @@ Windows Users
       open the editor to access the Team Explorer tab by choosing 
       "Continue without code ->".
 
-   
-
 #. Once connected, select *Clone* from the GitHub section of the *Team Explorer* and select
    your ``csharp-web-dev-lsn1datatypes`` copy from the modal window. **Be sure to
    change the Path field** to the location you would like the project to

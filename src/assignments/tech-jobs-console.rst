@@ -82,7 +82,7 @@ unfinished---program, go ahead and run it to get an idea of how it works.
 
    The application will run until you force it to quit, re-prompting time
    after time. To kill it, enter *ctrl+C* in the terminal or use the square 
-   *stop* icon where the triangle *run* icon had been. We’ll learn precisely 
+   *stop* icon in the vicinity of the triangle *run* icon. We’ll learn precisely 
    how the program manages to work this way below.
 
 Let’s explore the code by starting with the source of the data our program is

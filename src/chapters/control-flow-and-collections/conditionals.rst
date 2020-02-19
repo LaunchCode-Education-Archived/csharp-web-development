@@ -1,7 +1,7 @@
 Conditionals
 ============
 
-Control flow statements in C# --- conditionals and loops --- are very
+Control flow statements in C#, conditionals and loops, are very
 straightforward.
 
 .. index:: ! if statement
@@ -16,8 +16,7 @@ In C#, this pattern is simply written as:
 .. sourcecode:: csharp
    :linenos:
 
-   if (condition)
-   {
+   if (condition) {
       statement1
       statement2
       ...
@@ -58,7 +57,7 @@ An **else if** construction in C#:
 
    Console.WriteLine("Enter a grade: ");
    string gradeString = Console.ReadLine();
-   int grade = Int32.Parse(gradeString);
+   int grade = int.Parse(gradeString);
    if (grade < 60) {
          Console.WriteLine('F');
    } else if (grade < 70) {
@@ -70,11 +69,6 @@ An **else if** construction in C#:
    } else {
          Console.WriteLine('A');
    }
-
-.. admonition:: Note
-
-   On line 3 in the code block above, we use ``Int32.Parse()``. ``Int32`` represents a 32-bit integer which is more than enough to cover the numbers we will be using in this course.
-   For more information on ``Int32``, check out Microsoft's `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netframework-4.8>`_.
 
 .. index:: ! switch, ! case, ! break
 
@@ -97,7 +91,7 @@ Here is a quick example of a ``switch`` statement:
 
    Console.WriteLine("Enter an integer: ");
    string dayString = Console.ReadLine();
-   int dayNum = Int32.Parse(dayString);
+   int dayNum = int.Parse(dayString);
 
    string day;
    switch (dayNum) {
@@ -135,7 +129,7 @@ We will look at why this is in the following section.
 
 In the example above, here's the output if a user enters the number ``4``.
 
-.. sourcecode:: bash
+::
 
    Enter an integer:
    4
@@ -143,7 +137,7 @@ In the example above, here's the output if a user enters the number ``4``.
 
 And the output if that user enters ``10``? Below:
 
-.. sourcecode:: bash
+::
 
    Enter an integer: 
    10
@@ -157,7 +151,7 @@ Here's how the above example looks using the ``else if`` construction:
 
    Console.WriteLine("Enter an integer: ");
    string dayString = Console.ReadLine;
-   int dayNum = Int32.Parse(dayString);
+   int dayNum = int.Parse(dayString);
 
    string day;
    if (dayNum == 0) {
@@ -187,8 +181,7 @@ Fallthrough
 Many C-based languages utilize switch statements.
 However, not all languages share the same behavior when it comes to **fallthrough**.
 Fallthrough is what happens when a ``break`` statement is omitted and is described in detail in this article on `switch statements <https://en.wikipedia.org/wiki/Switch_statement#Fallthrough>`_.
-In C#, you will experience a runtime error if any cases do not contain the necessary break statement.
-Unless, however, that case is left entirely blank.
+In C#, you will experience a runtime error if any cases do not contain the necessary break statement, unless, that case is left entirely blank.
 If the behavior we want matches for two cases, then we can take advantage of this fallthrough action.
 
 .. admonition:: Example
@@ -200,7 +193,7 @@ If the behavior we want matches for two cases, then we can take advantage of thi
 
       Console.WriteLine("Enter an integer: ");
       string dayString = Console.ReadLine;
-      int dayNum = Int32.Parse(dayString);
+      int dayNum = int.Parse(dayString);
 
       string weekZone;
       switch (dayNum) {
@@ -224,7 +217,7 @@ If the behavior we want matches for two cases, then we can take advantage of thi
       }
       Console.WriteLine(day);
    
-   Because we want to set the value of ``weekZone`` to ``"Week Day"`` for cases 1-5, we omit the ``break`` statements
+   Because we want to set the value of ``weekZone`` to ``"Week Day"`` for cases 1-5, we omit the ``break`` statements and any other code.
 
 Check Your Understanding
 -------------------------

@@ -17,7 +17,7 @@ In C#, we write a definite loop (aka a **for loop**) as:
 
 **Output:**
 
-.. sourcecode:: bash
+::
 
    0
    1
@@ -64,7 +64,7 @@ If you want to start at 100, stop at 0 and count backward by 5, the loop is writ
 
 **Output:**
 
-.. sourcecode:: bash
+::
 
    100
    95
@@ -198,8 +198,7 @@ The **continue** statement is similar to, but importantly different
 from, the ``break`` statement. Like ``break``, it interrupts the normal
 flow of control of the loop. But unlike ``break``, the ``continue``
 statement only terminates the *current iteration* of the loop. So the
-loop will continue to run from the top (as long as the boolean
-expression that controls the loop is still true) after a ``continue``
+loop will continue to run from the top after a ``continue``
 statement. Here is an example:
 
 .. sourcecode:: csharp
@@ -262,8 +261,7 @@ For example, if we have a list of strings containing each word in a sentence, we
    }
 
 This code would work well for this situation.
-However, the more strings we want to add to ``finalSentence`` or if we do not even know how many strings we want to add to ``finalSentence``, we can use the ``StringBuilder`` class.
-The longer ``listOfWords`` is, the slower our program will get. While at this level, we may not be too concerned with a program's performance, in enterprise applications, performance can be everything.
+However, we can accomplish the same thing with the ``StringBuilder`` class.
 ``StringBuilder`` objects are *mutable* strings of characters and the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=netframework-4.8>`_ contains a full list of important properties and methods.
 
 If we wanted to use a ``StringBuilder`` object instead of a simple string in the above code, we would modify it like so:
@@ -277,7 +275,12 @@ If we wanted to use a ``StringBuilder`` object instead of a simple string in the
       finalSentence.Append(i);
    }
 
+First, we need to initialize a new ``StringBuilder`` object, ``finalSentence``, with ``new StringBuilder()``.
 The ``Append()`` method in the ``StringBuilder`` class adds the value of ``i`` to the end of the ``finalSentence`` object.
+
+While, concatenating strings is just one of the *many* use cases of loops in C#, ``StringBuilder`` is a fun tool to add to your toolkit.
+If we don't use a ``StringBuilder`` object, the longer ``listOfWords`` is, the slower our program will get.
+While at this level, we may not be too concerned with a program's performance, in enterprise applications, performance can be everything.
 
 Check Your Understanding
 ------------------------

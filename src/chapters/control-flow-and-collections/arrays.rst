@@ -19,7 +19,7 @@ To illustrate ``Array`` usage, here is a version of the Gradebook program
 using ``Arrays`` instead of ``Lists``:
 
 .. sourcecode:: csharp
-   :linenos:
+   :lineno-start: 9
 
    // Allow for at most 30 students
    int maxStudents = 30;
@@ -27,6 +27,7 @@ using ``Arrays`` instead of ``Lists``:
    string[] students = new string[maxStudents];
    double[] grades = new double[maxStudents];
 
+   string input;
    string newStudent;
    int numStudents = 0;
 
@@ -34,7 +35,7 @@ using ``Arrays`` instead of ``Lists``:
 
    // Get student names
    do {
-      string input = Console.ReadLine();
+      input = Console.ReadLine();
       newStudent = input
 
       if (!Equals(newStudent, "")) {
@@ -63,6 +64,10 @@ using ``Arrays`` instead of ``Lists``:
 
    double avg = sum / numStudents;
    Console.WriteLine("Average grade: " + avg);
+
+We suggest you try running this version of the gradebook program called ``ArrayGradebook`` in Visual Studio Code.
+This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
+If you haven't forked and cloned the repository, you should do so now.
 
 .. index:: ! bracket notation
 

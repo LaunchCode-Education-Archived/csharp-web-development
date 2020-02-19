@@ -1,2 +1,2 @@
-Studio
-======
+Studio: Fun Studio
+==================

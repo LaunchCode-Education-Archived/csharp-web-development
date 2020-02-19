@@ -81,8 +81,12 @@ fill our list with strings. Similarly, ``grades`` will hold exclusively
 values of type ``double`` and is declared to be of type
 ``List<double>``.
 
-In lines 10 and 11, we also initialize each List by creating a new, empty
-List.
+In lines 10 and 11, we also initialize each ``List`` by creating a new, empty
+``List``. We could declare and initialize lists in one line like so:
+
+.. sourcecode:: csharp
+
+   List<string> newList = new List<string> {"Apples", "Oranges", "Avocados"};
 
 .. index:: ! generic class, generic type
 
@@ -106,7 +110,7 @@ We then use a ``do-while`` loop to collect the names of each of the students
 in the class.
 
 .. sourcecode:: csharp
-   :lineno-start: 18
+   :lineno-start: 17
 
    // Get student names
    do
@@ -125,6 +129,12 @@ effect that the code block will always run at least once. In this example, we
 prompt the user for a name, which C# processes via ``Console.ReadLine()`` when
 the user hits the enter key. To finish entering names, the user enters a blank
 line.
+
+.. admonition:: Note
+
+   On lines 22 and 26, we use a method to compare the value of ``newStudent`` and ``""``.
+   The ``Equals(a,b)`` compares two strings, ``a`` and ``b``, and returns true if the strings are the same.
+   If the strings are not the same, the method returns false.
 
 .. index:: ! List.Add()
 
@@ -240,6 +250,8 @@ Thus, the first item in this table:
 
 .. _list-methods:
 
+.. _listsort:
+
 .. list-table:: List Methods in C#
    :header-rows: 1
 
@@ -255,32 +267,14 @@ Thus, the first item in this table:
    * - ``IndexOf()``
      - Looks for an item in a List, returns the index of the first occurrence of the item if it exists, returns -1 otherwise
      - ``planets.IndexOf("Jupiter")`` returns ``4``
-
-Here's a couple more methods that require slightly longer descriptions:
-
-.. _listsort:
-
-.. list-table:: List.Sort()
-   :header-rows: 1
-
-   * - C# Syntax
-     - Description
-     - Example
-   * - ``.Sort()``
+   * - ``Sort()``
      - Rearranges the elements of an ``List`` into ascending order.
      - ``planets.Sort()`` produces ``["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"]``
-
-.. list-table:: ToArray()
-   :header-rows: 1
-
-   * - C# Syntax
-     - Description
-     - Example
    * - ``ToArray()``
      - Returns an Array containing the elements of the List
      - ``planets.ToArray()`` returns
        ``{"Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"}``
-
+   
 Perhaps you recall that in C#, you must know the size of the Array when you
 create it. So we'll need to first define the new Array before we can use
 ``toArray()``.

@@ -17,8 +17,12 @@ the objects we’ll be storing when we declare a variable or parameter to be a
 dictionary. This means specifying both key and value data types, which are allowed
 to be different types for a given dictionary.
 
-.. sourcecode:: C#
-   :linenos:
+We suggest you run another version of the gradebook program called ``DictionaryGradebook`` in Visual Studio Code.
+This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
+If you haven't forked and cloned the repository, you should do so now.
+
+.. sourcecode:: csharp
+   :lineno-start: 10
 
    Dictionary<string, double> students = new Dictionary<string, double>();
    string newStudent;
@@ -26,16 +30,16 @@ to be different types for a given dictionary.
    Console.WriteLine("Enter your students (or ENTER to finish):");
 
    // Get student names and grades
-   do {
-
+   do
+   {
       Console.WriteLine("Student: ");
       string input = Console.ReadLine();
       newStudent = input;
 
       if (!Equals(newStudent, "")) {
          Console.WriteLine("Grade: ");
-         input = Console.ReadLine()
-         double newGrade = Double.Parse(input);
+         input = Console.ReadLine();
+         double newGrade = double.Parse(input);
          students.Add(newStudent, newGrade);
 
          // Read in the newline before looping back
@@ -129,6 +133,20 @@ A similar structure applies if you only need the values, using
    foreach (double grade in students.Values) {
       Console.WriteLine(grade);
    }
+
+.. admonition:: Note
+   
+   We can declare and initialize a dictionary in one stroke like so:
+
+   .. sourcecode:: csharp
+      :linenos:
+
+      Dictionary<int, string> groceries = new Dictionary<int, string> 
+      {
+         {2, "Apples"},
+         {3, "Oranges"},
+         {1, "Avocado"}
+      };
 
 Dictionary Methods
 ------------------

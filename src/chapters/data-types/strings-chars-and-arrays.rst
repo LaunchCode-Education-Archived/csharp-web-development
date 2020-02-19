@@ -29,8 +29,8 @@ digit, punctuation, or whitespace like tab (``'\t'``).
 
 .. _string-methods:
 
-Manipulation
-^^^^^^^^^^^^
+String Manipulation
+^^^^^^^^^^^^^^^^^^^
 
 The table below summarizes some of the most common string methods available in
 C#. For these examples, we use the string variable

@@ -6,27 +6,14 @@ Studio: Counting Characters
 In this studio, you will write a program to count the number of times each
 character occurs in a string and then print the results to the console.
 
-Feel free to prompt the user for a string. However, for the sake of simplicity,
-you might want to start by hard-coding some text and storing it in a variable.
-For your convenience, here is some `lorem ipsum <https://loremipsum.io/>`__ text:
+Getting Started
+---------------
 
-   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan sem ut 
-   ligula scelerisque sollicitudin. Ut at sagittis augue. Praesent quis rhoncus justo. 
-   Aliquam erat volutpat. Donec sit amet suscipit metus, non lobortis massa. Vestibulum 
-   augue ex, dapibus ac suscipit vel, volutpat eget massa. Donec nec velit non ligula 
-   efficitur luctus.
+Create your own project from scratch. Review :ref:`create-new-csharp-project`
+if you need to.
 
-.. admonition:: Tip
-
-   Remember, you can turn a ``string`` object into an array of characters
-   using:
-
-   .. sourcecode:: c#
-
-      char[] charactersInString = myString.ToCharArray();
-
-Some Items to Ponder Before Starting
-------------------------------------
+Some Items to Ponder Before Coding
+----------------------------------
 
 #. There are multiple ways to approach this task, but one way involves the
    following steps:
@@ -38,14 +25,38 @@ Some Items to Ponder Before Starting
       count per line).
 
 #. Which type of data structure (``List``, ``array``, or ``Dictionary``)
-   should you use to store character counts? Any can be made to work, but there
-   is a BEST choice.
+   should you use to store character counts? Any of these options would work, 
+   but using one of these data structures will optimize your code's efficiency.
 #. You’ll need to *initialize* the counts for the characters in some fashion.
    It’s probably better to do this as you go through the string instead of
    doing so before you loop through it. (*WHY?*)
 #. If you need to review how to create a new class, revisit the 
    :ref:`Hello Methods <hello-methods>` program.
 #. Don’t forget to check out the *Bonus Missions* below.
+
+.. admonition:: Tip
+
+   Remember, you can turn a ``string`` object into an array of characters
+   using:
+
+   .. sourcecode:: c#
+
+      char[] charactersInString = myString.ToCharArray();
+
+
+Sample Input
+------------
+
+Feel free to prompt the user for a string. However, for the sake of simplicity,
+you might want to start by hard-coding some text and storing it in a variable.
+For your convenience, here is some `lorem ipsum <https://loremipsum.io/>`__ text:
+
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan sem ut 
+   ligula scelerisque sollicitudin. Ut at sagittis augue. Praesent quis rhoncus justo. 
+   Aliquam erat volutpat. Donec sit amet suscipit metus, non lobortis massa. Vestibulum 
+   augue ex, dapibus ac suscipit vel, volutpat eget massa. Donec nec velit non ligula 
+   efficitur luctus.
+
 
 Sample Output
 -------------

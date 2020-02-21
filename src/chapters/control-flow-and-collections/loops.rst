@@ -81,7 +81,7 @@ C# also provides a syntax to iterate over any sequence or collection, such as an
 .. sourcecode:: csharp
    :linenos:
 
-   int nums[] = {1, 1, 2, 3, 5, 8, 13, 21};
+   int[] nums = {1, 1, 2, 3, 5, 8, 13, 21};
 
    foreach (int i in nums) {
       Console.WriteLine(i);
@@ -254,7 +254,7 @@ For example, if we have a list of strings containing each word in a sentence, we
 .. sourcecode:: csharp
    :linenos:
 
-   int[] listOfWords = {"Books", "Cheese", "Trees", "Laughter"};
+   string[] listOfWords = {"Books", "Cheese", "Trees", "Laughter"};
 
    string finalSentence = "";
 

@@ -10,9 +10,8 @@ several new C# concepts, including the class ``List``. We will also
 review different kinds of ``for`` loops used in C#.
 
 Before going any further, we suggest you run the ``ListGradebook``
-program in Visual Studio Code. You can view this program in `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_.
-Once you’ve forked and cloned the repository, let’s look at what is happening in the C#
-source code.
+program in Visual Studio. This program is in `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_.
+Once you’ve forked and cloned the repository following the directions on how to :ref:`clone a C# project <clone-csharp-project>`, let’s look at what is happening in the source code.
 
 .. sourcecode:: csharp
    :linenos:
@@ -71,7 +70,7 @@ source code.
 Here we declare and initialize two objects, ``students`` and ``grades``,
 which appear to be of type ``List<string>`` and
 ``List<double>``, respectively. A list in C# is very
-similar to an array. Like an ``Array``, we must let
+similar to an array. Like an array, we must let
 the compiler know what kind of objects our list is going to
 contain. In the case of ``students``, the list will contain
 values of type
@@ -152,7 +151,7 @@ you can loop through a List in C#. Here’s the first, which collects the
 numeric grade for each student:
 
 .. sourcecode:: csharp
-   :lineno-start: 27
+   :lineno-start: 31
 
    // Get student grades
    foreach (string student in students) {
@@ -218,9 +217,9 @@ List Methods
 Let’s gather up a few of the ``List`` methods that we’ve encountered so
 far, along with a few new ones. While these will be the most common methods and
 properties that you use with this class, they by no means represent a complete
-list. Refer to the `official documentation on the List
+record. Refer to the `official documentation on the List
 class <https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netframework-4.8>`__
-for such a list, and for more details.
+for such a record, and for more details.
 
 To demonstrate the use of these methods, we'll create a new ``List``
 called ``planets``.
@@ -269,21 +268,25 @@ Thus, the first item in this table:
      - ``planets.IndexOf("Jupiter")`` returns ``4``
    * - ``Sort()``
      - Rearranges the elements of an ``List`` into ascending order.
-     - ``planets.Sort()`` produces ``["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"]``
+     - ``planets.Sort()`` produces ``{"Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"}``
    * - ``ToArray()``
      - Returns an Array containing the elements of the List
      - ``planets.ToArray()`` returns
        ``{"Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"}``
    
-Perhaps you recall that in C#, you must know the size of the Array when you
-create it. So we'll need to first define the new Array before we can use
-``toArray()``.
+.. admonition:: Example
 
-.. sourcecode:: csharp
-   :linenos:
+   In order to use ``ToArray``, we could first declare a ``planetsArray`` of the same size as ``planets`` or do it in one line of code.
 
-   string[] planetsArray = new string[planets.Count];
-   planetsArray = planets.ToArray();
+   .. sourcecode:: csharp
+      :linenos:
+
+      // Option A
+      string[] planetsArray = new string[planets.Count];
+      planetsArray = planets.ToArray();
+
+      // Option B
+      string[] planetsArray = planets.ToArray();
 
 In addition to these different methods we can use, the ``List`` class has a number of properties that are very helpful.
 You may find yourself using the ``Count`` property quite a bit. This property holds the number of values in the list.
@@ -296,7 +299,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   The number of entries in an ``List`` may not be modified.
+   The number of entries in a ``List`` may not be modified.
 
    #. True
    #. False

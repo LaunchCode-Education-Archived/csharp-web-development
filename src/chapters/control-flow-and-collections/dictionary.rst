@@ -17,7 +17,7 @@ the objects we’ll be storing when we declare a variable or parameter to be a
 dictionary. This means specifying both key and value data types, which are allowed
 to be different types for a given dictionary.
 
-We suggest you run another version of the gradebook program called ``DictionaryGradebook`` in Visual Studio Code.
+We suggest you run another version of the gradebook program called ``DictionaryGradebook`` in Visual Studio.
 This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
 If you haven't forked and cloned the repository, you should do so now.
 
@@ -109,7 +109,7 @@ Let’s look at the ``foreach`` loop from this example:
 .. index:: ! KeyValuePair<T,T>
 
 The iterator variable, ``student``, is of type
-``KeyValuePair<string, double>``. The class ``KeyValuePair`` is specifically
+``KeyValuePair<string, double>``. The class **KeyValuePair<T,T>** is specifically
 constructed to be used in this fashion, to represent key/value pairs
 within dictionaries. Each ``KeyValuePair`` object has a ``Key`` property and a
 ``Value`` property.
@@ -120,8 +120,8 @@ construct a simpler loop and use the ``Keys`` property of the ``Dictionary`` cla
 .. sourcecode:: csharp
    :linenos:
 
-   foreach (String student in students.Keys) {
-      Console.WriteLine(student);
+   foreach (string studentName in students.Keys) {
+      Console.WriteLine(studentName);
    }
 
 A similar structure applies if you only need the values, using
@@ -185,11 +185,11 @@ planets and the number of moons associated with each.
      - Returns a collection containing all keys in the dictionary. This collection may be used in a
        ``foreach`` loop just as lists are, but the dictionary *may not be modified* within such a loop.
      - ``moons.Keys`` returns
-       ``["Earth", "Mars", "Neptune", "Jupiter", "Saturn", "Venus", "Uranus", "Mercury"]``
+       ``{"Earth", "Mars", "Neptune", "Jupiter", "Saturn", "Venus", "Uranus", "Mercury"}``
    * - ``Values``
      - Returns a collection containing all values in the dictionary. This collection may be used in a
        ``foreach`` loop just as lists are.
-     - ``moons.Values`` returns ``[1, 2, 14, 79, 82, 0, 27, 0]``
+     - ``moons.Values`` returns ``{1, 2, 14, 79, 82, 0, 27, 0}``
    * - ``Add()``
      - Add a key/value pair to a dictionary.
      - ``moons.Add("Pluto", 5)`` adds ``"Pluto": 5`` to the ``moons``

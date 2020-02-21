@@ -16,7 +16,8 @@ In C#, this pattern is simply written as:
 .. sourcecode:: csharp
    :linenos:
 
-   if (condition) {
+   if (condition)
+   {
       statement1
       statement2
       ...
@@ -35,11 +36,14 @@ Adding an **else clause**, we have:
 .. sourcecode:: csharp
    :linenos:
 
-   if (condition) {
+   if (condition)
+   {
       statement1
       statement2
       ...
-   } else {
+   }
+   else
+   {
       statement1
       statement2
       ...
@@ -58,15 +62,24 @@ An **else if** construction in C#:
    Console.WriteLine("Enter a grade: ");
    string gradeString = Console.ReadLine();
    int grade = int.Parse(gradeString);
-   if (grade < 60) {
+   if (grade < 60) 
+   {
          Console.WriteLine('F');
-   } else if (grade < 70) {
+   } 
+   else if (grade < 70)
+   {
          Console.WriteLine('D');
-   } else if (grade < 80) {
+   } 
+   else if (grade < 80)
+   {
          Console.WriteLine('C');
-   } else if (grade < 90) {
+   }
+   else if (grade < 90)
+   {
          Console.WriteLine('B');
-   } else {
+   }
+   else
+   {
          Console.WriteLine('A');
    }
 
@@ -154,21 +167,36 @@ Here's how the above example looks using the ``else if`` construction:
    int dayNum = int.Parse(dayString);
 
    string day;
-   if (dayNum == 0) {
+   if (dayNum == 0)
+   {
       day = "Sunday";
-   } else if (dayNum == 1){
+   }
+   else if (dayNum == 1)
+   {
       day = "Monday";
-   } else if (dayNum == 2){
+   }
+   else if (dayNum == 2)
+   {
       day = "Tuesday";
-   } else if (dayNum == 3){
+   }
+   else if (dayNum == 3)
+   {
       day = "Wednesday";
-   } else if (dayNum == 4){
+   }
+   else if (dayNum == 4)
+   {
       day = "Thursday";
-   } else if (dayNum == 5){
+   }
+   else if (dayNum == 5)
+   {
       day = "Friday";
-   } else if (dayNum == 6){
+   }
+   else if (dayNum == 6)
+   {
       day = "Saturday";
-   } else {
+   }
+   else
+   {
       day = "Int does not correspond to a day of the week";
    }
    Console.WriteLine(day);
@@ -181,7 +209,7 @@ Fallthrough
 Many C-based languages utilize switch statements.
 However, not all languages share the same behavior when it comes to **fallthrough**.
 Fallthrough is what happens when a ``break`` statement is omitted and is described in detail in this article on `switch statements <https://en.wikipedia.org/wiki/Switch_statement#Fallthrough>`_.
-In C#, you will experience a runtime error if any cases do not contain the necessary break statement, unless, that case is left entirely blank.
+In C#, you can take advantage of fallthrough behavior in specific circumstances with blank cases.
 If the behavior we want matches for two cases, then we can take advantage of this fallthrough action.
 
 .. admonition:: Example
@@ -274,6 +302,6 @@ Check Your Understanding
          Greetings cadet.
          Greetings normie.
 
-.. ans:  Greetings normie.
-         Are you an alien?
+   #. The program doesn't work as written.
 
+.. ans:  The program doesn't work as written.

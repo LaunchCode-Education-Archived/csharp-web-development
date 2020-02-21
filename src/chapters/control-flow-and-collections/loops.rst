@@ -87,7 +87,7 @@ C# also provides a syntax to iterate over any sequence or collection, such as an
       Console.WriteLine(i);
    }
 
-Here, the loop variable moves through the items in the array of integers, ``nums[]``. The syntax
+Here, the loop variable moves through the items in the array of integers, ``nums``. The syntax
 here uses the word, ``in``. This type of loop is known as a **foreach loop**.
 
 .. tip::
@@ -254,14 +254,18 @@ For example, if we have a list of strings containing each word in a sentence, we
 .. sourcecode:: csharp
    :linenos:
 
+   int[] listOfWords = {"Books", "Cheese", "Trees", "Laughter"};
+
    string finalSentence = "";
 
-   foreach (string i in listOfWords) {
-      finalSentence += i;
+   foreach (string word in listOfWords) {
+      finalSentence += word;
    }
 
-This code would work well for this situation.
-However, we can accomplish the same thing with the ``StringBuilder`` class.
+This code would work well for this situation. 
+However, because strings are *immutable*, when the value of ``word`` is appended onto ``finalSentence``, a new string object is created.
+This means that the longer ``listOfWords`` is, the more intensive and inefficient the code becomes. 
+We can accomplish the same thing with the ``StringBuilder`` class.
 ``StringBuilder`` objects are *mutable* strings of characters and the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=netframework-4.8>`_ contains a full list of important properties and methods.
 
 If we wanted to use a ``StringBuilder`` object instead of a simple string in the above code, we would modify it like so:
@@ -271,14 +275,14 @@ If we wanted to use a ``StringBuilder`` object instead of a simple string in the
 
    StringBuilder finalSentence = new StringBuilder();
 
-   foreach (string i in listOfWords) {
-      finalSentence.Append(i);
+   foreach (string word in listOfWords) {
+      finalSentence.Append(word);
    }
 
 First, we need to initialize a new ``StringBuilder`` object, ``finalSentence``, with ``new StringBuilder()``.
-The ``Append()`` method in the ``StringBuilder`` class adds the value of ``i`` to the end of the ``finalSentence`` object.
+The ``Append()`` method in the ``StringBuilder`` class adds the value of ``word`` to the end of the ``finalSentence`` object.
 
-While, concatenating strings is just one of the *many* use cases of loops in C#, ``StringBuilder`` is a fun tool to add to your toolkit.
+While concatenating strings is just one of the *many* use cases of loops in C#, ``StringBuilder`` is a fun tool to add to your toolkit.
 If we don't use a ``StringBuilder`` object, the longer ``listOfWords`` is, the slower our program will get.
 While at this level, we may not be too concerned with a program's performance, in enterprise applications, performance can be everything.
 

@@ -7,7 +7,7 @@ Data Structures
 ---------------
 
 A **data structure** lets us hold on to lots of data in a single place. It 
-is a programming construct to aggregate lots of values into one value. Many 
+is a programming construct to aggregate many values into one value. Many 
 types of data structures exist in various languages. A few examples are 
 lists, dictionaries, arrays, tuples, etc. 
 
@@ -38,7 +38,7 @@ system could be anything numeric, such as a 0.0-4.0 point scale, or a
 
 A test run of the program might yield the following:
 
-.. sourcecode:: bash
+::
 
    Enter your students (or ENTER to finish):
    Chris

@@ -49,7 +49,7 @@ using ``Arrays`` instead of ``Lists``:
    for (int i = 0; i < numStudents; i++) {
       Console.WriteLine("Grade for " + students[i] + ": ");
       input = Console.ReadLine();
-      double grade = Double.Parse(input);
+      double grade = double.Parse(input);
       grades[i] = grade;
    }
 
@@ -65,7 +65,7 @@ using ``Arrays`` instead of ``Lists``:
    double avg = sum / numStudents;
    Console.WriteLine("Average grade: " + avg);
 
-We suggest you try running this version of the gradebook program called ``ArrayGradebook`` in Visual Studio Code.
+We suggest you try running this version of the gradebook program called ``ArrayGradebook`` in Visual Studio.
 This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
 If you haven't forked and cloned the repository, you should do so now.
 

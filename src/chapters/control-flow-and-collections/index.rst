@@ -5,4 +5,4 @@ Control Flow and Collections
    :maxdepth: 3
 
    exercises
-	
+   studio

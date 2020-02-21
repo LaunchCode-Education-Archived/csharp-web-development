@@ -21,6 +21,7 @@ Studios
    :name: studiostoc
 
    chapters/data-types/studio
+   chapters/control-flow-and-collections/studio
 
 Assignments
 ===========

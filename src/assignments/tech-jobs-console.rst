@@ -26,7 +26,7 @@ Your mentor on this project is Blake.
    :scale: 50%
    :alt: LaunchCode mentor Blake.
 
-Your LaunchCOde mentor, Blake.
+Your LaunchCode mentor, Blake.
 
 Learning Objectives
 --------------------
@@ -48,7 +48,7 @@ listings of open jobs by employer partners.
 
 The prototype process gives everybody a chance to work out some initial ideas
 without investing a ton of time into developing a finished product. Once
-everybody likes the prototype, the Tech Team will begin work toward a
+everybody likes the prototype, the Tech Team will begin work on a
 full-fledged application.
 
 Your Assignment
@@ -94,15 +94,15 @@ The Data File: ``jobs_data.csv``
 Our simple app doesn’t connect to a database. If the prototype proves
 useful and we continue development, we’ll add that functionality later.
 But for now, we’ve been given a CSV (comma-separated values) file from
-the Company Team at LaunchCode that contains some recent jobs. This file
-was exported from an Excel spreadsheet into this format, which is easy
-for programs to read in.
+the Company Team at LaunchCode that contains some recent job openings. 
+This file was exported from an Excel spreadsheet into this format, which 
+is easy for programs to read in.
 
-If CSV files are new to you, don’t worry, they’re easy to understand.
-CSV files are conceptually similar to simple spreadsheets in that they
-organize data in rows and columns. The major difference is that they
-don’t have the ability to carry out calculations the way spreadsheets
-do, and you can easily open, read, and edit them in plain text editors.
+If CSV files are new to you, don’t worry.
+CSV files are conceptually similar to simple spreadsheets in that data 
+is organized in rows and columns. The major differences are that we can't 
+carry out calculations in a CSV the way that we can with a spreadsheet, 
+but we can easily open, read, and edit CSV files in plain text editors.
 
 Open up ``jobs_data.csv``. You’ll see that the first line is:
 
@@ -122,7 +122,7 @@ questions:
 #. Which fields match up with which column names above?
 #. Why do some lines/rows (e.g. line 10) have more commas than others, if
    commas are supposed to separate columns?
-#. What role do the double-quotes play?
+#. What role do the double-quotes play on lines 10 and 79?
 
 The ``Program`` Class
 ---------------------
@@ -183,11 +183,12 @@ will this dictionary contain when the method runs?
 To figure this out, right-click on the method name and select *Find (All)
 References*. This will open a pane and display each location in the program
 where ``GetUserSelection`` is invoked. The first such usage is the first
-line of the main ``while loop``:
+line of the ``while`` loop in the ``Main`` method:
 
 .. sourcecode:: c#
+   :lineno-start: 31
 
-   string actionChoice = GetUserSelection("View jobs by:", actionChoices);
+   string actionChoice = GetUserSelection("View jobs", actionChoices);
 
 What is this dictionary named ``actionChoices``? If we look a few lines
 above, we see:
@@ -265,12 +266,13 @@ private property ``AllJobs`` which is of type
 
 .. admonition:: Note
 
-   We haven’t covered static properties and methods in-depth yet. For this
-   assignment, know simply that they allow us to use properties and methods
-   of a class without creating an object from that class. For example, we
-   can call ``JobData.FindAll()`` from the ``Program`` class.
+   We haven't covered static properties and methods in-depth yet. For this 
+   assignment, we just need to know that using the ``static`` keyword with 
+   properties and methods allows us to use those properties and methods 
+   outside of the class without creating an object from that class. For 
+   example, we can call ``JobData.FindAll()`` from the ``Program`` class.
 
-   If you want to create a new method in ``JobData``, or add a property, be
+   If you want to create a new method or add a property in ``JobData``, be
    sure to declare it as ``static``.
 
 Let’s look more closely at the data type of ``AllJobs``. It purports to
@@ -378,7 +380,7 @@ Test this method before moving on to your next step:
 #. Make sure the printout matches the styling above.
 #. To test what happens if no jobs are found, select
    “0” to search and then “3” to search for a location. Then, enter a location
-   that is not in the data (e.g. “Cancun”). Your message should be displayed.
+   that is not in the data (e.g. “Cancun”). Your "no results" message should be displayed.
 
 Create Method ``FindByValue``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -387,7 +389,7 @@ At this stage, the application will allow users to search a *given
 column* of the data for a given string. Your next task is to enable a
 search that looks for the search term in *all* of the columns.
 
-In the ``JobData`` class, create a new (``public static``) method that
+In the ``JobData`` class, create a new ``public static`` method that
 will search for a string within each of the columns. Name it
 ``FindByValue``. Here are a few observations:
 

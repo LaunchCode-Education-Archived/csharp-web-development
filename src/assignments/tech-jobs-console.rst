@@ -88,6 +88,11 @@ unfinished---program, go ahead and run it to get an idea of how it works.
 Let’s explore the code by starting with the source of the data our program is
 providing access to.
 
+.. admonition:: Warning
+
+   What follows is a deep-dive into the functionality of this codebase. In future 
+   assignments, you should plan to do your own exploration of the starter code.
+
 The Data File: ``jobs_data.csv``
 --------------------------------
 

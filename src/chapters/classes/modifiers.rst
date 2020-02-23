@@ -1,7 +1,7 @@
 Modifiers in C#
 ===============
 
-.. index:: ! access level, ! access modifier, ! public, ! private, ! default access, ! world-level
+.. index:: ! access level, ! access modifier, ! public, ! private, ! default access, ! assembly, ! world-level
 
 .. _access-modifiers:
 
@@ -51,9 +51,10 @@ should have.
 The table below details whether or not information can be accessed at different
 levels based on the access modifier. For example, a field with the ``private``
 access modifier can be accessed within the class, but cannot be accessed
-outside the class at the world-level. In C#, **world-level** is the level of the
-whole application and contains all of the packages and classes. While we will
-discuss later how to decide which access modifier to use for different
+outside the class at the assembly or world-level. In C#, an **assembly** refers
+to a grouping of classes and other resources that form a particular unit of an application.
+**World-level** is the  level of the whole application and contains all of the packages and 
+classes. While we will discuss later how to decide which access modifier to use for different
 scenarios, you should save this table now as reference for those conversations.
 
 .. list-table:: Is information accessible at certain levels with certain access modifiers?

@@ -12,31 +12,33 @@ A Minimal Class and Object
 
 .. index:: ! fields, ! methods, ! members
 
-Classes may contain **fields** and **methods**. Fields contain our data for the
+Classes may contain **fields** and **methods**. Fields contain the data of a
 class and methods define actions a class can take. We say that fields and
 methods are **members** of a class.
 
 .. admonition:: Example
 
-   Let's create a class called ``HelloWorld`` with one field, ``message``, and one method, ``sayHello()``.
+   Let's create a class called ``HelloWorld`` with one field, ``message``, and one method, ``SayHello()``.
    ``message`` will be a string and have a value of ``"Hello World"``.
-   ``sayHello()`` will not return a specific value and instead print out the value of ``message``.
+   ``SayHello()`` will not return a specific value and instead print out the value of ``message``.
 
-   .. sourcecode:: C#
+   .. sourcecode:: c#
       :linenos:
 
-      public class HelloWorld {
+      public class HelloWorld 
+      {
 
-         public String message = "Hello World";
+         public string message = "Hello World";
 
-         public void sayHello() {
-            System.out.println(message);
+         public void SayHello() 
+         {
+            Console.WriteLine(message);
          }
 
       }
 
 The only field in the ``HelloWorld`` class is the string ``message``, while the
-only method is ``sayHello``, which prints the value of the ``message`` field
+only method is ``SayHello()``, which prints the value of the ``message`` field
 and doesn’t return anything.
 
 .. note::
@@ -46,7 +48,7 @@ and doesn’t return anything.
 
 .. index:: ! instance
 
-To execute ``sayHello``, we’ll need to create an **instance** of the
+To execute ``SayHello()``, we’ll need to create an **instance** of the
 class ``HelloWorld``. We refer to an object created from a particular class as
 an instance of that class.
 
@@ -54,18 +56,20 @@ Here’s how this might look with our ``HelloWorld`` class:
 
 .. admonition:: Example
 
-   .. sourcecode:: C#
+   .. sourcecode:: c#
       :linenos:
 
-      public class HelloWorldRunner {
+      public class HelloWorldRunner 
+      {
 
-         public static void main(String[] args) {
+         public static void main(string[] args) 
+         {
                HelloWorld hello = new HelloWorld();
-               hello.sayHello();
+               hello.SayHello();
          }
       }
 
-In order to call the ``sayHello`` method of ``HelloWorld``, we must
+In order to call the ``SayHello`` method of ``HelloWorld``, we must
 first have an instance of ``HelloWorld``, which we create using the
 syntax ``new HelloWorld()``. As with built-in classes, classes that we
 create define their own types. So the object ``hello`` is a variable of
@@ -82,13 +86,15 @@ The ``this`` Keyword
 
 .. index:: ! this keyword
 
-In ``HelloWorld`` above, we could have written ``sayHello`` this way,
+In ``HelloWorld`` above, we could have written ``SayHello`` this way,
 with the same net effect:
 
-.. sourcecode:: C#
+.. sourcecode:: c#
+   :lineno-start: 6
 
-   public void sayHello() {
-       System.out.println(this.message);
+   public void SayHello() 
+   {
+      Console.WriteLine(this.message);
    }
 
 In this context, inside of the class, we can refer to fields (and
@@ -107,22 +113,24 @@ this case, in order to refer to the field, we *must* use ``this``.
 
    Let's look at how this works with our ``HelloWorld`` class:
 
-   .. sourcecode:: C#
+   .. sourcecode:: c#
       :linenos:
 
-      public class HelloWorld {
+      public class HelloWorld 
+      {
 
-         public String message = "Hello World";
+         public string message = "Hello World";
 
-         public void sayHello() {
+         public void SayHello() 
+         {
 
-            String message = "Goodbye World";
+            string message = "Goodbye World";
 
             // The line below prints "Goodbye World"
-            System.out.println(message);
+            Console.WriteLine(message);
 
             // The line below prints "Hello World"
-            System.out.println(this.message);
+            Console.WriteLine(this.message);
          }
       }
 
@@ -136,7 +144,7 @@ this case, in order to refer to the field, we *must* use ``this``.
 
 .. note::
 
-   If you want to learn more about this subject, check out the Oracle Documentation on `using the this keyword <https://docs.oracle.com/C#se/tutorial/C#/C#OO/thiskey.html>`_.
+   If you want to learn more about this subject, check out the documentation on `using the this keyword <https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/this>`_.
 
 Check Your Understanding
 ------------------------
@@ -145,21 +153,23 @@ Check Your Understanding
 
    The following code block contains several bugs. Mark all of the lines that contain a bug in the code.
 
-   .. sourcecode:: C#
+   .. sourcecode:: c#
       :linenos:
 
-      public class Greeting {
+      public class Greeting 
+      {
 
          public String name = "Jess"
 
-         public void sayHello() {
-            System.out.println("Hello " + here.name + "!");
+         public void SayHello() 
+         {
+            Console.WriteLine("Hello " + here.name + "!");
 
       }
 
-   a. line 7
-   b. line 3
-   c. line 6
+   a. line 9
+   b. line 4
+   c. line 8
    d. line 1
 
-.. ans: lines 3, 6, and 7 all have bugs.
+.. ans: lines 4, 8 and 9 all have bugs.

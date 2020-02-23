@@ -2,7 +2,7 @@ Exercises: Objects and Classes, Part 2
 ======================================
 
 Work on these exercises in your
-`csharp-web-dev-lsn4classes2 <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn4classes2>`__.
+`csharp-web-dev-lsn3and4classes <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn3and4classes>`__.
 project. 
 You will update your ``Student.cs`` file by implementing the ``AdGrade`` and
 ``GetGradeLevel`` methods that were sketched out in the

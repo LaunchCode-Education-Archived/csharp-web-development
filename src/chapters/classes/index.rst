@@ -9,5 +9,5 @@ Classes in C#, Part 1
    modifiers
    encapsulation
    constructors
-   
+   methods
    

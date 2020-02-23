@@ -180,8 +180,8 @@ Check Your Understanding
 
       public class Dog 
       {
-         private string Name { get; set; }
-         private string Breed { get; set; }
+         public string Name { get; set; }
+         public string Breed { get; set; }
 
          public Dog(string name, string breed) 
          {

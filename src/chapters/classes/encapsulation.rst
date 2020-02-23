@@ -246,7 +246,7 @@ sure that when one is updated, so is the other. In this case, we only
 store one field value (``fahrenheit``) and make the appropriate
 calculation when getting or setting the ``Celsius`` property.
 
-Auto Implemented Properties
+Auto-Implemented Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a field has both a public getter and setter, and no additional logic is needed, 

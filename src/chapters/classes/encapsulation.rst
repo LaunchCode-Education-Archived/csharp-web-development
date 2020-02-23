@@ -186,27 +186,6 @@ front of it and therefore it will have the same public access as the property ``
       internal set { name = value; }
    }
 
-If a field has both a public getter and setter, and no additional logic is needed, 
-we can use the shorthand:
-
-.. sourcecode:: c#
-
-   string Name { get; set; }
-
-This is referred to as an **auto-implemented property**.
-
-.. admonition:: Warning
-
-   Note that in the example above, the private field is ``name`` (lowercase) 
-   while the property is ``Name``. The property is based on the value of the 
-   private field ``name``, and since C# identifiers are case-sensitive, these are 
-   two distinct members. ``name`` is referred to as a **backing field**, and it stores 
-   the value of the property.
-
-   If you were to try to use the same identifier for both the backing field and 
-   the property, you'll see a *StackOverflowException* due to infinite recursion 
-   -- i.e., the property would infinitely call itself!
-
 As an example of setter validation, let’s take a short detour to look at a
 ``Temperature`` class. A valid temperature can only be so low (“absolute
 zero”), so we wouldn’t want to allow somebody to set an invalid value.
@@ -266,6 +245,31 @@ Since there’s a link between ``Fahrenheit`` and ``Celsius``, we want to make
 sure that when one is updated, so is the other. In this case, we only
 store one field value (``fahrenheit``) and make the appropriate
 calculation when getting or setting the ``Celsius`` property.
+
+Auto Implemented Properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a field has both a public getter and setter, and no additional logic is needed, 
+we can use the shorthand:
+
+.. sourcecode:: c#
+
+   public string Name { get; set; }
+
+This is referred to as an **auto-implemented property**. When a property is auto-implemented,
+the compiler creates a private field that can only be accessed through the property's get and 
+set accessors.
+
+Note that in this example, the private field is ``name`` (lowercase) 
+while the property is ``Name``. Since C# identifiers are case-sensitive, these are 
+two distinct members. ``name`` is referred to as a **backing field**, and it stores 
+the value of the property.
+
+.. admonition:: Warning
+
+   If you were to try to use the same identifier for both the backing field and 
+   the property, you'll see a *StackOverflowException* due to infinite recursion 
+   -- i.e., the property would infinitely call itself!
 
 Using properties, getters/setters, and fields, we can *encapsulate* the information 
 we need in our student class.

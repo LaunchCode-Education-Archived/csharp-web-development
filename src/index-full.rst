@@ -8,6 +8,7 @@ Chapters
    chapters/introduction-and-setup/index
    chapters/data-types/index
    chapters/control-flow-and-collections/index
+   chapters/unit-testing/index
 
 .. toctree::
 

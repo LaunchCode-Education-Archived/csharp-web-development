@@ -18,7 +18,7 @@ in Visual Studio.
 In C#, **attributes** are formalized bits of information about a program. They operate
 somewhere between actual code syntax and a comment on the code. Attributes do not 
 directly affect the code they annotate, but they do supply information to the compiler.
-Attributes are enclosed in square brackets, ``[]``, and placed above the item it decorates. 
+An attribute is enclosed in square brackets, ``[]``, and placed above the item it decorates. 
 We will provide an example in the walkthrough below.
 
 Testing Setup

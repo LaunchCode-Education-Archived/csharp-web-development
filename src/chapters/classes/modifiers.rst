@@ -137,6 +137,7 @@ Check Your Understanding
    For this question, refer to the code block below.
 
    .. sourcecode:: c#
+      :linenos:
 
       public class Greeting 
       {

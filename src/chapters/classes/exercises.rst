@@ -13,5 +13,5 @@ Before you get started, make sure you have forked and cloned the `starter code <
    fields. Before diving into Visual Studio, try using pen and paper to work through
    what these might be. At least one of your fields should be a ``List``
    or ``Dictionary``, and you should use your ``Student`` class.
-#. In the ``SchoolPractice`` project, create a class ``Teacher`` with four fields:
-   ``firstName``, ``lastName``, ``subject``, and ``yearsTeaching``. Make use of auto-implemented properties!
+#. Using auto-implemented properties, in the ``SchoolPractice`` project, create a class ``Teacher`` with four properties:
+   ``firstName``, ``lastName``, ``subject``, and ``yearsTeaching``.

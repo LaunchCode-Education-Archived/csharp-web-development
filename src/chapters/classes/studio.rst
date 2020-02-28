@@ -51,14 +51,7 @@ Consider other use cases that might come up, and see if their design fits with t
 Implementation
 --------------
 
-In Visual Studio, create a new project, ``Restaurant Menu``.
-Within the project, create a new package named
-``restaurant``. Add the ``Menu`` and ``MenuItem`` classes and code the
+In Visual Studio, create a new project, ``RestaurantMenu``.
+Add the ``Menu`` and ``MenuItem`` classes and code the
 design that you created above. Be sure to add getters and setters as
 appropriate.
-
-Submitting Your Work
---------------------
-
-Create a repository on your Github account and push up your project.
-Submit the link to your repository on Canvas.

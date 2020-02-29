@@ -10,6 +10,7 @@ Chapters
    chapters/data-types/index
    chapters/control-flow-and-collections/index
    chapters/classes/index
+   chapters/classes-part2/index
 
 .. toctree::
 

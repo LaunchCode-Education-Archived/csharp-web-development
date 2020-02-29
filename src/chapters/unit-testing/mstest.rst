@@ -21,6 +21,11 @@ directly affect the code they annotate, but they do supply information to the co
 An attribute is enclosed in square brackets, ``[]``, and placed above the item it decorates. 
 We will provide an example in the walkthrough below.
 
+
+.. TODO: add creating test project details here. 
+   use https://docs.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2019 
+   for reference.
+
 Testing Setup
 -------------
 
@@ -29,11 +34,33 @@ Testing Setup
 To test a simple .NET Core console project, we add a test project into the same solution with 
 an MSTest dependency.
 
-.. TODO: add creating test project details here. 
-	use https://docs.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2019 
-	for reference.
+.. TODO: add repo link
 
-In your ``C#-web-dev-exercises`` repo, we've included two ``.jar`` files for the MSTest 
+Fork and clone `this repo <csharp-web-dev-lsn5unittesting>`__. Inside the solution, we have two projects,
+``Car`` and ``CarTests``. The ``Car`` project is a simple .NET Console app like the others you have encountered
+in this course so far. And ``CarTests`` is a new type of project, MSTest Project. 
+
+On a Mac, to select this type of project looks like so:
+
+.. figure:: ./figures/mac-create-mstest-project.png
+   :alt: MAC: Create MSTest project
+
+   MAC: Creating MSTest project in Visual Studio
+
+
+.. TODO: add this on windows
+
+On a Windows:
+
+.. figure:: ./figures/windows-create-mstest-project.png
+   :alt: WINDOWS: Create MSTest project
+
+   WINDOWS: Creating MSTest project in Visual Studio
+
+**MSTest** is a C# testing framework 
+
+'ve included 
+two ``.jar`` files for the MSTest 
 library. These are located in the ``lib`` folder. **JAR** stands for **C# ARchive** and is a 
 common C# file format used for bundling many classes and files together. The MSTest library
 code is bundled and packaged in both the ``MSTest-4.13-beta-3.jar`` and 

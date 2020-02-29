@@ -8,6 +8,8 @@ Chapters
    chapters/introduction-and-setup/index
    chapters/data-types/index
    chapters/control-flow-and-collections/index
+   chapters/classes/index
+   chapters/classes-part2/index
    chapters/unit-testing/index
 
 .. toctree::
@@ -23,6 +25,7 @@ Studios
 
    chapters/data-types/studio
    chapters/control-flow-and-collections/studio
+   chapters/classes-part2/studio
 
 Assignments
 ===========

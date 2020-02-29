@@ -9,6 +9,7 @@ Chapters
    chapters/introduction-and-setup/index
    chapters/data-types/index
    chapters/control-flow-and-collections/index
+   chapters/classes/index
    chapters/classes-part2/index
 
 .. toctree::
@@ -47,4 +48,3 @@ Appendices
    :hidden:
 
    index-full 
-   

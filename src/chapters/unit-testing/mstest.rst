@@ -57,30 +57,34 @@ On a Windows:
 
    WINDOWS: Creating MSTest project in Visual Studio
 
-**MSTest** is a C# testing framework 
+**MSTest** is a C# testing framework. When we create a Visual Studio MSTest Project, the 
+necessary API and classes are added as **dependencies** of the ``CarTests`` project. A dependency 
+is a separately developed program or piece of code that another program or piece of code 
+uses to carry it out its function. Our C# tests will *depend* on MSTest code. 
 
-'ve included 
-two ``.jar`` files for the MSTest 
-library. These are located in the ``lib`` folder. **JAR** stands for **C# ARchive** and is a 
-common C# file format used for bundling many classes and files together. The MSTest library
-code is bundled and packaged in both the ``MSTest-4.13-beta-3.jar`` and 
-``hamcrest-core-1.3.jar`` ``.jar`` files.
+Along the same lines, since ``CarTests`` tests the methods inside of ``Car``, we must add the 
+``Car`` project as a dependency of ``CarTests``.
 
-.. note::
+On a Mac, we right click on on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
+the ``Car`` project.
 
-   The versions of these packages may change before this text.
+.. figure:: ./figures/mac-add-dependency-reference.png
+   :alt: MAC: Add main project to as dependency for test project
 
-In this project, we call these external libraries **dependencies**. A dependency is a 
-separately developed program or piece of code that another program or piece of code 
-uses to carry it out its function. Our C# tests will *depend* on MSTest code. In 
-the future, as you build your own C# projects, you will likely include these 
-dependencies in a different fashion other than ``.jar`` files. Many C# projects 
-use a build automation tool to help manage dependencies. We'll begin using this kind
-of tool later in this course. Since we're not quite there yet, we've included the 
-``.jar`` files.
+   MAC: Add main project to as dependency for test project
 
-``main/Car`` and ``test/CarTest``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. TODO: add this on windows
+
+On a Windows:
+
+.. figure:: ./figures/windows-add-dependency-reference.png
+   :alt: WINDOWS: Add main project to as dependency for test project
+
+   WINDOWS: Add main project to as dependency for test project
+
+``Car`` and ``CarTests``
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Within ``org.launchcode.C#.demos``, open the ``testing`` directory. Inside ``testing``, you'll
 see a ``main`` directory and and ``test`` directory. Open the ``Car`` class within ``main`` and 

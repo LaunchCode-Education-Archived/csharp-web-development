@@ -6,12 +6,14 @@ for writing and executing unit tests in C#.
 
 .. _csharp-attributes:
 
+.. index:: ! TestClass, ! TestMethod
+
 C# Attributes
 -------------
 
 .. index:: ! attributes
 
-On the topic of unit testing, the attributes ``[TestClass]`` and ``[TestMethod]`` are used to 
+On the topic of unit testing, the attributes **[TestClass]** and **[TestMethod]** are used to 
 indicate that certain classes and methods should be treated as test cases for the test runner 
 in Visual Studio.
 
@@ -86,56 +88,54 @@ On a Windows:
 ``Car`` and ``CarTests``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within ``org.launchcode.C#.demos``, open the ``testing`` directory. Inside ``testing``, you'll
-see a ``main`` directory and and ``test`` directory. Open the ``Car`` class within ``main`` and 
-look around. Here, we provide a class ``Car`` with basic information about a make, model, 
-gas level, and mileage as well as getters, setters, and a few other methods. 
+Open the ``Car`` class within ``main`` and look around. Here, we provide a class ``Car`` with basic 
+information about a make, model, gas level, and mileage as well as getters, setters, and a few other methods. 
 
-In the same directory, you'll find a ``Main`` class with a main method that prints the
-``make`` and ``model`` of a given ``Car`` object. Run this class to verify it works.
-Now, open ``test/CarTest``. It's empty, save for a few TODOs. Let's tackle the
+In the same project, the ``Program`` class contains a main method that prints the
+``make`` and ``model`` of a given ``Car`` object. Run the project to verify it works.
+Now, open ``CarTests``. It's empty, save for a few TODOs. Let's tackle the
 first TODO to make a new empty test. Starting with an empty test lets us validate that we can 
 use MSTest in our current environment.
 
-``@Test``
----------
+.. index:: ! test runner
 
-Create the following empty test underneath the first TODO. As usual,
-be sure write this code rather than copy/paste it:
+``[TestClass]`` and ``[TestMethod]``
+------------------------------------
 
-.. sourcecode:: C#
-   :linenos:
+Another benefit of coding in an IDE, Visual Studio contains its own **test runner**. A test runner is 
+simply a tool to execute tests and deliver their results. In order to indicate that ``CarTests`` contains
+unit tests that we want the test runner to run, we must give it the ``[TestClass]`` attribute. As you might 
+guess, ``[TestMethod]`` annotates a method to signal it as a test case. Both of these attributes come to us 
+via the Visual Studio test runner.
 
-   //TODO: add emptyTest so we can configure our runtime environment
-   @Test
-   public void emptyTest() {
-      assertEquals(10,10,.001);
+In ``CarTests``, on top of ``public class CarTests``, add ``[TestClass]``. Then, create the following empty 
+test underneath the first TODO. As usual, be sure write this code rather than copy/paste it:
+
+.. sourcecode:: c#
+   :linenos: 
+
+   using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+   namespace CarTests
+   {
+      [TestClass]
+      public class CarTests
+      {
+         //TODO: add emptyTest so we can configure our runtime environment
+         [TestMethod]
+         public void EmptyTest() {
+            Assert.AreEqual(10,10,.001);
+         }
+         // ,,. other TODOs omitted here
+      }
    }
 
-Once written, you likely need to add these import statements at the top of your file:
-
-.. sourcecode:: C#
-   :linenos:
-
-   import org.MSTest.Test;
-   import static org.MSTest.Assert.assertEquals;
-
-.. note::
-
-   In some cases, IntelliJ may sense which testing library and method you want to 
-   use and add the import statements as you type. If this is the case, just make sure they
-   are the correct paths. Aren't :ref:`IDEs <install-intellij>` wonderful?
-
-As we mention above, ``@Test`` annotates the method to signal it as a test case. We need 
-to add the appropriate import statement in order to take advantage of this attribute. 
-
-Our empty test is aptly named ``emptyTest()``, a description of its role. This test does 
+Our empty test is aptly named ``EmptyTest()``, a description of its role. This test does 
 not follow the AAA rule from our :ref:`testing-best-practices`, as it jumps straight to 
 asserting. Nor is it relevant, for that matter. 
 
-Again, the IDE comes in handy, inserting the names of each of our parameters, 
-"expected:", "actual:", and "delta:". This empty test is simply asserting an 
-expected value of ``10`` to equal an actual value of ``10``, 
+The three arguments in our test care defined as "expected", "actual", and "delta". This empty test 
+asserts an expected value of ``10`` to equal an actual value of ``10``, 
 with an accepted ``.001`` variance. 
 
 .. admonition:: Note
@@ -153,6 +153,16 @@ with an accepted ``.001`` variance.
    `inaccuracy <https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems>`__. 
    In brief, the ``delta`` argument ensures we can still reasonably compare two doubles.
 
+.. admonition:: Tip
+
+   Visual Studio can offer info on the parameters of previously defined function.
+   Hover over the function call to see a tooltip:
+
+   .. figure:: ./figures/function-parameters-tooltip.png
+      :alt: Hover over a function to see its parameters
+
+      Hover over a function to see its parameters
+
 Of course, ``10`` equals ``10``. But let's run it so 
 we know our test runner works. Click the green arrow to the left of 
 ``public class CarTest`` to run the test. Once run, you'll see a new output panel with a 
@@ -163,7 +173,7 @@ testing the ``Car`` class.
 Under your second TODO, write a test to verify that the constructor sets the 
 ``gasTankLevel`` property.
 
-.. sourcecode:: C#
+.. sourcecode:: c#
    :linenos:
 
    //TODO: constructor sets gasTankLevel properly
@@ -177,7 +187,7 @@ Here, we give the test a descriptive name, ``testInitialGasTank()``, initialized
 ``Car`` object, and test that the constructor correctly handles the ``gasTankLevel`` property.
 By now, you've probably already imported the ``Car`` class.
 
-.. sourcecode:: C#
+.. sourcecode:: c#
 
    import org.launchcode.C#.demos.testing.main.Car;
 
@@ -198,7 +208,7 @@ create a new ``Car`` instance for each test we write.
 In your ``testInitialGasTank()`` method, remove the line initiating ``test_car``. 
 Above your first test, add the following ``@Before`` method:
 
-.. sourcecode:: C#
+.. sourcecode:: c#
    :linenos:
 
    Car test_car;
@@ -211,7 +221,7 @@ Above your first test, add the following ``@Before`` method:
 Did IntelliJ prompt you to import ``@Before``? Did it import the attribute as you were 
 writing the method? If not, add it:
 
-.. sourcecode:: C#
+.. sourcecode:: c#
 
    import org.MSTest.Before;
 

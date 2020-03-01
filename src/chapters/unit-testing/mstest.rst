@@ -163,116 +163,128 @@ with an accepted ``.001`` variance.
 
       Hover over a function to see its parameters
 
+   .. TODO: see if this is the same in windows
+
 Of course, ``10`` equals ``10``. But let's run it so 
-we know our test runner works. Click the green arrow to the left of 
-``public class CarTest`` to run the test. Once run, you'll see a new output panel with a 
-green check mark indicating the test passed and a message stating the test passed. We 
-know now how the test runner behaves when a test passes and begin the real work of unit 
-testing the ``Car`` class.
+we know our test runner works. Run the ``CarTests`` project just like you would any other project. 
+Once run, you'll see a new output panel with a green check mark indicating the test passed and a message 
+stating the test passed. 
+
+.. admonition:: Note
+
+   If the panel does not open once the test are finished running, look for the "Test Results" panel on
+   the side of your IDE and open it manually.
+
+   .. TODO: check what this looks like on windows
+
+We know now how the test runner behaves when a test passes and can begin the real work of unit 
+testing the ``Car`` class. To test the ``Car`` class, we must make it available to us by adding 
+``using CarNS;`` to the top of your file.
 
 Under your second TODO, write a test to verify that the constructor sets the 
-``gasTankLevel`` property.
+``gasTankLevel`` field.
 
 .. sourcecode:: c#
-   :linenos:
+   :lineno-start: 16
 
    //TODO: constructor sets gasTankLevel properly
-   @Test
-   public void testInitialGasTank() {
+   [TestMethod]
+   public void TestInitialGasTank()
+   {
       Car test_car = new Car("Toyota", "Prius", 10, 50);
-      assertEquals(10, test_car.getGasTankLevel(), .001);
+      Assert.AreEqual(10, test_car.GasTankLevel, .001);
    }
 
-Here, we give the test a descriptive name, ``testInitialGasTank()``, initialized a new 
-``Car`` object, and test that the constructor correctly handles the ``gasTankLevel`` property.
-By now, you've probably already imported the ``Car`` class.
-
-.. sourcecode:: c#
-
-   import org.launchcode.C#.demos.testing.main.Car;
+Here, we give the test a descriptive name, ``TestInitialGasTank()``, initialize a new 
+``Car`` object, and test that the constructor correctly sets the ``gasTankLevel`` field.
 
 Run ``CarTest`` to see that both tests pass. 
 
 .. tip::
 
-   If you want to run only one test, click the green arrow next to the test method's name.
+   If you want to rerun only one test, right click on its listing in the test results pane.
+   
+   ..TODO: check on windows
 
-``@Before``
------------
+.. index:: ! [TestInitialize]
 
-``@Before`` is another attribute we can use to help in test cases. The ``@Before``
-attribute can be used to set up some data or a condition that you want to have for 
-every test in a given class. In the case of ``CarTest``, it would be nice to not need to
-create a new ``Car`` instance for each test we write. 
+``[TestInitialize]``
+--------------------
 
-In your ``testInitialGasTank()`` method, remove the line initiating ``test_car``. 
-Above your first test, add the following ``@Before`` method:
+While ``[TestClass]`` and ``[TestMethod]`` are required to run tests, there are many other 
+attributes you may find useful as your test files grow in scope. One such item to know
+is **[TestInitialize]**. ``[TestInitialize]`` will run before each test method is run in a class. 
+
+In the case of ``CarTest``, it would be nice to not need to create a new ``Car`` instance for 
+each test we write. In your ``TestInitialGasTank()`` method, remove the line initiating ``test_car``. 
+Above your relevant test, add the following ``[TestInitialize]`` method:
 
 .. sourcecode:: c#
-   :linenos:
+   :lineno-start: 16
 
    Car test_car;
 
-   @Before
-   public void createCarObject() {
+   [TestInitialize]
+   public void CreateCarObject()
+   {
       test_car = new Car("Toyota", "Prius", 10, 50);
    }
 
-Did IntelliJ prompt you to import ``@Before``? Did it import the attribute as you were 
-writing the method? If not, add it:
+Now, run the test project and ensure your test still passes.
 
-.. sourcecode:: c#
+.. index:: ! [TestCleanup]
 
-   import org.MSTest.Before;
+``[TestCleanup]``
+----------------
 
-Now, run the test file and ensure your test still passes.
-
-``@After``
-----------
-
-``@After``, conversely, defines a set of conditions to be met after each test in a 
+``[TestCleanup]``, conversely, defines a set of conditions to be met after each test in a 
 suite is run. 
 
-.. note::
+.. admonition:: Note
 
-   A good or frequent use case for ``@After`` would be if you needed to test
-   some code that requires access to a database. Here, you could open the database 
-   connection with a ``@Before`` method and close the connection in an ``@After`` method.
+   We won't encounter a scenario where we ask you to use ``[TestCleanup]`` in this class. As you explore writing 
+   your own unit tests, you may find a yourself in a situation where you need or want it. One use case for 
+   ``[TestCleanup]`` might be testing database transactions. You don't want changes to a database to persist 
+   after test execution, so you can use ``[TestCleanup]`` to rollback, or reverse, a test transaction.
 
-Common Assertion Methods
-------------------------
 
-In addition to the very commonly used ``assertEquals()`` method
+Common ``Assert`` Methods
+-------------------------
+
+In addition to the very commonly used ``Assert.AreEqual()`` method
 you see above, here are a few other methods you should have in 
 your unit testing playbook.
 
-.. list-table:: MSTest4 Assertion Methods
+.. list-table:: MSTest Assert Methods
    :header-rows: 1
 
    + - Assertion
      - Description
-   + - ``assertEquals(expected, actual, optional_delta)``
+   + - ``AreEqual(expected, actual, optional_delta)``
      - Asserts that two values, expected and actual, are equal to each other (optionally, within a given range of difference)
-   + - ``assertFalse(condition)``
+   + - ``IsFalse(condition)``
      - Asserts that a given condition is false
-   + - ``assertTrue(condition)``
+   + - ``IsTrue(condition)``
      - Asserts that a given condition is true
-   + - ``assertNotNull(object)``
+   + - ``IsNotNull(object)``
      - Asserts that a given object is not null
+
+Checkout `the Assert class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert?redirectedfrom=MSDN&view=mstest-net-1.2.0>`__
+for a full listing.
 
 Check Your Understanding
 -------------------------
 
 .. admonition:: Question
 
-   Write another version of ``testInitialGasTank()`` using ``assertFalse()``, comparing the value to ``0``.
+   Write another version of ``TestInitialGasTank()`` using ``IsFalse()``, comparing the value to ``0``.
 
-.. ans: assertFalse(test_car.getGasTankLevel() == 0);
+.. ans: Assert.IsFalse(test_car.GasTankLevel == 0);
 
 .. admonition:: Question
 
-   Write another version of ``testInitialGasTank()`` using ``assertTrue()``.
+   Write another version of ``TestInitialGasTank()`` using ``IsTrue()``.
 
-..  ans: assertTrue(test_car.getGasTankLevel() == 10);
+..  ans: Assert.IsTrue(test_car.GasTankLevel == 10);
 
 

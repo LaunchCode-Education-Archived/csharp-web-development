@@ -70,8 +70,8 @@ long-term solution, for reasons that we point out below.
 
 The ``Job`` class introduces an object-oriented design to the application. It
 contains all of the fields you used in the console version of TechJobs:
-``name``, ``employer``, ``location``, ``positionType``, ``coreCompetency``.
-There’s also an ``id`` field which will be used to uniquely identify ``Job``
+``Name``, ``Employer``, ``EmployerLocation``, ``JobType``, ``JobCoreCompetency``.
+There’s also an ``Id`` field which will be used to uniquely identify ``Job``
 objects.
 
 The main difference between the object representation of a job and the
@@ -87,15 +87,15 @@ Open the ``Job`` class file. You’ll see the following fields (among others):
 .. sourcecode:: csharp
    :linenos:
 
-   private string name;
-   private Employer employer;
-   private Location location;
-   private PositionType positionType;
-   private CoreCompetency coreCompetency;
+   public string Name { get; set; }
+   public Employer EmployerName { get; set; }
+   public Location EmployerLocation { get; set; }
+   public PositionType JobType { get; set; }
+   public CoreCompetency JobCoreCompetency { get; set; }
 
-Of these, only ``name`` is a string. Sally created classes to represent each of
+Of these, only ``Name`` is a string. Sally created classes to represent each of
 the other properties. These classes---``Employer``, ``Location``,
-``CoreCompetency``, ``PositionType``---have ``value`` and ``id`` fields.
+``CoreCompetency``, ``PositionType``---have ``Value`` and ``Id`` fields.
 
 So, for example, if you had a ``Job`` instance, you could get the name of the
 employer this way:
@@ -106,8 +106,8 @@ employer this way:
    string employerName = job.GetEmployer().GetValue();
 
 Additionally, the ``ToString()`` method of the ``Employer`` class is set up to
-return the ``value`` field. Thus, using one of these objects in another string
-context like ``System.out.println`` will print the data stored in ``value``.
+return the ``Value`` field. Thus, using one of these objects in another string
+context like ``Console.WriteLine`` will print the data stored in ``value``.
 
 .. sourcecode:: csharp
 
@@ -118,7 +118,7 @@ Why do we go to all of this trouble when we could store this job-related data
 as strings? There are a couple of reasons.
 
 Eliminate Duplication of Data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In our app, we have multiple jobs that have the same value in a given field.
 For example, there are multiple jobs with position type “Web - Full Stack”, and
@@ -174,12 +174,11 @@ carefully as you solve each problem.
 #. Use inheritance to DRY the code within ``Employer``, ``Location``,
    ``CoreCompetency``, and ``PositionType``.
 
-1) Explore the ``Employer`` Class
-----------------------------------
+Explore the ``Employer`` Class
+------------------------------
 
 Open the ``Employer`` file in Visual Studio and examine the code. In addition to the
-two fields---``id`` and ``value``---the class includes the standard getters and
-setters as well as some custom methods like ``ToString`` and ``equals``.
+two fields---``Id`` and ``Value``---the class includes some custom methods like ``ToString`` and ``equals``.
 
 You can refer to these examples as you fill in the missing pieces in the other
 classes, but for now let's take a closer look at the constructors.
@@ -198,78 +197,68 @@ ID number.
       :linenos:
 
       public class Employer {
-         private int id;
+         public int Id { get; set; }
          private static int nextId = 1;
-         private String value;
+         public string Value { get; set; }
 
-         public Employer() {
-            id = nextId;
+         public Employer ()
+         {
+            Id = nextId;
             nextId++;
          }
 
-         public Employer(String aValue) {
-            this();
-            this.value = aValue;
+         public Employer (string value) : this()
+         {
+            Value = value;
          }
 
-         // Getters and setters omitted from this view.
+         // Additional methods omitted from this code block
       }
 
 #. Line 3 declares the variable ``nextId``. Since it is ``static``, its
    changing value is NOT stored within any ``Employer`` object.
-#. The first constructor (lines 6 - 9) accepts no arguments and assigns the
-   value of ``nextId`` to the ``id`` field. It then increments ``nextId``.
+#. The first constructor (lines 6 - 10) accepts no arguments and assigns the
+   value of ``nextId`` to the ``Id`` field. It then increments ``nextId``.
    Thus, every new ``Employer`` object will get a different ID number.
-#. The second constructor (lines 11 - 14) assigns ``aValue`` to the ``value``
-   field. However, it ALSO initializes ``id`` for the object by calling the
-   first constructor with the ``this();`` statement. Including ``this();`` in
+#. The second constructor (lines 12 - 15) assigns ``value`` to the ``Value``
+   field. However, it ALSO initializes ``Id`` for the object by calling the
+   first constructor statement with the `` : this()`` syntax. Including ``this()`` in
    any ``Employer`` constructor makes initializing ``id`` a default behavior.
 
-2) Complete the Support Classes
---------------------------------
+.. admonition:: Tip
+
+   By adding ``: this()`` to the signature of the second ``Employer`` constructor, we are using a new technique called constructor chaining.
+   For more info on how this chaining technique works, check out this `blog <https://www.codecompiled.com/csharp/constructor-chaining-c/>`_!
+
+Complete the Support Classes
+----------------------------
 
 Sally needs you to build up the remaining classes. In each case, refer to the
 ``Employer`` class for hints on how to structure your code.
 
 The ``Location`` Class
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 Open the ``Location.cs`` file. Note that the getters, setters, and custom
 methods for this class are done, as is the constructor for initializing the
-``id`` field.
+``Id`` field.
 
 Sally left you a ``TODO`` comment with instructions for coding a second
 constructor:
 
-#. It should call the first constructor to initialize the ``id`` field.
-#. It must also initialize the ``value`` field for a new ``Location`` object.
+#. It should call the first constructor to initialize the ``Id`` field.
+#. It must also initialize the ``Value`` field for a new ``Location`` object.
 
 .. _generator-shortcut:
 
 The ``CoreCompetency`` Class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open the class file. In this case, the constructors and custom methods are
-ready. Sally needs you to complete the somewhat tedious task of writing the
-getters and setters for the ``id`` and ``value`` fields, but NOT for
-``nextID``.
-
-Fortunately, Visual Studio has a tool to help with this:
-
-#. Since the unique value of ``id`` is set with the constructors, we only need
-   to add a getter for this field. Select *Generate* again and use the
-   *Getter* option for ``id``.
-
-.. admonition:: Note
-
-   Want to use fewer clicks? You could always *Generate* getters and setters
-   for both ``id`` and ``value``, and then delete the ``setID`` method.
-
-   Be careful, though. If you forget to remove ``setID``, then users can change
-   the ``id`` value, which may cause problems in the program.
+ready. Sally needs you to change the ``Id`` and ``Value`` fields to auto-implemented properties, but NOT ``nextId``.
 
 The ``PositionType`` Class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open the class file. This time the constructors, getters, and setters are done.
 Sally's comments direct you to where you need to add the custom methods.
@@ -286,44 +275,42 @@ Sally's comments direct you to where you need to add the custom methods.
 
    Now would be a good time to save, commit, and push your work up to GitHub.
 
-3) Complete the ``Job`` Class
------------------------------
+Complete the ``Job`` Class
+--------------------------
 
 Now open the ``Job`` file. OOF! There are a lot of fields declared and not much
 else.
 
-#. Code a constructor to initialize the ``id`` field with a unique value. This
+#. Code a constructor to initialize the ``Id`` field with a unique value. This
    constructor should take no parameters.
 #. Code a second constructor that takes 5 parameters and assigns values to
-   ``name``, ``employer``, ``location``, ``positionType``, and
-   ``coreCompetency``. Also, this constructor should call the first in order to
-   initialize the ``id`` field.
-#. Generate getters and setters for each field EXCEPT ``nextID`` and ``id``.
-#. Generate a getter for the ``id`` field.
+   ``Name``, ``Employer``, ``EmployerLocation``, ``JobType``, and
+   ``JobCoreCompetency``. Also, this constructor should call the first in order to
+   initialize the ``Id`` field.
 #. Generate the ``Equals`` and ``GetHashCode`` methods. Consider two ``Job``
-   objects equal when their id fields match.
+   objects equal when their ``Id`` fields match.
 
 .. admonition:: Tip
 
    Save, commit, and push your work to GitHub.
 
-4) Use Unit Testing to Verify Parts of the ``Job`` Class
---------------------------------------------------------
+Use Unit Testing to Verify Parts of the ``Job`` Class
+-----------------------------------------------------
 
 Instead of manually creating sample ``Job`` objects to verify that your class
 works correctly, you will use unit tests instead.
 
-Create a new package inside the ``techjobs_oo`` folder called ``Tests``, then
-create a new class inside this folder called ``JobTest``. The file will
+Create a new project inside the ``csharp-web-dev-techjobs-oo`` solution called ``TechJobsTests``, then
+rename the existing class inside this folder to ``JobTests.cs``. The file will
 hold all of the tests for the ``Job`` class.
 
 Test the Empty Constructor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each ``Job`` object should contain a unique ID number, and these should also be
 sequential integers.
 
-#. In ``JobTest``, define a test called ``testSettingJobId``.
+#. In ``JobTests``, define a test called ``testSettingJobId``.
 #. Create two ``Job`` objects using the empty constructor.
 
    .. admonition:: Note
@@ -331,14 +318,14 @@ sequential integers.
       Instead of creating the ``Job`` objects inside the test method, you could
       declare and initialize them.
 
-#. Use ``assertEquals``, ``assertTrue``, or ``assertFalse`` to test that the
+#. Use ``Assert.AreEqual``, ``Assert.IsTrue``, or ``Assert.IsFalse`` to test that the
    ID values for the two objects are NOT the same and differ by 1.
 #. Run the test to verify that your ``Job()`` constructor correctly assigns
    ID numbers.
 #. If the test doesn't pass, what should be your first thought?
 
-   a. "Drat! I need to fix the unit test."
-   b. "Drat! I need to fix my ``Job()`` constructor code."
+   a. "I need to fix the unit test."
+   b. "I need to fix my ``Job()`` constructor code."
 
    .. admonition:: Warning
 
@@ -352,9 +339,9 @@ sequential integers.
 Test the Full Constructor
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each ``Job`` object should contain six fields---``id``, ``name``, ``employer``,
-``location``, ``positionType``, and ``coreCompetency``. The data types for
-these fields are ``int``, ``String``, ``Employer``, ``Location``,
+Each ``Job`` object should contain six fields---``Id``, ``Name``, ``Employer``,
+``EmployerLocation``, ``JobType``, and ``JobCoreCompetency``. The data types for
+these fields are ``int``, ``string``, ``Employer``, ``Location``,
 ``PositionType``, and ``CoreCompetency``, respectively.
 
 #. In ``JobTest``, define a test called
@@ -365,17 +352,17 @@ these fields are ``int``, ``String``, ``Employer``, ``Location``,
 
       new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-#. Use ``assert`` statements to test that the constructor correctly assigns the
+#. Use ``Assert`` statements to test that the constructor correctly assigns the
    class and value of each field.
 
    .. admonition:: Tip
 
-      The ``instanceof`` keyword can be used to check the class of an object.
+      The ``is`` keyword can be used to check the class of an object.
       The result of the comparison is a boolean.
 
       .. sourcecode:: csharp
 
-         objectName instanceof ClassName
+         objectName is ClassName VariableName
 
 Test the ``Equals`` Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -387,13 +374,13 @@ identical.
 
 #. In ``JobTest``, define a test called ``testJobsForEquality``.
 #. Generate two ``Job`` objects that have identical field values EXCEPT for
-   ``id``. Test that ``equals`` returns ``false``.
+   ``Id``. Test that ``Equals`` returns ``false``.
 
 It might seem logical to follow up the ``false`` case by testing to make sure
-that ``equals`` returns ``true`` when two objects have the same ID. However,
+that ``Equals`` returns ``true`` when two objects have the same ID. However,
 the positive test is irrelevant in this case.
 
-The way you built your ``Job`` class, each ``id`` field gets assigned a unique
+The way you built your ``Job`` class, each ``Id`` field gets assigned a unique
 value, and the class does not contain a ``setId`` method. You also verified
 that each new object gets a different ID when you tested the constructors.
 Without modifying the constructors or adding a setter, there is no scenario in
@@ -404,14 +391,14 @@ test for this condition.
 
    Time to save, commit, and push your work to GitHub again.
 
-5) Use TDD to Build The ``toString`` Method
--------------------------------------------
+Use TDD to Build The ``ToString`` Method
+----------------------------------------
 
 To display the data for a particular ``Job`` object, you need to implement a
 custom ``ToString`` method. Rather than creating this method and then testing
 it, you will flip that process using TDD.
 
-Create First Test for ``toString``
+Create First Test for ``ToString``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before writing your first test, consider how we want the method to behave:
@@ -432,10 +419,10 @@ Before writing your first test, consider how we want the method to behave:
 
 #. If a field is empty, the method should add, "Data not available" after
    the label.
-#. (Bonus) If a ``Job`` object ONLY contains data for the ``id`` field, the
+#. (Bonus) If a ``Job`` object ONLY contains data for the ``Id`` field, the
    method should return, "OOPS! This job does not seem to exist."
 
-In ``JobTest``, add a new test to check the first requirement, then run
+In ``JobTests``, add a new test to check the first requirement, then run
 that test (it should fail).
 
 Woo hoo! Failure is what we want here! Now you get to fix that.
@@ -443,14 +430,14 @@ Woo hoo! Failure is what we want here! Now you get to fix that.
 Code ``toString`` to Pass the First Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the ``Job`` class, create a ``toString`` method that passes the first test.
+In the ``Job`` class, create a ``ToString`` method that passes the first test.
 Since the test only checks if the returned string starts and ends with a blank
 line, make that happen.
 
 .. admonition:: Tip
 
    Do NOT add anything beyond what is needed to make the test pass. You will
-   add the remaining behaviors for ``toString`` as you code each new test.
+   add the remaining behaviors for ``ToString`` as you code each new test.
 
 Finish the TDD for ``ToString``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -464,8 +451,8 @@ Finish the TDD for ``ToString``
 
 Cool! Your ``Job`` class is now complete and operates as desired.
 
-6) Refactor to DRY the Support Classes
---------------------------------------
+Refactor to DRY the Support Classes
+-----------------------------------
 
 Review the code in the ``Employer``, ``Location``, ``CoreCompetency``, and
 ``PositionType`` classes. What similarities do you see?
@@ -489,12 +476,10 @@ this common code.
 
    a. What fields do ALL FOUR of the classes have in common?
    b. Which constructors are the same in ALL FOUR classes?
-   c. What getters and setters do ALL of the classes share?
-   d. Which custom methods are identical in ALL of the classes?
+   c. Which custom methods are identical in ALL of the classes?
 
 #. In ``JobField``, declare each of the common fields.
 #. Code the constructors.
-#. Use *Generate* to create the appropriate getters and setters.
 #. Add in the custom methods.
 #. Finally, to prevent the creation of a ``JobField`` object, make this class
    *abstract*.
@@ -511,15 +496,14 @@ modify the other classes to reference this shared code. Let's begin with
    .. sourcecode:: csharp
       :lineno-start: 5
 
-      public class Employer extends JobField {
+      public class Employer : JobField {
 
          //Code not displayed.
 
       }
 
 #. Next, remove any code in ``Employer`` that matches code from ``JobField``
-   (e.g. the ``id``, ``value``, and ``nextId`` fields are shared).
-#. Remove any of the getters and setters that are the same.
+   (e.g. the ``Id``, ``Value``, and ``nextId`` fields are shared).
 #. Remove any of the custom methods that are identical.
 #. The empty constructor is shared, but not the second. Replace the two
    constructors with the following:
@@ -531,12 +515,12 @@ modify the other classes to reference this shared code. Let's begin with
         super(value);
       }
 
-   The ``extends`` and ``super`` keywords link the ``JobField`` and
+   The ``:`` and ``super`` keywords link the ``JobField`` and
    ``Employer`` classes.
 #. Rerun your unit tests to verify your refactored code.
 
 Finish DRYing Your Code
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Repeat the process above for the ``Location``, ``CoreCompetency``, and
    ``PositionType`` classes.
@@ -554,7 +538,7 @@ Once you finish all of the tasks outlined above, all that remains is to check
 the console display.
 
 Sally has provided some commented-out code in ``Main`` that prints out a small
-List of ``Job`` objects. Go ahead and activate this code and run it.
+list of ``Job`` objects. Go ahead and activate this code and run it.
 Properly done, your output should look something like:
 
 ::

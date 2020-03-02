@@ -23,11 +23,6 @@ directly affect the code they annotate, but they do supply information to the co
 An attribute is enclosed in square brackets, ``[]``, and placed above the item it decorates. 
 We will provide an example in the walkthrough below.
 
-
-.. TODO: add creating test project details here. 
-   use https://docs.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2019 
-   for reference.
-
 Testing Setup
 -------------
 
@@ -36,9 +31,8 @@ Testing Setup
 To test a simple .NET Core console project, we add a test project into the same solution with 
 an MSTest dependency.
 
-.. TODO: add repo link
 
-Fork and clone `this repo <csharp-web-dev-lsn5unittesting>`__. Inside the solution, we have two projects,
+Fork and clone `this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5unittesting>`__. Inside the solution, we have two projects,
 ``Car`` and ``CarTests``. The ``Car`` project is a simple .NET Console app like the others you have encountered
 in this course so far. And ``CarTests`` is a new type of project, MSTest Project. 
 
@@ -48,9 +42,6 @@ On a Mac, to select this type of project looks like so:
    :alt: MAC: Create MSTest project
 
    MAC: Creating MSTest project in Visual Studio
-
-
-.. TODO: add this on windows
 
 On a Windows:
 
@@ -67,23 +58,13 @@ uses to carry it out its function. Our C# tests will *depend* on MSTest code.
 Along the same lines, since ``CarTests`` tests the methods inside of ``Car``, we must add the 
 ``Car`` project as a dependency of ``CarTests``.
 
-On a Mac, we right click on on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
+Right click on on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
 the ``Car`` project.
 
-.. figure:: ./figures/mac-add-dependency-reference.png
-   :alt: MAC: Add main project to as dependency for test project
+.. figure:: ./figures/vs-add-dependency-reference.png
+   :alt: Add main project as dependency for test project
 
-   MAC: Add main project to as dependency for test project
-
-
-.. TODO: add this on windows
-
-On a Windows:
-
-.. figure:: ./figures/windows-add-dependency-reference.png
-   :alt: WINDOWS: Add main project to as dependency for test project
-
-   WINDOWS: Add main project to as dependency for test project
+   Add main project as dependency for test project
 
 ``Car`` and ``CarTests``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -163,19 +144,47 @@ with an accepted ``.001`` variance.
 
       Hover over a function to see its parameters
 
-   .. TODO: see if this is the same in windows
-
 Of course, ``10`` equals ``10``. But let's run it so 
-we know our test runner works. Run the ``CarTests`` project just like you would any other project. 
-Once run, you'll see a new output panel with a green check mark indicating the test passed and a message 
-stating the test passed. 
+we know our test runner works. 
+
+Mac Users: Running Tests
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+For Mac users, run the ``CarTests`` project just like you would any other project. 
 
 .. admonition:: Note
 
-   If the panel does not open once the test are finished running, look for the "Test Results" panel on
+   If the panel does not open once the test are finished running, look for the *Test Results* panel on
    the side of your IDE and open it manually.
 
-   .. TODO: check what this looks like on windows
+Windows Users: Running Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For Windows users, you'll want to find and open the *Test Explorer* panel. If you don't already have it docked, 
+you can find it listed in the top *Test* menu. 
+
+.. figure:: ./figures/vs-windows-test-explorer.png
+      :alt: WINDOWS: Visual Studio open Test Explorer
+
+      WINDOWS: Visual Studio open Test Explorer
+
+With the panel open, select the *Run All Tests* option.
+
+.. admonition:: Note
+
+   If you see that the test fails to run, neither passing nor failing, you may need to adjust a setting to use
+   64bit processing.
+
+   .. figure:: ./figures/vs-windows-process-architecture-setting.png
+      :alt: WINDOWS: Set Test Explorer to use x64 process
+
+      WINDOWS: Set Test Explorer to use x64 process
+
+All Users: Output and Adding More Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once run, you'll see a new output panel with a green check mark indicating the test passed and a message 
+stating the test passed. 
 
 We know now how the test runner behaves when a test passes and can begin the real work of unit 
 testing the ``Car`` class. To test the ``Car`` class, we must make it available to us by adding 
@@ -200,11 +209,10 @@ Here, we give the test a descriptive name, ``TestInitialGasTank()``, initialize 
 
 Run ``CarTest`` to see that both tests pass. 
 
-.. tip::
+.. admonition:: Tip
 
-   If you want to rerun only one test, right click on its listing in the test results pane.
-   
-   ..TODO: check on windows
+   If you want to rerun only one test, right click on its listing in the results pane.
+
 
 .. index:: ! [TestInitialize]
 
@@ -235,7 +243,7 @@ Now, run the test project and ensure your test still passes.
 .. index:: ! [TestCleanup]
 
 ``[TestCleanup]``
-----------------
+-----------------
 
 ``[TestCleanup]``, conversely, defines a set of conditions to be met after each test in a 
 suite is run. 

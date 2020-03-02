@@ -164,9 +164,9 @@ For Windows users, you'll want to find and open the *Test Explorer* panel. If yo
 you can find it listed in the top *Test* menu. 
 
 .. figure:: ./figures/vs-windows-test-explorer.png
-      :alt: WINDOWS: Visual Studio open Test Explorer
+   :alt: WINDOWS: Visual Studio open Test Explorer
 
-      WINDOWS: Visual Studio open Test Explorer
+   WINDOWS: Visual Studio open Test Explorer
 
 With the panel open, select the *Run All Tests* option.
 
@@ -179,6 +179,11 @@ With the panel open, select the *Run All Tests* option.
       :alt: WINDOWS: Set Test Explorer to use x64 process
 
       WINDOWS: Set Test Explorer to use x64 process
+
+   You may also need to update some of the testing packages. Right click on the 
+   ``CarTests`` project and select *Manage NuGet Packages...*. If you see some items
+   in the *Update* section of the panel that opens, run the updates. Close and reopen 
+   the *Team Explorer* panel and *Visual Studio* to ensure the changes are applied.
 
 All Users: Output and Adding More Tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

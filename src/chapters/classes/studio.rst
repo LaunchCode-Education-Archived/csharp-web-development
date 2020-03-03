@@ -55,3 +55,8 @@ In Visual Studio, create a new project, ``RestaurantMenu``.
 Add the ``Menu`` and ``MenuItem`` classes and code the
 design that you created above. Be sure to add getters and setters as
 appropriate.
+
+Commit Your Work
+----------------
+
+Create a repository on your Github account and push up your project.

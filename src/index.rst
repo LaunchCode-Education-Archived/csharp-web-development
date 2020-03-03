@@ -26,6 +26,7 @@ Studios
 
    chapters/data-types/studio
    chapters/control-flow-and-collections/studio
+   chapters/classes/studio
    chapters/classes-part2/studio
 
 Assignments

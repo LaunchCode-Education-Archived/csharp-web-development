@@ -11,3 +11,5 @@ Classes in C#, Part 1
    constructors
    methods
    srp
+   exercises
+   studio

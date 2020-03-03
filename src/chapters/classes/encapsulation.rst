@@ -4,7 +4,7 @@ Encapsulation
 Our discussion of classes and objects is integral to us using **object-oriented programming**.
 Object-oriented programming stands on four pillars: abstraction, encapsulation, inheritance, and polymorphism.
 
-.. index:: ! encapsulation, ! instance variable
+.. index:: ! encapsulation
 
 Encapsulation
 -------------
@@ -69,18 +69,8 @@ student).
    int numberOfCredits = 0;
    double gpa = 0.0;
 
-.. index:: ! instance variable
-
-Fields are also referred to as **instance variables**, since they belong
-to an instance of a class.
-
-.. index:: ! accessor, ! getter, ! setter, ! auto-implemented property, ! backing field
-
-Getters and Setters
-^^^^^^^^^^^^^^^^^^^
-
-As declared, our four fields are private, which means that they are inaccessible 
-to code outside of the ``Student`` class. As a
+Class members default to ``private`` if no access modifier is provided. This means 
+that our ``Student`` fields are inaccessible to code outside of the ``Student`` class. As a
 rule-of-thumb, *fields should always be private unless you have a very,
 very, very good reason to not make them so.* As we mention on the previous page, it is 
 best practice to think carefully about what access to give fields and methods. So, let’s 
@@ -91,11 +81,17 @@ explicitly declare our fields to be private.
 
    public class Student 
    {
-       private string name;
-       private int studentId;
-       private int numberOfCredits = 0;
-       private double gpa = 0.0;
+      private string name;
+      private int studentId;
+      private int numberOfCredits = 0;
+      private double gpa = 0.0;
    }
+
+
+.. index:: ! accessor, ! getter, ! setter, ! auto-implemented property, ! backing field
+
+Getters and Setters
+^^^^^^^^^^^^^^^^^^^
 
 In order to provide access to private fields, **getter and setter methods** 
 are used. Getters and setters do what you might guess: get and
@@ -147,12 +143,12 @@ private if you’re just going to allow people to get and set them
 anyway!?” Great question. There are lots of reasons to use getters and
 setters to control access. Here are just a few:
 
-1. Sometimes, you’ll want to implement behavior that happens every time a
-   field is accessed (get) or changed (set). Even if you can’t think of
-   such a reason when writing your class, you might later have the need
-   to add such behavior. If you don’t use getters and setters, you’ll
-   have to do a lot more refactoring if you ever decide to add such
-   behaviors.
+1. Getters and setters allow you to implement behavior that happens every time a
+   field is accessed (get) or changed (set). For example, you may want track the 
+   number of times a change is made to a field. With a private field and setter
+   method, this can be done simply by incrementing a counter variable (e.g. ``i++``.)
+   With a publicly available field, the steps to track its changes would be much more diffuse,
+   if not error-prone.
 2. You can perform validation within a setter. For example, we might
    want to ensure that a student’s name contains only certain
    characters, or that their student ID is positive.

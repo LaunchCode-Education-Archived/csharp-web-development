@@ -12,3 +12,4 @@ Classes in C#, Part 1
    methods
    srp
    exercises
+   studio

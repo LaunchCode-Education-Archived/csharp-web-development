@@ -4,14 +4,17 @@ Studio: Unit Testing
 ====================
 
 For this studio, you will be writing unit tests to help you find 
-errors in provided code.
+errors in the ``BalancedBrackets.cs`` file in the starter code.
+
+Discuss with your fellow students and TA how the given class should behave.
+What are some examples of input? What would the desired output be for each input?
 
 Getting Started
 ---------------
 
-#. Fork and clone the `studio repository <https://github.com/LaunchCodeEducation/>`__.
+#. Fork and clone the `studio repository <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5-studio>`__.
 #. In Visual Studio, check out your repository.
-#. Write unit tests to find the errors in ``BalancedBrackets``.
+#. Write unit tests to find the errors in ``BalancedBrackets.cs``.
    
    a. The tests you write should guide how you revise the sourcecode. Use TDD to 
       first write tests that will work for the desired behavior of ``BalancedBrackets``.
@@ -36,12 +39,6 @@ Getting Started
    ``BalancedBrackets`` is essentially a wrapper class for a method. And 
    because it's only method is static, we don't need to create an instance
    to test ``HasBalancedBrackets()``.
-   
-.. tip::
-
-   Discuss with your fellow students and TA how the  
-   class should behave. What are some examples of input, and 
-   what would the desired output be for each input?
 
 Uploading Your Work
 -------------------

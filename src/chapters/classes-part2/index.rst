@@ -8,3 +8,6 @@ Classes and Objects, Part 2
    instance-and-static-methods
    special-methods
    equals-shortcut
+   exercises
+   studio
+   

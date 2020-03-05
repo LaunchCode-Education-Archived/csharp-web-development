@@ -1,5 +1,5 @@
-Classes Part 2
-==============
+Classes and Objects, Part 2
+===========================
 
 .. toctree:: 
    :maxdepth: 3

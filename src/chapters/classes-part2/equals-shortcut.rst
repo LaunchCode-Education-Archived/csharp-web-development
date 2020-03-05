@@ -10,13 +10,13 @@ Let’s use a Course class to demonstrate:
    :linenos:
 
    public class Course
-    {
-            public string Topic { get; set; }
-            public Teacher Instructor { get; set; }
-            public List<Student> enrolledStudents { get; set; }
-    }
+   {
+      public string Topic { get; set; }
+      public Teacher Instructor { get; set; }
+      public List<Student> enrolledStudents { get; set; }
+   }
 
-#. In Visual Studio, right-click on the class name and select *Quick Fix* from the menu.
+#. In Visual Studio, right-click on the class name and select *Quick Fix* for Mac users or *Quick Actions and Refactorings* for Windows users from the menu.
 
    .. figure:: figures/select-quick-fix.png
       :alt: Screenshot showing the Quick Fix option at the top of the menu when one right-clicks on the class name.
@@ -40,25 +40,25 @@ Let’s use a Course class to demonstrate:
 
       public class Course
       {
-            public string Topic { get; set; }
-            public Teacher Instructor { get; set; }
-            public List<Student> enrolledStudents { get; set; }
+         public string Topic { get; set; }
+         public Teacher Instructor { get; set; }
+         public List<Student> enrolledStudents { get; set; }
 
-            public override bool Equals(object obj)
-            {
-                return obj is Course course &&
-                   Topic == course.Topic &&
-                   EqualityComparer<Teacher>.Default.Equals(Instructor, course.Instructor);
-            }
+         public override bool Equals(object obj)
+         {
+            return obj is Course course &&
+               Topic == course.Topic &&
+               EqualityComparer<Teacher>.Default.Equals(Instructor, course.Instructor);
+         }
 
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(Topic, Instructor);
-            }
+         public override int GetHashCode()
+         {
+            return HashCode.Combine(Topic, Instructor);
+         }
       }
 
 In order to gain an understanding at what Visual Studio just did for us, review the section on the :ref:`Equals() method <equals-method>` and take note of the following lines of code in the code block above.
-Visual Studio's method does not necessarily look similar to the ones we wrote previously.
+While the behavior of code is the same as the various implementations of the ``Equals()`` methods on the previous page, Visual Studio's method does not necessarily look similar to the ones we wrote before.
 
 #. On line 9, we see some new syntax. With ``is``, the compiler confirms that it is possible to cast ``obj`` to a variable ``course`` of type ``Course``. If it is, the value of ``course`` is set to ``obj``. All in one line!
 #. On line 10, the value of ``course.Topic`` and ``Topic`` is compared for equality.

@@ -103,12 +103,11 @@ to consider two ``Student`` objects equal if they have the same name, email, or
 student ID.
 
 The ``Equals()`` method determines if one object is equal to another in this
-sense. We introduced the method when discussing strings, but it also applies to
-all other classes.
+sense. We introduced the method when discussing strings as it is a method on the object class and ``String`` is the object class in C#.
 
 The code below shows how to use ``Equals()`` to compare two students. Note that
 they have different names but the same student ID, indicating they are
-actually the same person.
+actually the same student by our definition above.
 
 .. sourcecode:: csharp
    :linenos:
@@ -126,9 +125,9 @@ considers two objects equal if they are the *exact same object*, which means
 they point to the same memory address. This is identical to the behavior we see
 when using the ``==`` operator: ``bono1 == bono2``.
 
-In the example above we created two different ``Student`` objects, so the
+In the example above, we created two different ``Student`` objects, so the
 expression ``bono1.Equals(bono2)`` evaluates to ``false``. In order to compare
-two objects based on their *properties*, rather than their memory references,
+two objects based on their *fields*, rather than their memory references,
 we need to define our own ``Equals()`` method.
 
 The difference between the comparison carried out by the default ``Equals()``
@@ -144,7 +143,7 @@ classes, is the difference between *identity* and *equality*.
    addresses, but their values are all the same. Thus, we can consider them
    equal, even though they are not identical.
 
-.. index:: ! overriding
+.. index:: ! overriding, ! cast
 
 The default ``Equals()`` method and the ``==`` operator test for *identity*,
 whereas we want to test for *equality* instead. We can do so by **overriding**
@@ -162,7 +161,7 @@ write a new method definition for ``Equals()`` as follows:
 
    public boolean Equals(Object toBeCompared) {
       Student theStudent = (Student) toBeCompared;
-      return theStudent.getStudentId() == getStudentId();
+      return theStudent.GetStudentId() == GetStudentId();
    }
 
 Now if we evaluate ``bono1.Equals(bono2)`` we will get a result of true,
@@ -239,10 +238,10 @@ Problem #2
 
 ``toBeCompared`` might be ``null``.
 
-If ``toBeCompared`` is ``null`` then ``toBeCompared.GetType()`` throws an
+If ``toBeCompared`` is ``null``, then ``toBeCompared.GetType()`` throws an
 exception. This is an easy issue to fix---just compare the object to ``null``.
 If the comparison evaluates to ``true``, then we know the object is null and
-``equals()`` should return ``false``.
+``Equals()`` should return ``false``.
 
 .. sourcecode:: csharp
    :linenos:
@@ -332,13 +331,13 @@ characteristics.
 #. **Transitivity:** For any non-null reference values ``x``, ``y``, and
    ``z``, if ``x.Equals(y)`` returns ``true`` and ``y.Equals(z)``
    returns ``true``, then ``x.Equals(z)`` should return ``true``.
-#. **Consistency:** As long as ``x`` and ``y`` do not change
+#. **Consistency:** As long as ``x`` and ``y`` do not change,
    ``x.Equals(y)`` should always return the same result.
 #. **Non-null:** For any non-null reference value ``x``,
    ``x.Equals(null)`` should return ``false``.
 
 If you think back to what your math classes had to say about equality, then
-these concepts make sense.
+these concepts will feel familiar.
 
 Using the general approach outlined above to implement ``Equals()`` will
 make it easier to meet these characteristics. However, always check your
@@ -347,10 +346,11 @@ applications.
 
 .. admonition:: Tip
 
-   Seasoned C# developers will tell you that every time you implement your own version of ``Equals()`` you should also implement your own version of ``GetHashCode()``.
+   Seasoned C# developers, will tell you that every time you implement your own version of ``Equals()`` you should also implement your own version of ``GetHashCode()``.
    ``GetHashCode()`` is another special method that every class has.
    Understanding ``GetHashCode()`` would take us a bit far afield at this point, but we would be remiss to not mention it.
    If you want to read more, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netframework-4.8>`_ on the ``GetHashCode()`` method and this `Stack Overflow discussion <https://stackoverflow.com/questions/371328/why-is-it-important-to-override-gethashcode-when-equals-method-is-overridden>`_.
+   We will cover how to override ``Equals()`` and ``GetHashCode()`` in the next section using some fun shortcuts in Visual Studio.
 
 
 Take Away
@@ -361,11 +361,10 @@ create. However, as a new C# programmer, remember the following:
 
    Always use ``Equals()`` to compare objects.
 
-This is especially true when working with objects of types provided by Java,
+This is especially true when working with objects of types provided by C#,
 such as ``String``. A class that is part of C# or a third-party library will
 have implemented ``Equals()`` in a way appropriate for the particular class,
-whereas ``==`` will only check to see if two variables refer to the same
-literal object.
+whereas ``==`` will only check to see if two variables refer to the same reference location.
 
 Check Your Understanding
 -------------------------

@@ -7,7 +7,7 @@ explored how to access and modify the values of those fields.
 Now, we will explore several ways to configure fields based on their intended
 use.
 
-.. index:: ! readonly field
+.. index:: ! readonly field, ! readonly
 
 Readonly Fields
 ---------------
@@ -16,12 +16,12 @@ A **readonly field** is one that cannot be changed once it is initialized. This
 means slightly different things for primitive and class types. We create readonly
 fields by declaring them with the ``readonly`` keyword.
 
-We cannot change the value of a **readonly primitive field** (``readonly int``,
+We cannot change the value of a ``readonly`` field (``readonly int``,
 ``readonly double``, etc.) after it is initialized.
 
-Similarly, we cannot assign a new object to a **readonly object field**
+Similarly, we cannot assign a new object to a ``readonly`` field
 (``readonly ClassName``, for example) after
-initialization. However, we can change the values within the object itself.
+initialization. However, because objects are reference types and not value types, we can change the values within the object itself.
 
 Here are some examples to illustrate. Each class would normally be in its own
 file, but we present them side-by-side for convenience. Additionally, we
@@ -30,42 +30,50 @@ demonstrate where compiler errors would occur.
 
 .. admonition:: Examples
 
+   In addition to ``Program.cs``, we have two classes in a ``FinalFields`` project, ``FinalFields`` and ``FortyTwo``.
+
+   ``FortyTwo`` contains one declaration:
+
+   .. sourcecode:: csharp
+
+      public int IntValue = 42;
+
+   ``FinalFields`` contains three declarations:
+
+   .. sourcecode:: csharp
+
+      public readonly int IntValue = 42;
+      public readonly double DoubleValue;
+      public readonly FortyTwo ObjectValue = new FortyTwo();
+
+   Let's see what happens when we try to reassign values to our ``readonly`` fields in ``Program.cs``.
+
    .. sourcecode:: csharp
       :linenos:
 
-      public class FortyTwo {
+      class Program
+      { 
+         static void Main(string[] args)
+         {
+            FinalFields Demo = new FinalFields();
 
-         public int intValue = 42;
+            // This would result in a compiler error because IntValue has already been initialized.
+            Demo.IntValue = 6;
 
-      }
+            // This isn't allowed since we didn't initialize DoubleValue in the class declaration.
+            Demo.DoubleValue = 42.0;
 
-      public class FinalFields {
-
-         public readonly int intValue = 42;
-         public readonly double doubleValue;
-         public readonly FortyTwo objectValue = new FortyTwo();
-
-         public static void main(String[] args) {
-
-            FinalFields demo = new FinalFields();
-
-            // This would result in a compiler error
-            demo.intValue = 6;
-
-            // This is allowed since we haven't initialized doubleValue yet
-            demo.doubleValue = 42.0;
-
-            // However, this would result in a compiler error
-            demo.doubleValue = 6.0;
+            // This would result in a compiler error.
+            Demo.DoubleValue = 6.0;
 
             // This would result in a compiler error, since we're trying to
-            // give objectValue a different object value
-            demo.objectValue = new FortyTwo();
+            // give objectValue a different object value.
+            Demo.ObjectValue = new FortyTwo();
 
             // However, this is allowed since we're changing a field
             // inside the final object, and not changing which object
-            // objectValue refers to
-            demo.objectValue.intValue = 6;
+            // objectValue refers to.
+            Demo.ObjectValue.IntValue = 6;
          }
       }
 
@@ -83,54 +91,41 @@ it is declared with the ``static`` keyword.
 
 For example, in our ``Temperature`` class there is no reason for each
 ``Temperature`` object to hold its own copy of the double
-``absoluteZeroFahrenheit``. That value remains constant from class to class and
-object to object. Because of this, we make it a ``static`` field.
+``AbsoluteZeroFahrenheit``. That value remains constant in every class instance. Because of this, we make it a ``static`` field.
 
 Previous examples used the ``static`` keyword with both fields and methods, but
-since this discussion is focused on data, let’s focus on static fields for now.
+since this discussion is focused on class data, let’s focus on static fields for now.
 
 .. sourcecode:: csharp
    :linenos:
 
    public class Temperature {
 
-      private double fahrenheit;
+      private double Fahrenheit;
+      private static double AbsoluteZeroFahrenheit = -459.67;
 
-      private static double absoluteZeroFahrenheit = -459.67;
-
-      public double getFahrenheit() {
-         return fahrenheit;
+      public double GetFahrenheit()
+      {
+         return Fahrenheit;
       }
 
-      public void setFahrenheit(double aFahrenheit) {
+      public void SetFahrenheit(double aFahrenheit)
+      {
 
-         if (aFahrenheit < absoluteZeroFahrenheit) {
-            throw new IllegalArgumentException("Value is below absolute zero");
+         if (aFahrenheit < AbsoluteZeroFahrenheit)
+         {
+            throw new ArgumentOutOfRangeException("Value is below absolute zero");
          }
 
-         fahrenheit = aFahrenheit;
+         Fahrenheit = aFahrenheit;
       }
 
       /* rest of the class... */
-
    }
 
-There are multiple ways to refer to a static field.
+Static fields cannot be referenced by class instances, but a static field can by referenced by the *type*.
 
-.. admonition:: Examples
-
-   Within a class:
-
-   .. sourcecode:: csharp
-      :linenos:
-
-      // Use a static field the same way as a normal, non-static field
-      Console.WriteLine("Absolute zero in F is: " + absoluteZeroFahrenheit);
-
-      // We can also be more explicit
-      Console.WriteLine("Absolute zero in F is: " + this.absoluteZeroFahrenheit);
-
-   Outside of a class:
+.. admonition:: Example
 
    .. sourcecode:: csharp
       :lineno-start: 6
@@ -138,53 +133,54 @@ There are multiple ways to refer to a static field.
       // If the static field is public, we can do this
       Console.WriteLine("Absolute zero in F is: " + Temperature.absoluteZeroFahrenheit);
 
-      // Or if we have an object named "temp" of type Temperature
-      Console.WriteLine("Absolute zero in F is: " + temp.absoluteZeroFahrenheit);
-
-When accessing a field from outside of its class, line 7 shows the preferred
-technique. The syntax makes it explicit that the field  is ``static``. Line 10
-does not make this point clear.
+      // If we have an object named "Temp" of type Temperature, we cannot do this. 
+      Console.WriteLine("Absolute zero in F is: " + Temp.absoluteZeroFahrenheit);
 
 .. admonition:: Example
 
    As another example, we might also provide a third constructor for our
    ``Student`` class that only requires the student’s name. Theoretically, the
-   ``studentId`` would (or could) be generated by the class itself.
+   ``StudentId`` field would (or could) be generated by the class itself.
 
    .. sourcecode:: csharp
       :linenos:
 
       public class Student {
 
-         private static int nextStudentId = 1;
-         private string name;
-         private readonly int studentId;
-         private int numberOfCredits;
-         private double gpa;
+         private static int NextStudentId = 1;
+         public string Name { get; set; }
+         private readonly int StudentId;
+         public int NumberOfCredits { get; set; }
+         public double Gpa { get; set; }
 
-         public Student(string name, int studentId,
-                  int numberOfCredits, double gpa) {
-            this.name = name;
-            this.studentId = studentId;
-            this.numberOfCredits = numberOfCredits;
-            this.gpa = gpa;
+         public Student(string name, int studentId, int numberOfCredits, double gpa)
+         {
+            Name = name;
+            StudentId = studentId;
+            NumberOfCredits = numberOfCredits;
+            Gpa = gpa;
          }
 
-         public Student(string name, int studentId) {
-            this(name, studentId, 0, 0);
+         public Student(string name, int studentId)
+         {
+            Name = name;
+            StudentId = studentId;
+            NumberOfCredits = 0;
+            Gpa = 0.0;
          }
 
-         public Student(string name) {
-            this(name, nextStudentId);
-            nextStudentId++;
+         public Student(string name)
+         {
+            Name = name;
+            StudentId = NextStudentId;
+            NextStudentId++;
+            NumberOfCredits = 0;
+            Gpa = 0.0;
          }
-
-         /* getters and setters omitted */
-
       }
 
 In line 3, we add a static integer field that will keep track of the next
-student ID to be assigned to a student. Then, our new constructor (line 21)
+student ID to be assigned to a student. Then, our new constructor (line 26)
 takes only a name as a parameter and assigns the student the next available ID.
 This works because static fields are shared across all objects created from
 the ``Student`` class, so it functions as a counter of sorts for the number of
@@ -199,8 +195,8 @@ In C#, we can also declare a constant, or unchanging, variable, using the ``cons
    :linenos:
 
    public class Constants {
-      public const double pi = 3.14159;
-      public const string first_president = "George Washington";
+      public const double PI = 3.14159;
+      public const string FIRST_PRESIDENT = "George Washington";
    }
 
 A couple things to note from this example:

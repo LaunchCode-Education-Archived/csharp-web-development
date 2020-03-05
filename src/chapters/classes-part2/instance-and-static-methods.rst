@@ -19,7 +19,7 @@ In the :ref:`last chapter <classes-part1>`, we learned that:
 
 #. Access modifiers apply to methods:
 
-   a. ``private`` methods as those that are NOT useful outside of the class but
+   a. ``private`` methods are those that are NOT useful outside of the class but
       contribute internally to helping the class behave as desired or expected.
    b. ``public`` methods contain code that other classes need to use when they
       implement the class containing those methods. Make methods ``public``
@@ -60,43 +60,51 @@ do in the chapter exercises.
 
    public class Student {
 
-      private static int nextStudentId = 1;
-      private string name;
-      private int studentId;
-      private int numberOfCredits;
-      private double gpa;
+      private static int NextStudentId = 1;
+      public string Name { get; set; }
+      private readonly int StudentId;
+      public int NumberOfCredits { get; set; }
+      public double Gpa { get; set; }
 
-      public Student(string name, int studentId,
-            int numberOfCredits, double gpa) {
-         this.name = name;
-         this.studentId = studentId;
-         this.numberOfCredits = numberOfCredits;
-         this.gpa = gpa;
+      public Student(string name, int studentId, int numberOfCredits, double gpa)
+      {
+         Name = name;
+         StudentId = studentId;
+         NumberOfCredits = numberOfCredits;
+         Gpa = gpa;
       }
 
-      public Student(string name, int studentId) {
-         this(name, studentId, 0, 0);
+      public Student(string name, int studentId)
+      {
+         Name = name;
+         StudentId = studentId;
+         NumberOfCredits = 0;
+         Gpa = 0.0;
       }
 
-      public Student(string name) {
-         this(name, nextStudentId);
-         nextStudentId++;
+      public Student(string name)
+      {
+         Name = name;
+         StudentId = NextStudentId;
+         NextStudentId++;
+         NumberOfCredits = 0;
+         Gpa = 0.0;
       }
 
-      public string studentInfo() {
-         return (this.name + " has a GPA of: " + this.gpa);
+      public string StudentInfo()
+      {
+         return (Name + " has a GPA of: " + Gpa);
       }
 
-      public void addGrade(int courseCredits, double grade) {
+      public void AddGrade(int courseCredits, double grade)
+      {
          // Update the appropriate fields: numberOfCredits, gpa
       }
 
-      public string getGradeLevel() {
+      public string GetGradeLevel()
+      {
          // Determine the grade level of the student based on numberOfCredits
       }
-
-      /* getters and setters omitted */
-
    }
 
 .. admonition:: Tip
@@ -111,8 +119,12 @@ We’ve already used static methods quite a bit in this course, all the way back
 to our first C# method:
 
 .. sourcecode:: csharp
+   :linenos:
 
-   public static void main(String[] args) {}
+   static void Main(string[] args)
+   {
+      // Code here...
+   }
 
 Now let’s examine them in the context of what we’ve recently learned about
 classes.

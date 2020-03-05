@@ -200,6 +200,8 @@ compiler error).
       double b = 3;
       Console.WriteLine((a + b).GetType());
 
+.. _reference-variable:
+
 Reference and Value Types
 -------------------------
 

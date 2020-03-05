@@ -36,7 +36,7 @@ have used in earlier examples.
 Instance Methods
 ----------------
 
-As we learned in the last chapter, *instance methods* define the behaviors that
+As we learned in the last chapter, :ref:`instance methods <instance-methods-part1>` define the behaviors that
 are *unique* or *specialized* to each class. Every object created from a class
 will carry a copy of these methods.
 
@@ -140,39 +140,52 @@ must NOT rely on data from a specific object.
 
 We call a static method by preceding it with the class name and using
 dot-notation. Here’s an example that we looked at
-:ref:`previously <more-data-types-static-method-example>`.
+:ref:`previously <static-methods>`.
 
 .. admonition:: Examples
 
-   ``HelloMethods.cs``
+   ``HelloMethods/Program.cs``:
 
-   .. sourcecode:: csharp
+   .. sourcecode:: c#
       :linenos:
 
-      public class HelloMethods {
+      using System;
 
-         public static void main(String[] args) {
-            string message = Message.getMessage("fr");
-            Console.WriteLine(message);
+      namespace HelloMethods
+      {
+         public class Program
+         {
+            public static void Main(string[] args)
+            {
+                  string message = Message.GetMessage("fr");
+                  Console.WriteLine(message);
+                  Console.ReadLine();
+            }
          }
-
       }
 
-   ``Message.cs``
+   ``HelloMethods/Message.cs``:
 
-   .. sourcecode:: csharp
+   .. sourcecode:: c#
       :linenos:
 
-      public class Message {
-
-         public static string getMessage(string lang) {
-
-            if (Equals("sp", lang)) {
-                  return "¡Hola, Mundo!";
-            } else if (Equals("fr", lang)) {
-                  return "Bonjour, le monde!";
-            } else {
-                  return "Hello, World!";
+      namespace HelloMethods
+      {
+         public class Message
+         {
+            public static string GetMessage(string lang)
+            {
+                  if (lang.Equals("sp")) {
+                     return "Hola Mundo";
+                  }
+                  else if (lang.Equals("fr"))
+                  {
+                     return "Bonjour le monde";
+                  }
+                  else
+                  {
+                     return "Hello World";
+                  }
             }
          }
       }

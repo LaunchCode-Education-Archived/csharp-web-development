@@ -159,7 +159,7 @@ write a new method definition for ``Equals()`` as follows:
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(Object toBeCompared) {
+   public boolean Equals(object toBeCompared) {
       Student theStudent = (Student) toBeCompared;
       return theStudent.GetStudentId() == GetStudentId();
    }
@@ -220,9 +220,10 @@ to ``ToString``).
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(Object toBeCompared) {
+   public boolean Equals(object toBeCompared) {
 
-      if (toBeCompared.GetType() != this.GetType()) {
+      if (toBeCompared.GetType() != this.GetType())
+      {
          return false;
       }
 
@@ -246,13 +247,15 @@ If the comparison evaluates to ``true``, then we know the object is null and
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(Object toBeCompared) {
+   public boolean Equals(object toBeCompared) {
 
-      if (toBeCompared == null) {
+      if (toBeCompared == null)
+      {
          return false;
       }
 
-      if (toBeCompared.GetType() != this.GetType()) {
+      if (toBeCompared.GetType() != this.GetType())
+      {
          return false;
       }
 
@@ -275,17 +278,20 @@ then we can make a quick determination and save a few checks.
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean equals(Object toBeCompared) {
+   public boolean Equals(object toBeCompared) {
 
-      if (toBeCompared == this) {
+      if (toBeCompared == this)
+      {
          return true;
       }
 
-      if (toBeCompared == null) {
+      if (toBeCompared == null)
+      {
          return false;
       }
 
-      if (toBeCompared.GetType() != this.GetType()) {
+      if (toBeCompared.GetType() != this.GetType())
+      {
          return false;
       }
 

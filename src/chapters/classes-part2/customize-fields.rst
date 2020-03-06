@@ -234,7 +234,7 @@ Check Your Understanding
    ``age``, ``mass``, and ``species``.
 
    Assuming you do not give your pet away, which of these fields should be
-   declared ``final``? (There may be more than one).
+   declared ``readonly``? (There may be more than one).
 
    #. ``name``
    #. ``age``

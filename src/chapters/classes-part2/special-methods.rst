@@ -22,7 +22,7 @@ something like this:
       :linenos:
 
       Student person = new Student("Violet");
-      System.out.println(person.ToString());
+      Console.WriteLine(person.ToString());
 
 
 Here, we called ``ToString`` on a ``Student`` object. The default ``ToString``
@@ -39,11 +39,11 @@ message:
       :linenos:
 
       public String ToString() {
-         return name + " (Credits: " + numberOfCredits + ", GPA: " + gpa + ")";
+         return Name + " (Credits: " + NumberOfCredits + ", GPA: " + Gpa + ")";
       }
 
       Student person = new Student("Violet");
-      System.out.println(person.ToString());
+      Console.WriteLine(person.ToString());
 
    **Console Output**
 
@@ -52,7 +52,7 @@ message:
       Violet (Credits: 0, GPA: 0.0)
 
 In the example, we define the ``ToString`` method to return a string that
-reports the class fields ``name``, ``numberOfCredits``, and ``gpa`` in a
+reports the class fields ``Name``, ``NumberOfCredits``, and ``Gpa`` in a
 clear manner.
 
 Note that ``ToString`` is often implicitly called for you. For example, the
@@ -90,8 +90,8 @@ below, which creates two ``Student`` objects:
       Student student1 = new Student("Maria", 1234);
       Student student2 = new Student("Maria", 1234);
 
-      System.out.println(student1.name + ", " + student1.id + ": " + student1);
-      System.out.println(student2.name + ", " + student2.id + ": " + student2);
+      System.out.println(student1.Name + ", " + student1.studentId + ": " + student1);
+      System.out.println(student2.name + ", " + student2.studentId + ": " + student2);
       System.out.println(student1 == student2);
 
 Even though the objects have the exact same keys and values, ``student1``
@@ -116,8 +116,8 @@ actually the same student by our definition above.
    Student bono2 = new Student("Bono", 4);
 
    if (bono1.Equals(bono2)) {
-      Console.WriteLine(bono1.getName() +
-         " is the same as " + bono2.getName());
+      Console.WriteLine(bono1.GetName() +
+         " is the same as " + bono2.GetName());
    }
 
 If we don’t provide our own ``Equals()`` method, the default option only

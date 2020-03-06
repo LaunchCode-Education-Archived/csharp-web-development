@@ -36,15 +36,15 @@ demonstrate where compiler errors would occur.
 
    .. sourcecode:: csharp
 
-      public int IntValue = 42;
+      public int intValue = 42;
 
    ``FinalFields`` contains three declarations:
 
    .. sourcecode:: csharp
 
-      public readonly int IntValue = 42;
-      public readonly double DoubleValue;
-      public readonly FortyTwo ObjectValue = new FortyTwo();
+      public readonly int intValue = 42;
+      public readonly double doubleValue;
+      public readonly FortyTwo objectValue = new FortyTwo();
 
    Let's see what happens when we try to reassign values to our ``readonly`` fields in ``Program.cs``.
 
@@ -58,22 +58,22 @@ demonstrate where compiler errors would occur.
             FinalFields Demo = new FinalFields();
 
             // This would result in a compiler error because IntValue has already been initialized.
-            Demo.IntValue = 6;
+            Demo.intValue = 6;
 
             // This isn't allowed since we didn't initialize DoubleValue in the class declaration.
-            Demo.DoubleValue = 42.0;
+            Demo.doubleValue = 42.0;
 
             // This would result in a compiler error.
-            Demo.DoubleValue = 6.0;
+            Demo.doubleValue = 6.0;
 
             // This would result in a compiler error, since we're trying to
             // give objectValue a different object value.
-            Demo.ObjectValue = new FortyTwo();
+            Demo.objectValue = new FortyTwo();
 
             // However, this is allowed since we're changing a field
             // inside the final object, and not changing which object
             // objectValue refers to.
-            Demo.ObjectValue.IntValue = 6;
+            Demo.objectValue.intValue = 6;
          }
       }
 
@@ -101,12 +101,12 @@ since this discussion is focused on class data, let’s focus on static fields f
 
    public class Temperature {
 
-      private double Fahrenheit;
-      private static double AbsoluteZeroFahrenheit = -459.67;
+      private double fahrenheit;
+      private static double absoluteZeroFahrenheit = -459.67;
 
       public double GetFahrenheit()
       {
-         return Fahrenheit;
+         return fahrenheit;
       }
 
       public void SetFahrenheit(double aFahrenheit)
@@ -117,7 +117,7 @@ since this discussion is focused on class data, let’s focus on static fields f
             throw new ArgumentOutOfRangeException("Value is below absolute zero");
          }
 
-         Fahrenheit = aFahrenheit;
+         fahrenheit = aFahrenheit;
       }
 
       /* rest of the class... */
@@ -147,24 +147,24 @@ Static fields cannot be referenced by class instances, but a static field can by
 
       public class Student {
 
-         private static int NextStudentId = 1;
+         private static int nextStudentId = 1;
          public string Name { get; set; }
-         private readonly int StudentId;
+         private readonly int studentId;
          public int NumberOfCredits { get; set; }
          public double Gpa { get; set; }
 
-         public Student(string name, int studentId, int numberOfCredits, double gpa)
+         public Student(string name, int sId, int numberOfCredits, double gpa)
          {
             Name = name;
-            StudentId = studentId;
+            studentId = sId;
             NumberOfCredits = numberOfCredits;
             Gpa = gpa;
          }
 
-         public Student(string name, int studentId)
+         public Student(string name, int sId)
          {
             Name = name;
-            StudentId = studentId;
+            studentId = sId;
             NumberOfCredits = 0;
             Gpa = 0.0;
          }
@@ -172,8 +172,8 @@ Static fields cannot be referenced by class instances, but a static field can by
          public Student(string name)
          {
             Name = name;
-            StudentId = NextStudentId;
-            NextStudentId++;
+            studentId = nextStudentId;
+            nextStudentId++;
             NumberOfCredits = 0;
             Gpa = 0.0;
          }

@@ -60,24 +60,24 @@ do in the chapter exercises.
 
    public class Student {
 
-      private static int NextStudentId = 1;
+      private static int nextStudentId = 1;
       public string Name { get; set; }
-      private readonly int StudentId;
+      private readonly int studentId;
       public int NumberOfCredits { get; set; }
       public double Gpa { get; set; }
 
-      public Student(string name, int studentId, int numberOfCredits, double gpa)
+      public Student(string name, int sId, int numberOfCredits, double gpa)
       {
          Name = name;
-         StudentId = studentId;
+         studentId = sId;
          NumberOfCredits = numberOfCredits;
          Gpa = gpa;
       }
 
-      public Student(string name, int studentId)
+      public Student(string name, int sId)
       {
          Name = name;
-         StudentId = studentId;
+         studentId = sId;
          NumberOfCredits = 0;
          Gpa = 0.0;
       }
@@ -85,8 +85,8 @@ do in the chapter exercises.
       public Student(string name)
       {
          Name = name;
-         StudentId = NextStudentId;
-         NextStudentId++;
+         studentId = nextStudentId;
+         nextStudentId++;
          NumberOfCredits = 0;
          Gpa = 0.0;
       }
@@ -98,12 +98,12 @@ do in the chapter exercises.
 
       public void AddGrade(int courseCredits, double grade)
       {
-         // Update the appropriate fields: numberOfCredits, gpa
+         // Update the appropriate fields: NumberOfCredits, Gpa
       }
 
       public string GetGradeLevel()
       {
-         // Determine the grade level of the student based on numberOfCredits
+         // Determine the grade level of the student based on NumberOfCredits
       }
    }
 

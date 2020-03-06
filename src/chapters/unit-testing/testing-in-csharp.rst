@@ -4,9 +4,9 @@ Testing in C#
 .. index:: ! automated testing, ! unit testing, ! MSTest
 
 You already recognize the importance of testing your code. 
-**Automated testing** in C#, like any language, ensures that 
-your code works as expected, every time it runs. Tests also 
-function as documentation, giving an observer instructions 
+**Automated testing** in C# serves the same purpose as it does in any language: 
+to ensure that your code works as expected every time it runs. Tests also 
+function as documentation, giving a fellow programmer instructions 
 on how to properly execute your classes and methods.
 
 This course covers **unit testing** in C# with a test framework called
@@ -16,40 +16,43 @@ building blocks, which are individual statements and methods.
 .. tip::
 
    If you're not yet familiar with the benefits of automated testing,
-   you can familiarize yourself 
-   `here <https://education.launchcode.org/intro-to-professional-web-dev/chapters/unit-testing/why-test.html>`__.
+   you can check out
+   `this section <https://education.launchcode.org/intro-to-professional-web-dev/chapters/unit-testing/why-test.html>`__
+   in another LaunchCode text.
 
 Why We Test
 -----------
 
-.. index:: ! refactor
+.. index:: ! refactor, ! test-driven development, ! TDD
 
 Refactoring
 ^^^^^^^^^^^
-Because they work on the most basic functionality of your code, 
-unit tests safeguard against bugs introduced in **refactoring**. 
-Refactoring refers to the process of rewriting code without adding new features. 
+
+When we **refactor** code, we rewrite without adding new features. Refactoring can 
+increase efficiency at runtime, but it may also mean inadvertently introducing some bugs in the process.
+Unit tests verify the most basic functionality of your code, thus safeguarding against 
+bugs introduced in refactoring. 
 
 Imagine this common workflow: 
 
-#. You practice TDD, writing your tests to stipulate your class's code. 
+#. You practice **test-driven development (TDD)**, writing your tests to stipulate your class's code. 
 
-#. You write your code to pass your tests. 
+#. You write your class's code to pass they tests. 
 
-#. Later, a stakeholder in your project's use requests that you refactor your code using 
+#. Later, a stakeholder in the project requests that you refactor your code using 
    different syntax.
 
 The features will be the same, but the implementation changes. 
-Unit tests help in this scenario in that changes to implementation
-should not require changes to outcome. Thus, if your tests continue
+Because the changes in implementation do not require changes to the outcomes, 
+unit tests will help in this scenario. If your tests continue
 to pass after the refactor, you can move on, knowing you have not 
-inadvertently introduced a bug. When you write tests once, they provide a code 
-lifetime's worth of benefits. 
+inadvertently introduced a bug. Writing tests just once provides innumerable 
+benefits for the whole lifetime of the codebase.
 
 Documentation
 ^^^^^^^^^^^^^
 
-Unit tests are the most enlightened form of documentation. Again, 
+Unit tests serve as key documentation for fellow programmers. Again, 
 because they address the most fundamental tasks of your classes,
 unit tests serve as live-code use-cases. You may also have an 
 external documentation directory with examples of how to run your
@@ -79,17 +82,17 @@ Below are some best practices to keep in mind when writing unit tests, in any la
 
 #. Deterministic
 
-   Every, single, solitary time a test is run, it should produce the same outcome. 
+   *Every* time a test is run, it should produce the same outcome. 
    A test that passes only most of the time is a worthless test.
 
 #. Relevant
 
-   Tests, as they are written, should be grouped by related class and function.
+   Group tests by related class and function.
 
 #. Meaningful
 
-   There is no need to test trivial code. For example, unless they contain additional 
-   functionality, there is no need to write tests for getters and setters. 
+   There is no need to test trivial code. For example, unless a getter or setter contains some 
+   additional functionality, you do not need to write a test for those methods. 
 
 Check Your Understanding
 ------------------------

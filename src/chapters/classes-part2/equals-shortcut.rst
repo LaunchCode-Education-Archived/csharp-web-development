@@ -13,10 +13,11 @@ Let’s use a Course class to demonstrate:
    {
       public string Topic { get; set; }
       public Teacher Instructor { get; set; }
-      public List<Student> enrolledStudents { get; set; }
+      public List<Student> EnrolledStudents { get; set; }
    }
 
 #. In Visual Studio, right-click on the class name and select *Quick Fix* for Mac users or *Quick Actions and Refactorings* for Windows users from the menu.
+   You can also skip this step by placing your cursor on the line with the class name and clicking on the screwdriver icon to the left.
 
    .. figure:: figures/select-quick-fix.png
       :alt: Screenshot showing the Quick Fix option at the top of the menu when one right-clicks on the class name.
@@ -42,7 +43,7 @@ Let’s use a Course class to demonstrate:
       {
          public string Topic { get; set; }
          public Teacher Instructor { get; set; }
-         public List<Student> enrolledStudents { get; set; }
+         public List<Student> EnrolledStudents { get; set; }
 
          public override bool Equals(object obj)
          {
@@ -58,7 +59,7 @@ Let’s use a Course class to demonstrate:
       }
 
 In order to gain an understanding at what Visual Studio just did for us, review the section on the :ref:`Equals() method <equals-method>` and take note of the following lines of code in the code block above.
-While the behavior of code is the same as the various implementations of the ``Equals()`` methods on the previous page, Visual Studio's method does not necessarily look similar to the ones we wrote before.
+While the behavior of the code is the same as the various implementations of the ``Equals()`` methods on the previous page, Visual Studio's method does not necessarily look similar to the ones we wrote before.
 
 #. On line 9, we see some new syntax. With ``is``, the compiler confirms that it is possible to cast ``obj`` to a variable ``course`` of type ``Course``. If it is, the value of ``course`` is set to ``obj``. All in one line!
 #. On line 10, the value of ``course.Topic`` and ``Topic`` is compared for equality.

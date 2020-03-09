@@ -9,13 +9,13 @@ Quick Method Review
 
 In the :ref:`last chapter <classes-part1>`, we learned that:
 
-#. A *method* belongs to a class and performs an action.
+#. A method belongs to a class and performs an action.
 #. Methods cannot stand on their own---they must be part of a class.
 #. To call a method on an object, use dot notation:
 
    .. sourcecode:: csharp
 
-      objectName.methodName(arguments);
+      objectName.MethodName(arguments);
 
 #. Access modifiers apply to methods:
 
@@ -190,8 +190,8 @@ dot-notation. Here’s an example that we looked at
          }
       }
 
-The call occurs in line 4: ``Message.getMessage("fr")``. We call the static
-``getMessage`` without needing an instance of the ``Message`` class. Instead,
+The call occurs in line 9 of ``HelloMethods/Program.cs``: ``Message.GetMessage("fr")``. We call the static
+``GetMessage`` without needing an instance of the ``Message`` class. Instead,
 we use the name of the class itself.
 
 .. admonition:: Warning
@@ -209,9 +209,7 @@ external resource).
 Accessing Static vs. Instance Fields
 -------------------------------------
 
-One common error new C# coders encounter reads something like *non-static
-variable cannot be referenced from a static context*. This occurs when a
-*static method* tries to call an *instance variable*.
+One common error new C# coders encounter when a *static method* tries to call an *instance variable*.
 
 Why can't we do this? Static methods can be called from anywhere (depending on
 their access modifier), and they do NOT require us to create an object for a
@@ -219,15 +217,15 @@ particular class. However, these methods must be independent of any values
 unique to a particular object.
 
 For example, if we have a ``Circle`` class, then we can define and call a
-static ``area`` method without creating a new object:
-``Circle.area(radius)``. Since the area of a circle is just,
+static ``Area`` method without creating a new object:
+``Circle.Area(radius)``. Since the area of a circle is just,
 ``PI*radius*radius``, we can pass in the argument when we call the method. The
 method does not depend on any value stored within a specific ``Circle`` object.
 
 Now let's assume we define a ``Car`` class with an instance variable for
 ``color``. The value of this field will NOT be the same for every ``Car``
 object we create. Thus, trying to call a static method like
-``Car.printColor()`` results in an error. Since there is no single value for
+``Car.PrintColor()`` results in an error. Since there is no single value for
 ``color`` that applies to every object, trying to access it from outside of the
 class does not work. To print the color of a ``Car`` object, we must call the
 method on that specific object: ``myCar.printColor()``.
@@ -245,18 +243,18 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Assume that we add two methods to a ``Pet`` class---``public String makeNoise()``
-   and ``public static void increaseAge()``. Which of the following statements is
+   Assume that we add two methods to a ``Pet`` class---``public String MakeNoise()``
+   and ``public static void IncreaseAge()``. Which of the following statements is
    true?
 
-   #. The ``makeNoise()`` method can be accessed outside of the ``Pet`` class,
-      while the ``increaseAge()`` method cannot.
+   #. The ``MakeNoise()`` method can be accessed outside of the ``Pet`` class,
+      while the ``IncreaseAge()`` method cannot.
    #. Each ``Pet`` object carries a copy of the ``makeNoise()`` method but NOT
-      a copy of the ``increaseAge()`` method.
-   #. The ``increaseAge()`` method can be accessed outside of the ``Pet`` class,
-      while the ``makeNoise()`` method cannot.
-   #. Each ``Pet`` object carries a copy of the ``increaseAge()`` method but
-      NOT a copy of the ``makeNoise()`` method.
+      a copy of the ``IncreaseAge()`` method.
+   #. The ``IncreaseAge()`` method can be accessed outside of the ``Pet`` class,
+      while the ``MakeNoise()`` method cannot.
+   #. Each ``Pet`` object carries a copy of the ``IncreaseAge()`` method but
+      NOT a copy of the ``MakeNoise()`` method.
 
 .. The correct answer is "b".
 

@@ -27,7 +27,7 @@ something like this:
 
 Here, we called ``ToString`` on a ``Student`` object. The default ``ToString``
 implementation is generally not very useful. Most of the time, you’ll want to
-write your own ``ToString`` method to *override* the default and provide
+write your own ``ToString`` method. To **override** the default ``ToString``, you can define new behavior for the method and provide
 better results.
 
 Here’s how we might do it for ``Student`` to produce a much more friendly
@@ -38,7 +38,7 @@ message:
    .. sourcecode:: csharp
       :linenos:
 
-      public String ToString() {
+      public override string ToString() {
          return Name + " (Credits: " + NumberOfCredits + ", GPA: " + Gpa + ")";
       }
 
@@ -90,9 +90,9 @@ below, which creates two ``Student`` objects:
       Student student1 = new Student("Maria", 1234);
       Student student2 = new Student("Maria", 1234);
 
-      System.out.println(student1.Name + ", " + student1.studentId + ": " + student1);
-      System.out.println(student2.name + ", " + student2.studentId + ": " + student2);
-      System.out.println(student1 == student2);
+      Console.WriteLine(student1.Name + ", " + student1.StudentId + ": " + student1);
+      Console.WriteLine(student2.Name + ", " + student2.StudentId + ": " + student2);
+      Console.WriteLine(student1 == student2);
 
 Even though the objects have the exact same keys and values, ``student1``
 and ``student2`` point to different memory locations. Therefore, the ``==``
@@ -116,8 +116,8 @@ actually the same student by our definition above.
    Student bono2 = new Student("Bono", 4);
 
    if (bono1.Equals(bono2)) {
-      Console.WriteLine(bono1.GetName() +
-         " is the same as " + bono2.GetName());
+      Console.WriteLine(bono1.Name +
+         " is the same as " + bono2.Name);
    }
 
 If we don’t provide our own ``Equals()`` method, the default option only
@@ -159,17 +159,23 @@ write a new method definition for ``Equals()`` as follows:
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(object toBeCompared) {
-      Student theStudent = (Student) toBeCompared;
-      return theStudent.GetStudentId() == GetStudentId();
+   public boolean Equals(object toBeCompared)
+   {
+      return toBeCompared is Student theStudent && theStudent.StudentId == StudentId();
    }
+
+.. admonition:: Note
+
+   Some of this syntax may seem unfamiliar to you, especially the ``is`` keyword.
+   We will go over it in depth on the next page.
+   For now, just know that the code is checking to see if ``toBeCompared`` is of type ``Student`` and if it is, that the value of ``StudentId`` is the same for ``toBeCompared`` and the object being checked.
 
 Now if we evaluate ``bono1.Equals(bono2)`` we will get a result of true,
 since the student IDs match.
 
 One catch of working with ``Equals()`` is that its input parameter must be of
 type ``Object``, even if we’re working in a class like ``Student``. The reason
-why will become more clear in the next lesson, when we introduce the ``Object``
+why will become more clear in a later lesson, when we introduce the ``Object``
 class. For now, the practical implication is that we must convert, or **cast**,
 the input ``toBeCompared`` to be of type ``Student`` with the syntax
 ``(Student) toBeCompared``. Then we compare the converted student’s ID
@@ -227,8 +233,7 @@ to ``ToString``).
          return false;
       }
 
-      Student theStudent = (Student) toBeCompared;
-      return theStudent.getStudentId() == getStudentId();
+      return toBeCompared.StudentId == StudentId;
    }
 
 Lines 3 - 5 ensure that the two objects that we want to compare were created
@@ -259,8 +264,7 @@ If the comparison evaluates to ``true``, then we know the object is null and
          return false;
       }
 
-      Student theStudent = (Student) toBeCompared;
-      return theStudent.getStudentId() == getStudentId();
+      return toBeCompared.StudentId == StudentId;
    }
 
 Line 3 checks ``toBeCompared`` for ``null``, preventing an error in line 7.
@@ -273,7 +277,8 @@ The two objects to compare are *the same* object (identical).
 
 This is less of a problem and more of a way to improve our ``Equals()`` method.
 If ``toBeCompared`` is the same literal object that we are comparing it to,
-then we can make a quick determination and save a few checks.
+then we can make a quick determination and save a few checks. 
+We can then use the ``==`` operator to test that the objects are identical.
 
 .. sourcecode:: csharp
    :linenos:
@@ -295,8 +300,7 @@ then we can make a quick determination and save a few checks.
          return false;
       }
 
-      Student theStudent = (Student) toBeCompared;
-      return theStudent.getStudentId() == getStudentId();
+      return toBeCompared.StudentId == StudentId;
    }
 
 Line 3 checks for identity. If ``true``, then the remaining checks become
@@ -304,10 +308,10 @@ unnecessary.
 
 .. _components-of-equals:
 
-Components of ``equals``
+Components of ``Equals``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Almost every ``equals`` method you write will look similar to the last example
+Almost every ``Equals`` method you write will look similar to the last example
 above. It will contain the following segments in this order:
 
 #. **Reference check:** If the two objects are the same, return ``true``
@@ -319,7 +323,7 @@ above. It will contain the following segments in this order:
    and other methods can be called.
 #. **Custom comparison:** Use custom logic to determine whether or not
    the two objects should be considered equal. This will usually be a
-   comparison of properties or fields.
+   comparison of class members.
 
 Characteristics of ``Equals``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -368,7 +372,7 @@ create. However, as a new C# programmer, remember the following:
    Always use ``Equals()`` to compare objects.
 
 This is especially true when working with objects of types provided by C#,
-such as ``String``. A class that is part of C# or a third-party library will
+such as string. A class that is part of C# or a third-party library will
 have implemented ``Equals()`` in a way appropriate for the particular class,
 whereas ``==`` will only check to see if two variables refer to the same reference location.
 
@@ -386,12 +390,20 @@ Check Your Understanding
 
          private string name;
 
-         Pet(string name) {
-            this.name = name;
+         Pet(string n) {
+            this.name = n;
          }
 
-         public string getName() {
-            return name;
+         public Name 
+         {  
+            get
+            {
+               return name;
+            }
+            set
+            {
+               name = value;
+            }
          }
       }
 
@@ -416,7 +428,7 @@ Check Your Understanding
    .. sourcecode:: csharp
       :linenos:
 
-      public boolean Equals(Object petToCheck) {
+      public boolean Equals(object petToCheck) {
 
          if (petToCheck == this) {
             return true;
@@ -430,8 +442,7 @@ Check Your Understanding
             return false;
          }
 
-         Pet thePet = (Pet) petToCheck;
-         return thePet.getName() == getName();
+         return petToCheck is Pet thePet && thePet.Name == Name;
       }
 
    Which of the following statements evaluated to ``false`` before, but now

@@ -13,13 +13,13 @@ Readonly Fields
 ---------------
 
 A **readonly field** is one that cannot be changed once it is initialized. This
-means slightly different things for primitive and class types. We create readonly
+means slightly different things for value and reference types. We create readonly
 fields by declaring them with the ``readonly`` keyword.
 
-We cannot change the value of a ``readonly`` field (``readonly int``,
+We cannot change the value of a ``readonly`` value field (``readonly int``,
 ``readonly double``, etc.) after it is initialized.
 
-Similarly, we cannot assign a new object to a ``readonly`` field
+Similarly, we cannot assign a new object to a ``readonly`` reference field
 (``readonly ClassName``, for example) after
 initialization. However, because objects are reference types and not value types, we can change the values within the object itself.
 
@@ -32,13 +32,13 @@ demonstrate where compiler errors would occur.
 
    In addition to ``Program.cs``, we have two classes in a ``FinalFields`` project, ``FinalFields`` and ``FortyTwo``.
 
-   ``FortyTwo`` contains one declaration:
+   ``FortyTwo`` contains one field:
 
    .. sourcecode:: csharp
 
       public int intValue = 42;
 
-   ``FinalFields`` contains three declarations:
+   ``FinalFields`` contains three fields:
 
    .. sourcecode:: csharp
 
@@ -55,25 +55,25 @@ demonstrate where compiler errors would occur.
       { 
          static void Main(string[] args)
          {
-            FinalFields Demo = new FinalFields();
+            FinalFields demo = new FinalFields();
 
             // This would result in a compiler error because IntValue has already been initialized.
-            Demo.intValue = 6;
+            demo.intValue = 6;
 
             // This isn't allowed since we didn't initialize DoubleValue in the class declaration.
-            Demo.doubleValue = 42.0;
+            demo.doubleValue = 42.0;
 
             // This would result in a compiler error.
-            Demo.doubleValue = 6.0;
+            demo.doubleValue = 6.0;
 
             // This would result in a compiler error, since we're trying to
             // give objectValue a different object value.
-            Demo.objectValue = new FortyTwo();
+            demo.objectValue = new FortyTwo();
 
             // However, this is allowed since we're changing a field
             // inside the final object, and not changing which object
             // objectValue refers to.
-            Demo.objectValue.intValue = 6;
+            demo.objectValue.intValue = 6;
          }
       }
 
@@ -104,20 +104,22 @@ since this discussion is focused on class data, let’s focus on static fields f
       private double fahrenheit;
       private static double absoluteZeroFahrenheit = -459.67;
 
-      public double GetFahrenheit()
+      public double Fahrenheit
       {
-         return fahrenheit;
-      }
-
-      public void SetFahrenheit(double aFahrenheit)
-      {
-
-         if (aFahrenheit < AbsoluteZeroFahrenheit)
+         get
          {
-            throw new ArgumentOutOfRangeException("Value is below absolute zero");
+            return fahrenheit;
          }
+         set
+         {
 
-         fahrenheit = aFahrenheit;
+            if (value < AbsoluteZeroFahrenheit)
+            {
+               throw new ArgumentOutOfRangeException("Value is below absolute zero");
+            }
+
+            fahrenheit = value;
+         }
       }
 
       /* rest of the class... */
@@ -133,8 +135,8 @@ Static fields cannot be referenced by class instances, but a static field can by
       // If the static field is public, we can do this
       Console.WriteLine("Absolute zero in F is: " + Temperature.absoluteZeroFahrenheit);
 
-      // If we have an object named "Temp" of type Temperature, we cannot do this. 
-      Console.WriteLine("Absolute zero in F is: " + Temp.absoluteZeroFahrenheit);
+      // If we have an object named "temp" of type Temperature, we cannot do this. 
+      Console.WriteLine("Absolute zero in F is: " + temp.absoluteZeroFahrenheit);
 
 .. admonition:: Example
 

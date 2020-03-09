@@ -8,7 +8,7 @@ Before starting work on the exercises, check out the ``exercises-start`` branch.
 .. admonition:: Tip
 
    Earlier in the chapter, we instantiated an object of the ``Car`` class called ``test_car``.
-   Be sure to take note of the values of the ``make``, ``model``, ``GasTankSize``, and ``MilesPerGallon`` properties!
+   Be sure to take note of the values of the ``make``, ``model``, ``gasTankSize``, and ``milesPerGallon`` fields!
    Having a note you can quickly reference of how big the gas tank is will you help you decide on values to use in your tests!
 
 ``TestGasTankAfterDriving()``
@@ -27,7 +27,7 @@ Add a test for the third TODO, "GasTankLevel is accurate after driving within ta
 
    .. sourcecode:: csharp
 
-      Assert.AreEqual(9, test_car.GasTankLevel(), .001);
+      Assert.AreEqual(9, test_car.GasTankLevel, .001);
 
 ``TestGasTankAfterExceedingTankRange()``
 ----------------------------------------
@@ -35,7 +35,7 @@ Add a test for the third TODO, "GasTankLevel is accurate after driving within ta
 Add a test for the fourth TODO, "GasTankLevel is accurate after attempting to drive past tank range".
 
 #. You're on your own for this one. You'll need to simulate the ``Car``
-   travelling farther than it's ``GasTankLevel`` allows.
+   travelling farther than it's ``gasTankLevel`` allows.
 
 ``TestGasOverfillException()``
 ------------------------------
@@ -56,7 +56,7 @@ to our car that exceeds the gas tank size.
 
       }
 
-#. Now we need to tell MSTest the test passes if an exception is thrown. We will use a new annotation ``[ExpectedException]``.
+#. Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute ``[ExpectedException]``.
 
    .. sourcecode:: csharp
 
@@ -76,7 +76,7 @@ to our car that exceeds the gas tank size.
         GasTankLevel += gas;
       }
 
-#. Back in ``CarTest``, implement the new ``AddGas()`` method and a 
+#. Back in ``CarTests``, implement the new ``AddGas()`` method and a 
    ``Assert.Fail()`` scenario.
 
    .. sourcecode:: csharp
@@ -89,7 +89,7 @@ to our car that exceeds the gas tank size.
 
 #. We need to refactor ``Car`` to throw an exception when too much
    gas is added to the tank. Find the ``AddGas()`` method and
-   modify it by adding the following code in the appropriate place
+   modify it by adding the following code in the appropriate place.
 
    .. sourcecode:: csharp
 

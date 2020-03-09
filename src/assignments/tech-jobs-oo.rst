@@ -42,7 +42,7 @@ In this project, you’ll show that you can:
 Get the Starter Code
 ---------------------
 
-#. Set up a local copy of the project. Visit the repository page
+#. Set up a local copy of the project. Visit the `repository page <https://github.com/LaunchCodeEducation/csharp-web-dev-techjobs-oo>`_ 
    for this project and fork the repo to create a copy in your own GitHub
    account.
 #. Open Visual Studio.
@@ -65,7 +65,7 @@ to an object-oriented design.
 Why Change to Object-Oriented?
 ------------------------------
 
-Working with data stored as strings in Dictionaries and Lists isn’t a good
+Working with data stored as strings in dictionaries and lists isn’t a good
 long-term solution, for reasons that we point out below.
 
 The ``Job`` class introduces an object-oriented design to the application. It
@@ -75,14 +75,14 @@ There’s also an ``Id`` field which will be used to uniquely identify ``Job``
 objects.
 
 The main difference between the object representation of a job and the
-string-based representation is that the values of ``employer``, ``location``,
+string-based representation is that the values of ``EmployerName``, ``EmployerLocation``,
 and the other non-ID fields are no longer strings. Instead, they are classes of
 their own.
 
 Job Fields
 ^^^^^^^^^^^
 
-Open the ``Job`` class file. You’ll see the following fields (among others):
+Open the ``Job`` class file. You’ll see the following fields and properties (among others):
 
 .. sourcecode:: csharp
    :linenos:
@@ -103,7 +103,7 @@ employer this way:
 .. sourcecode:: csharp
 
    // job is an instance of Job
-   string employerName = job.GetEmployer().GetValue();
+   string employerName = job.Employer.Value;
 
 Additionally, the ``ToString()`` method of the ``Employer`` class is set up to
 return the ``Value`` field. Thus, using one of these objects in another string
@@ -112,7 +112,7 @@ context like ``Console.WriteLine`` will print the data stored in ``value``.
 .. sourcecode:: csharp
 
    // Prints the name of the employer
-   Console.WriteLine(job.GetEmployer());
+   Console.WriteLine(job.Employer);
 
 Why do we go to all of this trouble when we could store this job-related data
 as strings? There are a couple of reasons.
@@ -268,7 +268,7 @@ Sally's comments direct you to where you need to add the custom methods.
 #. Use the *Generate* option again to add the ``equals`` and ``hashCode``
    methods. Refer to the :ref:`previous section <equals-shortcut>` of this
    chapter if you need a quick review.
-#. Assume that two ``PositionType`` objects are equal when their ``id`` fields
+#. Assume that two ``PositionType`` objects are equal when their ``Id`` properties
    match.
 
 .. admonition:: Tip
@@ -278,7 +278,7 @@ Sally's comments direct you to where you need to add the custom methods.
 Complete the ``Job`` Class
 --------------------------
 
-Now open the ``Job`` file. OOF! There are a lot of fields declared and not much
+Now open the ``Job`` file. OOF! There are a lot of fields and properties declared and not much
 else.
 
 #. Code a constructor to initialize the ``Id`` field with a unique value. This
@@ -300,7 +300,7 @@ Use Unit Testing to Verify Parts of the ``Job`` Class
 Instead of manually creating sample ``Job`` objects to verify that your class
 works correctly, you will use unit tests instead.
 
-Create a new project inside the ``csharp-web-dev-techjobs-oo`` solution called ``TechJobsTests``, then
+Create a new project inside the ``TechJobsOO`` solution called ``TechJobsTests``, then
 rename the existing class inside this folder to ``JobTests.cs``. The file will
 hold all of the tests for the ``Job`` class.
 
@@ -310,13 +310,12 @@ Test the Empty Constructor
 Each ``Job`` object should contain a unique ID number, and these should also be
 sequential integers.
 
-#. In ``JobTests``, define a test called ``testSettingJobId``.
+#. In ``JobTests``, define a test called ``TestSettingJobId``.
 #. Create two ``Job`` objects using the empty constructor.
 
    .. admonition:: Note
 
-      Instead of creating the ``Job`` objects inside the test method, you could
-      declare and initialize them.
+      Instead of creating the ``Job`` objects inside the test method, you could use ``[TestInitialize]``.
 
 #. Use ``Assert.AreEqual``, ``Assert.IsTrue``, or ``Assert.IsFalse`` to test that the
    ID values for the two objects are NOT the same and differ by 1.
@@ -345,7 +344,7 @@ these fields are ``int``, ``string``, ``Employer``, ``Location``,
 ``PositionType``, and ``CoreCompetency``, respectively.
 
 #. In ``JobTest``, define a test called
-   ``testJobConstructorSetsAllFields``.
+   ``TestJobConstructorSetsAllFields``.
 #. Declare and initialize a new ``Job`` object with the following data:
 
    .. sourcecode:: csharp
@@ -367,12 +366,12 @@ these fields are ``int``, ``string``, ``Employer``, ``Location``,
 Test the ``Equals`` Method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Two ``Job`` objects are considered equal if they have the same ``id`` value,
+Two ``Job`` objects are considered equal if they have the same ``Id`` value,
 even if one or more of the other fields differ. Similarly, the two objects
-are NOT equal if their ``id`` values differ, even if all the other fields are
+are NOT equal if their ``Id`` values differ, even if all the other fields are
 identical.
 
-#. In ``JobTest``, define a test called ``testJobsForEquality``.
+#. In ``JobTest``, define a test called ``TestJobsForEquality``.
 #. Generate two ``Job`` objects that have identical field values EXCEPT for
    ``Id``. Test that ``Equals`` returns ``false``.
 
@@ -381,7 +380,7 @@ that ``Equals`` returns ``true`` when two objects have the same ID. However,
 the positive test is irrelevant in this case.
 
 The way you built your ``Job`` class, each ``Id`` field gets assigned a unique
-value, and the class does not contain a ``setId`` method. You also verified
+value, and the class does not contain a setter for the ``Id`` field. You also verified
 that each new object gets a different ID when you tested the constructors.
 Without modifying the constructors or adding a setter, there is no scenario in
 which two different jobs will have the same ID number. Thus, we can skip the
@@ -496,10 +495,9 @@ modify the other classes to reference this shared code. Let's begin with
    .. sourcecode:: csharp
       :lineno-start: 5
 
-      public class Employer : JobField {
-
+      public class Employer : JobField
+      {
          //Code not displayed.
-
       }
 
 #. Next, remove any code in ``Employer`` that matches code from ``JobField``
@@ -511,11 +509,12 @@ modify the other classes to reference this shared code. Let's begin with
    .. sourcecode:: csharp
       :lineno-start: 7
 
-      public Employer(String value) {
-        super(value);
+      public Employer(string value) : base() 
+      {
+         Value = value;
       }
 
-   The ``:`` and ``super`` keywords link the ``JobField`` and
+   The ``:`` and ``base`` keywords link the ``JobField`` and
    ``Employer`` classes.
 #. Rerun your unit tests to verify your refactored code.
 

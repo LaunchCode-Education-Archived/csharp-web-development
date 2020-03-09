@@ -52,7 +52,7 @@ message:
       Violet (Credits: 0, GPA: 0.0)
 
 In the example, we define the ``ToString`` method to return a string that
-reports the class fields ``Name``, ``NumberOfCredits``, and ``Gpa`` in a
+reports the values of the ``Name``, ``NumberOfCredits``, and ``Gpa`` properties in a
 clear manner.
 
 Note that ``ToString`` is often implicitly called for you. For example, the
@@ -159,7 +159,7 @@ write a new method definition for ``Equals()`` as follows:
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(object toBeCompared)
+   public override boolean Equals(object toBeCompared)
    {
       return toBeCompared is Student theStudent && theStudent.StudentId == StudentId();
    }
@@ -174,11 +174,11 @@ Now if we evaluate ``bono1.Equals(bono2)`` we will get a result of true,
 since the student IDs match.
 
 One catch of working with ``Equals()`` is that its input parameter must be of
-type ``Object``, even if we’re working in a class like ``Student``. The reason
-why will become more clear in a later lesson, when we introduce the ``Object``
-class. For now, the practical implication is that we must convert, or **cast**,
+type ``object``, even if we’re working in a class like ``Student``. The reason
+why will become more clear in a later lesson, when we introduce the ``object``
+class. For now, the practical implication is that we must confirm that we can convert, or **cast**,
 the input ``toBeCompared`` to be of type ``Student`` with the syntax
-``(Student) toBeCompared``. Then we compare the converted student’s ID
+``is Student theStudent``. Then we compare the converted student’s ID
 (``bono2.id``) to that of the current student (``bono1.id``).
 
 Here’s a visualization of the concepts of equality and identity:
@@ -226,7 +226,7 @@ to ``ToString``).
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(object toBeCompared) {
+   public override boolean Equals(object toBeCompared) {
 
       if (toBeCompared.GetType() != this.GetType())
       {
@@ -252,7 +252,7 @@ If the comparison evaluates to ``true``, then we know the object is null and
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(object toBeCompared) {
+   public override boolean Equals(object toBeCompared) {
 
       if (toBeCompared == null)
       {
@@ -278,12 +278,11 @@ The two objects to compare are *the same* object (identical).
 This is less of a problem and more of a way to improve our ``Equals()`` method.
 If ``toBeCompared`` is the same literal object that we are comparing it to,
 then we can make a quick determination and save a few checks. 
-We can then use the ``==`` operator to test that the objects are identical.
 
 .. sourcecode:: csharp
    :linenos:
 
-   public boolean Equals(object toBeCompared) {
+   public override boolean Equals(object toBeCompared) {
 
       if (toBeCompared == this)
       {
@@ -388,22 +387,10 @@ Check Your Understanding
 
       public class Pet {
 
-         private string name;
+         public string Name { get; set; }
 
          Pet(string n) {
-            this.name = n;
-         }
-
-         public Name 
-         {  
-            get
-            {
-               return name;
-            }
-            set
-            {
-               name = value;
-            }
+            Name = n;
          }
       }
 
@@ -428,7 +415,7 @@ Check Your Understanding
    .. sourcecode:: csharp
       :linenos:
 
-      public boolean Equals(object petToCheck) {
+      public override boolean Equals(object petToCheck) {
 
          if (petToCheck == this) {
             return true;

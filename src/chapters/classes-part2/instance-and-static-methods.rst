@@ -197,8 +197,8 @@ we use the name of the class itself.
 .. admonition:: Warning
 
    It is technically allowed to call a static method using an instance of a
-   class: ``myObject.someStaticMethod()``. However, best practice recommends
-   using the class name instead: ``ClassName.someStaticMethod()``. This makes
+   class: ``myObject.SomeStaticMethod()``. However, best practice recommends
+   using the class name instead: ``ClassName.SomeStaticMethod()``. This makes
    it clear to other coders that you are calling a static method.
 
 A method should be static when it does NOT refer to any instance fields of the
@@ -207,14 +207,14 @@ to be utility-like (e.g. carrying out a calculation, or using or fetching some
 external resource).
 
 Accessing Static vs. Instance Fields
--------------------------------------
+------------------------------------
 
-One common error new C# coders encounter when a *static method* tries to call an *instance variable*.
-
-Why can't we do this? Static methods can be called from anywhere (depending on
+One common error new C# coders encounter is when a *static method* tries to call an *instance variable*.
+This is because static methods cannot call instance variables.
+Static methods can be called from anywhere (depending on
 their access modifier), and they do NOT require us to create an object for a
 particular class. However, these methods must be independent of any values
-unique to a particular object.
+unique to a particular object, such as instance variables.
 
 For example, if we have a ``Circle`` class, then we can define and call a
 static ``Area`` method without creating a new object:

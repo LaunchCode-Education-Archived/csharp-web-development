@@ -415,11 +415,11 @@ Check Your Understanding
 
    #. ``firstPet == secondPet;``
    #. ``secondPet == thirdPet;``
-   #. ``thirdPet.equals(secondPet);``
-   #. ``thirdPet.getName() == firstPet;``
-   #. ``thirdPet.equals(firstPet);``
+   #. ``thirdPet.Equals(secondPet);``
+   #. ``thirdPet.Name == firstPet;``
+   #. ``thirdPet.Equals(firstPet);``
 
-.. The correct answer is "thirdPet.getName() == firstPet;".
+.. The correct answer is "thirdPet.Name == firstPet;".
 
 .. admonition:: Question
 
@@ -450,8 +450,8 @@ Check Your Understanding
 
    #. ``firstPet == secondPet;``
    #. ``secondPet == thirdPet;``
-   #. ``thirdPet.equals(secondPet);``
-   #. ``thirdPet.getName() == firstPet;``
-   #. ``thirdPet.equals(firstPet);``
+   #. ``thirdPet.Equals(secondPet);``
+   #. ``thirdPet.Name == firstPet;``
+   #. ``thirdPet.Equals(firstPet);``
 
-.. The correct answer is "thirdPet.equals(secondPet);".
+.. The correct answer is "thirdPet.Equals(secondPet);".

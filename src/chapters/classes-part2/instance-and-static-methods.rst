@@ -249,7 +249,7 @@ Check Your Understanding
 
    #. The ``MakeNoise()`` method can be accessed outside of the ``Pet`` class,
       while the ``IncreaseAge()`` method cannot.
-   #. Each ``Pet`` object carries a copy of the ``makeNoise()`` method but NOT
+   #. Each ``Pet`` object carries a copy of the ``MakeNoise()`` method but NOT
       a copy of the ``IncreaseAge()`` method.
    #. The ``IncreaseAge()`` method can be accessed outside of the ``Pet`` class,
       while the ``MakeNoise()`` method cannot.

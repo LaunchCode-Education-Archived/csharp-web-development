@@ -52,7 +52,7 @@ message:
       Violet (Credits: 0, GPA: 0.0)
 
 In the example, we define the ``ToString`` method to return a string that
-reports the values of the ``Name``, ``NumberOfCredits``, and ``Gpa`` properties in a
+reports the values of the ``name``, ``numberOfCredits``, and ``gpa`` fields in a
 clear manner.
 
 Note that ``ToString`` is often implicitly called for you. For example, the

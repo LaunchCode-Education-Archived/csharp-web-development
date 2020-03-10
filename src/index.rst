@@ -11,6 +11,7 @@ Chapters
    chapters/control-flow-and-collections/index
    chapters/classes/index
    chapters/classes-part2/index
+   chapters/unit-testing/index
 
 .. toctree::
 

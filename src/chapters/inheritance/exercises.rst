@@ -2,7 +2,7 @@ Exercises: Inheritance
 ======================
 
 Work on these exercises in a new Visual Studio .Net Core console app. 
-Name your project within the solution ``technology``.
+Name your project within the solution ``Technology``.
 
 #. **Class design:** Create three classes inside your solution: ``Computer``, ``Laptop`` and ``SmartPhone``.
    Before you start coding anything inside these classes, diagram how the three classes are going to be related 

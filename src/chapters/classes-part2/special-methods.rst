@@ -153,33 +153,17 @@ existing method.
 
 Two things can be considered *equal* even if they do NOT have all the same
 values. In the case of the ``Student`` class, we might specify that two
-``Student`` objects are equal if they have the same ID numbers. We would then
-write a new method definition for ``Equals()`` as follows:
-
-.. sourcecode:: csharp
-   :linenos:
-
-   public override boolean Equals(object toBeCompared)
-   {
-      return toBeCompared is Student theStudent && theStudent.StudentId == StudentId();
-   }
-
-.. admonition:: Note
-
-   Some of this syntax may seem unfamiliar to you, especially the ``is`` keyword.
-   We will go over it in depth on the next page.
-   For now, just know that the code is checking to see if ``toBeCompared`` is of type ``Student`` and if it is, that the value of ``StudentId`` is the same for ``toBeCompared`` and the object being checked.
-
-Now if we evaluate ``bono1.Equals(bono2)`` we will get a result of true,
+``Student`` objects are equal if they have the same ID numbers. We would then be tempted to
+write a new method definition for ``Equals()`` returning the result of comparing one ``studentId`` value to another ``studentId`` value for equality.
+Now if we evaluated such a method with ``bono1`` and ``bono2`` we could get a result of true,
 since the student IDs match.
 
 One catch of working with ``Equals()`` is that its input parameter must be of
 type ``object``, even if we’re working in a class like ``Student``. The reason
 why will become more clear in a later lesson, when we introduce the ``object``
 class. For now, the practical implication is that we must confirm that we can convert, or **cast**,
-the input ``toBeCompared`` to be of type ``Student`` with the syntax
-``is Student theStudent``. Then we compare the converted student’s ID
-(``bono2.id``) to that of the current student (``bono1.id``).
+the input parameter to be of type ``Student`` with the ``as`` keyword. Then we compare the converted student’s ID
+(``bono2.StudentId``) to that of the current student (``bono1.StudentId``).
 
 Here’s a visualization of the concepts of equality and identity:
 

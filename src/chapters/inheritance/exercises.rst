@@ -11,9 +11,9 @@ Name your project within the solution ``technology``.
    #. For a parent class: add 3 properties, 2 methods, and a constructor.
    #. For a child class: add *at least* 1 additional property and 1 additional method.
 
-#. **Class implementation:** Implement your design and test it in a ``Program.cs`` class.
+#. **Class implementation:** Implement your design and add unit tests.
    
-   #. Add a new MSTest project to your solution
+   #. Add a new MSTest project to your solution,
    #. Try to add three MSTests tests per class.
 
 #. **Abstract class design:** Consider the group of classes that you designed. Suppose you have a web program 

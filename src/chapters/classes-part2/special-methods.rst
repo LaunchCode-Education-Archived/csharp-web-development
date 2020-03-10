@@ -233,11 +233,12 @@ to ``ToString``).
          return false;
       }
 
-      return toBeCompared.StudentId == StudentId;
+      Student s = toBeCompared as Student;
+      return s.StudentId == StudentId;
    }
 
-Lines 3 - 5 ensure that the two objects that we want to compare were created
-from the same class.
+Lines 3 - 6 ensure that the two objects that we want to compare were created
+from the same class. Line 8 uses the ``as`` keyword to set a ``Student`` object, called ``s``, to the object when ``toBeCompared`` is cast as type ``Student``.
 
 Problem #2
 ~~~~~~~~~~~
@@ -264,11 +265,12 @@ If the comparison evaluates to ``true``, then we know the object is null and
          return false;
       }
 
-      return toBeCompared.StudentId == StudentId;
+      Student s = toBeCompared as Student;
+      return s.StudentId == StudentId;
    }
 
-Line 3 checks ``toBeCompared`` for ``null``, preventing an error in line 7.
-Line 7 checks the class of ``toBeCompared``, preventing an error in line 11.
+Line 3 checks ``toBeCompared`` for ``null``, preventing an error in line 8.
+Line 8 checks the class of ``toBeCompared``, preventing an error in line 12.
 
 Problem #3
 ~~~~~~~~~~~
@@ -299,7 +301,8 @@ then we can make a quick determination and save a few checks.
          return false;
       }
 
-      return toBeCompared.StudentId == StudentId;
+      Student s = toBeCompared as Student;
+      return s.StudentId == StudentId;
    }
 
 Line 3 checks for identity. If ``true``, then the remaining checks become
@@ -310,7 +313,7 @@ unnecessary.
 Components of ``Equals``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Almost every ``Equals`` method you write will look similar to the last example
+Almost every ``Equals`` method you write yourself will look similar to the last example
 above. It will contain the following segments in this order:
 
 #. **Reference check:** If the two objects are the same, return ``true``
@@ -429,7 +432,8 @@ Check Your Understanding
             return false;
          }
 
-         return petToCheck is Pet thePet && thePet.Name == Name;
+         Pet thePet = petToCheck as Pet;
+         return thePet.Name == Name;
       }
 
    Which of the following statements evaluated to ``false`` before, but now

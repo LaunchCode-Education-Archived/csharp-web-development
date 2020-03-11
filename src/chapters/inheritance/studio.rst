@@ -10,8 +10,10 @@ questions, and get some input from the user.
 First, the questions. We want to be able to handle multiple types of
 questions:
 
-#. **Multiple choice**: a question with a fixed set of possible answers, of which only one may be chosen and only one answer is correct
-#. **Checkbox**: a question with a fixed set of possible answers, of which any number may be chosen; there is one correct combination of choices
+#. **Multiple choice**: a question with a fixed set of possible answers, of which only one may be chosen 
+   and only one answer is correct
+#. **Checkbox**: a question with a fixed set of possible answers, of which any number may be chosen; there is 
+   one correct combination of choices
 #. **True/False**: a question that has a true/false answer
 
 Design
@@ -55,7 +57,7 @@ before you start coding.
 Putting it All together
 -----------------------
 
-Create a class named ``QuizRunner`` with only a ``Main`` method. The project should
+In the ``Main`` method within ``Program``, the project should
 create several questions, present them to the user, accept the user’s
 responses, and then tell them whether their answers were correct or
 incorrect.
@@ -76,8 +78,8 @@ Bonus Missions
       response within an integer scale, which may vary from question to
       question. For instance, it could be 1-3 for one linear scale
       question, and 1-5 for another.
-   #. Paragraph: Similar to short answer but allows for responses of up
+   #. Paragraph: Similar to a short answer, allows for responses of up
       to 500 characters.
 
-#. Test your classes with a new MSTest project. 
+#. Test your non-abstract classes with a new MSTest project. 
 

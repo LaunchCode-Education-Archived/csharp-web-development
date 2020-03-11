@@ -1,6 +1,6 @@
 .. _unit-testing:
 
-Unit Testing
+Unit Testing 
 ============
 
 .. toctree::
@@ -8,3 +8,5 @@ Unit Testing
 
    testing-in-csharp
    mstest
+   exercises
+   

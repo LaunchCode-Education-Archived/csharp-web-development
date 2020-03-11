@@ -1,7 +1,7 @@
 MSTest
 ======
 
-MSTest is a framework that provides the methods and assertions
+**MSTest** is a framework that provides the methods and assertions
 for writing and executing unit tests in C#. 
 
 .. _csharp-attributes:
@@ -27,29 +27,29 @@ Testing Setup
 
 .. index:: ! dependency
 
-To test a simple .NET Core console project, we add a test project into the same solution with 
-an MSTest dependency.
+To test a simple .NET Core console project, we add an MSTest project into the same solution. An MSTest 
+project is a console project with an added MSTest dependency.
 
 
 Fork and clone `this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5unittesting>`__. Inside the solution, we have two projects,
 ``Car`` and ``CarTests``. The ``Car`` project is a simple .NET Console app like the others you have encountered
-in this course so far. And ``CarTests`` is a new type of project, MSTest Project. 
+in this course so far. ``CarTests`` is a new type of project, MSTest Project. 
 
 On a Mac, to select this type of project looks like so:
 
 .. figure:: ./figures/mac-create-mstest-project.png
-   :alt: MAC: Create MSTest project
+   :alt: MAC: User selects MSTest project template in Visual Studio
 
    MAC: Creating MSTest project in Visual Studio
 
 On a Windows:
 
 .. figure:: ./figures/windows-create-mstest-project.png
-   :alt: WINDOWS: Create MSTest project
+   :alt: WINDOWS: User selects MSTest project template in Visual Studio
 
    WINDOWS: Creating MSTest project in Visual Studio
 
-**MSTest** is a C# testing framework. When we create a Visual Studio MSTest Project, the 
+MSTest is a C# testing framework. When we create a Visual Studio MSTest Project, the 
 necessary API and classes are added as **dependencies** of the ``CarTests`` project. A dependency 
 is a separately developed program or piece of code that another program or piece of code 
 uses to carry it out its function. Our C# tests will *depend* on MSTest code. 
@@ -61,14 +61,14 @@ Right click on on the ``Dependencies`` directory in ``CarTests`` and add a refer
 the ``Car`` project.
 
 .. figure:: ./figures/vs-add-dependency-reference.png
-   :alt: Add main project as dependency for test project
+   :alt: User selects project to add as a dependency reference to test project
 
    Add main project as dependency for test project
 
 ``Car`` and ``CarTests``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Open the ``Car`` class within ``main`` and look around. Here, we provide a class, ``Car``, with basic 
+Open the ``Car`` class and look around. Here, we provide a class, ``Car``, with basic 
 information about a make, model, gas level, and mileage. We also give it getters, setters, and a few other methods. 
 
 In the same project, the ``Program`` class contains a main method that prints the
@@ -106,13 +106,14 @@ test underneath the first TODO. As usual, be sure write this code rather than co
          public void EmptyTest() {
             Assert.AreEqual(10,10,.001);
          }
-         // ,,. other TODOs omitted here
+         // ... other TODOs omitted here
       }
    }
 
-Our empty test is aptly named ``EmptyTest()``, a description of its role. This test does 
+Our empty test is aptly named ``EmptyTest()`` as a description of its role. This test does 
 not follow the AAA rule from our :ref:`testing-best-practices`, as it jumps straight to 
-asserting. Nor is it relevant, for that matter. 
+asserting. Nor is it relevant, for that matter. The goal of this empty unit test is not to 
+demonstrate all of our best practices, but rather, to verify that out testing setup is in place.
 
 The three arguments in our test care defined as "expected", "actual", and "delta". This empty test 
 asserts an expected value of ``10`` to equal an actual value of ``10``, 
@@ -139,7 +140,7 @@ with an accepted ``.001`` variance.
    Hover over the function call to see a tooltip:
 
    .. figure:: ./figures/function-parameters-tooltip.png
-      :alt: Hover over a function to see its parameters
+      :alt: User hovers mouse over a function to see its parameter names
 
       Hover over a function to see its parameters
 
@@ -166,7 +167,7 @@ For Windows users, you'll want to find and open the *Test Explorer* panel. If yo
 you can find it listed in the top *Test* menu. 
 
 .. figure:: ./figures/vs-windows-test-explorer.png
-   :alt: WINDOWS: Visual Studio open Test Explorer
+   :alt: WINDOWS: User selecting Test Explorer option in Visual Studio Test Menu
 
    WINDOWS: Visual Studio open Test Explorer
 
@@ -178,7 +179,7 @@ With the panel open, select the *Run All Tests* option.
    64bit processing.
 
    .. figure:: ./figures/vs-windows-process-architecture-setting.png
-      :alt: WINDOWS: Set Test Explorer to use x64 process
+      :alt: WINDOWS: User selecting x64 option from Test Explorer/Settings/Processor Architecture for AnyCPU Projects in Visual Studio
 
       WINDOWS: Set Test Explorer to use x64 process
 
@@ -190,8 +191,8 @@ With the panel open, select the *Run All Tests* option.
 All Users: Output and Adding More Tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once run, you'll see a new output panel with a green check mark indicating the test passed and a message 
-stating the test passed. 
+Once you run the test, you will see a new output panel with a green check mark indicating the test passed 
+and a message stating the test passed. 
 
 We know now how the test runner behaves when a test passes and can begin the real work of unit 
 testing the ``Car`` class. One responsibility of the ``Car`` class constructor is to set it's initial 
@@ -267,7 +268,8 @@ Run ``CarTest`` to see that both tests pass.
 
 While ``[TestClass]`` and ``[TestMethod]`` are required to run tests, there are many other 
 attributes you may find useful as your test files grow in scope. One such item to know
-is **[TestInitialize]**. ``[TestInitialize]`` will run before each test method is run in a class. 
+is **[TestInitialize]**. Methods with the attribute ``[TestInitialize]`` will run before each 
+test method is run in a class. 
 
 In the case of ``CarTest``, it would be nice to not need to create a new ``Car`` instance for 
 each test we write. In your ``TestInitialGasTank()`` method, remove the line initiating ``test_car``. 
@@ -336,12 +338,22 @@ Check Your Understanding
 
    Write another version of ``TestInitialGasTank()`` using ``IsFalse()``, comparing the value to ``0``.
 
-.. ans: Assert.IsFalse(test_car.GasTankLevel == 0);
+   #. ``Assert.IsFalse(Car.GasTankLevel == 0);``
+   #. ``Assert.IsFalse(test_car.GasTankLevel == 0);``
+   #. ``Assert.False(test_car.GasTankLevel == 0);``
+   #. ``Assert.IsFalse(test_car.GasTankLevel = 0);``
+
+.. ans: b, Assert.IsFalse(test_car.GasTankLevel == 0);
 
 .. admonition:: Question
 
    Write another version of ``TestInitialGasTank()`` using ``IsTrue()``.
 
-..  ans: Assert.IsTrue(test_car.GasTankLevel == 10);
+   #. ``Assert.IsTrue(test_car.gasTankLevel == 10);``
+   #. ``Assert.IsTrue(Car.GasTankLevel == 10);``
+   #. ``Assert.IsTrue(test_car.GasTankLevel == 0);``
+   #. ``Assert.IsTrue(test_car.GasTankLevel == 10);``
+
+..  ans: d, Assert.IsTrue(test_car.GasTankLevel == 10);
 
 

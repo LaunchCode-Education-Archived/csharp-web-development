@@ -200,7 +200,7 @@ testing the ``Car`` class. One responsibility of the ``Car`` class constructor i
 
 ``Car.cs``:
 
-.. sourceode:: c#
+.. sourcecode:: c#
    :lineno-start: 17
 
    // Gas tank level defaults to a full tank

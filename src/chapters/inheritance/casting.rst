@@ -75,7 +75,8 @@ Check Your Understanding
          public string Language { get; }
          public string Text { get; }
 
-         public Message(string language, string text) {
+         public Message(string language, string text)
+         {
             Language = language;
             Text = text;
          }

@@ -1,8 +1,8 @@
 Inheritance in C#
 =================
 
-Let's examine an inheritance relationship between two classes, ``Cat`` and ``HouseCat``.
-``HouseCat`` is a class that inherits from ``Cat``. When defined, ``HouseCat`` 
+Let's examine an inheritance relationship between two classes: ``Cat`` and ``HouseCat``.
+``HouseCat`` is a class that inherits from ``Cat``, so ``HouseCat`` 
 receives the data and behaviors of ``Cat``. These inherited traits are things like 
 fields, properties, and methods. Any fields and non-constructor methods in ``Cat`` 
 are available to each instance of ``HouseCat``. 
@@ -10,7 +10,7 @@ are available to each instance of ``HouseCat``.
 .. index:: ! extends
 
 When we speak about an inheritance relationship, we say that a ``HouseCat`` *is a* 
-``Cat``, or *extends* ``Cat``. In order to define a class that inherits from
+``Cat``, or **extends** ``Cat``. In order to define a class that inherits from
 another, we use the ``:`` keyword.
 
 .. sourcecode:: csharp
@@ -37,7 +37,7 @@ to the base class.
 
 .. figure:: figures/inheritance-basic.png
    :scale: 50%
-   :alt: Basic inheritance diagram.
+   :alt: Diagram showing B inheriting from A.
 
    ``B`` extends ``A``.
 
@@ -53,7 +53,7 @@ slightly more complex diagram.
 
 .. figure:: figures/inheritance-tree.png
    :scale: 50%
-   :alt: Multi-node inheritance tree.
+   :alt: Diagram showing many classes inheriting from each other.
 
    Inheritance tree with many nodes.
 

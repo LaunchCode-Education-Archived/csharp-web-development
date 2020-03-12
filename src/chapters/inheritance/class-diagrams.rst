@@ -38,12 +38,6 @@ sections:
 #. **Middle**: Fields 
 #. **Bottom**: Properties and Methods
 
-.. figure:: figures/class-diagram-java.png
-   :scale: 50%
-   :alt: Basic class diagram.
-
-   A basic class diagram.
-
 For fields and properties, we can specify additional useful information, such as access
 level and data type. For methods, we can similarly specify access level,
 return type, and input parameter types. We will often use “**+**” as
@@ -73,7 +67,7 @@ other in the following diagram:
 
 .. figure:: figures/relationships.png
    :scale: 50%
-   :alt: Relationship class diagram.
+   :alt: Class diagram showing relationships between three different classes
 
    Relationship class diagram.
 
@@ -93,7 +87,7 @@ Another type of relationship that we have recently encountered is the
 diagram by using an arrow, directed from the subclass to the base class.
 
 .. figure:: figures/inheritance-cat.png
-   :alt: Inheritance class diagram.
+   :alt: Class diagram showing relationships between parent and child classes
 
    Inheritance class diagram.
 

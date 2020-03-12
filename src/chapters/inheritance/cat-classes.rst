@@ -1,8 +1,9 @@
 A Tale of Two Cats 
 ==================
 
-Let’s revisit our ``Cat`` and ``HouseCat`` friends. In
-open and examine the two classes inside.
+Let’s revisit our ``Cat`` and ``HouseCat`` friends.
+Check out this `repository <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn6inheritance>`_ for the code for the lesson.
+In Visual Studio, open the solution and examine the two classes inside the ``Cats`` project.
 
 Inheriting Fields and Properties 
 --------------------------------
@@ -11,10 +12,11 @@ Notice that ``Cat`` has a property called ``Family``, representing
 the biological family of all cats. 
 
 .. sourcecode:: csharp
+   :lineno-start: 10
 
    public string Family { get; } = "Felidae";
 
-This property is not directly accessible by ``HouseCat``. 
+The ``family`` field is not directly accessible by ``HouseCat``. 
 However, it may be read via the getter. There is no setter for ``Family``, however.
 It may only be changed within ``Cat``. 
 It makes sense that a subclass should not be able to change the biological family 
@@ -24,7 +26,7 @@ Methods of the base class ``Cat`` may be called on instances of the
 subclass ``HouseCat`` as if they were defined as part of the
 ``HouseCat``.
 
-Try it out. In your project, open up ``Program.cs``. Within that class,
+Try it out. In your project, open up ``Program.cs``. Within the ``Main`` method
 create an instance of ``HouseCat`` and call some of the methods it inherits from ``Cat``.
 
 .. sourcecode:: csharp
@@ -82,7 +84,7 @@ To do so, look at the constructor included in ``HouseCat``:
    }
 
 Here, the ``base`` keyword allows the subclass to access the constructor from the
-base class. This call to the base class constructor must be on the constructor declaration.
+base class. This call to the base class constructor must be on the constructor signature.
 In the case of ``HouseCat``, the subclass constructor 
 extends the original constructor by setting an additional property, ``Name``.
 
@@ -114,8 +116,8 @@ Then in ``HouseCat``, we can simply define another constructor as this:
 
 Even though we don’t explicitly specify that we want to call a
 constructor from ``Cat``, the no-argument constructor will be called. Now, we can 
-initialize a new ``HouseCat`` with only a ``name`` property and the ``Cat`` no-argument
-constructor will still be applied. Back in ``Main``, you can confirm that the base
+initialize a new ``HouseCat`` with only a ``Name`` property and the ``Cat`` no-argument
+constructor will still be applied. Back in ``Program.cs``, you can confirm that the base
 class constructor has been called:
 
 .. sourcecode:: csharp
@@ -128,10 +130,11 @@ As a consequence of this constructor syntax, we can easily expose any
 constructor from the base class by providing a subclass constructor that calls the base constructor in the signature and has an empty body.
 
 .. sourcecode:: csharp
-   :lineno-start: 16
+   :linenos:
 
    public HouseCat(double weight) : base(weight)
    {
+      // This is all there is to this constructor!
    }
 
 .. admonition:: Warning
@@ -190,12 +193,10 @@ using the method defined in ``HouseCat``.
 
 .. admonition:: Warning
 
-   When overriding a method from a base class, the method signatures *must
-   be exactly the same*. Recall that the signature of a method is the
-   method name and access level, along with it’s return type and the type
-   and number of input parameters.
+   When overriding a method from a base class, the method name, access level, type and number of parameters, and return type *must
+   be exactly the same*.
 
-   In this example, the signature of our method is:
+   In this example, the parts of our method that we have to match are:
 
    .. sourcecode:: csharp
 

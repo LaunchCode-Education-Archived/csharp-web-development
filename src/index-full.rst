@@ -11,6 +11,7 @@ Chapters
    chapters/classes/index
    chapters/classes-part2/index
    chapters/unit-testing/index
+   chapters/inheritance/index
 
 .. toctree::
 

@@ -15,15 +15,9 @@ The main differences between interfaces and abstract classes are:
    implement *more than one* interface, you can only extend *one* class.
 #. Abstract classes may contain non-constant fields, while interfaces can only contain constant 
    fields.
-#. Interfaces may only contain implementation code inside of default or static methods. 
-   Therefore, interfaces can’t contain methods that need to be shared by class instances in 
-   the same way that abstract classes do. In particular, any method that needs to use an instance 
-   property may not be part of an interface, since interfaces don’t have instance properties. 
-   Unlike interfaces, abstract classes may have methods which are not static or default and which 
-   do have instance properties. 
-   
-We should use abstract classes to collect and specify behavior by related classes, while we 
-should use an interface to specify related behaviors that may be common across unrelated classes.
+#. Abstract classes should be used to collect and specify behavior by related classes, while an 
+   interface should be used to specify related behaviors that may be common across unrelated 
+   classes.
 
 .. admonition:: Example
 

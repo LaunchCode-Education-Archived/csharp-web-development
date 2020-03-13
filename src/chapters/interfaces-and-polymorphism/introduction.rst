@@ -48,7 +48,7 @@ Let's take a closer look at how polymorphism might work in our cat-centric appli
    perfectly acceptable to use an instance of ``HouseCat`` to fill the
    ``Pet`` property.
 
-   .. sourcecode:: java
+   .. sourcecode:: c#
       :linenos:
 
       HouseCat suki = new HouseCat("Suki", 12);

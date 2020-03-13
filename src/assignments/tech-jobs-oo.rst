@@ -268,8 +268,8 @@ Sally's comments direct you to where you need to add the custom methods.
 #. Code a ``ToString()`` method that just returns the ``Value`` of a
    ``PositionType`` object.
 #. Use the *Generate* option again to add the ``Equals()`` and ``GetHashCode()``
-   methods. Refer to the :ref:`previous section <equals-shortcut>` of this
-   chapter if you need a quick review.
+   methods. Refer to the :ref:`final section <equals-shortcut>` of the
+   "Classes and Objects, Part 2" chapter if you need a quick review.
 #. Assume that two ``PositionType`` objects are equal when their ``Id`` properties
    match.
 
@@ -344,7 +344,7 @@ Each ``Job`` object should contain six properties---``Id``, ``Name``, ``Employer
    .. admonition:: Tip
 
       The ``is`` keyword can be used to check the class of an object and cast the object to the appropriate type if possible.
-      The result of the comparison is a boolean.
+      The result of the comparison is a boolean. For a review on how the ``is`` keyword works, check out how it is used by :ref:`Visual Studio <equals-shortcut>` when overriding the ``Equals()`` method!
 
       .. sourcecode:: csharp
 

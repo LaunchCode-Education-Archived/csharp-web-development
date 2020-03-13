@@ -351,7 +351,7 @@ Each ``Job`` object should contain six properties---``Id``, ``Name``, ``Employer
          objectName is ClassName VariableName
 
 Test the ``Equals()`` Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Two ``Job`` objects are considered equal if they have the same ``id`` value,
 even if one or more of the other fields differ. Similarly, the two objects
@@ -378,7 +378,7 @@ test for this condition.
    Time to save, commit, and push your work to GitHub again.
 
 Use TDD to Build The ``ToString()`` Method
-----------------------------------------
+------------------------------------------
 
 To display the data for a particular ``Job`` object, you need to implement a
 custom ``ToString()`` method. Rather than creating this method and then testing
@@ -414,7 +414,7 @@ that test (it should fail).
 Woo hoo! Failure is what we want here! Now you get to fix that.
 
 Code ``ToString()`` to Pass the First Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the ``Job`` class, create a ``ToString()`` method that passes the first test.
 Since the test only checks if the returned string starts and ends with a blank
@@ -514,7 +514,7 @@ Sanity Check
 Once you finish all of the tasks outlined above, all that remains is to check
 the console display.
 
-Sally has provided some commented-out code in ``Main`` that prints out a small
+Sally has provided some commented-out code in ``Program.cs`` that prints out a small
 list of ``Job`` objects. Go ahead and activate this code and run it.
 Properly done, your output should look something like:
 

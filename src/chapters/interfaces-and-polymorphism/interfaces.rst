@@ -103,8 +103,8 @@ Implementing an Interface
 -------------------------
 
 The purpose of an interface is to define a contract of behaviors that classes uphold. In doing so, we say that they “*implement* the
-interface”. The syntax for implementation is similar to that for
-inheritance. Here’s how we can use the ``Feedable`` interface in
+interface”. The syntax for implementation is the same as that for
+inheritance. Here’s how we can use the ``IFeedable`` interface in
 defining our ``Cat`` class.
 
 .. admonition:: Example
@@ -112,68 +112,66 @@ defining our ``Cat`` class.
    .. sourcecode:: c#
       :linenos:
 
-      public class Cat implements Feedable
+      public class Cat : IFeedable
       {
 
-         @Override
-         public void eat()
+         public void Eat()
          {
-            // method implementation
+            Console.WriteLine("nom nom");
          }
 
          // ...rest of the class definition...
 
       }
 
-Since we’ve declared that ``Cat`` implements ``Feedable``, we have to
-provide an implementation for the ``eat`` method, with the signature as
-specified in the interface definition. Note that we use ``@Override``,
-just as we do when overriding an inherited method in a subclass. Like
-that situation, using ``@Override`` when implementing methods defined in
-an interface will enable the compiler to check that your method
-signature does indeed match that of the interface.
+Since we’ve declared that ``Cat`` implements ``IFeedable``, we have to
+provide an implementation for the ``Eat`` method, with the signature as
+specified in the interface definition. Note that we do not use ``override``
+since the class is *implementing* the method, rather than overriding it. 
 
 .. admonition:: Note
 
-   You may both extend a class and implement an interface at the same time:
+   You may both extend a class and implement an interface at the same time.
+   Here's an example of how we might define ``HouseCat`` to extend the class ``Cat``,
+   as well as an interface ``IPetable`` that is not already inherited by ``Cat``:
 
    .. sourcecode:: c#
       :linenos:
 
-      public class MyClass extends MySubclass implements MyInterface
+      public class HouseCat : Cat, IPetable
       {
-         // ...code...
+         // ...HouseCat code: fields, properties, methods, etc ...
       }
 
 As with classes, interfaces define a type that can be used when
-declaring fields, parameters, and local variables. This allows us to relax the requirements on our code
-elsewhere, thus making it more extensible and adaptable.
-If an application is extensible, it is easier for programmers for new capabilities to be added later on. For example,
-here’s how we might modify our ``CatOwner`` class:
+declaring fields and methods. This allows us to make our code more abstract, thus making it 
+more extensible and adaptable. If an application is extensible, it is easier for programmers 
+for new capabilities to be added later on. For example,
+here’s how we might modify our ``CatSitter`` class:
 
 .. sourcecode:: c#
    :linenos:
 
-   public class CatOwner
+   public class CatSitter
    {
-       private Feedable pet;
+      public IFeedable Pet { get; set; }
 
-       public CatOwner(Feedable pet) {
-           this.pet = pet;
-       }
+      public CatSitter(IFeedable pet) {
+         Pet = pet;
+      }
 
-       public  void feedTheCat() {
+      public void FeedTheCat() {
 
-           // ...code to prepare the cat's meal...
+         // ...code to prepare the cat's meal...
 
-           pet.eat();
-       }
+         Pet.Eat();
+      }
    }
 
-Note that we’ve declared the property ``pet`` to be of type
-``Feedable``. This class assumes that the only behavior of ``pet`` that
-we’ll need within the class is the ability to ``eat``. But if that’s all
-we need, then we should relax the requirements on the ``pet`` property
+Note that we’ve declared the property ``Pet`` to be of type
+``IFeedable``. This class assumes that the only behavior of ``Pet`` that
+we’ll need within the class is the ability to ``Eat``. But if that’s all
+we need, then we should relax the requirements on the ```Pet`` property
 as much as possible. In fact, there’s nothing specific about cats in
 this class, so we might make our code a step more abstract and flexible
 by doing the following:
@@ -181,33 +179,40 @@ by doing the following:
 .. sourcecode:: c#
    :linenos:
 
-   public class PetOwner
+   public class PetSitter
    {
-       private Feedable pet;
+      public IFeedable Pet { get; set; }
 
-       public PetOwner(Feedable pet) {
-           this.pet = pet;
-       }
+      public PetSitter(IFeedable pet) {
+         Pet = pet;
+      }
 
-       public void feedThePet() {
+      public void FeedThePet() {
 
-           // ...code to prepare the pet's meal...
+         // ...code to prepare the pet's meal...
 
-           pet.eat();
-       }
+         Pet.Eat();
+      }
    }
 
-   public class CatOwner extends PetOwner
+   public class CatSitter : PetSitter
    {
-       // code that requires Cat-specific behavior
+      public CatSitter(IFeedable pet) : base(pet)
+      {
+         Pet = pet;
+      }
+      // other Cat-specific behavior
    }
 
-We’ve created a ``PetOwner`` class that encapsulates the behavior for any pet (any ``Feedable``, actually), and have
-``CatOwner`` extend ``PetOwner``. This allows other classes to extend
-``PetOwner`` to make, say, a ``DogOwner`` that knows how to play fetch
-with their pet, or a ``HorseOwner`` that knows how to ride their pet. It
-also reduces the dependency of the ``feedThePet`` method on the specific
-type of pet, since it doesn’t need to care.
+We’ve created a ``PetSitter`` class that encapsulates the behavior for any pet (any 
+``IFeedable``, actually), and have ``CatSitter`` extend ``PetSitter``. This allows other 
+classes to extend ``PetSitter`` to make, say, a ``DogSitter`` that knows how to play fetch
+with their pet, or a ``HorseSitter`` that knows how to go for trail rides with their pet. It
+also reduces the dependency of the ``FeedThePet`` method on the specific
+type of pet, since the basic feeding behavior is the same for all types of pets.
+
+Since the base class does not have a no-arg constructor, we must, at minimum, extend the ``PetSitter``
+constructor in any subclass. Of course, we can always add more constructors to the subclass.
 
 To use this new class design, we can revise the sample code from above
 as follows:
@@ -216,9 +221,9 @@ as follows:
    :linenos:
 
    HouseCat suki = new HouseCat("Suki", 12);
-   CatOwner Annie = new CatOwner(suki);
+   CatSitter annie = new CatSitter(suki);
 
-   Annie.feedThePet();
+   annie.FeedThePet();
 
 While the code usage here remains unchanged except for changing the
 method name from ``feedTheCat`` to the more generic ``feedThePet``, the
@@ -226,7 +231,7 @@ opportunities for using the classes we’ve built are much wider since the
 defined classes are no longer dependent on the specific ``Cat`` class.
 Also notice that we’ve used the object ``suki`` in a polymorphic way,
 creating it as a ``HouseCat``, but using it as a ``Feedable`` within the
-``CatOwner`` class.
+``CatSitter`` class.
 
 .. admonition:: Note
 

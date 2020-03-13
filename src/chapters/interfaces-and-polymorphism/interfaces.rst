@@ -171,7 +171,7 @@ here’s how we might modify our ``CatSitter`` class:
 Note that we’ve declared the property ``Pet`` to be of type
 ``IFeedable``. This class assumes that the only behavior of ``Pet`` that
 we’ll need within the class is the ability to ``Eat``. But if that’s all
-we need, then we should relax the requirements on the ```Pet`` property
+we need, then we should relax the requirements on the ``Pet`` property
 as much as possible. In fact, there’s nothing specific about cats in
 this class, so we might make our code a step more abstract and flexible
 by doing the following:
@@ -226,30 +226,28 @@ as follows:
    annie.FeedThePet();
 
 While the code usage here remains unchanged except for changing the
-method name from ``feedTheCat`` to the more generic ``feedThePet``, the
+method name from ``FeedTheCat`` to the more generic ``FeedThePet``, the
 opportunities for using the classes we’ve built are much wider since the
 defined classes are no longer dependent on the specific ``Cat`` class.
 Also notice that we’ve used the object ``suki`` in a polymorphic way,
-creating it as a ``HouseCat``, but using it as a ``Feedable`` within the
-``CatSitter`` class.
+creating it as a ``HouseCat``, but using it as an ``IFeedable`` to instantiate a
+``CatSitter`` object.
 
-.. admonition:: Note
+As is the case with classes inherited from others, interfaces also enable polymorphic usage of 
+objects. We can create an object and then use it in different contexts based on the
+interfaces that it implements.
 
-   Like inheritance, interfaces enable polymorphic usage of objects. We can
-   create an object and then use it in different contexts based on the
-   interfaces that it implements.
-
-*Interfaces may not be created like objects are, with* ``new``.
+Similar to abstract classes, *interfaces may not be instantiated*.
 You may implement an interface, or declare variables and parameters as
-interface types. You can not, however, create an instance of an
+interface types. You cannot, however, create an instance of an
 interface.
 
 Benefits of Using Interfaces
 ----------------------------
 
-Once you get used to interfaces, you’ll begin to think more abstractly about which *behaviors* your
-code requires rather than which *classes* your code requires. This means
-you’ll be able to “code to interfaces” (an OOP principle) instead of
+Once you get used to interfaces, you’ll begin to think more abstractly about which 
+*behaviors* your code requires rather than which *classes* your code requires. This means
+you will start to “code to interfaces” (an OOP principle) instead of
 coding to classes, and your code will become more flexible and
 extensible.
 
@@ -264,10 +262,9 @@ Here are a few benefits of using interfaces:
    use. This means that you are free to change the specific
    implementation of your classes without affecting those using them.
 
-Remember that you don’t need to start creating interfaces to use their
-power! As we will cover later in the chapter, when working with collections, we can declare variables and parameters
-to be interface types if we only need to use specific behaviors such as
-ordering or iteration.
+You don’t need to start creating interfaces to use their
+power! As we cover later in this chapter, there are several interface types provided by 
+the C# language spec that you may find handy.
 
 Check Your Understanding
 ------------------------
@@ -276,35 +273,22 @@ Check Your Understanding
 
    Choose the appropriate option to fill in the blanks.
 
-   A class can extend _______ class(s) and implement ________ interface(s).
+   A class can extend _______ class(es) and implement ________ interface(s).
 
    a. one, one
    b. one, more than one
    c. more than one, one
    d. more than one, more than one
 
-.. ans: b
+.. ans: b, one, more than one
 
 .. admonition:: Question
 
    True or False:
 
-   An interface can contain a ``static`` variable, a ``final`` variable, and a ``static final`` variable.
+   An interface in C# must begin with the letter "I".
 
-.. ans: false
+.. ans: false, while it is convention to name interfaces this way - and Visual Studio strongly encourages it, 
+      it is not a breaking requirement.
 
-.. admonition:: Question
 
-   What keywords are missing from the following interface?
-
-   .. sourcecode:: c#
-      :linenos: 
-
-      public Temperature {
-
-         double final ABSOLUTE_ZERO = -273.15;
-
-         double convertTemp();
-      }
-
-.. ans: interface, static

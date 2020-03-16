@@ -9,4 +9,5 @@ Unit Testing
    testing-in-csharp
    mstest
    exercises
+   studio
    

@@ -55,7 +55,7 @@ can be called without creating an object instance of the class to which it belon
       :linenos:
 
       public class Cat {
-         public static void makeNoise(String[] args) {
+         public static void MakeNoise(String[] args) {
             // some code
          }
       }

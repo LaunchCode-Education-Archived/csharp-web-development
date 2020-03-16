@@ -30,6 +30,7 @@ Studios
    chapters/control-flow-and-collections/studio
    chapters/classes/studio
    chapters/classes-part2/studio
+   chapters/unit-testing/studio
 
 Assignments
 ===========

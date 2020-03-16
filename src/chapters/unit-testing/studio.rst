@@ -31,7 +31,7 @@ Getting Started
 
             [TestMethod]
             public void OnlyBracketsReturnsTrue() {
-               Assert.IsTrue(BalancedBrackets.hasBalancedBrackets("[]"));
+               Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[]"));
             }
 
 .. note::
@@ -44,11 +44,3 @@ Uploading Your Work
 -------------------
 
 Push up your work to save your solution in your remote repository.
-
-Bonus Mission
--------------
-
-The repository contains an additional branch called ``bonus_mission``
-with a new class called ``BonusBinarySearch``. Create a new test file 
-and write tests that pass the written description of how this class
-should behave. There will be errors in the class that need to be corrected.

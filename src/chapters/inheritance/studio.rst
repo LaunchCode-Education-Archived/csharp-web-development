@@ -5,16 +5,16 @@ Studio: Fun with Quizzes
 
 For this studio, you will design and build a console program that allows
 the user to take a quiz. This means you will have to create some
-questions, and get some input from the user.
+questions and get some input from the user.
 
 First, the questions. We want to be able to handle multiple types of
 questions:
 
-#. **Multiple choice**: a question with a fixed set of possible answers, of which only one may be chosen 
-   and only one answer is correct
-#. **Checkbox**: a question with a fixed set of possible answers, of which any number may be chosen; there is 
-   one correct combination of choices
-#. **True/False**: a question that has a true/false answer
+#. **Multiple choice**: A question with a fixed set of possible answers. A user can only select one answer
+   and only one answer is correct.
+#. **Checkbox**: A question with a fixed set of possible answers. A user can select any number of 
+   answers and there is one correct combination of choices.
+#. **True/False**: A question that has a true/false answer.
 
 Design
 ------
@@ -33,7 +33,7 @@ be sure to include:
 #. Methods with access modifiers
 #. Any inheritance relationship
 
-Should any of the question classes be abstract? If so, should any of its
+Should any of the classes be abstract? If so, should any of its
 methods be abstract?
 
 Make sure that there is functionality included to display the questions,

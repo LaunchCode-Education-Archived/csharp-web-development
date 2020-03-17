@@ -104,7 +104,7 @@ Check Your Understanding
 
    True or False: Comments are the best tool to make your code readable.
 
-.. ans: False, comments are helpful but can be used in tandem with other forms of documentation, including unit tests
+.. ans: False, comments are helpful but can be used in tandem with other forms of documentation, including unit tests.
 
 .. admonition:: Question
 

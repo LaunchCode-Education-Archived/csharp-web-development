@@ -3,7 +3,7 @@ Introduction
 
 .. index:: ! polymorphism
 
-The third pillar of Object-oriented programming that we’ll
+The third pillar of object-oriented programming that we’ll
 explore is polymorphism.
 
 Polymorphism

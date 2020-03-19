@@ -2,7 +2,8 @@ Interfaces In The Wild
 ======================
 
 The first situations where you’ll want to use interfaces involve applying pre-defined interfaces 
-and classes that are part of C#. Here are a few examples.
+and classes that are part of C#. In fact, you have already encountered implementations of several these 
+``System`` provided interfaces. 
 
 IComparer<T>
 ------------
@@ -81,6 +82,9 @@ using throughout this course.
    {
       // do something with the item
    }
+
+Indeed, if you so desire, you may replace other instances of ``List`` with this interface as long as those
+interfaces don't require specifically ``List`` methods.
 
 IList<T>
 --------

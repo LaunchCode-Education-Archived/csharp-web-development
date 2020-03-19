@@ -3,9 +3,11 @@ Interfaces
 
 .. index:: ! interface
 
-An **interface** is a formal construction within C#. Interfaces allow us to
-create a set of behaviors that a class must fulfill. A C# interface may
-contain:
+An **interface** is similar to an abstract class, with some important differences. Interfaces allow us to 
+create code organized by behavior, rather than static data. While some object-oriented languages encourage 
+the use of interfaces as a design concept, C# (among others) includes interfaces as a formal construction. 
+Like abstract classes, interfaces cannot be instantiated and they have limitations on what kind of 
+behavioral information they may contain. A C# interface may contain:
 
 #. Constants
 #. Method signatures
@@ -33,7 +35,7 @@ A **method signature** includes the name, parameters, and return
 type of a method, but no body.
 
 As part of our cat application, let's create a method signature, ``Eat``, as part of an 
-interface, ``IFeedable``.
+interface, ``IFeedable``. "I" for interface, of course! More on this name below.
 
 .. admonition:: Example
 
@@ -126,8 +128,12 @@ defining our ``Cat`` class.
 
 Since we’ve declared that ``Cat`` implements ``IFeedable``, we have to
 provide an implementation for the ``Eat`` method, with the signature as
-specified in the interface definition. Note that we do not use ``override``
-since the class is *implementing* the method, rather than overriding it. 
+specified in the interface definition. 
+
+.. TODO: add link to a relevant header in previous chapter on virtual and override intros
+
+Note the absence of the ``virtual`` and ``override`` keywords we used in inheritance. The class is 
+*implementing* the interface, rather than extending it so different method rules apply. 
 
 .. admonition:: Note
 
@@ -237,7 +243,7 @@ As is the case with classes inherited from others, interfaces also enable polymo
 objects. We can create an object and then use it in different contexts based on the
 interfaces that it implements.
 
-Similar to abstract classes, *interfaces may not be instantiated*.
+Crucially, *interfaces may not be instantiated*.
 You may implement an interface, or declare variables and parameters as
 interface types. You cannot, however, create an instance of an
 interface.

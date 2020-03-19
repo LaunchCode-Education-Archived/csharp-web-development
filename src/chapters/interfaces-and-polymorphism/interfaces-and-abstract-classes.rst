@@ -15,16 +15,16 @@ The main differences between interfaces and abstract classes are:
    implement *more than one* interface, you can only extend *one* class.
 #. Abstract classes may contain non-constant fields, while interfaces can only contain constant 
    fields.
-#. Abstract classes should be used to collect and specify behavior by related classes, while an 
-   interface should be used to specify related behaviors that may be common across unrelated 
+#. Abstract classes should be used to collect and specify behavior by *related* classes, while an 
+   interface should be used to specify related behaviors that may be common across *unrelated* 
    classes.
 
-.. admonition:: Example
+   .. admonition:: Example
 
-   Let's go back to our ``IFeedable`` interface. If we want to add a ``Dog`` class to our 
-   application, we might implement the ``IFeedable`` interface for our ``Dog`` class.
-   This makes sense as dogs are creatures that we feed. However, as dogs and cats are so 
-   different, it is unlikely that they would share many characteristics through a ``Pet`` class.
+      Think about our ``IFeedable`` interface. If we want to 
+      add a ``Dog`` class to our application, we might implement the ``IFeedable`` interface for our 
+      ``Dog`` class. This makes sense as dogs are creatures that we feed. However, as dogs and cats are so 
+      different, it is unlikely that they would share many characteristics through a ``Pet`` class.
 
 Check Your Understanding
 ------------------------

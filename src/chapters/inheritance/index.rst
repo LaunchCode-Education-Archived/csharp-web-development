@@ -1,3 +1,5 @@
+.. _inheritance:
+
 Inheritance
 ===========
 
@@ -11,3 +13,7 @@ Inheritance
    casting
    testing-inheritance
    class-diagrams
+   exercises
+   studio
+
+

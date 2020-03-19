@@ -21,6 +21,8 @@ To help overcome this, let's consider a common occurrence---sorting a
 Getting Started
 ---------------
 
+Fork and clone the `starter code <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn7interfaces>`_ and open up Visual Studio to get started!
+
 You will practice implementing interfaces by playing around with a small ice
 cream store. It consists of a refrigerated display ``Case``, which contains
 a collection of ice cream ``Flavor`` objects and a selection of ``Cone``

@@ -11,16 +11,18 @@ are available to each instance of ``HouseCat``.
 
 When we speak about an inheritance relationship, we say that a ``HouseCat`` *is a* 
 ``Cat``, or **extends** ``Cat``. In order to define a class that inherits from
-another, we use the ``:`` keyword.
+another, we use the ``:`` syntax.
 
 .. sourcecode:: csharp
    :linenos:
 
-   public class Cat {
+   public class Cat
+   {
       // ...code for the Cat class...
    }
 
-   public class HouseCat : Cat {
+   public class HouseCat : Cat
+   {
       // ...code for the HouseCat class...
    }
 
@@ -66,6 +68,7 @@ Fields and non-constructor methods are directly
 available to instances of the subclass, subject to any access modifiers.
 In general, this means that ``private`` and ``internal``
 members of a base class are not accessible to a subclass.
+However, if the subclass and base class are in the same assembly, ``internal`` allows access to a member.
 
 .. admonition:: Note
 

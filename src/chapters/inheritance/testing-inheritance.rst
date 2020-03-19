@@ -23,7 +23,7 @@ We can add a ``CatTests`` project to our ``Cats`` solution and write some code t
    }
 
 Here, we're testing that one of our ``HouseCat`` constructors will call the ``Cat`` constructor
-and appropriately assign the ``HouseCat`` object's ``Weight`` property. Remember, we don't need
+and appropriately assign the ``HouseCat`` object's ``weight`` field. Remember, we don't need
 to write unit tests for getters or setters unless they do something extra in addition to getting
 or setting the field. The purpose of this test, though, is less to test getting ``keyboardCat.Weight`` 
 and more to validate that the subclass constructor has inherited the base class constructor.
@@ -35,7 +35,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Fill in the blank to test that the default constructor of ``Cat`` is called when the second 
+   Fill in the blank to test that the no-argument constructor of ``Cat`` is called when the second 
    constructor on ``HouseCat`` is used?
 
    Second ``HouseCat`` constructor:

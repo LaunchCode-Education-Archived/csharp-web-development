@@ -26,7 +26,7 @@ Methods of the base class ``Cat`` may be called on instances of the
 subclass ``HouseCat`` as if they were defined as part of the
 ``HouseCat``.
 
-Try it out. In your project, open up ``Program.cs``. Within the ``Main`` method
+Try it out. In your project, open up ``Program.cs``. Within the ``Main`` method,
 create an instance of ``HouseCat`` and call some of the methods it inherits from ``Cat``.
 
 .. sourcecode:: csharp
@@ -116,7 +116,7 @@ Then in ``HouseCat``, we can simply define another constructor as this:
 
 Even though we don’t explicitly specify that we want to call a
 constructor from ``Cat``, the no-argument constructor will be called. Now, we can 
-initialize a new ``HouseCat`` with only a ``Name`` property and the ``Cat`` no-argument
+initialize a new ``HouseCat`` with only a name field and the ``Cat`` no-argument
 constructor will still be applied. Back in ``Program.cs``, you can confirm that the base
 class constructor has been called:
 
@@ -127,7 +127,7 @@ class constructor has been called:
    Console.WriteLine(spike.Weight);   // prints 13
 
 As a consequence of this constructor syntax, we can easily expose any
-constructor from the base class by providing a subclass constructor that calls the base constructor in the signature and has an empty body.
+constructor from the base class by providing a subclass constructor that has the same signature, no method body, and calls the base class constructor with ``: base``.
 
 .. sourcecode:: csharp
    :linenos:
@@ -154,8 +154,7 @@ an inherited method by a completely new method implementation. For a
 given method, we can do this via **method overriding**.
 
 In our example, the ``Noise`` method of ``HouseCat`` overrides the
-method of the same name in ``Cat``. When we override it, we should use
-the ``override`` in the signature of the method in the subclass and ``virtual`` in the signature of the base class.
+method of the same name in ``Cat``. When we override it, we should use ``override`` in the signature of the method in the subclass and ``virtual`` in the signature of the base class.
 
 Here are the methods in question.
 
@@ -176,7 +175,7 @@ In ``HouseCat``:
 
    public override string Noise()
    {
-      return "Hello, my name is " + name + "!";
+      return "Hello, my name is " + Name + "!";
    }
 
 If we have a ``HouseCat`` object and call its ``Noise()`` method, we will be 
@@ -186,7 +185,7 @@ using the method defined in ``HouseCat``.
    :linenos:
 
    Cat plainCat = new Cat(8.6);
-   HouseCat cheshireCat = new HouseCat("Cheshire Caat", 26.0);
+   HouseCat cheshireCat = new HouseCat("Cheshire Cat", 26.0);
 
    Console.WriteLine(plainCat.Noise()); // prints "Meow!"
    Console.WriteLine(cheshireCat.Noise()); // prints "Hello, my name is Cheshire Cat!"
@@ -209,11 +208,15 @@ method as follows:
 .. sourcecode:: csharp
    :lineno-start: 38
 
-   public override string Noise() {
-      if (isSatisfied()) {
-         return "Hello, my name is " + name + "!";
-      } else {
-         return base.Noise(); // prints "Meeeeeeooooowww!"
+   public override string Noise()
+   {
+      if (isSatisfied())
+      {
+         return "Hello, my name is " + Name + "!";
+      } 
+      else
+      {
+         return base.Noise(); // prints "Meow!"
       }
    }
 
@@ -234,7 +237,7 @@ In fact, these default methods are part of a class called ``Object``. If
 a class does not explicitly extend another class, then it implicitly
 extends ``Object``. So the default implementations of ``Equals`` and
 ``ToString`` (along with a few `other
-methods <https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netframework-4.8>`__)
+methods <https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netframework-4.8#methods>`__)
 are made available to us via inheritance.
 
 Note that we should use the ``override`` keyword when we provide new

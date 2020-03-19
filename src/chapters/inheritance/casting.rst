@@ -50,14 +50,14 @@ The danger here is that if ``suki`` is in fact not a ``HouseCat`` (it
 was declared only as a ``Cat``, after all) then we’ll experience a
 runtime exception. A **runtime exception** is an error that occurs upon
 running the program, and is not found by the compiler beforehand. These
-are dangerous, and situations where they might come up should be
+are dangerous, and situations where these exeptions might come up should be
 avoided. So you should only cast an object to another type when you are
 very sure that it’s safe to do so.
 
 Storing objects of one type (e.g. ``HouseCat``) in a variable or field
-of another “compatible” type (e.g. ``Cat``) is an example of
+of another compatible type (e.g. ``Cat``) is an example of
 **polymorphism**. Polymorphism is another one of the pillars of OOP and we’ll 
-have more to say about it in a future lesson.
+have more to say about it in the next lesson.
 
 Check Your Understanding
 ------------------------

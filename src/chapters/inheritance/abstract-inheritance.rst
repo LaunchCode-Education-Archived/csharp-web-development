@@ -87,8 +87,8 @@ own implementation of that behavior.
 
 
 Now, classes such as ``HouseCat`` and ``Tiger``, which both extend
-``Cat``, *must* provide their own version of ``Noise()``, with the exact
-same method signature.
+``Cat``, *must* provide their own version of ``Noise``, with the exact
+same method signature, but without the ``abstract`` keyword.
 
 Check Your Understanding
 ------------------------

@@ -24,6 +24,37 @@ to sort its contents with the
 `Sort <https://msdn.microsoft.com/en-us/library/234b841s(v=vs.110).aspx>`__
 method.
 
+Using ``IComparer<T>`` is a two step process. You must first create a class that implements the interface. 
+Then, provide a custom implementation of the ``Compare`` method:
+
+**Example**
+
+.. sourcecode:: c#
+
+   public class JobComparer : IComparer<Job>
+   {
+      public int Compare(Job x, Job y)
+      {
+         // ^^ This Compare method is an implementation of IComparer.Compare
+         // Here, we write our own logic for comparing two job objects.
+         // For example, if we want to compare Job objects by name values, we'd write:
+         return string.Compare(x.Name, y.Name);
+         // ^^ Note, this Compare method is the built-in string method
+         // if we want to compare Jobs based on multiple fields, we can do so by expanding the custom logic
+         // in this ``IComparer.Compare`` implementation
+      }
+   }
+
+
+``Compare(T, T)`` returns an integer which determines which of the two objects comes before (in other 
+words, "is less than") the other. If the returned value is less than zero, then the first parameter 
+comes before the second. If the integer is zero, then they are considered the same. If the integer is 
+greater than zero, then the second parameter comes before the first. 
+
+You can think of the result of calling ``Compare(x, y)`` as being the value of subtracting, like 
+``x - y``. If ``x`` is smaller than ``y``, this value is negative. If ``x`` is larger than ``y``, 
+this value is positive.
+
 IEnumerable<T>
 --------------
 
@@ -47,7 +78,7 @@ using throughout this course.
    // add items to the collection
 
    foreach (string item in collection) 
-	{
+   {
       // do something with the item
    }
 

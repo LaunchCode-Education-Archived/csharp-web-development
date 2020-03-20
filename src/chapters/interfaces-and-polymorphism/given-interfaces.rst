@@ -5,6 +5,8 @@ The first situations where you’ll want to use interfaces involve applying pre-
 and classes that are part of C#. In fact, you have already encountered implementations of several these 
 ``System`` provided interfaces. 
 
+.. _icomparer:
+
 IComparer<T>
 ------------
 

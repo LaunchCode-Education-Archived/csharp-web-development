@@ -1,7 +1,7 @@
 Exercises: Controllers and Routing
 ==================================
 
-.. TODO: check on starter repo name from book content. holding spot for now: https://github.com/CarlyLanglois/HelloASPDotNET
+.. TODO: check on starter repo name from book content. holding spot name for now: HelloASPDotNET
 
 While reading the chapter, you created a basic Hello, World application using ASP.NET
 called ``HelloASPDotNET``. Open that project up in Visual Studio, and get ready to add some 

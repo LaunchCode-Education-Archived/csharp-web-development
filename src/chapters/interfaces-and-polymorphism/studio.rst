@@ -10,9 +10,9 @@ Getting Ready
 
 Set up a local copy of the project:
 
-#. Visit the `repository page <>`__
+#. Visit the `repository page <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn7interfaces-studio>`__
    for this project and fork it to create a copy under your own GitHub account.
-#. Back in Visual Studio, close any open projects and open up the solution.
+#. Open up the solution in Visual Studio to get started.
 
 Disc Project Overview
 ----------------------
@@ -33,17 +33,16 @@ Consider Generic Behaviors
 
 Here are a few behaviors that both CDs and DVDs share:
 
-a. They both spin,
-b. They both store data,
-c. Data gets written to the discs by using a laser,
-d. The data on the discs can be read by using a laser,
+a. They both spin.
+b. They both store data.
+c. Data gets written to the discs by using a laser.
+d. The data on the discs can be read by using a laser.
 e. Once loaded, they both report information like name, capacity, contents, and
    disc type.
 
 With your partner, add one or two more behaviors to the list. Feel free to
 do some quick research online if needed. Note that information like storage
-capacity does NOT belong on this list, since it describes a *property*
-(field) rather than a *behavior* (method).
+capacity does NOT belong on this list, since it describes a *property* rather than a *behavior*.
 
 For each behavior, identify if it depends on any type of instance variable.
 For example, the spinning behavior does not require any field information
@@ -67,8 +66,8 @@ represent generic values like ``String searchTerm`` rather than field data
 like ``DVD.title``.
 
 For example, even though CDs and DVDs both spin, they do so at different
-speeds. Their *behavior* (spinning) is the same, but the details of that
-behavior vary. Thus, a method like ``spinDisc()`` fits well into an interface.
+speeds. Their behavior (spinning) is the same, but the details of that
+behavior vary. Thus, a method like ``SpinDisc()`` fits well into an interface.
 
 #. For the other behaviors you and your partner sorted, decide which ones
    belong in the interface.
@@ -80,20 +79,20 @@ behavior vary. Thus, a method like ``spinDisc()`` fits well into an interface.
 #. Finally, write down the fields and properties needed to define the properties of a CD or
    DVD (e.g. ``StorageCapacity``). Consider:
 
-   a. Which fields are shared by both types of discs, and which ones are
+   a. Which members are shared by both types of discs, and which ones are
       unique to each class?
-   b. Do any of the fields represent *constants*?
+   b. Do any of the members represent *constants*?
 
 Code the Interface
--------------------
+------------------
 
 Now that your team has completed the before-coding thinking, it's time to
 start building!
 
-#. Add an ``OpticalDisc`` file for the interface. Refer back to
+#. Add an ``IOpticalDisc`` file for the interface. Refer back to
    :ref:`Creating an Interface <create-an-interface>` if you need a quick
    review of the syntax.
-#. Declare and initialize any constant fields.
+#. Declare and initialize any constants.
 #. Add a method signature for each of the behaviors you identified for the
    interface. For example:
 
@@ -121,17 +120,8 @@ Complete the Disc Classes
 
 #. Extend the base class into the ``CD`` and ``DVD`` classes.
 #. Implement the interface in each class.
-#. Fill in the ``override`` code for each of the interface methods.
-
-   .. admonition:: Tip
-
-      You can hover over the ``implements`` keyword and click the Visual Studio
-      suggestions to generate these method signatures.
-
-      Since these are *signatures* only, you will need to add specific code to
-      each method.
-
-#. Add necessary methods needed by each class.
+#. Fill in the code for each of the interface methods.
+#. Add any other necessary methods needed by each class.
 
 Add Method Calls to ``Main``
 ----------------------------

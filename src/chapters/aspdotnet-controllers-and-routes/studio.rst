@@ -1,7 +1,7 @@
 Studio: Skills Tracker
 ======================
 
-Wouldn't it be nice to have a small tracker to show us what skills we have built and where we are at in learning them?
+Wouldn't it be nice to have a small tracker to show us what programming skills we are working on?
 Let's build something that would let us do just that!
 
 As always, read through the whole studio before starting.
@@ -19,29 +19,36 @@ underlying build errors to fix before coding. Now you are ready to start trackin
 Creating Controllers
 --------------------
 
-In your project, add a class called ``SkillsController`` inside of the ``Controllers`` folder.
+In your project, add a controller class called ``SkillsController`` inside the ``Controllers`` folder.
 Inside ``SkillsController``, you will add several methods to accomplish the following:
 
-#. At ``localhost:5001``, add text that states the three possible programming languages someone could be working on.
+#. At ``localhost:5001/skills``, add text that states the three possible programming languages someone could be working on.
    You need to have an ``h1`` with the title "Skills Tracker", an ``h2``, and an ``ol`` containing three programming languages 
    of your choosing.
-#. At ``localhost:5001/form``, add a form that lets the user enter their name and choose their favorite, second favorite, and 
-   third favorite programming languages on your list. Use ``select`` elements for each of the rankings. Just as we did in 
-   the exercises, we will use a ``GET`` request.
-#. Also at ``localhost:5001/form``, use ``[HttpPost]`` and request parameters to update the HTML with an ``h1`` stating the 
-   user's name and an ``ol`` showing the three programming languages in the order they chose.
+#. At ``localhost:5001/skills/form``, add a form that lets the user enter a date and choose their learning progress in each of 
+   the programming skills listed at ``/skills``.
+
+   .. admonition:: Tip
+
+      Use the `date input type <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date>`__. Note that the value is 
+      a ``string`` type. 
+      
+      For each of the skills, use ``select`` elements for selecting a description of progress. 
+
+#. Also at ``localhost:5001/skills/form``, use ``[HttpPost]`` and request parameters to update the HTML with an ``h1`` stating the 
+   submitted date and a list showing the user's learning progress in the three programming languages they chose.
 
 End Result
 ----------
 
-At the end of the studio, when you navigate to ``localhost:5001``, you should see the following:
+At the end of the studio, when you navigate to ``localhost:5001/skills``, you should see the following:
 
 .. figure:: figures/studio-home-page.png
    :alt: Image showing functioning home page.
 
    Skill Tracker app home page.
 
-When you navigate to ``localhost:5001/form``, you should see a blank form that looks something like: 
+When you navigate to ``localhost:5001/skills/form``, you should see a blank form that looks something like: 
 
 .. figure:: figures/blank-studio-form.png
    :alt: Image showing the blank form.

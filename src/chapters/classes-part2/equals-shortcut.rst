@@ -1,3 +1,5 @@
+.. _equals-shortcut:
+
 Visual Studio Generator Shortcut
 ================================
 

@@ -84,7 +84,7 @@ Check Your Understanding
 
       public class Greeting : Message
       {
-         private bool waving;
+         public bool Waving { get; set;};
          
          public Greeting(string language, string text) : base(language, text)
          {
@@ -92,7 +92,7 @@ Check Your Understanding
 
          public void Wave()
          {
-            waving = true;
+            Waving = true;
          }
       }
       

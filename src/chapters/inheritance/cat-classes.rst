@@ -16,11 +16,9 @@ the biological family of all cats.
 
    public string Family { get; } = "Felidae";
 
-The ``family`` field is not directly accessible by ``HouseCat``. 
-However, it may be read via the getter. There is no setter for ``Family``, however.
-It may only be changed within ``Cat``. 
-It makes sense that a subclass should not be able to change the biological family 
-of a cat, since this property should rarely, if ever, change.
+The ``family`` field is not directly accessible by ``HouseCat`` and can only be accessed by the ``get`` accessor of the ``Family`` property.
+However, there is no ``set`` accessor for ``Family``, so the value of the ``family`` field may only be changed within ``Cat``. 
+It makes sense that a subclass should not be able to change the biological family of a cat, since this property should rarely, if ever, change.
 
 Methods of the base class ``Cat`` may be called on instances of the
 subclass ``HouseCat`` as if they were defined as part of the
@@ -83,10 +81,10 @@ To do so, look at the constructor included in ``HouseCat``:
       Name = name;
    }
 
-Here, the ``base`` keyword allows the subclass to access the constructor from the
-base class. This call to the base class constructor must be on the constructor signature.
-In the case of ``HouseCat``, the subclass constructor 
-extends the original constructor by setting an additional property, ``Name``.
+Here, we use the ``:`` syntax again with the ``base`` keyword on the constructor signature. 
+This combination allows the constructor to extend the base class constructor that takes a ``weight`` parameter.
+In this case, the subclass constructor also sets the value of the ``name`` field.
+The call to the base class constructor must be on the subclass's constructor signature.
 
 .. index:: ! no-arg constructor
 
@@ -233,10 +231,11 @@ In a previous lesson, we introduced the :ref:`special-methods` ``Equals`` and
 ``ToString``. All classes contain default implementations of these methods that 
 can be overridden.
 
-In fact, these default methods are part of a class called ``Object``. If
-a class does not explicitly extend another class, then it implicitly
-extends ``Object``. So the default implementations of ``Equals`` and
-``ToString`` (along with a few `other
+In fact, these default methods are part of a class called ``Object``.
+If a class does not explicitly extend another class, then it implicitly extends ``Object``.
+In the case of ``Cat`` and ``HouseCat``, ``HouseCat`` explicitly extends ``Cat`` and ``Cat`` implicitly extends ``Object``.
+This means that both ``Cat`` and ``HouseCat`` can access different methods and members of the ``Object`` class.
+So the default implementations of ``Equals`` and ``ToString`` (along with a few `other
 methods <https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netframework-4.8#methods>`__)
 are made available to us via inheritance.
 
@@ -279,7 +278,7 @@ Check Your Understanding
    g. ``text``
    
 
-.. ans: ``Friendly``, ``Text``, ``Language``, and ``Message``
+.. ans: ``Friendly``, ``Text``, and ``Language``.
 
 
 .. admonition:: Question

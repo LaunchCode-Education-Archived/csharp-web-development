@@ -1,5 +1,3 @@
-.. _inheritance:
-
 Inheritance in OOP
 ==================
 

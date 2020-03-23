@@ -40,8 +40,12 @@ To display a menu for your customers, you need to sort the ice cream flavors
 alphabetically by the ``name`` field. Fortunately, the ``IComparer``
 interface helps you solve the sorting-objects-by-field problem.
 
+.. admonition:: Tip
+
+   Before proceeding, make sure you have read the section on the :ref:`IComparer interface <icomparer>`!
+
 Create a Sorting Class
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a new class called ``FlavorComparer`` and have it implement the
    ``IComparer`` interface:
@@ -53,20 +57,11 @@ Create a Sorting Class
 #. Notice that Visual Studio flags a couple of errors that you need to fix:
 
    a. Add the namespace ``System.Collections.Generic``.
-   b. Hover over the line again and select *potential fixes*. Choose to implement the interface.
-   c. This adds a method that compares two ``Flavor`` objects and throws an exception.
 
-      .. sourcecode:: csharp
-         :lineno-start: 13
-
-         public int Compare([AllowNull] Flavor x, [AllowNull] Flavor y)
-         {
-            throw new NotImplementedException();
-         }
-
-#. Returning exceptions results in no sorting, so replace the method with:
+#. To start sorting, we need a ``Compare()`` method. Add the following code to create one:
 
    .. sourcecode:: csharp
+      :linenos:
 
       public int Compare(Flavor x, Flavor y)
       {
@@ -93,27 +88,19 @@ as well as specific ``availableFlavors`` and ``availableCones`` collections.
    object.
 
    .. sourcecode:: csharp
-      :lineno-start: 10
+      :lineno-start: 13
 
-      Case menu = new Case();
-      List<Flavor> availableFlavors = menu.Flavors;
-      List<Cone> availableCones = menu.Cones;
       FlavorComparer comparer = new FlavorComparer();
 
 #. Next, call the ``Sort`` method on ``availableFlavors`` and pass the ``comparer``
    object as the argument.
 
    .. sourcecode:: csharp
-      :lineno-start: 10
-
-      Case menu = new Case();
-      List<Flavor> availableFlavors = menu.Flavors;
-      List<Cone> availableCones = menu.Cones;
-      FlavorComparer comparer = new FlavorComparer();
+      :lineno-start: 15
 
       availableFlavors.Sort(comparer);
 
-#. Iterating through the ``availableFlavors`` list before and after the sort shows
+#. Iterating through the ``availableFlavors`` list with a loop before and after the sort shows
    the results. (The output below displays just the ``name`` fields).
 
    ::
@@ -125,10 +112,6 @@ as well as specific ``availableFlavors`` and ``availableCones`` collections.
       Red Velvet              Rocky Road
       Rocky Road              Strawberry Sorbet
       Strawberry Sorbet       Vanilla
-
-Note that ``Main`` does NOT have to implement the ``IComparer`` interface.
-This only needs to happen in the class that actually uses the ``Compare()``
-method.
 
 .. admonition:: Tip
 
@@ -148,6 +131,7 @@ expensive.
 #. Create the new class ``ConeComparer``.
 #. Follow the example above to implement the ``IComparer`` interface and
    evaluate ``Cone`` objects by cost.
+   Since comparing two numbers is different from comparing strings, try getting the difference between the two numbers. If the difference is positive, then we know the first number is greater. If the difference is negative, then we know that the second number is greater.
 #. In the ``Main()`` method, sort the ``availableCones`` list, then print the elements to the screen
    to verify the results.
 

@@ -104,10 +104,11 @@ one described here.*
 Implementing an Interface
 -------------------------
 
-The purpose of an interface is to define a contract of behaviors that classes uphold. In doing so, we say that they “*implement* the
-interface”. The syntax for implementation is the same as that for
-inheritance. Here’s how we can use the ``IFeedable`` interface in
-defining our ``Cat`` class.
+The purpose of an interface is to define a contract of behaviors that classes uphold. In 
+doing so, we say that they “*implement* the interface”. The syntax for implementation is 
+the same as that for inheritance --- so adhering to the interface naming convention comes in 
+handy to identify a case of extension versus implementation. Here's how we can use the 
+``IFeedable`` interface in defining our ``Cat`` class.
 
 .. admonition:: Example
 

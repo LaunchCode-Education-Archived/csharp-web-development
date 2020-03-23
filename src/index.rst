@@ -13,6 +13,7 @@ Chapters
    chapters/classes-part2/index
    chapters/unit-testing/index
    chapters/inheritance/index
+   chapters/aspdotnet-controllers-and-routes/index
 
 .. toctree::
 

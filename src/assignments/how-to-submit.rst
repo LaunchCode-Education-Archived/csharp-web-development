@@ -20,6 +20,8 @@ TechJobs (Console Edition)
 TechJobs (Object-Oriented Edition)
 ----------------------------------
 
+:ref:`tech-jobs-oo`
+
 TechJobs (MVC Edition)
 ----------------------
 

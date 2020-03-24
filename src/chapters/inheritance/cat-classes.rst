@@ -208,7 +208,7 @@ method as follows:
 
    public override string Noise()
    {
-      if (isSatisfied())
+      if (IsSatisfied())
       {
          return "Hello, my name is " + Name + "!";
       } 
@@ -227,14 +227,14 @@ conditional branch is reached.
 ``Object`` Class
 ----------------
 
-In a previous lesson, we introduced the :ref:`special-methods` ``Equals`` and
+In a previous lesson, we introduced the :ref:`special methods <special-methods>`: ``Equals`` and
 ``ToString``. All classes contain default implementations of these methods that 
 can be overridden.
 
 In fact, these default methods are part of a class called ``Object``.
-If a class does not explicitly extend another class, then it implicitly extends ``Object``.
-In the case of ``Cat`` and ``HouseCat``, ``HouseCat`` explicitly extends ``Cat`` and ``Cat`` implicitly extends ``Object``.
-This means that both ``Cat`` and ``HouseCat`` can access different methods and members of the ``Object`` class.
+All classes we create in C# have access to the methods and members of the ``Object`` class, because it is the base class in all .NET class hierarchies.
+In the case of ``Cat`` and ``HouseCat``, ``Cat`` implicitly extends ``Object``.
+Since ``Cat`` is a subclass of the ``Object`` class and ``HouseCat`` is a subclass of the ``Cat`` class, ``HouseCat`` and ``Cat`` can both access different methods and members of the ``Object`` class.
 So the default implementations of ``Equals`` and ``ToString`` (along with a few `other
 methods <https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netframework-4.8#methods>`__)
 are made available to us via inheritance.

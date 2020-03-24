@@ -141,6 +141,8 @@ constructor from the base class by providing a subclass constructor that has the
    syntax and usage. We would not want to have a constructor for
    ``HouseCat`` that didn’t initialize an essential field such as ``name``.
 
+.. _method-overriding:
+
 .. index:: override, method overriding, ! virtual
 
 ``override``
@@ -152,7 +154,8 @@ an inherited method by a completely new method implementation. For a
 given method, we can do this via **method overriding**.
 
 In our example, the ``Noise`` method of ``HouseCat`` overrides the
-method of the same name in ``Cat``. When we override it, we should use ``override`` in the signature of the method in the subclass and ``virtual`` in the signature of the base class.
+method of the same name in ``Cat``. When we override it, we should use ``override`` 
+in the signature of the method in the subclass and ``virtual`` in the signature of the base class.
 
 Here are the methods in question.
 

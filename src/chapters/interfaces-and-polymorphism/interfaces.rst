@@ -130,9 +130,7 @@ Since we’ve declared that ``Cat`` implements ``IFeedable``, we have to
 provide an implementation for the ``Eat`` method, with the signature as
 specified in the interface definition. 
 
-.. TODO: add link to a relevant header in previous chapter on virtual and override intros
-
-Note the absence of the ``virtual`` and ``override`` keywords we used in inheritance. The class is 
+Note the absence of the ``virtual`` and ``override`` keywords we used in :ref:`inheritance <method-overriding>`. The class is 
 *implementing* the interface, rather than extending it so different method rules apply. 
 
 .. admonition:: Note

@@ -12,8 +12,6 @@ Polymorphism
 **Polymorphism** is an object-oriented mechanism that allows for objects
 of different types to be used in the same way.
 
-.. TODO: add a casting ref from section in inheritance chapter
-
 We’ve already encountered polymorphism made possible by inheritance when talking about 
 :ref:`casting <casting>` with our ``Cat`` and ``HouseCat`` classes.
 In that case, we stored an object of type ``HouseCat`` in its compatible type, ``Cat``.

@@ -57,6 +57,8 @@ to a grouping of classes and other resources that form a particular unit of an a
 classes. While we will discuss later how to decide which access modifier to use for different
 scenarios, you should save this table now as reference for those conversations.
 
+.. _access-modifier-table:
+
 .. list-table:: Is information accessible at certain levels with certain access modifiers?
    :widths: auto
    :header-rows: 1

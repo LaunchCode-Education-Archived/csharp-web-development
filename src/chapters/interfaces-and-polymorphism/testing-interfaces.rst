@@ -32,6 +32,12 @@ that the interface is supposed to be upholding as opposed to the interface itsel
          }
       }
 
+   Based on the class above and the interface it implements, we should expect that a call to ``.Eat()`` on an instance of 
+   a ``HouseCat`` will return the default implementation.
+
+   .. sourcecode:: c#
+      :linenos: 
+
       [TestClass]
       public class CatTests
       {
@@ -39,7 +45,8 @@ that the interface is supposed to be upholding as opposed to the interface itsel
          public void TestHouseCatImplementsEatMethod()
          {
             IFeedable test_cat = new HouseCat("test");
-            Assert.AreEqual("the feedable is eating", test_cat.Eat());
+            Assert.AreEqual("the feedable is eating", test_cat.Eat()); 
+            // This test passes. Don't believe us? Try it yourself!
          }
       }
 

@@ -5,9 +5,9 @@ Interfaces
 
 An **interface** is similar to an abstract class, with some important differences. Interfaces allow us to 
 create code organized by behavior, rather than static data. While some object-oriented languages encourage 
-the use of interfaces as a design concept, C# (among others) includes interfaces as a formal construction. 
-Like abstract classes, interfaces cannot be instantiated and they have limitations on what kind of 
-behavioral information they may contain. A C# interface may contain:
+creating classes that behave like interfaces to improve software design, C# is a language that includes interfaces 
+as a formal construction. Like abstract classes, interfaces cannot be instantiated and they have limitations on what 
+kind of behavioral information they may contain. A C# interface may contain:
 
 #. Constants
 #. Method signatures
@@ -52,11 +52,10 @@ interface, ``IFeedable``. "I" for interface, of course! More on this name below.
 In the code above, notice the following:
 
 #. We need to use the ``interface`` keyword to define our interface, ``IFeedable``.
-#. ``Eat`` only has a signature. We are NOT allowed to provide a body for methods defined 
-   in interfaces.
-#. ``Eat`` also does not have an access modifier. Interface members are always ``public``, 
-   and while we may use the ``public`` modifier, it’s unnecessary. An interface method may NOT 
-   have an access modifier that is more restrictive than ``public``.
+#. ``Eat`` only has a signature. We only provide a body for methods defined 
+   in interfaces in special circumstances, defined below under *Default Methods*.
+#. ``Eat`` also does not have an access modifier. Interface members are ``public`` by default and it's
+   best practice to keep them public.
 #. The ``IFeedable`` interface itself is declared ``public``, which means any other class may 
    use it. We may also leave off ``public``, making the interface ``protected internal``, or 
    usable only within the same assembly. Recall this access modifier described in this
@@ -147,7 +146,8 @@ Note the absence of the ``virtual`` and ``override`` keywords we used in inherit
 
       public class HouseCat : Cat, IPetable
       {
-         // ...HouseCat code: fields, properties, methods, etc ...
+         // ^^ Note that order matters here. The class being extended 
+         // must come before any interfaces being implemented
       }
 
 As with classes, interfaces define a type that can be used when

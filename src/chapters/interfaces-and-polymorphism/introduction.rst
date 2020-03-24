@@ -3,7 +3,7 @@ Introduction
 
 .. index:: ! polymorphism
 
-The third pillar of object-oriented programming that we’ll
+The final pillar of object-oriented programming that we’ll
 explore is polymorphism.
 
 Polymorphism
@@ -44,7 +44,7 @@ Let's take a closer look at how polymorphism might work in our cat-centric appli
       }
 
    The method ``FeedTheCat`` uses the property ``Pet``, which is of type
-   ``Cat``, but since a ``HouseCat`` *is a* ``Cat`` via inheritance, it is
+   ``Cat``. Since a ``HouseCat`` *is a* ``Cat`` via inheritance, it is
    perfectly acceptable to use an instance of ``HouseCat`` to fill the
    ``Pet`` property.
 
@@ -58,7 +58,7 @@ Let's take a closer look at how polymorphism might work in our cat-centric appli
 
    Similarly, ``FeedTheCat`` can accept ``Tiger`` instances as well. This
    is because the only thing that the method requires is that the input
-   parameter has the methods defined within ``Cat``, and via inheritance,
-   both of the subclasses satisfy this requirement.
+   parameter has the methods defined within ``Cat``. Via inheritance,
+   both ``HouseCat`` and ``Cat`` satisfy this requirement.
 
 In addition to using classes to code in a polymorphic way, we can use *interfaces*.

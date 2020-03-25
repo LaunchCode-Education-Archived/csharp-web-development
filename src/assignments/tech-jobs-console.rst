@@ -234,11 +234,8 @@ The keys in ``actionChoices`` and ``columnChoices`` represent the
 the user’s menu choice, or querying data). The values in the dictionary represent the
 *external* way that these are represented to the user.
 
-.. TODO: replace this microsoft link with an internal ref to the dowhile section
-
 Within ``GetUserSelection`` itself, most of the code is within a
-``do-while loop``. Recall that a `do-while
-loop <https://msdn.microsoft.com/en-us/library/370s1zax.aspx>`__
+``do-while loop``. Recall that a :ref:`do-while loop <do-while>`
 is similar to a ``while`` loop, but the conditional check is at the
 *end* of the loop’s code block. This has the net consequence that the
 loop’s code block *always runs at least once*. At the end of the block’s

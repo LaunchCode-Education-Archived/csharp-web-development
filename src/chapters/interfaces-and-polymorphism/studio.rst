@@ -17,15 +17,15 @@ Set up a local copy of the project:
 Disc Project Overview
 ----------------------
 
-In this activity, you will pair up to design a new custom interface.
+In this activity, you will pair up to design a new custom interface and an abstract class.
 
 Take a look at the prepared ``CD`` and ``DVD`` classes in the starter
-code---only their signatures are present. You will add fields and methods by
+code. Neither class contains members and methods. You will add these by
 extending a base class and implementing your interface. Before you do this,
 however, you need to consider what code to place in the interface vs. the
 abstract class vs. each specific class.
 
-Just like you did with your Restaurant Menu studios, you will begin with pen
+Just like you did with your :ref:`Restaurant Menu studios <classes-studio-part1>`, you will begin with pen
 and paper (or similar tools).
 
 Consider Generic Behaviors
@@ -62,8 +62,8 @@ interface vs. an abstract class.
 Behaviors added to an interface do NOT have to be identical for every object
 that implements the interface. The key is that the methods require no
 object-specific data. The methods can accept parameters, but these should
-represent generic values like ``String searchTerm`` rather than field data
-like ``DVD.title``.
+represent generic values like a search term rather than field data
+like the title of a DVD.
 
 For example, even though CDs and DVDs both spin, they do so at different
 speeds. Their behavior (spinning) is the same, but the details of that
@@ -72,7 +72,7 @@ behavior vary. Thus, a method like ``SpinDisc()`` fits well into an interface.
 #. For the other behaviors you and your partner sorted, decide which ones
    belong in the interface.
 #. Write down details about how these behaviors differ for CDs and DVDs. This
-   guides your thinking about how each class should override the methods.
+   guides your thinking about how each class should implement the methods.
 #. For the behaviors that cannot go into the interface, decide if they could be
    placed in an abstract class or if they need to appear in the separate ``CD``
    and ``DVD`` classes.
@@ -152,8 +152,7 @@ Bonus Missions: Other Discs & Disks?
 
    a. Add classes for vinyl records (LPs) and floppy disks.
    b. Does your interface apply to all four classes? If so, implement the
-      interface into the LP and floppy classes, and complete the appropriate
-      override methods.
+      interface and its methods in the LP and floppy classes.
    c. If your interface does NOT apply to all of the classes, modify it to do so.
       (Note: At the very least, you need to rename the interface).
    d. Does your abstract class apply to LPs and floppy disks? If so, extend it

@@ -126,7 +126,10 @@ A ``while`` loop in C#:
       i++;
    }
 
+
 .. index:: ! do-while loop
+
+.. _do-while:
 
 ``do-while`` Loop
 -----------------

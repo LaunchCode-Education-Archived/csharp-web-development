@@ -32,6 +32,7 @@ Studios
    chapters/classes/studio
    chapters/classes-part2/studio
    chapters/unit-testing/studio
+   chapters/interfaces-and-polymorphism/studio
 
 Assignments
 ===========

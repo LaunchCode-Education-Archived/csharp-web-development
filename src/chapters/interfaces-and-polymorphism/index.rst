@@ -1,7 +1,7 @@
-Interfaces and Polymorphism
+Interfaces and Polymorphism 
 ===========================
 
-.. toctree::
+.. toctree:: 
    :maxdepth: 3
 
    introduction
@@ -10,3 +10,4 @@ Interfaces and Polymorphism
    given-interfaces
    testing-interfaces
    exercises
+   studio

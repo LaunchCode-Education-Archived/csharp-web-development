@@ -12,6 +12,15 @@ via controller methods.
 
       MVC Flow
 
+.. admonition:: Note
+
+   Do HTTP requests and responses feel unfamiliar? Do you remember what a **query string**
+   is? If you're feeling rusty on these topics, it's a good idea to brush up now, as routing 
+   requires a foundational understanding of HTTP data transfer.
+
+   Here's our `introduction to HTTP <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html>`__ 
+   for reviewing the concepts.
+
 Controllers and Static Responses - Video
 ----------------------------------------
 
@@ -25,9 +34,9 @@ Controllers and Static Responses - Intro
 ``Controller``
 ^^^^^^^^^^^^^^
 
-In the ASPP.NET context, we'll organize controller code into a controller directory. Remember when we 
-mentioned that the framework works by convention over configuration? This is what we mean. It's not required 
-for a controller to be in a controller package, but it's generally a good idea.
+In ASP.NET, we'll organize controller code into a controller directory.
+Remember when we mentioned that the framework works by convention over configuration?
+This is what we mean. It's not required for a controller to be in a controller package, but it's generally a good idea.
 
 To designate a given class as a controller within the ASP.NET framework, we extend the ``Controller`` class.
 The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/system.web.mvc.controller?view=aspnet-mvc-5.2>`_ provides us with the necessary members and methods to send and receive HTTP requests in our controller. 
@@ -41,11 +50,13 @@ The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/system.web.mv
 
    }
 
+.. index:: ! endpoint, ! route, ! routing
+
 Controllers Map to Requests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first request we will work with is a GET request. When mapping the route for the GET request we want to designate the path that the method needs to be called for.
-ASP.NET MVC has two different ways to map routes: default routing and attribute routing. For now, we will be using default routing and will progress to attribute routing later on.
+ASP.NET MVC has two different ways to map routes: conventional routing and attribute routing. For now, we will be using conventional routing and will progress to attribute routing later on.
 
 .. sourcecode:: csharp
    :linenos:
@@ -58,87 +69,71 @@ ASP.NET MVC has two different ways to map routes: default routing and attribute 
       }
    }
 
-For every controller method that you want to respond to a request, you will want to use map the route.
-Not surprisingly, though, mapping routes only handles ``GET`` requests. If you want to write a controller 
-method that takes care of a ``POST`` request, you'll want to use . Of course, there are 
-other annotations for the other request methods, but these are the two we will use in this class.
+For every controller method that you want to respond to a request, you will want to map the route.
+Check out ``Startup.cs`` in the solution. Towards the bottom of the file, you will notice a block of code that calls some ``UseEndpoints()`` method on an ``app`` object.
+This is how ASP.NET maps controller routes. When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
+Looking at this method, shown in the code block below, you may notice that the code is specifying endpoints. When an HTTP request comes in to our application, routing matches the request with an endpoint.
+**Endpoints** designate the controller action that executes when the appropriate HTTP request comes into the application.
 
-.. sourcecode:: java
+.. sourcecode:: csharp
+   :linenos:
 
-   @Controller
-   public class HelloSpringController {
+   app.UseEndpoints(endpoints =>
+   {      
+      endpoints.MapControllerRoute(
+         name: "default",
+         pattern: "{controller=Home}/{action=Index}/{id?}");
+   });
 
-      // responds to post requests at "/goodbye"
-      @PostMapping("goodbye")
-      public String goodbye() {
-         // method code here ...
-      }
+The default route is to the ``HomeController``, which came with our application courtesy of Microsoft. When we navifate to our application's address, we see the home page with more information about ASP.NET.
+When adding a new controller, such as ``HelloController``, we need to add an endpoint for the controller and its methods.
 
+.. sourcecode:: csharp
+   :linenos:
+
+   app.UseEndpoints(endpoints =>
+   {      
+      endpoints.MapControllerRoute(
+         name: "default",
+         pattern: "{controller=Home}/{action=Index}/{id?}");
+      endpoints.MapControllerRoute(name: "hello",
+         pattern: "hello/{*index}",
+         defaults: new { controller = "Hello", action = "Index" });
+   });
+
+Above, on lines 6-8, we added a new endpoint for the ``HelloController``. We gave the name ``"hello"`` for simplicity and specified a pattern.
+
+Now, we can add various methods to our ``HelloController``. Let's start by adding an ``Index()`` method.
+
+.. sourcecode:: csharp
+   :linenos:
+
+   public IActionResult Index() 
+   {
+      string html = "<h1>" + "Hello World!" + "<h1>";
+      return Content(html, "text/html");
    }
 
-If we want to write a controller method that will be used for both ``GET`` and ``POST`` at the same path, we
-can label the method with ``@RequestMapping``. ``@RequestMapping`` can handle more than one method as such:
+The ``Index()`` method returns an unfamiliar type, ``IActionResult``, and uses a method ``Content()``.
+We will be using ``IActionResult`` quite a bit in our applications, but won't see as much of ``Content()`` after we learn about views and templates.
 
-.. _request-method-example:
+.. index:: ! IActionResult
 
-.. sourcecode:: java
-
-   @Controller
-   public class HelloSpringController {
-
-      // responds to get and post requests at "/hellogoodbye"
-      @RequestMapping(value="hellogoodbye", method = {RequestMethod.GET, RequestMethod.POST})
-      public String hellogoodbye() {
-         // method code here ...
-      }
-
-   }
-
-The default method of ``@RequestMapping`` is ``GET``. Another added capability of ``@RequestMapping`` is that 
-it can be applied to a whole class, not just a single method. When applied to a whole class, ``@RequestMapping``
-essentially designates a base path that all methods in the class start with. 
-
-.. index:: ! @ResponseBody
-
-``@ResponseBody``
+``IActionResult``
 ^^^^^^^^^^^^^^^^^
-
-``@ResponseBody`` is yet another annotation used in the Spring controller context to return plain text
-from a controller method. This annotation we will only need to use for a short while, before we start
-to work with templates. Spring Boot's default action when responding to a controller method is to return 
-a template. Since we aren't doing that yet however, we need to tell the framework to return plain text by 
-adding the ``@ResponseBody`` annotation.
-
-Let's put it all together:
-
-.. sourcecode:: java
-
-   @Controller
-   public class HelloSpringController {
-
-      // responds to get requests at "/hello" 
-      @GetMapping("hello")
-      @ResponseBody
-      public String hello() {
-         return "Hello, Spring!";
-      }
-
-   }
-
 
 Check Your Understanding
 ------------------------
 
 .. admonition:: Question
 
-   True/False: The ``@Controller`` annotation goes above a method to classify
-   it as a controller method.
+   True/False: The ``Controller`` class does not have to be extended to classify a class as a controller.
  
    a. True
       
    b. False
 
-.. ans: b, False the annotation goes atop the class 
+.. ans: a
 
 .. admonition:: Question
 

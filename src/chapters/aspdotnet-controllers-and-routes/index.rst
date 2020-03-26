@@ -5,3 +5,6 @@ Controllers and Routes
    :maxdepth: 3
 
    controllers-simple
+   controllers-parameters
+   controllers-forms
+   controllers-attributes

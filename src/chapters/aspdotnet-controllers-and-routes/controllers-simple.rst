@@ -26,6 +26,9 @@ Controllers and Static Responses - Video
 
 .. TODO: Add video titled "Hello ASP.NET Part 2"
 
+The starter code is on ``master``
+The solution code is on ``static-responses``
+
 Controllers and Static Responses - Intro
 ----------------------------------------
 

@@ -25,6 +25,9 @@ Controllers and Query Parameters - Video
 
 .. TODO: Add a video for "Hello ASP.NET Part 3"
 
+The starter code is on ``static-responses``
+The solution code is on ``query-parameters``
+
 Parameters
 ----------
 

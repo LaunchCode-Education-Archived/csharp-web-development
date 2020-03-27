@@ -18,6 +18,8 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
 The home page of your application is full of curated content and extra resources from Microsoft on how to use ASP.NET. Bookmark these as you see fit!
 
+The Github repo to follow is `HelloASPDotNET <https://github.com/LaunchCodeEducation/HelloASPDotNET>`. After creation, the project should look like ``master``.
+
 Check Your Understanding
 ------------------------
 

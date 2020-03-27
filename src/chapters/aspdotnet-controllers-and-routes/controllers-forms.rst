@@ -6,6 +6,9 @@ Sending Form Data - Video
 
 .. TODO: Add "Hello ASP.NET Part 4" vid
 
+The starter code is on ``query-parameters``.
+The solution code is on ``forms``.
+
 Sending Form Data - Text
 -------------------------
 

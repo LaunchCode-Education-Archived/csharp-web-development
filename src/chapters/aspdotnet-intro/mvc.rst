@@ -5,7 +5,7 @@ Design Patterns, MVC, and Spring, Oh My!
 
 .. index:: ! design pattern, ! Model-View-Controller, ! MVC, ! model, ! view, ! controller
 
-So far, we have been designing our applications by diagrammming classes, drawing connections, and abstracting via interfaces.
+So far, we have been designing our applications by diagramming classes, drawing connections, and abstracting via interfaces.
 This practice benefits us because we can start seeing issues *before* we start coding.
 Many software developers start their applications with this process.
 Before we start diagramming our ``Cat`` class and our ``HouseCat`` class, we decide on the template for our design that we want to use.
@@ -14,7 +14,8 @@ Design patterns provide a set of conventions that we follow to build an applicat
 
 **Model-View-Controller** (MVC) is a design pattern where the programming logic behind the application is broken down into 3 components: models, views, and controllers.
 A **model** handles the data and business logic of the application. A **view** handles the user interface elements.
-A **controller** passes information from the models to the views. Controllers are the traffic cops of the application, capable of passing data back and forth to the browser in MVC web applications. This process will be covered in depth later on in this chapter.
+A **controller** passes information from the models to the views. Controllers are the traffic cops of the application, capable of passing data back and forth to the browser in MVC web applications.
+This process will be covered in depth later on in this chapter.
 
 .. figure:: figures/mvcOverview.png
    :alt: Figure showing that controllers handle traffic between models and views, but models do not interact with views.

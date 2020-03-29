@@ -26,8 +26,10 @@ Controllers and Static Responses - Video
 
 .. TODO: Add video titled "Hello ASP.NET Part 2"
 
-The starter code is on ``master``
-The solution code is on ``static-responses``
+.. admonition:: Note 
+
+   If you ever want to verify what code you started the video with, the starter code for this video is on the ``master`` branch.
+   If you ever want to verify what code you end the video with, the solution code for this video is on the ``static-responses`` branch.
 
 Controllers and Static Responses - Intro
 ----------------------------------------
@@ -37,12 +39,13 @@ Controllers and Static Responses - Intro
 ``Controller``
 ^^^^^^^^^^^^^^
 
-In ASP.NET, we'll organize controller code into a controller directory.
+In ASP.NET, we'll organize controller code into the provided ``controller`` directory.
 Remember when we mentioned that the framework works by convention over configuration?
-This is what we mean. It's not required for a controller to be in a controller package, but it's generally a good idea.
+In the case of ASP.NET, some tools may depend on us following the convention. 
+If you want to change something about the provided structure, be sure to double check the documentation to make sure a tool does not depend on you following it!
 
 To designate a given class as a controller within the ASP.NET framework, we extend the ``Controller`` class.
-The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/system.web.mvc.controller?view=aspnet-mvc-5.2>`_ provides us with the necessary members and methods to send and receive HTTP requests in our controller. 
+The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/system.web.mvc.controller?view=aspnet-mvc-5.2>`_ provides us with the necessary members and methods to manage traffic between the three components in our MVC application. 
 
 .. sourcecode:: csharp
 
@@ -58,24 +61,19 @@ The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/system.web.mv
 Controllers Map to Requests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first request we will work with is a GET request. When mapping the route for the GET request we want to designate the path that the method needs to be called for.
-ASP.NET MVC has two different ways to map routes: conventional routing and attribute routing. For now, we will be using conventional routing and will progress to attribute routing later on.
-
-.. sourcecode:: csharp
-   :linenos:
-
-   public class HelloController : Controller
-   {
-      // GET: "/hello/"
-      public String Index() {
-         // method code here ...
-      }
-   }
+The first HTTP request we will work with in this chapter is a ``GET`` request.
+For every ``GET`` request made to the provided path, the controller method will be called.
+How do we provide the path?
+ASP.NET MVC has two different ways to map these routes: conventional routing and attribute routing.
+For now, we will be using conventional routing and will progress to attribute routing later on in the chapter.
 
 For every controller method that you want to respond to a request, you will want to map the route.
-Check out ``Startup.cs`` in the solution. Towards the bottom of the file, you will notice a block of code that calls some ``UseEndpoints()`` method on an ``app`` object.
-This is how ASP.NET maps controller routes. When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
-Looking at this method, shown in the code block below, you may notice that the code is specifying endpoints. When an HTTP request comes in to our application, routing matches the request with an endpoint.
+Open up ``Startup.cs`` in the solution.
+Towards the bottom of the file, you will notice a block of code that calls some ``UseEndpoints()`` method on an ``app`` object.
+This is how ASP.NET maps controller routes in conventional routing.
+When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
+Looking at this method, shown in the code block below, you may notice that the code is specifying endpoints.
+When an HTTP request comes in, routing matches the request with an endpoint.
 **Endpoints** designate the controller action that executes when the appropriate HTTP request comes into the application.
 
 .. sourcecode:: csharp
@@ -99,31 +97,57 @@ When adding a new controller, such as ``HelloController``, we need to add an end
       endpoints.MapControllerRoute(
          name: "default",
          pattern: "{controller=Home}/{action=Index}/{id?}");
-      endpoints.MapControllerRoute(name: "hello",
+      endpoints.MapControllerRoute(
+         name: "hello",
          pattern: "hello/{*index}",
          defaults: new { controller = "Hello", action = "Index" });
    });
 
-Above, on lines 6-8, we added a new endpoint for the ``HelloController``. We gave the name ``"hello"`` for simplicity and specified a pattern.
+Above, on lines 6-8, we added a new endpoint for the ``HelloController``.
+We gave the name ``"hello"`` for simplicity, specified that the pattern for the routes starts with ``/hello/``, and that the default for the route is to go to the ``Index()`` method in ``HelloController``.
 
-Now, we can add various methods to our ``HelloController``. Let's start by adding an ``Index()`` method.
+Now, we can add various methods to our ``HelloController``.
+Let's start by adding the following ``Index()`` method:
 
 .. sourcecode:: csharp
    :linenos:
 
+   // GET: /<controller>/
    public IActionResult Index() 
    {
       string html = "<h1>" + "Hello World!" + "<h1>";
       return Content(html, "text/html");
    }
 
-The ``Index()`` method returns an unfamiliar type, ``IActionResult``, and uses a method ``Content()``.
-We will be using ``IActionResult`` quite a bit in our applications, but won't see as much of ``Content()`` after we learn about views and templates.
+The ``Index()`` method returns an unfamiliar type, ``IActionResult``.
+We will be using ``IActionResult`` quite a bit in our applications, so let's take a deeper look.
 
 .. index:: ! IActionResult
 
 ``IActionResult``
 ^^^^^^^^^^^^^^^^^
+
+``IActionResult`` is an interface in the ASP.NET framework.
+Classes that implement this interface are representative of what the client will do because of the controller action.
+So if our ``Index()`` method is called in ``HelloController``, the returned value dictates what the client will display.
+
+We will often choose throughout this book to return content as a result.
+Content can include a view (from model-view-controller), JSON, and simple text, for example. 
+In our ``Index()`` method, we want to return a simple string of HTML to be displayed on the webpage.
+We use ``Content()`` to specify which string we want to use for our content and we specify the content type with ``"text/html"``.
+When using ``Content()``, we need to specify the content type in order the page to render how we want it to!
+
+.. admonition:: Note
+
+   For more info on the different types of results we could specify as return types, check out this `article <https://exceptionnotfound.net/asp-net-core-demystified-action-results/>`_!
+
+After we add the ``Index()`` method and configure the routing properly, we can run our application and navigate to ``localhost:5001/hello``.
+The result is a simple web page with one heading that says "Hello World!"
+
+.. figure:: figures/staticresponseresult.png
+   :alt: Simple webpage resulting from adding a new method to the controller
+
+   Our end result!
 
 Check Your Understanding
 ------------------------
@@ -136,7 +160,7 @@ Check Your Understanding
       
    b. False
 
-.. ans: a
+.. ans: b
 
 .. admonition:: Question
 

@@ -96,6 +96,8 @@ For example, in our ``Temperature`` class there is no reason for each
 Previous examples used the ``static`` keyword with both fields and methods, but
 since this discussion is focused on class data, let’s focus on static fields for now.
 
+.. _temp-argument-out-of-range-exception:
+
 .. sourcecode:: csharp
    :linenos:
 

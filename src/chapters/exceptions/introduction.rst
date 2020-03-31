@@ -1,8 +1,8 @@
 
-- Review what exception objects are
+.. - Review what exception objects are
 
-Exceptions you have seen
-- Remind students that they have already seen exceptions in C#
+.. Exceptions you have seen
+.. - Remind students that they have already seen exceptions in C#
 
 Exceptions
 ==========
@@ -27,14 +27,27 @@ that bad data is passed into a class's field. In this scenario, we can imagine t
 unintentionally attempt to set a Fahrenheit value outside of the appropriate range.
 
 This is a common reason to include exception handling in your code. User input opens the door to a variety erroneous 
-figures and good 
+figures and good programs account for this uncertainty. Without exceptions in these circumstances, a small typo could 
+lead to any number of breaking errors.
 
-Failure to connect to services external to your application, such as a database or API.
-Failure to read/write from/to a file.
-Failed attempt to convert data, such as trying to convert something like "dog" to an integer. This happens most often 
-when accepting user input.
-Null pointers. In other words, an object reference -- such as a method parameter or local variable -- that doesn't 
-actually contain an object.
+Here are some other settings where exceptions are your friends:
+
+- Failure to connect to services external to your application, such as a database or API.
+- Failure to read/write from/to a file.
+- Failure to convert data, such as trying to convert something like "dog" to an integer. 
+- Null pointers. In other words, an object reference -- such as a method parameter or local variable -- that doesn't 
+  actually contain an object.
+
+Anytime in your development process that you encounter a situation where there is some level of chance involved, like a
+variable dependent on user input or a connection to another service, it is wise to manage that chance with exception handling.
+
+Alternatively, you may want to address the uncertainties in a different fashion. With our temperature app for example, rather than
+throwing an exception, we may instead add a conditional statement to inform the user not to attempt to set the Fahrenheit value to 
+an unacceptable level. This is perfectly acceptable if the app in production allows for such a message. In your development career,
+you will encounter plenty of scenarios where user-directed error messages simply won't be appropriate. For example, what if the value
+being set doesn't come directly from a user but from a different method in the program? Or what if managing the variety of errors 
+that may arise is outside the scope of the project? In these cases where we do not, or cannot, make up for the edge cases with coded
+solutions, we can throw an exception.
 
 Using exceptions
 - Discuss when to use exceptions (unexpected situations, scenarios we do not want to handle ourselves)

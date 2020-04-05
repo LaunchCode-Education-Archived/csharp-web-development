@@ -43,6 +43,11 @@ provided argument falls outside of an acceptable range. Later, we refine our
       private double fahrenheit;
       private static double absoluteZeroFahrenheit = -459.67;
 
+      public Temperature(double fahrenheit)
+      {
+         Fahrenheit = fahrenheit;
+      }
+
       public double Fahrenheit
       {
          get
@@ -66,7 +71,37 @@ provided argument falls outside of an acceptable range. Later, we refine our
 
 The program provides a plan for what to do in the event that bad data is passed into a class's field. 
 In this scenario, we can imagine that a user or fellow programmer may unintentionally attempt to set 
-a Fahrenheit value outside of the appropriate range.
+a Fahrenheit value outside of the appropriate range. 
+
+Try this yourself to witness the breaking exception:
+
+.. admonition:: Example
+
+   *Input:*
+
+   .. sourcecode:: c#
+      :linenos:
+
+      Temperature insideTemp = new Temperature(73);
+      Console.WriteLine(insideTemp.Fahrenheit);
+
+      Temperature outsideTemp = new Temperature(-8200);
+      Console.WriteLine(outsideTemp.Fahrenheit);
+
+   *Output:*
+
+   :: 
+
+      73
+      Unhandled exception. System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values. (Parameter 'Value is below absolute zero')
+      at lsn4_demos.Temperature.set_Fahrenheit(Double value) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 26
+      at lsn4_demos.Temperature..ctor(Double fahrenheit) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 40
+      at lsn4_demos.Program.Main(String[] args) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Program.cs:line 14
+      
+Above, we see our Temperature constructor predictably sets the Fahrenheit value of ``insideTemp`` and 
+predictably throws an exception when provided a Fahrenheit value outside of the appropriate range. We don't 
+see any results of the print statement on the input's line 5 since the exception has caused the program 
+to stop running.  
 
 This is a common reason to include exception handling in your code. User input opens the door to a 
 variety of erroneous figures and good programs account for this uncertainty. Without exceptions in these 
@@ -120,6 +155,6 @@ Check Your Understanding
    #. True
    #. False
 
-.. ans: false, 
+.. ans: false, when appropriate, an exception can be handled to initiate an alternate pathway
 
 

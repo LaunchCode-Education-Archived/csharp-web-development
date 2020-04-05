@@ -3,12 +3,10 @@
 Handling Exceptions
 ===================
 
-Now that we've covered when you're likely to see exceptions in other people's code and when you should think about including them 
-in your own code, now we should talk about what to do when you do decide to include them in your code. When you include exceptions 
-in C#, you must decide what should take place once one is thrown. Some languages, Java for instance, require exceptions to be
-handled at the time of compiling. These are **checked exceptions**. When an exception is not handled in compiling, it is passed to 
-runtime and called an **unchecked exception**. C# does not contain checked exceptions and therefore it is up to you, the programmer
-to decide what to do to handle one when the need arises in runtime.
+When you include exceptions in your C# programs, you must decide what should take place once one is thrown. Some languages, Java 
+for instance, require exceptions to be handled at the time of compiling. These are **checked exceptions**. When an exception is 
+not handled in compiling, it is passed to runtime and called an **unchecked exception**. C# does not contain checked exceptions 
+and therefore it is up to you, the programmer to decide what to do to handle one when the need arises in runtime.
 
 Here's some advice to consider when contemplating when to handle an exception. This comes from Karl Seguin's 
 `Foundations of Programming <https://www.openmymind.net/FoundationsOfProgramming.pdf>`__.
@@ -17,26 +15,35 @@ Here's some advice to consider when contemplating when to handle an exception. T
 #. You can't do anything about the vast majority of exceptions.
 
 For example, if your code receives an exception due to a database not being available, there's probably nothing your program can 
-do about it. However, if you receive invalid input from a user, you can still throw an exception, then re-prompt them to refine 
-their input with an error message to help them get it right the next time.
+do about it. However, as we allude to on the previous page, if you receive invalid input from a user, you can still throw an 
+exception, re-prompt them to refine their input with an error message to help them get it right the next time.
 
 .. index:: ! try, ! catch, ! finally
 
 Try/Catch/Finally
 -----------------
 
-To handle exceptions in C#, we use the **try/catch/finally** construction. When encountering a block of code you expect may result in
-an exception - either because you threw the exception, or you are in one of the common causes we outlined on the previous page, the 
-execution of the code should be wrapped in a ``try`` statement. If the code runs without an exception being thrown, then the program
-continues business as usual. If, however, an exception is thrown, then a subsequent ``catch`` statement will be called. ``catch`` tells
-the program what to do in the event an exception and therefore diverts the program from stopping in its tracks.
-Some of these ``try/catch`` block can also contain a final ``finally`` statement that will run whether or not an exception was thrown.
+To handle exceptions in C#, we use the **try/catch/finally** construction. When encountering a block of code you expect may result 
+in an exception --- either because you threw the exception, or you are in one of the common causes we outlined on the previous 
+page, the execution of the code should be wrapped in a ``try`` statement. If the code runs without an exception being thrown, ]
+then the program continues its business as usual. If, however, the action within the ``try`` block results in an encoutner with 
+an exception, then a subsequent ``catch`` statement will be called. ``catch`` gives the program instructions on what to do in the 
+event of an exception. The code inside a ``catch`` block is therefore meant to divert the program from stopping in its tracks when 
+it reaches the exception. 
+
+Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
+exception was thrown.
 
 .. admonition:: Example
 
 	blah blah blah 
 
+Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
+exception was thrown.
+
 .. index:: ! exception swallowing
+
+
 
 When to Catch
 -------------

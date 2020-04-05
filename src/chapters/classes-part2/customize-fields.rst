@@ -105,7 +105,7 @@ since this discussion is focused on class data, let’s focus on static fields f
    {
 
       private double fahrenheit;
-      private static double absoluteZeroFahrenheit = -459.67;
+      public static double AbsoluteZeroFahrenheit { get; } = -459.67;
 
       public double Fahrenheit
       {

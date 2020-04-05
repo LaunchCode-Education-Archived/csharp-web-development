@@ -101,7 +101,8 @@ since this discussion is focused on class data, let’s focus on static fields f
 .. sourcecode:: csharp
    :linenos:
 
-   public class Temperature {
+   public class Temperature 
+   {
 
       private double fahrenheit;
       private static double absoluteZeroFahrenheit = -459.67;

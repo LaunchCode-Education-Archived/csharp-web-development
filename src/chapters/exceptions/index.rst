@@ -5,3 +5,5 @@ Rules to the Exceptions
    :maxdepth: 3
 
    introduction
+   handling
+   

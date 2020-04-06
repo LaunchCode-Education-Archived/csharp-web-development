@@ -31,13 +31,13 @@ where you can find several other commonly used exception types.
      
        ``"Calculate".IndexOf(s);``
    * - ``IndexOutOfRangeException``
-     - Thrown by the runtime only when an array is indexed improperly.
+     - Thrown when an array is indexed improperly.
      - Indexing an array outside its valid range: ``arr[arr.Length+1]``
    * - ``InvalidOperationException``
      - Thrown by methods when in an invalid state.	
-     - Calling ``Enumerator.MoveNext()`` after removing an item from the underlying collection.
+     - Calling an ``Enumerable`` method on an empty collection: ``Enumerator.MoveNext()``
    * - ``NullReferenceException``
-     - Thrown by the runtime only when a null object is referenced.	
+     - Thrown when a ``null`` object is referenced.	
      - ``object o = null;``
 
        ``o.ToString();``
@@ -61,4 +61,25 @@ Check Your Understanding
    #. Never, don't do it.
 
 .. ans: a, The error the your code encounters is very specific and targeted.
+
+.. admonition:: Question
+
+   Suppose you have created an empty array of ``Temperature`` objects :
+
+   .. sourcecode:: c#
+
+      Temperature[] temps = new Temperature[] { };
+
+   What, if any, exception would expect to encounter when the following line executes:
+
+   .. sourcecode:: c#
+
+      double firstTemp = temps[0].Fahrenheit;
+
+   #. No exception will be thrown --- ``temps[0].Fahrenheit`` will return ``null``.
+   #. ``NullReferenceException`` --- the object at ``temps[0]`` is null.
+   #. ``InvalidOperationException``--- cannot access the object's property.
+   #. ``IndexOutOfRangeException`` --- the array is empty.
+
+.. ans: d, ``IndexOutOfRangeException`` --- the array is empty.
 

@@ -52,8 +52,13 @@ Here's how we can update our Temperature constructor with a ``try/catch`` to han
 The first action the constructor method does is call the Fahrenheit's setter method. If invoking the 
 setter does not result in an exception being thrown, then the new ``Temperature`` object is created and
 given an initial Fahrenheit value. If the action inside the ``try`` block results in an exception,
-or specifically an ``ArgumentOutOfRange`` exception, then the ``catch`` block runs and the initial 
+or specifically an ``ArgumentOutOfRange`` instance, then the ``catch`` block runs and the initial 
 value of a new ``Temperature`` object's ``fahrenheit`` field is set to absolute zero. 
+
+Although in this example, we don't explicitly do anything with the argument ``e`` ("e" for exception),
+there are some scenarios where you may wish to display the exception or it's message in the view of your
+running app. It also an option to rethrow an exception after it has been caught. You won't need to rethrow 
+exceptions in this course, but just know that it can be done. 
 
 Now, running the same sample input from the previous page does not output an exception:
 
@@ -111,12 +116,19 @@ still caught, we'll want to close the connection no matter what happens next.
 
 .. index:: ! exception swallowing
 
-How to Catch
-^^^^^^^^^^^^
+What to Catch
+^^^^^^^^^^^^^
 
 When working with a ``try/catch`` statement, in statically-type languages like C#, you can declare the type of exception you wish 
 to catch. Given inheritance and polymorphism, catching the base ``System.Exception`` type will result in *all* exceptions being 
 caught. This is not advised. Be specific about the types of exceptions you want to catch, as we have in the example above.
+
+If you have reason to believe that a given method may return an exception but you are unsure which type exactly, ``try/catch`` 
+can --- and should --- include more than one ``catch`` block. Rather than catching one abstract exception type, you want to 
+attempt to catch the exception with specificity so that the resulting decisions are meaningful. It is also important to note 
+that order matters when it comes to catching. If the thrown exception matches the first ``catch`` block, then that block executes 
+and any remaining ``catch`` blocks are ignored. If that exception thrown doesn't match the first ``catch`` argument, then it goes on 
+to the next statement to check for a type match.
 
 Catching the base class ``Exception`` -- that is, all exceptions -- is sometimes referred to as **exception swallowing**. 
 In these cases, exceptions are simply absorbed and not re-thrown or logged. If your program has a bug, or reaches an 

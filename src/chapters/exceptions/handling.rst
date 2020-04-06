@@ -23,7 +23,8 @@ exception, re-prompt them to refine their input with an error message to help th
 Try/Catch/Finally
 -----------------
 
-To handle exceptions in C#, we use the **try/catch/finally** construction. When encountering a block of code you expect may result 
+To handle exceptions in C#, we use the **try/catch/finally** construction. This functions very similarly 
+to exception handling tooling in other languages. When encountering a block of code you expect may result 
 in an exception --- either because you threw the exception, or you are in one of the common causes we outlined on the previous 
 page, the execution of the code should be wrapped in a ``try`` statement. If the code runs without an exception being thrown, ]
 then the program continues its business as usual. If, however, the action within the ``try`` block results in an encoutner with 
@@ -31,12 +32,33 @@ an exception, then a subsequent ``catch`` statement will be called. ``catch`` gi
 event of an exception. The code inside a ``catch`` block is therefore meant to divert the program from stopping in its tracks when 
 it reaches the exception. 
 
+Here's how we can update our Temperature constructor with a ``try/catch`` to handle the exception:
+
+.. sourcecode:: c#
+   :linenos:
+
+   public Temperature(double fahrenheit)
+   {
+      try
+      {
+         Fahrenheit = fahrenheit;
+      }
+      catch(ArgumentOutOfRangeException e)
+      {
+         Fahrenheit = -459.67;
+      }
+   }
+
+The first the constructor method does is call the Fahrenheit's setter method. If invoking the setter 
+does not result in an exception being thrown, then 
+Now, running your sample input from 
+
 Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
 exception was thrown.
 
 .. admonition:: Example
 
-	blah blah blah 
+   blah blah blah 
 
 Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
 exception was thrown.

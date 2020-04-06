@@ -97,7 +97,8 @@ Try this yourself to witness the breaking exception:
       at lsn4_demos.Temperature.set_Fahrenheit(Double value) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 26
       at lsn4_demos.Temperature..ctor(Double fahrenheit) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 40
       at lsn4_demos.Program.Main(String[] args) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Program.cs:line 14
-      
+     
+	   
 Above, we see our Temperature constructor predictably sets the Fahrenheit value of ``insideTemp`` and 
 predictably throws an exception when provided a Fahrenheit value outside of the appropriate range. We don't 
 see any results of the print statement on the input's line 5 since the exception has caused the program 

@@ -49,39 +49,78 @@ Here's how we can update our Temperature constructor with a ``try/catch`` to han
       }
    }
 
-The first the constructor method does is call the Fahrenheit's setter method. If invoking the setter 
-does not result in an exception being thrown, then 
-Now, running your sample input from 
+The first action the constructor method does is call the Fahrenheit's setter method. If invoking the 
+setter does not result in an exception being thrown, then the new ``Temperature`` object is created and
+given an initial Fahrenheit value. If the action inside the ``try`` block results in an exception,
+or specifically an ``ArgumentOutOfRange`` exception, then the ``catch`` block runs and the initial 
+value of a new ``Temperature`` object's ``fahrenheit`` field is set to absolute zero. 
 
-Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
-exception was thrown.
+Now, running the same sample input from the previous page does not output an exception:
 
 .. admonition:: Example
 
-   blah blah blah 
+   *Input:*
+
+   .. sourcecode:: c#
+      :linenos:
+
+      Temperature insideTemp = new Temperature(73);
+      Console.WriteLine(insideTemp.Fahrenheit);
+
+      Temperature outsideTemp = new Temperature(-8200);
+      Console.WriteLine(outsideTemp.Fahrenheit);
+
+   *Output:*
+
+   :: 
+
+      73
+      -459.67
+
+Although the exception has still been thrown, the ``try/catch`` construction diverts the program from
+terminating when it's met.
 
 Some ``try/catch`` blocks can also contain a ``finally`` statement that will run whether or not an 
-exception was thrown.
+exception was thrown. In this example, perhaps we want to communicate that if a Fahrenheit value is 
+passed into the constructor that is less than absolute zero, then the ``fahrenheit`` field will be 
+set to absolute zero.
+
+.. sourcecode:: c#
+   :linenos:
+
+   public Temperature(double fahrenheit)
+   {
+      try
+      {
+         Fahrenheit = fahrenheit;
+      }
+      catch(ArgumentOutOfRangeException e)
+      {
+         Fahrenheit = -459.67;
+      }
+      finally
+      {
+         Console.WriteLine("Fahrenheit cannot be less than -459.67.");
+      }
+   }
+
+This ``finally`` statement is a tad redundant, since presumably a user will know this before trying 
+to set the value. A more likely scenario to use a ``finally`` block might be in connecting to a database
+or other external service. For example, if a connection is opened within a try block and an exception is 
+still caught, we'll want to close the connection no matter what happens next. 
 
 .. index:: ! exception swallowing
 
-
-
-When to Catch
--------------
+How to Catch
+^^^^^^^^^^^^
 
 When working with a ``try/catch`` statement, in statically-type languages like C#, you can declare the type of exception you wish 
 to catch. Given inheritance and polymorphism, catching the base ``System.Exception`` type will result in *all* exceptions being 
-caught. This is not advised.
-
-How is it possible for you, as the programmer, to be able to anticipate every possible exception that might be thrown? And 
-further, how could you reasonably be able to handle every type of exception? You probably can't. Be specific about the types 
-of exceptions you want to catch, and your code will be much better.
+caught. This is not advised. Be specific about the types of exceptions you want to catch, as we have in the example above.
 
 Catching the base class ``Exception`` -- that is, all exceptions -- is sometimes referred to as **exception swallowing**. 
 In these cases, exceptions are simply absorbed and not re-thrown or logged. If your program has a bug, or reaches an 
 undesirable state, you want to know about it! Don't swallow exceptions.
-
 
 
 How to Avoid Exceptions
@@ -112,48 +151,27 @@ As with exceptions above, if there is no way to reasonably recover from a ``null
 Furthermore, it's generally a bad idea to catch a ``null`` pointer exception (``NullReferenceException`` in C#). Read more 
 on why this is the case.
 
-When to Throw
--------------
-
-As with catching, be specific with which types of exceptions you throw. Never throw an instance of the base ``Exception`` class. 
-If a built-in exception type works well based on it's documented intended use, then use it! However, if there isn't a built-in 
-exception that's appropriate, or if it's possible to provide more helpful information by using a custom exception class, then do 
-so.
 
 Check Your Understanding
 ------------------------
 
 .. admonition:: Question
 
-   blah blah
+   Select an anomalous event when you may choose to not ``catch`` a thrown exception.
 
-   #. about
-   #. bad
-   #. called
-   #. data
+   #. None. All exceptions should be handled with ``catch``.
+   #. A database responsible for providing all of the image data on your site cannot be reached.
+   #. A user inputs string data into a form designed to handle integers.
+   #. It's the bottom of the ninth and you just want the game to be over.
 
-.. ans: blah
+.. ans: b, A database responsible for providing all of the image data on your site cannot be reached.
 
 .. admonition:: Question
 
-   blah blah blah
+   True/False: Exception swallowing is a good choice to ensure no exceptions break your code.
 
-   #. about
-   #. bad
-   #. called
-   #. data
+   #. True
+   #. False
 
-.. ans: blah blah
-
-
-References
-----------
-Exceptions and Exception Handling
-Exception Hierarchy
-
-
-.. How to handle em
-.. - Discuss how to throw an exception in C#
-.. - Summarize some common built-in exceptions C#
-.. - Describe passing exceptions in C#, when do they stop a program
-.. - Demonstrate ``try/catch`` statements in C#
+.. ans: False, Exceptions carry important information and catching all of them blinds us to potentially
+   unhealthy behavior

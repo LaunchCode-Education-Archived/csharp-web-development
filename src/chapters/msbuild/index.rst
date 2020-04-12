@@ -18,6 +18,10 @@ MSBuild
 
 .. debugging in intellij?
 
+.. MSBUILD
+.. NuGet
+.. Debugging
+
 .. toctree::
    :maxdepth: 3
 

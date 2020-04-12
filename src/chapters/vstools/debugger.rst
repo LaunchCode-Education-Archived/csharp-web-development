@@ -38,18 +38,15 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION:
+   True/False: Breakpoints on ``Console.WriteLine()`` are helpful because they stepping into them
+   reveals what is printed in the console.
 
+   a. True
 
-   a. ANS
+   b. False
 
-   b. ANS
-
-   c. ANS
-
-   d. ANS
-
-.. ans; 
+.. ans: False, The Visual Studio debugger tool does not allow us to step into ``Console.WriteLine()`` 
+   methods or any method defined be System.
 
 .. admonition:: Question
 

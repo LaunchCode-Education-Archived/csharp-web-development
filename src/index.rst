@@ -14,7 +14,7 @@ Chapters
    chapters/unit-testing/index
    chapters/inheritance/index
    chapters/interfaces-and-polymorphism/index
-   chapters/msbuild/index
+   chapters/vstools/index
 
 .. toctree::
 

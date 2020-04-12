@@ -81,39 +81,39 @@ fact, all property elements must be nested within a ``<PropertyGroup>`` tag. Fin
 forms the base of all project files. 
 
 
+Check Your Understanding
+------------------------
+
+.. admonition:: Question
+
+   QUESTION:
 
 
+   a. ANS
+
+   b. ANS
+
+   c. ANS
+
+   d. ANS
+
+.. ans; 
+
+.. admonition:: Question
+
+   QUESTION:
 
 
-.. What is MSBuild
-.. What is .csproj
+   a. ANS
 
-.. what are:
-.. properties
-.. items
-.. targets
-.. tasks
+   b. ANS
 
-.. how to manipulate the project file in vs
+   c. ANS
 
-.. what is NuGet
+   d. ANS
 
-.. debugging in intellij?
+.. ans; 
 
-.. - Discuss what build tools do in the Visual Studio IDE
-.. - Review the major tasks of MSBuild, including creating the .``csproj`` document
-.. - Review the sections of the ``.csproj`` file (eg. property groups, item groups)
-.. - Differentiate the roles of MSBuild and NuGet
 
-.. Creating and manipulating a project file.
-
-.. How to use build properties
-
-.. How to use build items.
-
-.. properties
-.. items
-.. targets
-.. tasks
 
 

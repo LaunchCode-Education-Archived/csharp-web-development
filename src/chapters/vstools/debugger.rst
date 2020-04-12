@@ -50,15 +50,14 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION:
+   Define a *breakpoint*.
 
+   a. A point in our code where the debugger will stop running and provide information about the current state.
 
-   a. ANS
+   b. A point in our code that we anticipate will result in an exception or error. 
 
-   b. ANS
+   c. A point in our code where we include a print statement to see what's going on.
 
-   c. ANS
+   d. A point in our code where we want to throw the computer out of a window because nothing works.
 
-   d. ANS
-
-.. ans; 
+.. ans; a, A point in our code where the debugger will stop running and provide information about the current state.

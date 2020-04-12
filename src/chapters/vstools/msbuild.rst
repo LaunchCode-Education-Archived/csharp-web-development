@@ -86,33 +86,31 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION:
+   What is the language of the C# project file?
 
+   a. MSBuild
 
-   a. ANS
+   b. C#
 
-   b. ANS
+   c. csproj
 
-   c. ANS
+   d. XML
 
-   d. ANS
-
-.. ans; 
+.. ans: d, xml
 
 .. admonition:: Question
 
-   QUESTION:
+   What is the element type used for the individual units of the build process?
 
+   a. item
 
-   a. ANS
+   b. task
 
-   b. ANS
+   c. property
 
-   c. ANS
+   d. target
 
-   d. ANS
-
-.. ans; 
+.. ans: b, task
 
 
 

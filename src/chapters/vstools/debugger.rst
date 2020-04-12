@@ -1,7 +1,12 @@
 Debugger
 ========
-
+ 
 Watch this video to learn the basics of the debugging tools available in Visual Studio.
+
+.. admonition:: Tip 
+
+   If you want to follow along, Chris is debugging the :ref:`hello-methods` program back in 
+   the introduction to data types. 
 
 .. youtube::
    :video_id: sACkw915kmg
@@ -24,7 +29,7 @@ Tips:
    - To view the debugging panes, select *View* in the top menu and scroll down to *Debug Pads*. Select 
      the items you wish to view, ie. *Breakpoints*, *Watch*, etc.
    - To add conditions to a breakpoint, right click on the breakpoint and select *Edit Breakpoint*. From 
-     menu that opens, use the *Advanced Condtions* section to set your conditions for when you want the 
+     menu that opens, use the *Advanced Conditions* section to set your conditions for when you want the 
      breakpoint to be executed.
 
 

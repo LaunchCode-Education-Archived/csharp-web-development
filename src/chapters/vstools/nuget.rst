@@ -38,30 +38,25 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION:
+	Select which item best describes the job of NuGet.
 
+   a. NuGet compiles your C# programs to be deployed in different conditions.
 
-   a. ANS
+   b. NuGet is a marshmallow-like confection found in many candy bars.
 
-   b. ANS
+   c. NuGet is a package manager for .NET programs.
 
-   c. ANS
+   d. NuGet allows you to download dependency library source code into your solution.
 
-   d. ANS
-
-.. ans; 
+.. ans: c, NuGet is a package manager for .NET programs.
 
 .. admonition:: Question
 
-   QUESTION:
+   True/False: NuGet and MSBuild share responsibilities and only one is needed to deploy a C# app.
 
+   a. True
 
-   a. ANS
+   b. False
 
-   b. ANS
-
-   c. ANS
-
-   d. ANS
-
-.. ans; 
+.. ans: False, while NuGet gives you access to the dependencies you need for your application, 
+	MSBuild can configure how those dependencies are used in different executable environments.

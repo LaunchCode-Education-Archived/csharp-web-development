@@ -11,14 +11,25 @@ Watch this video to learn the basics of the debugging tools available in Visual 
 .. youtube::
    :video_id: sACkw915kmg
 
-Tips:
+ A summary of Chris's debugger tips:
 
 - Right click in the text editing window to add a breakpoint to your code.
-- Add variables to the *Watch* pane to monitor their values.
-- View a list of breakpoints in the *breakpoints* pane.
-- Start debug mode with the run button.
-- Stop debug mode wth the stop button.
+- Start debug mode with the run button as you might normally run your program.
+- Debugger Panes:
+   - *Autos* pane shows the values of parameters and variables on the line that the debugger is 
+     currently sitting on, as well as the line above.
+   - *Locals* pane shows the value of local variables and parameters within the program being debugged.
+   - Add variables, parameters, and expressions to the *Watch* pane to monitor their values while debugging.
+   - *Call Stack* pane displays the record of the methods that have been called in the program being debugged.
+   - View a list of breakpoints in the *Breakpoints* pane. You may also disable and enable breakpoints from here.
+- Debugger Buttons:
+   - *Step over* button moves debugger to the next line to be executed within a method.
+   - *Step out* button brings the debugger out of the execution of a method.
+   - *Step into* button makes the debugger enter the method at which it is currently paused. Note that 
+     you can't step into ``System`` defined methods, only those defined by your program.
+
 - Right click on the breakpoint to set conditional logic for when you want the breakpoint to run.
+- Stop debug mode wth the stop button.
 
 
 .. admonition:: Tip

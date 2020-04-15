@@ -38,5 +38,5 @@ greeted in the selected language. Your new feature should:
 Bonus Mission
 -------------
 
-#. Instead of returning the greeting as plain text, add a bit of HTML to
-   the response string so that the displayed message looks a bit nicer.
+#. Add some more HTML and inline styles to your returned greeting
+   response string so that the displayed message looks a bit nicer.

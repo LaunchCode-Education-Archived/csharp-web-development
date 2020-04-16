@@ -3,30 +3,32 @@
 Exceptions
 ==========
 
-Like most programming languages, C# includes exceptions and exception handling tooling. Some exception objects
-are provided by .NET itself, while others we may encounter from external C# libraries, or write ourselves.
+Like most programming languages, C# includes exceptions and exception handling tooling. 
+Some exception objects are provided by .NET itself. Other exception objects we may get from 
+external C# libraries. We may even write these objects ourselves.
 
-**Exceptions** in C# are objects derived from the ``System.Exception`` class. They are used in circumstances where something
-takes place outside of the ordinary flow of a program. When you want to explicitly call an exception in your code, you do so 
+**Exceptions** in C# are objects derived from the ``System.Exception`` class. 
+Exceptions occur at runtime when some event takes place outside of the expected flow of our code.
+When you want to explicitly call an exception in your code, you do so 
 with the **throw** keyword. We've actually done this before in this book and will return to that example shortly.
 
-Maybe you see the term "exception" and instinctively groan or roll your eyes? Isn't programming only enjoyable when
-it works? Well, yes it is nice when your code performs as you expect and want it to. And in fact, exceptions are a 
-vital component of a healthy codebase. As a programmer, encountering an exception can provide crucial information 
-about proper usage of the. As a program writer, providing exceptions gives fellow programmers necessary intel on how your 
-app should run and be used.
+Maybe you see the term "exception" and instinctively groan or roll your eyes? Isn't programming 
+only enjoyable when it works? While it would be nice if our code ran perfectly every time, 
+exceptions are a key component of a healthy codebase. When an exception arises, we, as programmers, 
+can use the info to debug our code. For our fellow programmers, the exceptions we provide give them 
+necessary intel on how our app runs and is meant to be used.
+
 
 When Exceptions Arise
 ---------------------
 
-You may have encountered exceptions in C# or another programming language already. Perhaps in on of these scenarios
-where exceptions often arise:
+You may have encountered exceptions in C# or another programming language already, perhaps in one 
+of these scenarios:
 
 - Failure to connect to services external to your application, such as a database or API.
 - Failure to read or write to or from a file.
 - Failure to convert data, such as trying to convert something like ``"dog"`` to an ``int`` type. 
-- Null pointers. In other words, an object reference -- such as a method parameter or local variable -- that doesn't 
-  actually contain an object.
+- Null pointers: where an object reference, like a variable, doesn't actually contain an object.
 
 Indeed, we have even used exceptions in this book already. Recall this 
 :ref:`temperature example <temp-argument-exception>` where we throw a built-in exception when a 
@@ -106,7 +108,7 @@ to stop running.
 
 This is a common reason to include exception handling in your code. User input opens the door to a 
 variety of erroneous figures and good programs account for this uncertainty. Without exceptions in these 
-circumstances, a small typo could lead to any number of breaking errors down the stack trace. 
+circumstances, a small typo could lead to any number of errors down the stack trace. 
 
 .. index:: ! exception handling
 

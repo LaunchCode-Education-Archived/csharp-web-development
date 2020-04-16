@@ -1,17 +1,15 @@
 Debugger
 ========
  
-Watch this video to learn the basics of the debugging tools available in Visual Studio.
-
-.. admonition:: Tip 
-
-   If you want to follow along, Chris is debugging the :ref:`hello-methods` program back in 
-   the introduction to data types. 
+Watch this video to learn the basics of the debugging tools available in Visual Studio. If you want 
+to follow along, Chris is debugging the :ref:`hello-methods` program back in the introduction to 
+data types. 
 
 .. youtube::
    :video_id: sACkw915kmg
 
- A summary of Chris's debugger tips:
+
+A summary of Chris's debugger tips:
 
 - Right click in the text editing window to add a breakpoint to your code.
 - Start debug mode with the run button as you might normally run your program.

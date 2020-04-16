@@ -1,5 +1,5 @@
-Introduction to ASP.NET!
-========================
+Introduction to ASP.NET
+=======================
 
 .. toctree::
    :maxdepth: 3

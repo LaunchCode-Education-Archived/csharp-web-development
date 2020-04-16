@@ -1,7 +1,7 @@
 .. _mvc:
 
-Design Patterns, MVC, and Spring, Oh My!
-========================================
+Design Patterns, MVC, and ASP.NET, Oh My!
+=========================================
 
 .. index:: ! design pattern, ! Model-View-Controller, ! MVC, ! model, ! view, ! controller
 
@@ -28,10 +28,11 @@ We also use MVC because it separates the components of the programs that the use
 ASP.NET
 -------
 
-**ASP.NET** is an extension of .NET core and is used to build web applications.
+**ASP.NET** is an extension of .NET Core and is used to build web applications.
 **ASP.NET MVC** is the framework that allows us to build web applications in a way that uses the MVC design pattern.
 Visual Studio has an embedded server so it is easy for us to run our applications and get started.
-The server picks a random port number to host the application at, which is why it is important to take note of the port number that your application runs at.
+This server picks a random port number when hosting the application.
+It is therefore important that you make a note of that number so that you may view your running app.
 
 .. admonition:: Note
 
@@ -42,7 +43,8 @@ How we Teach ASP.NET
 --------------------
 
 The following section is the first of many videos we will be using to demonstrate coding an ASP.NET application.
-The video below introduces the role of controllers.
+The video below provides an overview of simple application routing via the use of controllers.
+This video also shows the final outcome of the app we will be building over the next several videos.
 In subsequent videos, we ask you to code along for maximum absorption of the topics introduced.
 A summary of the content introduced will follow each video.
 

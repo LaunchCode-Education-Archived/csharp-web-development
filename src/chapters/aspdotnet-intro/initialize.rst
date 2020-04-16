@@ -2,7 +2,7 @@ Create a New ASP.NET Project
 ============================
 
 ASP.NET is a framework in the .NET Core family that is used to build web applications.
-While `ASP.NET <https://docs.microsoft.com/en-us/aspnet/overview>`_ can be used to build a wide variety of web applications, we will be focusing on using it to build MVC web applications.
+While `ASP.NET <https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1>`_ can be used to build a wide variety of web applications, we will be focusing on using it to build MVC web applications.
 
 .. _initialize-aspdotnet-project:
 
@@ -35,7 +35,7 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
 .. admonition:: Note
 
-   The home page of your application is full of curated content and extra resources from Microsoft on how to use ASP.NET. Bookmark these as you see fit!
+   The home page of your application already contains curated content from Microsoft on how to use ASP.NET.
 
 In the ``controllers`` directory, check out ``HomeController.cs``.
 Microsoft provided the code in ``HomeController`` and that is why our application ran immediately after we created it and was full of content.
@@ -44,7 +44,7 @@ As we work on our new application, we will be adding a new controller, ``HelloCo
 .. admonition:: Note
 
    As you code along with the videos, you will be working on your own project.
-   However, should you want to review a step or double-check out code, fork LaunchCode's ``HelloASPDotNET`` repository to see what the code looked like at each stage.
+   However, should you want to review a step or double-check your code, fork LaunchCode's ``HelloASPDotNET`` repository to see what the code looked like at each stage.
    The repository is up on `Github <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_.
    The ``master`` branch contains the code after creation and also shows the starting point for the next chapter.
 

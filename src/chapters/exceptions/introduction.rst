@@ -18,17 +18,23 @@ exceptions are a key component of a healthy codebase. When an exception arises, 
 can use the info to debug our code. For our fellow programmers, the exceptions we provide give them 
 necessary intel on how our app runs and is meant to be used.
 
+.. index:: ! null pointer
 
 When Exceptions Arise
 ---------------------
 
-You may have encountered exceptions in C# or another programming language already, perhaps in one 
+You may have seen exceptions in C# or another programming language already, perhaps in one 
 of these scenarios:
 
 - Failure to connect to services external to your application, such as a database or API.
 - Failure to read or write to or from a file.
 - Failure to convert data, such as trying to convert something like ``"dog"`` to an ``int`` type. 
-- Null pointers: where an object reference, like a variable, doesn't actually contain an object.
+- Failure to reach an actual object. 
+
+	.. admonition:: Note 
+	
+		This last scenario is a **null pointer**. This is an object reference, 
+		like a variable, that doesn't actually contain an object.
 
 Indeed, we have even used exceptions in this book already. Recall this 
 :ref:`temperature example <temp-argument-exception>` where we throw a built-in exception when a 
@@ -72,8 +78,7 @@ provided argument falls outside of an acceptable range. Later, we refine our
    }
 
 The program provides a plan for what to do in the event that bad data is passed into a class's field. 
-In this scenario, we can imagine that a user or fellow programmer may unintentionally attempt to set 
-a Fahrenheit value outside of the appropriate range. 
+Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value outside of the appropriate range. 
 
 Try this yourself to witness the breaking exception:
 
@@ -101,8 +106,8 @@ Try this yourself to witness the breaking exception:
       at lsn4_demos.Program.Main(String[] args) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Program.cs:line 14
      
 	   
-Above, we see our Temperature constructor predictably sets the Fahrenheit value of ``insideTemp`` and 
-predictably throws an exception when provided a Fahrenheit value outside of the appropriate range. We don't 
+Above, the Temperature constructor predictably sets the Fahrenheit value of ``insideTemp`` and 
+throws an exception when provided a Fahrenheit value outside of the appropriate range. We don't 
 see any results of the print statement on the input's line 5 since the exception has caused the program 
 to stop running.  
 
@@ -120,17 +125,18 @@ action, bypassing the need to stop the program. We'll cover how to handle except
 When to Use Exceptions
 ----------------------
 
-Anytime in your development process that you encounter a situation where there is some level of chance involved, like a
-variable dependent on user input or a connection to another service, it is wise to manage that chance with an exception.
+It is wise to use an exception if you find that there is some level of chance involved in your 
+program. This could be a situation where a variable is dependent on user input or a connection to 
+another service.
 
 You may want to address the uncertainties in a different fashion. With our temperature app for example, rather than
-throwing an exception, we may instead add a conditional statement to inform the user not to attempt to set the Fahrenheit 
+throwing an exception, we can add a conditional statement to tell the user not to set the Fahrenheit  
 value to an unacceptable level. This is perfectly acceptable if the app in production allows for such a message. 
-As you'll see on the next page, C#'s exception handling tools work very similarly to conditional statements like this.
+As you will see on the next page, exception handling works very similarly to conditional statements like this.
 
-In your development career, you will encounter plenty of scenarios where user-directed error messages simply won't be appropriate. 
-For example, what if the value being set doesn't come directly from a user but from a different method in the program? In a 
-situation like this, where the anomaly is not necessarily visible to the user, throwing an exception lets us convey the issue to 
+There are many places where user-directed error messages simply won't be appropriate. For example, 
+what if the value being set doesn't come from a user but from a different method in the program? In a 
+situation like this, where the anomaly is not visible to the user, an exception conveys the issue to 
 fellow programmers who are using our codebase.
 
 Or another hypothetical. What if managing the variety of errors that may arise is outside the scope of the project? In these 

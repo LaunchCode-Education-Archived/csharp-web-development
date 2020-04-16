@@ -14,7 +14,7 @@ Here's some advice to consider when contemplating when to handle an exception. T
 #. Only handle exceptions that you can actually do something about.
 #. You can't do anything about the vast majority of exceptions.
 
-For example, if your code receives an exception due to a database not being available, there's probably nothing your program can 
+For example, if your code cannot connect to a database, there is probably nothing your program can 
 do about it. However, as we allude to on the previous page, if you receive invalid input from a user, you can still throw an 
 exception, re-prompt them to refine their input with an error message to help them get it right the next time.
 
@@ -24,13 +24,13 @@ Try/Catch/Finally
 -----------------
 
 To handle exceptions in C#, we use the **try/catch/finally** construction. This functions very similarly 
-to exception handling tooling in other languages. When encountering a block of code you expect may result 
-in an exception --- either because you threw the exception, or you are in one of the common causes we outlined on the previous 
-page, the execution of the code should be wrapped in a ``try`` statement. If the code runs without an exception being thrown, ]
-then the program continues its business as usual. If, however, the action within the ``try`` block results in an encoutner with 
-an exception, then a subsequent ``catch`` statement will be called. ``catch`` gives the program instructions on what to do in the 
-event of an exception. The code inside a ``catch`` block is therefore meant to divert the program from stopping in its tracks when 
-it reaches the exception. 
+to exception handling tooling in other languages. If you expect that a method might return an exception, the method call should 
+be wrapped in a ``try`` statement. This could be because you threw the exception in the method yourself. Or you are in one of 
+the common exception scenarios we outlined on the previous page.
+
+If the code runs without throwing an exception, then the program continues as usual. However, if the ``try`` block results in an 
+exception, then a later ``catch`` statement will be called. ``catch`` gives the program instructions on what to do in the 
+event of an exception. The ``catch`` block prevents the program from stopping when it reaches the exception. 
 
 Here's how we can update our Temperature constructor with a ``try/catch`` to handle the exception:
 

@@ -44,9 +44,8 @@ where you can find several other commonly used exception types.
    
 
 As with catching, be specific with which types of exceptions you throw. Never throw an instance of the base ``Exception`` class. 
-If a built-in exception type works well based on it's documented intended use, then use it! However, if there isn't a built-in 
-exception that's appropriate, or if it's possible to provide more helpful information by using a custom exception class, then do 
-so.
+If a built-in exception type works well based on it's documented intended use, then use it! If there 
+isn't a built-in exception that matches your needs, then you can use a custom exception type.
 
 Check Your Understanding
 ------------------------

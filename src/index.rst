@@ -14,6 +14,7 @@ Chapters
    chapters/unit-testing/index
    chapters/inheritance/index
    chapters/interfaces-and-polymorphism/index
+   chapters/razor-views/index
 
 .. toctree::
 

@@ -40,7 +40,7 @@ Let's add a method called ``Welcome()`` to ``HelloController.cs``.
 .. sourcecode:: csharp
    :linenos:
 
-   // GET: /<controller>/welcome
+   // GET: /<controller>/Welcome
    public IActionResult Welcome(string name = "World")
    {
       return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
@@ -64,6 +64,37 @@ If we do provide a query string and navigate to ``localhost:5001/hello/welcome?n
    :alt: Webpage displaying "Welcome to my app, Ringo!"
 
    Our webpage when we do provide a query string.
+
+If we want to use a query string with attribute routing, we need to add a ``[HttpGet]`` attribute to specify that our method responds to a ``GET`` request.
+We also want to specify the path with the ``[Route]`` attribute.
+
+Path Variables
+^^^^^^^^^^^^^^
+
+Earlier in the chapter, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
+These types of parameters are called **path variables**.
+
+With attribute routing, we can make a new method that responds to the path, ``localhost:5001/hello/Tillie``, and produces a webpage that displays ``"Welcome to my app, Tillie!"``.
+
+.. sourcecode:: csharp
+   :linenos:
+
+   [HttpGet]
+   [Route("/hello/{name}")]
+   public IActionResult WelcomeByName(string name)
+   {
+      return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
+   }
+
+We use the ``[HttpGet]`` attribute to specify that the method needs to respond to a ``GET`` request and the ``[Route("path")]`` attribute to specify the path.
+Because ``name`` is a path variable, we enclosed it in curly braces in the path.
+
+Once we add this new webpage and navigate to ``localhost:5001/hello/Tillie``, we see a new webpage in our application!
+
+.. figure:: figures/pathvariables.png
+   :alt: Webpage displaying "Welcome to my app, Tillie!"
+
+   The latest page in our app!
 
 Check Your Understanding
 ------------------------

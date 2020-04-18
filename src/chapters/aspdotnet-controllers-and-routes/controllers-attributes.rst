@@ -47,33 +47,10 @@ Other attributes you may find yourself using include ``[HttpPost]`` to specify m
 
 .. index:: ! path variable
 
-Path Variables
-^^^^^^^^^^^^^^
+Class-level Attributes
+----------------------
 
-Earlier in the chapter, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
-These types of parameters are called **path variables**.
-
-With attribute routing, we can make a new method that responds to the path, ``localhost:5001/hello/Tillie``, and produces a webpage that displays ``"Welcome to my app, Tillie!"``.
-
-.. sourcecode:: csharp
-   :linenos:
-
-   [HttpGet]
-   [Route("/hello/{name}")]
-   public IActionResult WelcomeByName(string name)
-   {
-      return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
-   }
-
-We use the ``[HttpGet]`` attribute to specify that the method needs to respond to a ``GET`` request and the ``[Route("path")]`` attribute to specify the path.
-Because ``name`` is a path variable, we enclosed it in curly braces in the path.
-
-Once we add this new webpage and navigate to ``localhost:5001/hello/Tillie``, we see a new webpage in our application!
-
-.. figure:: figures/pathvariables.png
-   :alt: Webpage displaying "Welcome to my app, Tillie!"
-
-   The latest page in our app!
+``[RoutePrefix()]``
 
 Check Your Understanding
 ------------------------

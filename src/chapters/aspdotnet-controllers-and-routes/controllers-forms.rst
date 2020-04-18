@@ -62,6 +62,13 @@ Once we hit *Greet Me*, the value of ``name``, ``"Tillie"``, is submitted to the
 
    A whole new page on our site!
 
+Let's add more attributes!
+
+``[HttpGet]`` for the ``Index()`` method and ``[HttpPost]`` for the ``Display`` method.
+The ``action`` of the form specifies the route that the controller maps to after the button is hit.
+
+If we want to change the route from the conventional routing, we need to modify the value of ``action`` to make sure that the page that is properly redirected.
+
 Check Your Understanding
 ------------------------
 

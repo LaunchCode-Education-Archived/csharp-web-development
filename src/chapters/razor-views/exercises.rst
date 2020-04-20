@@ -4,7 +4,7 @@ Exercises: Razor
 In the chapter, we started working on an application for tracking various
 coding events around town.
 
-Open up your ``coding-events`` project in IntelliJ.
+Open up your ``coding-events`` project in Visual Studio.
 
 Getting Started
 ---------------

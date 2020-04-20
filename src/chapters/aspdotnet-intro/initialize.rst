@@ -35,7 +35,8 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
 .. admonition:: Note
 
-   The home page of your application already contains curated content from Microsoft on how to use ASP.NET.
+   The home page of your application already contains curated content from Microsoft on how to use ASP.NET Core.
+   If you want extra study materials, check out this `tutorial <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-3.1&tabs=visual-studio>`_ from the home page Microsoft designed!
 
 In the ``controllers`` directory, check out ``HomeController.cs``.
 Microsoft provided the code in ``HomeController`` and that is why our application ran immediately after we created it and was full of content.

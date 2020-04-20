@@ -5,8 +5,7 @@ Now that you know the basics of a controller method, we can start to add some mo
 Some controller methods can take in parameters in the form of query strings or sections of the URL path.
 Passing this URL data to the controller is one step closer to more flexible web applications. 
 
-On the previous page, we learned a route is the mechanism by which a request path gets assigned to a
-controller within our application.
+On the previous page, we learned that a route is the mechanism by which a request path gets assigned to a controller within our application.
 In this section, we’ll further explore routes and how data is transferred from a webpage with a given route to a specific controller.
 
 .. index:: ! query string
@@ -34,7 +33,7 @@ Controllers and Query Parameters - Video
 Parameters
 ----------
 
-We can pass different parameters in controller method.
+We can pass different parameters into a controller method.
 Let's add a method called ``Welcome()`` to ``HelloController.cs``. 
 
 .. sourcecode:: csharp
@@ -107,6 +106,7 @@ Check Your Understanding
    .. sourcecode:: csharp
       :linenos:
 
+      [Route("/venus")]
       public IActionResult VenusSurface(string Terrestrial)
       {
          if (Terrestrial == true)

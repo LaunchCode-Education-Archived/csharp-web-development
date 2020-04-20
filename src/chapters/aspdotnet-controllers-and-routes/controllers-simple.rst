@@ -1,10 +1,13 @@
+.. index:: ! route
+
 Simple Controllers
 ==================
 
 The first of the MVC elements we'll work on implementing are the controllers. Recall that controllers 
 are like the traffic cops of our application. They handle the requests made from users interacting with the 
 application's view and update model data accordingly. Conversely, changes to model data are sent to the view 
-via controller methods.
+via controller methods. When the client issues an HTTP request via URL, we want to make sure that the URL leads to the correct controller so we get an appropriate response.
+A **route** is the mechanism by which a request path gets assigned to a controller within our application.
 
 .. figure:: figures/mvcOverviewDetail.png
       :scale: 50%
@@ -14,9 +17,8 @@ via controller methods.
 
 .. admonition:: Note
 
-   Do HTTP requests and responses feel unfamiliar? Do you remember what a query string
-   is? If you're feeling rusty on these topics, it's a good idea to brush up now, as routing 
-   requires a foundational understanding of HTTP data transfer.
+   Do HTTP requests and responses feel unfamiliar?
+   If you're feeling rusty on these topics, it's a good idea to brush up now, as routing requires a foundational understanding of HTTP data transfer.
 
    Here's our `introduction to HTTP <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html>`__ 
    for reviewing the concepts.
@@ -28,8 +30,8 @@ Controllers and Static Responses - Video
 
 .. admonition:: Note 
 
-   If you ever want to verify what code you started the video with, the starter code for this video is on the ``master`` branch.
-   If you ever want to verify what code you end the video with, the solution code for this video is on the ``static-responses`` branch.
+   If you ever want to verify what code you started the video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_ for this video is on the ``master`` branch.
+   If you ever want to verify what code you end the video with, the `solution code <https://github.com/LaunchCodeEducation/HelloASPDotNET/tree/static-responses>`_ for this video is on the ``static-responses`` branch.
 
 Controllers and Static Responses - Intro
 ----------------------------------------
@@ -60,9 +62,7 @@ The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.asp
 Controllers Map to Requests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first HTTP request we will work with in this chapter is a ``GET`` request.
-For every ``GET`` request made to the provided path, the controller method will be called.
-How do we provide the path?
+Controllers need to handle HTTP requests coming in and that routes are a key component of that process
 ASP.NET MVC has two different ways to map these routes: conventional routing and attribute routing.
 **Conventional routing** establishes the routes as endpoints in one of the application's configuration files.
 **Attribute routing** establishes the routes using code called attributes that are placed in the controller file.
@@ -73,7 +73,7 @@ This is because the MVC application we start out with has the routing for ``Home
 For every controller method that you want to respond to a request, you will want to map the route using either conventional routing, attribute routing, or both.
 
 Open up ``Startup.cs`` in the solution.
-Towards the bottom of the file, you will notice a block of code that calls some ``UseEndpoints()`` method on an ``app`` object.
+Towards the bottom of the file, you will notice a block of code that calls the ``UseEndpoints()`` method on an ``app`` object.
 This is how ASP.NET maps controller routes in conventional routing.
 Looking at this method, shown in the code block below, you may notice that the code is specifying endpoints.
 When an HTTP request comes in, routing matches the request with an endpoint.
@@ -90,7 +90,7 @@ When an HTTP request comes in, routing matches the request with an endpoint.
    });
 
 The ``default`` route is to the ``HomeController``, which came with our application courtesy of Microsoft.
-When we navifate to our application's address, we see the result of the ``Index()`` method in the ``HomeController`` which is a view.
+When we navigate to our application's address, we see the result of the ``Index()`` method in the ``HomeController`` which is a view.
 We will learn more about how views work in a later chapter.
 
 When adding a new controller, such as ``HelloController``, we need to make sure that routing is properly configured whether we use conventional routing or attribute routing.
@@ -172,12 +172,11 @@ We will be using ``IActionResult`` quite a bit in our applications, so let's tak
 ``IActionResult``
 ^^^^^^^^^^^^^^^^^
 
-``IActionResult`` is an interface in the ASP.NET framework.
-Classes that implement this interface are representative of what the client will do because of the controller action.
-So if our ``Index()`` method is called in ``HelloController``, the returned value dictates what the client will display.
+``IActionResult`` is an interface in the ASP.NET framework and often times the return type of controller methods.
+When we specify the return type as ``IActionResult``, the returned value dictates what the client will display.
+We can use ``IActionResult`` to get the client to display JSON, a view, or even plain text.
+We will only scratch the surface of what ``IActionResult`` can do so for now, let's focus on ``Content``.
 
-We will often choose throughout this book to return content as a result.
-Content can include a view (from model-view-controller), JSON, and simple text, for example. 
 In our ``Index()`` method, we want to return a simple string of HTML to be displayed on the webpage.
 We use ``Content()`` to specify which string we want to use for our content and we specify the content type with ``"text/html"``.
 When using ``Content()``, we need to specify the content type in order the page to render how we want it to!

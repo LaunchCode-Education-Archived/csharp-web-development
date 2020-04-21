@@ -10,7 +10,7 @@ Getting Started
 ---------------
 
 Create and checkout a new branch to complete these exercises. Your branch should roughly resemble 
-this branch: <TODO: add a link to a branch on CodingEventsDemo>. 
+`this branch <https://github.com/LaunchCodeEducation/CodingEventsDemo>`__.
 
 As always, give the branch a useful name, like ``view-exercises``.
 

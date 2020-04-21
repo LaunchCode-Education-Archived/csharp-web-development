@@ -9,8 +9,10 @@ Open up your ``coding-events`` project in Visual Studio.
 Getting Started
 ---------------
 
-From where you left off, create and checkout a new branch to complete these exercises. As always, give the branch a useful name, like
-``view-exercises``.
+Create and checkout a new branch to complete these exercises. Your branch should roughly resemble 
+this branch: <TODO: add a link to a branch on coding-events-demo>. 
+
+As always, give the branch a useful name, like ``view-exercises``.
 
 Now, let's add descriptions to our events.
 

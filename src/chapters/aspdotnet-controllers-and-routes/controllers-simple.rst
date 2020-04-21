@@ -147,6 +147,8 @@ Let's see how we can add attributes to ``HelloController``!
       }
    }
 
+"/[controller]" to match conventional route.
+
 Now when we run our application, we can head over to ``localhost:5001/hello/attribute`` to see the result.
 If we head over to the route that was mapped through conventional routing, ``localhost:5001/Hello``, we will find a broken page.
 

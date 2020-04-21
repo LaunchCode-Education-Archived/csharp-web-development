@@ -23,12 +23,12 @@ This process will be covered in depth later on in this chapter.
 Because MVC breaks down all of the programming logic of an application into three digestable components, we can use this particular design pattern to make extensible applications.
 We also use MVC because it separates the components of the programs that the user interacts with from the underlying business logic.
 
-.. index:: ! ASP.NET, ! ASP.NET MVC
+.. index:: ! ASP.NET Core, ! ASP.NET MVC
 
 ASP.NET
 -------
 
-**ASP.NET** is an extension of .NET Core and is used to build web applications.
+**ASP.NET Core** is an extension of .NET Core and is used to build web applications.
 **ASP.NET MVC** is the framework that allows us to build web applications in a way that uses the MVC design pattern.
 Visual Studio has an embedded server so it is easy for us to run our applications and get started.
 This server picks a random port number when hosting the application.

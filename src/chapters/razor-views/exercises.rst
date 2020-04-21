@@ -4,13 +4,13 @@ Exercises: Views
 In this chapter, we started working on an application for tracking various
 coding events around town.
 
-Open up your ``coding-events`` project in Visual Studio.
+Open up your ``CodingEvents`` project in Visual Studio.
 
 Getting Started
 ---------------
 
 Create and checkout a new branch to complete these exercises. Your branch should roughly resemble 
-this branch: <TODO: add a link to a branch on coding-events-demo>. 
+this branch: <TODO: add a link to a branch on CodingEventsDemo>. 
 
 As always, give the branch a useful name, like ``view-exercises``.
 

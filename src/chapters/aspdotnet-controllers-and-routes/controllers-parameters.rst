@@ -1,8 +1,8 @@
 Controllers with Parameters
 ===========================
 
-Now that you know the basics of a controller method, we can start to add some more variables into the mix.
-Some controller methods can take in parameters in the form of query strings or sections of the URL path.
+Now that you know the basics of action methods and controllers, we can start to add some more variables into the mix.
+Some action methods can take in parameters in the form of query strings or sections of the URL path.
 Passing this URL data to the controller is one step closer to more flexible web applications. 
 
 On the previous page, we learned that a route is the mechanism by which a request path gets assigned to a controller within our application.
@@ -13,7 +13,7 @@ In this section, we’ll further explore routes and how data is transferred from
 Query Strings are URL Data
 --------------------------
 
-A brief refresher: query strings are additional bits of information tacked onto the ends of urls.
+A brief refresher: **query strings** are additional bits of information tacked onto the ends of urls.
 They contain data in key-value pairs.
 
 ::
@@ -33,7 +33,7 @@ Controllers and Query Parameters - Video
 Parameters
 ----------
 
-We can pass different parameters into a controller method.
+We can pass different parameters into an action method.
 Let's add a method called ``Welcome()`` to ``HelloController.cs``. 
 
 .. sourcecode:: csharp
@@ -50,14 +50,14 @@ You may have noticed on the function signature on line 2 that we give the argume
 We do this to make ``name`` an **optional parameter**.
 Optional parameters are designated with a default value (in our case, ``"World"``) and method calls do not have to include a value for that parameter.
 When working with query strings, it is wise to make the key an optional parameter in case no value is provided for it.
-If a query string is not provided and we navigate to just ``localhost:5001/hello/welcome``, then our webpage will display "Welcome to my app, World!".
+If a query string is not provided and we navigate to just ``localhost:5001/Hello/Welcome``, then our webpage will display "Welcome to my app, World!".
 
 .. figure:: figures/queryparamdefault.png
    :alt: Webpage displaying "Welcome to my app, World!"
 
    Our webpage when we don't provide a query string.
 
-If we do provide a query string and navigate to ``localhost:5001/hello/welcome?name=Ringo``, then our webpage will display "Welcome to my app, Ringo!".
+If we do provide a query string and navigate to ``localhost:5001/Hello/Welcome?name=Ringo``, then our webpage will display "Welcome to my app, Ringo!".
 
 .. figure:: figures/queryparamused.png
    :alt: Webpage displaying "Welcome to my app, Ringo!"
@@ -67,33 +67,33 @@ If we do provide a query string and navigate to ``localhost:5001/hello/welcome?n
 If we want to use a query string with attribute routing, we need to add a ``[HttpGet]`` attribute to specify that our method responds to a ``GET`` request.
 We also want to specify the path with the ``[Route]`` attribute.
 
+.. sourcecode:: csharp
+   :linenos:
+
+   [HttpGet]
+   [Route("/helloworld/welcome/{name?}")]
+   public IActionResult Welcome(string name = "World")
+   {
+      return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
+   }
+
+Now when we run our app and navigate to ``localhost:5001/helloworld/welcome?name=Ringo``, we get the same webpage as when we used conventional routing.
+For the path of our route, we specified that the path end with ``{name?}``. Surrounding ``name`` with curly braces in the route path means that the URL uses the value of the ``name`` variable.
+Adding the ``?`` specifies that ``name`` is an optional parameter so if we don't give it a value via query string, the web page will still display "Welcome to my app, World!". 
+
 Path Variables
 ^^^^^^^^^^^^^^
 
 Earlier in the chapter, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
 These types of parameters are called **path variables**.
 
-With attribute routing, we can make a new method that responds to the path, ``localhost:5001/hello/Tillie``, and produces a webpage that displays ``"Welcome to my app, Tillie!"``.
+With attribute routing added to the ``Welcome()`` method, ``Welcome()`` also responds to the path, ``localhost:5001/helloworld/welcome/Tillie``, and produces a webpage that displays ``"Welcome to my app, Tillie!"``.
+When we enclosed ``name`` in curly braces, specifying that the value of ``name`` should be used, we also made it a path variable!
+Now the action method, ``Welcome()``, responds to ``localhost:5001/helloworld/welcome``, ``localhost:5001/helloworld/welcome?name=Tillie``, and ``localhost:5001/helloworld/welcome/Tille``!
 
-.. sourcecode:: csharp
-   :linenos:
+.. admonition:: Note
 
-   [HttpGet]
-   [Route("/hello/{name}")]
-   public IActionResult WelcomeByName(string name)
-   {
-      return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
-   }
-
-We use the ``[HttpGet]`` attribute to specify that the method needs to respond to a ``GET`` request and the ``[Route("path")]`` attribute to specify the path.
-Because ``name`` is a path variable, we enclosed it in curly braces in the path.
-
-Once we add this new webpage and navigate to ``localhost:5001/hello/Tillie``, we see a new webpage in our application!
-
-.. figure:: figures/pathvariables.png
-   :alt: Webpage displaying "Welcome to my app, Tillie!"
-
-   The latest page in our app!
+   Before moving on, make sure to add info about the different routes the method maps to in comments in your code!
 
 Check Your Understanding
 ------------------------
@@ -106,10 +106,11 @@ Check Your Understanding
    .. sourcecode:: csharp
       :linenos:
 
-      [Route("/venus")]
-      public IActionResult VenusSurface(string Terrestrial)
+      [HttpGet]
+      [Route("/venus/{terrestrial?}")]
+      public IActionResult VenusSurface(string terrestrial)
       {
-         if (Terrestrial == true)
+         if (terrestrial == true)
          {
             return "Venus is rocky."        
          }

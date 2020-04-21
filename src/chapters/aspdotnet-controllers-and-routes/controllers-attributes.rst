@@ -1,5 +1,5 @@
-Attribute Routing
-=================
+Streamling Your Code with Attribute Routing
+===========================================
 
 Attribute Routing - Video
 --------------------------
@@ -16,68 +16,100 @@ Attribute Routing - Video
 Attribute Routing - Text
 ------------------------
 
-Once you have written several controller methods within a class, you may notice some similar behavior across handlers.
-You may also want to expand upon the behavior that different methods can make use of.
-So far, we have been relying on conventional routing for mapping our requests and our endpoints.
-As we continue learning, we will also make use of attribute routing.
-**Attribute routing** uses **attributes** to establish routes, different types of requests that the method responds to, and so on.
-Attributes lie somewhere between code and comments. While an attribute cannot change the code inside the method or class, an attribute does supply critical information to the compiler.
-Attribute routing is powerful because it does not require us to add any mapping info to ``Startup.cs``.
-We can provide all of the information the compiler needs about mapping routes in attributes in our controller files.
+Once you have written several action methods within a class, you may notice some similar behavior.
+You may also want to expand upon the behavior that different action methods can make use of.
+So far, we have been adding multiple different ``[Route("path")]`` attributes to each method to get every method to respond to a path that starts with ``localhost:5001/helloworld``.
+The ``Welcome()`` method and ``Display()`` method also serve similar purposes and feel a bit repetitive.
+Time to DRY our code!
 
-Here is how we might modify an existing method in ``HelloController`` to make use attribute routing.
+Class-Level Attributes
+^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to adding attributes above action methods, we can also add attributes for routing above the class.
+When we do so, we are designating class-wide behavior.
+In ``HelloController``, we want every action method to respond to requests at paths that start with ``localhost:5001/helloworld``.
+We can use ``[Route("path")]`` once above the class to designate that every path for each action method needs to start with ``/helloworld``.
 
 .. sourcecode:: csharp 
    :linenos:
 
+   [Route("/helloworld")]
+    public class HelloController : Controller
+    {
+        // action methods here
+    }
+
+Now that we have added that ``[Route("/helloworld")]`` above the class, we can start to modify the attributes we placed above the ``Index()`` method.
+
+.. sourcecode:: csharp
+   :linenos:
+
    [HttpGet]
-   public IActionResult Welcome(string name = "World")
+   public IActionResult Index()
    {
-      return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
+      string html = "<form method='post' action='helloworld/display'>" +
+            "<input type='text' name='name' />" +
+            "<input type='submit' value='Greet Me!' />" +
+            "</form>";
+
+      return Content(html, "text/html");
    }
 
-The ``[HttpGet]`` attribute on line 1 specifies that the method responds to a ``GET`` request.
-Attributes have to go directly above the method signature or the class. 
-Other attributes you may find yourself using include ``[HttpPost]`` to specify methods that respondd to ``POST`` requests and ``[Route("path")]`` to map the route that the method responds to.
+Since we want to map ``Index()`` to the path ``localhost:5001/helloworld``, we removed the ``[Route("/helloworld")]`` attribute above the method.
+If we hadn't, we would have inadvertently mapped the ``Index()`` method to the path, ``localhost:5001/helloworld/helloworld``.
+We want to leave the ``[HttpGet]`` attribute above the ``Index()`` method so we can still specify that ``Index()`` responds to ``GET`` requests.
 
-.. admonition:: Note
+Now that just leaves us the ``Welcome()`` and ``Display()`` methods!
 
-   ASP.NET has many different attributes that we can use in our controllers.
-   For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2>`_.
+One Method, Two Request Types
+-----------------------------
 
-.. index:: ! path variable
+Despite ``Welcome()`` and ``Display()`` responding to different request types, the two methods return very similar strings of HTML.
+With attributes, we can DRY our code and create one method that can respond to two different request types at two different routes.
+Before we begin, we should note that we can add route info directly to ``[HttpGet]`` and ``[HttpPost]``.
 
-Class-level Attributes
-----------------------
+.. sourcecode:: csharp
+   :linenos:
 
-``[RoutePrefix()]``
+   [HttpPost("display")]
+   public IActionResult Display(string name = "World")
+   {
+      return Content("<h1>Hello " + name + "!</h1>", "text/html");
+   }
+
+On line 1, we modified the ``[HttpPost]`` attribute to include the end of our path.
+Now ``Display()`` still responds to ``POST`` requests at ``localhost:5001/helloworld/display``.
+However, this is just the beginning of us DRYing our code.
+
+We want to comment out the ``Welcome()`` method and add another attribute to ``Display()`` so that we have one method responding to two different types of HTTP requests at two different paths.
+We can add an ``[HttpGet]`` attribute to ``Display()`` to do so.
+
+.. sourcecode:: csharp
+   :linenos:
+
+   [HttpGet("welcome/{name?}")]
+   [HttpPost("display")]
+   public IActionResult Display(string name = "World")
+   {
+      return Content("<h1>Hello " + name + "!</h1>", "text/html");
+   }
+
+We added an ``[HttpGet]`` attribute on line 1 with a different path.
+Now ``Display()`` can respond to ``GET`` requests at ``localhost:5001/helloworld/welcome``, ``localhost:5001/helloworld/welcome?name=Tillie``, and ``localhost:5001/helloworld/welcome/Tille``.
+``Display()`` can also still respond to the ``POST`` request at ``localhost:5001/helloworld/display`` upon submission of the form.
+
+Now when we run our code, our app will still have the same functionalities, but now we have a more refined and organized code base!
 
 Check Your Understanding
 ------------------------
 
 .. admonition:: Question
 
-   True/False: Attributes go below the method signature.
+   True/False: Attributes go below the class definition, but above the method signature.
  
    a. True
       
    b. False
 
-.. ans: b, attributes go above the method signature
-
-.. admonition:: Question
-
-   We want the method ``WelcomeByName`` to take another parameter, ``string friend``, that will 
-   add a friend's name to the returned greeting. What is an appropriate path to use in our ``Route`` attribute? 
- 
-   a. ``/hello/{name}?{friend}``
-
-   b. ``/hello/{name}/{friend}``
-
-   c. ``/hello/{name}+{friend}``
-
-   d. ``/hello/name/friend``
-
-.. ans:  b, ``/hello/{name}/{friend}``
-
+.. ans: b, attributes go above both the class definition and the method signature
 

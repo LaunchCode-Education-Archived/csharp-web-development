@@ -57,12 +57,12 @@ The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.asp
 
    }
 
-.. index:: ! endpoint, ! route, ! routing, ! conventional routing, ! attribute routing
+.. index:: ! endpoint, ! route, ! routing, ! conventional routing, ! attribute routing. ! action method
 
 Controllers Map to Requests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Controllers need to handle HTTP requests coming in and that routes are a key component of that process
+Controllers need to handle HTTP requests coming in and routes are a key component of that process.
 ASP.NET MVC has two different ways to map these routes: conventional routing and attribute routing.
 **Conventional routing** establishes the routes as endpoints in one of the application's configuration files.
 **Attribute routing** establishes the routes using code called attributes that are placed in the controller file.
@@ -70,12 +70,12 @@ ASP.NET MVC has two different ways to map these routes: conventional routing and
 When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
 Microsoft created a ``HomeController`` that maps to the route ``localhost:5001``. 
 This is because the MVC application we start out with has the routing for ``HomeController`` set up using conventional routing.
-For every controller method that you want to respond to a request, you will want to map the route using either conventional routing, attribute routing, or both.
+For every method in the controller that you want to respond to a request, you will want to map the route using either conventional routing, attribute routing, or both.
 
 Open up ``Startup.cs`` in the solution.
 Towards the bottom of the file, you will notice a block of code that calls the ``UseEndpoints()`` method on an ``app`` object.
 This is how ASP.NET maps controller routes in conventional routing.
-Looking at this method, shown in the code block below, you may notice that the code is specifying endpoints.
+Looking at this method, shown in the code block below, you may intuit that the code is specifying endpoints even though much of the syntax we haven't seen before.
 When an HTTP request comes in, routing matches the request with an endpoint.
 **Endpoints** designate the controller action that executes when the appropriate HTTP request comes into the application.
 
@@ -93,7 +93,14 @@ The ``default`` route is to the ``HomeController``, which came with our applicat
 When we navigate to our application's address, we see the result of the ``Index()`` method in the ``HomeController`` which is a view.
 We will learn more about how views work in a later chapter.
 
+.. admonition:: Note
+
+   Throughout this book we will be focusing on how to add a new dedicated route using attribute routing.
+   However, if you want to investigate further on how to use an endpoint for a dedicated route in conventional routing, Microsoft has a great `article <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#special-case-for-dedicated-conventional-routes>`_ on the subject!
+
 When adding a new controller, such as ``HelloController``, we need to make sure that routing is properly configured whether we use conventional routing or attribute routing.
+We want to start by adding a new action method to ``HelloController``.
+**Action methods** are the public methods in a controller class.
 Let's start by adding the following ``Index()`` method:
 
 .. sourcecode:: csharp
@@ -106,7 +113,7 @@ Let's start by adding the following ``Index()`` method:
       return Content(html, "text/html");
    }
 
-The comment above our new method tells us that the ``Index()`` method above will respond to ``GET`` requests at ``localhost:5001/Hello``.
+The comment above our new method tells us and our fellow programmers that the ``Index()`` method above will respond to ``GET`` requests at ``localhost:5001/Hello``.
 Let's run the app and navigate to ``localhost:5001/Hello``!
 
 .. admonition:: Warning
@@ -116,30 +123,35 @@ Let's run the app and navigate to ``localhost:5001/Hello``!
    In the case of our ``HelloController``, if you go to ``localhost:5001/hello``, the page will not work!
    You have to make sure that ``Hello`` is capitalized in the route.
 
-.. index:: ! attribute
+.. index:: attribute
 
 We might also want to make use of attribute routing in our new ``HelloController``.
 To do so, we can add attributes to our ``Index()`` method.
-**Attributes** lie somewhere between code and comments.
+As you may recall from the :ref:`chapter <csharp-attributes>` on unit testing, **attributes** in C# lie somewhere between code and comments.
 While an attribute cannot change the code inside the method or class, an attribute does supply critical information to the compiler.
-Attribute routing is powerful because it does not require us to add any mapping info to ``Startup.cs``.
+Attribute routing is powerful because it does not depend on any endpoint mapping info in ``Startup.cs``.
 
-As we did above, we want to ``Index()`` to respond to a ``GET`` request at a specified route.
-The route we want to go to is ``localhost:5001/hello/attribute``. 
+.. admonition:: Note
+
+   ASP.NET has many different attributes that we can use in our controllers.
+   For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2>`_.
+
+
+As we did above, we want the ``Index()`` method to respond to a ``GET`` request at a specified route.
+The route we want to go to is ``localhost:5001/helloworld``. 
 We can use an ``[HttpGet]`` attribute to specify that the method will respond to a ``GET`` request.
-We also want to use a ``[Route("path")]`` attribute and a ``[RoutePrefix("path")]`` attribute.
-``[Route("path")]`` is used above the method to establish the route that maps to that method and ``[RoutePrefix("path")]`` goes above the class name to establish a common start to all of the routes for the methods in the controller.
+We also want to use a ``[Route("path")]`` attribute.
+``[Route("path")]`` is used above the action method to establish the route that maps to that method.
 
 Let's see how we can add attributes to ``HelloController``!
 
 .. sourcecode:: csharp
    :linenos:
 
-   [RoutePrefix("/hello")]
    class HelloController : Controller
    {
       [HttpGet]
-      [Route("/attribute")]
+      [Route("/helloworld")]
       public IActionResult Index() 
       {
          string html = "<h1>" + "Hello World!" + "<h1>";
@@ -147,12 +159,8 @@ Let's see how we can add attributes to ``HelloController``!
       }
    }
 
-"/[controller]" to match conventional route.
-
-Now when we run our application, we can head over to ``localhost:5001/hello/attribute`` to see the result.
+Now when we run our application, we can head over to ``localhost:5001/helloworld`` to see the result.
 If we head over to the route that was mapped through conventional routing, ``localhost:5001/Hello``, we will find a broken page.
-
-After we add the ``Index()`` method and configure the routing properly, we can run our application and navigate to ``localhost:5001/hello/attribute``.
 The result is a simple web page with one heading that says "Hello World!"
 
 .. figure:: figures/staticresponseresult.png
@@ -162,20 +170,21 @@ The result is a simple web page with one heading that says "Hello World!"
 
 .. admonition:: Note
 
-   Throughout this chapter, we will add map our routes with both approaches.
+   Throughout this chapter, we will map our routes with both approaches.
    While, you may prefer one or the other, many applications contain a combination of both conventional and attribute routing.
    We encourage you to try out both approaches to make sure that you can recognize and understand both approaches to routing.
 
-The ``Index()`` method above returns an unfamiliar type, ``IActionResult``.
-We will be using ``IActionResult`` quite a bit in our applications, so let's take a deeper look.
+Now that our new controller and action method are working, we can take a closer look at the ``Index()`` method.
+``Index()`` above returns an unfamiliar type, ``IActionResult``.
+We will be using ``IActionResult`` quite a bit in our applications and it is an important interface for us to be aware of.
 
 .. index:: ! IActionResult
 
 ``IActionResult``
 ^^^^^^^^^^^^^^^^^
 
-``IActionResult`` is an interface in the ASP.NET framework and often times the return type of controller methods.
-When we specify the return type as ``IActionResult``, the returned value dictates what the client will display.
+``IActionResult`` is an interface in the ASP.NET framework and often times the return type of action methods.
+When we specify the return type as ``IActionResult``, the returned value dictates what the client will display after the action is complete.
 We can use ``IActionResult`` to get the client to display JSON, a view, or even plain text.
 We will only scratch the surface of what ``IActionResult`` can do so for now, let's focus on ``Content``.
 

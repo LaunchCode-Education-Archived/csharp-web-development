@@ -2,7 +2,7 @@ Studio: Spa Day!
 ================
 
 After all of the hard work we have put into learning about Razor templates, it is
-time for a spa day. Let's make an application for some spa services.
+time for a spa day. Let's make an application to select some spa services.
 
 Our application needs to do the following:
 
@@ -16,85 +16,80 @@ As always, read through the whole page before starting to code.
 Setup
 -----
 
-.. TODO: create the starter code in c#
+Fork and clone the `starter code <https://github.com/LaunchCodeEducation/SpaDay>`_.
+Check out the project via Version Control in Visual Studio.
 
-Fork and clone the appropriate `repository <starter repo here>`_. Check out the project via 
-Version Control in Visual Studio.
-
-When you open the project, and run it. You should see a form when the application opens.
+Once you have the project opened in your IDE, and run it and click the *SpaDay* link that appears in 
+the upper left of the home page. You should see a small form at the ``/Spa`` route.
 
 .. figure:: figures/startingform.png
+   :scale: 40%
    :alt: Image showing an empty form with three fields for name, skin type, and whether the person wants a pedicure or manicure.
+
+   The form located at ``/Spa``.
 
 The Customer Profile
 --------------------
 
-In ``Controllers``, we have one controller called ``SpaDayController``. Inside
-``SpaDayController``, we have three methods.
+In ``Controllers``, we have a controller called ``SpaController``. Inside
+``SpaController`` are three methods.
 
-#. The ``checkSkinType()`` method. The owners gave us this method to help us
-   figure out which facial treatments are appropriate for which skin type.
-#. The ``customerForm()`` method, which looks very similar to what we did in
-   the last lesson.
-#. The ``spaMenu()`` method, which we will use to bring in our Razor
-   template, ``menu.html``.
+#. ``CheckSkinType()`` method: Contains the logic to determine which facial treatments are appropriate for which skin type.
+#. ``Index()`` action method: Returns the ``Spa/Index`` view when ``GET`` requests are made to ``/spa/``. 
+#. ``Menu()`` action method: Returns the ``Spa/Menu`` view when ``POST`` requests are made to ``/spa/``.
 
-In ``templates``, we have a Razor template called ``menu.html``.
-Inside ``menu.html``, there are two main divs in the body.
-Let's focus on the div with the id, ``clientProfile``.
+In ``Views/Spa``, we have a Razor template called ``Menu``.
+Inside ``Menu.cshtml``, there are two ``div`` elements.
+Let's add some children to the ``div`` with the id, ``clientProfile``.
 
-#. Add an ``h2`` that says "My profile".
-#. Add a ``p`` tag and use ``th:text`` to bring in the value of ``name``.
-#. Add a ``p`` tag and use ``th:text`` to bring in the value of ``skintype``.
-#. Add a ``p`` tag and use ``th:text`` to bring in the value of ``manipedi``.
+#. Add an ``h3`` that says "Client profile".
+#. Next, display the value of the ``name`` parameter from the form. 
 
-Run the application and head to ``localhost:8080`` to see the results! When we
-fill out the form, we should see a new page with the client profile at the top!
+   .. admonition:: Tip
+
+      This is a two step process. 
+
+      #. In the controller, add a ``ViewBag`` property to hold the ``name`` value.
+      #. In the view, use that ``ViewBag`` property to display the ``name`` in a ``p`` tag. 
+
+Run the application and head to ``localhost:5001/spa`` to see the results. When we
+fill out the form, we should see a new page with the client profile heading and name 
+at the top.
 
 List All Appropriate Facial Treatments
 --------------------------------------
 
-Luckily for us, the spa owners gave us the ``checkSkinType()`` method in our
-``SpaDayController``. Also, our teammates already set up code in our
-``spaMenu()`` method to fill an ``ArrayList<String>`` with facial treatments
-that would work for the user's skin type. Now, we just need to use Razor to
-display the appropriate facial treatments (stored in the ArrayList,
-``appropriateFacials``)!
+To provide treatment suggestions, ``SpaController.Menu()`` uses the ``CheckSkinType()`` method
+and fills a list with facial treatments that benefit the user's skin type. Now, we just need to use Razor to
+display the contents of the ``appropriateFacials`` list.
 
-Let's head back to ``menu.html`` and checkout the empty div with the id,
-``servicesMenu``.
+#. Add the client's ``skintype`` and the ``appropriateFacials`` list as a ``ViewBag`` property.
 
-Add a table and iteratively (using our ``th:block`` and ``th:each`` combo) add
-rows for the values in ``appropriateFacials``. If you need a quick reminder of
-the syntax, review the :ref:`th:block section <th-block>` .
+#. Now, head back to ``Menu.cshtml`` and checkout the empty ``div`` with the id,
+   ``servicesMenu``. 
+
+#. Pass in the ``skintype`` variable to the ``<p>`` tag.
+
+.. TODO: make sure there is a foreach section for razor?
+
+#. Iteratively add the values in ``appropriateFacials`` to an unordered list. If you need a quick reminder of
+   the syntax, review the :ref:`@foreach section <@foreach>` .
 
 Mani or Pedi?
 -------------
 
-One other thing the spa owners want to be cautious of is their treatment
-descriptions. Because the descriptions rarely change and are going to be used
-in multiple places on the site, the owners have written up the descriptions as
-Razor fragments.
+We want to display a description for the nail service the user selects.
+Inside the ``servicesMenu`` div, use ``@if`` to determine if the value of 
+``manipedi`` is a ``"manicure"`` or ``"pedicure"``.
 
-Checkout the file, ``fragments.html``, in the ``templates`` directory. The
-owners have already written up the descriptions for their manicure and pedicure
-in separate ``p`` tags.
+#. If the value of ``manipedi`` is ``"manicure"``, display this description:
 
-We want to put the description in a ``div`` along with an ``h3`` stating that
-it is either a manicure or pedicure. This new ``div`` should be inside the
-``servicesMenu`` div.
+      Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.
 
-Use ``th:if`` to determine if the value of ``manipedi`` is a ``"manicure"`` or
-``"pedicure"``.
+#. If the value of ``manipedi`` is ``"pedicure"``, display this description:
 
-#. If the value of ``manipedi`` is ``"manicure"``, the ``div`` element
-   containing the ``h3`` that says ``"Manicure"`` needs to be on the page and
-   the ``p`` tag needs to be *replaced* with the fragment of the manicure
-   description from ``fragments.html``.
-#. If the value of ``manipedi`` is ``"pedicure"``, the ``div`` element
-   containing the ``h3`` that says ``"Pedicure"`` needs to be on the page and
-   the ``p`` tag needs to be *replaced* with the fragment of the pedicure
-   description from ``fragments.html``.
+      Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!
+
 
 End Result
 ----------
@@ -103,19 +98,25 @@ After you are done with the studio, you should be able to fill out the form,
 click "Submit", and see your profile page.
 
 .. figure:: figures/completedform.png
+   :scale: 40%
    :alt: Form completed with the name, "Yolanda", combination skin and a preference for pedicures.
 
+   A client completes the spa day form.
+
 .. figure:: figures/endresultprofilepage.png
+   :scale: 40%
    :alt: Profile showing Yolanda's information, recommended facial treatments, and pedicure description.
+
+   The client's service menu.
 
 Bonus Mission
 -------------
 
-#. Modify ``styles.css`` to get some CSS practice! Try add a footer with square
+#. Modify ``site.css`` to get some CSS practice. Try add a footer with square
    shaped ``div`` elements. Each square should be a different color for
    different available nail polishes.
 #. Modify the form to allow the user to select either a manicure or pedicure or
    *both*. If the user selects both, display both the manicure and pedicure
-   descriptions on the ``Spa Menu`` page.
+   descriptions in the ``Menu`` view.
 #. Work with routes and paths to display the spa menu page on a separate route
    from the form.

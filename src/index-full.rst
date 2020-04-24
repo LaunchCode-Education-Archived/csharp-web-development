@@ -13,6 +13,7 @@ Chapters
    chapters/unit-testing/index
    chapters/inheritance/index
    chapters/interfaces-and-polymorphism/index
+   chapters/vstools/index
 
 .. toctree::
 
@@ -31,6 +32,7 @@ Studios
    chapters/classes-part2/studio
    chapters/unit-testing/studio
    chapters/interfaces-and-polymorphism/studio
+   chapters/vstools/studio
 
 Assignments
 ===========

@@ -6,6 +6,7 @@ Controllers and Routing
 .. toctree::
    :maxdepth: 3
 
+   exercises
    studio
 
    

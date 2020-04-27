@@ -7,5 +7,6 @@ Controllers and Routing
    :maxdepth: 3
 
    exercises
+   studio
 
    

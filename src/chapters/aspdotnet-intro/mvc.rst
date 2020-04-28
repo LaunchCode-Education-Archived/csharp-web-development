@@ -23,23 +23,25 @@ This process will be covered in depth later on in this chapter.
 Because MVC breaks down all of the programming logic of an application into three digestable components, we can use this particular design pattern to make extensible applications.
 We also use MVC because it separates the components of the programs that the user interacts with from the underlying business logic.
 
-.. index:: ! ASP.NET Core, ! ASP.NET MVC
+.. index:: ! ASP.NET Core, ! ASP.NET Core MVC
 
 ASP.NET
 -------
 
 **ASP.NET Core** is an extension of .NET Core and is used to build web applications.
-**ASP.NET MVC** is the framework that allows us to build web applications in a way that uses the MVC design pattern.
+**ASP.NET Core MVC** is the framework that allows us to build web applications in a way that uses the MVC design pattern.
 Visual Studio has an embedded server so it is easy for us to run our applications and get started.
-This server picks a random port number when hosting the application.
-It is therefore important that you make a note of that number so that you may view your running app.
+This server picks the port number to run the app and usually runs at 5001.
+If your apps run at a different port number, that is fine.
+Just take a note of that number so that you may view your running app.
 
 .. admonition:: Note
 
-   Whenever we navigate to ``localhost:portnumber``, make sure that you are navigating to the appropriate port number for your server.
-   Your port number may be different from the examples in the book.
+   Throughout this book, we will refer to ASP.NET Core MVC as ASP.NET or ASP.NET MVC. 
+   This is purely for the sake of brevity.
+   When you see "ASP.NET" or "ASP.NET MVC", we are talking about ASP.NET Core MVC.
 
-How we Teach ASP.NET
+How We Teach ASP.NET
 --------------------
 
 The following section is the first of many videos we will be using to demonstrate coding an ASP.NET application.

@@ -19,6 +19,10 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
       User selects the appropriate project type
 
+   .. admonition:: Warning
+
+      A page may appear asking if you want to add authentication to the app. If you do get this page, make sure to select *No Authentication* before proceeding forward.
+   
 #. Name your project *HelloASPDotNET* and put it in the appropriate directory for all of your classwork. Hit *Create*!
    Windows users may have to take one additional step and select *Web Application (model-view-controller)* after hitting *Create*.
 
@@ -37,10 +41,10 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
 .. admonition:: Note
 
-   The home page of your application already contains curated content from Microsoft on how to use ASP.NET Core.
-   If you want extra study materials, check out this `tutorial <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-3.1&tabs=visual-studio>`_ from the home page Microsoft designed!
+   The home page of your application already contains a link to a tutorial from Microsoft on how to use ASP.NET MVC.
+   If you want extra study materials, check out that `tutorial <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-3.1&tabs=visual-studio>`_ from the home page Microsoft designed!
 
-In the ``controllers`` directory, check out ``HomeController.cs``.
+In the ``Controllers`` directory, check out ``HomeController.cs``.
 Microsoft provided the code in ``HomeController`` and that is why our application ran immediately after we created it and was full of content.
 As we work on our new application, we will be adding a new controller, ``HelloController``.
 

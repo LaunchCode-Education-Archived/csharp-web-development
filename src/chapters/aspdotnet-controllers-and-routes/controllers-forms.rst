@@ -65,6 +65,8 @@ Once we hit *Greet Me*, the value of ``name``, ``"Tillie"``, is submitted to the
 With our form working, we can add some attribute routing to streamline the process and send our form data down a different route.
 For the ``Index()`` method, we want the method to respond to a ``GET`` request at ``localhost:5001/helloworld``.
 
+.. TODO: Mess around with action url 
+
 .. sourcecode:: csharp
    :linenos:
 
@@ -72,7 +74,7 @@ For the ``Index()`` method, we want the method to respond to a ``GET`` request a
    [Route("/helloworld")]
    public IActionResult Index()
    {
-      string html = "<form method='post' action='helloworld/display'>" +
+      string html = "<form method='post' action='/helloworld/display'>" +
          "<input type='text' name='name' />" +
          "<input type='submit' value='Greet Me!' />" +
          "</form>";
@@ -98,6 +100,8 @@ We will do so with a ``[Route("path")]`` attribute.
 
 Now when we run our app, we can navigate to ``localhost:5001/helloworld`` and see our form.
 Once we fill out the form and hit *Greet Me!*, the app redirects to ``localhost:5001/helloworld/display`` and greets the user!
+
+.. TODO: Maybe add an admonition to say that methods can get data at same URL. We don't have to use a different URL!
 
 Check Your Understanding
 ------------------------

@@ -30,6 +30,8 @@ Controllers and Query Parameters - Video
    In your forked copy of LaunchCode's `HelloASPDotNET <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_, the starter code for this video is on the ``static-responses`` branch. 
    The solution code for this video is on the ``query-parameters`` branch.
 
+.. TODO: Check branches from query onward for spare endpoint in Startup.cs
+
 Parameters
 ----------
 
@@ -42,7 +44,7 @@ Let's add a method called ``Welcome()`` to ``HelloController.cs``.
    // GET: /<controller>/Welcome
    public IActionResult Welcome(string name = "World")
    {
-      return Content(string.Format("<h1>Welcome to my app, {0}!</h1>", name), "text/html");
+      return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
    }
 
 The ``Welcome()`` method has one argument, ``name``.
@@ -64,6 +66,8 @@ If we do provide a query string and navigate to ``localhost:5001/Hello/Welcome?n
 
    Our webpage when we do provide a query string.
 
+.. TODO: Reword sentences below to emphasize that attributes are not necessary, but attribute routing allows us to be specific routes and request types
+
 If we want to use a query string with attribute routing, we need to add a ``[HttpGet]`` attribute to specify that our method responds to a ``GET`` request.
 We also want to specify the path with the ``[Route]`` attribute.
 
@@ -77,12 +81,22 @@ We also want to specify the path with the ``[Route]`` attribute.
       return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
    }
 
+.. TODO: Show what happens if name is not initially marked as optional parameter. What if a default value is not included?
+
 Now when we run our app and navigate to ``localhost:5001/helloworld/welcome?name=Ringo``, we get the same webpage as when we used conventional routing.
-For the path of our route, we specified that the path end with ``{name?}``. Surrounding ``name`` with curly braces in the route path means that the URL uses the value of the ``name`` variable.
+For the path of our route, we specified that the path end with ``{name?}``.
+
+.. TODO: Connect to concept up above.
+
+Surrounding ``name`` with curly braces in the route path means that the URL uses the value of the ``name`` variable.
 Adding the ``?`` specifies that ``name`` is an optional parameter so if we don't give it a value via query string, the web page will still display "Welcome to my app, World!". 
+
+.. TODO: Emphasize how the parameter value gets passed around to set up next page.
 
 Path Variables
 ^^^^^^^^^^^^^^
+
+.. TODO: Focus on the conceptual differences and provide more explanation on why that route works for two very different things
 
 Earlier in the chapter, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
 These types of parameters are called **path variables**.

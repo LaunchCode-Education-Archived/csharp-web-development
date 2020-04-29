@@ -164,6 +164,6 @@ Check Your Understanding
    #. True
    #. False
 
-.. ans: false, when appropriate, an exception can be handled to initiate an alternate pathway
+.. ans: False, When appropriate, an exception can be handled to initiate an alternate pathway.
 
 

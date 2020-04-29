@@ -1,5 +1,7 @@
-Controllers and Routes
-======================
+.. _controllers:
+
+Controllers and Routing
+=======================
 
 .. toctree::
    :maxdepth: 3
@@ -8,3 +10,7 @@ Controllers and Routes
    controllers-parameters
    controllers-forms
    controllers-attributes
+   exercises
+   studio
+
+   

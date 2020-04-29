@@ -55,7 +55,7 @@ Check Your Understanding
    b. False
 
 .. ans: False, The Visual Studio debugger tool does not allow us to step into ``Console.WriteLine()`` 
-   methods or any method defined be System.
+methods or any method defined by ``System``.
 
 .. admonition:: Question
 

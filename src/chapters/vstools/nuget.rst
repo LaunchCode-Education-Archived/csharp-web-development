@@ -37,7 +37,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-	Select which item best describes the job of NuGet.
+   Select which item best describes the job of NuGet.
 
    a. NuGet compiles your C# programs to be deployed in different conditions.
 
@@ -57,5 +57,5 @@ Check Your Understanding
 
    b. False
 
-.. ans: False, while NuGet gives you access to the dependencies you need for your application, 
-	MSBuild can configure how those dependencies are used in different executable environments.
+.. ans: False, While NuGet gives you access to the dependencies you need for your application, 
+   MSBuild can configure how those dependencies are used in different executable environments.

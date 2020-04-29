@@ -11,13 +11,38 @@ Getting Started
 
 To create a ASP.NET MVC project, start a new project in Visual Studio.
 
+**Windows Users:**
+
+#. When selecting the type of project, choose *ASP.NET Core Web Application* for C#.
+
+   .. figure:: figures/vs-windows-create-asp-app.png
+      :alt: User selects ASP.NET Core Web Application for C# from the project type menu.
+
+      User selects the appropriate project type.
+
+#. Name your project *HelloASPDotNET* and put it in the appropriate directory for all of your classwork. Hit *Create*!
+   
+   .. figure:: figures/vs-windows-name-asp-app.png
+      :alt: User names new project HelloASPDotNET
+
+      User names their new project.
+
+#. After naming, select *Web Application (Model-View-Controller)* from the project template options.
+   
+   .. figure:: figures/vs-windows-select-mvc-asp-app.png
+      :alt: User selects MVC template type from selection menu
+
+      User selects the MVC template type.
+
+**Mac Users:**
+
 #. When selecting the type of project, head over to *.NET Core* and select *Web Application (model-view-controller)* for Mac users.
    For Windows users, select *ASP.NET Core*.
 
    .. figure:: figures/userselectmvc.png
       :alt: User selects Web Application MVC from the .NET Core Application menu
 
-      User selects the appropriate project type
+      User selects the appropriate project type.
 
    .. admonition:: Warning
 
@@ -29,7 +54,9 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
    .. figure:: figures/usernamesproject.png
       :alt: User names new project HelloASPDotNET
 
-   User names their new project
+      User names their new project.
+
+**All Users:**
 
 #. Visual Studio creates a fully-functional web application for you.
 #. Hit *Run* and take note of the port number your application opens up to.

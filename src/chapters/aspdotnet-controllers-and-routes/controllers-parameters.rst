@@ -30,8 +30,6 @@ Controllers and Query Parameters - Video
    If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses>`_ for this video is on the ``static-responses`` branch.
    If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/query-parameters>`_ for this video is on the ``query-parameters`` branch.
 
-.. TODO: Check branches from query onward for spare endpoint in Startup.cs
-
 Controllers and Parameters - Text
 ---------------------------------
 
@@ -56,9 +54,9 @@ The ``Welcome()`` method has one argument, ``name``. However, when we run the ap
 .. figure:: figures/nodefaultvalue.png
    :alt: Simple webpage that only displays Welcome to my app.
 
-``name`` does not receive a value from anywhere, so to start, we need to give ``name`` a value.
-We can pass a value to name with a query string. ``name`` will act as the key and the value will be ``"Tillie"``.
-To do so, let's navigate to ``localhost:5001/hello/welcome?name=Tillie``. 
+``name`` does not receive a value from anywhere, so to start, we need to pass ``name`` a value.
+We can do so with a query string. ``name`` will act as the key and the value will be ``"Tillie"``.
+Let's navigate to ``localhost:5001/hello/welcome?name=Tillie``. 
 Now the webpage displays a simple string of HTML that says "Welcome to my app, Tillie!".
 
 .. figure:: figures/valuegiventoname.png
@@ -135,15 +133,13 @@ If we do provide a query string, we will see the resulting page:
 Path Variables
 ^^^^^^^^^^^^^^
 
-.. TODO: Focus on the conceptual differences and provide more explanation on why that route works for two very different things
-
-Earlier in the chapter, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
+Above, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
 These types of parameters are called **path variables**.
 Path variables differ from query strings in that the data is not passed in as a key-value pair and that a path variable is a portion of the URL path.
 Query strings are a separate component of a URL that occurs after a ``?`` and are separate from the path.
 When using a path variable, instead of typing the name of a variable into the path, we type the value we want to pass to the action method at that route.
 
-When we added the ``[Route("/helloworld/welcome/{name?}")]`` attribute to the ``Welcome()`` method, we made it possible for the ``Welcome()`` method to respond to ``GET`` requests at ``localhost:5001/helloworld/welcome/Tillie``.
+When we added the ``[Route("/helloworld/welcome/{name?}")]`` attribute to the ``Welcome()`` method, we made it possible for the ``Welcome()`` method to respond to requests at ``localhost:5001/helloworld/welcome/Tillie``.
 In that route, ``name`` is used as a path variable and passed the value of ``Tillie`` in the path, displaying the following webpage.
 
 .. figure:: figures/pathvariables.png
@@ -151,7 +147,7 @@ In that route, ``name`` is used as a path variable and passed the value of ``Til
 
    The result when we use ``name`` as a path variable
 
-Diving into the mechanics of how this worked, we remember that enclosing ``name`` in curly braces specifies that the we want to use the value of ``name``, not the word "word".
+Diving into the mechanics of how this worked, we remember that enclosing ``name`` in curly braces specifies that we want to use the value of ``name``, not the word "name".
 While path variables and query strings are drastically different, the two share a similarity.
 Both path variables and query strings allow us to give an action method a value for a parameter as part of a URL.
 This is because ``name`` is a **route parameter**.

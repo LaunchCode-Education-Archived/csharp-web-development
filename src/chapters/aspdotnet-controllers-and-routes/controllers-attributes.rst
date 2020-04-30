@@ -11,6 +11,8 @@ Attribute Routing - Video
    In your forked version of LaunchCode's `HelloASPDotNET <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_, the starter code for this video is on the ``forms`` branch.
    The solution code for this video is on the ``attribute-routing`` branch.
 
+.. TODO: Change repo name and update to final code wording on previous page.
+
 .. index:: ! attribute routing, ! attributes
 
 Attribute Routing - Text

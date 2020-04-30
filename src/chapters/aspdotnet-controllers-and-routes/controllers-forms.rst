@@ -11,6 +11,8 @@ Sending Form Data - Video
    In your forked version of LaunchCode's `HelloASPDotNET <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_, the starter code for this video is on the ``query-parameters`` branch.
    The solution code for this video is on the ``forms`` branch.
 
+.. TODO: Change repo name and update to final code wording on previous page.   
+
 Sending Form Data - Text
 -------------------------
 

@@ -27,7 +27,8 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 
       User names their new project.
 
-#. After naming, select *Web Application (Model-View-Controller)* from the project template options.
+#. After naming, select *Web Application (Model-View-Controller)* from the project template options and unselect
+   *Configure for HTTPS* under the *Advanced* header on the right.
    
    .. figure:: figures/vs-windows-select-mvc-asp-app.png
       :alt: User selects MVC template type from selection menu
@@ -59,7 +60,7 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 **All Users:**
 
 #. Visual Studio creates a fully-functional web application for you.
-#. Hit *Run* and take note of the port number your application opens up to.
+#. Hit *Run* (Mac) / *IIS Express* (Windows) and take note of the port number your application opens up to.
 
    .. figure:: figures/portnumber.png
       :alt: Arrow points to URL indicating port number is 5001.

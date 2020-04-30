@@ -32,7 +32,7 @@ Windows Users: Visual Studio Community Edition
 
 #. When the install finishes running, Visual Studio will open by default.
 
-#. You can skip the Microsoft Developer sign-in/sign-up step, opting for "Not now, maybe later."
+#. Sign in to an existing Microsoft account or create a new one to take advantage of the Community Edition. 
 
    .. figure:: figures/vs-windows-welcome.png
       :alt: VS welcome modal for windows.

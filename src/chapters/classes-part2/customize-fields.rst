@@ -124,8 +124,6 @@ since this discussion is focused on class data, let’s focus on static fields f
             fahrenheit = value;
          }
       }
-
-      /* rest of the class... */
    }
 
 Static fields cannot be referenced by class instances, but a static field can by referenced by the *type*.

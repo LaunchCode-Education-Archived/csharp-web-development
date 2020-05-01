@@ -31,10 +31,10 @@ of these scenarios:
 - Failure to convert data, such as trying to convert something like ``"dog"`` to an ``int`` type. 
 - Failure to reach an actual object. 
 
-	.. admonition:: Note 
-	
-		This last scenario is a **null pointer**. This is an object reference, 
-		like a variable, that doesn't actually contain an object.
+   .. admonition:: Note 
+   
+      This last scenario is a **null pointer**. This is an object reference, 
+      like a variable, that doesn't actually contain an object.
 
 Indeed, we have even used exceptions in this book already. Recall this 
 :ref:`temperature example <temp-argument-exception>` where we throw a built-in exception when a 
@@ -49,7 +49,7 @@ provided argument falls outside of an acceptable range. Later, we refine our
    {
 
       private double fahrenheit;
-      private static double absoluteZeroFahrenheit = -459.67;
+      public static double AbsoluteZeroFahrenheit { get; } = -459.67;
 
       public Temperature(double fahrenheit)
       {
@@ -73,9 +73,10 @@ provided argument falls outside of an acceptable range. Later, we refine our
             fahrenheit = value;
          }
       }
-
-      /* rest of the class... */
    }
+
+This example is also provided in the ``TemperatureExceptions`` project in 
+`this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn9exceptions>`__.
 
 The program provides a plan for what to do in the event that bad data is passed into a class's field. 
 Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value outside of the appropriate range. 
@@ -105,7 +106,7 @@ Try this yourself to witness the breaking exception:
       at lsn4_demos.Temperature..ctor(Double fahrenheit) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 40
       at lsn4_demos.Program.Main(String[] args) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Program.cs:line 14
      
-	   
+      
 Above, the Temperature constructor predictably sets the Fahrenheit value of ``insideTemp`` and 
 throws an exception when provided a Fahrenheit value outside of the appropriate range. We don't 
 see any results of the print statement on the input's line 5 since the exception has caused the program 

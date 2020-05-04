@@ -1,13 +1,14 @@
 Common Exception Objects
 ========================
 
-Below is a summary of some of the more commonly used exception types in C#. As we mention before, all exceptions extend the 
-``System.Exception`` class. It is also possible to write your own exception type that inherits from ``System.Exception``. You 
-may find that your particular cause of error elicits a custom exception type. 
+Below is a summary of some of the more commonly used exception types in C#. As we mention before, all exceptions 
+extend the ``System.Exception`` class. 
 
 .. admonition:: Note
 
-   We won't cover how to write these in this book, but you can read about how to define your own exception 
+   It is also possible to write your own exception type that inherits from ``System.Exception``. You 
+   may find that your particular cause of error elicits a custom exception type. We won't cover how to write 
+   custom exception objects in this book, but you can read about how to define your own exception 
    `here <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions#defining-exception-classes>`__.
 
 The examples in this table are excerpted from 

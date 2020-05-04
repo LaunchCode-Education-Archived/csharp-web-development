@@ -8,7 +8,7 @@ Some exception objects are provided by .NET itself. Other exception objects we m
 external C# libraries. We may even write these objects ourselves.
 
 **Exceptions** in C# are objects derived from the ``System.Exception`` class. 
-Exceptions occur at runtime when some event takes place outside of the expected flow of our code.
+You see exception objects at runtime when some event takes place outside of the expected flow of our code.
 When you want to explicitly call an exception in your code, you do so 
 with the **throw** keyword. We've actually done this before in this book and will return to that example shortly.
 
@@ -112,16 +112,17 @@ throws an exception when provided a Fahrenheit value outside of the appropriate 
 see any results of the print statement on the input's line 5 since the exception has caused the program 
 to stop running.  
 
-This is a common reason to include exception handling in your code. User input opens the door to a 
-variety of erroneous figures and good programs account for this uncertainty. Without exceptions in these 
-circumstances, a small typo could lead to any number of errors down the stack trace. 
-
 .. index:: ! exception handling
 
 When we throw an exception like in the example above, we flag the anomalous circumstance. If we choose to 
 do nothing when the exception is thrown, the program will stop and a record of the exception
 can be found in the stack trace. Alternatively, we can **handle** an exception and offer an alternative 
 action, bypassing the need to stop the program. We'll cover how to handle exceptions on the next page.
+
+This is a common reason to include exception handling in your code. User input opens the door to a 
+variety of erroneous figures and good programs account for this uncertainty. Without exceptions in these 
+circumstances, a small typo could lead to any number of errors down the stack trace. 
+
 
 When to Use Exceptions
 ----------------------
@@ -130,7 +131,7 @@ It is wise to use an exception if you find that there is some level of chance in
 program. This could be a situation where a variable is dependent on user input or a connection to 
 another service.
 
-You may want to address the uncertainties in a different fashion. With our temperature app for example, rather than
+You may want to address those uncertainties in a different fashion. With our temperature app for example, rather than
 throwing an exception, we can add a conditional statement to tell the user not to set the Fahrenheit  
 value to an unacceptable level. This is perfectly acceptable if the app in production allows for such a message. 
 As you will see on the next page, exception handling works very similarly to conditional statements like this.

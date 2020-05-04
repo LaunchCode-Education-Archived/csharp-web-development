@@ -3,10 +3,11 @@
 Handling Exceptions
 ===================
 
-When you include exceptions in your C# programs, you must decide what should take place once one is thrown. Some languages, Java 
-for instance, require exceptions to be handled at the time of compiling. These are **checked exceptions**. When an exception is 
-not handled in compiling, it is passed to runtime and called an **unchecked exception**. C# does not contain checked exceptions 
-and therefore it is up to you, the programmer to decide what to do to handle one when the need arises in runtime.
+When you include exceptions in your C# programs, you must decide what should take place once one is thrown. Some 
+languages, like Java, require exceptions to be handled at the time of compiling. These are **checked exceptions**. When an exception is 
+not handled in compiling, it is passed to runtime and called an **unchecked exception**. All exceptions in C# 
+are unchecked. Therefore it is up to you, the programmer, to decide what to do to handle one when the need arises 
+in runtime.
 
 Here's some advice to consider when contemplating when to handle an exception. This comes from Karl Seguin's 
 `Foundations of Programming <https://www.openmymind.net/FoundationsOfProgramming.pdf>`__.
@@ -16,7 +17,7 @@ Here's some advice to consider when contemplating when to handle an exception. T
 
 For example, if your code cannot connect to a database, there is probably nothing your program can 
 do about it. However, as we allude to on the previous page, if you receive invalid input from a user, you can still throw an 
-exception, re-prompt them to refine their input with an error message to help them get it right the next time.
+exception and re-prompt them to refine their input with an error message to help them get it right the next time.
 
 .. index:: ! try, ! catch, ! finally
 
@@ -49,14 +50,14 @@ Here's how we can update our Temperature constructor with a ``try/catch`` to han
       }
    }
 
-The first action the constructor method does is call the Fahrenheit's setter method. If invoking the 
+The first action the constructor method does is call the ``Fahrenheit``'s setter method. If invoking the 
 setter does not result in an exception being thrown, then the new ``Temperature`` object is created and
 given an initial Fahrenheit value. If the action inside the ``try`` block results in an exception,
 or specifically an ``ArgumentOutOfRange`` instance, then the ``catch`` block runs and the initial 
 value of a new ``Temperature`` object's ``fahrenheit`` field is set to absolute zero. 
 
-Although in this example, we don't explicitly do anything with the argument ``e`` ("e" for exception),
-there are some scenarios where you may wish to display the exception or it's message in the view of your
+In this example, we don't explicitly do anything with the argument e ("e" for exception). However, 
+there are scenarios where you may wish to display the exception or it's message in the view of your
 running app. It also an option to rethrow an exception after it has been caught. You won't need to rethrow 
 exceptions in this course, but just know that it can be done. 
 

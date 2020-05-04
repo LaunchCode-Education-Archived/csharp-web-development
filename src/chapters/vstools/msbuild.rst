@@ -58,8 +58,6 @@ To view a project file, right click on the project’s name in the Visual Studio
 
    User selecting "Edit Project File".
 
-.. TODO: Check windows for ^^
-
 Most of our project files from this class will look like this:
 
 .. sourcecode:: XML

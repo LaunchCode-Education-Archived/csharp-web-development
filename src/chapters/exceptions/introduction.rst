@@ -31,10 +31,10 @@ of these scenarios:
 - Failure to convert data, such as trying to convert something like ``"dog"`` to an ``int`` type. 
 - Failure to reach an actual object. 
 
-   .. admonition:: Note 
-   
-      This last scenario is a **null pointer**. This is an object reference, 
-      like a variable, that doesn't actually contain an object.
+.. admonition:: Note 
+
+   This last scenario is a **null pointer**. This is an object reference that doesn't actually 
+   contain an object.
 
 Indeed, we have even used exceptions in this book already. Recall this 
 :ref:`temperature example <temp-argument-exception>` where we throw a built-in exception when a 

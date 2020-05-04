@@ -24,7 +24,7 @@ Test Student Labs
 
 After mentioning to Professor Jackson that you would like to get some more practice with exceptions, she offered to let you write some grading software!
 Before she gives you full control over auto-grading students' work, she asked if you could write a function called ``CheckFileExtension()``.
-``CheckFileExtension()`` takes in one parameter: ``fileName``.
+The ``CheckFileExtension()`` method takes in one parameter: ``fileName``.
 
 ``CheckFileExtension()`` should return an integer representing the number of points a student receives for properly submitting a file in C#.
 If a student's submitted file ends in ``.cs``, they get 1 point.

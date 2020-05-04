@@ -15,6 +15,7 @@ Chapters
    chapters/inheritance/index
    chapters/interfaces-and-polymorphism/index
    chapters/aspdotnet-controllers-and-routes/index
+   chapters/vstools/index
    chapters/razor-views/index
 
 .. toctree::

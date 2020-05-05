@@ -96,13 +96,16 @@ For example, in our ``Temperature`` class there is no reason for each
 Previous examples used the ``static`` keyword with both fields and methods, but
 since this discussion is focused on class data, let’s focus on static fields for now.
 
+.. _temp-argument-out-of-range-exception:
+
 .. sourcecode:: csharp
    :linenos:
 
-   public class Temperature {
+   public class Temperature 
+   {
 
       private double fahrenheit;
-      private static double absoluteZeroFahrenheit = -459.67;
+      public static double AbsoluteZeroFahrenheit { get; } = -459.67;
 
       public double Fahrenheit
       {
@@ -121,8 +124,6 @@ since this discussion is focused on class data, let’s focus on static fields f
             fahrenheit = value;
          }
       }
-
-      /* rest of the class... */
    }
 
 Static fields cannot be referenced by class instances, but a static field can by referenced by the *type*.

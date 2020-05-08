@@ -88,12 +88,11 @@ Within ``Hello`` create a new file of the *Razor View* file template.
 Add the form HTML to the template.
 Update the ``HelloController`` method ``Index()`` to return ``View()``. 
 
-When you re-render the app now, you'll notice even though the HTML for the form is the same,
-there is now a navigation bar up top. 
-
-The header and footer that appear are provided by the 
+When you re-render the app now, you'll notice some additional features and different styling.
 There is a ``_Layout.cshtml`` file inside of the ``Views/Shared`` folder that provides some scaffolding 
-for the application views. If you do not want to use this file, adding ``@{Layout = null;}`` at 
+for the application views. You can edit this file once and any other template will also render whatever 
+elements you add to it. This can help give your application a polished, unified look and feel.
+If you do not want to use this file, adding ``@{Layout = null;}`` at 
 the top of the template will cause this shared layout template to be ignored.
 
 
@@ -122,40 +121,3 @@ Check Your Understanding
 
 .. ans: d, cshtml
 
-
-
-.. TODO: the ASP rough equivalent here is the layout file. I think this makes sense to introduce this idea 
-.. once the more basics above have been established and perhaps once bootstrap is introduced. Commenting out this 
-.. section for now in case we want to adapt it to fit later
-
-.. Razor Template
-.. -------------------
-
-.. As described in the video, you can save yourself some time by creating your own
-.. boilerplate code for a Razor template. This will save you from having to
-.. make the edits described above every time you add a new base html file.
-
-.. #. Right-click on the ``templates`` folder (or any other directory), and select
-..    *New --> Edit File Templates*.
-.. #. In the window that pops up, click the "+" icon to add a new file.
-
-..    .. figure:: ./figures/createNewTemplate.png
-..       :alt: Icon to click to create a new Razor template.
-..       :scale: 80%
-
-.. #. Name your template, set the extension as ``html``, then edit the starter
-..    code. This will be the boilerplate HTML that appears anytime you select your
-..    custom template. For Razor, the code should at least close the ``meta``
-..    tag and include the ``xmlns`` attribute.
-
-..    .. figure:: ./figures/RazorTemplateCode.png
-..       :alt: Editor pane for setting Razor template code.
-
-..    If you find yourself routinely using other code in your Razor files, you
-..    can return to this window and edit the HTML as needed. Don't forget to save
-..    your changes.
-.. #. To use your custom Razor template, right-click on the ``templates``
-..    folder and select *New --> TemplateName*.
-
-..    .. figure:: ./figures/selectRazorTemplate.png
-..       :alt: Menu options for selecting a custom Razor template.

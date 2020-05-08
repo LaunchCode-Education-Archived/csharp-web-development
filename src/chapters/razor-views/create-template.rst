@@ -70,20 +70,25 @@ of the template you want to render. For example, if we want an action method nam
 Razor template named ``WelcomeForm.cshtml``, we have ``Form()`` return ``View("WelcomeForm");``.
 
 Add a Template
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 To create a template, we update ``HelloController.Index()`` to return a Razor template instead of a 
 string of HTML. In ``Views``, create a new subdirectory called ``Hello``.
 
-.. TODO: check how to select this on windows
-
 Within ``Hello`` create a new file of the *Razor View* file template. 
 
+**WINDOWS USERS:** Right click on the ``Views`` directory or any subdirectory and select *Add -> New Item*. 
+Avoid selecting *Add -> View* from your options. 
+
+**MAC USERS:** Right click on the ``Views`` directory or any subdirectory and select *Add -> New File*.
+
+**ALL USERS:** In the modal window that appears, look for the item labelled *Razor View*. 
+
 .. figure:: figures/razor-view-template-selection.png
-   :scale: 50%
    :alt: User selects the *Razor View* file template.
 
    Select the *Razor View* file template.
+
 
 Add the form HTML to the template.
 Update the ``HelloController`` method ``Index()`` to return ``View()``. 

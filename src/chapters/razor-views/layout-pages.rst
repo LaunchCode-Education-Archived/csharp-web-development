@@ -1,5 +1,0 @@
-Layout Pages 
-============
-
-Fragments
-Bootstrap

@@ -42,14 +42,13 @@ following video.
    .. topics covered: Demonstrate how templates are already being returned in homecontroller, 
    creating simple form template, updating controller to return view template
 
-.. YOUTUBE VIDEO HERE
-
-.. TODO: add branches
+YOUTUBE VIDEO HERE
 
 .. admonition:: Note
 
-   The starter code for this video is found at: <starter-branch>. The final code persented in this 
-   video is found at <end-branch>.
+   The starter code for this video is found at the `attribute-routing branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing>`__
+   of ``HelloASPDotNETDemo``. The final code presented in this 
+   video is found on the `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__.
 
 The sections below outline the main ideas presented in the video. However, the
 text is NOT a substitute for completing the work described in the clip.
@@ -64,18 +63,40 @@ The sub-directory ``Home``, found inside of ``Views``, contains the Razor templa
 ``HomeController`` action methods. Just as an action method's name will map to a route with the same 
 name, an action method's name can also correspond to a Razor template's name. The ``Index()`` method 
 inside of ``HomeController`` returns the ``Index.cshtml`` template found inside of ``Views/Home``.
-In order to return that template, the action method calls a **View() method**.
+
+In order to return that template, the action method calls a **View() method**. The ``View()`` method finds 
+a template that's associated with the particular controller and action method that it is called from. 
+
+To override the default behavior of the ``View()`` method, you can pass in a parameter which is the name 
+of the template you want to render. For example, if we want an action method named ``Form()`` to return a 
+Razor template named ``WelcomeForm.cshtml``, we have ``Form()`` return ``View("WelcomeForm");``.
 
 Add a Template
 ^^^^^^^^^^^^^^^
 
 To create a template, we update ``HelloController.Index()`` to return a Razor template instead of a 
-string of HTML. In ``Views``, create a new subdirectory called ``Hello``. 
+string of HTML. In ``Views``, create a new subdirectory called ``Hello``.
 
-.. TODO: check which file type to select from menu.
+.. TODO: check how to select this on windows
 
-Within ``Hello`` create a new file called ``Form.cshtml``. Add the from HTML to the template.
-Update the ``HelloController`` method ``Form()`` to return ``View()``. 
+Within ``Hello`` create a new file of the *Razor View* file template. 
+
+.. figure:: figures/razor-view-template-selection.png
+   :scale: 50%
+   :alt: User selects the *Razor View* file template.
+
+   Select the *Razor View* file template.
+
+Add the form HTML to the template.
+Update the ``HelloController`` method ``Index()`` to return ``View()``. 
+
+When you re-render the app now, you'll notice even though the HTML for the form is the same,
+there is now a navigation bar up top. 
+
+The header and footer that appear are provided by the 
+There is a ``_Layout.cshtml`` file inside of the ``Views/Shared`` folder that provides some scaffolding 
+for the application views. If you do not want to use this file, adding ``@{Layout = null;}`` at 
+the top of the template will cause this shared layout template to be ignored.
 
 
 Check Your Understanding
@@ -83,23 +104,23 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   How is C# code indicated in Razor templates?
+   Which symbol is required to use C# code in a Razor template? 
 
-   #. A C# compiler
-   #. It is preceded by an octothorpe symbol, ``#``
-   #. It is preceded by an ampersand symbol, ``@``
-   #. It is enclosed in curly brackets, ``{}``
+   #. ``#``
+   #. ``@``
+   #. ``$``
+   #. ``!``
 
-.. ans: c, It is preceded by an ampersand symbol, ``@``
+.. ans: b, ``@``
 
 .. admonition:: Question
 
    What is the file type for Razor templates?
 
-   #. razor
-   #. rzr
-   #. html
-   #. cshtml
+   #. .razor
+   #. .rzr
+   #. .html
+   #. .cshtml
 
 .. ans: d, cshtml
 

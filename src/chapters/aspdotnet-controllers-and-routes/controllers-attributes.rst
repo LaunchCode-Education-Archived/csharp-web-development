@@ -110,7 +110,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True/False: Attributes go below the class definition, but above the method signature.
+   True/False: Routing attributes go below the class definition, but above the method signature.
  
    a. True
       

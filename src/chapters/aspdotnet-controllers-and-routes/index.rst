@@ -4,7 +4,7 @@ Controllers and Routing
 =======================
 
 .. toctree::
-   :maxdepth: 
+   :maxdepth: 3
 
    controllers-simple
    controllers-parameters

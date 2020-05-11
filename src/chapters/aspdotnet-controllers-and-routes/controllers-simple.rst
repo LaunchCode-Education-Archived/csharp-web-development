@@ -31,8 +31,8 @@ Controllers and Static Responses - Video
 
 .. admonition:: Note 
 
-   If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`_ for this video is on the ``master`` branch.
-   If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses>`_ for this video is on the ``static-responses`` branch.
+   If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`__ for this video is on the ``master`` branch.
+   If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses>`__ for this video is on the ``static-responses`` branch.
 
 Controllers and Static Responses - Intro
 ----------------------------------------
@@ -47,7 +47,7 @@ Some tools may depend on us following the convention of the MVC design pattern, 
 If you want to change something about the provided structure, be sure to double check the documentation to make sure a tool does not depend on you following it!
 
 To designate a given class as a controller within the ASP.NET framework, we extend the ``Controller`` class.
-The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-3.1>`_ provides us with the necessary members and methods to manage traffic between the three components in our MVC application. 
+The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-3.1>`__ provides us with the necessary members and methods to manage traffic between the three components in our MVC application. 
 
 .. sourcecode:: csharp
 
@@ -130,7 +130,7 @@ Attribute routing is powerful because it does not depend on any endpoint mapping
 .. admonition:: Note
 
    ASP.NET has many different attributes that we can use in our controllers.
-   For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#http-verb-templates>`_.
+   For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#http-verb-templates>`__.
 
 .. index:: ! [HttpGet], ! [HttpPost], ! [Route("path")]
 
@@ -165,7 +165,7 @@ Let's see how we can use these attributes in our ``HelloController`` class.
 
 On line 4, you may have noted that we did not include ``localhost:5001`` in the path we used in our ``[Route("path")]`` attribute.
 The path portion of a URL is a specific section that comes after the host and port.
-If you want a quick refresher on the structure of a web address, check out this `section <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/how-the-internet-works.html#web-addresses>`_ from our introduction to HTTP.
+If you want a quick refresher on the structure of a web address, check out this `section <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/how-the-internet-works.html#web-addresses>`__ from our introduction to HTTP.
 
 Now when we run our application, we can head over to ``localhost:5001/helloworld`` to see the result.
 If we head over to the route that was mapped through conventional routing, ``localhost:5001/hello``, we will find a broken page.
@@ -204,7 +204,7 @@ When using ``Content()``, we need to specify the content type in order the page 
 
 .. admonition:: Note
 
-   For more info on the different types of results we could specify as return types, check out this `article <https://exceptionnotfound.net/asp-net-core-demystified-action-results/>`_!
+   For more info on the different types of results we could specify as return types, check out this `article <https://exceptionnotfound.net/asp-net-core-demystified-action-results/>`__!
 
 Check Your Understanding
 ------------------------

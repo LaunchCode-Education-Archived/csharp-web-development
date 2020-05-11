@@ -106,7 +106,8 @@ We also want to specify the path with the ``[Route]`` attribute.
 When writing the path for our ``[Route("path")]`` attribute, we have surrounded ``name`` in curly braces.
 The use of curly braces in the path portion of the attribute means that we don't want to use the word "name" in the route, but the value of the variable, ``name``.
 If we ran the app now and navigated to ``localhost:5001/helloworld/welcome`` or ``localhost:5001/helloworld/welcome?name=Tillie``, the webpages are not found.
-We have given ``name`` a default value in the method signature, however, we have to add something else to the path to access the value of ``name``.
+We have given ``name`` a default value in the method signature, however, we have to designate in the *path* inside ``[Route("path")]`` that ``name`` is optional.
+When we do so, we are making the action method more flexible so it can respond at ``localhost:5001/helloworld/welcome`` or ``localhost:5001/helloworld/welcome?name=Tillie``.
 In attribute routing, if we want to designate a parameter as optional, we will use a ``?`` after the variable name like so:
 
 .. sourcecode:: csharp

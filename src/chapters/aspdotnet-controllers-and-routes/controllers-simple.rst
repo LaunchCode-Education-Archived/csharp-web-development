@@ -112,7 +112,7 @@ Let's start by adding the following ``Index()`` method:
 Every time you add a new action method, you should write a comment above it to make note of the route that you want the method to respond to and the type of request that it should respond to at that route.
 With conventional routing, the action methods can respond to different types of requests at the given route.
 So even though we made a note that we want the ``Index()`` method to respond to ``GET`` requests at the route, ``localhost:5001/hello``, the ``Index()`` method could also respond to a ``POST``, ``PUT``, or ``DELETE`` request at that route.
-Attribute routing as a way for us to specify which request type the method can respond to.
+Attribute routing is a way for us to specify which request type the method can respond to.
 But for now, let's run the app and navigate to ``localhost:5001/hello`` to check our work.
 
 .. admonition:: Warning

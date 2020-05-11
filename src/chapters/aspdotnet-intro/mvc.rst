@@ -31,7 +31,8 @@ ASP.NET
 **ASP.NET Core** is an extension of .NET Core and is used to build web applications.
 **ASP.NET Core MVC** is the framework that allows us to build web applications in a way that uses the MVC design pattern.
 Visual Studio has an embedded server so it is easy for us to run our applications and get started.
-This server picks the port number to run the app and usually runs at 5001.
+This server picks the port number to run the app.
+In this book, the port number we use is 5001.
 If your apps run at a different port number, that is fine.
 Just take a note of that number so that you may view your running app.
 

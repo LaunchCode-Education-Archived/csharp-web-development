@@ -51,8 +51,8 @@ As we work on our new application, we will be adding a new controller, ``HelloCo
 .. admonition:: Note
 
    As you code along with the videos, you will be working on your own project.
-   However, should you want to review a step or double-check your code, fork LaunchCode's ``HelloASPDotNET`` repository to see what the code looked like at each stage.
-   The repository is up on `Github <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_.
+   However, should you want to review a step or double-check your code, fork LaunchCode's ``HelloASPDotNETDemo`` repository to see what the code looked like at each stage.
+   The repository is up on `Github <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`_.
    The ``master`` branch contains the code after creation and also shows the starting point for the next chapter.
 
 Check Your Understanding
@@ -60,13 +60,13 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True/False: All custom code in an ASP.NET MVC application is located in the ``Main`` method.
+   True/False: You should take note of the port number the server is using to run your application.
  
    a. True
 
    b. False
 
-.. ans: False, most features are developed outside of the ``Main`` method in an ASP.NET MVC application.
+.. ans: True! It may not run at 5001
 
 
 

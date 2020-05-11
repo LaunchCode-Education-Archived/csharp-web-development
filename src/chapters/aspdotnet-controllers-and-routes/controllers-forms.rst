@@ -79,10 +79,10 @@ We also want to use a ``[Route("path")]`` attribute to specify the route to be `
    :linenos:
 
    [HttpPost]
-   [Route("/helloworld/display")]
-   public IActionResult Display(string name = "World")
+   [Route("/helloworld/welcome")]
+   public IActionResult Welcome(string name = "World")
    {
-      return Content("<h1>Hello " + name + "!</h1>", "text/html");
+      return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
    }
 
 Now when we run our app, we can navigate to ``localhost:5001/helloworld`` and see our form.

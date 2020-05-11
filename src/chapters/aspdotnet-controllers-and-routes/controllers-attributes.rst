@@ -15,7 +15,7 @@ Cleaning Up the Controller - Video
    If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/forms>`_ for this video is on the ``forms`` branch.
    If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing>`_ for this video is on the ``attribute-routing`` branch.  
 
-.. index:: ! attribute routing, ! attributes
+.. index:: attribute routing, attributes
 
 Cleaning Up the Controller - Text
 ---------------------------------

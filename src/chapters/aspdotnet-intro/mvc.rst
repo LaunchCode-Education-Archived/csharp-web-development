@@ -54,4 +54,5 @@ A summary of the content introduced will follow each video.
 Intro to ASP.NET - Video
 ------------------------
 
-.. TODO: Add video called "Hello ASP.NET Intro"
+.. youtube::
+   :video_id: AVgJQxR_Mnw

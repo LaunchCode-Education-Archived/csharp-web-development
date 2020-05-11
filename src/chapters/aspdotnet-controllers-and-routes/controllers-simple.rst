@@ -26,7 +26,8 @@ A **route** is the mechanism by which a request path gets assigned to a controll
 Controllers and Static Responses - Video
 ----------------------------------------
 
-.. TODO: Add video titled "Hello ASP.NET Part 2"
+.. youtube::
+   :video_id: wpk2q5zOIG0
 
 .. admonition:: Note 
 

@@ -23,7 +23,8 @@ They contain data in key-value pairs.
 Controllers and Query Parameters - Video
 -----------------------------------------
 
-.. TODO: Add a video for "Hello ASP.NET Part 3"
+.. youtube::
+   :video_id: CQ8WB7-oy4o
 
 .. admonition:: Note
 

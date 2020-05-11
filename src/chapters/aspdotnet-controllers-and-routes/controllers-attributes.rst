@@ -8,7 +8,8 @@ We can use a couple tips and tricks from attribute routing to clean this control
 Cleaning Up the Controller - Video
 ----------------------------------
 
-.. TODO: Add vid
+.. youtube::
+   :video_id: aDEkGpBKLyc
 
 .. admonition:: Note
 

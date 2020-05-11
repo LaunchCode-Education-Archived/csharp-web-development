@@ -73,7 +73,7 @@ If you want to start at 100, stop at 0 and count backward by 5, the loop is writ
 
 .. index:: ! foreach loop
 
-.. _foreach_loops:
+.. _foreach_loop:
 
 ``foreach`` Loop
 ----------------

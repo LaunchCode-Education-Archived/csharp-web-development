@@ -140,35 +140,71 @@ Some points to note:
       1, 2, 3...)?
    #. 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as "1")?
 
-.. TODO: determin what this section will look like or where it should live. im not 
-.. convinced this is necessary here or if it is a good fit so just commenting it out
-.. for not to move to the next page
-.. Nested Loops
-.. ------------
+.. index:: ! var
 
-.. Assume you have a ``Dictionary`` collection of different coffee shops. Each 
-.. key-value pair stores a ``name`` with a list of ``coffeeOptions``. To display 
-.. a list of lists:
+Nested Loops
+------------
 
-.. .. sourcecode:: html
-..    :linenos:
+Assume you have a collection of different ``CoffeeShop`` objects. Each 
+object contains a string field for ``name`` and a field that is a list of 
+of the brews available, ``coffeeOptions``. 
 
-..    @foreach (KeyValuePair<string, List<string>> shop in ViewBag.shops)
-..    {
-..       @*Each shop name*@
-..       <p>@shop.Key</p>
-..       <ul>
-..          @foreach(string coffeeType in shop.Value)
-..          {
-..             @*Each coffee type available*@
-..             <li>@coffeeType</li>
-..          }
-..       </ul>
-..    }
+Below, we use nest loops to display a list of the shop names and their brew 
+options using nested loops.
 
-.. .. admonition:: Tip
+Sample Razor template:
 
-..    Comments in Razor are nested between ``@*`` and ``*@``.
+.. sourcecode:: html
+   :linenos:
+
+   @foreach (var coffeeShop in ViewBag.coffeeShops)
+   {
+      @*Each shop name*@
+      <p>@coffeeShop.Name</p>
+      <ul>
+         @foreach(string coffeeType in coffeeShop.CoffeeOptions)
+         {
+            @*Each coffee type available*@
+            <li>@coffeeType</li>
+         }
+      </ul>
+   }
+
+Sample HTML output:
+
+.. sourcecode:: html
+   :linenos:
+
+   <p>Central Perk</p>
+   <ul>
+      <li>Espresso</li>
+      <li>Instant</li>
+   </ul>
+
+   <p>Brews Brothers</p>
+   <ul>
+      <li>French Roast</li>
+      <li>Kopi Luwak</li>
+   </ul>
+
+
+Apart from the nest loops displayed above, here are ome other items you may find useful
+to note from the example above. 
+
+- Razor comments are seen on lines 3 and 8 in the first 
+  code block above. Comments in Razor are nested between ``@*`` and ``*@``.
+  You may have noticed the comment block present on the top of a new view file.
+
+.. TODO: is this a sufficient note for the use of var here? It feel unfinished but im
+at a loss for what else is needed here.
+
+- ``ViewBag.coffeeShops`` is a list of ``CoffeeShop`` objects but we've used ``var``
+  on line 1 to type the ``coffeeShop`` item. In some limited circumstances, we can 
+  use the **var** keyword to implicitly type a variable.
+  Alternatively, Razor does also allow us to import a custom class. such as ``CoffeeShop``.
+  Another way to use this list of ``CoffeeShop`` objects would be to import the class
+  at the top of the template with a :ref:`using-statement` statement.
+
 
 Check Your Understanding
 -------------------------

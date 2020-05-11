@@ -140,67 +140,35 @@ Some points to note:
       1, 2, 3...)?
    #. 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as "1")?
 
+.. TODO: determin what this section will look like or where it should live. im not 
+.. convinced this is necessary here or if it is a good fit so just commenting it out
+.. for not to move to the next page
+.. Nested Loops
+.. ------------
 
-Readability and Nested Loops
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Assume you have a ``Dictionary`` collection of different coffee shops. Each 
+.. key-value pair stores a ``name`` with a list of ``coffeeOptions``. To display 
+.. a list of lists:
 
-``th:block`` helps clarify your HTML code by placing related Razor
-attributes into separate tags.
+.. .. sourcecode:: html
+..    :linenos:
 
-.. admonition:: Examples
+..    @foreach (KeyValuePair<string, List<string>> shop in ViewBag.shops)
+..    {
+..       @*Each shop name*@
+..       <p>@shop.Key</p>
+..       <ul>
+..          @foreach(string coffeeType in shop.Value)
+..          {
+..             @*Each coffee type available*@
+..             <li>@coffeeType</li>
+..          }
+..       </ul>
+..    }
 
-   This code generates multiple ``li`` elements and text by putting two
-   attributes inside of the tag:
+.. .. admonition:: Tip
 
-   .. sourcecode:: html
-      :linenos:
-
-      <ol>
-         <li th:each="item : ${coffeeOptions}" th:text="${item}"></li>
-      </ol>
-
-   The code below accomplishes the same thing, but it separates the loop command
-   from the ``th:text`` command:
-
-   .. sourcecode:: html
-      :linenos:
-
-      <ol>
-         <th:block th:each="item : ${coffeeOptions}">
-            <li th:text="${item}"></li>
-         </th:block>
-      </ol>
-
-   The second format more closely mimics the appearance of a C# ``for/each``
-   loop, which improves the clarity of your code.
-
-   .. sourcecode:: C#
-      :linenos:
-
-      for (Coffee item : coffeeOptions) {
-         // Code using the "item" variable...
-      }
-
-``th:block`` also allows you to set up nested loops:
-
-.. admonition:: Example
-
-   Assume you have a collection of different coffee shop objects, and each
-   object stores a ``name`` and a list of ``coffeeOptions``. To display a list
-   of lists:
-
-   .. sourcecode:: html
-      :linenos:
-
-      <th:block th:each = "shop : ${shops}">  <!-- Iterate through shops -->
-         <p th:text = "${shop.name}">Shop name</p>
-         <ul>
-            <!-- Iterate through coffeeOptions -->
-            <th:block th:each = "flavor : shop.coffeeOptions">
-               <li th:text="${flavor}"></li>
-            </th:block>
-         </ul>
-      </th:block>
+..    Comments in Razor are nested between ``@*`` and ``*@``.
 
 Check Your Understanding
 -------------------------

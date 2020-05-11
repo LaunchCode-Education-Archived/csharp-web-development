@@ -1,25 +1,30 @@
-Streamling Your Code with Attribute Routing
-===========================================
+Cleaning Up Your Controllers
+============================
 
-Attribute Routing - Video
---------------------------
+So far, we have been adding attributes to our methods as we go along for each specific use case.
+However, now our controller is rather unorganized and full of commented out attributes.
+We can use a couple tips and tricks from attribute routing to clean this controller up.
 
-.. TODO: Add vid
+Cleaning Up the Controller - Video
+----------------------------------
+
+.. youtube::
+   :video_id: aDEkGpBKLyc
 
 .. admonition:: Note
 
-   In your forked version of LaunchCode's `HelloASPDotNET <https://github.com/LaunchCodeEducation/HelloASPDotNET>`_, the starter code for this video is on the ``forms`` branch.
-   The solution code for this video is on the ``attribute-routing`` branch.
+   If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/forms>`_ for this video is on the ``forms`` branch.
+   If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing>`_ for this video is on the ``attribute-routing`` branch.  
 
-.. index:: ! attribute routing, ! attributes
+.. index:: attribute routing, attributes
 
-Attribute Routing - Text
-------------------------
+Cleaning Up the Controller - Text
+---------------------------------
 
 Once you have written several action methods within a class, you may notice some similar behavior.
 You may also want to expand upon the behavior that different action methods can make use of.
 So far, we have been adding multiple different ``[Route("path")]`` attributes to each method to get every method to respond to a path that starts with ``localhost:5001/helloworld``.
-The ``Welcome()`` method and ``Display()`` method also serve similar purposes and feel a bit repetitive.
+We also want to use the ``Welcome()`` method to respond to ``GET``requests and ``POST`` requests, not just one or the other.
 Time to DRY our code!
 
 Class-Level Attributes
@@ -47,7 +52,7 @@ Now that we have added that ``[Route("/helloworld")]`` above the class, we can s
    [HttpGet]
    public IActionResult Index()
    {
-      string html = "<form method='post' action='helloworld/display'>" +
+      string html = "<form method='post' action='/helloworld/welcome'>" +
             "<input type='text' name='name' />" +
             "<input type='submit' value='Greet Me!' />" +
             "</form>";
@@ -59,44 +64,44 @@ Since we want to map ``Index()`` to the path ``localhost:5001/helloworld``, we r
 If we hadn't, we would have inadvertently mapped the ``Index()`` method to the path, ``localhost:5001/helloworld/helloworld``.
 We want to leave the ``[HttpGet]`` attribute above the ``Index()`` method so we can still specify that ``Index()`` responds to ``GET`` requests.
 
-Now that just leaves us the ``Welcome()`` and ``Display()`` methods!
+Now that just leaves us the ``Welcome()`` method!
 
 One Method, Two Request Types
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Despite ``Welcome()`` and ``Display()`` responding to different request types, the two methods return very similar strings of HTML.
+When we modified the ``Welcome()`` method to respond to a ``POST`` request, we commented out the attributes that we added when we were working with route parameters.
 With attributes, we can DRY our code and create one method that can respond to two different request types at two different routes.
 Before we begin, we should note that we can add route info directly to ``[HttpGet]`` and ``[HttpPost]``.
 
 .. sourcecode:: csharp
    :linenos:
 
-   [HttpPost("display")]
-   public IActionResult Display(string name = "World")
+   [HttpPost("welcome")]
+   public IActionResult Welcome(string name = "World")
    {
-      return Content("<h1>Hello " + name + "!</h1>", "text/html");
+      return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
    }
 
 On line 1, we modified the ``[HttpPost]`` attribute to include the end of our path.
-Now ``Display()`` still responds to ``POST`` requests at ``localhost:5001/helloworld/display``.
+Now ``Welcome()`` still responds to ``POST`` requests at ``localhost:5001/helloworld/welcome``.
 However, this is just the beginning of us DRYing our code.
 
-We want to comment out the ``Welcome()`` method and add another attribute to ``Display()`` so that we have one method responding to two different types of HTTP requests at two different paths.
-We can add an ``[HttpGet]`` attribute to ``Display()`` to do so.
+We also want ``Welcome()`` to respond to ``GET`` requests.
+We can modify an ``[HttpGet]`` attribute to do so.
 
 .. sourcecode:: csharp
    :linenos:
 
    [HttpGet("welcome/{name?}")]
-   [HttpPost("display")]
-   public IActionResult Display(string name = "World")
+   [HttpPost("welcome")]
+   public IActionResult Welcome(string name = "World")
    {
-      return Content("<h1>Hello " + name + "!</h1>", "text/html");
+      return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
    }
 
-We added an ``[HttpGet]`` attribute on line 1 with a different path.
-Now ``Display()`` can respond to ``GET`` requests at ``localhost:5001/helloworld/welcome``, ``localhost:5001/helloworld/welcome?name=Tillie``, and ``localhost:5001/helloworld/welcome/Tille``.
-``Display()`` can also still respond to the ``POST`` request at ``localhost:5001/helloworld/display`` upon submission of the form.
+We added a different path to the ``[HttpGet]`` attribute on line 1.
+Now ``Welcome()`` can respond to ``GET`` requests at ``localhost:5001/helloworld/welcome``, ``localhost:5001/helloworld/welcome?name=Tillie``, and ``localhost:5001/helloworld/welcome/Tille``.
+``Welcome()`` can also still respond to the ``POST`` request at ``localhost:5001/helloworld/welcome`` upon submission of the form.
 
 Now when we run our code, our app will still have the same functionalities, but now we have a more refined and organized code base!
 

@@ -13,7 +13,10 @@ Chapters
    chapters/unit-testing/index
    chapters/inheritance/index
    chapters/interfaces-and-polymorphism/index
+   chapters/aspdotnet-intro/index
    chapters/aspdotnet-controllers-and-routes/index
+   chapters/exceptions/index
+   chapters/vstools/index
    chapters/razor-views/index
 
 .. toctree::
@@ -32,7 +35,9 @@ Studios
    chapters/classes/studio
    chapters/classes-part2/studio
    chapters/unit-testing/studio
+   chapters/inheritance/studio
    chapters/interfaces-and-polymorphism/studio
+   chapters/aspdotnet-controllers-and-routes/studio
 
 Assignments
 ===========

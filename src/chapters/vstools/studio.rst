@@ -15,9 +15,13 @@ This could be an error where you mistyped the route in the ``[Route(path)]`` att
 #. What was the error?
 #. How did you solve this error? What have been the strategies and tools you have been using so far to debug your code?
 #. Could one of the debugging tools help you when addressing this error?
+   For example, if you encountered an error when submitting the form, using a debugging tool to track the value of the ``name`` variable might have helped you diagnose the issue.
 
-Review the code from ``HelloASPDotNETDemo`` and use the debugging tools in Visual Studio to address potentional problems.
-Start out by trying to add ``name`` to the *Watch* pane to track the value of that variable.
+Review the code from ``HelloASPDotNET`` and use the debugging tools in Visual Studio to address potentional problems.
+To get started, try the following:
+
+#. Add ``name`` to the *Watch* pane to track the value of that variable.
+#. Add a breakpoint to the line where you declare ``
 
 Questions to review as you look through the code:
 

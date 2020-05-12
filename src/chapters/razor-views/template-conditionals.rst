@@ -10,225 +10,162 @@ list of coffee types is empty, then there is no need to include the ``<ol>``
 element. Instead, the template could include a ``<p>`` element with text stating 
 that there are no options to select.
 
-Display Content ``if``
-----------------------
+Display Content ``if/else``
+---------------------------
+
+To include conditional logic to display a Razor template element, we use a basic C# ``if`` clause.
 
 The general syntax for including a conditional in Razor is:
 
-.. sourcecode:: groovy
+.. sourcecode:: guess
 
-   th:if = "${condition}"
+   @if (condition)
+   {
+      // HTML element(s) to add or additional template logic
+   }
 
-#. The ``th:if`` statement gets placed inside an HTML tag.
-#. ``condition`` represents a boolean variable provided by the controller.
-#. Alternatively, ``condition`` can be a statement that evaluates to ``true``
-   or ``false``.
+Above, ``condition`` represents any expression that can be evaluated to ``true`` or ``false`` 
+(ie, a boolean).
 
 If ``condition`` evaluates to ``true``, then Razor adds the HTML element to
-the webpage, and the content gets displayed in the view. If ``condition`` is
+the webpage and the content is displayed in the view. If ``condition`` is
 ``false``, then Razor does NOT generate the element, and the content stays
 off the page.
 
 .. admonition:: Example
 
-   Assume that ``coffeeOptions`` and ``userSelection`` represent an ArrayList
-   and String, respectively, that are passed in by the controller.
+   Assume that ``userSelection`` represents a string property on ``ViewBag``.
 
-   .. sourcecode:: html
+   .. sourcecode:: guess
       :linenos:
 
-      <ol th:if = "${coffeeOptions.size() > 1}">
-         <li th:each="item : ${coffeeOptions}" th:text="${item}"></li>
-      </ol>
+      @if (ViewBag.userSelection == "Instant")
+      {
+         <p>Are you sure about that?</p>
+      } 
+      else if (ViewBag.userSelection == "French Roast")
+      {
+         <p>Oooh la la!</p>
+      } 
+      else
+      {
+         <p>Thanks for your order</p>
+      }
 
-      <h2 th:if = '${userSelection.equals("instant")}'>You can do better!</h2>
-
-The conditional in line 1 checks that ``coffeeOptions`` contains more than one
-item. If ``true``, then the ordered list is rendered in the view. The
-``th:if`` statement in line 5 compares a user's flavor choice to the string
-``"instant"``. If they match, then Razor adds the heading element to the
-view.
-
-Adding vs. Displaying/Hiding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``th:if`` determines if content is *added or not added* to a page. This is
-different from deciding if content should be *displayed or hidden*.
-
-*Hidden* content still occupies space on a page and requires some amount of
-memory. When ``th:if`` evaluates to ``false``, content remains absent from the
-page---requiring neither space on the page nor memory. This is an important
-consideration when including items like images or videos on your website.
-
-What is ``true``?
-^^^^^^^^^^^^^^^^^^
-
-The ``th:if = "${condition}"`` attribute can evaluate more than simple boolean
-variables and statements. It will also return ``true`` according to these
-rules:
-
-#. If ``condition`` is a boolean or statement and ``true``.
-#. If ``condition`` is a non-zero number or character.
-#. If ``condition`` is a string that is NOT ``"false"``, ``"off"``, or
-   ``"no"``.
-#. If ``condition`` is a data type other than a boolean, number, character, or
-   String.
-
-``th:if`` will evaluate to ``false`` whenever ``condition`` is ``null``.
-
-``unless`` Instead of ``else``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In C#, we use an ``if/else`` structure to have our code execute certain steps
-when a variable or statement evaluates to ``true`` but a different set of steps
-for a ``false`` result. Razor provides a similar option with ``th:unless``:
-
-.. sourcecode:: groovy
-
-   th:unless = "${condition}"
-
-Just like ``th:if``, the ``th:unless`` attribute gets placed inside an HTML
-tag. In this case, however, Razor adds the HTML element to the webpage when
-``condition`` evaluates to ``false``.
-
-We could update our coffee code with an ``unless``:
-
-.. admonition:: Example
-
-   .. sourcecode:: html
-      :linenos:
-
-      <h2 th:unless = '${userSelection.equals("instant")}'>Excellent choice!</h2>
-
-As long as ``userSelection`` is NOT ``"instant"``, the condition evaluates to
-``false``, and the ``h2`` element gets added to the view.
-
-If we want to set up a situation like *if true, do this thing. Otherwise, do
-this other thing*, we need to pair a ``th:if`` with a ``th:unless``.
-
-.. admonition:: Example
-
-   .. sourcecode:: html
-      :linenos:
-
-      <ol th:if = "${coffeeOptions.size()}">
-         <li th:each="item : ${coffeeOptions}" th:text="${item}"></li>
-      </ol>
-
-      <p th:unless = "${coffeeOptions.size()}">No coffee brewed!</p>
-
-If ``coffeeOptions.size()`` evaluates to 0, then Razor considers it a
-``false`` result. In that case, it ignores the ``ol`` element and generates the
-``p`` element.
-
-Logical Operators
-^^^^^^^^^^^^^^^^^^
-
-We can use logical operators with ``th:if`` and ``th:unless``. The Razor
-syntax for these is as follows:
-
-#. Logical AND = ``and``,
-
-   .. sourcecode:: groovy
-
-      th:if = "${condition1 and condition2 and...}"
-      // Evaluates to true if ALL conditions are true
-
-#. Logical OR = ``or``,
-
-   .. sourcecode:: groovy
-
-      th:if = "${condition1 or condition2 or...}"
-      // Evaluates to true if ANY condition is true
-
-#. NOT = ``!``, ``not``.
-
-   .. sourcecode:: groovy
-
-      th:if = "${!condition}"
-      // Evaluates to true when condition is false
+The ``@if`` statement in line 1 compares a user's brew choice to the string
+``"Instant"``. If they match, then Razor adds the paragraph element to the
+view. If they do not match, then the condition on line 5 is evaluated. If that 
+``else if`` statement is true, then a paragraph element with different internal
+text is added. Lastly, if neither of those conditions is met, then the paragraph
+element with text on line 11 is rendered. 
 
 .. admonition:: Note
 
-   Since ``th:unless`` looks for a ``false`` result, we can accomplish the same
-   thing by adding a ``not`` operator to a ``th:if`` statement.
+   We don't add an additional ``@`` symbols on lines 5 and 9 in the 
+   example above. ``if``, ``else if``, and ``else`` clauses are dependent
+   and treated as one C# code block in Razor.
 
-   The code:
+Nesting Logic
+^^^^^^^^^^^^^
 
-   .. sourcecode:: groovy
+Just as we can nest loops, we can nest any C# in Razor for advanced control flow.
 
-      <p th:unless = "${variableName == 5}">Value is NOT equal to 5.</p>
+.. admonition:: Example
 
-   does the same thing as:
+   ``coffeeOptions`` is a list property on ``ViewBag``.
 
-   .. sourcecode:: groovy
+   .. sourcecode:: guess
+      :linenos:
 
-      <p th:if = "${variableName != 5}">Value is NOT equal to 5.</p>
+      @if (ViewBag.coffeeOptions.Count > 1)
+      {
+         <ol>
+            @foreach(string coffeeType in ViewBag.coffeeOptions)
+            {
+               <li>@coffeeType</li>
+            }
+         </ol>
+      }
 
-.. _hello-ASP.NET-vid2:
+
+The conditional in line 1 checks that ``coffeeOptions`` contains more than one
+item. If ``true``, then the ordered list is rendered in the view using a ``@foreach``
+loop.
+
+Adding vs. Displaying/Hiding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A conditional statement in a Razor template determines if content is *added or not added* to a page. This is
+different from deciding if content should be *displayed or hidden*.
+
+*Hidden* content still occupies space on a page and requires some amount of
+memory. When ``@if`` evaluates to ``false``, content remains absent from the
+page---requiring neither space on the page nor memory. This is an important
+consideration when including items like images or videos on your website.
+
+.. _HelloASPDotNET-vid2:
 
 Try It!
---------
+-------
 
-The video below provides you some live-coding practice with Razor
-templates. Return to your ``hello-ASP.NET`` project and code along as you watch
+The video below provides you some live-coding practice with adding C# logic in Razor
+templates. Return to your ``HelloASPDotNET`` project and code along as you watch
 the clip.
 
-.. youtube::
-   :video_id: bT5Zt9xZYSU
+.. TODO: Add dynamic view video.
+.. topic covered: use ViewBag property to display data on template, @foreach, @if
+
+YOUTUBE VIDEO HERE
+
+.. TODO: Create views-dynamic branch.
+
+.. admonition:: Note
+
+   The starter code for this video is found at the 
+   `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__
+   of ``HelloASPDotNETDemo``. The final code presented in this video is found on the `views-dynamic branch <TBD>`__.
 
 The text on this page and the previous two provides details for some of the
 concepts presented in the clip. Note that these summaries are NOT intended as
 a replacement for the walkthrough. To get better at coding, you need to
-actually CODE instead of just reading about how to do it.
+actually CODE.
 
 Check Your Understanding
--------------------------
+------------------------
 
-Assume you have an ArrayList of integers called ``numbers``, and you display
+Assume you have an list of integers called ``numbers``, and you display
 the values in an unordered list.
 
 .. sourcecode:: html
    :linenos:
 
    <ul>
-      <th:block th:each = "number : ${numbers}">
-         <li th:text = "${number}"></li>
-      </th:block>
+      @foreach(int number in ViewBag.numbers)
+      {
+         <li>@number</li>
+      }
    </ul>
 
 .. admonition:: Question
 
-   You want to display the list only if ``numbers`` contains data. Which of the
-   following attributes should you add to the ``ul`` tag?
+   You want to display the list only if ``ViewBag.numbers`` contains data. 
+   Where is the best spot to put this conditional?
 
-   #. ``th:if = "${numbers.size()}"``
-   #. ``th:unless = "${numbers.size()}"``
+   #. Above line 1
+   #. Above line 2 
+   #. Above line 3 
+   #. Above line 4
 
-.. Answer = a
-
-.. admonition:: Question
-
-   Now you want to display ONLY the positive values in the list. Which of the
-   following attributes could you add to the ``li`` tag? Select ALL that work.
-
-   #. ``th:if = "${number}"``
-   #. ``th:if = "${number < 0}"``
-   #. ``th:if = "${number > 0}"``
-   #. ``th:unless = "${number}"``
-   #. ``th:unless = "${number >= 0}"``
-   #. ``th:unless = "${number <= 0}"``
-
-.. Answers = c and f
+.. Answer = a, Above line 1
 
 .. admonition:: Question
 
-   Now you want to display ONLY the positive, even values in the list. Which of
-   the following should you add to the ``li`` tag?
+   You want to display the list only if ``ViewBag.numbers`` contains data. 
+   What is the best way to write this conditional statement?
 
-   #. ``th:if = "${number > 0 and number%2 == 0}"``
-   #. ``th:if = "${number > 0 or number%2 == 0}"``
-   #. ``th:unless = "${number < 0 and number%2 == 0}"``
-   #. ``th:unless = "${number < 0 or number%2 == 0}"``
+   #. ``if (numbers.Count)``
+   #. ``if (ViewBag.numbers != null)``
+   #. ``@if ViewBag.numbers``
+   #. ``@if (ViewBag.numbers.Count > 0)``
 
-.. Answer = a
+.. ans: d, ``@if (ViewBag.numbers.Count > 0) {}``

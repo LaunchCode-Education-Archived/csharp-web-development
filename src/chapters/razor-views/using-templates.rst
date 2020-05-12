@@ -1,9 +1,9 @@
 Using a Template
 ================
 
-This page and the ones that follow introduce how to start to pass data between the MVC elements.
-We haven't addressed models yet (those come next) so this just means sharing information between 
-the controller and view. 
+Now that we know a little bit about views, we can start talking about how to pass 
+data between MVC elements. Models are a key component of this, but for now, we 
+will focus on how to pass data between the view and the controller.
 
 .. index:: ! ViewBag
 
@@ -26,7 +26,15 @@ These methods have a structure similar to:
 
 **ViewBag** is an object that passes data into a template. ``Data`` can
 be a variable of any type, a number, a collection of some sort, or an object. 
-A ``ViewBag`` property is created and given a value as simply as is done on line 5 above.
+A ``ViewBag`` property is created and given a value as simply as is done on line 5 above. In fact, we can 
+just as easily create a second property on ``ViewBag`` as follows:
+
+.. sourcecode:: c#
+
+	ViewBag.anotherNewProperty = someOtherData;
+
+You can think of ``ViewBag`` as like an empty container object who exists for the purpose of carrying
+variables from the controller into the view. 
 
 Accessing Data in a Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

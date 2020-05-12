@@ -40,24 +40,24 @@ Accessing Data in a Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The data assigned to properties on ``ViewBag`` is available inside of Razor templates.
-It can be accessed with the syntax ``@ViewBag.property``.
+It can be accessed with the syntax ``@ViewBag.propertyName``.
 
-For example, if the controller stores data in ``ViewBag.name``, then the
-template can display that value like so:
+For example, if the controller stores a vegetable name as string in 
+``ViewBag.vegetable``, then the template can display that value like so:
 
 .. sourcecode:: html
 
-   <p>@ViewBag.name</p>
+   <p>@ViewBag.vegetable</p>
 
-If ``name`` stores the string "Rutabaga", then when the program runs, the application interprets
-``<p>@ViewBag.name</p>`` as:
+Let's say that ``@ViewBag.vegetable`` stores the string "Rutabaga". When the program 
+runs, the application interprets ``<p>@ViewBag.vegetable</p>`` as:
 
 .. sourcecode:: html
 
    <p>Rutabaga</p>
 
-By using ``@ViewBag.name``, we make our webpage *dynamically* display
-data within the ``p`` element. Changing the value of ``name`` leads to a
+By using ``@ViewBag.vegetable``, we make our webpage *dynamically* display
+data within the ``p`` element. Changing the value of ``vegetable`` leads to a
 corresponding change in the text in the view after refreshing.
 
 Check Your Understanding

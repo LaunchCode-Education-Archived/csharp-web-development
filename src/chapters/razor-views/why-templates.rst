@@ -125,10 +125,6 @@ template for this page, and it is possible to create an interactive site
 without one. However, as your projects grow in size, templates make it MUCH
 easier to maintain your work.
 
-.. admonition:: Tip
-
-   Use templates when building a web-based project.
-
 Templates Provide Structure, Not Content
 ----------------------------------------
 

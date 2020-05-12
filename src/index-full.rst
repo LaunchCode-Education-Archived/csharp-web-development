@@ -17,6 +17,7 @@ Chapters
    chapters/aspdotnet-controllers-and-routes/index
    chapters/exceptions/index
    chapters/vstools/index
+   chapters/razor-views/index
 
 .. toctree::
 

@@ -9,3 +9,4 @@ Tools in Visual Studio
    msbuild
    nuget
    debugger
+   studio

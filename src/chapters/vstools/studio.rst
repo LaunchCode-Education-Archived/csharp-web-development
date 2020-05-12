@@ -1,5 +1,5 @@
-If It Ain't Broke, Add a Breakpoint!
-====================================
+Studio: If It Ain't Broke, Add a Breakpoint!
+============================================
 
 On your machine, open up your copy of ``HelloASPDotNET`` in Visual Studio.
 The purpose of this studio is to talk about your current debugging strategies and how to make the most of the debugger tools discussed in this chapter.

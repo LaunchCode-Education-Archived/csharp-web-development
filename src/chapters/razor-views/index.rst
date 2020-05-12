@@ -3,8 +3,9 @@
 Razor Views
 ===========
 
-.. toctree::
+.. toctree:: 
    :maxdepth: 3
 
+   why-templates
    exercises
    

@@ -18,6 +18,7 @@ Chapters
    chapters/aspdotnet-controllers-and-routes/index
    chapters/exceptions/index
    chapters/vstools/index
+   chapters/razor-views/index
    chapters/aspdotnet-model-classes/index
 
 .. toctree::
@@ -39,6 +40,7 @@ Studios
    chapters/inheritance/studio
    chapters/interfaces-and-polymorphism/studio
    chapters/aspdotnet-controllers-and-routes/studio
+   chapters/vstools/studio
 
 Assignments
 ===========

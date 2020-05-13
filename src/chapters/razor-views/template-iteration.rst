@@ -175,15 +175,34 @@ to note from the example above.
   code block above. Comments in Razor are nested between ``@*`` and ``*@``.
   You may have noticed the comment block present on the top of a new view file.
 
-.. TODO: is this a sufficient note for the use of var here? It feels unfinished but im
-.. at a loss for what else is needed here.
+.. TODO: I added this note from how ``var`` is used in the older C# text. as im still 
+.. poking around with the topics we introduce in the next few lesson, im not sure if this 
+.. is needed based on viewmodel/validation usage or potentially the entity framework. that's originally
+.. what i was thinking including this bit from the older text but its still a realtively simpler
+.. way to deliver this example - showing the using statement requires explaining where the object
+.. is defined/ what this looks like as we're in an intermediate step of discussing views+ controllers
+.. without models. just keeping this as a todo for now so we can return to this later -carly
 
 - ``ViewBag.coffeeShops`` is a list of ``CoffeeShop`` objects but we've used ``var``
-  on line 1 to type the ``coffeeShop`` item. In some limited circumstances, we can 
-  use the **var** keyword to implicitly type a variable.
+  on line 1 to type the ``coffeeShop`` item. 
+  
+  In some limited circumstances, we can use the **var** keyword to implicitly type a variable. 
+  When this keyword is used, C# still assigns a type to ``coffeeShop`` through inference. It 
+  looks and sees that we are assigning ``coffeeShop`` to the value at the list index, which is a 
+  ``CoffeeShop`` object. Thus, ``coffeeShop`` is of type ``CoffeeShop``.
+
   Alternatively, Razor does also allow us to import a custom class, such as ``CoffeeShop``.
   If we wanted to do so, we could import the class or its namespace at the top of 
-  the template with a :ref:`using-statement` statement.
+  the template with a :ref:`using-statement` statement. 
+
+.. admonition:: Warning
+
+   We use ``var`` above to simplify the example and focus on the loop action.
+   In general, we recommend that you avoid using ``var`` while you are learning C#. 
+   Even after you become more experienced with the language, you will still only
+   want to use it sparingly and in specific circumstances. Explicitly
+   declaring the type of your variables makes for more readable code, to name 
+   only one benefit.
 
 
 Check Your Understanding

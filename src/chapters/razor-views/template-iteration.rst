@@ -1,5 +1,3 @@
-.. How do we use a for loop?
-
 .. _razor-iteration:
 
 Iterating in a Template
@@ -84,62 +82,44 @@ Some points to note:
    ``@foreach`` creates one HTML tag for each item in a collection. 
    BE CAREFUL where you place it.
 
-   Consider the following code blocks:
+   Consider the following Razor code:
 
-   .. admonition:: Examples
+   .. sourcecode:: guess
+      :linenos:
 
-      Option #1:
-
-      .. sourcecode:: guess
-         :linenos:
-
-         <div>
-            <h3>C# Types</h3>
-            <ol>
-               @foreach (string coffeeType in ViewBag.coffeeTypes)
-               {
-                  <li>@coffeeType</li>
-               }
-            </ol>
-         </div>
-
-      Option #2:
-
-      .. sourcecode:: guess
-         :linenos:
-
-         <div>
-            <h3>C# Types</h3>
-            @foreach (string coffeeType in ViewBag.coffeeTypes)
-            {
-               <ol>
-                  <li>@coffeeType</li>
-               </ol>
-            }
-         </div>
-
-      Option #3:
-
-      .. sourcecode:: guess
-         :linenos:
-
+      <div>
+         <h3>Coffee Types</h3>
          @foreach (string coffeeType in ViewBag.coffeeTypes)
          {
-            <div>
-               <h3>C# Types</h3>
-               <ol>
-                  <li>@coffeeType</li>
-               </ol>
-            </div>
+            <ol>
+               <li>@coffeeType</li>
+            </ol>
          }
+      </div>
 
-   Which option produces:
+   The final HTML produced is one heading, 4 ordered lists, and 4 coffee names. 
+   When this view is rendered, each coffee type is labelled with "1".
 
-   #. One heading, 4 ordered lists, and 4 coffee names (each name labeled as "1")?
-   #. One heading, one ordered list, and 4 coffee names (with the names labeled
-      1, 2, 3...)?
-   #. 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as "1")?
+   .. sourcecode:: html
+      :linenos:
 
+      <div>
+         <h3>Coffee Types</h3>
+         <ol>
+            <li>French Roast</li>
+         </ol>
+         <ol>
+            <li>Espresso</li>
+         </ol>
+         <ol>
+            <li>Kopi Luwak</li>
+         </ol>
+         <ol>
+            <li>Instant</li>
+         </ol>
+      </div>
+
+   
 .. index:: ! var
 
 Nested Loops
@@ -149,8 +129,8 @@ Assume you have a collection of different ``CoffeeShop`` objects. Each
 object contains a string field for ``name`` and a field that is a list of 
 of the brews available, ``coffeeOptions``. 
 
-Below, we use nest loops to display a list of the shop names and their brew 
-options using nested loops.
+Below, we nest loops to display a list of the shop names and their brew 
+options.
 
 Sample Razor template:
 
@@ -188,60 +168,71 @@ Sample HTML output:
    </ul>
 
 
-Apart from the nest loops displayed above, here are ome other items you may find useful
+Apart from the nested loops displayed above, here are some other items you may find useful
 to note from the example above. 
 
 - Razor comments are seen on lines 3 and 8 in the first 
   code block above. Comments in Razor are nested between ``@*`` and ``*@``.
   You may have noticed the comment block present on the top of a new view file.
 
-.. TODO: is this a sufficient note for the use of var here? It feel unfinished but im
-at a loss for what else is needed here.
+.. TODO: is this a sufficient note for the use of var here? It feels unfinished but im
+.. at a loss for what else is needed here.
 
 - ``ViewBag.coffeeShops`` is a list of ``CoffeeShop`` objects but we've used ``var``
   on line 1 to type the ``coffeeShop`` item. In some limited circumstances, we can 
   use the **var** keyword to implicitly type a variable.
-  Alternatively, Razor does also allow us to import a custom class. such as ``CoffeeShop``.
-  Another way to use this list of ``CoffeeShop`` objects would be to import the class
-  at the top of the template with a :ref:`using-statement` statement.
+  Alternatively, Razor does also allow us to import a custom class, such as ``CoffeeShop``.
+  If we wanted to do so, we could import the class or its namespace at the top of 
+  the template with a :ref:`using-statement` statement.
 
 
 Check Your Understanding
 -------------------------
 
-Use the three code samples listed in the
-:ref:`Location Matters <location-matters>` section to answer the following
-questions:
+.. admonition:: Question
+
+   What is the HTML outcome you expect from the Razor code below?
+
+   .. sourcecode:: guess
+      :linenos:
+
+      <div>
+         <h3>Coffee Types</h3>
+         <ol>
+            @foreach (string coffeeType in ViewBag.coffeeTypes)
+            {
+               <li>@coffeeType</li>
+            }
+         </ol>
+      </div>
+
+   #. One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
+   #. One heading, one ordered list, and 4 coffee names (with the names labeled "1", "2", "3"…)?
+   #. 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
+   #. 4 headings, 4 ordered lists, and 16 coffee names (with the names labeled "1", "2", "3"…)?
+
+.. ans: a, One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
 
 .. admonition:: Question
 
-   Which option produces one heading, 4 ordered lists, and 4 coffee names (each
-   name labeled as "1")?
+   What is the HTML outcome you expect from the Razor code below?
 
-   #. Option 1
-   #. Option 2
-   #. Option 3
+   .. sourcecode:: guess
+      :linenos:
 
-.. Answer = option 2
+      @foreach (string coffeeType in ViewBag.coffeeTypes)
+      {
+         <div>
+            <h3>Coffee Types</h3>
+            <ol>
+               <li>@coffeeType</li>
+            </ol>
+         </div>
+      }
 
-.. admonition:: Question
+   #. One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
+   #. One heading, one ordered list, and 4 coffee names (with the names labeled "1", "2", "3"…)?
+   #. 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
+   #. 4 headings, 4 ordered lists, and 16 coffee names (with the names labeled "1", "2", "3"…)?
 
-   Which option produces one heading, one ordered list, and 4 coffee names
-   (with the names labeled 1, 2, 3...)?
-
-   #. Option 1
-   #. Option 2
-   #. Option 3
-
-.. Answer = option 1
-
-.. admonition:: Question
-
-   Which option produces 4 headings, 4 ordered lists, and 4 coffee names
-   (each name labeled as "1")?
-
-   #. Option 1
-   #. Option 2
-   #. Option 3
-
-.. Answer = option 3
+.. ans: c, 4 headings, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?

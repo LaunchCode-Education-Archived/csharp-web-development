@@ -116,8 +116,6 @@ than simply strings.
 
       public object MyProperty { get; set; }
 
-.. TODO: check this on windows ^^
-
 
 Add a Model Property - Video
 ----------------------------

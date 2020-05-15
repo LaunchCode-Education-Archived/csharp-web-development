@@ -15,14 +15,22 @@ and prepare ourselves for decoupling data from controller classes.
 Add a Unique Id - Video
 -----------------------
 
-.. youtube::
-   :video_id: ijnIgreiNHU
-   :gh_path: LaunchCodeEducation/CodingEvents/add-id
+.. TODO: Add create uid in model class video
+.. topics covered: 
 
-.. index:: ! uid
+YOUTUBE VIDEO HERE
+
+.. admonition:: Note
+
+   The starter code for this video is found at the `add-property branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-property>`__
+   of ``CodingEventsDemo``. The final code presented in this 
+   video is found on the `add-id branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-id>`__.
+   As always, code along to the videos on your own ``CodingEvents`` project.
+
+.. index:: ! uid, ! unique identifier
 
 Add a Unique Id - Text
------------------------
+----------------------
 
 Identifying data by a user-defined string called ``name`` is not a sustainable or scalable method
 of handling data in most situations. Consider the address book example. How can
@@ -35,14 +43,14 @@ To accomplish the same data clarity with events, we'll add a few things to the e
 
 #. A private ``id`` field .
 #. A static counter variable, ``nextId``.
-#. Additional constructor code that:
+#. An additional constructor code that:
    
    a. Sets the ``id`` field to the ``nextId`` value.
    b. Increments ``nextId``.
 
 #. A getter method for the ``id`` field.
 
-The result in ``models/Event,C#``:
+The result in ``Models/Event.cs``:
 
 .. sourcecode:: C#
    :lineno-start: 6

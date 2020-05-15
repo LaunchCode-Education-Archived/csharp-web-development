@@ -110,145 +110,152 @@ Create a Data Layer - Text
 --------------------------
 
 Now that we've begun building a model, it's a good time to remind ourselves that models are not designed to be 
-data storage containers. Rather, models are meant to shape the data stored in another location into objects that 
-can be used in our application. As we work our way into learning about database usage and service calls, however, 
-we'll use a Java class to store some data temporarily. 
+data storage containers. Rather, models are meant to shape the data stored in another location. They shape data into 
+objects that fit into the logic of our applications. As we work our way into learning about database usage and service 
+calls, however, we'll use a C# class to store some data temporarily. 
 
-Create a new package called ``data`` and add a class ``EventData``. Whereas ``Event`` is responsible for organizing
-user-inputted information into a Java object, ``EventData`` is responsible for maintaining those objects once they 
-are created. ``EventData`` is itself a Java class that stores events. It contains several methods for managing and 
-maintaining the event data that simply extend built-in HashMap methods.
+Create a new directory called ``Data`` at the root of your project, on the same level as the rest of the MVC components. 
+Inside of ``Data/``, add a class ``EventData``. Whereas ``Event`` is responsible for organizing
+user-inputted information into a C# object, ``EventData`` is responsible for maintaining those objects once they 
+are created. ``EventData`` is itself a C# class that stores events. It contains several methods for managing and 
+maintaining the event data that simply extend System-provided collection methods.
 
-The contents of ``data/EventData.C#``:
+The contents of ``Data/EventData.cs``:
 
-.. sourcecode:: C#
-   :lineno-start: 12
+.. sourcecode:: c#
+   :lineno-start: 6
 
-   public class EventData {
+   namespace CodingEventsDemo.Data
+   {
+      public class EventData
+      {
+         static private Dictionary<int, Event> Events = new Dictionary<int, Event>();
 
-      private static Map<Integer, Event> events = new HashMap<>();
+         // GetAll
+         public static IEnumerable<Event> GetAll()
+         {
+            return Events.Values;
+         }
 
-      public static Collection<Event> getAll() {
-         return events.values();
-      }
+         // Add
+         public static void Add(Event newEvent)
+         {
+            Events.Add(newEvent.Id, newEvent);
+         }
 
-      public static void add(Event event) {
-         events.put(event.getId(), event);
-      }
+         // Remove
+         public static void Remove(int id)
+         {
+            Events.Remove(id);
+         }
 
-      public static Event getById(Integer id) {
-         return events.get(id);
-      }
-
-      public static void remove(Integer id) {
-         if (events.containsKey(id)) {
-            events.remove(id);
+         // GetById
+         public static Event GetById(int id)
+         {
+            return Events[id];
          }
       }
-
    }
 
 
-With ``EventData`` managing event data, we must once again refactor ``EventController`` to update the items stored in 
-``EventData``. In keeping with the objective to remove data handling from the controller, we'll remove the list 
-of events at the top of the class. Consequently, for the ``displayAllEvents`` handler, we'll now use events from 
-``EventData`` in ``addAttribute()``:
+With ``EventData`` now managing a collection of events, we must once again refactor ``EventsController`` to update the items stored in 
+the dictionary. In keeping with the objective to remove data handling from the controller, we'll remove the list 
+of events at the top of the class. Consequently, for the ``Index()`` action method, we'll now use events from 
+``EventData`` to populate a ``ViewBag.events`` property:
 
-.. sourcecode:: C#
-   :lineno-start: 25
+.. sourcecode:: c#
+   :lineno-start: 17
 
-   model.addAttribute("events", EventData.getAll());
+   ViewBag.events = EventData.GetAll();
 
-And back to ``processCreateEventForm``, we'll make use of the ``.add()`` method from ``EventData``:
+And back to ``NewEvent``, we'll make use of the ``.add()`` method from ``EventData``:
 
-.. sourcecode:: C#
-   :lineno-start: 37
+.. sourcecode:: c#
+   :lineno-start: 33
 
-   EventData.add(new Event(eventName, eventDescription));
+   EventData.Add(new Event(name, desc));
 
 
 Delete an Event - Video
 -----------------------
 
-.. youtube::
-   :video_id: orsBBbDaJMM
-   :gh_path: LaunchCodeEducation/CodingEvents/delete-events
+.. TODO: Add delete events video
+.. topics covered: create delete event capabilities
+
+YOUTUBE VIDEO HERE
+
+.. admonition:: Note
+
+   The starter code for this video is found at the `create-data-layer branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-data-layer>`__
+   of ``CodingEventsDemo``. The final code presented in this 
+   video is found on the `delete-events branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/delete-events>`__.
+   As always, code along to the videos on your own ``CodingEvents`` project.
 
 Delete an Event - Text
 ----------------------
 
 Now that we've refined our events storage method, we are able to tackle the task of deleting an object. 
 To delete an event object from storage, we'll grab the event's id and use that
-information to call the ``remove`` method of ``EventData``.
+information to call the ``Remove()`` method of ``EventData``.
 Since the delete event is user-initiated, a controller will be involved to pass
 the information from the user-accessible view to the data layer. So our first step
-with this task is to create a controller method to get a view to delete events.
+with this task is to create an action method to return a view designed to delete events.
 
-Onto the end of ``EventController``, add the following method:
+Onto the end of ``EventsController``, add the following method:
 
-.. sourcecode:: C#
-   :lineno-start: 41
+.. sourcecode:: c#
+   :lineno-start: 39
 
-   @GetMapping("delete")
-   public String renderDeleteEventForm(Model model) {
-      model.addAttribute("title", "Delete Event");
-      model.addAttribute("events", EventData.getAll());
-      return "events/delete";
+   public IActionResult Delete()
+   {
+      ViewBag.events = EventData.GetAll();
+
+      return View();
    }
 
 We'll now need to create a new view for the path mapped in the method above. Add a new template, 
-``events/delete.html``. This view will reference event id fields in order to distinguish which items the user 
+``Views/Events/Delete.cshtml``. This view will reference event id fields in order to distinguish which items the user 
 will request to delete via checkbox inputs. 
 
 .. sourcecode:: html
    :linenos:
 
-   <!DOCTYPE html>
-   <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-      <head th:replace="fragments :: head"></head>
-      <body class="container">
+   <h1>Delete Event</h1>
 
-         <header th:replace="fragments :: header"></header>
-
-         <form method="post">
-
-            <th:block th:each="event : ${events}">
-               <div class="form-group">
+   <form method="post">
+      @foreach (var evt in ViewBag.events)
+      {
+         <div class="form-group">
                <label>
-                     <span th:text="${event.name}"></span>
-                     <input type="checkbox" name="eventIds" th:value="${event.id}" class="form-control">
+                  <span>@evt.Name</span>
+                  <input type="checkbox" name="eventIds" value="@evt.Id" class="form-control">
                </label>
-               </div>
-            </th:block>
+         </div>
+      }
 
-            <input type="submit" value="Delete Selected Events" class="btn btn-danger">
-         </form>
+      <input type="submit" value="Delete Selected Events" class="btn btn-danger">
 
-      </body>
-   </html>
+   </form>
 
 We also need a ``POST`` handler to take care of what to do when the delete event information
-is submitted by the user. We'll have this post handler redirect the user back to the home 
+is submitted by the user. We'll have this post handler redirect the user back to the events home 
 page once they have selected which event, or events, to remove from storage.
 
-In ``EventController``, add another controller method:
+In ``EventsController``, add another controller method:
 
 .. sourcecode:: C#
-   :lineno-start: 50
+   :lineno-start: 47
 
-   @PostMapping("delete")
-   public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+   [HttpPost]
+   public IActionResult Delete(int[] eventIds)
+   {
+      foreach (int eventId in eventIds)
+      {
+            EventData.Remove(eventId);
+      }
 
-        if (eventIds != null) {
-            for (int id : eventIds) {
-                EventData.remove(id);
-            }
-        }
-
-        return "redirect:";
+      return Redirect("/Events");
    }
-
-This handler method uses the ``required = false`` parameter of ``@RequestParam`` to make this parameter optional. This allows the user to submit the form without any events selected. Once ``eventIds`` is optional, we must also check that it is not ``null`` before entering the loop. 
 
 Check Your Understanding
 -------------------------
@@ -257,17 +264,17 @@ Check Your Understanding
 
    In ``CodingEvents``, which method can we call to list every event object?
 
-   #. ``Events.get()`` 
-   #. ``EventData.getEvery()`` 
-   #. ``Event.getAll()`` 
-   #. ``EventData.getAll()`` 
+   #. ``Events.Get()`` 
+   #. ``EventData.GetEvery()`` 
+   #. ``Event.GetAll()`` 
+   #. ``EventData.GetAll()`` 
 
-.. ans: d, ``EventData.getAll()``
+.. ans: d, ``EventData.GetAll()``
 
 .. admonition:: Question
 
-   In ``CodingEvents``, breaking up the event storage from the ``Event`` model is an example of which object-oriented
-   concept?
+   In ``CodingEvents``, breaking up the event storage from the ``Event`` model is an example of which 
+   object-oriented concept?
 
    #. Inheritance
    #. Polymorphism

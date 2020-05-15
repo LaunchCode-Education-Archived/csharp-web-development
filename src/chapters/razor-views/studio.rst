@@ -70,10 +70,8 @@ display the contents of the ``appropriateFacials`` list.
 
 #. Pass in the ``skintype`` variable to the ``<p>`` tag.
 
-.. TODO: make sure there is a foreach section for razor?
-
 #. Iteratively add the values in ``appropriateFacials`` to an unordered list. If you need a quick reminder of
-   the syntax, review the :ref:`@foreach section <@foreach>` .
+   the syntax, review the :ref:`@foreach section <razor-foreach>` .
 
 Mani or Pedi?
 -------------

@@ -1,5 +1,3 @@
-.. How do we conditionally display data?
-
 Conditionals in a Template
 ==========================
 
@@ -32,6 +30,8 @@ the webpage and the content is displayed in the view. If ``condition`` is
 ``false``, then Razor does NOT generate the element, and the content stays
 off the page.
 
+Let's look at an example:
+
 .. admonition:: Example
 
    Assume that ``userSelection`` represents a string property on ``ViewBag``.
@@ -54,10 +54,11 @@ off the page.
 
 The ``@if`` statement in line 1 compares a user's brew choice to the string
 ``"Instant"``. If they match, then Razor adds the paragraph element to the
-view. If they do not match, then the condition on line 5 is evaluated. If that 
-``else if`` statement is true, then a paragraph element with different internal
-text is added. Lastly, if neither of those conditions is met, then the paragraph
-element with text on line 11 is rendered. 
+view. If they do not match, then the ``<p>`` tag on line 3 is not created and the 
+condition on line 5 is evaluated. If that ``else if`` statement is true, then 
+a paragraph element with different internal text is added. Lastly, if neither 
+of those conditions is met, then the paragraph element with text on line 11 
+is rendered. 
 
 .. admonition:: Note
 

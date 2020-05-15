@@ -16,7 +16,7 @@ Add a Unique Id - Video
 -----------------------
 
 .. TODO: Add create uid in model class video
-.. topics covered: 
+.. topics covered: create id field on event class
 
 YOUTUBE VIDEO HERE
 
@@ -41,51 +41,70 @@ our contacts who have the same name as one another.
 
 To accomplish the same data clarity with events, we'll add a few things to the event model class:
 
-#. A private ``id`` field .
+#. A readonly ``id`` field.
 #. A static counter variable, ``nextId``.
-#. An additional constructor code that:
+#. Additional constructor code that:
    
-   a. Sets the ``id`` field to the ``nextId`` value.
+   a. Sets ``id`` to the ``nextId`` value.
    b. Increments ``nextId``.
-
-#. A getter method for the ``id`` field.
 
 The result in ``Models/Event.cs``:
 
-.. sourcecode:: C#
-   :lineno-start: 6
+.. sourcecode:: c#
+   :linenos: 
 
-   public class Event {
+   namespace CodingEventsDemo.Models
+   {
+      public class Event
+      {
+         public string Name { get; set; }
+         public string Description { get; set; }
 
-      private int id;
-      private static int nextId = 1;
+         public int Id { get; }
+         static private int nextId = 1;
 
-      private String name;
-      private String description;
+         public Event(string name, string description)
+         {
+            Name = name;
+            Description = description;
+            Id = nextId;
+            nextId++;
+         }
 
-      public Event(String name, String description) {
-         this.name = name;
-         this.description = description;
-         this.id = nextId;
-         nextId++;
+         public override string ToString()
+         {
+            return Name;
+         }
       }
-
-      public int getId() {
-         return id;
-      }
-
-      // ... other getters and setters ... //
-
    }
+
+.. index:: ! get-only auto-implemented property
+
+.. admonition:: Note
+
+   Here's a closer look at what's going on in line 8.
+
+   ``Id`` is created as a **get-only auto-implemented property**.
+   The backing field, ``id`` is therefore readonly because no setter 
+   method has been written for the field. The only place ``id``'s value 
+   may be assigned is in a constructor (as it is on line 15).
 
 With these additions, every time a new event object is created it is assigned a unique integer to its ``id`` field.
 
 Create a Data Layer - Video
 ---------------------------
 
-.. youtube::
-   :video_id: 8AQtYZ_q57M
-   :gh_path: LaunchCodeEducation/CodingEvents/create-data-layer
+.. TODO: Add create data layer video
+.. topics covered: create data directory for events
+
+YOUTUBE VIDEO HERE
+
+.. admonition:: Note
+
+   The starter code for this video is found at the `add-id branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-id>`__
+   of ``CodingEventsDemo``. The final code presented in this 
+   video is found on the `create-data-layer branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-data-layer>`__.
+   As always, code along to the videos on your own ``CodingEvents`` project.
 
 Create a Data Layer - Text
 --------------------------

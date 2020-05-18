@@ -118,7 +118,7 @@ the clip.
 
 YOUTUBE VIDEO HERE
 
-.. TODO: Create views-dynamic branch.
+.. TODO: Modify views-dynamic branch
 
 .. admonition:: Note
 

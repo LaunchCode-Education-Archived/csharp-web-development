@@ -25,6 +25,9 @@ first demonstrate creating a view using only HTML.
 In this chapter, you will construct some small practice projects to help you
 learn how to implement Razor templates. 
 
+.. TODO: Add notes about changes made to the project between controllers and views
+         Maybe add a dedicated starter code branch to help students make this refactor too?
+
 Hello Views
 -----------
 

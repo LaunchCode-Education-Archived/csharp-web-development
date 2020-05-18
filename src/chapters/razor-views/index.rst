@@ -9,6 +9,4 @@ Razor Views
    using-templates
    template-iteration
    template-conditionals
-   template-forms
-   layout-pages
-   static-resources
+   

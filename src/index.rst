@@ -19,6 +19,7 @@ Chapters
    chapters/exceptions/index
    chapters/vstools/index
    chapters/razor-views/index
+   chapters/aspdotnet-model-classes/index
 
 .. toctree::
 

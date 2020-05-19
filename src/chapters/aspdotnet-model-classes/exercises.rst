@@ -12,7 +12,7 @@ The edit form will resemble the form used to create an event.
    As you work through these steps, test your code along the way! 
    With each change you apply to your code, ask yourself what you expect to see when the application
    is run. You may not find that all of the steps result in observable changes, though.
-   Use IntelliJ’s debugger and read your error messages if you run into issues after applying any of
+   Use Visual Studio’s debugging tools and read your error messages if you run into issues after applying any of
    the changes.
 
 #. Create the two handler methods listed below in ``EventsController``. We’ll add code
@@ -24,7 +24,7 @@ The edit form will resemble the form used to create an event.
       .. sourcecode:: csharp
          :linenos:
 
-         public string DisplayEditForm(int eventId) {
+         public IActionResult Edit(int eventId = 1) {
             // controller code will go here
          }
 
@@ -33,7 +33,7 @@ The edit form will resemble the form used to create an event.
       .. sourcecode:: csharp
          :linenos:
 
-         public string ProcessEditForm(int eventId, string name, string desc) {
+         public IActionResult EditEvent(int eventId, string name, string desc) {
             // controller code will go here
          }
 
@@ -43,7 +43,7 @@ The edit form will resemble the form used to create an event.
    #. Judging by the names of the handlers, which should handle ``GET`` requests and which should 
       handle ``POST`` requests?
 
-   #. You’ll need to configure the route for ``DisplayEditForm`` to include the path variable ``eventId``, 
+   #. You’ll need to configure the route for ``Edit()`` to include the path variable ``eventId``, 
       so that paths like ``/Events/Edit/3`` will work.
 
 #. Create an ``Edit.cshtml`` view in
@@ -51,19 +51,19 @@ The edit form will resemble the form used to create an event.
 
 #. Copy the code from ``Add.cshtml`` into ``Edit.cshtml``. 
 
-   #. You'll want to update the text of the submit button to reflect the edit functionality.
+   #. You'll want to update the text of the submit button and the heading to reflect the edit functionality.
 
-#. Back in the ``DisplayEditForm`` handler, round out the controller method.
+#. Back in the ``Edit()`` method, round out the controller method.
 
    #. Use an ``EventData`` method to find the event object with the given ``eventId``.
    
-   #. Put the event object in the ``Model`` with ``.AddAttribute()``.
+   #. Put the event object in ``ViewBag``.
 
-   #. Return the appropriate template string.
+   #. Return the appropriate view.
 
 #. Within the form fields in ``Edit.cshtml``, 
 
-   #. Get the name and description from the event that was passed in via the ``Model`` and
+   #. Get the name and description from the event that was passed in via ``ViewBag`` and
       set them as the values of the form fields.
    
    #. Add ``action="/events/edit"`` to the ``form`` tag.
@@ -73,29 +73,29 @@ The edit form will resemble the form used to create an event.
 
    .. sourcecode:: html
 
-      <input type="hidden" value="@event.id" name="eventId" />
+      <input type="hidden" value="@ViewBag.eventToEdit.Id" name="eventId" />
 
-#. Back in the ``DisplayEditForm`` handler, add a title to ``model`` that reads “Edit Event
+#. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads “Edit Event
    NAME (id=ID)” where NAME and ID are replaced by the values for the
    given event. 
 
-#. In ``ProcessEditForm``, 
+#. In ``EditEvent()``, 
 
    #. Query ``EventData`` for the event being edited with the given id parameter. 
    
-   #. Update the name and description of the event with the appropriate model setter methods.
+   #. Update the name and description of the event with the appropriate setter methods.
 
    #. Redirect the user to ``/Events`` (the event listing page).
 
 #. To access event editing, the user will need an edit option in the list of event data.
 
-   #. In ``Index.cshtml``, add a link in a new table column to edit the 
+   #. In ``Index.cshtml``, add a link to edit the 
       event:
 
       .. sourcecode:: html
          :linenos:
 
-         <td>
-            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
-         </td>
+         <p>
+            <a asp-controller="Events" asp-action="Edit">Edit Event</a>
+         </p>
 

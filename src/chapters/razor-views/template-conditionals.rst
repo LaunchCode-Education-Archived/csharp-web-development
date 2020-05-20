@@ -118,8 +118,6 @@ the clip.
 
 YOUTUBE VIDEO HERE
 
-.. TODO: Modify views-dynamic branch
-
 .. admonition:: Note
 
    The starter code for this video is found at the 

@@ -25,14 +25,14 @@ first demonstrate creating a view using only HTML.
 In this chapter, you will construct some small practice projects to help you
 learn how to implement Razor templates. 
 
-.. TODO: Add notes about changes made to the project between controllers and views
-         Maybe add a dedicated starter code branch to help students make this refactor too?
-
 Hello Views
 -----------
 
-Open up your ``HelloASPDotNET`` project in Visual Studio and code along with the
-following video.
+Before you start coding, we refactored ``HelloController``. Now ``Index()`` is responding to ``GET`` requests at ``localhost:5001/hello`` and ``Welcome()`` is only responding to ``POST`` requests at ``localhost:5001/hello``.
+Check out the `views-starter <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter>`__ branch of the ``HelloASPDotNETDemo`` repo to see how we refactored our code.
+
+Open up your ``HelloASPDotNET`` project in Visual Studio and make sure you have committed any recent changes.
+Make a new branch and code along with the following video.
 
 .. admonition:: Warning
 
@@ -48,7 +48,7 @@ YOUTUBE VIDEO HERE
 
 .. admonition:: Note
 
-   The starter code for this video is found at the `attribute-routing branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing>`__
+   The starter code for this video is found at the `views-starter branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter>`__
    of ``HelloASPDotNETDemo``. The final code presented in this 
    video is found on the `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__.
 
@@ -102,9 +102,6 @@ Avoid selecting *Add -> View* from your options.
 
 Add the HTML form from the ``Index()`` method to your new template. Once you are done 
 with that, update the ``Index()`` method to return ``View()``.
-
-.. TODO: do we want to fully address layout and styling things here or save for later?
-.. or briefly introduce this here and go into detail later?
 
 ``_Layout.cshtml``
 ~~~~~~~~~~~~~~~~~~

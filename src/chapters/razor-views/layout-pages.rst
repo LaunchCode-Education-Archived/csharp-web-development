@@ -20,7 +20,7 @@ When you make updates to ``_Layout``, every template in the application using ``
 Partial Views
 -------------
 
-If you want to create repeatable elements of your webpage that are contained within the main body of the page, you can use a **partial view(+**.
+If you want to create repeatable elements of your webpage that are contained within the main body of the page, you can use a **partial view**.
 Partial views are blocks of HTML elements that we want to use across multiple templates.
 When creating a partial view, we add the file to the ``Shared`` directory.
 Then we can upon the patial view in the appropriate spot in our template by using ``Render()``.

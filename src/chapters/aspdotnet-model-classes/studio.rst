@@ -3,17 +3,14 @@
 Studio: Spa User Signup
 =======================
 
-For this studio you will add functionality to allow users to sign up
-for your ``SpaDay`` app. 
-
-.. TODO: Update github repo and link
+For this studio you will add functionality to allow users to sign up for your ``SpaDay`` app. 
 
 The starter code has been modified from where you left off last class. Grab the refactored code 
-on the `user-signup-starter branch <https://github.com/LaunchCodeEducation/spa-day-starter-code/tree/user-signup-starter>`__. 
+on the `user-signup-starter branch <https://github.com/LaunchCodeEducation/SpaDay/tree/user-signup-starter>`__. 
 
 You'll notice in this branch that the name field has been removed from the service selection form. Once we
 implement user-signup functionality, we can use a given user's name to identify the spa client. We've also 
-moved data into a ``Client`` model and out of the ``SpaDayController`` class.
+moved data into a ``Client`` model and out of the ``SpaController`` class.
 
 In this studio, we'll ask you to write another model, ``User``. ``User`` and ``Client`` may at first 
 appear redundant, but in the future as you develop your spa application, you may find a scenario where 
@@ -86,7 +83,7 @@ Refining Form Submission
 
 #. Once registered, we want the user to access the form selecting their spa services. 
 
-   a. In ``Index.cshtml``, add a ``th:href`` element to take the user back to the root path, ``/``, of the app, where the ``serviceSelection`` template will be rendered.
+   a. In ``Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
 
 #. If the form is re-rendered when a password is not verified, we should let the user know that their form
    was not properly submitted. Use ``ViewBag`` to add an ``error`` property, letting the user know 

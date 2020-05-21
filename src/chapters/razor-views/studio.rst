@@ -78,7 +78,7 @@ Mani or Pedi?
 
 We want to display a description for the nail service the user selects.
 Inside the ``servicesMenu`` div, use ``@if`` to determine if the value of 
-``manipedi`` is a ``"manicure"`` or ``"pedicure"``.
+``manipedi`` is ``"manicure"`` or ``"pedicure"``.
 
 #. If the value of ``manipedi`` is ``"manicure"``, display this description:
 
@@ -102,7 +102,7 @@ click "Submit", and see your profile page.
    A client completes the spa day form.
 
 .. figure:: figures/endresultprofilepage.png
-   :scale: 40%
+   :scale: 35%
    :alt: Profile showing Yolanda's information, recommended facial treatments, and pedicure description.
 
    The client's service menu.
@@ -110,9 +110,12 @@ click "Submit", and see your profile page.
 Bonus Mission
 -------------
 
-#. Modify ``site.css`` to get some CSS practice. Try add a footer with square
+#. Try adding an element to the bottom of the page with square
    shaped ``div`` elements. Each square should be a different color for
-   different available nail polishes.
+   different available nail polishes. At the base of the project is a folder called ``wwwroot``. 
+   Inside of that is another folder called ``css``. Modify the ``site.css`` file inside of it to 
+   get some CSS practice. There are already a number of style rules present so remember to be 
+   give your ``div`` elements class identifiers to give your elements specificity. 
 #. Modify the form to allow the user to select either a manicure or pedicure or
    *both*. If the user selects both, display both the manicure and pedicure
    descriptions in the ``Menu`` view.

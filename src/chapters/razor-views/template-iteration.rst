@@ -29,6 +29,8 @@ collection.
       // Code to repeat...
    }
 
+.. _razor-foreach:
+
 Razor templates allow us to use a ``foreach`` loop to display items in a 
 collection.
 

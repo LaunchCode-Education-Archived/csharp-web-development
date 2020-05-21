@@ -1,3 +1,5 @@
+.. _razor-views:
+
 Razor Views
 ===========
 
@@ -9,4 +11,5 @@ Razor Views
    using-templates
    template-iteration
    template-conditionals
+   exercises
    

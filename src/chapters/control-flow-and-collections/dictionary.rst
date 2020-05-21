@@ -1,3 +1,6 @@
+
+.. _dictionary:
+
 .. index:: ! Dictionary
 
 Dictionary

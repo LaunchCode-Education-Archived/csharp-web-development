@@ -24,7 +24,7 @@ Expanding our Events Schedule
 #. In the video lessons, we learned how to use templates to display the elements in a
    static list called ``Events``. Let's convert our ``Events`` list to a ``Dictionary``.
    The structure of a dictionary enables us to add descriptions to our events. You'll 
-	need to think about what data types the event name and description will be.
+   need to think about what data types the event name and description will be.
 
    .. admonition:: Tip
 

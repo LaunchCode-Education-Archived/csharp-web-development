@@ -11,6 +11,5 @@ Razor Views
    using-templates
    template-iteration
    template-conditionals
+   exercises
    studio
-   
-   

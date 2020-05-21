@@ -1,4 +1,4 @@
-.. _razor-views:
+.. _razor:
 
 Razor Views
 ===========
@@ -12,4 +12,4 @@ Razor Views
    template-iteration
    template-conditionals
    exercises
-   
+   studio

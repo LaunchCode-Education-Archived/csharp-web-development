@@ -8,21 +8,23 @@ the views. This data needs to come from some source and take some shape. Cue the
 What is a Model?
 -----------------
 
-.. index:: model
+.. index:: model, ! business logic
 
 A **model** represents the logic for accessing and storing the data used in an application. 
-Properly constructed, they do not depend on any controllers or views, which
-makes models easy to reuse without modification. 
+Properly constructed, models do not depend on any controllers or views, which
+makes them easy to reuse without modification. 
 
-Models are not the data itself, but rather the data logic. They dictate how we want to handle 
-the data in an application-specific way. The data used in an application is often sourced from a database
-or an external data service. Data is typically application-agnostic and it is the work of the models
-we write to shape raw data into useful application information.
+Models are not the data itself, but rather the logic that moulds the data for a particular
+purpose. They dictate how we want to handle the data in an application-specific way. The data used in 
+an application is often sourced from a database or an external data service. Data is typically 
+application-agnostic and it is the work of the models we write to shape raw data into useful 
+application information. This shaping of data to for the needs of a program is part of what is referred 
+to as the **business logic**
 
-Consider a physical address book (a model). It stores names, addresses, phone
-numbers, etc. on its pages. Anyone (a controller) can pick up the book,
-retrieve the information, and then write some of the data on a separate piece
-of paper (a view). The address book model does not depend on who picks it up and enters
+Consider a physical address book (a model). The pages are laid out so each section contains a blank 
+line for the name, address, phone number, and other important information we can use to contact a friend.
+Anyone (a controller) can pick up the book, retrieve the information, and then write some of the data on 
+a separate piece of paper (a view). The address book model does not depend on who picks it up and enters
 their contacts. The book just provides organization and storage logic. On the flip side, the same
 person can input the same contact data into a different book. So a model takes raw information and 
 turns it into something useful for a particular application.
@@ -91,7 +93,7 @@ Controller code handles *requests* made by the user. These include:
 #. "Please modify this data in a novel way".
 
 Remember, the controllers are the traffic cops, directing information from one place to another. 
-A controller does not permanently store data. Instead, it either
+Like a model, a controller does not permanently store data. Instead, it either
 sends the information to the model, which uses its own code to preserve the
 data, or it sends the content to the view for display.
 

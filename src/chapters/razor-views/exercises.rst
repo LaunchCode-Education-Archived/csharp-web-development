@@ -1,16 +1,18 @@
-Exercises: Views
-================
+Exercises: Razor Views
+======================
 
 In this chapter, we started working on an application for tracking various
 coding events around town.
 
-Open up your ``CodingEvents`` project in Visual Studio.
-
 Getting Started
 ---------------
 
-Create and checkout a new branch to complete these exercises. Your branch should roughly resemble 
+Open up your ``CodingEvents`` project in Visual Studio. Create and checkout a new branch to 
+complete these exercises. 
+
+The code you start with should roughly resemble 
 `this branch <https://github.com/LaunchCodeEducation/CodingEventsDemo>`__.
+If you have been coding along with the video lessons, you're probably in good shape.
 
 As always, give the branch a useful name, like ``view-exercises``.
 
@@ -21,8 +23,8 @@ Expanding our Events Schedule
 
 #. In the video lessons, we learned how to use templates to display the elements in a
    static list called ``Events``. Let's convert our ``Events`` list to a ``Dictionary``.
-   This enables us to add descriptions to our events. You'll need to think about what data
-   types the event name and description will be.
+   The structure of a dictionary enables us to add descriptions to our events. You'll 
+	need to think about what data types the event name and description will be.
 
    .. admonition:: Tip
 

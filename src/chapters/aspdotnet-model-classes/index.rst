@@ -6,5 +6,4 @@ Models and Model Binding
 .. toctree::
    :maxdepth: 3
 
-   model-intro
    data-layer

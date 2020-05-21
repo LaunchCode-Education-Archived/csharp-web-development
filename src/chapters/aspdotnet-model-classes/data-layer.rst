@@ -3,14 +3,13 @@
 Models and Data 
 ===============
 
-In order to work with data, we need to add another element to our MVC application. Say for example,
-we want to do things like remove an event from our list. Well, if two events both have the same name, 
-how might we identify which of those items to delete? We can't yet. So we need to tweak how we store
-event data. 
+To effectively work with data, we need to add another element to our MVC application. Say for example,
+we want to remove an event from our list. If two events both have the same name, we can't yet identify which
+of the events to delete. 
 
 In ``CodingEvents``, we add a unique identifier field to ``Events`` to better handle and track distinct 
-``Event`` instances. We'll also create another model class called ``EventData`` to encapsulate data storage 
-and prepare ourselves for decoupling data from controller classes.
+``Event`` instances. Next, we'll also create another model class called ``EventData``. This allows us 
+to encapsulate data storage and prepare ourselves for decoupling the ``Event`` model from the controller.
 
 Add a Unique Id - Video
 -----------------------

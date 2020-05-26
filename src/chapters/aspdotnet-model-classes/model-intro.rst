@@ -2,7 +2,7 @@ Models in MVC
 ==============
 
 In the previous chapter, you learned about Razor, which displays data and an
-interface for a user. Before that, you learned about :ref:`controllers`. Remember that 
+interface for a user. Before that, you learned about :ref:`controllers`. Remember that controllers
 determine what data to send to the the views. This data needs to come from some source 
 and take some shape. Cue the models.
 

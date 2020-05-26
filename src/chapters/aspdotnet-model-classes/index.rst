@@ -7,4 +7,4 @@ Models and Model Binding
    :maxdepth: 3
 
    model-intro
-	
+   model-binding

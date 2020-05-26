@@ -6,4 +6,5 @@ Models and Model Binding
 .. toctree::
    :maxdepth: 3
 
+   model-intro
    model-class

@@ -208,7 +208,7 @@ Check Your Understanding
    #. ``<td>@event.Date</td>``
    #. ``<td>@evt.date</td>``
 
-.. ans: c, ``<td>@event.Date</td>``
+.. ans: a, ``<td>@evt.Date</td>``
 
 
 

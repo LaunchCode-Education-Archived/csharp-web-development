@@ -81,6 +81,10 @@ To *render* the form in the view, add a method to the controller with an ``[Http
       return View();
    }
 
+.. admonition:: Note
+
+   If the ``action`` attribute in the ``<form>`` tag leads to the same route as the form is being rendered at, you do not have to include an ``action`` attribute.
+
 Add a Form Handler Method - Video
 ---------------------------------
 
@@ -92,6 +96,12 @@ Code along with the video below to add this functionality.
 
 As usual, the following summary outlines the ideas from the clip.
 
+.. admonition:: Note
+
+   The starter code presented in this video is found on the `render-form branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/render-form>`__ of the ``CodingEventsDemo`` repository.
+   The final code presented in this video is found on the `handle-form-submission branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handle-form-submission>`__ of the ``CodingEventsDemo`` repository.
+
+
 Add a Form Handler Method - Text
 --------------------------------
 
@@ -102,12 +112,12 @@ a method to the controller using the ``[HttpPost]`` annotation:
    :lineno-start: 31
 
    [HttpPost]
-   [Route("/events")]
-   public IActionResult AddEvent(string name)
+   [Route("/Events/Add")]
+   public IActionResult NewEvent(string name)
    {
       // Method code...
 
-      return View();
+      return Redirect("/Events");
    }
 
 Some points to note:
@@ -120,3 +130,19 @@ Some points to note:
    successfully submit a form. Instead of re-rendering the form, we want
    to use ``Redirect()`` to *redirect* the user to a different template.
 
+Now that we have a form and can handle the form submission, we want to create a link to the form to add an event in our ``Index`` template.
+This way, after reciewing the list of events, users can click on the link to the form and add an event.
+To do this, we use anchor tag helpers. If we put in the following line in our template:
+
+.. sourcecode:: html
+
+   <a asp-controller="Events" asp-action="Add">Add Event</a>
+
+Then when we build our application, the generated HTML of the page will look like:
+
+.. sourcecode:: html
+
+   <a href="/Events/Add">Add Event</a>
+
+Users can now click on the link on our page at ``localhost:5001/Events`` and are directed to the form to add an event.
+Once they hit the button to submit the form, the data is passed to the ``NewEvent()`` method, the user's event is added to the ``Events`` list, and the application redirects back to ``localhost:5001/Events`` where an updated ``Events`` list is displayed.

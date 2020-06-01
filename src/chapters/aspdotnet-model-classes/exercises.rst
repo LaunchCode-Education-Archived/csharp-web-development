@@ -15,36 +15,34 @@ The edit form will resemble the form used to create an event.
    Use Visual Studio’s debugging tools and read your error messages if you run into issues after applying any of
    the changes.
 
-#. Create the two handler methods listed below in ``EventsController``. We’ll add code
+#. Create the two action methods listed below in ``EventsController``. We’ll add code
    to these in a moment, so just put the outline in place for
    now.
 
-   #. Create a method to display an edit form with this signature:
+   #. Create an action method to display an edit form with this signature:
 
       .. sourcecode:: csharp
          :linenos:
 
-         public IActionResult Edit(int eventId = 1) {
+         public IActionResult Edit(int eventId) {
             // controller code will go here
          }
 
-   #. Create a method to process the form with this signature:
+   #. Create an action method to process the form with this signature:
 
       .. sourcecode:: csharp
          :linenos:
 
+         [HttpPost]
          public IActionResult EditEvent(int eventId, string name, string desc) {
             // controller code will go here
          }
 
 #. Add the necessary annotations to these methods for them to both live
    at the path ``/Events/Edit``.
-    
-   #. Judging by the names of the handlers, which should handle ``GET`` requests and which should 
-      handle ``POST`` requests?
 
-   #. You’ll need to configure the route for ``Edit()`` to include the path variable ``eventId``, 
-      so that paths like ``/Events/Edit/3`` will work.
+   #. You’ll need to configure the route for ``Edit()`` to include the query parameter ``eventId``, 
+      so that paths like ``/Events/Edit?id=3`` will work.
 
 #. Create an ``Edit.cshtml`` view in
    ``Views/Events``.
@@ -76,7 +74,7 @@ The edit form will resemble the form used to create an event.
       <input type="hidden" value="@ViewBag.eventToEdit.Id" name="eventId" />
 
 #. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads “Edit Event
-   NAME (id=ID)” where NAME and ID are replaced by the values for the
+   NAME (id=ID)” where ``"NAME"`` and ``"ID"`` are replaced by the values for the
    given event. 
 
 #. In ``EditEvent()``, 
@@ -90,12 +88,10 @@ The edit form will resemble the form used to create an event.
 #. To access event editing, the user will need an edit option in the list of event data.
 
    #. In ``Index.cshtml``, add a link to edit the 
-      event:
+      event as a column in the event table:
 
       .. sourcecode:: html
          :linenos:
 
-         <p>
-            <a asp-controller="Events" asp-action="Edit">Edit Event</a>
-         </p>
+        <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@evt.Id">Edit Event</a></td>
 

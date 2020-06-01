@@ -63,7 +63,7 @@ Processing Form Submission
          // add form submission handling code here
       }
 
-   This will use model binding to create a new user object, ``newUser`, and
+   This will use model binding to create a new user object, ``newUser``, and
    pass it into your action method. 
 
    .. admonition :: Note
@@ -78,6 +78,11 @@ Processing Form Submission
    ``Index.cshtml`` view template with a message that welcomes the user by 
    username. If the passwords don’t match, render the form again.
 
+   a. To render the ``Index.cshtml`` view with the welcome message, you need to pass in the username as part of the route for ``Redirect()``.
+      You can do so using string concatenation: ``"/user?name=" + newUser.Username``. This will pass in the username as a query parameter.
+
+   b. Passing in the value to the ``Index.cshtml`` view also requires you to modify ``Index()``. You will need to add a parameter and use ``ViewBag``.
+
 Refining Form Submission
 ------------------------
 
@@ -86,7 +91,7 @@ Refining Form Submission
    a. In ``Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
 
 #. If the form is re-rendered when a password is not verified, we should let the user know that their form
-   was not properly submitted. Use ``ViewBag`` to add an ``error`` property, letting the user know 
+   was not properly submitted. Add an ``error`` property to ``ViewBag`` letting the user know 
    that their passwords should match. This property will need to correspond to an element in the template that will only render the error text when the passwords do not match.
 
 #. If we send a user back to re-populate the form, it would be nice to not clear their previous 
@@ -95,21 +100,11 @@ Refining Form Submission
    a. In the form submission action method, add the ``username`` and ``email`` fields of the submitted user as 
       ``ViewBag`` properties. 
    
-   #. Back in the form, add a value attribute to these form fields and make them equal to the
+   b. Back in the form, add a value attribute to these form fields and make them equal to the
       ``ViewBag`` properties. 
 
 Bonus Missions
 --------------
 
-#. Add an ``Id`` property to ``User``, along with accessor methods (with
-   appropriate access level). Create a ``UserData`` class within
-   ``Data`` that provides access to a list of users via
-   ``Add()``, ``GetAll()``, and ``GetById()``.
-
-   a. In the ``Index.cshtml`` view, display a list of
-      all users by username. Each username should have a link that takes
-      you to a detail page that lists the user’s username and email.
-
 #. Add a ``Date`` property in ``User``, and initialize it to the time the
-   user joined (i.e. when the ``User`` object was created). Display the
-   value of this property in the user detail view.
+   user joined (i.e. when the ``User`` object was created).

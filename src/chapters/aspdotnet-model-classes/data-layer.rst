@@ -77,14 +77,14 @@ The result in ``Models/Event.cs``:
       }
    }
 
-.. index:: ! get-only auto-implemented property
+.. index:: ! get-only auto-implemented property, readonly
 
 .. admonition:: Note
 
    Here's a closer look at what's going on in line 8.
 
-   ``Id`` is created as a **get-only auto-implemented property**.
-   The backing field, ``id`` is therefore readonly because no setter 
+   ``Id`` is created as a **get-only auto-implemented property**. You've seen this 
+   syntax a few times before. The backing field, ``id`` is readonly because no setter 
    method has been written for the field. The only place ``id``'s value 
    may be assigned is in a constructor (as it is on line 15).
 

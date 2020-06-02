@@ -8,3 +8,5 @@ Models and Model Binding
 
    model-intro
    model-class
+   data-layer
+   model-binding

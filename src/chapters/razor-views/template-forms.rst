@@ -19,7 +19,8 @@ To get started, follow the :ref:`steps <initialize-aspdotnet-project>` you took 
 CodingEvents Setup - Video
 --------------------------
 
-.. TODO: Add video
+.. youtube::
+   :video_id: 30uNDl80lIc
 
 .. admonition:: Note
 
@@ -38,7 +39,8 @@ CodingEvents Setup - Text
 Create and Render a Form - Video
 --------------------------------
 
-.. TODO: Add video
+.. youtube::
+   :video_id: rdEsTOYhM_E
 
 .. admonition:: Note
 
@@ -92,7 +94,8 @@ Now that you have created and rendered a form in your ``CodingEvents``
 project, you need to add a method to the controller to *handle* its submission.
 Code along with the video below to add this functionality.
 
-.. TODO: Add video
+.. youtube::
+   :video_id: ElaXOEpFQZQ
 
 As usual, the following summary outlines the ideas from the clip.
 

@@ -113,10 +113,8 @@ The video below provides you some live-coding practice with adding C# logic in R
 templates. Return to your ``HelloASPDotNET`` project and code along as you watch
 the clip.
 
-.. TODO: Add dynamic view video.
-.. topic covered: use ViewBag property to display data on template, @foreach, @if
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: 2Bysx_Fs-ZM
 
 .. admonition:: Note
 

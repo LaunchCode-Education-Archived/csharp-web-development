@@ -33,6 +33,9 @@ Check out the `views-starter <https://github.com/LaunchCodeEducation/HelloASPDot
 
 Open up your ``HelloASPDotNET`` project in Visual Studio and make sure you have committed any recent changes.
 Make a new branch and code along with the following video.
+In the videos in this chapter, we select the ``View Page`` type when creating a new view.
+In this system, these are the same!
+However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.
 
 .. admonition:: Warning
 
@@ -40,18 +43,14 @@ Make a new branch and code along with the following video.
    projects. Do NOT skip this practice, because the end of chapter exercises
    pick up where the tutorials end.
 
-.. TODO: Add static view video. 
-   .. topics covered: Demonstrate how templates are already being returned in homecontroller, 
-   creating simple form template, updating controller to return view template
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: mdrsb7yKGKs
 
 .. admonition:: Note
 
    The starter code for this video is found at the `views-starter branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter>`__
    of ``HelloASPDotNETDemo``. The final code presented in this 
    video is found on the `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__.
-
 
 .. index:: ! View() method
 

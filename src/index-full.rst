@@ -19,6 +19,7 @@ Chapters
    chapters/vstools/index
    chapters/razor-views/index
    chapters/aspdotnet-model-classes/index
+   chapters/orm-intro/index
 
 .. toctree::
 

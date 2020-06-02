@@ -9,7 +9,7 @@ model object is created by the ASP.NET framework on form submission. This saves 
 and the code, needed to pass in each form field to a controller. 
 
 Model binding reduces the amount of code we need to 
-write to create an object and it helps with validation (which we’ll explore further in the next
+write to create an object and helps with validation (which we’ll explore further in the next
 section). With a few modifications to our project, ASP.NET creates an ``Event`` object for us when 
 the *New Event* form is posted.
 

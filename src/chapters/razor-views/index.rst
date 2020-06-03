@@ -1,3 +1,5 @@
+.. _razor:
+
 Razor Views
 ===========
 
@@ -12,4 +14,5 @@ Razor Views
    template-forms
    layout-pages
    static-resources
-   
+   exercises
+   studio

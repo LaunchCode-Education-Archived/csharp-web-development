@@ -130,7 +130,7 @@ actually CODE.
 Check Your Understanding
 ------------------------
 
-Assume you have an list of integers called ``numbers``, and you display
+Assume you have a list of integers called ``numbers``, and you display
 the values in an unordered list.
 
 .. sourcecode:: html

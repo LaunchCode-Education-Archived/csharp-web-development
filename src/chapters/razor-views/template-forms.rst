@@ -52,7 +52,6 @@ Create and Render a Form - Text
 
 A Razor form can be made simply with a template that includes a ``<form>`` element.
 The method for the form should be of type ``post``. 
-If you need the form to post at a different route, you could also add an ``action`` attribute to the ``<form>`` tag.
 
 .. sourcecode:: html
    :linenos:
@@ -87,8 +86,8 @@ To *render* the form in the view, add a method to the controller with an ``[Http
 
    If the ``action`` attribute in the ``<form>`` tag leads to the same route as the form is being rendered at, you do not have to include an ``action`` attribute.
 
-Add a Form Handler Method - Video
----------------------------------
+Handle Form Submission - Video
+------------------------------
 
 Now that you have created and rendered a form in your ``CodingEvents``
 project, you need to add a method to the controller to *handle* its submission.
@@ -105,8 +104,8 @@ As usual, the following summary outlines the ideas from the clip.
    The final code presented in this video is found on the `handle-form-submission branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handle-form-submission>`__ of the ``CodingEventsDemo`` repository.
 
 
-Add a Form Handler Method - Text
---------------------------------
+Handle Form Submission - Text
+-----------------------------
 
 To *process* a form after the user clicks the *Submit* button, you need to add
 a method to the controller using the ``[HttpPost]`` annotation:
@@ -134,7 +133,7 @@ Some points to note:
    to use ``Redirect()`` to *redirect* the user to a different template.
 
 Now that we have a form and can handle the form submission, we want to create a link to the form to add an event in our ``Index`` template.
-This way, after reciewing the list of events, users can click on the link to the form and add an event.
+This way, after reviewing the list of events, users can click on the link to the form and add an event.
 To do this, we use anchor tag helpers. If we put in the following line in our template:
 
 .. sourcecode:: html

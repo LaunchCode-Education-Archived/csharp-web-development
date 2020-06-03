@@ -2,7 +2,7 @@ The Shared Directory
 ====================
 
 Earlier in the lesson, we touched upon the role of ``_Layout.cshtml``.
-When we set ``Layout`` to ``null``, the header and footer and Bootstrap disappear from our site and we are left with static HTML.
+When we set ``Layout`` to ``null``, the header, footer, and Bootstrap disappear from our site and we are left with static HTML.
 ``_Layout`` is in the ``Shared`` directory of the ``Views`` directory.
 Files inside this ``Shared`` directory are used sitewide and can accessed by the templates we create when we are working with our controllers.
 These files help us DRY our code.
@@ -29,16 +29,12 @@ Making a Partial View
 
 Let's assume that you want to add the same set of links to multiple pages within your web project.
 
-.. admonition:: Example
+.. sourcecode:: HTML
+   :linenos:
 
-   The set of links that we want to use:
-
-   .. sourcecode:: HTML
-      :linenos:
-
-      <a href = "https://www.launchcode.org">LaunchCode</a> <br/>
-      <a href = "https://www.lego.com">Play Well</a> <br/>
-      <a href = "https://www.webelements.com">Other Building Blocks</a>
+   <a href = "https://www.launchcode.org">LaunchCode</a> <br/>
+   <a href = "https://www.lego.com">Play Well</a> <br/>
+   <a href = "https://www.webelements.com">Other Building Blocks</a>
 
 Instead of pasting this code into every template, we will store the HTML in
 a separate file.
@@ -49,6 +45,7 @@ a separate file.
    .. admonition:: Tip
 
       If the partial view you are creating is only going to be used for the views for one controller, you can put the partial view in the controller's folder in the ``Views`` directory.
+
 #. Add the code to your file and save!
 
 We can now pull our partial view into any template in our project.
@@ -66,11 +63,11 @@ Now let's see how to pull a partial view into a template:
    .. sourcecode:: HTML
       :linenos:
 
-      <!-- template code --!>
+      <!-- template code -->
 
       <partial name="/Views/Shared/_LinkListPartial.cshtml" />
 
-      <!-- more template code --!>
+      <!-- more template code -->
 
 When the code runs, the ``name`` attribute in the ``<partial>`` tag helper gives the path to the partial view.
 In the example above, the partial view is named ``_LinkListPartial.cshtml`` and is in the ``Shared`` folder in the ``Views`` directory.

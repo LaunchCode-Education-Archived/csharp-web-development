@@ -33,11 +33,12 @@ Check out the `views-starter <https://github.com/LaunchCodeEducation/HelloASPDot
 
 Open up your ``HelloASPDotNET`` project in Visual Studio and make sure you have committed any recent changes.
 Make a new branch and code along with the following video.
-In the videos in this chapter, we select the ``View Page`` type when creating a new view.
-In this system, these are the same!
-However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.
 
 .. admonition:: Warning
+
+   In the videos in this chapter, we select the *View Page* type when creating a new view instead of *Razor View*.
+   In this system, these are the same!
+   However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.
 
    The videos in this chapter walk you through building small web-based
    projects. Do NOT skip this practice, because the end of chapter exercises

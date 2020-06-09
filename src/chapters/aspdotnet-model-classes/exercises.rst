@@ -34,15 +34,14 @@ The edit form will resemble the form used to create an event.
          :linenos:
 
          [HttpPost]
-         public IActionResult EditEvent(int eventId, string name, string desc) {
+         public IActionResult SubmitEditEventForm(int eventId, string name, string description) {
             // controller code will go here
          }
 
-#. Add the necessary annotations to these methods for them to both live
-   at the path ``/Events/Edit``.
+#. Add the necessary annotations to the ``SubmitEditEventForm()`` method for it to live at the path ``/Events/Edit``.
 
-   #. You’ll need to configure the route for ``Edit()`` to include the query parameter ``eventId``, 
-      so that paths like ``/Events/Edit?id=3`` will work.
+#. You’ll need to configure the route for ``Edit()`` to include the path variable ``eventId``, 
+   so that paths like ``/Events/Edit/3`` will work.
 
 #. Create an ``Edit.cshtml`` view in
    ``Views/Events``.
@@ -51,7 +50,7 @@ The edit form will resemble the form used to create an event.
 
    #. You'll want to update the text of the submit button and the heading to reflect the edit functionality.
 
-#. Back in the ``Edit()`` method, round out the controller method.
+#. Back in ``EventsController``, round out the ``Edit()`` method.
 
    #. Use an ``EventData`` method to find the event object with the given ``eventId``.
    
@@ -73,15 +72,20 @@ The edit form will resemble the form used to create an event.
 
       <input type="hidden" value="@ViewBag.eventToEdit.Id" name="eventId" />
 
-#. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads “Edit Event
-   NAME (id=ID)” where ``"NAME"`` and ``"ID"`` are replaced by the values for the
+   .. admonition:: Note
+
+      You may not have named your ``ViewBag`` property ``eventToEdit``.
+      Make sure you are using the name you gave your property!
+
+#. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads ``“Edit Event
+   NAME (id=ID)”`` where ``"NAME"`` and ``"ID"`` are replaced by the values for the
    given event. 
 
-#. In ``EditEvent()``, 
+#. In ``SubmitEditEventForm()``, 
 
    #. Query ``EventData`` for the event being edited with the given id parameter. 
    
-   #. Update the name and description of the event with the appropriate setter methods.
+   #. Update the name and description of the event.
 
    #. Redirect the user to ``/Events`` (the event listing page).
 
@@ -91,7 +95,19 @@ The edit form will resemble the form used to create an event.
       event as a column in the event table:
 
       .. sourcecode:: html
-         :linenos:
 
-        <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@evt.Id">Edit Event</a></td>
+         <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@evt.Id">Edit Event</a></td>
+
+      ``asp-route-id`` is a new tag helper for us.
+      Our routes normally go ``/<controller>/<action>``.
+      ``asp-route-id`` passes an ``{id?}`` parameter at the end of our route.
+      When the site is built, we can inspect it and see that for the first item in the table this line of HTML will look like:
+
+      .. sourcecode:: html
+
+         <td><a href="/Events/Edit/1">Edit Event</a></td>
+
+
+
+
 

@@ -22,9 +22,9 @@ Getting Ready
 Within ``SpaDay``, create the following files. 
 
 #. Create a ``UserController`` in ``Controllers``.
-#. Create a new folder, ``User``, within ``Views`` 
-#. Create ``Index.cshtml`` and ``Add.cshtml`` templates within ``Views/User/`` 
-#. Create a ``User`` class within ``Models``
+#. Create a new folder, ``User``, within ``Views``. 
+#. Create ``Index.cshtml`` and ``Add.cshtml`` templates within ``Views/User/``. 
+#. Create a ``User`` class within ``Models``.
 
 Creating the Model
 ------------------
@@ -86,7 +86,7 @@ Refining Form Submission
 
 #. Once registered, we want the user to access the form selecting their spa services. 
 
-   a. In ``Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
+   a. In ``User/Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
 
 #. If the form is re-rendered when a password is not verified, we should let the user know that their form
    was not properly submitted. Add an ``error`` property to ``ViewBag`` letting the user know 
@@ -106,4 +106,5 @@ Bonus Missions
 
 #. Add a ``Date`` property in ``User``, and initialize it to the time the
    user joined (i.e. when the ``User`` object was created).
-#. At the bottom of ``User/Index.cshtml``, add a ``div`` and inside that element, add account details such as the user's email and the date they joined.
+#. At the bottom of ``User/Index.cshtml``, add a ``div``.
+   Inside that element, add account details such as the user's email and the date they joined.

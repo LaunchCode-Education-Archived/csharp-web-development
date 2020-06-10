@@ -17,86 +17,36 @@ Enum Types in Models - Text
 Create an Enum Class
 ^^^^^^^^^^^^^^^^^^^^
 
-In your ``models`` package within ``coding-events``, create a new class called ``EventType``. 
+In your ``Models`` package within ``CodingEvents``, create a new class called ``EventType``. 
 Before you finish entering the name of your file, select the ``Enum`` option from the list of 
 types.
 
 .. TODO: maybe add figure?
 
-Because enum values are constants, we use :ref:`naming-conventions` and write them in all caps.
+Because enum values are constants, we use naming conventions and write them in all caps.
 Each value is demarcated with a comma and the list is completed with a semicolon.
 
 ``EventType``:
 
-.. sourcecode:: java
+.. sourcecode:: csharp
    :lineno-start: 6
 
-   public enum EventType {
-
+   public enum EventType
+   {
       CONFERENCE,
       MEETUP,
       WORKSHOP,
-      SOCIAL;
-
-   }
-
-Add an Enum Field
-^^^^^^^^^^^^^^^^^
-
-Enums can store additional information affiliated with each value in fields. Enum fields 
-are treated like fields on any other type. Again, because enum values are constants, fields 
-should be ``final`` variables, since they will not change. 
-
-To add a ``displayName`` field to ``EventType``, we declare the field, add a constructor, and 
-tack on a getter method:
-
-.. sourcecode:: java
-   :lineno-start: 13
-
-   private final String displayName;
-
-   EventType(String displayName) {
-      this.displayName = displayName;
-   }
-
-   public String getDisplayName() {
-      return displayName;
-   }
-
-
-To define the display name for each of the ``EventType`` values, we can call the constructor we 
-just wrote like this:
-
-.. sourcecode:: java
-   :lineno-start: 6
-
-   public enum EventType {
-
-      CONFERENCE("Conference"),
-      MEETUP("Meetup"),
-      WORKSHOP("Workshop"),
-      SOCIAL("Social");
-
-      private final String displayName;
-
-      EventType(String displayName) {
-         this.displayName = displayName;
-      }
-
-      public String getDisplayName() {
-         return displayName;
-      }
-
+      SOCIAL
    }
 
 Add an Enum Property to a Model Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Other objects can have enum type properties. To add an ``EventType`` property to our model ``Event``,
-we create a ``type`` field in ``Event`` amongst the other fields declared:
+we create a ``Type`` property in ``Event`` amongst the other fields declared:
 
-.. sourcecode:: java
-   :lineno-start: 25
+.. sourcecode:: csharp
+   :lineno-start: 14
 
    // other Event field declarations
 
@@ -107,7 +57,7 @@ we create a ``type`` field in ``Event`` amongst the other fields declared:
 We'll want to also add this field to the ``Event`` constructor, as well as a getter and setter 
 method:
 
-.. sourcecode:: java
+.. sourcecode:: csharp
    :lineno-start: 27
 
    private EventType type;

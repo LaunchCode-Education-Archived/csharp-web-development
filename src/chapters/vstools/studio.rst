@@ -1,30 +1,24 @@
 Studio: If It Ain't Broke, Add a Breakpoint!
 ============================================
 
-On your machine, open up your copy of ``HelloASPDotNET`` in Visual Studio.
+On your machine, open up your copy of ``csharp-web-dev-lsn7interfaces-studio`` in Visual Studio.
 The purpose of this studio is to talk about your current debugging strategies and how to make the most of the debugger tools discussed in this chapter.
 
-.. admonition:: Note
-
-   If your version of ``HelloASPDotNET`` is currently broken, no worries!
-   You can fork the `demo code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`_ and open it up in Visual Studio.
-
-Before we start practicing with debugging tools, go over with the group one error you encountered when working on your own version of ``HelloASPDotNET``.
-This could be an error where you mistyped the route in the ``[Route("path")]`` attribute or didn't configure the HTML form properly. 
+Before we start practicing with debugging tools, go over with the group one error you encountered when working on your own version of last lesson's studio.
+This could be an error where you mistyped the route in the name of a property or didn't add the proper keywords. 
 
 #. What was the error?
 #. How did you solve this error? What have been the strategies and tools you have been using so far to debug your code?
 #. Could one of the debugging tools help you when addressing this error?
-   For example, if you encountered an error when submitting the form, using a debugging tool to track the value of the ``name`` variable might have helped you diagnose the issue.
+   For example, if you encountered an error where the ``SpinDiscs()`` method did not output a number, using a debugging tool to track the value returned by the method.
 
-Review the code from ``HelloASPDotNET`` and use the debugging tools in Visual Studio to address potentional problems.
+Review the code from ``csharp-web-dev-lsn7interfaces-studio`` and use the debugging tools in Visual Studio to address potentional problems.
 To get started, try the following:
 
-#. Add ``name`` to the *Watch* pane to track the value of that variable.
+#. Add ``Name`` to the *Watch* pane to track the value of that property.
 #. Navigate to different routes in the application. Does what is going on in the *Watch* pane align with your expectations? Why or why not?
-#. Add a breakpoint to the line where you use ``name`` in ``Content()``. 
-#. Run your app in debugger mode and navigate to the appropriate route for using a query string. What is the last line in the *Call Stack* pane when the debugger stops?
-#. Try running your app and navigating the route to see your form. Enter a value and hit *Greet Me!*. What is the last line in the *Call Stack* pane when you do this?
+#. Add a breakpoint to the line where you use ``WriteData()``. 
+#. Run your app in debugger mode. What is the last line in the *Call Stack* pane when the debugger stops?
 
 After you look through the code and try out these tasks, take it one step further by answering these questions.
 

@@ -28,27 +28,30 @@ learn how to implement Razor templates.
 Hello Views
 -----------
 
-Open up your ``HelloASPDotNET`` project in Visual Studio and code along with the
-following video.
+Before you start coding, we refactored ``HelloController``. Now ``Index()`` is responding to ``GET`` requests at ``localhost:5001/hello`` and ``Welcome()`` is only responding to ``POST`` requests at ``localhost:5001/hello``.
+Check out the `views-starter <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter>`__ branch of the ``HelloASPDotNETDemo`` repo to see how we refactored our code.
+
+Open up your ``HelloASPDotNET`` project in Visual Studio and make sure you have committed any recent changes.
+Make a new branch and code along with the following video.
 
 .. admonition:: Warning
+
+   In the videos in this chapter, we select the *View Page* type when creating a new view instead of *Razor View*.
+   In this system, these are the same!
+   However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.
 
    The videos in this chapter walk you through building small web-based
    projects. Do NOT skip this practice, because the end of chapter exercises
    pick up where the tutorials end.
 
-.. TODO: Add static view video. 
-   .. topics covered: Demonstrate how templates are already being returned in homecontroller, 
-   creating simple form template, updating controller to return view template
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: mdrsb7yKGKs
 
 .. admonition:: Note
 
-   The starter code for this video is found at the `attribute-routing branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing>`__
+   The starter code for this video is found at the `views-starter branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter>`__
    of ``HelloASPDotNETDemo``. The final code presented in this 
    video is found on the `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__.
-
 
 .. index:: ! View() method
 
@@ -99,9 +102,6 @@ Avoid selecting *Add -> View* from your options.
 
 Add the HTML form from the ``Index()`` method to your new template. Once you are done 
 with that, update the ``Index()`` method to return ``View()``.
-
-.. TODO: do we want to fully address layout and styling things here or save for later?
-.. or briefly introduce this here and go into detail later?
 
 ``_Layout.cshtml``
 ~~~~~~~~~~~~~~~~~~

@@ -8,7 +8,7 @@ For this studio you will add functionality to allow users to sign up for your ``
 The starter code has been modified from where you left off last class. Grab the refactored code 
 on the `user-signup-starter branch <https://github.com/LaunchCodeEducation/SpaDay/tree/user-signup-starter>`__. 
 
-You'll notice in this branch that the name field has been removed from the service selection form. Once we
+You'll notice in this branch that the name has been removed from the service selection form. Once we
 implement user-signup functionality, we can use a given user's name to identify the spa client. We've also 
 moved data into a ``Client`` model and out of the ``SpaController`` class.
 
@@ -35,7 +35,7 @@ Rendering the Add User Form
 ---------------------------
 
 #. In the ``UserController``, create an action method ``Add()`` to
-   render the form. This handler should correspond to the path
+   render the form. This action method should correspond to the path
    ``/user/add``, and for now, it can just return the ``Add.cshtml`` view.
 
    .. admonition:: Tip
@@ -50,7 +50,7 @@ Rendering the Add User Form
    to ensure the passwords are not visible when being typed into the form.
    You can also set ``type="email"`` on the email input, which will enable
    some basic client-side validation. We'll tackle validation in more detail 
-   in the next studio. 
+   in the next lesson. 
 
 Processing Form Submission
 --------------------------
@@ -59,7 +59,7 @@ Processing Form Submission
 
    .. sourcecode:: csharp
 
-      public IActionResult AddUser(User newUser, string verify) {
+      public IActionResult SubmitAddUserForm(User newUser, string verify) {
          // add form submission handling code here
       }
 
@@ -75,13 +75,11 @@ Processing Form Submission
 
 #. Check that the ``verify`` parameter matches the
    password within the ``newUser`` object. If it does, render the
-   ``Index.cshtml`` view template with a message that welcomes the user by 
-   username. If the passwords don’t match, render the form again.
+   ``User/Index.cshtml`` view. If the passwords don’t match, render the form again.
 
-   a. To render the ``Index.cshtml`` view with the welcome message, you need to pass in the username as part of the route for ``Redirect()``.
-      You can do so using string concatenation: ``"/user?name=" + newUser.Username``. This will pass in the username as a query parameter.
-
-   b. Passing in the value to the ``Index.cshtml`` view also requires you to modify ``Index()``. You will need to add a parameter and use ``ViewBag``.
+   a. We also want to pass the new user's name to the ``User/Index.cshtml`` view so that we can display a nice welcome message.
+      When using ``View()``, in addition to passing the name of a view as a string, we can also pass an object that the view needs to use.
+      These objects could be a ViewBag property!
 
 Refining Form Submission
 ------------------------
@@ -108,3 +106,4 @@ Bonus Missions
 
 #. Add a ``Date`` property in ``User``, and initialize it to the time the
    user joined (i.e. when the ``User`` object was created).
+#. At the bottom of ``User/Index.cshtml``, add a ``div`` and inside that element, add account details such as the user's email and the date they joined.

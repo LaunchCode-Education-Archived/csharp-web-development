@@ -10,13 +10,8 @@ to reflect the changes in the controller.
 Create a Model Class - Video
 ----------------------------
 
-.. TODO: Add create model class video
-
-.. topics covered: Create Event class - including name property only
-.. Refactor post handler to create Event object + add to list of events
-.. Refactor events/index template to reference Event field for name
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: fs7m2Qo84d4
 
 .. admonition:: Note
 

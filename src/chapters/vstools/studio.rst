@@ -5,25 +5,26 @@ On your machine, open up your copy of ``csharp-web-dev-lsn7interfaces-studio`` i
 The purpose of this studio is to talk about your current debugging strategies and how to make the most of the debugger tools discussed in this chapter.
 
 Before we start practicing with debugging tools, go over with the group one error you encountered when working on your own version of last lesson's studio.
-This could be an error where you mistyped the route in the name of a property or didn't add the proper keywords. 
+This could be the result of a typo or a logical error. 
 
 #. What was the error?
 #. How did you solve this error? What have been the strategies and tools you have been using so far to debug your code?
 #. Could one of the debugging tools help you when addressing this error?
-   For example, if you encountered an error where the ``SpinDiscs()`` method did not output a number, using a debugging tool to track the value returned by the method.
+   For example, if you encountered an error where data was not being written onto a disc object, could you track the properties of the object with a debugging tool?
 
-Review the code from ``csharp-web-dev-lsn7interfaces-studio`` and use the debugging tools in Visual Studio to address potentional problems.
+Now, checkout the `debugging branch <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn7interfaces-studio/tree/debugging>`__ of
+the studio repo. Review the code and use the debugging tools in Visual Studio to practice assessing the program.
+
 To get started, try the following:
 
-#. Add ``Name`` to the *Watch* pane to track the value of that property.
-#. Navigate to different routes in the application. Does what is going on in the *Watch* pane align with your expectations? Why or why not?
-#. Add a breakpoint to the line where you use ``WriteData()``. 
-#. Run your app in debugger mode. What is the last line in the *Call Stack* pane when the debugger stops?
+#. Add ``cd.Name`` to the *Watch* pane to track the value of that property. Does it change?
+#. Add a few breakpoints inside of ``Program.cs`` and make note of where you expect the program to break its execution. 
+#. Add a breakpoint inside of some of the methods in ``BaseDisc.cs``. Anticipate what you expect to see as the last line in the 
+	*Call Stack* pane when the debugger stops.
 
 After you look through the code and try out these tasks, take it one step further by answering these questions.
 
-#. When would you use the *Call Stack* pane? If you run the app and it is already functioning, what shows up there? If you navigate to a route that is not configured in our application, does what is in the *Call Stack* pane change? How so?
-#. What additional breakpoints should you add? Where should you add these breakpoints? Go ahead and add more breakpoints!
+#. When would you use the *Call Stack* pane? If you run the app and it is already functioning, what shows up there? 
 #. Would a conditional breakpoint make sense to use in the context of this app? Try changing one of the breakpoints you have already added to a conditional breakpoint and run your app! 
 
 Once you have gone through the code, open up a piece of code you have been struggling with.

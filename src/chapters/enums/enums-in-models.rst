@@ -70,14 +70,6 @@ method:
       this.type = type;
    }
 
-   public EventType getType() {
-      return type;
-   }
-
-   public void setType(EventType type) {
-      this.type = type;
-   }
-
 .. _passing-enums-through-controller:
 
 Pass Enum Values Through the Controller

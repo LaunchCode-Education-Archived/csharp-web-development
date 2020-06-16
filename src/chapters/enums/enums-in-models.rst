@@ -8,8 +8,10 @@ Enum Types in Models - Video
 
 .. TODO: add video
 
-.. starting branch: display-error-messages
-.. ending branch: enums
+.. admonition:: Note
+
+   If you ever want to verify what code the video starts with, check out the `display-error-messages <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-error-messages>`__ branch in ``CodingEventsDemo``.
+   If you ever want to verify what code the video ends with, check out the `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`__ branch in ``CodingEventsDemo``.
 
 Enum Types in Models - Text
 ---------------------------
@@ -17,11 +19,8 @@ Enum Types in Models - Text
 Create an Enum Class
 ^^^^^^^^^^^^^^^^^^^^
 
-In your ``Models`` package within ``CodingEvents``, create a new class called ``EventType``. 
-Before you finish entering the name of your file, select the ``Enum`` option from the list of 
-types.
-
-.. TODO: maybe add figure?
+In your ``Models`` directory within ``CodingEvents``, create a new class called ``EventType``. 
+Replace the ``class`` keyword with ``enum`` and delete the default constructor.
 
 Because enum values are constants, we use naming conventions and write them in all caps.
 Each value is demarcated with a comma and the list is completed with a semicolon.
@@ -29,7 +28,7 @@ Each value is demarcated with a comma and the list is completed with a semicolon
 ``EventType``:
 
 .. sourcecode:: csharp
-   :lineno-start: 6
+   :lineno-start: 4
 
    public enum EventType
    {
@@ -43,148 +42,150 @@ Add an Enum Property to a Model Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Other objects can have enum type properties. To add an ``EventType`` property to our model ``Event``,
-we create a ``Type`` property in ``Event`` amongst the other fields declared:
+we create a ``Type`` property in ``Event`` amongst the other properties declared:
 
 .. sourcecode:: csharp
-   :lineno-start: 14
+   :lineno-start: 12
 
-   // other Event field declarations
+   // other Event property declarations
 
-   private EventType type;
+   public EventType Type { get; set; }
 
    // Event methods
 
-We'll want to also add this field to the ``Event`` constructor, as well as a getter and setter 
-method:
+Once we have added an ``EventType`` property to our model, we need to add an ``EventType`` property to our ViewModel.
+
+Add an Enum Property to a ViewModel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first thing we need to do is add an ``EventType`` property to ``AddEventViewModel``.
 
 .. sourcecode:: csharp
-   :lineno-start: 27
+   :lineno-start: 20
 
-   private EventType type;
+   // other AddEventViewModel property declarations
 
-   public Event(String name, String description, String contactEmail, EventType type) {
-      this();
-      this.name = name;
-      this.description = description;
-      this.contactEmail = contactEmail;
-      this.type = type;
+   public EventType Type { get; set; }
+
+Now that we have a property to hold the event type that the user selects, we need to create a list of all of the possible event types.
+We will use this list to populate the ``select`` element in a later step.
+
+.. sourcecode:: csharp
+   :lineno-start: 26
+
+   public List<SelectListItem> EventTypes { get; set; }
+
+   public AddEventViewModel()
+   {
+      EventTypes = new List<SelectListItem>();
+
+      EventTypes.Add(new SelectListItem
+      {
+            Value = EventType.CONFERENCE.ToString(),
+            Text = EventType.CONFERENCE.ToString()
+      });
+
+      EventTypes.Add(new SelectListItem
+      {
+            Value = EventType.MEETUP.ToString(),
+            Text = EventType.MEETUP.ToString()
+      });
+
+      EventTypes.Add(new SelectListItem
+      {
+            Value = EventType.SOCIAL.ToString(),
+            Text = EventType.SOCIAL.ToString()
+      });
+
+      EventTypes.Add(new SelectListItem
+      {
+            Value = EventType.WORKSHOP.ToString(),
+            Text = EventType.WORKSHOP.ToString()
+      });
    }
 
-.. _passing-enums-through-controller:
+In the ``AddEventViewModel()`` constructor, we add each of the constants to the ``EventTypes`` list.
+``SelectListItem`` is a built-in class that can represent each item in the list in our ``select`` element.
+Each item in a ``select`` element uses the ``<option>`` tag.
+By setting ``Value`` in ``SelectListItem``, we are passing a value for the ``value`` attribute in the ``<option>`` tag.
+By setting ``Text`` in ``SelectListItem``, we are passing a value for the displayed text in the ``<option>`` tag.
 
 Pass Enum Values Through the Controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``coding-events`` uses model binding to create an ``Event`` object. So like any other field on 
-the model, the controller does not necessarily need to know about the addition of ``Event.type`` 
-in order to create an ``Event`` instance from a form. However, we want the user to choose from 
-the pre-defined event type values when creating their event. To do this, we'll use the 
-controller method ``displayCreateEventForm`` to pass those values into the view.
+``CodingEvents`` uses model binding to create an ``AddEventViewModel`` object. So like any other field on 
+the model, the controller does not necessarily need to know about the addition of ``AddEventViewModel.Type`` in order to create an ``AddEventViewModel`` instance from a form.
+However, we need to make sure that we are properly setting the ``Type`` property of our ``Event`` object using the value from the ``Type`` property of our ``AddEventViewModel`` object.
 
 In ``EventController``:
 
-.. sourcecode:: java
-   :lineno-start: 26
+.. sourcecode:: csharp
+   :lineno-start: 37
 
-   @GetMapping("create")
-   public String displayCreateEventForm(Model model) {
-      model.addAttribute("title", "Create Event");
-      model.addAttribute(new Event());
-      model.addAttribute("types", EventType.values());
-      return "events/create";
-   }
+   Event newEvent = new Event
+   {
+      Name = addEventViewModel.Name,
+      Description = addEventViewModel.Description,
+      ContactEmail = addEventViewModel.ContactEmail,
+      Type = addEventViewModel.Type
+   };
 
-``.values()`` is a built-in static method that returns an array of values defined in 
-the given enum, in the order in which they have been declared.
-
-With the template variable ``types`` now defined, we can use our ``EventType`` values in the view.
-
-Use Enum Value in a ``Select`` Element
+Use Enum Value in a ``select`` Element
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The list of constants returned from ``EventType`` lends itself well to a ``select``-type form 
 input. We'll update our form so that a user will have the option to choose one of the provided 
 event types from a dropdown menu.
 
-In ``templates/events/create.html``:
+In ``Events/Add.cshtml``:
 
-.. sourcecode:: html
-   :lineno-start: 27
+.. sourcecode:: guess
+   :lineno-start: 20
 
    <div class="form-group">
-      <label> Type
-      <select th:field="${event.type}">
-         <option th:each="type : ${types}"
-                  th:value="${type}"
-                  th:text="${type.displayName}"
-         ></option>
-      </select>
-      </label>
+      <label asp-for="Type">Event Type</label>
+      <select asp-for="Type" asp-items="Model.EventTypes"></select>
    </div>
 
-As with the other form inputs on the page, the ``th:field`` attribute determines the ``name``
-and ``id`` attributes for the ``select`` tag. We make an ``option`` tag for each of the ``EventType``
-values, making use of the ``types`` variable we passed in from the controller in 
-:ref:`the previous step <passing-enums-through-controller>`. We set the ``value`` attribute for the 
-model data to be the ``EventType`` value using ``th:value``. And the type name shown to the user 
-of the form as the ``displayName`` of the type, using ``th:text``.
+As with the other form inputs on the page, the ``asp-for`` attribute determines the ``name``
+and ``id`` attributes for the ``select`` tag.
+We also use ``asp-items`` to access all of the items stored in the list of our different enum values.
 
 Use Enum Properties to Display Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once an event is created, to display its ``type`` field in the table of all events, we'll modify 
-``templates/events/index.html`` to include another column:
+Once an event is created, to display its ``Type`` property in the table of all events, we'll modify 
+``Events/Index.cshtml`` to include another column:
 
-::
+.. sourcecode:: html
+   :lineno-start: 20
 
-   <!-- other table headers -->
-   <th>Type</th>
-   <!-- other event data -->
-   <td th:text="${event.type.displayName}"</td>
-
-In this case, the type displayed is the value of the event object's ``type`` field, so the controller 
-method responsible for rendering this view does not need a ``types`` variable passed in. To show the 
-more user-friendly view of the type value, we use the ``.displayName`` field of ``EventType``.
-
-Check Your Understanding
-------------------------
-
-.. admonition:: Question
-
-   When we add a field to the ``EventType`` enum from ``coding-events``, what is the strongest 
-   reason why we don't we write a setter method for that field?
-
-   #. Enum classes cannot contain setter methods
-   #. Final variables cannot be reassigned
-   #. Enum fields cannot be reassigned
-   #. We don't use a setter method in the rest of the application
-
-.. ans: b, Final variables cannot be reassigned
-
-.. admonition:: Question
-
-   In ``coding-events``, say we change our template variable name in 
-   ``EventController.displayCreateEventForm`` so that ``EventType.values()`` is now assigned to 
-   a variable, ``categories``. Which of the template expressions in the following codeblock 
-   from ``create.html``, if any, should be changed to reflect this update? Select all that apply.
-
-   .. sourcecode:: html
-      :lineno-start: 27
-
-      <div class="form-group">
-         <label> Type
-         <select th:field="${event.type}">
-            <option th:each="type : ${types}"
-                     th:value="${type}"
-                     th:text="${type.displayName}"
-            ></option>
-         </select>
-         </label>
-      </div>
-
-   #. In line 29, ``${event.type}`` should be changed to ``${event.category}``
-   #. In line 30, ``type : ${types}`` should be changed to ``category : ${categories}``
-   #. In line 31, ``${type}`` should be changed to ``${category}``
-   #. In line 32, ``${type.displayName}`` should be changed to ``${category.displayName}``
-
-.. ans: b, c, and d, lines 30,31, and 32
+   <table class="table">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Contact Email
+            </th>
+            <th>
+                Event Type
+            </th>
+        </tr>
+        @foreach (var evt in Model)
+        {
+            <tr>
+                <td>@evt.Id</td>
+                <td>@evt.Name</td>
+                <td>@evt.Description</td>
+                <td>@evt.ContactEmail</td>
+                <td>@evt.Type</td>
+            </tr>
+        }
+   </table>

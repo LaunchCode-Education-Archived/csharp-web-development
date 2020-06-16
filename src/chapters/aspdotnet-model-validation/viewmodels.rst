@@ -1,3 +1,5 @@
+.. index:: ! ViewModel
+
 ViewModels and Passing Data To and From Views
 =============================================
 
@@ -15,48 +17,69 @@ Refactoring the View and Controller to Use a Model in a View - Video
 
 .. TODO: Add video covering an intro about how to use a model in a view
 
-.. starting branch: model-binding
-.. ending branch: models-in-views
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `model-binding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/model-binding>`__ branch.
+   If you want to verify what code this video ends with, check out the `models-in-views <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views>`__ branch.
 
 Refactoring the View and Controller to Use a Model in a View - Text
 -------------------------------------------------------------------
 
-To start with understanding why we may want to use a viewmodel, let's refactor our code to use a model directly in our view.
+To start with understanding why we may want to use a ViewModel, let's refactor our code to use a model directly in our view.
 
 First, we want to convert the collection of Events we have been holding into a list.
 
 .. sourcecode:: csharp
+   :lineno-start: 19
 
    List<Event> events = new List<Event>(EventData.GetAll());
 
-Pass the events object into the view!
-Now that we are storing our items in a List, we need to import the model into our view so we can use the new ``events`` collection.
-We can add a small statement up on line 1 to do so: ``@model List<CodingEventsDemo.Models.Event>``
-After refactoring the view so it uses the the appropriate list.
-Update the necessary points of data with ``Model`` syntax and run the application!
+Now that we are storing our items in a ``List``, we need to import the model into our ``Events/Index.cshtml`` view so we can use the new ``events`` collection.
+We can add a small statement up on line 1 to do so: 
 
-This was merely a refactor so the functionality of the app hasn't changed, but we have eliminated the possibility of bugs in our code being discovered at runtime!
+.. sourcecode:: csharp
+
+   @model List<CodingEventsDemo.Models.Event>
+
+Wherever we used our ``ViewBag`` property, we can now use ``Model`` syntax.
+Once the view has been updated, run the application!
+
+This was merely a refactor so the functionality of the app hasn't changed, but we have eliminated some of the possibility of bugs in our code being discovered at runtime!
 
 Adding a ViewModel - Video
 --------------------------
 
 .. TODO: Add video here!
 
-.. starting branch: models-in-views
-.. ending branch: adding-viewmodels
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `models-in-views <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views>`__ branch.
+   If you want to verify what code this video ends with, check out the `adding-viewmodels <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/adding-viewmodels>`__ branch.
 
 Adding a ViewModel - Text
 -------------------------
 
-* Add a ViewModels directory at the top level of the project
-* Name the new class ``AddEventViewModel``.
-* Add name and description properties
-* Add new instance of viewmodel to get action method called ``addEventViewModel`` and add it to ``View()``.
-* Pass in ViewModel to view, ``Add.cshtml``.
-* Add asp-controller and asp-action to form
-* Add asp-for to label and input tags
-* Refactor post method to use viewmodel. Set values to newEvent object.
-* Run!
+Now that we have refactored our ``Events/Index.cshtml`` view and ``EventsController`` to use a model, let's investigate how to create a ViewModel.
+We can do so by following these steps:
+
+#. Add a ``ViewModels`` directory at the top level of the project.
+#. Make a new class and name it ``AddEventViewModel``.
+#. Add ``Name`` and ``Description`` properties to the new class.
+
+   .. admonition:: Note
+
+      For now, your ViewModel does not need a constructor!
+
+#. In the ``Add()`` action method in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to ``View()``.
+#. Pass in ViewModel to the ``Add.cshtml`` view with the ``@model`` syntax.
+#. Add ``asp-controller = Events`` and ``asp-action = NewEvent`` to the ``<form>`` tag to designate which method the form data should be sent to.
+#. Add ``asp-for`` to ``<label>`` and ``<input>`` tags. This allows us to specify which form field corresponds to which property in our ViewModel.
+#. Refactor the ``NewEvent()`` action method to use our ViewModel. Set values of a new ``Event`` object using the values of the properties stored in the instance of the ``AddEventViewModel``.
+#. Add the new ``Event`` object to ``EventData`` and make sure that the method still returns a ``Redirect`` to ``/Events``.
+#. Run your application!
+
+Following these steps, we effectively refactored our application to use a ViewModel.
+While the functionality of the application remains the same, we are now in a position to easily add validation to our application.
 
 Check Your Understanding
 ------------------------
@@ -65,4 +88,4 @@ Check Your Understanding
 
    ViewModels are views designed to specifically be used in models.
 
-.. ans: False, ViewModels are models!
+.. ans: False, ViewModels are models designed to be used in views!

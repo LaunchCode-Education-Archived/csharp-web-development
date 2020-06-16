@@ -27,11 +27,12 @@ We'll use only a few of these attributes, but you can find a full list in the `d
      - Specifies the range of potential values of a numeric field.
      - ``[Range(0,100)]``
    * - ``[StringLength]``
-     - Specifies the maximum length of a string field.
+     - Specifies the maximum length of a string field. Has additional optional parameters to specify the minimum length of a string field.
      - ``[StringLength(100)]``
    * - ``[EmailAddress]``
      - Specifies that a string field should conform to email formatting standards.
      - ``[EmailAddress]``
+
 
 .. admonition:: Example
 
@@ -78,8 +79,10 @@ Applying Validation Attributes - Video
 
 .. TODO: Add video here on what attributes to add 
 
-.. starting branch: adding-viewmodels
-.. ending branch: validation-attributes
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `adding-viewmodels <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/adding-viewmodels>`__ branch.
+   If you want to verify what code this video ends with, check out the `validation-attributes <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes>`__ branch.
 
 Applying Validation Attributes - Text
 -------------------------------------
@@ -98,7 +101,7 @@ For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`
    [StringLength(500, ErrorMessage = "Description too long!")]
    public string Description { get; set; }
 
-The ``MaximumLength`` and ``MinimumLength`` parameters for ``[StringLength]`` specify the maximum and minimum number of allowed characters, respectively
+The required ``MaximumLength`` and optional ``MinimumLength`` parameters for ``[StringLength]`` specify the maximum and minimum number of allowed characters, respectively.
 Omitting either of these means that no min or max will be applied for the field.
 For our ``Description`` field, leaving off ``[Required]`` makes this field optional.
 
@@ -107,9 +110,8 @@ We will see how to display these in a view a bit later.
 
 Next, we add a new property to store a contact email for each event.
 This is a ``string`` named ``ContactEmail``.
-Validating email addresses by directly applying each of the rules that an email must satisfy is *extremely* difficult. Thankfully, there is an ``@Email`` validation annotation that we can apply to our new field.
-
-After adding this new field to our constructor, our class is done for the moment.
+Validating email addresses by directly applying each of the rules that an email must satisfy is *extremely* difficult.
+Thankfully, there is an ``[EmailAddress]`` validation attribute that we can apply to our new field.
 
 .. sourcecode:: csharp
    :lineno-start: 8
@@ -123,32 +125,41 @@ After adding this new field to our constructor, our class is done for the moment
 
       [EmailAddress(ErrorMessage = "Invalid email. Try again.")]
       public string ContactEmail { get; set; }
-   }
 
-Before we can start up our application, we need to add a new column to the ``Events/Index`` template to make ``ContactEmail`` visible. 
+Before we can start up our application, we need to add a new input to our form to take in the contact email for an event organizer.
+We also need to add a new column to the ``Events/Index.cshtml`` template to make ``ContactEmail`` visible. 
 
 .. sourcecode:: html
-   :lineno-start: 5
+   :lineno-start: 20
 
-   <form asp-controller="Events" asp-action="NewEvent" method="post">
-      <div class="form-group">
-         <label asp-for="Name">Name</label>
-         <input asp-for="Name" />
-      </div>
-      <div class="form-group">
-         <label asp-for="Description">Description</label>
-         <input asp-for="Description" />
-      </div>
-      <div>
-         <label asp-for="ContactEmail">Contact Email</label>
-         <input asp-for="ContactEmail" />
-      </div>
-      <input type="submit" value="Add Event" />
-   </form>
+   <table class="table">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Contact Email
+            </th>
+        </tr>
+        @foreach (var evt in Model)
+        {
+            <tr>
+                <td>@evt.Id</td>
+                <td>@evt.Name</td>
+                <td>@evt.Description</td>
+                <td>@evt.ContactEmail</td>
+            </tr>
+        }
+    </table>
 
-Now we can start up our application and test. Submitting an empty form at ``/Events/Add`` still results in an event being created, which may not be what you were expecting. 
-
-.. TODO: Add end result image?
+Now we can start up our application and test.
+Submitting an empty form at ``/Events/Add`` still results in an event being created, which may not be what you were expecting. 
    
 Rather than a bug, this is expected behavior.
 Recall that validation involves *both* the model and controller, but we have not modified the controller in any way.
@@ -170,4 +181,4 @@ Check Your Understanding
 
    **True or False:** Adding validation attributes to a model ensures that bad data is not saved.
 
-.. ans: False, server-side validation requires cooperation from annotations on the model, as well as controller logic
+.. ans: False, server-side validation requires cooperation from attributes on the model, as well as controller logic

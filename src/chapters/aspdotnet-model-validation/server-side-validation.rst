@@ -15,7 +15,7 @@ Validation ensures that the application only stores meaningful data.
    Consider a user registration form on a web site. Effective validation rules might require that:
 
    - The username is between 3 and 12 characters long, and 
-   - The password is at least 6 characters long.
+   - The password is between 6 and 20 characters long.
 
 .. index:: 
    single: validation, server-side

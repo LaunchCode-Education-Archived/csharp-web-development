@@ -62,8 +62,10 @@ Handling Validation Errors - Video
 
 .. TODO: Add video here
 
-.. starting branch: validation-attributes
-.. ending branch: handling-errors
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `validation-attributes <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes>`__ branch.
+   If you want to verify what code this video ends with, check out the `handling-errors <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handling-errors>`__ branch.
 
 Handling Validation Errors - Text
 ----------------------------------
@@ -81,19 +83,18 @@ The model's responsibility is simply to define validation rules.
 The controller must check that those rules are satisfied.
 
 ``ModelState.IsValid`` will check in the constraints on the model properties are met.
-If these constraints are met, we want to add the valid ``Event`` object to our list of events.
-If these constraints are not met and the object is not valid, we want to redirect to the form.  
+If these constraints are met, ``ModelState.IsValid`` equates to true and we want to add the valid ``Event`` object to our list of events.
+If these constraints are not met and the object is *not* valid, we want to redirect to the form.  
 
 Check Your Understanding
 ------------------------
 
 .. admonition:: Question
 
-   Which of the following statements are true?
+   Which of the following statements about ``ModelState.IsValid`` are true?
 
-   #. A method parameter may have only one annotation.
-   #. ``@Valid`` can only be used in conjunction with model binding.
-   #. Using ``@Valid`` means that a method will never be called with invalid data.
-   #. Spring Boot can infer validation requirements based on the name of a field. 
+   #. ``ModelState.IsValid`` can only be used in conjunction with model binding.
+   #. Using ``ModelState.IsValid`` means that a method will never be called with invalid data.
+   #. ASP.NET can infer validation requirements based on the name of a field. 
 
 .. ans: b, @Valid can only be used in conjunction with model binding.

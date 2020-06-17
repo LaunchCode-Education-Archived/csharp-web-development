@@ -74,19 +74,18 @@ Processing Form Submission
       lesson video, check out the Bonus Missions below.
 
 #. Check that the ``verify`` parameter matches the
-   password within the ``newUser`` object. If it does, render the
-   ``User/Index.cshtml`` view. If the passwords don’t match, render the form again.
-
-   a. We also want to pass the new user's name to the ``User/Index.cshtml`` view so that we can display a nice welcome message.
-      When using ``View()``, in addition to passing the name of a view as a string, we can also pass an object that the view needs to use.
-      These objects could be a ViewBag property!
+   password within the ``newUser`` object.
+   
+   a. If it does, store the user's name in a ``ViewBag`` property and render the ``User/Index.cshtml`` view by returning ``View("Index")``.
+   b. If the passwords don’t match, render the form again.
 
 Refining Form Submission
 ------------------------
 
-#. Once registered, we want the user to access the form selecting their spa services. 
+#. Once registered, we want the user to access the form selecting their spa services and see a personalized welcome message!
 
-   a. In ``User/Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
+   a. In ``User/Index.cshtml``, add an ``h1`` element with a welcome message. Use the ``ViewBag`` property containing the user's name to personalize the message!
+   b. Also in ``User/Index.cshtml``, add an ``a`` element to take the user back to the path, ``/spa``, where the ``Spa/Index.cshtml`` template will be rendered.
 
 #. If the form is re-rendered when a password is not verified, we should let the user know that their form
    was not properly submitted. Add an ``error`` property to ``ViewBag`` letting the user know 

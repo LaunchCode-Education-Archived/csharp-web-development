@@ -21,9 +21,22 @@ Event information to add:
 #. Add a property to collect information about whether an attendee must register for the event or not. For 
    the purposes of validation practice, make this property only able to be marked as true. 
 
-#. Add a property to collect information about the number of attendees for the event. Valid values for this 
-   property should be any number over zero.
+   .. admonition:: Hint
 
-#. Browse the validation attributes to find one to use on another new property of your choosing.
+      In order to do this, you need to add an additional property called ``IsTrue`` to ``AddEventViewModel`` with the following code:
+
+      .. sourcecode:: csharp
+
+         public bool IsTrue { get { return true; } }
+
+      With ``IsTrue`` in ``AddEventViewModel``, you can use a ``[Compare]`` attribute to compare the value of the ``IsTrue`` property which is always ``true`` and the value of the property you add for registration requirements.
+      The `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.compareattribute?view=netcore-3.1>`__ has more information on how the ``[Compare]`` attribute.
+
+
+
+#. Add a property to collect information about the number of attendees for the event. Valid values for this 
+   property should be any number between zero and 100,000.
+
+#. Add columns for the location and number of attendees to the ``Events/Index.cshtml`` view.
 
 

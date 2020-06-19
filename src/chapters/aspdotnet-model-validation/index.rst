@@ -1,5 +1,5 @@
-Model Validation
-================
+ViewModels and Model Validation
+===============================
 
 .. toctree:: 
    :maxdepth: 3
@@ -9,3 +9,4 @@ Model Validation
    validation-attributes
    validation-controller
    validation-views
+   exercises

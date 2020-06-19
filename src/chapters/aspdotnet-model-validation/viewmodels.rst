@@ -10,6 +10,10 @@ Our view can accept any type of input and if we mistype something in our view, w
 
 A **ViewModel** is a model class designed specifically to be used in a view.
 By utilizing ViewModels in our application, we can make our views strongly-typed and add validation to forms to prevent bad user input.
+Also, if we have information we want to collect as part of a form, but not save as part of a model, we can store that data as a property of a ViewModel.
+An example of this would be if we have a form for users to create an account on our site.
+The form includes two fields: one for the password and one for confirming the new user's password.
+While we only want to save the password and may only have a ``Password`` property in our model, we can add a ``ConfirmPassword`` property to the ViewModel so we can check that the two match before saving the user's info.
 These benefits of ViewModels will help reduce potential errors in our application.
 
 Refactoring the View and Controller to Use a Model in a View - Video
@@ -27,7 +31,7 @@ Refactoring the View and Controller to Use a Model in a View - Text
 
 To start with understanding why we may want to use a ViewModel, let's refactor our code to use a model directly in our view.
 
-First, we want to convert the collection of Events we have been holding into a list.
+First, in ``EventsController``, we want to convert the collection of Events we have been holding into a list.
 
 .. sourcecode:: csharp
    :lineno-start: 19
@@ -45,6 +49,10 @@ Wherever we used our ``ViewBag`` property, we can now use ``Model`` syntax.
 Once the view has been updated, run the application!
 
 This was merely a refactor so the functionality of the app hasn't changed, but we have eliminated some of the possibility of bugs in our code being discovered at runtime!
+Using a model in a view like this makes our view *strongly-typed*.
+Before if we misspelled a property of ``Event`` or ``ViewBag``, those errors would have been caught at run-time and possibly interfered with users' experience. 
+With a strongly-typed view, the same errors would be caught at compile-time before users see the application.
+Strongly-typed views also support intellisense, so as we work with properties of a model, we can make sure we have the correct property name.
 
 Adding a ViewModel - Video
 --------------------------
@@ -63,14 +71,14 @@ Now that we have refactored our ``Events/Index.cshtml`` view and ``EventsControl
 We can do so by following these steps:
 
 #. Add a ``ViewModels`` directory at the top level of the project.
-#. Make a new class and name it ``AddEventViewModel``.
+#. Add a new class to the ``ViewModels`` directory and name it ``AddEventViewModel``.
 #. Add ``Name`` and ``Description`` properties to the new class.
 
    .. admonition:: Note
 
       For now, your ViewModel does not need a constructor!
 
-#. In the ``Add()`` action method in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to ``View()``.
+#. In the ``Add()`` action method in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to the ``View()``.
 #. Pass in ViewModel to the ``Add.cshtml`` view with the ``@model`` syntax.
 #. Add ``asp-controller = Events`` and ``asp-action = NewEvent`` to the ``<form>`` tag to designate which method the form data should be sent to.
 #. Add ``asp-for`` to ``<label>`` and ``<input>`` tags. This allows us to specify which form field corresponds to which property in our ViewModel.

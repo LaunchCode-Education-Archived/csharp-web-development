@@ -1,7 +1,7 @@
 Validation Attributes
 =====================
 
-Within the model of a C# web application, we can define validation rules using attributes.
+Within the ViewModel or model of a C# web application, we can define validation rules using attributes.
 Validation attributes can be applied to model fields. 
 
 .. index::
@@ -36,7 +36,7 @@ We'll use only a few of these attributes, but you can find a full list in the `d
 
 .. admonition:: Example
 
-   To apply the validation rules of the :ref:`example on the previous page <validation-example>` to the fields of a ``User`` model class, we can use ``@Size`` and ``@NotBlank``.
+   To apply the validation rules of the :ref:`example on the previous page <validation-example>` to the fields of an ``AddUserViewModel`` class, we can use ``[StringLength]`` and ``[Required]``.
 
    .. sourcecode:: csharp
       :linenos:
@@ -105,7 +105,7 @@ The required ``MaximumLength`` and optional ``MinimumLength`` parameters for ``[
 Omitting either of these means that no min or max will be applied for the field.
 For our ``Description`` field, leaving off ``[Required]`` makes this field optional.
 
-Each of our attributes also receives a ``ErrorMessage`` parameter, which provides a user-friendly message to display to the user if the particular validation rule fails.
+Each of our attributes also receives an ``ErrorMessage`` parameter, which provides a user-friendly message to display to the user if the particular validation rule fails.
 We will see how to display these in a view a bit later. 
 
 Next, we add a new property to store a contact email for each event.
@@ -126,7 +126,16 @@ Thankfully, there is an ``[EmailAddress]`` validation attribute that we can appl
       [EmailAddress(ErrorMessage = "Invalid email. Try again.")]
       public string ContactEmail { get; set; }
 
-Before we can start up our application, we need to add a new input to our form to take in the contact email for an event organizer.
+Before we can start up our application, we need to add a new input to our form in ``Events/Add.cshtml`` to take in the contact email for an event organizer.
+
+.. sourcecode:: html
+   :lineno-start: 14
+
+   <div class="form-group">
+        <label asp-for="ContactEmail">Contact Email</label>
+        <input asp-for="ContactEmail" />
+   </div>
+
 We also need to add a new column to the ``Events/Index.cshtml`` template to make ``ContactEmail`` visible. 
 
 .. sourcecode:: html

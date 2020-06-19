@@ -41,18 +41,20 @@ This isn't great.
    This is because web servers typically set a limit on the maximum size of a ``POST`` request.
    However, our application code is willing to take requests of any size, at this point.
 
-Some modest validation rules for a new ``Event`` object might be:
+Now that we have created ``AddEventViewModel`` and added validation attributes, we want to refactor our controller to use the ViewModel and handle errors in form submission.
+Instead of using model binding to create a new ``Event`` object, we will use model binding to create a new ``AddEventViewModel`` object called ``addEventViewModel``.
+Our modest validation rules for a new ``AddEventViewModel`` object are as follows:
 
-- The ``name`` field must contain between 3 and 20 characters, and 
-- The ``description`` field may be empty, but may contain no more than 500 characters.
+- The ``Name`` property must contain between 3 and 50 characters, and 
+- The ``Description`` property may be empty, but may contain no more than 500 characters.
 
 With these rules in place, conceptually, the flow of our controller code should look more like the following:
 
 #. Server receives ``POST`` request
-#. Server creates ``newEvent`` object using request parameters
-#. ``NewEvent()`` is called with ``newEvent``
+#. Server creates ``addEventViewModel`` object using request parameters
+#. ``NewEvent()`` is called with ``addEventViewModel``
 #. **Controller checks for validation errors in the model object. If errors are found, return the user to the form. Otherwise, proceed.**
-#. ``newEvent`` is saved
+#. ``addEventViewModel`` is used to create a new ``Event`` object called ``newEvent``, which is saved.
 #. A redirect response is returned, redirecting the user to ``/Events``
 
 Let's look at how we can practically do this within ASP.NET Core MVC.
@@ -75,7 +77,7 @@ When using model binding, we can use tools to validate new model objects before 
 Using ``ModelState.IsValid``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within ``EventController``, the ``NewEvent()`` action method uses model binding to receive an ``Event`` object that is created using form data.
+Within ``EventController``, the ``NewEvent()`` action method uses model binding to receive an ``AddEventViewModel`` object that is created using form data.
 This object is NOT validated automatically, even if validation attributes are present on its fields.
 
 Recall that *both* the model and controller play a role in validation.
@@ -85,6 +87,36 @@ The controller must check that those rules are satisfied.
 ``ModelState.IsValid`` will check in the constraints on the model properties are met.
 If these constraints are met, ``ModelState.IsValid`` equates to true and we want to add the valid ``Event`` object to our list of events.
 If these constraints are not met and the object is *not* valid, we want to redirect to the form.  
+
+Once we are done refactoring the ``NewEvent()`` action method to use ``ModelState.IsValid``, our action method will look like the code below. 
+
+.. sourcecode:: csharp
+   :lineno-start: 31
+
+   [HttpPost]
+   [Route("Events/Add")]
+   public IActionResult NewEvent(AddEventViewModel addEventViewModel)
+   {
+      if (ModelState.IsValid)
+      {
+            Event newEvent = new Event
+            {
+               Name = addEventViewModel.Name,
+               Description = addEventViewModel.Description,
+               ContactEmail = addEventViewModel.ContactEmail
+            };
+
+            EventData.Add(newEvent);
+
+            return Redirect("/Events");
+      }
+
+      return View("Add", addEventViewModel);
+   }
+
+Now we have refactored our action method to handle any errors in form submission.
+However, if you submit a value that doesn't meet our conditions, you won't see any error messages indicating what was wrong with your submission.
+Let's tackle that next!
 
 Check Your Understanding
 ------------------------
@@ -97,4 +129,4 @@ Check Your Understanding
    #. Using ``ModelState.IsValid`` means that a method will never be called with invalid data.
    #. ASP.NET can infer validation requirements based on the name of a field. 
 
-.. ans: b, @Valid can only be used in conjunction with model binding.
+.. ans: b, ModelState.IsValid can only be used in conjunction with model binding.

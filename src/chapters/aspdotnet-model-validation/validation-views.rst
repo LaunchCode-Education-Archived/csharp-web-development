@@ -22,7 +22,7 @@ In the ``<span>`` tag, we can add ``asp-validation-for`` to specify which proper
 
 .. admonition:: Note
 
-   We don't have to anything else to display error messages, because that validation is already built in!
+   We don't have to add anything else to display error messages, because that validation is already built in!
 
 Now when we run our application and enter a bad event name or forget our description, we get the error message displaying what we should be entering!
 
@@ -31,6 +31,6 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   In order to implement validation, all three elements of MVC applications are involved.
+   True/False: In order to implement validation, all three elements of MVC applications are involved.
 
 .. ans: true!

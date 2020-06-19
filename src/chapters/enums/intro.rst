@@ -5,7 +5,7 @@ Introduction to Enums
 
 Many statically-typed programming languages provide a feature called
 **enumeration types**, or **enum types** for short. Enum types are special
-classes that should have only one of a set of fixed values, such as days of the
+classes that can have only one of a set of fixed values, such as days of the
 week.
 
 Imagine that we wanted to add a property to ``Event`` to specify which day of the
@@ -69,12 +69,12 @@ Using the ``enum`` keyword specifies that this class should be an enum type. In
 other words, it should only be able to take on one of a fixed set of values.
 Within the body of the class, we list the valid values (``SUNDAY``, ``MONDAY``,
 etc.). These values are in all-caps because they are *constants*. In fact, the
-class above is very similar to this static class:
+class above is very similar to this class:
 
 .. sourcecode:: csharp
    :linenos:
 
-   public class DayStatic
+   public class DayConst
    {
       public const int SUNDAY = 0;
       public const int MONDAY = 1;
@@ -85,7 +85,7 @@ class above is very similar to this static class:
       public const int SATURDAY = 6;
    }
 
-To refer to Thursday, you can use the value ``DayStatic.THURSDAY``. Recall our
+To refer to Thursday, you can use the value ``DayConst.THURSDAY``. Recall our
 ``switch`` :ref:`example from earlier <switch-statements>`.
 
 .. sourcecode:: csharp
@@ -126,7 +126,7 @@ To refer to Thursday, you can use the value ``DayStatic.THURSDAY``. Recall our
    }
    Console.WriteLine(day);
 
-This code can be refactored using ``DayStatic``:
+This code can be refactored using ``DayConst``:
 
 .. sourcecode:: csharp
    :linenos:
@@ -138,25 +138,25 @@ This code can be refactored using ``DayStatic``:
    string day;
    switch (dayNum)
    {
-      case DayStatic.SUNDAY:
+      case DayConst.SUNDAY:
          day = "Sunday";
          break;
-      case DayStatic.MONDAY:
+      case DayConst.MONDAY:
          day = "Monday";
          break;
-      case DayStatic.TUESDAY:
+      case DayConst.TUESDAY:
          day = "Tuesday";
          break;
-      case DayStatic.WEDNESDAY:
+      case DayConst.WEDNESDAY:
          day = "Wednesday";
          break;
-      case DayStatic.THURSDAY:
+      case DayConst.THURSDAY:
          day = "Thursday";
          break;
-      case DayStatic.FRIDAY:
+      case DayConst.FRIDAY:
          day = "Friday";
          break;
-      case DayStatic.SATURDAY:
+      case DayConst.SATURDAY:
          day = "Saturday";
          break;
       default:
@@ -175,15 +175,15 @@ Let's revisit our ``Day`` enum type:
 .. sourcecode:: csharp
    :linenos:
 
-   public class DayStatic
+   enum Day
    {
-      public const int SUNDAY = 0;
-      public const int MONDAY = 1;
-      public const int TUESDAY = 2;
-      public const int WEDNESDAY = 3;
-      public const int THURSDAY = 4;
-      public const int FRIDAY = 5;
-      public const int SATURDAY = 6;
+      SUNDAY,
+      MONDAY,
+      TUESDAY,
+      WEDNESDAY,
+      THURSDAY,
+      FRIDAY,
+      SATURDAY
    }
 
 We can declare a variable of type ``Day`` and it will only be allowed to take

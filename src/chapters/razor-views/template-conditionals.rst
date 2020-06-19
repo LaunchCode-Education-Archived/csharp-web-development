@@ -113,12 +113,8 @@ The video below provides you some live-coding practice with adding C# logic in R
 templates. Return to your ``HelloASPDotNET`` project and code along as you watch
 the clip.
 
-.. TODO: Add dynamic view video.
-.. topic covered: use ViewBag property to display data on template, @foreach, @if
-
-YOUTUBE VIDEO HERE
-
-.. TODO: Create views-dynamic branch.
+.. youtube::
+   :video_id: 2Bysx_Fs-ZM
 
 .. admonition:: Note
 
@@ -134,7 +130,7 @@ actually CODE.
 Check Your Understanding
 ------------------------
 
-Assume you have an list of integers called ``numbers``, and you display
+Assume you have a list of integers called ``numbers``, and you display
 the values in an unordered list.
 
 .. sourcecode:: html

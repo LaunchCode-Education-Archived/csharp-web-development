@@ -78,17 +78,14 @@ Getting Started
 
 Set up a local copy of the project:
 
-#. Visit the `repository page <https://github.com/LaunchCodeEducation/java-web-dev-techjobs-mvc>`__
+#. Visit the `repository page <https://github.com/LaunchCodeEducation/TechJobsMVC>`__
    for this project. Fork the repository to create a copy under your own GitHub
    account.
-#. Back in IntelliJ, close any open projects (after saving and committing your
-   work).
-#. From the welcome screen, click *Get From Version Control* and then select
-   the *Git* option.
-#. In the next panel, enter the URL for your fork, and then select the parent
-   directory where you want to store your project. Hit *Clone*.
-#. Launch the application (via the Gradle pane, *Tasks > Application >
-   bootRun*), so you can refer to both the code as well as the running app
+#. Open the project in Visual Studio.
+
+.. flagging this as a spot where opening a project in windows developed on mac might need extra instructions
+
+#. Launch the application so you can refer to both the code as well as the running app
    as you complete the assignment.
 
 1) Review the Code
@@ -101,33 +98,28 @@ Set up a local copy of the project:
    practicing exactly that. Make sure you carefully examine the provided code
    BEFORE you start changing things.
 
-   Trying to "fix" a code sample before understanding how it works leads to
+   Trying to change a code sample before understanding how it works leads to
    confusion, frustration, and a broken program. DO NOT SKIP the code review!
 
-Carly created a ASP.NET application and filled in some features. She
-refactored ``JobData`` to generate an ArrayList of ``Job`` objects based on
-your TechJobs-OO work, and she added controllers and views for a "Home",
-"List", and "Search" page. ``JobData`` now also builds ArrayLists for the
+Carly created an ASP.NET MVC application and filled in some features. She
+refactored ``JobData`` to generate a list of ``Job`` objects based on
+your TechJobsOO work. She added controllers and views for *Home*,
+*List*, and *Search* pages. ``JobData`` now also builds lists for the
 ``Employer``, ``Location``, ``PositionType``, and ``CoreCompetency`` objects.
 
 The Model
 ^^^^^^^^^
 
-.. admonition:: Note
+The ``Models`` directory contains an abstract class definition for ``JobField``. The ``Employer``, 
+``Location``, ``PositionType``, and ``CoreCompetency`` classes all inherit from ``JobField``. 
+model classes for all of the job fields and for the ``Job`` class itself.  
 
-   When referring to Java class locations, we’ll usually omit the leading
-   path: ``src/main/java/org/launchcode/``.
+The Data
+^^^^^^^^
 
-The "model" is contained in the ``JobData`` class, which is in the ``models``
-package. We put "model" in quotes, since this class isn’t a model in the
-typical, MVC/object-oriented sense (maybe a better name for this assignment
-would be *TechJobs VC*).
-
-The ``JobData`` class serves the same purpose as before---it reads data from
+The ``JobData`` class in the ``Data`` directory serves the same purpose as before---it reads data from
 the ``job_data.csv`` file and stores it in a format we can use. In this case,
-that format is an ArrayList of ``Job`` objects. Note that Carly changed the
-path to the ``job_data.csv`` file to store it in the ``src/main/resources``
-directory.
+that format is a list of ``Job`` objects. 
 
 You’ll use some of the static methods provided by ``JobData`` in your
 controller code. Since you’re already familiar with these, we’ll leave it to
@@ -136,152 +128,137 @@ you to review their functionality as you go.
 The Controllers
 ^^^^^^^^^^^^^^^
 
-Expand the ``controllers`` package, and you’ll see that you have three
-controllers already in place. Let’s look at these one at a time.
+You’ll see that you have three controllers already in place in your ``Controllers`` directory. 
+Let’s look at these one at a time.
 
 The ``HomeController``
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
-This class has only one handler method, ``index``, which displays the home page
-for the app. The controller renders the ``index.html`` template (in
-``src/main/resources/templates``) and provides a fairly simple view.
+This class has only one action method, ``Index``. The action method displays the home page
+for the app. The controller renders the ``Index.cshtml`` template (in
+``Views/Home/``) and provides a fairly simple view.
 
 .. figure:: figures/techJobsMvcHome.png
-   :alt: TechJobs MVC home screen.
+   :alt: TechJobs MVC home page with menu options for search and list views.
+
+   TechJobs MVC home page with menu options for search and list views.
 
 The ``ListController``
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 This controller provides functionality for users to see either a table showing
-all the options for the different ``Job`` fields (``employer``, ``location``,
-``coreCompetency``, and ``positionType``) or a list of details for a selected
+all the options for the different ``Job`` fields (``Employer``, ``Location``,
+``CoreCompetency``, and ``PositionType``) or a list of details for a selected
 set of jobs.
 
 If you look at the corresponding page at ``/list``, you’ll see an "All" column
 in the table. However, this option doesn’t work yet, and you will fully
 implement that view as you work on the assignment.
 
-At the top of ``ListController`` is a constructor that populates
-``columnChoices`` and ``tableChoices`` with values. These HashMaps play the
-same role as in the console app, which is to provide a centralized collection
+At the top of ``ListController`` are two collections, ``ColumnChoices`` and ``TableChoices``. 
+These dictionaries play the same role as in the console app, which is to provide a centralized collection
 of the different *List* and *Search* options presented throughout the user
 interface.
 
-``ListController`` also has ``list`` and ``listJobsByColumnAndValue`` handler
-methods, with routes as annotated above their definitions. The first method
+``ListController`` also has two action methods. The first method, ``Index``,
 renders a view that displays a table of clickable links for the different job
-categories. The second method renders a different view that displays
+categories. The second method, ``Jobs``, renders a different view that displays
 information for the jobs that relate to a selected category. Both of the
-handlers obtain data by implementing the ``JobData`` class methods.
+action methods obtain data by implementing the ``JobData`` class methods.
 
-In the ``listJobsByColumnAndValue`` method, the controller uses two query
+In the ``Jobs`` method, the controller uses two query
 parameters passed in as ``column`` and ``value`` to determine what to fetch
-from ``JobData``. In the case of ``"all"`` it will fetch all job data,
-otherwise, it will retrieve a smaller set of information. The controller then
-renders the ``list-jobs.html`` view. We’ll explore the ``list.html`` and
-``list-jobs.html`` templates in a moment.
+from ``JobData``. In the case of ``"all"``, it will fetch all job data.
+If the ``column`` parameter is any other value, the method will retrieve a smaller set of information. 
+The controller then renders the ``List/Jobs`` view. We’ll explore the ``List`` and
+``List/Jobs`` templates in a moment.
 
-``listJobsByColumnAndValue`` works similarly to the search functionality, in
-that we are "searching" for a particular value within a particular field and
+The ``Jobs`` action method works similarly to the search functionality, in
+that we are searching for a particular value within a particular field and
 then displaying jobs that match. However, this is slightly different from the
-other way of searching in that the user will arrive at this handler method as a
-result of clicking on a link within the ``list`` view, rather than via
+other way of searching. This action method is called as a
+result of clicking on a link within the ``List`` view, rather than via
 submitting a form. We’ll see where these links originate when we look at the
-views. Also note that the ``listJobsByColumnAndValue`` method deals with an
-"all" scenario differently than if a user clicks one of the category links.
+views. 
 
 The ``SearchController``
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Currently, the search controller contains only a single method, ``search``.
-It simply renders the form defined in the ``search.html`` template.
+Currently, the search controller contains only a single action method, ``Index``.
+It simply renders the form defined in the ``Views/Search/Index.cshtml`` template.
 
 Later in this assignment, you will receive instructions for adding a second
-handler to deal with user input and display the search results.
+action method to deal with user input and display the search results.
 
 The Views
 ^^^^^^^^^
 
 Let’s turn our attention to the views.
 
-The ``fragments`` File
-~~~~~~~~~~~~~~~~~~~~~~~
+Bootstrap Classes
+~~~~~~~~~~~~~~~~~
 
-If the application is not running, launch it and navigate to the site’s home
-page in your browser. Also open up the
-``src/main/resources/templates/index.html`` file in IntelliJ. You’ll notice
-that there is a fair amount of content visible on the page that isn’t contained
-in ``index.html``. This is because we’re using two fragments from
-``fragments.html`` (``head`` and ``page-header``). These allow for some basic
-page structure and navigation to be shared across all of our views.
-
-Have a look at the structure of ``fragments.html``, but you will NOT need to do
-any work within this file for this assignment.
-
-.. admonition:: Tip
-
-   We use `Twitter’s Bootstrap <http://getbootstrap.com/>`__ CSS, HTML, and
-   JS framework to provide some styling and functionality to our views. The
-   appropriate files are included at the top of ``fragments.html`` and thus
-   are included on every page of our app.
-
-   You won’t have to explicitly use Bootstrap at all in this assignment,
-   but it’s a great way to make your sites look good with minimal work.
-   Consider using it in your own projects!
+The application uses a few Bootstrap classes to style the view content and
+job tables. You won’t have to explicitly add any Bootstrap classes to your views in this assignment,
+but it’s a great way to make your sites look good with minimal work.
 
 The List Views
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
-Turn your attention to ``list.html``. This page displays a table of links
-broken down into several categories. Data from ``columnChoices`` is used to
-fill in the header row, and information stored in ``tableChoices`` generates
+Turn your attention to ``List/Index.cshtml``. This page displays a table of links
+broken down into several categories. Data from ``ListController.ColumnChoices`` is used to
+fill in the header row, and information stored in ``ListController.TableChoices`` generates
 the link text.
 
 The most interesting part of this template is how we generate the links:
 
 .. sourcecode:: html
-   :lineno-start: 21
+   :lineno-start: 17
 
-   <td th:each="category : ${tableChoices}">
-      <ul>
-         <li th:each="item : ${category.value}">
-            <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
-         </li>
-      </ul>
-   </td>
+   @foreach (var category in ViewBag.tableChoices)
+   {
+      <td>
+         <ul>
+            @foreach (var item in category.Value)
+            {
+               <li>
+                  <a asp-controller="List" asp-action="Jobs" asp-route-column="@category.Key" asp-route-value="@item">@item</a>
+               </li>
+            }
+         </ul>
+      </td>
+   }
 
-#. ``tableChoices`` is a HashMap from ``JobData``, and it contains the names of
+#. ``ViewBag.tableChoices`` is the ``TableChoices`` dictionary from ``ListController``. It contains the names of
    the ``Job`` fields as keys (``employer``, etc.). The value for each key is
-   an ArrayList of ``Employer``, ``Location``, ``CoreCompetency``, or
+   a list of ``Employer``, ``Location``, ``CoreCompetency``, or
    ``PositionType`` objects.
-#. In line 21, ``category`` represents one key/value pair from
-   ``tableChoices``, and in line 23, ``item`` represents one entry from the
-   stored ArrayList.
-#. We’ve seen the syntax ``@{/list/jobs}`` to generate a link within a Thymleaf
-   template, but we haven’t seen the other portion of the link:
-   ``(column=${category.key},value=${position})``. This syntax causes Razor
-   to dynamically generate query parameters for our URL.
+#. In line 17, ``category`` represents one key/value pair from
+   ``TableChoices``, and in line 21, ``item`` represents one entry from the
+   stored list.
+#. We’ve seen the ASP.NET action tag helpers ``asp-controller`` and ``asp-action`` before. Here, we have a couple new helper tags,
+   ``asp-route-column`` and ``asp-route-value``. This syntax, ``asp-route-*`` allows Razor
+   to dynamically generate query parameters for our URL. So whatever string takes the place of the last portion of the tag, in our case, 
+   ``-column`` and ``-value`` become the names of the query parameters the ``ListController.Jobs`` action method uses.
 
-In line 24, we set these parameters by using ``column=`` and ``value=``. The
-values of these parameters are determined dynamically based on
-``${category.key}`` and ``${item}``. Since these values come from
-``tableChoices``, the *keys* will be ``employer``, ``location``, etc. The
-*values* will be the individual elements from the related ArrayList. When the
-user clicks on these links, they will be routed to the
-``listJobsByColumnAndValue`` handler in ``ListController``, which looks for
-these parameters.
+   .. admonition:: Tip
+
+      Try clicking on a few of these links to help grasp the new syntax. Clicking on one of these ``<a>`` elements 
+      routes the app to a page at a URL that looks like this: 
+      
+      https://localhost:5001/List/Jobs?column=employer&value=Buzzbold.
 
 Clicking on one of the links will display a list of jobs that relate to the
-choice, via the ``listJobsByColumnAndValue`` handler method. However, that
-view, ``list-jobs.html`` isn’t working yet. While the handler method is fully
+choice, via the ``Jobs`` action method. However, that
+view, ``List/Jobs.cshtml`` isn’t working yet. While the action method is fully
 implemented, the view template needs some work.
 
 For now, click one of the the *Location* links. This sends a request as we
 outlined above, but doing so only displays a page with a title and no job list.
 
-The page you see at ``/list/values?column=location&value=...`` is generated by
-the ``list-jobs.html`` template. It has a similar structure as ``list.html``,
-but the table consists of only one column.
+The page you see at ``/List/Jobs?column=location&value=...`` is generated by
+the ``List/Jobs`` template. It will have a similar structure to ``List/Index``,
+but with a table that consists of only one column.
 
 .. admonition:: Note
 
@@ -296,10 +273,10 @@ but the table consists of only one column.
    actually be hidden in your browser’s address bar.
 
 The Search View
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Finally, click on *Search* from the home page, or the navigation bar, and open
-up ``search.html`` in IntelliJ. You’ll see a search form (in both the browser
+up ``Views/Search/Index.cshtml`` in Visual Studio. You’ll see a search form (in both the browser
 and template file) that gives the user the option of searching by a given
 ``Job`` field, or across all fields. This is an exact visual analog of our
 console application.
@@ -314,30 +291,34 @@ Wrap Up the Code Review
 Once you understand the controllers and views that are already in place, you’re
 ready to begin your work.
 
-In IntelliJ, select *View > Tool Windows > TODO* to pop open a small pane at
-the bottom of the window. This list is populated by any code comments that
-start with ``TODO``. You’ll see your tasks listed, and clicking on any one will
+Pop open a small pane in your editor to 
+view your ``TODOs`` for this assignment. 
+
+**Windows Users**: In Visual Studio, select *View > Task List*.
+**Mac Users**: In Visual Studio, select *View > Pads > Tasks*.
+
+You’ll see your tasks listed, and clicking on any one will
 open the relevant file.
 
 .. figure:: figures/techJobsTodos.png
-   :alt: TechJobs MVC TODO list.
+   :alt: TechJobs MVC TODO list in Visual Studio Task Pad.
 
-As you work on your tasks, refer to the
-`demo app <https://java-web-dev-techjobs-mvc.cfapps.io/>`__.
+   TechJobs MVC TODO list in Visual Studio Task Pad.
+
 
 2) Complete the List Views
----------------------------
+--------------------------
 
-Open the ``list-jobs.html`` template. Currently, the page just establishes the
+Open the ``Views/List/Jobs.cshtml`` template. Currently, the page just establishes the
 navigation bar and page title. You need to add code that will present relevant
 job information.
 
 Display List of Jobs
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 This page needs to show full job listings---ID, employer, location, etc.
 
-#. In ``list-jobs.html``, create a loop to display each job passed in from the
+#. In ``Views/List/Jobs.cshtml``, create a loop to display each job passed in from the
    controller. The job data should be presented in a *table*. Be sure to check
    in ``ListController`` to find the variable names available to the template.
 #. Adding the CSS class ``"job-listing"`` to a table provides some nice
@@ -347,8 +328,10 @@ This page needs to show full job listings---ID, employer, location, etc.
    one job field per row.
 
    .. figure:: figures/list-jobsTableOptions.png
-      :alt: Image of the different table options.
+      :alt: Image of the two table options.
       :scale: 70%
+
+      Image of the two table options.
 
 #. Be sure to test your code by running the program and clicking links from
    different categories on the ``/list`` page.
@@ -366,15 +349,17 @@ the links for the different ``Job`` fields. However, the link for the ``All``
 column is missing.
 
 .. figure:: figures/listTableOptions.png
-   :alt: Image of the ``/list`` table.
+   :alt: Image of the ``/list`` table showing hyperlinks in each column but "All".
+
+   Image of the ``/list`` table showing hyperlinks in each column but "All".
 
 You can fix this several different ways, but two options are presented below.
 Note that you only need to implement ONE option, not both.
 
-#. Modify ``tableChoices`` in ``ListController`` to include another key/value
+#. Modify ``TableChoices`` in ``ListController`` to include another key/value
    pair. Check the method that renders the template to help identify the name
    to use for the key.
-#. Modify ``list.html`` to fill in the empty table cell with the necessary
+#. Modify ``Views/List/Index.cshtml`` to fill in the empty table cell with the necessary
    link. Check ``ListController`` to help identify the data to pass in for the
    query parameters.
 
@@ -382,50 +367,45 @@ Be sure to test your code by clicking your new *View All* link in the table.
 There are 98 jobs in the data file.
 
 3) Complete the Search Functionality
--------------------------------------
+------------------------------------
 
-Add a ``displaySearchResults`` handler method to ``SearchController``:
+Add an action method named ``Results`` to ``SearchController``:
 
-#. Use the correct annotation for the method. To configure the correct mapping
-   type and mapping route, refer to the ``form`` tag in the ``search.html``
-   template.
-#. The ``displaySearchResults`` method should take in a ``Model`` parameter.
-#. The method should also take in two other parameters, specifying the type of
+#. To configure the correct mapping for this method to be called when the 
+   ``Search/Index`` form is submitted, do not name this method anything other than ``Results``.
+#. The ``Results`` method should take in two parameters, specifying the type of
    search and the search term.
-#. In order for these last two parameters to be properly passed in by Spring
-   Boot, you need to use the correct annotation. Also, you need to name them
-   appropriately, based on the corresponding form field names defined in
-   ``search.html``.
-#. If the user enters "all" in the search box, or if they leave the box empty,
-   call the ``findAll()`` method from ``JobData``. Otherwise, send the search
-   information to ``findByColumnAndValue``. In either case, store
-   the results in a ``jobs`` ArrayList.
-#. Pass ``jobs`` into the ``search.html`` view via the ``model`` parameter.
-#. Pass ``ListController.columnChoices`` into the view, as the existing
+#. In order for these parameters to be properly passed in by ASP.NET, 
+   you need to name them appropriately, based on the corresponding form field names defined in
+   ``Search/Index``.
+#. If the user leaves the search box empty,
+   call the ``FindAll()`` method from ``JobData``. Otherwise, send the search
+   information to ``FindByColumnAndValue``. In either case, store
+   the results in a ``jobs`` list.
+#. Pass ``jobs`` into the ``Search/Index`` view via ``ViewBag``.
+#. Pass ``ListController.ColumnChoices`` into the view, as the existing
    ``search`` handler does.
 
 Display Search Results
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Once you have your ``displaySearchResults`` handler passing information to the
+Once you have your ``Results`` action method passing information to the
 view, you need to display the data.
 
-#. In ``search.html``, create a loop to display each job passed in from the
+#. In ``Search/Index``, create a loop to display each job passed in from the
    controller.
 #. Put the job results into a table, similar to what you did for the
-   ``list-jobs`` view.
+   ``List/Jobs`` view.
 
 .. admonition:: Tip
 
-   You can *reuse* the code you just wrote in ``list-jobs.html`` by defining a
-   new *fragment* in that file. Then you need to include that fragment in
-   ``search.html``.
+   You can *reuse* the code you just wrote in ``List/Jobs.cshtml`` by copying
+   and pasting.
 
-   For the fragment to work properly in both files, the variables passed in by
-   ``model.addAttribute()`` must use the same names.
+   For the fragment to work properly in both files, the ``ViewBag`` properties must use the same name.
 
 Sanity Check
--------------
+------------
 
 Before submitting, make sure that your application:
 
@@ -439,9 +419,6 @@ Before submitting, make sure that your application:
 #. Allows a user at ``/search`` to search for jobs matching a specific search
    term, both within a specific category and across all categories.
 #. Displays search results below the form at ``/search/results``.
-
-Feel free to compare your project's behavior to that of the
-`demo app <https://java-web-dev-techjobs-mvc.cfapps.io/>`__.
 
 How to Submit
 --------------
@@ -457,52 +434,10 @@ Here are some additional challenges, for those willing to take them on:
 #. When we select a given field to search within and then submit, our choice is
    forgotten and returns to "All" by default. Modify the view template to keep
    the previous search field selected when displaying the results.
-#. In the tables displaying the full job data, find a way to manipulate the
-   font, style, capitalization, etc. to further distinguish the labels from the
-   data (e.g. **Employer:** *LaunchCode*). (*Hint:* We capitalize the title
-   string in multiple templates, so have a look around).
 #. In the tables of the job results, make each value (except ``name``)
    hyperlinked to a new listing of all jobs with that same value. For example,
    if we have a list of jobs with the ``JavaScript`` skill, clicking on a
    location value like ``Saint Louis`` will generate a new list with all the
    jobs available in that city.
 
-Super Bonus Mission
-^^^^^^^^^^^^^^^^^^^^
 
-This is a big one! Prepare for a challenge!
-
-Notice that we went to the trouble of passing in the ``actionChoices``
-HashMap to the view in the ``HomeController.index`` method. This puts the
-responsibility of which actions should be presented on the controller, and not
-the view. However, we didn’t go to such lengths for the navigation links
-displayed on every page of the site.
-
-In order to make the navigation links similarly detached, we’d need to pass
-``actionChoices`` in to *every* view, since the nav links are generated in
-``fragments.html``. We’d have to do something like the line below in every
-handler method, which would be a pain, not to mention error-prone and difficult
-to update.
-
-.. sourcecode:: java
-
-   model.addAttribute("actions", actionChoices);
-
-Let’s fix this.
-
-#. Make a new controller, ``TechJobsController``. This new controller should
-   have a static HashMap, ``actionChoices``. The HashMap should be populated
-   via a no-argument constructor, just like ``columnChoices`` is
-   populated in ``ListController``. You do NOT need to add the ``@Controller``
-   annotation to this class.
-#. Write a static method ``getActionChoices`` in ``TechJobsController`` that
-   returns the ``actions`` HashMap.
-#. Add the annotation ``@ModelAttribute("actions")`` to this method. This
-   annotation will cause the return value of the method to be set in the model
-   with key ``"actions"`` for every controller that extends
-   ``TechJobsController``.
-#. Modify every one of your other controllers to extend ``TechJobsController``.
-#. Modify ``fragments.html`` to use the passed-in action choices to generate
-   the navigation links.
-#. Finally, update your code so that ``columnChoices`` also lives in
-   ``TechJobsController``.

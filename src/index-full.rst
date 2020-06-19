@@ -21,6 +21,7 @@ Chapters
    chapters/aspdotnet-model-classes/index
    chapters/aspdotnet-model-validation/index
    chapters/enums/index
+   chapters/sql-part1/index
 
 .. toctree::
 
@@ -43,6 +44,7 @@ Studios
    chapters/aspdotnet-controllers-and-routes/studio
    chapters/vstools/studio
    chapters/razor-views/studio
+   chapters/sql-part1/studio
 
 Assignments
 ===========
@@ -61,3 +63,5 @@ Appendices
 .. toctree::
    :maxdepth: 1
    :name: appendicestoc
+
+   appendices/sql-install

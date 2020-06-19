@@ -23,6 +23,7 @@ Chapters
    chapters/aspdotnet-model-validation/index
    chapters/enums/index
    chapters/sql-part1/index
+   chapters/sql-part2/index
 
 .. toctree::
 
@@ -46,6 +47,7 @@ Studios
    chapters/vstools/studio
    chapters/razor-views/studio
    chapters/sql-part1/studio
+   chapters/sql-part2/studio
 
 Assignments
 ===========

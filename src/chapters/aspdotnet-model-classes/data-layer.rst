@@ -14,10 +14,8 @@ to encapsulate data storage and prepare ourselves for decoupling the ``Event`` m
 Add a Unique Id - Video
 -----------------------
 
-.. TODO: Add create uid in model class video
-.. topics covered: create id field on event class
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: thyNHEyNluQ
 
 .. admonition:: Note
 
@@ -93,10 +91,8 @@ With these additions, every time a new event object is created it is assigned a 
 Create a Data Layer - Video
 ---------------------------
 
-.. TODO: Add create data layer video
-.. topics covered: create data directory for events
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: w4Y5ULttveI
 
 .. admonition:: Note
 
@@ -178,10 +174,8 @@ And back to ``NewEvent``, we'll make use of the ``.add()`` method from ``EventDa
 Delete an Event - Video
 -----------------------
 
-.. TODO: Add delete events video
-.. topics covered: create delete event capabilities
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: dYwDTJBJIsg
 
 .. admonition:: Note
 

@@ -45,6 +45,7 @@ Studios
    chapters/aspdotnet-controllers-and-routes/studio
    chapters/vstools/studio
    chapters/razor-views/studio
+   chapters/aspdotnet-model-classes/studio
    chapters/sql-part1/studio
    chapters/sql-part2/studio
 

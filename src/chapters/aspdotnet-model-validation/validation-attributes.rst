@@ -182,7 +182,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   **True or False:** When using ``[StringLength]`` you must provide both minimum and maximum arguments.
+   **True or False:** When using ``[StringLength]`` you must provide both minimum and maximum length arguments.
 
 .. ans: False, only maximum length is required.
 

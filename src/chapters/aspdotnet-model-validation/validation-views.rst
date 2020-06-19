@@ -31,6 +31,6 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True/False: In order to implement validation, all three elements of MVC applications are involved.
+   **True or False** In order to implement validation, all three elements of MVC applications are involved.
 
 .. ans: true!

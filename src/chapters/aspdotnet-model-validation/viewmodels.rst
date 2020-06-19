@@ -94,6 +94,6 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   ViewModels are views designed to specifically be used in models.
+   **True or False** ViewModels are views designed to specifically be used in models.
 
 .. ans: False, ViewModels are models designed to be used in views!

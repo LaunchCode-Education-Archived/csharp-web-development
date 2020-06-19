@@ -129,4 +129,4 @@ Check Your Understanding
    #. Using ``ModelState.IsValid`` means that a method will never be called with invalid data.
    #. ASP.NET can infer validation requirements based on the name of a field. 
 
-.. ans: b, ModelState.IsValid can only be used in conjunction with model binding.
+.. ans: a, ModelState.IsValid can only be used in conjunction with model binding.

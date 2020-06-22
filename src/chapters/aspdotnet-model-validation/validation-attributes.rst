@@ -14,7 +14,7 @@ Common Attributes
 
 We'll use only a few of these attributes, but you can find a full list in the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-3.1#built-in-attributes>`_.
 
-.. list-table:: Common Validation Annotations
+.. list-table:: Common Validation Attributes
    :header-rows: 1
 
    * - Annotation
@@ -90,23 +90,24 @@ Applying Validation Attributes - Text
 
 To configure validation on the model-side, we begin by adding validation attributes to each field to which we want to apply constraints.
 
-For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`` to the ``Name`` property, and just ``[StringLength]`` to the ``Description`` property.
+For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`` to the ``Name`` and Description properties. 
 
 .. sourcecode:: csharp
    :lineno-start: 8
 
    [Required(ErrorMessage = "Name is required.")]
-   [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
+   [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters.")]
    public string Name { get; set; }
 
-   [StringLength(500, ErrorMessage = "Description too long!")]
+   [Required(ErrorMessage = "Please enter a description for your event.")]
+   [StringLength(500, ErrorMessage = "Description is too long!")]
    public string Description { get; set; }
 
 The required ``MaximumLength`` and optional ``MinimumLength`` parameters for ``[StringLength]`` specify the maximum and minimum number of allowed characters, respectively.
-Omitting either of these means that no min or max will be applied for the field.
-For our ``Description`` field, leaving off ``[Required]`` makes this field optional.
+Omitting the minimum length requirement means that no min or max will be applied for the field.
+Not adding a ``[Required]`` attribute onto a property would make the field optional to the form submission.
 
-Each of our attributes also receives an ``ErrorMessage`` parameter, which provides a user-friendly message to display to the user if the particular validation rule fails.
+Each of our attributes also receives an ``ErrorMessage`` parameter. This parameter provides a user-friendly message to display to the user if the particular validation rule fails.
 We will see how to display these in a view a bit later. 
 
 Next, we add a new property to store a contact email for each event.
@@ -115,17 +116,10 @@ Validating email addresses by directly applying each of the rules that an email 
 Thankfully, there is an ``[EmailAddress]`` validation attribute that we can apply to our new field.
 
 .. sourcecode:: csharp
-   :lineno-start: 8
+   :lineno-start: 16
 
-      [Required(ErrorMessage = "Name is required.")]
-      [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
-      public string Name { get; set; }
-
-      [StringLength(500, ErrorMessage = "Description too long!")]
-      public string Description { get; set; }
-
-      [EmailAddress(ErrorMessage = "Invalid email. Try again.")]
-      public string ContactEmail { get; set; }
+   [EmailAddress]
+   public string ContactEmail { get; set; }
 
 Before we can start up our application, we need to add a new input to our form in ``Events/Add.cshtml`` to take in the contact email for an event organizer.
 
@@ -172,7 +166,7 @@ Now we can start up our application and test.
 Submitting an empty form at ``/Events/Add`` still results in an event being created, which may not be what you were expecting. 
    
 Rather than a bug, this is expected behavior.
-Recall that validation involves *both* the model and controller, but we have not modified the controller in any way.
+Validation involves *both* the model and controller, but we have not modified the controller in any way.
 Validation attributes simply define the validation rules that *should* be used to check data.
 The responsibility of checking the data before saving a new event lies with the controller.
 

@@ -46,6 +46,15 @@ We can add a small statement up on line 1 to do so:
 
    @model List<CodingEventsDemo.Models.Event>
 
+Or, as we write in the video:
+
+.. sourcecode:: csharp
+   :linenos:
+
+   @using CodingEventsDemo.Models
+
+   @model List<Event>
+
 Wherever we used our ``ViewBag`` property, we can now use ``Model`` syntax.
 Once the view has been updated, run the application!
 
@@ -80,13 +89,13 @@ We can do so by following these steps:
 
       For now, your ViewModel does not need a constructor!
 
-#. In the ``Add()`` action method in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to the ``View()``.
-#. Pass in ViewModel to the ``Add.cshtml`` view with the ``@model`` syntax.
+#. In the ``Add()`` action method responsible for retrieving the from to add events, in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to the ``View()``.
+#. Import the ViewModel to the ``Add.cshtml`` view with the ``@model`` syntax.
 #. Add ``asp-controller = Events`` and ``asp-action = NewEvent`` to the ``<form>`` tag to designate which method the form data should be sent to.
 #. Add ``asp-for`` to ``<label>`` and ``<input>`` tags. This allows us to specify which form field corresponds to which property in our ViewModel.
-#. Refactor the ``NewEvent()`` action method to use our ViewModel. Set values of a new ``Event`` object using the values of the properties stored in the instance of the ``AddEventViewModel``.
+#. Refactor the ``NewEvent()`` action method to be named ``Add()``. Have it also now use the ViewModel as its parameter. Set values of a new ``Event`` object using the values of the properties stored in the instance of the ``AddEventViewModel``.
 #. Add the new ``Event`` object to ``EventData`` and make sure that the method still returns a ``Redirect`` to ``/Events``.
-#. Run your application!
+#. Run your application.
 
 Following these steps, we effectively refactored our application to use a ViewModel.
 While the functionality of the application remains the same, we are now in a position to easily add validation to our application.

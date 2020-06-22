@@ -6,7 +6,8 @@ While our application is properly handing errors, we need to display the error m
 Displaying Error Messages in our View - Video
 ---------------------------------------------
 
-.. TODO: Add video here
+.. youtube::
+   :video_id: 3twcm6Smpkg
 
 .. admonition:: Note
 
@@ -25,6 +26,11 @@ In the ``<span>`` tag, we can add ``asp-validation-for`` to specify which proper
    We don't have to add anything else to display error messages, because that validation is already built in!
 
 Now when we run our application and enter a bad event name or forget our description, we get the error message displaying what we should be entering!
+
+.. admonition:: Warning
+
+   In the video, we note that the ``<span>`` element will only be materialized if the validation fails. This isn't true. The ``<span>`` element
+	to contain the error message is always created, it just doesn't contain any text if the validation rule it met.
 
 Check Your Understanding
 ------------------------

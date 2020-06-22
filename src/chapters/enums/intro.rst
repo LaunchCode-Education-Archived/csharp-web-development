@@ -56,36 +56,37 @@ like this:
 
    enum Day
    {
-      SUNDAY,
-      MONDAY,
-      TUESDAY,
-      WEDNESDAY,
-      THURSDAY,
-      FRIDAY,
-      SATURDAY
+      Sunday,
+      Monday,
+      Tuesday,
+      Wednesday,
+      Thursday,
+      Friday,
+      Saturday
    }
 
 Using the ``enum`` keyword specifies that this class should be an enum type. In
 other words, it should only be able to take on one of a fixed set of values.
-Within the body of the class, we list the valid values (``SUNDAY``, ``MONDAY``,
-etc.). These values are in all-caps because they are *constants*. In fact, the
-class above is very similar to this class:
+Within the body of the class, we list the valid names (``Sunday``, ``Monday``,
+etc.). Unless otherwise specified, each name refers to a value.By default, the values of
+an enum type will be integers beginning with ``0``. In fact, the
+enum above is very similar to this class:
 
 .. sourcecode:: csharp
    :linenos:
 
    public class DayConst
    {
-      public const int SUNDAY = 0;
-      public const int MONDAY = 1;
-      public const int TUESDAY = 2;
-      public const int WEDNESDAY = 3;
-      public const int THURSDAY = 4;
-      public const int FRIDAY = 5;
-      public const int SATURDAY = 6;
+      public const int Sunday = 0;
+      public const int Monday = 1;
+      public const int Tuesday = 2;
+      public const int Wednesday = 3;
+      public const int Thursday = 4;
+      public const int Friday = 5;
+      public const int Saturday = 6;
    }
 
-To refer to Thursday, you can use the value ``DayConst.THURSDAY``. Recall our
+To refer to Thursday, you can use the value ``DayConst.Thursday``. Recall our
 ``switch`` :ref:`example from earlier <switch-statements>`.
 
 .. sourcecode:: csharp
@@ -138,25 +139,25 @@ This code can be refactored using ``DayConst``:
    string day;
    switch (dayNum)
    {
-      case DayConst.SUNDAY:
+      case DayConst.Sunday:
          day = "Sunday";
          break;
-      case DayConst.MONDAY:
+      case DayConst.Monday:
          day = "Monday";
          break;
-      case DayConst.TUESDAY:
+      case DayConst.Tuesday:
          day = "Tuesday";
          break;
-      case DayConst.WEDNESDAY:
+      case DayConst.Wednesday:
          day = "Wednesday";
          break;
-      case DayConst.THURSDAY:
+      case DayConst.Thursday:
          day = "Thursday";
          break;
-      case DayConst.FRIDAY:
+      case DayConst.Friday:
          day = "Friday";
          break;
-      case DayConst.SATURDAY:
+      case DayConst.Saturday:
          day = "Saturday";
          break;
       default:
@@ -177,13 +178,13 @@ Let's revisit our ``Day`` enum type:
 
    enum Day
    {
-      SUNDAY,
-      MONDAY,
-      TUESDAY,
-      WEDNESDAY,
-      THURSDAY,
-      FRIDAY,
-      SATURDAY
+      Sunday,
+      Monday,
+      Tuesday,
+      Wednesday,
+      Thursday,
+      Friday,
+      Saturday
    }
 
 We can declare a variable of type ``Day`` and it will only be allowed to take
@@ -193,10 +194,10 @@ on one of the 7 defined values.
    :linenos:
 
    // This works
-   Day workWeekStart = Day.MONDAY;
+   Day workWeekStart = Day.Monday;
 
    // This does not, throwing a compiler error
-   Day workWeekEnd = "Friday";
+   Day workWeekEnd = "TGIF";
 
 Enums are important because they provide *type safety* in situations where we
 want to restrict possible values. In other words, they eliminate the
@@ -217,18 +218,18 @@ few from both the real world and the world of programming.
 
       enum Month
       {
-         JANUARY,
-         FEBRUARY,
-         MARCH,
-         APRIL,
-         MAY,
-         JUNE,
-         JULY,
-         AUGUST,
-         SEPTEMBER,
-         OCTOBER,
-         NOVEMBER,
-         DECEMBER
+         January,
+         February,
+         March,
+         April,
+         May,
+         June,
+         July,
+         August,
+         September,
+         October,
+         November,
+         December
       }
 
 .. admonition:: Example
@@ -240,10 +241,10 @@ few from both the real world and the world of programming.
 
       enum EventCategory
       {
-         CONFERENCE,
-         MEETUP,
-         WORKSHOP,
-         SOCIAL
+         Conference,
+         Meetup,
+         Workshop,
+         Social
       }
 
 .. index:: ! log level
@@ -261,10 +262,10 @@ few from both the real world and the world of programming.
 
       enum LogLevel
       {
-         DEBUG,
-         INFO,
-         WARNING,
-         ERROR
+         Debug,
+         Info,
+         Warning,
+         Error
       }
 
    An application can change the way it logs messages by changing the log level.

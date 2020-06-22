@@ -16,10 +16,8 @@ the *New Event* form is posted.
 How to Use Model-Binding - Video
 --------------------------------
 
-.. TODO: Add model binding video
-.. topics covered: pass event object into newevent action method
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: vvfPmxLeinU
 
 .. admonition:: Note
 

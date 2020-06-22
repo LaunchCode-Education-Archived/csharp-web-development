@@ -14,5 +14,6 @@ Razor Views
    template-forms
    layout-pages
    static-resources
+   bootstrap
    exercises
    studio

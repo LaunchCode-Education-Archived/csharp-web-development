@@ -106,12 +106,8 @@ Back in ``Events/Index.cshtml``, update the HTML to use the ``Event`` object’s
 Add a Model Property - Video
 ----------------------------
 
-.. TODO: Add adding model property video
-
-.. topics covered: add description property to event model, update index view and post handler 
-.. to display the property and use it to create the object
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: ajHm5DQFaYU
 
 .. admonition:: Note
 

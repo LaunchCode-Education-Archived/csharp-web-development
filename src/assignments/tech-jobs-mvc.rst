@@ -331,7 +331,7 @@ This page needs to show full job listings---ID, employer, location, etc.
       :alt: Image of the two table options.
       :scale: 70%
 
-      Image of the two table options.
+      The two table options.
 
 #. Be sure to test your code by running the program and clicking links from
    different categories on the ``/list`` page.
@@ -351,7 +351,7 @@ column is missing.
 .. figure:: figures/listTableOptions.png
    :alt: Image of the ``/list`` table showing hyperlinks in each column but "All".
 
-   Image of the ``/list`` table showing hyperlinks in each column but "All".
+   The ``/list`` table showing hyperlinks in each column but "All".
 
 You can fix this several different ways, but two options are presented below.
 Note that you only need to implement ONE option, not both.

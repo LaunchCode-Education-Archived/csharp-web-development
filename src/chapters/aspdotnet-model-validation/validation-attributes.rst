@@ -90,7 +90,7 @@ Applying Validation Attributes - Text
 
 To configure validation on the model-side, we begin by adding validation attributes to each field to which we want to apply constraints.
 
-For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`` to the ``Name`` and Description properties. 
+For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`` to the ``Name`` and ``Description`` properties. 
 
 .. sourcecode:: csharp
    :lineno-start: 8
@@ -121,14 +121,15 @@ Thankfully, there is an ``[EmailAddress]`` validation attribute that we can appl
    [EmailAddress]
    public string ContactEmail { get; set; }
 
-Before we can start up our application, we need to add a new input to our form in ``Events/Add.cshtml`` to take in the contact email for an event organizer.
+Before we can start up our application, we need to add a new input to our form in ``Events/Add.cshtml`` to take in the contact email for 
+an event organizer. While we don't demonstrate these items in the video above, we cover them on the next page before tackling validation in the controller.
 
 .. sourcecode:: html
    :lineno-start: 14
 
    <div class="form-group">
-        <label asp-for="ContactEmail">Contact Email</label>
-        <input asp-for="ContactEmail" />
+      <label asp-for="ContactEmail">Contact Email</label>
+      <input asp-for="ContactEmail" />
    </div>
 
 We also need to add a new column to the ``Events/Index.cshtml`` template to make ``ContactEmail`` visible. 
@@ -137,29 +138,29 @@ We also need to add a new column to the ``Events/Index.cshtml`` template to make
    :lineno-start: 20
 
    <table class="table">
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Contact Email
-            </th>
-        </tr>
-        @foreach (var evt in Model)
-        {
-            <tr>
-                <td>@evt.Id</td>
-                <td>@evt.Name</td>
-                <td>@evt.Description</td>
-                <td>@evt.ContactEmail</td>
-            </tr>
-        }
+		<tr>
+			<th>
+				Id
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Contact Email
+			</th>
+		</tr>
+		@foreach (var evt in Model)
+		{
+			<tr>
+				<td>@evt.Id</td>
+				<td>@evt.Name</td>
+				<td>@evt.Description</td>
+				<td>@evt.ContactEmail</td>
+			</tr>
+		}
     </table>
 
 Now we can start up our application and test.

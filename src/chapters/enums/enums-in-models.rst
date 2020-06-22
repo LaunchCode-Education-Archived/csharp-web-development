@@ -81,7 +81,7 @@ We will use this list to populate the ``select`` element in a later step.
       new SelectListItem(EventType.Workshop.ToString(), ((int)EventType.Workshop).ToString())
    };
 
-Becauce the ``EventType`` options are not changing, we can populate this property with a default value,
+Because the ``EventType`` options are not changing, we can populate this property with a default value.
 We add each of the constants to the ``EventTypes`` list. ``SelectListItem`` is an ASP.NET-provided class that represents each ``<option>`` 
 element in a ``<select>`` element. The ``SelectListItem`` constructor requires a ``Text`` and ``Value`` property assignment.
 The ``Text`` property sets the displayed text in the ``<option>`` tag. This is created by getting each ``EventType`` and casting it to a ``string`` type.

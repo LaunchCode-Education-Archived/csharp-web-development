@@ -89,7 +89,7 @@ We can do so by following these steps:
 
       For now, your ViewModel does not need a constructor!
 
-#. In the ``Add()`` action method responsible for retrieving the from to add events, in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to the ``View()``.
+#. In the ``Add()`` action method responsible for retrieving the form to add events, in ``EventsController``, create a new instance of ``AddEventViewModel`` called ``addEventViewModel`` and add it to the ``View()``.
 #. Import the ViewModel to the ``Add.cshtml`` view with the ``@model`` syntax.
 #. Add ``asp-controller = Events`` and ``asp-action = NewEvent`` to the ``<form>`` tag to designate which method the form data should be sent to.
 #. Add ``asp-for`` to ``<label>`` and ``<input>`` tags. This allows us to specify which form field corresponds to which property in our ViewModel.

@@ -6,7 +6,8 @@ While our application is properly handing errors, we need to display the error m
 Displaying Error Messages in our View - Video
 ---------------------------------------------
 
-.. TODO: Add video here
+.. youtube::
+   :video_id: 3twcm6Smpkg
 
 .. admonition:: Note
 

@@ -62,7 +62,8 @@ Let's look at how we can practically do this within ASP.NET Core MVC.
 Handling Validation Errors - Video
 ----------------------------------
 
-.. TODO: Add video here
+.. youtube::
+   :video_id: n1KMXzDzvuU
 
 .. admonition:: Note
 

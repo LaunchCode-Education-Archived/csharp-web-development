@@ -6,7 +6,8 @@ One application of enum types is to represent categories of objects. We will tak
 Enum Types in Models - Video
 ----------------------------
 
-.. TODO: add video
+.. youtube::
+   :video_id: Lmt_P3XYYvk
 
 .. admonition:: Note
 

@@ -19,7 +19,8 @@ These benefits of ViewModels will help reduce potential errors in our applicatio
 Refactoring the View and Controller to Use a Model in a View - Video
 --------------------------------------------------------------------
 
-.. TODO: Add video covering an intro about how to use a model in a view
+.. youtube::
+   :video_id: _lUUT1oDE-U
 
 .. admonition:: Note
 
@@ -57,7 +58,8 @@ Strongly-typed views also support intellisense, so as we work with properties of
 Adding a ViewModel - Video
 --------------------------
 
-.. TODO: Add video here!
+.. youtube::
+   :video_id: XAPP0VTiwk8
 
 .. admonition:: Note
 

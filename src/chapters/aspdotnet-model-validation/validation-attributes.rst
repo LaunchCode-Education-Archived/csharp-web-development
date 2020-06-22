@@ -77,7 +77,8 @@ We will see how to ensure these error messages are properly displayed in the nex
 Applying Validation Attributes - Video
 --------------------------------------
 
-.. TODO: Add video here on what attributes to add 
+.. youtube::
+   :video_id: CIdCQ-7fHDY
 
 .. admonition:: Note
 

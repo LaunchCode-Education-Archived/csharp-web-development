@@ -26,6 +26,11 @@ CodingEvents Setup - Video
 
    The final code presented in this video is found on the `views-setup branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/views-setup>`__ of the ``CodingEventsDemo`` repository.
 
+.. admonition:: Tip
+
+	**Windows Users**: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+	Refer to :ref:`vs-troubleshooting` for help.
+
 CodingEvents Setup - Text
 -------------------------
 

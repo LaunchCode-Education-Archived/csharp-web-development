@@ -1,7 +1,6 @@
 .. _orm1-exercises:
 
 Exercises: OMG the ORM!
-=======================
 
 For the exercises, we are going to continue building on our ``CodingEvents`` application.
 The exercise instructions assume that your code resembles the `orm1 <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/orm1>`_ branch.

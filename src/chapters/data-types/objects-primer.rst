@@ -20,7 +20,7 @@ The ``string`` data type is an object. For
 ``string language = "C#"``, the data would be the characters. The
 :ref:`string manipulation <string-methods>` section gives several of the
 behaviors available to the ``language`` object. For example,
-``language.length()`` returns the value ``4``, which tells us how many
+``language.Length`` is ``2``, which tells us how many
 characters are present in the string.
 
 An :ref:`array <array>` is also an example of an object. It contains *data*, which are the values

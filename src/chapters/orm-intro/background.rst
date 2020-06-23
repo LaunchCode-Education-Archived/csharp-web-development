@@ -60,8 +60,9 @@ To enable ORM in our apps, we need to connect our mapper, EntityFrameworkCore, t
 Setting up a Persistent Database - Video
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following video explains how we can add a MySQL database to our ``CodingEvents`` application. 
-The accompanying text is a quick rundown of what happens in the video. To get started, create a branch off of your `enums <https://github.com/LaunchCodeEducation/coding-events/tree/enums>`_ branch.
+The following video explains how we can add a MySQL database to our ``CodingEvents`` application and configure our app to connect to the database. 
+
+The accompanying text is a detailed rundown of what is discussed in the video. To get started, create a branch off of your `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`_ branch.
 
 .. todo:: Add video for db setup
 
@@ -78,7 +79,7 @@ In MySQL Workbench, you need to do the following:
 
  Now, attach MySQL to your project in ``appsettings.json`` by adding the following property.
 
-.. sourcecode:: json
+.. sourcecode:: javascript
 
   "ConnectionStrings": {
     "DefaultConnection": "server=localhost;userid=coding_events;password=PASSWORD!;database=coding_events;"
@@ -88,28 +89,26 @@ The ``DefaultConnection`` property contains key/value pairs for each piece of in
 
 We now need to add a couple of NuGet packages to support our database connection. This process differs slightly for Windows and MacOS users. 
 
-Adding NuGet Dependencies - Windows
-###################################
+Install MySQL Dependency
+########################
 
-Go to *Tools > NuGet Package Manager > Manage NuGet Packages for Solution* and search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. This dependency provides code that is able to connect to a MySQL database from within an ASP.NET Core application using EF. Note that this package itself depends on the main EntityFrameworkCore package, ``Microsoft.EntityFrameworkCore.Relational``, so it is also installed.
+Open the NuGet Package Manager in Visual Studio:
+
+- **Windows** - *Tools > NuGet Package Manager > Manage NuGet Packages for Solution*
+- **MacOS** - *Project > Manage NuGet Dependencies*
+
+Search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. This dependency provides code that is able to connect to a MySQL database from within an ASP.NET Core application using EF. Note that this package itself depends on the main EntityFrameworkCore package, ``Microsoft.EntityFrameworkCore.Relational``, so it is also installed.
 
 .. tip:: 
 
    You can view installed packages and their dependencies by navigating to *Dependencies > NuGet* in the Solution Explorer and expanding a given package. 
 
-Follow the same steps to install ``Microsoft.EntityFrameworkCore.Tools``.  This is a suite of command-line tools for working with EF. We will use the tools provided by this package to update our database schema after adding or changing model classes. 
+Install EF Core Tools
+#####################
 
-To test that this worked, close your active terminal window and open a new one. Then run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
+In this section, "terminal" refers to the Terminal app in MacOS and Powershell in Windows (use *Tools > Command Line > Developer Powershell* to open).
 
-Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We'll do that in the next section.
-
-
-Adding NuGet Dependencies - MacOS
-#################################
-
-Go to *Project > Manage NuGet Dependencies* and search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. This dependency provides code that is able to connect to a MySQL database from within an ASP.NET Core application using EF. 
-
-Now, open a terminal and run:
+Open a terminal and run:
 
 .. sourcecode:: bash
 
@@ -117,13 +116,19 @@ Now, open a terminal and run:
 
 This command installs a set of command-line tools for working with EntityFrameworkCore *globally*, which means it will be available for any ASP.NET project we use in the future. We will use the tools provided by this package to update our database schema after adding or changing model classes. 
 
-For these tools to be accessible, they must be within our user path. Open ``~/.bash_profile`` and add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, or the directory you are in when you open a new terminal).
+.. note::
 
-.. sourcecode:: bash
+   This not applies to *MacOS users only*.
 
-   export PATH="$PATH:$HOME/.dotnet/tools/"
+   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` and add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal).
 
-This will append the location of the EF tools to your user path. To test that this worked, close your active terminal window and open a new one. Then run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
+   .. sourcecode:: bash
+
+      export PATH="$PATH:$HOME/.dotnet/tools/"
+
+   This will append the location of the EF tools to your user path. Save and close the file. Then close your terminal window and open a new one, so that the changes can take effect.
+
+To test that this install worked, run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
 
 Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We'll do that in the next section.
 

@@ -10,3 +10,5 @@ Models and Model Binding
    model-class
    data-layer
    model-binding
+   exercises
+   studio

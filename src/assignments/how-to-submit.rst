@@ -25,6 +25,8 @@ TechJobs (Object-Oriented Edition)
 TechJobs (MVC Edition)
 ----------------------
 
+:ref:`tech-jobs-mvc`
+
 Persistence
 -----------
 

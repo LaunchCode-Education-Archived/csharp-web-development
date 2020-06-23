@@ -6,7 +6,7 @@ Visual Studio Operational Tips
 For Windows users, opening and running some of the ASP.NET applications we provide in this book may require some extra steps. 
 Here are some tips to help you troubleshoot. You may find some (or none!) of them relevant to you.
 
-- Weather you clone a project directly onto your computer and open it in Visual Studio, or choose to find a project to clone from the Visual Studio 
+- Whether you clone a project directly onto your computer and open it in Visual Studio, or choose to find a project to clone from the Visual Studio 
   *Team Explorer* pane, always be sure to open the **solution**, the file with the ``.sln`` ending. If you're not sure what item is opened in your
   *Solution Explorer* window, go to *File > Start Window*. From the *Start Window*, find the ``.sln`` file for your project and open that directly 
   (instead of any parent directory).
@@ -17,7 +17,7 @@ Here are some tips to help you troubleshoot. You may find some (or none!) of the
       The project items available to be opened in Visual Studio.
 
 - **BEFORE** you attempt to run or debug your program, we recommend navigating to *Debug > <ProjectName> Debug Properties*. This will open a 
-  window where you can change some application seetings. Scroll down to the bottom of the *Debug* view and under *Web Server Settings*, make sure
+  window where you can change some application settings. Scroll down to the bottom of the *Debug* view and under *Web Server Settings*, make sure
   the *Enable SSL* box is unchecked and *Enable Anonymous Authentication* is checked.
 
    .. figure:: figures/disable-ssl.png

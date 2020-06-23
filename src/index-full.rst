@@ -69,3 +69,4 @@ Appendices
    :name: appendicestoc
 
    appendices/sql-install
+   appendices/vs-troubleshooting

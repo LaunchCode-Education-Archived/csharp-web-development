@@ -83,7 +83,10 @@ Set up a local copy of the project:
    account.
 #. Open the project in Visual Studio.
 
-.. flagging this as a spot where opening a project in windows developed on mac might need extra instructions
+.. admonition:: Tip
+
+	**Windows Users**: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+	Refer to :ref:`vs-troubleshooting` for help.
 
 #. Launch the application so you can refer to both the code as well as the running app
    as you complete the assignment.

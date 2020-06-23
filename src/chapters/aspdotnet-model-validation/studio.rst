@@ -20,7 +20,7 @@ Also, add a new property called ``VerifyPassword``.
 Add Validation Attributes
 -------------------------
 
-Navigate to the ``AddUserViewModel`` model class. Add `validation
+Navigate to ``AddUserViewModel``. Add `validation
 attributes <https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=netcore-3.1>`__
 to ensure these conditions are satisfied:
 
@@ -29,6 +29,8 @@ to ensure these conditions are satisfied:
 #.  Email is optional.
 #.  If provided, the email has the format of a valid email address.
 #.  The password is between 6 and 20 characters.
+
+Remember to add error messages to your attributes!
 
 Refactoring ``UserController``
 ------------------------------
@@ -42,6 +44,14 @@ Next, to refactor the ``SubmitAddUserForm()`` action method, we need to do the f
 #. If ``ModelState.IsValid`` is ``true``, we want to double check that the value of ``Password`` is equal to ``VerifyPassword``.
    If it is, we can create an instance of ``User`` and pass it to the ``User/Index.cshtml`` view.
    If the two passwords do not match, we need to reload the form with an error message displayed.
+
+   .. admonition:: Hint
+
+      We can pass an object and the name of a view to the ``View()`` method by using the following syntax:
+
+      .. sourcecode:: csharp
+
+         return View("ViewName", objectName);
 
 Validating That Passwords Match
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +84,7 @@ If we do this correctly, when a form with valid data is submitted, we should sti
 In ``User/Add.cshtml``:
 
 #. Make ``AddUserViewModel`` accessible to the view.
-#. Keep the ``@if`` statement up at the top so if the two passwords don't match, we can see the error message!
+#. Keep the ``@if`` statement up at the top so if the two passwords don't match, we can see the error message.
 #. Replace the inner contents of the form with a properly formatted form field for each property in the ViewModel.
    Each of your form fields should look something like this:
 
@@ -87,7 +97,7 @@ In ``User/Add.cshtml``:
          <span asp-validation-for="PropertyName"></span>
       </div>
 
-   Note when it comes to the password fields you may want to add a ``type`` attribute to the ``<input>`` tag so the users cannot see what they are typing!
+   Note when it comes to the password fields you may want to add a ``type`` attribute to the ``<input>`` tag for better data security!
 
 Test, Test, Test!
 -----------------

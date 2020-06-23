@@ -15,7 +15,7 @@ Create a new branch off of your ``orm1`` code to get started on the exercises.
 The ``EventCategory`` Class
 ---------------------------
 
-First, create a new class called ``EventCategory`` in the ``<odels`` directory.
+First, create a new class called ``EventCategory`` in the ``Models`` directory.
 
 ``EventCategory`` needs to have the following:
 

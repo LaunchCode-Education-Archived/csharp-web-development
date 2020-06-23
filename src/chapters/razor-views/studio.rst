@@ -19,6 +19,11 @@ Setup
 Fork and clone the `starter code <https://github.com/LaunchCodeEducation/SpaDay>`_.
 Check out the project via Version Control in Visual Studio.
 
+.. admonition:: Tip
+
+	**Windows Users**: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+	Refer to :ref:`vs-troubleshooting` for help.
+
 Once you have the project opened in your IDE, and run it and click the *SpaDay* link that appears in 
 the upper left of the home page. You should see a small form at the ``/Spa`` route.
 

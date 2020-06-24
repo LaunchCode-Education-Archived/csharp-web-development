@@ -10,3 +10,4 @@ ViewModels and Model Validation
    validation-controller
    validation-views
    exercises
+   studio

@@ -41,7 +41,11 @@ To create a persistent data store for our ``Event`` class, we can extend the cla
       }
    }
 
-This new class is placed in the ``Data`` namespace/package. By convention, we name it ``EventDbContext`` since it is going to be used to work with ``Event`` objects and data. We extend ``DbContext``, which will provide most of the base functionality that we need (more on this in the next section). The only additional code that we need to add is a constructor that calls the constructor from the base class. 
+This new class is placed in the ``Data`` namespace/package. By convention, we name it ``EventDbContext`` since it is going to be used to work with ``Event`` objects and data. We extend ``DbContext``, which will provide most of the base functionality that we need (more on this in the next section). 
+
+This extension *must* provide a property of type ``DbSet<Event>``. The ``DbSet`` class provides methods for querying sets of objects of the given type (in this case, ``Event``). In the next section, we will explore how to use these methods.
+
+The only additional code that we need to add is a constructor that calls the constructor from the base class. 
 
 This basic data store template can be used for any class that you want to persist in a database. Each such class will need its own data store. 
 
@@ -168,7 +172,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   A data store must extend which of the following classes in the ``Microsoft.EntityFrameworkCore`` package?
+   A data store should extend which of the following classes in the ``Microsoft.EntityFrameworkCore`` package?
 
    #. ``DataStore``
    #. ``DbContext``

@@ -1,7 +1,7 @@
 Windows Users: Visual Studio Community Edition
 ==============================================
 
-#. Download the Community version of Visual Studio IDE from `this page <https://visualstudio.microsoft.com/downloads/>`__.
+#. Download the Community version of Visual Studio from `this page <https://visualstudio.microsoft.com/downloads/>`__.
 
    .. admonition:: Note
 

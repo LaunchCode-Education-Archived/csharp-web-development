@@ -28,6 +28,6 @@ rules <https://msdn.microsoft.com/en-us/library/aa664670(v=vs.71).aspx>`__.
 
 
 Microsoft provides some `more detailed naming
-conventions <https://msdn.microsoft.com/en-us/library/ms229002.aspx>`__.
+conventions <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/identifier-names>`__.
 (From the date on this article, you’ll note that these have been
 relatively standard for a very long time!)

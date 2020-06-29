@@ -1,7 +1,7 @@
 Accessing Data
 ==============
 
-Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the database. In the previous chapters, we learned about performing CRUD operations on a database and its tables. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
+Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the database. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
 
 .. index:: data store
 
@@ -10,12 +10,20 @@ Data Stores - Video
 
 While classes determine the structure of a table in our relational database, a **data store** does the work of inserting, updating, and retrieving data from the database. 
 
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `db-config <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-config>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
+
 .. todo:: Add data store video
 
 Data Stores - Text
 ------------------
 
-In our work so far we have been using an in-memory data store, in the form of the class ``EventData``. This is an in-memory data store. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a *persistent* data store.
+.. index::
+   single: data store; in-memory
+   single: data store; persistent
+
+In our work so far we have been using an in-application data store, in the form of the class ``EventData``. This is an **in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
 
 Creating a ``DbContext``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,7 +49,7 @@ To create a persistent data store for our ``Event`` class, we can extend the cla
       }
    }
 
-This new class is placed in the ``Data`` namespace/package. By convention, we name it ``EventDbContext`` since it is going to be used to work with ``Event`` objects and data. We extend ``DbContext``, which will provide most of the base functionality that we need (more on this in the next section). 
+This new class is placed in the ``Data`` directory and namespace. By convention, we name it ``EventDbContext`` since it is going to be used to work with ``Event`` objects and data. We extend ``DbContext``, which will provide most of the base functionality that we need. More on this in the next section. 
 
 This extension *must* provide a property of type ``DbSet<Event>``. The ``DbSet`` class provides methods for querying sets of objects of the given type (in this case, ``Event``). In the next section, we will explore how to use these methods.
 
@@ -57,6 +65,7 @@ In order to make ASP.NET aware of this data store, we need to register ``EventDb
 Open up ``Startup.cs`` and find the ``ConfigureServices`` method. By default, it looks like this.
 
 .. sourcecode:: csharp
+   :lineno-start: 26
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -66,6 +75,7 @@ Open up ``Startup.cs`` and find the ``ConfigureServices`` method. By default, it
 A persistent data store is considered a service in ASP.NET, and we can register this service by add the following code to ``ConfigureServices``.
 
 .. sourcecode:: csharp
+   :lineno-start: 29
 
    services.AddDbContext<EventDbContext>(options =>
          options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
@@ -73,7 +83,7 @@ A persistent data store is considered a service in ASP.NET, and we can register 
 Don't worry too much about the intricate details of what this code is doing. Simply note the following points:
 
 - We are calling the ``AddDbContext<EventDbContext>`` method of the ``services`` object. Referencing ``EventDbContext`` here ensures that we are registering the data store that we just created.
-- ``Configuration.GetConnectionString("DefaultConnection")`` will retrieve the database connection string from ``appsettings.json`` that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connect to multiple databases.
+- ``Configuration.GetConnectionString("DefaultConnection")`` will retrieve the database connection string from ``appsettings.json`` that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.
 - The method ``options.UseMySql`` is called. This ensures that ``EventDbContext`` is a data store that interacts with a MySQL database.
 
 .. index:: ! persistent class, primary key
@@ -91,11 +101,15 @@ Our ``Event`` class currently has an ID field.
    public int Id { get; }
    static private int nextId = 1;
 
-   public Event(string name, string description, string contactEmail)
+   public Event(string name, string description, string contactEmail) : base()
    {
       Name = name;
       Description = description;
       ContactEmail = contactEmail;
+   }
+
+   public Event()
+   {
       Id = nextId;
       nextId++;
    }
@@ -105,14 +119,14 @@ When introducing this property previously, we intentionally named it ``Id`` in a
 However, there are two changes we need to make:
 
 #. Primary key properties must have both a getter and setter.
-#. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor.
+#. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor. So we can remove the code in the constructors that explicitly sets the value of ``Id``, along with the ``nextId`` field.
 
 So the code sample above can be simplified to the following.
 
 .. sourcecode:: csharp
    :lineno-start: 16
 
-   public int Id { get; }
+   public int Id { get; set; }
 
    public Event(string name, string description, string contactEmail)
    {
@@ -129,6 +143,8 @@ So the code sample above can be simplified to the following.
 Migrations - Video
 ------------------
 
+If you want to verify what code this video starts with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch. If you want to verify what code this video ends with, check out the `migrations <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migrations>`_ branch.
+
 .. todo:: add migrations video
 
 
@@ -137,7 +153,7 @@ Migrations - Text
 
 Our application is now completely configured to store ``Event`` objects in our MySQL database. However, if you look at the ``coding_events`` database, you'll notice that it has no table in which to store such data. To create such a table, we need to create and run a **database migration**. A database migration (or migration, for short) is an update to a database made in order to reflect changes in an application's model. Every time we change our application's model by adding or removing a new persistent class, or by modifying a persistent class, we will need to create and run a migration. 
 
-The EntityFrameworkCore Tools package we installed in the last section provides tools for working with migrations. To get started, open a terminal (the Terminal app on MacOS or Powershell on Windows). Navigate to the ``CodingEventsDemo`` folder *within* your project. This is the folder that contains ``Controllers/``, ``Views/``, and so on, and is NOT the main project folder.
+The EntityFrameworkCore Tools package we installed in the last section provides tools for working with migrations. To get started, open a terminal (the Terminal app on MacOS or Powershell on Windows). Navigate to the ``CodingEventsDemo`` project folder *within* your ``CodingEventsDemo`` solution. This is the folder that contains ``Controllers/``, ``Views/``, and so on, and is NOT the main project folder.
 
 Then run the following command to create a migration:
 
@@ -151,7 +167,7 @@ In order to run a migration, we issue the command:
 
 .. sourcecode:: bash
 
-   $ dotnet ef migrations update
+   $ dotnet ef database update
 
 This command will apply the changes to the database. To verify the changes, open MySQL Workbench and notice that there is now an ``Events`` table with columns corresponding to the properties of our class. 
 

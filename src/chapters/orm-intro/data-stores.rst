@@ -8,7 +8,7 @@ Data Stores in the Controller - Video
 
 Since our data store, ``EventDbContext``, extends ``DbContext``, we have access to all of the methods defined by ``DbContext``. There are quite a few such methods (see `the documentation <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext?view=efcore-3.1#methods>`_ for details), but we will only use ``SaveChanges``. 
 
-We will make more extensive use of the ``Events`` property of ``EventDbContext``, which is of type ``DbSet``. As mentioned in the previous section, this property allows us to query for object directly from the database. It too `has quite a few methods <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1?view=efcore-3.1#methods>`_, and we will demonstrate usage of ``Add``, ``Remove``, ``ToList``, and ``Find``.
+We will make more extensive use of the ``Events`` property of ``EventDbContext``, which is of type ``DbSet``. As mentioned in the previous section, this property allows us to query for objects directly from the database. It too `has quite a few methods <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1?view=efcore-3.1#methods>`_, and we will demonstrate usage of ``Add``, ``Remove``, ``ToList``, and ``Find``.
 
 .. todo: add data store / controller video
 
@@ -43,7 +43,7 @@ Using Data Store Methods
 
 Let's refactor our controller to replace each usage of the in-memory store ``EventData`` with our instance of ``EventDbContext``. 
 
-The first such usage is in the ``Index`` method, which displays a listing of all of the events. We are currently calling ``EventData.getAll()``. To carry out the equivalent action on ``context``, we can use its ``Events`` property. Modify ``Index`` to look like the code below.
+The first such usage is in the ``Index`` method, which displays a listing of all of the events. We are currently calling ``EventData.GetAll()``. To carry out the equivalent action on ``context``, we can use its ``Events`` property. Modify ``Index`` to look like the code below.
 
 .. sourcecode:: csharp
    :lineno-start: 25
@@ -57,7 +57,7 @@ The first such usage is in the ``Index`` method, which displays a listing of all
 
 We use the ``ToList`` method of ``context.Events`` (recall that this property is a ``DbSet``) to fetch a list of *all* ``Event`` objects stored in the database.
 
-Our next usage of ``EventData`` that needs to be replaced is in the ``NewEvent`` method. That method is currently calling ``EventData.Add(newEvent)`` to store a newly created ``Event`` object. Replace this line with the following.
+Our next usage of ``EventData`` that needs to be replaced is in the ``Add`` method that handles POST requests. That method is currently calling ``EventData.Add(newEvent)`` to store a newly created ``Event`` object. Replace this line with the following.
 
 .. sourcecode:: csharp
    :lineno-start: 53
@@ -73,7 +73,7 @@ Line 53 adds the object to ``context.Events``, which only stores it within that 
 
    An instance of a persistent class, such as ``Event``, that has not been stored in the database is called a **transient** object.
 
-The next usage of ``EventData`` is in the ``Delete`` method that handles GET requests. As in ``Index``, this method is calling ``EventData.getAll()``, which we can replace with ``context.Events.ToList()``.
+The next usage of ``EventData`` is in the ``Delete`` method that handles GET requests. As in ``Index``, this method is calling ``EventData.GetAll()``, which we can replace with ``context.Events.ToList()``.
 
 .. sourcecode:: csharp
    :lineno-start: 62
@@ -95,7 +95,7 @@ The final usage of ``EventData`` is in the ``Delete`` method that handles POST r
    {
       foreach (int eventId in eventIds)
       {
-            EventData.Remove(eventId);
+         EventData.Remove(eventId);
       }
 
       return Redirect("/Events");

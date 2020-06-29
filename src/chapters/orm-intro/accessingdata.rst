@@ -182,7 +182,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   **True/False:** Every persistent class will automatically have a MySQL table created to use to store it's data.
+   **True/False:** Every persistent class will automatically have a MySQL table created to use to store its data.
 
 .. ans: False - we have to use a migration to create the table
 

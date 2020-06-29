@@ -109,7 +109,13 @@ data storage containers. Rather, models are meant to shape the data stored in an
 objects that fit into the logic of our applications. As we work our way into learning about database usage and service 
 calls, however, we'll use a C# class to store some data temporarily. 
 
-Create a new directory called ``Data`` at the root of your project, on the same level as the rest of the MVC components. 
+.. _data-layer-dev:
+
+.. index:: ! data layer
+
+A **data layer** adds abstraction between models and the data we want to store. As we'll see, a data layer allows us to pass on responsibility of exactly *how* our data is stored.
+
+To get started created a data layer, create a new directory called ``Data`` at the root of your project, on the same level as the rest of the MVC components. 
 Inside of ``Data/``, add a class ``EventData``. Whereas ``Event`` is responsible for organizing
 user-inputted information into a C# object, ``EventData`` is responsible for maintaining those objects once they 
 are created. ``EventData`` is itself a C# class that stores events. It contains several methods for managing and 

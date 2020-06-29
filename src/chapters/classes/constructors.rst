@@ -84,8 +84,7 @@ Let’s make some changes to our ``Student`` class.
          public int NumberOfCredits { get; set; }
          public double Gpa { get; set; }
 
-         public Student(string name, int studentId,
-                  int numberOfCredits, double gpa) 
+         public Student(string name, int studentId, int numberOfCredits, double gpa) 
          {
             Name = name;
             StudentId = studentId;
@@ -93,7 +92,7 @@ Let’s make some changes to our ``Student`` class.
             Gpa = gpa;
          }
 
-         public Student(String name, int studentId) 
+         public Student(string name, int studentId) 
          {
             Name = name;
             StudentId = studentId;
@@ -126,8 +125,7 @@ A better way to write the above constructors would be this:
          public int NumberOfCredits { get; set; }
          public double Gpa { get; set; }
 
-         public Student(string name, int studentId,
-                  int numberOfCredits, double gpa) 
+         public Student(string name, int studentId, int numberOfCredits, double gpa) 
          {
             Name = name;
             StudentId = studentId;
@@ -135,16 +133,16 @@ A better way to write the above constructors would be this:
             Gpa = gpa;
          }
 
-         public Student(string name, int studentId)
-            : this(name, studentId, 0, 0.0) {}
+         public Student(string name, int studentId) : this(name, studentId, 0, 0.0) {}
 
       }
 
 In the example above on line 19, we use ``: this()`` to invoke another
 constructor within the same class. In this case, the second constructor calls
-the first with default values for ``numberOfCredits`` and ``gpa``. If you
-use this syntax, the call to ``: this()`` must be the first line in the
-constructor. This is a good practice not only because it makes your code
+the first with default values for ``numberOfCredits`` and ``gpa``. We haven't seen
+this syntax before but we'll discuss it more in :ref:`inheritance`.
+
+This is a good practice not only because it makes your code
 shorter, but also because it allows any initialization behavior that may
 be carried out beyond just initializing variables to be contained in a
 smaller number of constructors. In other words, constructors can share

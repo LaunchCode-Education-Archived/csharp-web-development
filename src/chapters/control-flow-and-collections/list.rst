@@ -186,7 +186,7 @@ The next loop on display prints out each student’s name and grade:
 
 Here, we introduce the syntax ``students.Count`` which utilizes the ``Count``
 property of ``List``. This property holds the integer representing the
-number of items in the List. This is similar to string's ``.length()`` method.
+number of items in the List. This is similar to string's ``.Length`` property.
 
 In this ``for`` loop, we use a *loop index* to define the starting point,
 ending point, and increment for iteration. It may be helpful for you to

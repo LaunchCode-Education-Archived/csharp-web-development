@@ -19,6 +19,10 @@ Chapters
    chapters/vstools/index
    chapters/razor-views/index
    chapters/aspdotnet-model-classes/index
+   chapters/aspdotnet-model-validation/index
+   chapters/enums/index
+   chapters/sql-part1/index
+   chapters/sql-part2/index
    chapters/orm-intro/index
 
 .. toctree::
@@ -42,6 +46,10 @@ Studios
    chapters/aspdotnet-controllers-and-routes/studio
    chapters/vstools/studio
    chapters/razor-views/studio
+   chapters/aspdotnet-model-classes/studio
+   chapters/aspdotnet-model-validation/studio
+   chapters/sql-part1/studio
+   chapters/sql-part2/studio
 
 Assignments
 ===========
@@ -53,6 +61,7 @@ Assignments
    assignments/how-to-submit
    assignments/tech-jobs-console
    assignments/tech-jobs-oo
+   assignments/tech-jobs-mvc
 
 Appendices
 ==========
@@ -60,3 +69,6 @@ Appendices
 .. toctree::
    :maxdepth: 1
    :name: appendicestoc
+
+   appendices/sql-install
+   appendices/vs-troubleshooting

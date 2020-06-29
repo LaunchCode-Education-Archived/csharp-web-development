@@ -358,10 +358,10 @@ Complete this method. It should print out something like this:
 .. sourcecode:: bash
 
    *****
-   position type: Data Scientist / Business Intelligence
    name: Sr. IT Analyst (Data/BI)
    employer: Bull Moose Industries
    location: Saint Louis
+   position type: Data Scientist / Business Intelligence
    core competency: Statistical Analysis
    *****
 

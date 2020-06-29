@@ -34,6 +34,11 @@ Controllers and Static Responses - Video
    If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`__ for this video is on the ``master`` branch.
    If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses>`__ for this video is on the ``static-responses`` branch.
 
+.. admonition:: Tip
+
+	**Windows Users**: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+	Refer to :ref:`vs-troubleshooting` for help.
+
 Controllers and Static Responses - Intro
 ----------------------------------------
 

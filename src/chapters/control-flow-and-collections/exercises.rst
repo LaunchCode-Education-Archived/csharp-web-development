@@ -40,7 +40,7 @@ String Practice
 
       Console.WriteLine(string.Join(",", arrayName));
 
-#. Repeat steps 3 and 4, but change the delimiter to split the string into
+#. Repeat steps 2 and 3, but change the delimiter to split the string into
    separate sentences.
 
 List Practice

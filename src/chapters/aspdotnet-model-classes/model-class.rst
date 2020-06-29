@@ -10,13 +10,8 @@ to reflect the changes in the controller.
 Create a Model Class - Video
 ----------------------------
 
-.. TODO: Add create model class video
-
-.. topics covered: Create Event class - including name property only
-.. Refactor post handler to create Event object + add to list of events
-.. Refactor events/index template to reference Event field for name
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: fs7m2Qo84d4
 
 .. admonition:: Note
 
@@ -111,12 +106,8 @@ Back in ``Events/Index.cshtml``, update the HTML to use the ``Event`` object’s
 Add a Model Property - Video
 ----------------------------
 
-.. TODO: Add adding model property video
-
-.. topics covered: add description property to event model, update index view and post handler 
-.. to display the property and use it to create the object
-
-YOUTUBE VIDEO HERE
+.. youtube::
+   :video_id: ajHm5DQFaYU
 
 .. admonition:: Note
 
@@ -139,10 +130,12 @@ Updates to ``Models/Event.cs``:
       public class Event
       {
          public string Name { get; set; }
+         public string Description { get; set; }
 
-         public Event(string name)
+         public Event(string name, string description)
          {
             Name = name;
+            Description = description;
          }
 
          public override string ToString()

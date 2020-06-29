@@ -36,7 +36,7 @@ The table below summarizes some of the most common string methods available in
 C#. For these examples, we use the string variable
 ``string str = "Rutabaga"``.
 
-.. list-table:: String methods in C#
+.. list-table:: String methods and properties in C#
    :header-rows: 1
 
    * - C# Syntax
@@ -46,8 +46,8 @@ C#. For these examples, we use the string variable
    * - ``str.Substring(2,3)``
      - Return substring from 2nd to 4th, i.e. substring starting at 
        index 2 and 3 characters long, (``tab``).
-   * - ``str.Length()``
-     - Returns the length of the string, (``9``).
+   * - ``str.Length``
+     - Tells us the length of the string, (``8``). 
    * - ``str.IndexOf('a')``
      - Returns the index for the first occurrence of 'a', (``3``).
    * - ``str.Split('a')``
@@ -125,9 +125,9 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Name the C# method responsible for removing whitespace from a string value:
+   Name the C# method or property responsible for removing whitespace from a string value:
 
-   #. ``.Length()``
+   #. ``.Length``
    #. ``.Trim()``
    #. ``.Split()``
    #. ``.Strip()``

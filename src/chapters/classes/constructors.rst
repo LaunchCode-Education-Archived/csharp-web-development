@@ -92,7 +92,7 @@ Let’s make some changes to our ``Student`` class.
             Gpa = gpa;
          }
 
-         public Student(String name, int studentId) 
+         public Student(string name, int studentId) 
          {
             Name = name;
             StudentId = studentId;

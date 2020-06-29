@@ -63,8 +63,7 @@ Windows Users
 
 Windows users have a MySQL Installer available and that is what you will be using to install MySQL!
 The `Installer download page <https://dev.mysql.com/downloads/installer/>`_ has a couple options available.
-You want to download the version called ``"Windows (x86, 32-bit), MSI Installer"`` that specifies it is the ``"(mysql-installer-community-8.0.18.0.msi)"``.
-This should also be the version that uses at least 400 MB (not the *web-community* version).
+You want to download the version called ``"Windows (x86, 32-bit), MSI Installer"`` that uses at least 400 MB (not the *web-community* version).
 Make sure you have selected the correct option before clicking *Download*!
 
 #. When MySQL is done downloading, open the installer.

@@ -5,6 +5,8 @@ Now that we have connected our C# application to a MySQL database, we need to se
 
 .. index:: data store
 
+.. _intro-to-data-stores:
+
 Data Stores - Video
 -------------------
 

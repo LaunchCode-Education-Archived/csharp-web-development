@@ -83,7 +83,10 @@ Set up a local copy of the project:
    account.
 #. Open the project in Visual Studio.
 
-.. flagging this as a spot where opening a project in windows developed on mac might need extra instructions
+.. admonition:: Tip
+
+	**Windows Users**: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+	Refer to :ref:`vs-troubleshooting` for help.
 
 #. Launch the application so you can refer to both the code as well as the running app
    as you complete the assignment.
@@ -353,15 +356,9 @@ column is missing.
 
    The ``/list`` table showing hyperlinks in each column but "All".
 
-You can fix this several different ways, but two options are presented below.
-Note that you only need to implement ONE option, not both.
-
-#. Modify ``TableChoices`` in ``ListController`` to include another key/value
-   pair. Check the method that renders the template to help identify the name
-   to use for the key.
-#. Modify ``Views/List/Index.cshtml`` to fill in the empty table cell with the necessary
-   link. Check ``ListController`` to help identify the data to pass in for the
-   query parameters.
+Modify ``Views/List/Index.cshtml`` to fill in the empty table cell with the necessary
+link. Check ``ListController`` to help identify the data to pass in for the
+``asp-route`` tag helpers.
 
 Be sure to test your code by clicking your new *View All* link in the table.
 There are 98 jobs in the data file.

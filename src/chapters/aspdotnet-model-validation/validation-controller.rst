@@ -80,8 +80,9 @@ Handling Validation Errors - Video
 .. admonition:: Note
 
    If you want to verify what code this video starts with, check out the `validation-attributes <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes>`__ branch.
-	Actually, the first 4 minutes of the video above cover some of the code changes to get the project to the starting state of the ``validation-attributes`` branch.
    If you want to verify what code this video ends with, check out the `handling-errors <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handling-errors>`__ branch.
+
+   Actually, the first 4 minutes of the video above cover some of the code changes to get the project to the starting state of the ``validation-attributes`` branch.
 
 
 Handling Validation Errors - Text

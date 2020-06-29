@@ -47,6 +47,7 @@ Studios
    chapters/vstools/studio
    chapters/razor-views/studio
    chapters/aspdotnet-model-classes/studio
+   chapters/aspdotnet-model-validation/studio
    chapters/sql-part1/studio
    chapters/sql-part2/studio
 
@@ -70,3 +71,4 @@ Appendices
    :name: appendicestoc
 
    appendices/sql-install
+   appendices/vs-troubleshooting

@@ -24,6 +24,7 @@ Chapters
    chapters/enums/index
    chapters/sql-part1/index
    chapters/sql-part2/index
+   chapters/orm-intro/index
 
 .. toctree::
 
@@ -50,6 +51,7 @@ Studios
    chapters/aspdotnet-model-validation/studio
    chapters/sql-part1/studio
    chapters/sql-part2/studio
+   chapters/orm-intro/studio
 
 Assignments
 ===========

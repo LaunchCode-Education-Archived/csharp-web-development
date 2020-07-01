@@ -124,7 +124,13 @@ This command installs a set of command-line tools for working with EntityFramewo
 
    This note applies to *Mac users only*.
 
-   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with the command ``code ~/.bash_profile``. Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal).
+   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with this command: 
+	
+	.. sourcecode:: bash
+
+		code ~/.bash_profile 
+		
+	Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window).
 
    .. sourcecode:: bash
 

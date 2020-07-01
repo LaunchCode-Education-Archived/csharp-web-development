@@ -52,12 +52,12 @@ On a Windows:
 MSTest is a C# testing framework. When we create a Visual Studio MSTest Project, the 
 necessary API and classes are added as **dependencies** of the ``CarTests`` project. A dependency 
 is a separately developed program or piece of code that another program or piece of code 
-uses to carry it out its function. Our C# tests will *depend* on MSTest code. 
+uses to carry out its function. Our C# tests will *depend* on MSTest code. 
 
 Along the same lines, since ``CarTests`` tests the methods inside of ``Car``, we must add the 
 ``Car`` project as a dependency of ``CarTests``.
 
-Right click on on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
+Right click on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
 the ``Car`` project.
 
 .. figure:: ./figures/vs-add-dependency-reference.png

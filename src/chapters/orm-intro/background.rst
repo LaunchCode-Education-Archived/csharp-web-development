@@ -86,7 +86,7 @@ Now, attach MySQL to your project in ``appsettings.json`` by adding the followin
 .. sourcecode:: javascript
 
   "ConnectionStrings": {
-    "DefaultConnection": "server=localhost;userid=coding_events;password=PASSWORD!;database=coding_events;"
+    "DefaultConnection": "server=localhost;userid=coding_events;password=PASSWORD;database=coding_events;"
   }
 
 The ``DefaultConnection`` property contains key/value pairs for each piece of information needed for our app to connect to the database created above. Be sure to replace ``PASSWORD`` with the password that you used when creating the ``coding_events`` user above.

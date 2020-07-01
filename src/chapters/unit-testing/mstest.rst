@@ -113,7 +113,7 @@ test underneath the first TODO. As usual, be sure write this code rather than co
 Our empty test is aptly named ``EmptyTest()`` as a description of its role. This test does 
 not follow the AAA rule from our :ref:`testing-best-practices`, as it jumps straight to 
 asserting. Nor is it relevant, for that matter. The goal of this empty unit test is not to 
-demonstrate all of our best practices, but rather, to verify that out testing setup is in place.
+demonstrate all of our best practices, but rather, to verify that our testing setup is in place.
 
 The three arguments in our test care defined as "expected", "actual", and "delta". This empty test 
 asserts an expected value of ``10`` to equal an actual value of ``10``, 

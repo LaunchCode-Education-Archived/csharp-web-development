@@ -195,7 +195,7 @@ Once you run the test, you will see a new output panel with a green check mark i
 and a message stating the test passed. 
 
 We know now how the test runner behaves when a test passes and can begin the real work of unit 
-testing the ``Car`` class. One responsibility of the ``Car`` class constructor is to set it's initial 
+testing the ``Car`` class. One responsibility of the ``Car`` class constructor is to set its initial 
 ``gasTankLevel`` field. This field is determined by the constructor argument for ``gasTankSize`` . 
 
 ``Car.cs``:

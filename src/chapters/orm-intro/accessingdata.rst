@@ -1,7 +1,7 @@
 Accessing Data
 ==============
 
-Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the database. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
+Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the new schema. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
 
 .. index:: data store
 

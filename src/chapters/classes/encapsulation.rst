@@ -263,6 +263,12 @@ while the property is ``Name``. Since C# identifiers are case-sensitive, these a
 two distinct members. ``name`` is referred to as a **backing field**, and it stores 
 the value of the property.
 
+At this point you may be asking yourself, why would I use an auto-implemented property
+instead of just making a field public?  It comes down to properties being more flexible
+to change in the future, such as changing the acceesibility of only the getter or setter,
+and more capable when used in your user interface through data binding, which we will
+explore more in later chapters.
+
 .. admonition:: Warning
 
    If you were to try to use the same identifier for both the backing field and 

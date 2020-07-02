@@ -14,7 +14,7 @@ While classes determine the structure of a table in our relational database, a *
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `db-config <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-config>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
+   If you want to verify what code this video starts with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
 
 .. todo:: Add data store video
 

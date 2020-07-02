@@ -5,7 +5,8 @@ Relationships in Object-Relational Mapping
    :maxdepth: 3
 
    types-of-relationships
+   lambda-expressions
    one-to-many
-   one-to-one
    many-to-many
+   one-to-one
    exercises

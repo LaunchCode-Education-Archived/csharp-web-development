@@ -89,6 +89,8 @@ Table Keys
 To connect the ``courses`` table to ``teachers`` in a one-to-many relationship,
 the following conditions must be met:
 
+.. _foreign-key:
+
 .. index:: ! primary key, ! foreign key
 
 #. Each table must include a **primary key** column. A primary key is a unique,

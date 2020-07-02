@@ -1,3 +1,5 @@
+.. _accessing-data:
+
 Accessing Data
 ==============
 

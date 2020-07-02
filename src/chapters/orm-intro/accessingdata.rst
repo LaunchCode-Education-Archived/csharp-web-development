@@ -25,7 +25,7 @@ Data Stores - Text
    single: data store; in-memory
    single: data store; persistent
 
-In our work so far we have been using an in-application data store, in the form of the class ``EventData``. This is an **in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
+In our work so far, we have been using an in-application data store, in the form of the class ``EventData``. This is an **in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
 
 Creating a ``DbContext``
 ^^^^^^^^^^^^^^^^^^^^^^^^

@@ -51,6 +51,7 @@ Studios
    chapters/aspdotnet-model-validation/studio
    chapters/sql-part1/studio
    chapters/sql-part2/studio
+   chapters/orm-intro/studio
 
 Assignments
 ===========

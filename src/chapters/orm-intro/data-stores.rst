@@ -10,7 +10,11 @@ Since our data store, ``EventDbContext``, extends ``DbContext``, we have access 
 
 We will make more extensive use of the ``Events`` property of ``EventDbContext``, which is of type ``DbSet``. As mentioned in the previous section, this property allows us to query for objects directly from the database. It too `has quite a few methods <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1?view=efcore-3.1#methods>`_, and we will demonstrate usage of ``Add``, ``Remove``, ``ToList``, and ``Find``.
 
-.. todo: add data store / controller video
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `migrations <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migrations>`_ branch. If you want to verify what code this video ends with, check out the `data-store-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/data-store-controller>`_ branch.
+
+.. todo: Add data store  / controller video
 
 Data Stores in the Controller - Text
 -------------------------------------

@@ -8,7 +8,11 @@ Setting Up the Relationship - Video
 
 We are now ready to create a relationship between ``Event`` and ``EventCategory``.
 
-.. todo: 
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `data-store-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/data-store-controller>`_ branch. If you want to verify what code this video ends with, check out the `one-to-many <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ branch.
+
+.. todo: Add one2m video
 
 Setting Up the Relationship - Text
 ----------------------------------
@@ -123,8 +127,17 @@ For categories to be aware of the events that they relate to, we must an ``Event
 
    The new property on ``Event`` is a single ``EventCategory`` reference, while the new property on ``EventCategory`` is a *collection* of ``Event`` objects. This is due to the one-to-many nature of the relationship. Each ``Event`` can have only one ``EventCategory``, but an ``EventCategory`` may be related to multiple ``Event`` objects.
 
-Refactoring the Controller and View
------------------------------------
+Refactoring the Controller and View - Video
+-------------------------------------------
+
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `one-to-many <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ branch. If you want to verify what code this video ends with, check out the `refactoring-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-controller>`_ branch.
+
+.. todo: Add refactoring-controller video
+
+Refactoring the Controller and View - Text
+------------------------------------------
 
 Our ``EventsController`` requires a few updates to continue to work as it has.
 
@@ -163,10 +176,19 @@ Our next update is more straightforward. Recall that we modified the main contro
 
    AddEventViewModel addEventViewModel = new AddEventViewModel(context.Categories.ToList());
 
-Database Migration
-------------------
+Database Migration and Testing - Text
+-------------------------------------
 
 We are done updating our code for now, but before we can test we must update the database. Recall that we changed the structure of the model by relating ``Event`` and ``EventCategory`` classes, and by removing ``EventType``. Any model changes requires a database change.
+
+.. admonition:: Note
+
+   If you want to verify what code this video starts with, check out the `refactoring-contoller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller>`_ branch. If you want to verify what code this video ends with, check out the `migration-testing <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_ branch.
+
+.. todo: Add one2m video
+
+Database Migration and Testing - Video
+--------------------------------------
 
 Open a terminal and navigate to the ``CodingEvents`` project directory within the solution. Then run ``dotnet ef migrations add RelateEventsAndCategories`` to create a new migration.
 

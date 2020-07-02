@@ -8,5 +8,4 @@ Relationships in Object-Relational Mapping
    lambda-expressions
    one-to-many
    many-to-many
-   one-to-one
    exercises

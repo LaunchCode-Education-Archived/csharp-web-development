@@ -25,7 +25,9 @@ Data Stores - Text
    single: data store; in-memory
    single: data store; persistent
 
-In our work so far, we have been using an in-application data store, in the form of the class ``EventData``. This is an **in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
+In our work so far, we have been using an in-application data store,. This is the class ``EventData``. The ``EventData`` class is an 
+**in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts 
+down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
 
 Creating a ``DbContext``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,18 +105,19 @@ Our ``Event`` class currently has an ID field.
    public int Id { get; }
    static private int nextId = 1;
 
-   public Event(string name, string description, string contactEmail) : base()
+	public Event()
+   {
+      Id = nextId;
+      nextId++;
+   }
+
+   public Event(string name, string description, string contactEmail) : this()
    {
       Name = name;
       Description = description;
       ContactEmail = contactEmail;
    }
 
-   public Event()
-   {
-      Id = nextId;
-      nextId++;
-   }
 
 When introducing this property previously, we intentionally named it ``Id`` in anticipation of using EF and a data store to persist ``Event`` objects. EF will *automatically* consider any property named ``Id`` to be the primary key for that class. Therefore, we already have the necessary property! 
 
@@ -129,6 +132,10 @@ So the code sample above can be simplified to the following.
    :lineno-start: 16
 
    public int Id { get; set; }
+
+	public Event()
+   {
+   }
 
    public Event(string name, string description, string contactEmail)
    {

@@ -38,7 +38,7 @@ the starter code, you'll notice that the ``JobField`` abstract class is no longe
 You'll do this for ``Employer`` and ``Skill`` classes, as well as ``Job``.
 
 The ``Job`` class will also look different from how you have last seen it. In Parts 3 and 4, you'll
-add object relational mapping on the ``Job`` class by refactoring the ``employer`` and ``skills`` (formerly ``coreCompetency``)
+add object relational mapping on the ``Job`` class by refactoring the ``Employer`` and ``Skills`` (formerly ``coreCompetency``)
 fields.
 
 In your ASP.NET project, you'll see an empty file in the root directory called ``queries.sql``. After completing the
@@ -50,8 +50,8 @@ appropriate queries nonetheless.
 
 .. _tech-jobs-persistent-pt1:
 
-Part 1: Connect a Database to a Spring App
-------------------------------------------
+Part 1: Connect a Database to an ASP.NET App
+--------------------------------------------
 
 #. Start MySQL Workbench and create a new schema named ``techjobs``.
 
@@ -62,17 +62,18 @@ Part 1: Connect a Database to a Spring App
 #. In the administration tab, create a new user, ``techjobs`` with the same settings as described in
    the lesson tutorial.
 
-#. Update ``TechJobs`` with the necessary dependencies.
+#. Make sure that ``TechJobsPersistent`` has all of the necessary dependencies.
 
 #. Update ``appsettings.json`` with the right info. This will include
    ``url`` set to the address of your database connection, as well as the username and password
-   for a user you have created. Refer to the tip below for the other properties you must add to complete your
-   database setup.
+   for a user you have created.
 
 .. admonition:: Tip
 
    You can double check your setup against what you've already done for
    :ref:`your coding events repo <setup-orm-database>`. You can copy these property assignments from your ``CodingEvents`` repo, only needing to change the database address and username/password values.
+
+#. Run a new migration and update the database.
 
 Test It with SQL
 ^^^^^^^^^^^^^^^^
@@ -83,13 +84,14 @@ locally in the browser at ``localhost:5001`` (unless of course you have a differ
 
 #. In your MySQL workbench, open a new query tab to check your database connection.
 
-#. **SQL TASK:** At this point, you will have one table, ``job``. In ``queries.sql`` under "Part 1", list the columns and their data types
+#. **SQL TASK:** At this point, you will have one table, ``Job``. In ``queries.sql`` under "Part 1", list the columns and their data types
    in the table.
 
 Your running application still has limited functionality. You won't yet be able to add a job with the *Add Job* form. You also
 won't yet be able to view the list of jobs or search for jobs - but this is mostly because you have no job data. Move on to
 Part 2 below to start adding these functionalities.
 
+.. TODO: Modify part 2 to make students build view models
 
 .. _tech-jobs-persistent-pt2:
 
@@ -99,89 +101,56 @@ Part 2: Persisting Employers and Skills
 You will need to have completed the :ref:`setup steps <tech-jobs-persistent-pt1>` before starting this
 section.
 
-``AbstractEntity``
-^^^^^^^^^^^^^^^^^^
-
-We've replaced the abstract class ``JobField`` with an even more abstracted class aptly named,
-``AbstractEntity``. This class holds the fields and methods that are common across the ``Job`` class
-and the classes it contains as fields.
-
-#. We will be creating tables for the subclasses that inherit from
-   ``AbstractEntity`` but not a table for this parent class. Therefore, give ``AbstractEntity`` the
-   ``@MappedSuperclass`` annotation.
-
-#. Since all of the subclasses of ``AbstractEntity`` will be entities themselves, add the ``@Id``
-   and ``@GeneratedValue`` annotations to the field ``id``.
-
-#. Each subclass will also inherit the ``name`` field from ``AbstractEntity``. Add appropriate
-   validation annotations so that:
-
-   a. a user cannot leave this field blank when creating an object.
-
-   b. there are reasonable limitations on the size of the name string. Keep in mind that the name field will be
-      shared across ``Job``, ``Employer``, and ``Skill`` classes. Some employer names might be longer than 50 characters.
-
-
-Models
-^^^^^^
+Employers and Skills
+^^^^^^^^^^^^^^^^^^^^
 
 In the last assignment, a ``Job`` object contained string fields for employer and core competency data. This employer
 and skill (formerly core competency) information about a particular job will now be stored in classes themselves.
 These items themselves will hold their own supplementary information.
 
-#. Open the ``Employer`` model class. In addition to the fields inherited from ``AbstractEntity``, ``Employer`` should have a
-   string field for ``location``. Add the field for ``location`` with validation. In addition, add getters and setters
-   to ``Employer``.
+#. Open the ``Employer`` model class and ``AddEmployerViewModel``. Add validation attributes to ``Name`` and ``Location`` so that both are required.
 
    .. admonition:: Note
 
       For the purposes of this application, an employer can only have one location.
 
-#. ``Employer`` is a class that will be mapped to one of our tables. Make sure the class has the
-   ``@Entity`` annotation, as well as the no-arg constructor required for Hibernate to create an
-   object.
+#. ``Employer`` is a class that will be mapped to one of our tables. Make sure that there is an ``Id`` property before proceeding forward!
 
-#. In the model class ``Skill``, add a field for a longer description of the skill. Some hiring managers like to have
+#. In the model class ``Skill``, add a property for a longer description of the skill. Some hiring managers like to have
    more information available about the nature of a given programming language or framework.
 
-#. As with ``Employer``, give this class the ``@Entity`` annotation and be sure it contains a no-arg
-   constructor.
+#. As with ``AddEmployerViewModel``, we need to add some validation attributes. For the ``Name`` property, make sure that it is required.
+   For the newly added property for the description of the skill, add validation specifying that it has to be between 3 and 250 characters long.
 
-.. TODO: Replace this with stuff about DbContext
-
-Data Layer
-^^^^^^^^^^
+``DbContext``
+^^^^^^^^^^^^^
 
 To map the ``Employer`` and ``Skill`` classes to your techjobs database, you'll add data access interfaces for these relational
-objects, similar to the existing ``DbContext``. Like ``JobRepository``, make use of the Spring Data
-``CrudRepository`` interface to map our objects.
+objects, similar to the existing ``Jobs`` property in ``JobDbContext``.
 
-#. In ``models/data``, create a new interface ``EmployerRepository``.
-
-   a. ``EmployerRepository`` should extend ``CrudRepository``.
-   #. ``EmployerRepository`` should be annotated with ``@Repository``.
-
-#. Repeat the steps above for an interface, ``SkillRepository``.
+#. In ``JobDbContext``, create a new object ``Employers`` of type ``DbSet<Employer>``.
+#. In the same file, make a new object ``Skills`` of type ``DbSet<Skill>``.
 
 Controllers
 ^^^^^^^^^^^
 
-With the employer repository in place, we will reference this to send object information through
-the ``EmployerController`` handlers. ``EmployerController`` contains two handlers with missing
-information. Your task here is to make use of the ``EmployerRepository`` class in these handlers.
+With ``JobDbContext`` in place, we will reference this to send object information through
+the ``EmployerController`` handlers. ``EmployerController`` contains two action methods with missing
+information. Your task here is to make use of the ``JobDbContext`` class in these action methods.
 
-#. Add a private field of ``EmployerRepository`` type called ``employerRepository`` to
-   ``EmployerController``. Give this field an ``@Autowired`` annotation.
+#. Add a private field of ``JobDbContext`` type called ``context`` to
+   ``EmployerController``. Set up a constructor for ``EmployerController`` that sets the value of this field.
 
-#. ``processAddEmployerForm`` already takes care of sending the form back if any of the submitted
+#. ``Index()`` needs a list of the employers in the database to pass to the view.
+   Use ``context`` and the appropriate method to put all of the saved employers in a list that can be passed to the view.
+
+#. ``ProcessAddEmployerForm()`` already takes care of sending the form back if any of the submitted
    employer object information is invalid. However, it doesn't yet contain the code to save a
-   valid object. Use ``employerRepository`` and the appropriate method to do so.
+   valid object. Use ``context`` and the appropriate method to do so.
 
-#. ``displayViewEmployer`` will be in charge of rendering a page to view the contents of an individual
-   employer object. It will make use of that employer object's ``id`` field to grab the correct
-   information from ``employerRepository``. ``optEmployer`` is currently initialized to ``null``. Replace this using
-   the ``.findById()`` method with the right argument to look for the given employer object from
-   the data layer.
+#. ``About()`` will be in charge of rendering a page to view the contents of an individual
+   employer object. It will make use of that employer object's ``Id`` property to grab the correct
+   information from ``context``. Use the ``Find()`` method to locate the correct employer.
 
    .. admonition:: Tip
 
@@ -196,6 +165,8 @@ Test It with SQL
 The employer and skill view templates for adding and viewing these objects are made for you. Before you move on,
 test your application now to make sure it runs as expected. You should be able to create Employer and Skill objects
 and view them.
+
+#. Run a new migration and update your database. Open *MySQL Workbench* and make sure you have two new tables in your database: one for employers and one for skills.
 
 #. Start up your application – don’t forget to have your SQL server running – and go to the *Add Jobs*
    view from the application's navigation menu.

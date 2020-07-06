@@ -188,7 +188,7 @@ Coding a New ``Equals`` Method
 
 You’ll often want to implement ``Equals()`` yourself. When you do, be sure you
 understand the best practices around how the method should behave. These are
-`a little more involved <https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netframework-4.8/>`__
+`a little more involved <https://docs.microsoft.com/en-us/dotnet/api/system.object.equals>`__
 compared to coding a new ``ToString`` method.
 
 In fact, the ``Equals()`` method we defined above isn’t very good by most

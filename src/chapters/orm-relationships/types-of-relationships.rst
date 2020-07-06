@@ -1,18 +1,18 @@
 Types of Relationships
 ======================
 
-Just as data in different database tables :ref:`can have relationships <one-to-many-sql>` to each other, so can classes and objects. In fact, relationships between objects will translate into relationships between rows in a database when using ORM. 
+Just database tables :ref:`can relate <one-to-many-sql>` to each other, so can classes and objects. In fact, ORM translates relationships between objects into relationships between database rows.
 
-This chapter introduces the tools needed to create meaningful relationships using ORM. Before considering how to do this with EntityFrameworkCore, however, let's consider the different types of relationships at a conceptual level. 
+This chapter introduces the tools needed to create meaningful relationships using ORM. Let's consider the different types of relationships at a conceptual level. In later sections, we will learn how to implement these relationships using EntityFrameworkCore.
 
 For the examples below, we use four classes:
 
 - ``Event`` - A class representing a coding event.
 - ``EventCategory`` - A class representing categories of coding events.
 - ``EventDetails`` - A class that encapsulates details about a single event, such as description, contact email, location, and so on.
-- ``Tag`` - A piece of metadata labeling an event. You can think of these as topics that an event might include, such as C#, Spring, or C#Script. An event can cover multiple topics, so it can have multiple tags.
+- ``Tag`` - A piece of metadata labeling an event. You can think of these as topics that an event might include, such as C#, Spring, or JavaScript. An event can cover many topics, so it can have many tags.
 
-The first two of these are familiar to you from our ``CodingEvents`` app. The ``EventDetails`` and ``Tag`` classes will be introduced later in this chapter.
+The first two of these are familiar to you from our ``CodingEvents`` app. The ``EventDetails`` and ``Tag`` classes are new.
 
 .. _one-to-one-def:
 
@@ -80,7 +80,7 @@ When discussing the inverse relationship, we say that B has a **many-to-one** re
 
    A many-to-one relationship between ``Event`` and ``EventCategory`` objects
 
-A many-to-one relationship operates in the opposite direction of a one-to-many relationship. The difference between the two is which side of the relationship *knows about* the objects on the other side. In C# terms, this will translate into a field on one class that references the other.
+A many-to-one relationship operates in the opposite direction of a one-to-many relationship. The difference between the two is which side of the relationship *knows about* the objects on the other side. In C# terms, this will translate into a property on one class that references the other.
 
 .. admonition:: Examples
 
@@ -130,11 +130,11 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True/False: In order for two C# classes, A and B, to be mapped in a one-to-many relationship, class A must 
-   contain a field for instances of B and B must have a field for instances of A.
+   True/False: Suppose two C# classes, A and B, are in a one-to-many relationship. Then class A must 
+   contain a property for instances of B and B must have a property for instances of A.
 
    #. True
    #. False
 
-.. ans: False, A one-to-many relationship may be present without B containing a field A.
+.. ans: False, A one-to-many relationship may be present without B containing a property A.
 

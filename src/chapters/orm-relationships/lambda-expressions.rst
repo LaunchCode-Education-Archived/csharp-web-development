@@ -1,19 +1,19 @@
 A Primer on Lambda Expressions
 ==============================
 
-Before diving into relationships in EF, we need to introduce a new concept that will be used in querying for specific objects. 
+Before diving into relationships in EF, we need to introduce a new concept.
 
 .. index:: ! lambda expression
 
-A **lambda expression** is an *inline* function defined using ``=>``. This symbol is sometimes called a "fat arrow", and lambda expressions are sometimes called "fat arrow functions." The syntax for creating a lambda expression is:
+A **lambda expression** is an *inline* function defined using the symbol ``=>``. This symbol is sometimes called a "fat arrow," and lambda expressions are sometimes called "fat arrow functions." The most basic syntax for creating a lambda expression is:
 
 ::
 
-   argument(s) => return expression
+   argument => return expression
 
-The left-hand side of the expression consists of the arguments to be passed into the function, and the right-hand side states the return expression. This value of this expression will be the return value of the function.
+The left-hand side of the expression consists of the arguments to be passed into the function, and the right-hand side states the return expression. This value of this expression will be the return value of the function. There are more complicated ways to write a lambda expression, but we will only use this one.
 
-This is all a bit confusing until you see it in action.
+Lambda expressions can seem confusing until you see them in action. We will 
 
 .. index:: ! Select
 
@@ -51,9 +51,9 @@ Let's look at line 7 in more detail.
 
    var doubledNums = nums.Select(x => 2*x);
 
-the ``Select`` method takes a lambda expression as a parameter. The lambda expression is ``x => 2*x``. This is a function that takes an element of the ``nums`` array (as the parameter ``x``) and returns the result of multiplying it by 2. We can think of the behavior of ``Select`` as follows:
+The ``Select`` method takes a lambda expression as a parameter. The lambda expression is ``x => 2*x``. This is a function that takes a single element of the ``nums`` array (as the parameter ``x``) and returns the result of multiplying it by 2. We can think of the execution of ``Select`` as follows:
 
-#. ``Select`` begins by creating an empty array, which will be returned at the end fo the method.
+#. ``Select`` begins by creating an empty array. This array will be returned at the end of the method.
 #. It then loops over ``nums``.
 #. Within the loop, each entry of ``nums`` is passed into the lambda expression.
 #. The return value of the lambda expression is appended to the new array.
@@ -64,11 +64,11 @@ the ``Select`` method takes a lambda expression as a parameter. The lambda expre
 ``Where`` Example
 ------------------
 
-The array method ``Where`` can be used to *filter* elements of an array. In this case, ``Where`` takes a lambda expression that returns a boolean. If the boolean value is ``true`` then the value is included in the returned array. If the lambda expression returns ``false`` then the value is NOT included in the returned array.
+The array method ``Where`` can be used to *filter* elements of an array. In this case, ``Where`` takes a lambda expression that returns a boolean. If the boolean value is ``true`` then the value is included in the returned array. Otherwise, the value is NOT included in the returned array.
 
 .. admonition:: Example
 
-   Given an array of integers, we can use ``Where`` to filter out all of the odds, keeping only the events. Recall that a number ``x`` is even if ``x % 2`` is zero, and is odd otherwise.
+   Given an array of integers, we can use ``Where`` to filter out all of the odds, keeping only evens. Recall that a number ``x`` is even if ``x % 2`` is zero, and is odd otherwise.
 
    .. sourcecode:: csharp
       :linenos:
@@ -84,11 +84,11 @@ The array method ``Where`` can be used to *filter* elements of an array. In this
          }
       }
 
-      **Output**
+   **Output**
 
-      ::
+   ::
 
-         2 4
+      2 4
 
 In this example, the flow of execution of ``Where`` on line 7 is similar to that of ``Select`` above. The main difference is that instead of *transforming* every element of ``nums``, it is filtered based on the lambda expression ``x => (x % 2 == 0)``.
 
@@ -101,7 +101,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Suppose you have an array of first names, ``firstNames``, of people all with the same surname. What lambda expression would you pass to ``Select`` in the following code so that each name is appended by the given surname?
+   Suppose you have an array of first names, ``firstNames``, of people each with the last name Smith. What lambda expression would you pass to ``Select`` in the following code so that each name is appended by the its surname?
 
    .. sourcecode:: csharp
 

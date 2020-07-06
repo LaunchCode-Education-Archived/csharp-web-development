@@ -1,7 +1,7 @@
 Creating a One-to-Many Relationship
 ===================================
 
-The first relationship we implement will be between the ``Event`` and ``EventCategory`` classes. We will allow multiple events to be in the same category, but each event will only have one category. Thus, this will be a one-to-many relationship.
+The first relationship we implement will be between the ``Event`` and ``EventCategory`` classes. We will allow multiple events to be in the same category, but each event will only have one category. Thus, this will be a one-to-many relationship. In this case, we will set up both sides of the relationship, so a many-to-one relationship will result as well.
 
 Setting Up the Relationship - Video
 -----------------------------------
@@ -10,7 +10,7 @@ We are now ready to create a relationship between ``Event`` and ``EventCategory`
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `data-store-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/data-store-controller>`_ branch. If you want to verify what code this video ends with, check out the `one-to-many <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ branch.
+   The starter code for this video is found at the `data-store-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/data-store-controller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
 .. todo: Add one2m video
 
@@ -31,9 +31,13 @@ In the ``Event`` class, replace the ``Type`` property with a new property of typ
 
    public int CategoryId { get; set; }
 
-The ``CategoryId`` property functions as a `foreign key <foreign-key>`_. EF will create a ``CategoryId`` column in the ``EventCategory`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
+The ``CategoryId`` property functions as a `foreign key <foreign-key>`_. EF will create a ``CategoryId`` column in the ``Event`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
 
-Now, let's remove all additional references to ``EventType``.
+.. admonition:: Note
+
+   It is *very* important that the ID field corresponding to the ``Category`` property be named ``CategoryId``. This naming convention lets EF know that it should set ``Category`` to be the object with ``Id`` value the same as ``CategoryId``. 
+
+Now, let's remove all references to ``EventType`` in the project.
 
 Open ``AddEventViewModel``, which is in the ``ViewModels`` directory. Recall that this ViewModel represents the data that is needed to display and process the form used to create new ``Event`` instances. Replace its ``Type`` and ``EventType`` properties with similar properties that use ``EventCategory``.
 
@@ -46,7 +50,9 @@ Open ``AddEventViewModel``, which is in the ``ViewModels`` directory. Recall tha
 
    public List<SelectListItem> Categories { get; set; }
 
-The constructor for this class populates the ``EventTypes`` collection, which we have just removed. This collection stored a collection of ``SelectListItem`` objects, one for each possible value of ``Type``. The corresponding code to work with categories is to populate ``Categories`` with each possible value of ``Category``. In other words, ``Categories`` should have one ``SelectListItem`` for each item in the ``EventCategory`` table. We'll rely on the controller to provide our constructor with a list of all ``EventCategory`` objects, so we can update the constructor to look like this:
+The constructor for this class populates the ``EventTypes`` collection, which we have just removed. This collection stored a collection of ``SelectListItem`` objects, one for each possible value of ``Type``. The corresponding code to work with categories should populate ``Categories`` with each possible value of ``Category``. In other words, ``Categories`` should have one ``SelectListItem`` for each item in the ``EventCategory`` table. 
+
+We'll rely on the controller to provide our constructor with a list of all ``EventCategory`` objects, so we can update the constructor to look like this:
 
 .. sourcecode:: csharp
    :lineno-start: 28
@@ -65,7 +71,7 @@ The constructor for this class populates the ``EventTypes`` collection, which we
       }
    }
 
-The ``Value`` of each ``SelectListItem`` will be the ``Id`` of the given category. The ``Id`` of a category is unique (in fact, it functions as a primary key) while the ``Name`` may not be.
+The ``Value`` of each ``SelectListItem`` will be the ``Id`` of the given category. The ``Id`` of a category is unique (in fact, it functions as a primary key) while the ``Name`` may not be. Therefore, we must use ``Id`` for the ``value`` attribute.
 
 Since we no longer have a no-arg constructor, we must add one.
 
@@ -99,6 +105,8 @@ Finally, we have a reference to ``EventType`` in the ``EventsController.Add`` me
 
 When this method runs, ``addEventViewModel`` contains form data. The data that specifies which ``EventCategory`` and ``Event`` should be assigned to is ``CatgoryId`` and NOT and actually ``EventCategory`` object. Therefore, we must first retrieve the category object, and then pass it into the ``Event`` constructor.
 
+The code above can be refactored as follows:
+
 .. sourcecode:: csharp
    :lineno-start: 46
 
@@ -116,7 +124,9 @@ Our app is now free of all references to ``EventType``, so we may delete this un
 Defining the Inverse Relationship
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For categories to be aware of the events that they relate to, we must an ``Event`` collection property to ``EventCategory``.
+For categories to be aware of the events that they relate to, we must add an ``Event`` collection property to ``EventCategory``.
+
+In ``EventCategory``:
 
 .. sourcecode:: csharp
    :lineno-start: 12
@@ -132,14 +142,14 @@ Refactoring the Controller and View - Video
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `one-to-many <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ branch. If you want to verify what code this video ends with, check out the `refactoring-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-controller>`_ branch.
+   The starter code for this video is found at the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `refactoring-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-controller>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
 .. todo: Add refactoring-controller video
 
 Refactoring the Controller and View - Text
 ------------------------------------------
 
-Our ``EventsController`` requires a few updates to continue to work as it has.
+Our ``EventsController`` requires a few updates to continue to work as it has been.
 
 The ``Index`` method passes the collection of all ``Event`` objects into the view for display:
 
@@ -150,11 +160,11 @@ The ``Index`` method passes the collection of all ``Event`` objects into the vie
 
 .. index:: ! lazy loading, ! eager loading
 
-When we reference ``context.Events``, all ``Event`` objects will be queried from the database. By default, EF uses **lazy loading** to retrieve objects. Lazy loading results in *only* the data in the ``Event`` table being returned in the result set. Any data stored in other tables, such as data belonging to a referenced object, will NOT be loaded. In our case, this means that ``Event`` objects in ``context.Events`` will NOT have their ``Category`` properties set by EF. As-is, our code would display.
+When we reference ``context.Events``, all ``Event`` objects will be queried from the database. By default, EF uses **lazy loading** to retrieve objects. Lazy loading results in *only* the data in the ``Event`` table being returned in the result set. Any data stored in other tables, such as data belonging to a referenced object, will NOT be loaded. In our case, this means that ``Event`` objects in ``context.Events`` will NOT have their ``Category`` properties set by EF. As-is, our code would display an empty category column in the main view.
 
 .. admonition:: Note
 
-   Lazy loading can be a useful strategy in a lot of cases. Suppose your application wants to display a list of all users, where each ``User`` has a ``UserDetails`` property that stores info like profile image, email, etc. 
+   While lazy loading is not what we want now, it can be a useful strategy in a lot of cases. Suppose your application wants to display a list of all users, where each ``User`` has a ``UserDetails`` property that stores info like profile image, email, etc. 
 
    If all we need is a list of users, loading all of the additional data in ``UserProfile`` is unnecessary and will slow down the application. Lazy loading minimizes the data returned to optimize performance and reduce queries. 
 
@@ -167,27 +177,27 @@ The solution is to use **eager loading**. Eager loading is a technique that allo
 
    List<Event> events = context.Events.Include(e => e.Category).ToList();
 
-The ``Include`` method takes a lambda expression which specifies the property of each ``Event`` object that should be included in the query results. The effect of this additional method is that an ``JOIN`` query is performed between the ``Event`` and ``EventCategory`` tables, with ``Event.CategoryId`` being joined on ``EventCategory.Id``.
+The ``Include`` method takes a lambda expression which specifies the property of each ``Event`` object that should be included in the query results. The effect of this additional method is that a ``JOIN`` query is performed between the ``Event`` and ``EventCategory`` tables, with ``Event.CategoryId`` being joined on ``EventCategory.Id``.
 
-Our next update is more straightforward. Recall that we modified the main controller in ``AddEventViewModel`` to take a list of all ``EventCategory`` objects. This constructor is called in the ``Add`` method of our controller. Let's updated it to pass in a list of all ``EventCategory`` objects, as queried from the database.
+Our next update is more straightforward. Recall that we modified the main controller in ``AddEventViewModel`` to take a list of all ``EventCategory`` objects. This constructor is called in the ``Add`` method of our controller. Let's update it to pass in a list of all ``EventCategory`` objects, as queried from the database.
 
 .. sourcecode:: csharp
    :lineno-start: 35
 
    AddEventViewModel addEventViewModel = new AddEventViewModel(context.Categories.ToList());
 
-Database Migration and Testing - Text
--------------------------------------
+Database Migration and Testing - Video
+--------------------------------------
 
-We are done updating our code for now, but before we can test we must update the database. Recall that we changed the structure of the model by relating ``Event`` and ``EventCategory`` classes, and by removing ``EventType``. Any model changes requires a database change.
+We are done updating our code for now, but before we can test we must update the database. Recall that we changed the structure of the model by relating ``Event`` and ``EventCategory`` classes, and by removing ``EventType``. Any model change requires a database update.
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `refactoring-contoller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller>`_ branch. If you want to verify what code this video ends with, check out the `migration-testing <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_ branch.
+   The starter code for this video is found at the `refactoring-contoller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `migration-testing branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
 .. todo: Add one2m video
 
-Database Migration and Testing - Video
+Database Migration and Testing - Text
 --------------------------------------
 
 Open a terminal and navigate to the ``CodingEvents`` project directory within the solution. Then run ``dotnet ef migrations add RelateEventsAndCategories`` to create a new migration.

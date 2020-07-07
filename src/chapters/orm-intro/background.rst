@@ -67,8 +67,8 @@ The following video explains how we can add a MySQL database to our ``CodingEven
 
    If you want to verify what code this video starts with, check out the `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`_ branch. If you want to verify what code this video ends with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch.
 
-
-.. todo:: Add video for db setup
+.. youtube:: 
+   :video_id: RJ0NRG1FjIA
 
 Setting up a Persistent Database - Text
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

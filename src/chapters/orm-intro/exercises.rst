@@ -4,7 +4,7 @@ Exercises: OMG the ORM!
 =======================
 
 For the exercises, we are going to continue building on our ``CodingEvents`` application.
-The exercise instructions assume that your code resembles the `migrations <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migrations>`_ branch.
+The exercise instructions assume that your code resembles the `persistent-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller>`_ branch.
 Create a new branch in your own ``CodingEvents`` repo to get started on the exercises. 
 
 .. admonition:: Note

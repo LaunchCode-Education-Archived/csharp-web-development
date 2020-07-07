@@ -13,7 +13,7 @@ to create new job data.
 Your final application will have the same list and search capabilities as your :ref:`Tech Jobs (MVC Edition) <tech-jobs-mvc>` but
 you'll need to do the work to connect the project to a database for storing user-submitted job data.
 
-Each of the four sections of this assignment will also ask you to demonstrate your SQL skills under an item labelled **SQL TASK**.
+Each of the three sections of this assignment will also ask you to demonstrate your SQL skills under an item labelled **SQL TASK**.
 
 Checkout and Review the Starter Code
 ------------------------------------
@@ -21,9 +21,10 @@ Checkout and Review the Starter Code
 Fork and clone the starter code from the `repository <https://github.com/LaunchCodeEducation/TechJobsPersistent>`__.
 
 You won't be able to run your application yet. If you try it, you'll likely see a host of errors relating to the
-Entity Framework annotations and classes. Some of these have already been added but the dependency has not yet been defined.
+Entity Framework annotations and classes when you attempt to add any data or load different pages.
+Some of these have already been added but the connection to the database has not been set up yet.
 That will be one of your tasks. You'll need to complete :ref:`Part1 <tech-jobs-persistent-pt1>` before you can
-check out the project running in the browser.
+thoroughly check out the project running in the browser.
 
 That said, it's a good idea to scan the classes and templates even before you're able to run the application. 
 Take a gander at the ``Job`` class. It will look somewhat similar to the model in
@@ -33,16 +34,13 @@ You're no longer using a csv file to load job data, instead, we'll be creating n
 user form. The Job data will be stored in a MySQL database that you'll setup in :ref:`Part 1 <tech-jobs-persistent-pt1>` of this assignment.
 
 As you explore
-the starter code, you'll notice that the ``JobField`` abstract class is no longer present. Your task for
-:ref:`Part 2 <tech-jobs-persistent-pt2>` is to complete the work to persist some of the classes.
-You'll do this for ``Employer`` and ``Skill`` classes, as well as ``Job``.
+the starter code, you'll notice that the ``JobField`` class is missing. Instead, you will focus on just two aspects of a job listing: the employer and the skills required.
+Your task for :ref:`Part 2 <tech-jobs-persistent-pt2>` is to complete the work left for the user to complete necessary tasks for employer-related data.
 
-The ``Job`` class will also look different from how you have last seen it. In Parts 3 and 4, you'll
-add object relational mapping on the ``Job`` class by refactoring the ``Employer`` and ``Skills`` (formerly ``coreCompetency``)
-fields.
-
+The ``Job`` class will also look different from how you have last seen it.
+In :ref:`Part 3 <tech-jobs-persistent-pt3>`, you will use the many-to-many relationship between skills and jobs to make it easier for users to add skills to new jobs.
 In your ASP.NET project, you'll see an empty file in the root directory called ``queries.sql``. After completing the
-C# updates for parts 1,2,3, and 4, we ask you to test your application updates with SQL statements.
+C# updates for parts 1,2, and 3, we ask you to test your application updates with SQL statements.
 
 Since you are entering your own data, the queries we ask you to write will return unique result sets. For example, if you haven't entered
 any data yet, there may be an empty result set. However, as the architect of the database, you have the knowledge to write the
@@ -68,6 +66,8 @@ Part 1: Connect a Database to an ASP.NET App
    ``url`` set to the address of your database connection, as well as the username and password
    for a user you have created.
 
+#. Check that ``ConfigureServices`` in ``Startup.cs`` includes the configuration for the database.
+
 .. admonition:: Tip
 
    You can double check your setup against what you've already done for
@@ -78,10 +78,6 @@ Part 1: Connect a Database to an ASP.NET App
 Test It with SQL
 ^^^^^^^^^^^^^^^^
 
-When your database is properly configured, you should have no compiler errors when starting the application. Run the application
-and check the compiler output to make sure this is the case. If everything runs, you will be able to view your app
-locally in the browser at ``localhost:5001`` (unless of course you have a different port number).
-
 #. In your MySQL workbench, open a new query tab to check your database connection.
 
 #. **SQL TASK:** At this point, you will have one table, ``Job``. In ``queries.sql`` under "Part 1", list the columns and their data types
@@ -91,88 +87,74 @@ Your running application still has limited functionality. You won't yet be able 
 won't yet be able to view the list of jobs or search for jobs - but this is mostly because you have no job data. Move on to
 Part 2 below to start adding these functionalities.
 
-.. TODO: Modify part 2 to make students build view models
-
 .. _tech-jobs-persistent-pt2:
 
-Part 2: Persisting Employers and Skills
----------------------------------------
+Part 2: Adding Employers
+------------------------
 
 You will need to have completed the :ref:`setup steps <tech-jobs-persistent-pt1>` before starting this
-section.
-
-Employers and Skills
-^^^^^^^^^^^^^^^^^^^^
-
-In the last assignment, a ``Job`` object contained string fields for employer and core competency data. This employer
+section. In the last assignment, a ``Job`` object contained string fields for employer and core competency data. This employer
 and skill (formerly core competency) information about a particular job will now be stored in classes themselves.
-These items themselves will hold their own supplementary information.
+These items themselves will hold their own supplementary information. 
 
-#. Open the ``Employer`` model class and ``AddEmployerViewModel``. Add validation attributes to ``Name`` and ``Location`` so that both are required.
+ViewModels
+^^^^^^^^^^ 
+
+#. Create a new ViewModel called ``AddEmployerViewModel`` that has 2 properties: ``Name`` and ``Location``. Add validation attributes to ``Name`` and ``Location`` so that both are required.
 
    .. admonition:: Note
 
       For the purposes of this application, an employer can only have one location.
 
-#. ``Employer`` is a class that will be mapped to one of our tables. Make sure that there is an ``Id`` property before proceeding forward!
-
-#. In the model class ``Skill``, add a property for a longer description of the skill. Some hiring managers like to have
-   more information available about the nature of a given programming language or framework.
-
-#. As with ``AddEmployerViewModel``, we need to add some validation attributes. For the ``Name`` property, make sure that it is required.
-   For the newly added property for the description of the skill, add validation specifying that it has to be between 3 and 250 characters long.
-
-``DbContext``
-^^^^^^^^^^^^^
-
-To map the ``Employer`` and ``Skill`` classes to your techjobs database, you'll add data access interfaces for these relational
-objects, similar to the existing ``Jobs`` property in ``JobDbContext``.
-
-#. In ``JobDbContext``, create a new object ``Employers`` of type ``DbSet<Employer>``.
-#. In the same file, make a new object ``Skills`` of type ``DbSet<Skill>``.
+#. Add validation to both properties in the ViewModel so that both properties are required.
 
 Controllers
 ^^^^^^^^^^^
 
-With ``JobDbContext`` in place, we will reference this to send object information through
-the ``EmployerController`` handlers. ``EmployerController`` contains two action methods with missing
-information. Your task here is to make use of the ``JobDbContext`` class in these action methods.
+``EmployerController`` contains four relatively empty action methods. Take the following steps to handle traffic between the views and the model.
 
-#. Add a private field of ``JobDbContext`` type called ``context`` to
-   ``EmployerController``. Set up a constructor for ``EmployerController`` that sets the value of this field.
+#. Set up a private ``DbContext`` variable so you can perform CRUD operations on the database.
+#. ``Index()`` needs to pass all of the ``Employer`` objects in the database to the view.
+#. ``Add()`` returns the form users will use to add new employers. 
+#. ``ProcessAddEmployerForm()`` will process form submissions and make sure that only valid ``Employer`` objects are being saved to the database.
+#. ``About()`` returns a view with vital information about each employer such as their name and location.
 
-#. ``Index()`` needs a list of the employers in the database to pass to the view.
-   Use ``context`` and the appropriate method to put all of the saved employers in a list that can be passed to the view.
+Views
+^^^^^
 
-#. ``ProcessAddEmployerForm()`` already takes care of sending the form back if any of the submitted
-   employer object information is invalid. However, it doesn't yet contain the code to save a
-   valid object. Use ``context`` and the appropriate method to do so.
+The starter code comes with 3 views in the ``Employer`` subdirectory.
+Read through the code in each view! You may have to add models or make sure that the variable names you gave the controller match the view.
 
-#. ``About()`` will be in charge of rendering a page to view the contents of an individual
-   employer object. It will make use of that employer object's ``Id`` property to grab the correct
-   information from ``context``. Use the ``Find()`` method to locate the correct employer.
+Adding a Job
+^^^^^^^^^^^^
 
-   .. admonition:: Tip
+One important feature of your application is a form to add a new job.
+Two action methods in ``HomeController``, ``AddJob()`` and ``ProcessAddJobForm()``, will work together to return the view that contains the form and handle form submission.
+In the ``Home`` subdirectory in ``Views``, you will find an ``Add.cshtml`` file which contains the beginning of the form.
+Right now, there is only one field to the form and that is for the job's name.
+As you work on the application, you will add more fields to this form to add employer and skill info.
 
-      The variable holding the id you want to query for is already provided for you in the controller
-      method's parameters.
-
-#. Create a ``SkillController`` class and replicate the steps you followed above for ``EmployerController``.
+#. Create a new ViewModel called ``AddJobViewModel``. You will need properties for the job's name, the selected employer's ID, and a list of all employers as ``SelectListItem``.
+#. In ``AddJob()`` pass an instance of ``AddJobViewModel`` to the view as well as the name of the ``Add.cshtml`` view.
+#. In ``Add.cshtml``, add a new ``<div>`` to the form for the field to add an employer.
+   This field should be a dropdown with all of the employers in the database.
+   In addition, add a link to the form to add new employers.
+   This way, if a user doesn't see the employer they are looking for, they can easily click on the link and add a new employer to the database.
+#. In ``ProcessAddJobForm()``, you need to take in an instance of ``AddJobViewModel`` and make sure that any validation conditions you want to add are met before creating a new ``Job`` object and saving it to the database.
 
 Test It with SQL
 ^^^^^^^^^^^^^^^^
 
-The employer and skill view templates for adding and viewing these objects are made for you. Before you move on,
-test your application now to make sure it runs as expected. You should be able to create Employer and Skill objects
-and view them.
+Before you move on, test your application now to make sure it runs as expected.
+You should be able to create Employer objects and view them.
 
-#. Run a new migration and update your database. Open *MySQL Workbench* and make sure you have two new tables in your database: one for employers and one for skills.
+#. ROpen *MySQL Workbench* and make sure you have.
 
 #. Start up your application – don’t forget to have your SQL server running – and go to the *Add Jobs*
-   view from the application's navigation menu.
+   view.
 
-#. You won't be able to add a job yet, but you'll see a link to *Add Employers* and *Add Skills* in the form. Click them and proceed
-   to check the functionality of the forms that follow.
+#. You won't be able to add a job yet, but you'll see a link to *Add Employers* in the form. Click on it and proceed
+   to check the functionality of the form that follows.
 
 #. Be sure to test your validation requirements and error handling.
 
@@ -182,183 +164,73 @@ and view them.
 
    If everything seems to work – that is, you are
    able to submit the form without any errors – but you don’t see your
-   employers or skills in the list after submission, here’s what you should check:
+   employers in the list after submission, here’s what you should check:
 
-   #. Is there any data in the ``employers`` and ``skills`` table? Check by going to MySQL Workbench
+   #. Is there any data in the ``employers`` table? Check by going to MySQL Workbench
       and looking for the employer/skill data within your schema.
 
    #. If there’s data in the database, check that you are correctly
       querying for the list of all objects in the controller
-      Are you calling ``.findAll()`` on the repository?
+      Are you calling for the proper list with ``DbContext``?
 
-   #. Ensure you’re passing the list into the view, and it is named the same as the variable in the ThymeLeaf template.
+   #. Ensure you’re passing the list into the view, and it is named the same as the variable in the view.
 
    When everything works, move on to Part 3 below.
 
 .. _tech-jobs-persistent-pt3:
 
-.. TODO: Check in with Class 17 content before proceeding!
+Part 3: Working with a Many-To-Many Relationship
+------------------------------------------------
 
-Part 3: Setting Up a One-to-Many Relationship
----------------------------------------------
+Using a many-to-many relationship, we can use the ``JobSkill`` object to store a ``Job`` object's skills. 
+Just as a job requires many skills, any skill can be associated with several jobs.
+With this in mind, the form to add a job needs to contain all of the skills available as checkboxes so users can add the necessary skills when they add a job.
 
-In this application, any one ``Job`` object is affiliated with one employer while one ``Employer`` may contain several jobs.
-
-Now that you have set up persistence for the ``Employer`` and ``Skill`` classes, it is time to update the ``Job`` class
-to make use of these. ``Job`` is already using the Spring Data framework to be persistent and now you'll update its
-``Employer`` field to create a one-to-many relationship. You'll also add a field on ``Employer`` to list the jobs associated
-with each instance.
-
-Add a ``jobs`` Field to ``Employer``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Within ``Employer``, add a private property ``jobs`` of type
-   ``List<Job>`` and initialize it to an empty ``ArrayList``. After we
-   set up the ``Job`` class to work with ``Employer`` objects, this list
-   will represent the list of all items in a given job. We’ll do this
-   in a bit.
-
-#. Use the ``@OneToMany`` and ``@JoinColumn`` annotations on the jobs list in ``Employer`` to declare the relationship between
-   data tables.
-
-Update ``Job`` Model
+Review Existing Code
 ^^^^^^^^^^^^^^^^^^^^
 
-#. Since the ``Job`` model class has ``id`` and ``name`` fields, it too can inherit from ``AbstractEntity``. Update the
-   class definition of ``Job`` to extend ``AbstractEntity``. Remove the redundant fields from ``Job``.
+Before diving into this section, make sure that you have read through all models, ViewModels, views, and ``SkillController`` to see how the exisiting features and functions to add skills and add a skill to a job work.
 
-#. Replace the type of the field ``employer`` to be of type ``Employer``. You will also need to refactor the affected constructor
-   and getter and setter that use this field.
+Updaing ``AddJobViewModel``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Add the ``@ManyToOne`` annotation on the field ``employer``
+In order to add additional functionality to the form for adding a job, we need to add additional properties to ``AddJobViewModel``.
 
-.. _data-in-homecontroller:
+#. Add a property for a list of ``SkillId``.
+#. Add a property for a list of each ``Skill`` object in the database.
+#. Previously, in an ``AddJobViewModel`` constructor, you probably set up a ``SelectListItem`` list of ``Employer`` information.
+   Pass another parameter of a list of ``Skill`` objects to the constructor to set the value of the appropriate list property.
 
 Updating ``HomeController``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We’ll make several updates here. Similar to what you have done in Part 1, several of the methods in ``HomeController`` are
-missing code because the class has not yet been *wired* with the data layer yet.
+You next need to update ``HomeController`` so that skills data is being shared with the form and that the user's skill selections are properly handled.
 
+#. In the ``AddJob()`` method, update the ``AddJobViewModel`` object so that you pass all of the ``Skill`` objects in the database to the constructor.
+#. In the ``ProcessAddJobForm()`` method, pass in a new parameter: an array of strings called ``selectedSkills``.
+   When we allow the user to select multiple checkboxes, the user's selections are stored in a string array.
+   The way we connect the checkboxes together is by giving the ``name`` attribute on the ``<input>`` tag the name of the array.
+   In this case, each ``<input>`` tag on the form for the skills checkboxes should have ``"selectedSkills"`` as the name.
 
-#. Add a field ``employerRepository`` annotated with ``@Autowired``.
-#. A user will select an employer when they create a job. Add the employer data from ``employerRepository`` into the form template.
-   The add job form already includes an employer selection option. Be sure your variable name for the employer data matches that
-   already used in ``templates/add``.
-#. Checkout ``templates/add.html``. Make a mental note of the name of the variable being used to pass the selected employer
-   id on form submission.
-#. In ``processAddJobForm``, add a parameter to the method to pass in the template variable you just found. You'll need to use the
-   ``@RequestParam`` annotation on this parameter.
-#. Still in ``processAddJobForm``, add code inside of this method to select the employer object that has been chosen to be
-   affiliated with the new job. You will need to select the employer using the request parameter you've added to the method.
+   a. After you add a new parameter, you want to set up a loop to go through each item in ``selectedSkills``. This loop should go right after you create a new ``Job`` object and before you add that ``Job`` object to the database.
+   b. Inside the loop, you will create a new ``JobSkill`` object with the ``Id`` and ``Name`` of the newly-created ``Job`` object. You will also need to parse each item in ``selectedSkills`` as an integer to use for ``SkillId``.
+   c. Add each new ``JobSkill`` object to the ``DbContext`` object, but do not add an additional call to ``SaveChanges()`` inside the loop! One call at the end of the method is enough to get the updated info to the database.
 
-   .. admonition:: Note
-
-      An employer only needs to be found and set on the new job object if the form data is validated.
-
-
-Test It with SQL
-^^^^^^^^^^^^^^^^
-
-You made a lot of changes! Great work.
-
-Assuming you don’t have any compiler errors, start up your
-application. Don’t forget to start your SQL server. Make sure you can
-create a new job object from the *Add Jobs* form, selecting a pre-existing employer.
-
-Then, make sure the data has been saved in your job table. You should see a column for
-``employer_id``, corresponding to the employer object selected for the new job.
-
-You have changed the architecture of your job table. You will still be able to add a new entry that has an
-``employer_id`` column but you'll note that job still has the now defunct ``employer`` column. You can keep your database
-clean by removing the job table. It will be recreated when you run the application again.
-
-#. **SQL TASK:** In ``queries.sql`` under "Part 3", write the SQL statement to remove the job table.
-
-
-The *List* and *Search* functionality still isn't quite fixed so to view a job in the application, make a note
-of the job's id in the SQL table. Back in your browser, enter the path for ``/view/{jobId}``.
-
-
-When everything works, move on to Part 4 below.
-
-.. _tech-jobs-persistent-pt4:
-
-.. TODO: Check in with Class 17 content before proceeding!
-
-Part 4: Setting Up a Many-to-Many Relationship
-----------------------------------------------
-
-Using a many-to-many relationship, we can now use the ``Skill`` object to store a ``Job`` object's skills. At the moment,
-a job can have many skills listed as strings. In this section, you'll be tasked with changing this field type to be a list
-of skills. Just as a job requires many skills, any skill can be associated with several jobs. With this in mind, you'll also
-add a list of jobs as a field onto the skill class.
-
-
-``Skill.jobs``
-^^^^^^^^^^^^^^
-
-#. In your ``Skill`` class, add a jobs field.
-
-   #. What type should this field be?
-
-   #. This field has a many-to-many type relationship with skills. You'll need to add the ``@ManyToMany`` annotation
-      with an argument ``mappedBy="skills"`` to ensure this mapping.
-
-Refactor ``Job.skills``
+Updating ``Add.cshtml``
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Update your ``Job`` model class to fit its many-to-many relationship with skills.
+Now that we have the controller and ViewModel set up, we need to update the form to add a job.
 
-   #. ``Job.skills`` already exists. What needs to change and/or be added to map this relationship?
+#. Add a new ``<div>`` to the form for collecting skills.
+#. Loop through each object in the list of ``Skill`` objects.
+#. Give each checkbox a label and add the checkbox input itself.
+   Here is an example of how that ``<input>`` tag might look:
 
-      .. admonition:: Tip
+   .. sourcecode:: guess
 
-         Be sure to check the whole class for any necessary type updates.
+      <input type="checkbox" name="selectedSkills" value="@skill.Id" />
 
-
-Updating ``HomeController``, Again
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You next need to wire ``HomeController`` now with the skills data in order to add skills objects to a new job.
-This will look almost precisely like what you have done for employer data above. Refer back to
-:ref:`this section <data-in-homecontroller>` to inject the controller with skill data.
-
-There is, however, one difference to keep in mind. The job form being processed only accepts one employer by an ``id``
-field. Many skills can be added to a single job, though. Here's what we'll say about how to send the right skills along with
-the job form.
-
-#. The code for the view has already been written. Look in ``templates/add.html``. You'll see a form-group section that iterates
-   over available skills data and renders a checkbox for each skill. Each checkbox input contains an attribute ``name="skills"``.
-#. You'll need to pass in that attribute value to ``processAddJobForm`` in ``HomeController`` as a ``@RequestParam``.
-
-   .. sourcecode:: java
-
-      @RequestParam List<Integer> skills
-
-#. Then, to get the skills data from a list of ids (rather than a single id as we did with employer), use the ``CrudRepository`` method
-   ``.findAllById(ids)``.
-
-   .. sourcecode:: java
-
-      List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-      newJob.setSkills(skillObjs);
-
-   .. admonition:: Note
-
-      As with a job's employer, you only need to query your database for skills if the job model is valid.
-
-
-It's Your Job, List It and Re-Search It
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You now have all the tools in place to re-implement the list and search views from :ref:`tech-jobs-mvc`.
-
-#. In the ``ListController`` class, add fields for ``EmployerRepository`` and ``SkillRepository``, both annotated with
-   ``@Autowired``.
-#. You'll also need to pass the employer and skill data from those repositories into the view template rendered at ``list/``.
-   Add the right ``model.addAttribute(name, value)`` statements to pass this info into ``templates/list.html``.
-
+#. Add a link to the form to add skills to the database so if a user doesn't see the skills they need, they can add skills themselves!
 
 Test It with SQL
 ^^^^^^^^^^^^^^^^
@@ -366,7 +238,7 @@ Test It with SQL
 Run your application and make sure you can create a new job with an employer and several skills. You should now also have restored
 full list and search capabilities.
 
-#. **SQL TASK:** In ``queries.sql`` under "Part 4", write a query to return a list of the names
+#. **SQL TASK:** In ``queries.sql`` under "Part 3", write a query to return a list of the names
    and descriptions of all skills that are attached to jobs in alphabetical order.
    If a skill does not have a job listed, it should not be
    included in the results of this query.

@@ -52,12 +52,12 @@ On a Windows:
 MSTest is a C# testing framework. When we create a Visual Studio MSTest Project, the 
 necessary API and classes are added as **dependencies** of the ``CarTests`` project. A dependency 
 is a separately developed program or piece of code that another program or piece of code 
-uses to carry it out its function. Our C# tests will *depend* on MSTest code. 
+uses to carry out its function. Our C# tests will *depend* on MSTest code. 
 
 Along the same lines, since ``CarTests`` tests the methods inside of ``Car``, we must add the 
 ``Car`` project as a dependency of ``CarTests``.
 
-Right click on on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
+Right click on the ``Dependencies`` directory in ``CarTests`` and add a reference to 
 the ``Car`` project.
 
 .. figure:: ./figures/vs-add-dependency-reference.png
@@ -113,7 +113,7 @@ test underneath the first TODO. As usual, be sure write this code rather than co
 Our empty test is aptly named ``EmptyTest()`` as a description of its role. This test does 
 not follow the AAA rule from our :ref:`testing-best-practices`, as it jumps straight to 
 asserting. Nor is it relevant, for that matter. The goal of this empty unit test is not to 
-demonstrate all of our best practices, but rather, to verify that out testing setup is in place.
+demonstrate all of our best practices, but rather, to verify that our testing setup is in place.
 
 The three arguments in our test care defined as "expected", "actual", and "delta". This empty test 
 asserts an expected value of ``10`` to equal an actual value of ``10``, 
@@ -195,7 +195,7 @@ Once you run the test, you will see a new output panel with a green check mark i
 and a message stating the test passed. 
 
 We know now how the test runner behaves when a test passes and can begin the real work of unit 
-testing the ``Car`` class. One responsibility of the ``Car`` class constructor is to set it's initial 
+testing the ``Car`` class. One responsibility of the ``Car`` class constructor is to set its initial 
 ``gasTankLevel`` field. This field is determined by the constructor argument for ``gasTankSize`` . 
 
 ``Car.cs``:

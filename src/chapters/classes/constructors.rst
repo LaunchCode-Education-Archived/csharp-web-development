@@ -137,7 +137,7 @@ A better way to write the above constructors would be this:
 
       }
 
-In the example above on line 19, we use ``: this()`` to invoke another
+In the example above on line 17, we use ``: this()`` to invoke another
 constructor within the same class. In this case, the second constructor calls
 the first with default values for ``numberOfCredits`` and ``gpa``. We haven't seen
 this syntax before but we'll discuss it more in :ref:`inheritance`.

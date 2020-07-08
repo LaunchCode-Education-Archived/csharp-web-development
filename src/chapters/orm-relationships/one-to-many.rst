@@ -10,7 +10,7 @@ We are now ready to create a relationship between ``Event`` and ``EventCategory`
 
 .. admonition:: Note
 
-   The starter code for this video is found at the `data-store-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/data-store-controller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_. As always, code along to the videos on your own ``CodingEvents`` project.
+   The starter code for this video is found at the `persistent-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
 .. todo: Add one2m video
 
@@ -31,7 +31,7 @@ In the ``Event`` class, replace the ``Type`` property with a new property of typ
 
    public int CategoryId { get; set; }
 
-The ``CategoryId`` property functions as a `foreign key <foreign-key>`_. EF will create a ``CategoryId`` column in the ``Event`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
+The ``CategoryId`` property functions as a :ref:`foreign key <foreign-key>`. EF will create a ``CategoryId`` column in the ``Event`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
 
 .. admonition:: Note
 
@@ -45,7 +45,6 @@ Open ``AddEventViewModel``, which is in the ``ViewModels`` directory. Recall tha
    :lineno-start: 22
 
    [Required(ErrorMessage = "Category is required")]
-   [Display(Name = "Category")]
    public int CategoryID { get; set; }
 
    public List<SelectListItem> Categories { get; set; }
@@ -73,7 +72,7 @@ We'll rely on the controller to provide our constructor with a list of all ``Eve
 
 The ``Value`` of each ``SelectListItem`` will be the ``Id`` of the given category. The ``Id`` of a category is unique (in fact, it functions as a primary key) while the ``Name`` may not be. Therefore, we must use ``Id`` for the ``value`` attribute.
 
-Since we no longer have a no-arg constructor, we must add one.
+Since we no longer have a no-arg constructor, we must add one to allow model binding.
 
 .. sourcecode:: csharp
    :lineno-start: 42
@@ -82,7 +81,7 @@ Since we no longer have a no-arg constructor, we must add one.
    {
    }
 
-There is one more reference to ``EventType``, and it is in ``Views/Events/Add.cshtml``. Within that file, update the ``select`` input and its label to reference our new ``Category`` and ``Categories`` properties.
+There is another reference to ``EventType``, and it is in ``Views/Events/Add.cshtml``. Within that file, update the ``select`` input and its label to reference our new ``Category`` and ``Categories`` properties.
 
 .. sourcecode:: html
    :lineno-start: 21
@@ -149,7 +148,7 @@ Refactoring the Controller and View - Video
 Refactoring the Controller and View - Text
 ------------------------------------------
 
-Our ``EventsController`` requires a few updates to continue to work as it has been.
+Our ``EventsController`` requires a few updates now that ``Event`` objects reference ``EventCategory`` objects.
 
 The ``Index`` method passes the collection of all ``Event`` objects into the view for display:
 
@@ -196,6 +195,8 @@ We are done updating our code for now, but before we can test we must update the
    The starter code for this video is found at the `refactoring-contoller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `migration-testing branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
 .. todo: Add one2m video
+
+.. _create-migration:
 
 Database Migration and Testing - Text
 --------------------------------------

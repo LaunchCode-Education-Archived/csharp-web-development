@@ -7,5 +7,6 @@ Relationships in Object-Relational Mapping
    types-of-relationships
    lambda-expressions
    one-to-many
+   some-setup
    many-to-many
    exercises

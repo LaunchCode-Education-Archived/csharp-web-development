@@ -1,139 +1,20 @@
 Creating a Many-to-Many Relationship
 ====================================
 
-This section explores how we can work with many-to-many relationships in ASP.NET using EntityFrameworkCore. To do so, we need a class that we can relate to ``Event`` in a many-to-many fashion. This is the ``Tag`` class.
-
-The ``Tag`` Model Class
------------------------
-
-Between the last section and this one, we have added a new persistent model class to the code, ``Tag``. This class represents a tag of the type used for blog or social media posts. For us, a tag will be a topical label that can be applied to any event. Thus, we'll eventually relate ``Event`` and ``Tag`` to each other in a many-to-many way.
-
-The steps to add this code follow the exact same process that we used to add a `persistent EventCategory class <orm1-exercises>`_, so we won't go through them in detail here. 
-
-The ``Detail`` View - Video
---------------------------------
-
-Before working with tags, we will add a new view, along with the corresponding controller, ViewModel, and template. The new view will live at the route ``/Events/Detail/X``, where ``X`` is the ID of a specific event. This view will display the details of a specific event on its own page.
-
-.. admonition:: Note
-
-   The starter code for this video is found at the `migration-testing branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `event-detail-view branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view>`_. As always, code along to the videos on your own ``CodingEvents`` project.
-
-.. todo: Add detail view video
-
-The ``Detail`` View - Text
--------------------------------
-
-Adding a ``Detail`` view for events is relatively straightforward, but it also involves a couple of new concepts. We'll start by creating a ViewModel to model the data we want to display in the view.
-
-.. sourcecode:: csharp
-   :linenos:
-
-   using System;
-   using System.Collections.Generic;
-   using CodingEventsDemo.Models;
-
-   namespace CodingEventsDemo.ViewModels
-   {
-      public class EventDetailViewModel
-      {
-         public string Name { get; set; }
-         public string Description { get; set; }
-         public string ContactEmail { get; set; }
-         public string CategoryName { get; set; }
-
-         public EventDetailViewModel(Event theEvent)
-         {
-               Name = theEvent.Name;
-               Description = theEvent.Description;
-               ContactEmail = theEvent.ContactEmail;
-               CategoryName = theEvent.Category.Name;
-         }
-      }
-   }
-
-The model replicates the ``Name``, ``Description``, and ``Email`` properties of ``Event`` while storing ``Category.Name`` as a string. This is a minor variant of the ``Event`` class, but by the end of this section we'll add more behavior to ``EventDetailViewModel`` that will make the benefits of using a ViewModel in this case more clear.
-
-Within ``EventsController`` we add a handler method to display the view.
-
-.. sourcecode:: csharp
-   :lineno-start: 86
-
-   public IActionResult Detail(int id)
-   {
-      Event theEvent = context.Events
-         .Include(e => e.Category)
-         .Single(e => e.Id == id);
-
-      EventDetailViewModel viewModel = new EventDetailViewModel(theEvent);
-      return View(viewModel);
-   }
-
-.. index:: ! path parameter
-
-There are two new concepts to introduce here. First, our method takes a parameter named ``id``. You have worked with such parameters in the past, as query parameters mapped to method parameters. For example, we could reach this handler with the request path ``/Events/Detail?id=X``. What's new now is that we will use the same parameter mapping, but with a **path parameter**. A path parameter is a parameter that is part of the request path. In this case, we will be able to make requests to a path like ``Events/Detail/X``.
-
-.. admonition:: Note
-
-   This parameter mapping works seamlessly because the of default path template specified in the ``Configure`` method of ``Startup.cs``. This template is ``"{controller=Home}/{action=Index}/{id?}"``. The last portion, ``{id?}``, means that any path parameter following the action method will map to a method parameter named ``id``. 
-   
-   If we wanted to use a different URL structure, or a different method parameter name, we would need to include additional configuration. See `the documentation on routing <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1>`_ for more details.
-
-The other new concept here is the use of the EF method ``Single``: 
-
-.. sourcecode:: csharp
-   :lineno-start: 88
-
-   Event theEvent = context.Events
-      .Include(e => e.Category)
-      .Single(e => e.Id == id);
-
-This method takes a boolean lambda expression and filters the ``Context.Events`` collection down to the *one* event that satisfies ``e.Id == id``. In other words, it finds the single event with ``Id`` matching the path parameter.
-
-.. admonition:: Note
-
-   We use ``Single`` instead of ``Find`` here because we also need to call ``Include`` to eagerly fetch the ``Category`` property. ``Include`` can not be chained with ``Find``.
-
-Finally, we're ready for the view, which is straightforward. Here are the contents of ``Views/Events/Detail.cshtml``:
-
-.. sourcecode:: html
-   :linenos:
-
-   @model CodingEventsDemo.ViewModels.EventDetailViewModel
-
-   <h1>@Model.Name</h1>
-
-   <table class="table">
-      <tr>
-         <th>Description</th>
-         <td>@Model.Description</td>
-      </tr>
-      <tr>
-         <th>Contact Email</th>
-         <td>@Model.ContactEmail</td>
-      </tr>
-      <tr>
-         <th>Category</th>
-         <td>@Model.CategoryName</td>
-      </tr>
-
-   </table>
+Let's set up a many-to-many relationship between ``Event`` and ``Tag``.
 
 Join Tables
 -----------
 
 To relate data in a many-to-many fashion in a relational database requires a new type of SQL table.
 
+One-to-many relationships are established at the database level by the use of a foreign key column on one side of the relationship. Our ``Events`` table has a foreign key column: ``CategoryId``. 
 
-One-to-many relationships are established at the database level by the use of a foreign key column on one side of the relationship. Our ``Event`` table has a foreign key column: ``CategoryId``. 
-
-For a given row in ``Event``, the column ``CategoryId`` contains the primary key of the row in ``event_category`` that the ``Event`` row is related to. 
-
-The only difference is the *number* of different ``Event`` rows that may have the same value of ``CategoryId``. The ``event``/``event_category`` relationship is many-to-one, so *many* event rows may have the same ``CategoryId`` value. 
+For each ``Events`` row, the column ``CategoryId`` contains the ``Id`` of a ``Categories`` row. This is the primary key of the row in ``Categories`` that the ``Events`` row is related to. The ``Event``/``EventCategory`` relationship is many-to-one, so *many* event rows may have the same ``CategoryId`` value. 
 
 .. index:: ! join table
 
-Using foreign and primary keys to create many-to-many relationships is a bit trickier. In order to relate rows in ``Event`` to rows in ``Tag`` we need need a third table, known as a **join table**. A join table consists of two columns, each of which is a foreign key column to another table. Each row in a join table represents a relationship between one row in each of the two tables. This technique enables many-to-many relationships.
+Using foreign and primary keys to create many-to-many relationships is a bit trickier. In order to relate rows in ``Events`` to rows in ``Tag``, we need need a third table, known as a **join table**. A join table consists of two columns, each of which is a foreign key column to another table. Each row in a join table represents a relationship between one row in each of the two tables being joined. This technique enables many-to-many relationships.
 
 Consider some example data in our ``Events`` and ``Tags`` tables.
 
@@ -175,7 +56,7 @@ Consider some example data in our ``Events`` and ``Tags`` tables.
    * - 6
      - java
 
-A join table for these two tables would be called ``EventTag``, and would have two columns, ``EventId`` and ``TagId``. Each of these columns are foreign key columns into their respective tables. 
+A join table for these two tables would be called ``EventTags``, and would have two columns, ``EventId`` and ``TagId``. Each of these columns are foreign key columns into their respective tables. 
 
 If we want to relate the ``ios`` tag to the ``WWDC`` event, we create a new row in ``EventTags``:
 
@@ -223,8 +104,6 @@ The ``EventTag`` Model - Video
 Let's create a new model class, ``EventTag``, to model a join table for ``Event`` and ``Tag`` classes. 
 
 .. admonition:: Note
-
-   If you want to verify what code this video starts with, check out the `event-detail-view <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view>`_ branch. If you want to verify what code this video ends with, check out the `event-tag-model <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-tag-model>`_ branch.
 
    The starter code for this video is found at the `event-detail-view branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `event-tag-model branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-tag-model>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
@@ -280,12 +159,12 @@ Since our join table will make use of a composite primary key, we need to add so
 
 The method ``OnModelCreating`` can be overridden from the base class, ``DbContext``, in order to provide additional configuration for the data store. In this case, we add code that configures ``EntityTag`` to have a composite primary key consisting of the properties/columns ``EventId`` and ``TagId``.
 
-This completes configuration of our join class. Before proceeding, create and apply a database migration. After doing so, verify that there is a new join table, ``EventTag``.
+This completes configuration of our join class. Before proceeding, create and apply a database migration. Refer to the :ref:`previous section <create-migration>` for details if needed, being sure to use a unique, descriptive migration name. After running the migration, verify that there is a new join table, ``EventTag``.
 
 Adding a ``Tag`` to an ``Event`` - Video
 ----------------------------------------
 
-Now that we have established a many-to-many relationship between ``Event`` and ``Tag`` we can write controller and view code to allow users to add tags to events.
+Now that we have established a many-to-many relationship between ``Event`` and ``Tag``, we can write controller and view code to allow users to add tags to events.
 
 .. admonition:: Note
 
@@ -350,7 +229,7 @@ This new view will contain a form with a dropdown that will allow the user to se
 
 This class models the data that is need to render and process our form. In order to add a tag to an event, our ``POST`` handler will need to know the IDs of the two objects in question. Therefore, our ViewModel has required ``EventId`` and ``TagId`` properties. It also contains an ``Event`` property, which we will use to display details (such as the event name) in the view.
 
-Finally, the ViewModel has a property ``List<SelectListItem> Tags``. As with previous forms containing a dropdown, this property will be used to populate the ``select`` element containing the all tag options. 
+Finally, the ViewModel has a property ``List<SelectListItem> Tags``. As with previous forms containing a dropdown, this property will be used to populate the ``select`` element containing the all of the tag options. 
 
 The constructor requires an ``Event`` object as well as a ``List<Tag>`` object. The list will contain a collection of all tags pulled from the database when we call the constructor from within our controller.
 
@@ -410,23 +289,23 @@ The ``POST`` method is more complicated.
       if (ModelState.IsValid)
       {
 
-            int eventId = viewModel.EventId;
-            int tagId = viewModel.TagId;
+         int eventId = viewModel.EventId;
+         int tagId = viewModel.TagId;
 
-            EventTag eventTag = new EventTag {
-               EventId = eventId,
-               TagId = tagId
-            };
-            context.EventTags.Add(eventTag);
-            context.SaveChanges();
+         EventTag eventTag = new EventTag {
+            EventId = eventId,
+            TagId = tagId
+         };
+         context.EventTags.Add(eventTag);
+         context.SaveChanges();
 
-            return Redirect("/Events/Detail/" + eventId);
+         return Redirect("/Events/Detail/" + eventId);
       }
 
       return View(viewModel);
    }
 
-This handler takes in a ``AddEventTagViewModel`` object which will be created via model binding. Assuming validation passes (that is, both ``EventId`` and ``TagId`` are not ``null``) we create a new ``EventTag`` object and save it to the database. Then we redirect to the detail view for the given event.
+This action method takes in a ``AddEventTagViewModel`` object which will be created via model binding. Assuming validation passes (that is, both ``EventId`` and ``TagId`` are not ``null``) we create a new ``EventTag`` object and save it to the database. Then we redirect to the detail view for the given event.
 
 With this code, we can now add a tag to an event. Start up the application and test it out. In order to verify that everything worked, you'll need to look at the ``EventTag`` table in the database to verify a new row is created upon form submission. 
 
@@ -468,7 +347,7 @@ Our query of ``context.EventTags`` has a few pieces:
 
    You might be wondering why we have to query ``context.EventTags``. Indeed, it would be convenient of we could just reference a ``Tags`` property from the ``Event`` class. But notice that there *is no such property* in ``Event``. The many-to-many relationship is defined by the data in ``EventTag``, so we must use this class in order to access related objects.
 
-Now let's move into ``EventDetailsViewModel``. Here, we can add data related to an event's tags, so that it can be passed into the view.
+Now let's move into ``EventDetailsViewModel``. Here, we add data related to an event's tags to pass into the view.
 
 First, add a new string property named ``TagText``.
 
@@ -477,7 +356,7 @@ First, add a new string property named ``TagText``.
 
    public string TagText { get; set; }
 
-Then, in the constructor add a parameter to represent the list of all of ``EventTag`` objects associated with a given ``Event``. Use this parameter to set the value of ``TagText``.
+Then in the constructor, add a parameter to represent the list of all of ``EventTag`` objects associated with a given ``Event``. Use this parameter to set the value of ``TagText``.
 
 .. sourcecode:: csharp
    :lineno-start: 16
@@ -501,7 +380,7 @@ Then, in the constructor add a parameter to represent the list of all of ``Event
       }
    }
 
-We build up the contents of ``TagText`` by looping over ``eventTags`` and appending tag names, separated by commas. For example, if an event has tags with names ``"java"``, ``"csharp", and ``"object-oriented"``, then the ``TagList`` will be ``"#java, #csharp, #object-oriented"``. 
+We build up the contents of ``TagText`` by looping over ``eventTags`` and appending tag names, separated by commas. For example, if an event has tags with names ``"java"``, ``"csharp"``, and ``"object-oriented"``, then the ``TagList`` will be ``"#java, #csharp, #object-oriented"``. 
 
 Displaying this data in the view is straightforward. In ``Views/Events/Detail.cshtml``, add an additional row to the table.
 
@@ -577,7 +456,7 @@ Within ``Controller/TagController.cs`` update the ``AddEvent`` (``POST`` handler
       return View(viewModel);
    }
 
-Lines 68-71 query for existing ``EventTag`` objects that have the some ``EventId``/``TagId`` pair. In other words, ``existingItems`` will be empty unless that given event already has the given tag. Before creating and saving a new ``EventTag`` object, we check the size of ``existingItems``, skipping this step if a the event already has the tag.
+Lines 68-71 query for existing ``EventTag`` objects that have the some ``EventId``/``TagId`` pair. In other words, ``existingItems`` will be empty unless that given event already has the given tag. Before creating and saving a new ``EventTag`` object, we check the size of ``existingItems``, skipping this step if the event already has the tag.
 
 Display Items With a Given Tag - Video
 --------------------------------------
@@ -585,8 +464,6 @@ Display Items With a Given Tag - Video
 In addition to seeing which tags are on an event, we would also like to see all events with a specific tag.
 
 .. admonition:: Note
-
-   If you want to verify what code this video starts with, check out the `tag-errors <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/tag-errors>`_ branch. If you want to verify what code this video ends with, check out the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`_ branch.
 
    The starter code for this video is found at the `tag-errors branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/tag-errors>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `display-tag-items branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`_. As always, code along to the videos on your own ``CodingEvents`` project
 
@@ -629,7 +506,7 @@ The view is similar to other listings that we have created.
 
    @if (Model.Count == 0)
    {
-      <h1>No elemnts with the given tag</h1>
+      <h1>No elements with the given tag</h1>
    }
    else
    {
@@ -638,7 +515,7 @@ The view is similar to other listings that we have created.
       <ul>
          @foreach (var evtTag in Model)
          {
-               <li>@evtTag.Event.Name</li>
+            <li>@evtTag.Event.Name</li>
          }
       </ul>
 
@@ -656,7 +533,7 @@ Finally, we add links to the name of each tag in our tag index.
          <td><a asp-controller="Tag" asp-action="Detail" asp-route-id="@tag.Id">@tag.Name</a></td>
    </tr>
 
-Start the app up and test. Viewing the main tag listing should allow you to click on each tag name and view the events that have that tag.
+Start the app up and test user behavior. Viewing the main tag listing should allow you to click on each tag name and view the events that have that tag.
 
 Check Your Understanding
 ------------------------

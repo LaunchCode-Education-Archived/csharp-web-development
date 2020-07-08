@@ -1,7 +1,7 @@
 Types of Relationships
 ======================
 
-Just database tables :ref:`can relate <one-to-many-sql>` to each other, so can classes and objects. In fact, ORM translates relationships between objects into relationships between database rows.
+Just as database tables :ref:`can relate <one-to-many-sql>` to each other, so can classes and objects. In fact, ORM translates relationships between objects into relationships between database rows.
 
 This chapter introduces the tools needed to create meaningful relationships using ORM. Let's consider the different types of relationships at a conceptual level. In later sections, we will learn how to implement these relationships using EntityFrameworkCore.
 
@@ -10,7 +10,7 @@ For the examples below, we use four classes:
 - ``Event`` - A class representing a coding event.
 - ``EventCategory`` - A class representing categories of coding events.
 - ``EventDetails`` - A class that encapsulates details about a single event, such as description, contact email, location, and so on.
-- ``Tag`` - A piece of metadata labeling an event. You can think of these as topics that an event might include, such as C#, Spring, or JavaScript. An event can cover many topics, so it can have many tags.
+- ``Tag`` - A piece of metadata labeling an event. You can think of these as topics that an event might include, such as C#, ASP.NET, or JavaScript. An event can cover many topics, so it can have many tags.
 
 The first two of these are familiar to you from our ``CodingEvents`` app. The ``EventDetails`` and ``Tag`` classes are new.
 

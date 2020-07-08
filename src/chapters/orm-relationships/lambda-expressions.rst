@@ -11,9 +11,9 @@ A **lambda expression** is an *inline* function defined using the symbol ``=>``.
 
    argument => return expression
 
-The left-hand side of the expression consists of the arguments to be passed into the function, and the right-hand side states the return expression. This value of this expression will be the return value of the function. There are more complicated ways to write a lambda expression, but we will only use this one.
+The left-hand side of the expression consists of the arguments to be passed into the function, and the right-hand side states the return expression. There are more complicated ways to write a lambda expression, but we will only use this one.
 
-Lambda expressions can seem confusing until you see them in action. We will 
+Lambda expressions can seem confusing until you see them in action. We will look at some below.
 
 .. index:: ! Select
 
@@ -51,7 +51,7 @@ Let's look at line 7 in more detail.
 
    var doubledNums = nums.Select(x => 2*x);
 
-The ``Select`` method takes a lambda expression as a parameter. The lambda expression is ``x => 2*x``. This is a function that takes a single element of the ``nums`` array (as the parameter ``x``) and returns the result of multiplying it by 2. We can think of the execution of ``Select`` as follows:
+The ``Select`` method takes a lambda expression as a parameter. The lambda expression is ``x => 2*x``. This is a function that takes a single element of the ``nums`` array, as represented by x on the left side of the expression, and returns the results of multiplying each of those array elements by 2. We can think of the execution of ``Select`` as follows:
 
 #. ``Select`` begins by creating an empty array. This array will be returned at the end of the method.
 #. It then loops over ``nums``.
@@ -107,7 +107,12 @@ Check Your Understanding
 
       var smiths = firstNames.Select(_______);
 
-.. ans: x => x + " Smith"
+#. ``x => "Smith"``
+#. ``x => x + " Smith"``
+#. ``x => x + lastName``
+#. ``x => x == "Smith``
+
+.. ans: b. x => x + " Smith"
 
 .. admonition:: Question
 
@@ -116,5 +121,10 @@ Check Your Understanding
    .. sourcecode:: csharp
 
       var bigNums = nums.Where(______);
+
+   #. ``x => x > 42``
+   #. ``x => x == 42``
+   #. ``x => 42``
+   #. ``x => x < 42``
 
 .. ans: x => x > 42

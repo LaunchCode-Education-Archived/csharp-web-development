@@ -101,16 +101,16 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   Suppose you have an array of first names, ``firstNames``, of people each with the last name Smith. What lambda expression would you pass to ``Select`` in the following code so that each name is appended by the its surname?
+   Suppose you have an array of first names, ``firstNames``, of people each with the last name Smith. What lambda expression would you pass to ``Select`` in the following code so that each name is appended by its surname?
 
    .. sourcecode:: csharp
 
       var smiths = firstNames.Select(_______);
 
-#. ``x => "Smith"``
-#. ``x => x + " Smith"``
-#. ``x => x + lastName``
-#. ``x => x == "Smith``
+   #. ``x => "Smith"``
+   #. ``x => x + " Smith"``
+   #. ``x => x + lastName``
+   #. ``x => x == "Smith``
 
 .. ans: b. x => x + " Smith"
 

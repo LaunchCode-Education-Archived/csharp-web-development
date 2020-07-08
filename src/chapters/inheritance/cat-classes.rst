@@ -107,7 +107,7 @@ Then in ``HouseCat``, we can simply define another constructor as this:
 .. sourcecode:: csharp
    :lineno-start: 16
 
-   public HouseCat(String name)
+   public HouseCat(string name)
    {
       Name = name;
    }

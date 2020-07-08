@@ -3,10 +3,8 @@
 Exercises: OMG the ORM!
 =======================
 
-.. TODO: Update branch info when final branch is finalized.
-
 For the exercises, we are going to continue building on our ``CodingEvents`` application.
-The exercise instructions assume that your code resembles the `orm1 <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/orm1>`_ branch.
+The exercise instructions assume that your code resembles the `persistent-controller <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller>`_ branch.
 Create a new branch in your own ``CodingEvents`` repo to get started on the exercises. 
 
 .. admonition:: Note

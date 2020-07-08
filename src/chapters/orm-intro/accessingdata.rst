@@ -3,7 +3,7 @@
 Accessing Data
 ==============
 
-Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the database. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
+Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the new schema. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.
 
 .. index:: data store
 
@@ -16,9 +16,10 @@ While classes determine the structure of a table in our relational database, a *
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `db-config <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-config>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
+   If you want to verify what code this video starts with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
 
-.. todo: Add data store video
+.. youtube::
+   :video_id: NV_Tw9sQeEQ
 
 Data Stores - Text
 ------------------
@@ -27,7 +28,9 @@ Data Stores - Text
    single: data store; in-memory
    single: data store; persistent
 
-In our work so far we have been using an in-application data store, in the form of the class ``EventData``. This is an **in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
+In our work so far, we have been using an in-application data store,. This is the class ``EventData``. The ``EventData`` class is an 
+**in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts 
+down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
 
 Creating a ``DbContext``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,18 +108,19 @@ Our ``Event`` class currently has an ID field.
    public int Id { get; }
    static private int nextId = 1;
 
-   public Event(string name, string description, string contactEmail) : base()
+	public Event()
+   {
+      Id = nextId;
+      nextId++;
+   }
+
+   public Event(string name, string description, string contactEmail) : this()
    {
       Name = name;
       Description = description;
       ContactEmail = contactEmail;
    }
 
-   public Event()
-   {
-      Id = nextId;
-      nextId++;
-   }
 
 When introducing this property previously, we intentionally named it ``Id`` in anticipation of using EF and a data store to persist ``Event`` objects. EF will *automatically* consider any property named ``Id`` to be the primary key for that class. Therefore, we already have the necessary property! 
 
@@ -131,6 +135,10 @@ So the code sample above can be simplified to the following.
    :lineno-start: 16
 
    public int Id { get; set; }
+
+	public Event()
+   {
+   }
 
    public Event(string name, string description, string contactEmail)
    {
@@ -149,8 +157,8 @@ Migrations - Video
 
 If you want to verify what code this video starts with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch. If you want to verify what code this video ends with, check out the `migrations <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migrations>`_ branch.
 
-.. todo: add migrations video
-
+.. youtube::
+   :video_id: q6PfagaiHqE
 
 Migrations - Text
 ------------------

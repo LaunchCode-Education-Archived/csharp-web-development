@@ -67,8 +67,8 @@ The following video explains how we can add a MySQL database to our ``CodingEven
 
    If you want to verify what code this video starts with, check out the `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`_ branch. If you want to verify what code this video ends with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch.
 
-
-.. todo: Add video for db setup
+.. youtube:: 
+   :video_id: RJ0NRG1FjIA
 
 Setting up a Persistent Database - Text
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,7 +86,7 @@ Now, attach MySQL to your project in ``appsettings.json`` by adding the followin
 .. sourcecode:: javascript
 
   "ConnectionStrings": {
-    "DefaultConnection": "server=localhost;userid=coding_events;password=PASSWORD!;database=coding_events;"
+    "DefaultConnection": "server=localhost;userid=coding_events;password=PASSWORD;database=coding_events;"
   }
 
 The ``DefaultConnection`` property contains key/value pairs for each piece of information needed for our app to connect to the database created above. Be sure to replace ``PASSWORD`` with the password that you used when creating the ``coding_events`` user above.
@@ -124,7 +124,13 @@ This command installs a set of command-line tools for working with EntityFramewo
 
    This note applies to *Mac users only*.
 
-   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with the command ``code ~/.bash_profile``. Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal).
+   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with this command: 
+	
+	.. sourcecode:: bash
+
+		code ~/.bash_profile 
+		
+	Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window).
 
    .. sourcecode:: bash
 

@@ -5,6 +5,7 @@ Studio: OMG More ORM!
 
 Today's studio depends on completion of the :ref:`exercises <orm1-exercises>`.
 If you have not completed the exercises, go back and complete them before continuing with the studio.
+If you want to check out one possible solution to the exercises before you get started, look at the `studio16-starter <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/studio16-starter>`__ branch in ``CodingEventsDemo``.
 
 Adding a ViewModel
 ------------------

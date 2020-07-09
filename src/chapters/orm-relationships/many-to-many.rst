@@ -107,7 +107,8 @@ Let's create a new model class, ``EventTag``, to model a join table for ``Event`
 
    The starter code for this video is found at the `event-detail-view branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `event-tag-model branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-tag-model>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add event tag video
+.. youtube::
+   :video_id: xZLFVV9SHiM
 
 The ``EventTag`` Model - Text
 -----------------------------
@@ -170,7 +171,8 @@ Now that we have established a many-to-many relationship between ``Event`` and `
 
    The starter code for this video is found at the `event-tag-model branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-tag-model>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `add-tag-to-event branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-tag-to-event>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add tagging events video
+.. youtube::
+   :video_id: KwAqPy2nDsU
 
 Adding a ``Tag`` to an ``Event`` - Text
 ---------------------------------------

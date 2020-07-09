@@ -21,7 +21,8 @@ Before working with tags, we will add a new view, along with the corresponding c
 
    The starter code for this video is found at the `migration-testing branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `event-detail-view branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add detail view video
+.. youtube::
+   :video_id: vLWOsHFB5BQ
 
 The ``Detail`` View - Text
 -------------------------------

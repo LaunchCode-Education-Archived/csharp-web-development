@@ -27,6 +27,8 @@ TechJobs (MVC Edition)
 
 :ref:`tech-jobs-mvc`
 
-Persistence
------------
+TechJobs (Persistent Edition)
+-----------------------------
+
+:ref:`tech-jobs-persistent`
 

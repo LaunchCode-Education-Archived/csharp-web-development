@@ -64,7 +64,8 @@ Assignments
    assignments/tech-jobs-console
    assignments/tech-jobs-oo
    assignments/tech-jobs-mvc
-
+   assignments/tech-jobs-persistent
+   
 Appendices
 ==========
 

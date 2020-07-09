@@ -10,9 +10,10 @@ We are now ready to create a relationship between ``Event`` and ``EventCategory`
 
 .. admonition:: Note
 
-   The starter code for this video is found at the `persistent-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_. As always, code along to the videos on your own ``CodingEvents`` project.
+   The starter code for this video is found at the `event-category branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-category>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add one2m video
+.. youtube::
+   :video_id: 9V_7j6ARM00
 
 Setting Up the Relationship - Text
 ----------------------------------
@@ -143,7 +144,8 @@ Refactoring the Controller and View - Video
 
    The starter code for this video is found at the `one-to-many branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `refactoring-controller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-controller>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add refactoring-controller video
+.. youtube::
+   :video_id: xj2EZl37Ooo
 
 Refactoring the Controller and View - Text
 ------------------------------------------
@@ -194,7 +196,8 @@ We are done updating our code for now, but before we can test we must update the
 
    The starter code for this video is found at the `refactoring-contoller branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `migration-testing branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing>`_. As always, code along to the videos on your own ``CodingEvents`` project.
 
-.. todo: Add one2m video
+.. youtube::
+   :video_id: Ihjgp8oG3Wg
 
 .. _create-migration:
 

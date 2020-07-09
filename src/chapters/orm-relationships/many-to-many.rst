@@ -322,7 +322,8 @@ Now that we have ``EventTag`` data in the database, let's display the tags for a
 
    The starter code for this video is found at the `add-tag-to-event branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-tag-to-event>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `display-tags branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tags>`_. As always, code along to the videos on your own ``CodingEvents`` project
 
-.. todo: Add display tags video
+.. youtube::
+   :video_id: WqhXqnXqnyk
 
 Displaying Tags in the Detail View - Text
 -----------------------------------------
@@ -416,7 +417,8 @@ Let's address this scenario.
 
    The starter code for this video is found at the `display-tags branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tags>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `tag-errors branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/tag-errors>`_. As always, code along to the videos on your own ``CodingEvents`` project
 
-.. todo: Add tag errors video
+.. youtube::
+   :video_id: CWX3juBW4zk
 
 Preventing Errors When Adding a Tag - Text
 ------------------------------------------
@@ -469,7 +471,8 @@ In addition to seeing which tags are on an event, we would also like to see all 
 
    The starter code for this video is found at the `tag-errors branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/tag-errors>`_ of ``CodingEventsDemo``. The final code presented in this video is found on the `display-tag-items branch <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`_. As always, code along to the videos on your own ``CodingEvents`` project
 
-.. todo: Add display tags video
+.. youtube::
+   :video_id: Ajs-tg9nunA
 
 Display Items With a Given Tag - Text
 -------------------------------------

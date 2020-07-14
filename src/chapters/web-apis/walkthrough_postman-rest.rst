@@ -26,24 +26,24 @@ Installing Postman is easy thanks to its cross-platform nature. You can download
 
 Select the ``Windows x64`` installer download then run the installer:
 
-.. image:: /_static/images/postman/download-installer.png
+.. figure:: figures/download-installer.png
    :alt: Download Windows x64 Postman installer
 
 After installation Postman should open automatically. Making an account can be useful but if you do not want to create one you can select the **skip** link in grey at the bottom of the splash screen:
 
-.. image:: /_static/images/postman/account.png
+.. figure:: figures/account.png
    :alt: Postman splash screen for new account
 
 .. admonition:: tip
 
    Once installed you can right-click the Postman icon and pin it to your taskbar for easy access in the future:
 
-   .. image:: /_static/images/postman/pin-taskbar.png
+   .. figure:: figures/pin-taskbar.png
       :alt: Pin Postman application to taskbar on Windows
 
 You can leave the Launchpad view open for now. We will explore Postman after setting up our API server.
 
-.. image:: /_static/images/postman/launchpad-view.png
+.. figure:: figures/launchpad-view.png
    :alt: Postman Launchpad view
 
 Clone the Coding Events API Source Code
@@ -63,7 +63,7 @@ Let's begin by cloning the repo onto our machine:
    
    If you want to clone the repo somewhere else make sure to change to that directory first.
 
-.. sourcecode:: powershell
+.. sourcecode:: bash
    :caption: Windows/PowerShell
 
    > git clone https://github.com/launchcodeeducation/coding-events-api
@@ -72,7 +72,7 @@ For today's studio we will start with the first branch of the API codebase, ``1-
 
 Let's change into the repo and switch to this branch:
 
-.. sourcecode:: powershell
+.. sourcecode:: bash
    :caption: Windows/PowerShell
 
    # cd is an alias (like a nick-name) for the Set-Location cmdlet in PowerShell
@@ -83,7 +83,7 @@ Let's change into the repo and switch to this branch:
 
 You can leave this PowerShell Terminal window open, we will return to it in a later step:
 
-.. image:: /_static/images/postman/powershell-in-repo-dir.png
+.. figure:: figures/powershell-in-repo-dir.png
    :alt: PowerShell in coding-events-api repo directory on 1-sqlite branch
 
 Coding Events API
@@ -96,7 +96,7 @@ CodingEvent Resource
 
 The *shape* of the ``CodingEvent`` resource describes the general form of its properties and value types:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    CodingEvent {
       Id: integer
@@ -118,7 +118,7 @@ In our case the ``CodingEvent`` shape is just the properties and types (translat
 
 An example of a real ``CodingEvent`` JSON response would look like this:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    {
       "id": 1,
@@ -143,7 +143,7 @@ GET Coding Events
 
 Making a ``GET`` request to the entry-point of a resource should return a representation of the state of the collection. In our case this representation is a JSON array with ``CodingEvent`` elements:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    [
       CodingEvent { ... },
@@ -152,7 +152,7 @@ Making a ``GET`` request to the entry-point of a resource should return a repres
 
 If the current state of the collection is empty then we will just get back an empty JSON array:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    []
 
@@ -186,7 +186,7 @@ Finally, as part of our ``POST`` request we will need to send a request body con
 
 The *shape* of the ``NewCodingEvent`` describes the JSON body that the endpoint expects:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    NewCodingEvent {
       Title: string
@@ -196,7 +196,7 @@ The *shape* of the ``NewCodingEvent`` describes the JSON body that the endpoint 
 
 When making a request you would need to send a JSON body like this to satisfy the general shape:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    {
       "Title": "Halloween Hackathon!",
@@ -212,13 +212,13 @@ Recall that when a ``POST`` request is successful the API should respond with th
 
 One of the REST conventions states that when an entity is created the response should include both this status and the ``Location`` header that provides the URL of the new entity:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    Location=<server origin>/api/events/<new entity Id>
 
 As an example:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    Location=http://localhost:5000/api/events/1
 
@@ -275,7 +275,7 @@ If you cloned the repo into your ``HOME`` directory then the absolute path will 
 
 ``C:\Users\<username>\coding-events-api\CodingEventsAPI``
 
-.. sourcecode:: powershell
+.. sourcecode:: bash
    :caption: Windows/PowerShell, run from coding-events-repo directory
 
    # change to the CodingEventsAPI project directory
@@ -300,7 +300,7 @@ List the Coding Events
 
 Now that our API server is running we can make our first request using Postman. To create a new request select the **New** button in the top left corner:
 
-.. image:: /_static/images/postman/new-button.png
+.. figure:: figures/new-button.png
    :alt: Postman New item button
 
 Creating a New Request
@@ -308,24 +308,24 @@ Creating a New Request
 
 With the new item dialog open select the **create new** tab (on the left) then select **Request**. 
 
-.. image:: /_static/images/postman/new-item-dialog.png
+.. figure:: figures/new-item-dialog.png
    :alt: Postman New item dialog
 
 This will open the new request dialog:
 
-.. image:: /_static/images/postman/new-request-dialog.png
+.. figure:: figures/new-request-dialog.png
    :alt: Postman New Request dialog
 
 Postman requests require a **name** and a **collection**. A collection is just a container to hold related requests. They make it easy to import and export *collections of requests* for portability across teams. For our first request enter the **name** ``list coding events``.
 
 At the bottom of the new request dialog you will see that the collections are empty. Select the orange **create collection** button then enter the name ``coding events API``. The new request dialog button will change to say **Save to coding events API**:
 
-.. image:: /_static/images/postman/new-request-dialog-complete.png
+.. figure:: figures/new-request-dialog-complete.png
    :alt: Postman New Request save to collection
 
 After saving, a new request tab will be created where you can customize its behavior:
 
-.. image:: /_static/images/postman/empty-request-tab.png
+.. figure:: figures/empty-request-tab.png
    :alt: Postman new request tab
 
 Configuring the Request
@@ -355,7 +355,7 @@ In Postman we can make this request by configuring the following settings:
 
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET`` but in the following requests you will need to select the appropriate method from this list. 
 
-.. image:: /_static/images/postman/http-method-selector.png
+.. figure:: figures/http-method-selector.png
    :alt: Postman HTTP method selector
 
 Underneath the URL bar are tabs for other aspects of the request. Select the ``Headers`` tab to configure our header. The ``Accept`` header lets the API know that we *accept responses* that are formatted as JSON. 
@@ -366,7 +366,7 @@ Underneath the URL bar are tabs for other aspects of the request. Select the ``H
 
 You can set multiple headers in this section. As you begin to type the name and value Postman will autocomplete them for you. After configuration your request should look like this:
 
-.. image:: /_static/images/postman/list-coding-events-request.png
+.. figure:: figures/list-coding-events-request.png
    :alt: Postman list coding events request configured
 
 To issue the request you can select the blue **Send** button or use the ``ctrl + enter`` keyboard shortcut. 
@@ -376,21 +376,21 @@ Viewing the Response
 
 Below the request configuration you can see the response section has been populated. From here you can see the response body along with the status code (top right) and **Headers**:
 
-.. image:: /_static/images/postman/list-coding-events-response.png
+.. figure:: figures/list-coding-events-response.png
    :alt: Postman list coding events responses
 
 Since this is our first time running the application the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the **empty representation of the Coding Events collection**.
 
 If you select the **Headers** tab you can see the API satisfied our ``Accept`` *request header* and provided the response in ``application/json`` format.
 
-.. image:: /_static/images/postman/response-headers.png
+.. figure:: figures/response-headers.png
    :alt: Postman response headers
 
 .. admonition:: note
 
    If you get a **connection refused** error it means you likely forgot to start the API server or mistyped the URL. Check both of these before attempting the request again.
 
-   .. image:: /_static/images/postman/connection-refused.png
+   .. figure:: figures/connection-refused.png
       :alt: Postman request connection refused error
 
 Create a Coding Event
@@ -421,7 +421,7 @@ In addition to the configurations you are now familiar with setting we will need
 
 The body of the request must be in a **raw JSON** format. Once selecting this format enter the following JSON body:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    {
       "Title": "Halloween Hackathon!",
@@ -431,7 +431,7 @@ The body of the request must be in a **raw JSON** format. Once selecting this fo
 
 **Before sending the request check that your configuration matches the following image:**
 
-.. image:: /_static/images/postman/create-coding-event-request.png
+.. figure:: figures/create-coding-event-request.png
    :alt: Postman create coding event request configuration
 
 Analyzing the Response
@@ -450,7 +450,7 @@ Sending a Bad Request
 
 To illustrate the rejection of bad requests let's send one that violates the ``NewCodingEvent`` validation constraints. Send another request with the following JSON body:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    {
       "Title": "too short",
@@ -460,7 +460,7 @@ To illustrate the rejection of bad requests let's send one that violates the ``N
 
 You can see from the response that the API rejected the request due to **client error**. The response had a **bad request** status of ``400`` and the body included information about what needs to be corrected to issue a successful request:
 
-.. image:: /_static/images/postman/create-coding-event-bad-request.png
+.. figure:: figures/create-coding-event-bad-request.png
    :alt: Postman response of create coding event with a bad request body
 
 Get a Single Coding Event
@@ -478,7 +478,7 @@ For this step we will make a request for **the state of a single entity**. You c
 
 You should get back the following JSON response body:
 
-.. sourcecode:: json
+.. sourcecode:: bash
 
    {
       "id": 1,
@@ -494,7 +494,7 @@ Our REST API allows us to interact with the **state of its resources**. If we ma
 
 Try issuing the request again with a non-existent ``codingEventId`` of ``100``. You should get back the following response:
 
-.. image:: /_static/images/postman/404-response.png
+.. figure:: figures/404-response.png
    :alt: Postman 404 response for a non-existent resource
 
 Delete a Coding Event
@@ -517,7 +517,7 @@ Once again go through the methodical process of setting up the request:
 
 Notice that for this request we do not need to set any request headers. A ``DELETE`` request should send back an empty (``no-content``) response body with its ``204`` status code. 
 
-.. image:: /_static/images/postman/delete-coding-event-response.png
+.. figure:: figures/delete-coding-event-response.png
    :alt: Postman delete a coding event response
 
 As a final confirmation check the state of the Coding Events collection and notice that it has returned to its initial state. The representation of this state is shown in the empty list ``[]`` response body.

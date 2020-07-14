@@ -37,7 +37,7 @@ You can think of the shape like a Class definition in an object-oriented codebas
          public DateTime Date { get; set; }
       }
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: The output Resource shape (blueprint) of a Coding Event
 
       CodingEvent {
@@ -51,7 +51,7 @@ The JSON Representation of the Resource that the API sends out is then based on 
 
 .. admonition:: example
    
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: sample Coding Event JSON Representation
 
       {
@@ -67,7 +67,7 @@ Consider the following example of an input shape. Notice that the ``Id`` field i
 
 .. admonition:: example
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: The input shape (blueprint) used to Create a Coding Event
 
       CodingEvent {
@@ -155,7 +155,7 @@ Let's see this in action with our example API. Using what we have learned so far
 
 .. admonition:: example
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: response from a request to the GET ``/events`` endpoint
 
       [
@@ -168,7 +168,7 @@ Let's see this in action with our example API. Using what we have learned so far
 .. admonition:: example
 
    
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: response from a request to the GET ``/tags`` endpoint
 
       [
@@ -221,7 +221,7 @@ Let's take another look at our example API:
    
    We could make a request to the ``GET /events/12`` **endpoint** to **R**\ead its *current State*:
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: response from a GET request to /events/12
 
       {
@@ -298,7 +298,7 @@ Let's take a look at this request in the context of our example API:
    
    We refer to this shape as a ``NewCodingEvent`` to distinguish it from the ``CodingEvent`` Resource shape:
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
 
       NewCodingEvent {
          Title: string
@@ -446,7 +446,7 @@ A bad request will include an error message in its response. The response will i
    
    If their request body contained the following **invalid representation** of partial State (due to a ``Title`` field that is too short):
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: invalid representation in request to PATCH /events/6 endpoint
    
       {
@@ -455,7 +455,7 @@ A bad request will include an error message in its response. The response will i
 
    The API response would have a ``400`` status code alerting the client that they must **correct their representation**. The response body would be used to communicate which aspects were invalid:
 
-   .. sourcecode:: json
+   .. sourcecode:: bash
       :caption: 400 failed response body
 
       {

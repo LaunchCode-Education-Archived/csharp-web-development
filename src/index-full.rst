@@ -52,6 +52,7 @@ Studios
    chapters/sql-part1/studio
    chapters/sql-part2/studio
    chapters/orm-intro/studio
+   chapters/web-apis/index
 
 Assignments
 ===========

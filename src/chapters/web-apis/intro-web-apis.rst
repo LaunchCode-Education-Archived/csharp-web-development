@@ -1,5 +1,4 @@
-========
-Web-APIs
+Web APIs
 ========
 
 Recall the high level `definition of APIs <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/introduction.html#api>`_ from an earlier unit: *An API is the interface that allows one application to communicate with another application.*
@@ -185,7 +184,7 @@ This is the header for HTML documents and is used throughout the web.
  
 APIs send representations of data in the format of JSON requiring the header ``Content-Type`` to be ``application/json`` which allows us to pass the state of the data as the HTTP body.
 
-.. sourcecode:: json
+.. sourcecode:: bash
    :caption: Example from `JSON chapter <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/data-formats-json.html#json>`_
 
    {

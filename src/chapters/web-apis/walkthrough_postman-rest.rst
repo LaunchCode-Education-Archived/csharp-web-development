@@ -49,7 +49,7 @@ You can leave the Launchpad view open for now. We will explore Postman after set
 Clone the Coding Events API Source Code
 ---------------------------------------
 
-Throughout this course we will be using a modified version of the MVC Coding Events application you created. The `Coding Events API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`_ is designed following the OpenAPI REST specification. Although they are implemented differently you will find that most of the features from the MVC application have been supported through endpoints in the API.
+Throughout this course we will be using a modified version of the MVC Coding Events application you created. The `Coding Events API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`_ is designed as a RESTful API. Although they are implemented differently you will find that most of the features from the MVC application have been supported through endpoints in the API.
 
 .. admonition:: note
 
@@ -136,12 +136,12 @@ Endpoints
 
 This branch of the API has the following 4 endpoints. Recall that an endpoint is made up of a **path** (to the resource) and a **method** (action to take on the resource). 
 
-They all operate on Coding Events and share a common *entry point path* of ``/api/events``. Request and response bodies are all in JSON, or more specifically they have a ``Content-Type`` header value of ``application/json``.
+They all operate on Coding Events and share a common *entry-point path* of ``/api/events``. Request and response bodies are all in JSON, or more specifically they have a ``Content-Type`` header value of ``application/json``.
 
 GET Coding Events
 ^^^^^^^^^^^^^^^^^
 
-Making a ``GET`` request to the entry point of a resource should return a representation of the state of the collection. In our case this representation is a JSON array with ``CodingEvent`` elements:
+Making a ``GET`` request to the entry-point of a resource should return a representation of the state of the collection. In our case this representation is a JSON array with ``CodingEvent`` elements:
 
 .. sourcecode:: json
 
@@ -163,7 +163,7 @@ In more terse terms we can describe this endpoint as:
 GET Single Coding Event
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to view the representation of a single entity you need to provide information to uniquely identify it in the collection. Since the entry point represents the collection it can be followed by an ``Id`` value in the path to *look inside the collection* and return just the corresponding entity.
+If you want to view the representation of a single entity you need to provide information to uniquely identify it in the collection. Since the entry-point represents the collection it can be followed by an ``Id`` value in the path to *look inside the collection* and return just the corresponding entity.
 
 .. todo:: directory path analogy, collection/individual or collection/sub-collection/individual etc
 
@@ -210,7 +210,7 @@ When making a request you would need to send a JSON body like this to satisfy th
 
 Recall that when a ``POST`` request is successful the API should respond with the ``201``, or **Created**, HTTP status code. As part of the ``2XX`` *HTTP success status codes*, it indicates a particular type of successful response with a special header.
 
-The OpenAPI REST spec states that when an entity is created the response should include both this status and the ``Location`` header that provides the URL of the new entity:
+One of the REST conventions states that when an entity is created the response should include both this status and the ``Location`` header that provides the URL of the new entity:
 
 .. sourcecode:: json
 
@@ -236,7 +236,7 @@ Delete a Coding Event
 
 Deleting a ``CodingEvent`` resource means to operate on a single entity. This should make sense as it would be too powerful to expose the ability to delete the entire collection. Just like the endpoint for getting a single entity, this endpoint requires a ``codingEventId`` path variable.
 
-When a resource is deleted the OpenAPI spec expects the API to respond with a ``204`` status code. Similar to the ``201`` status, this code indicates a success with no response body or special headers. 
+When a resource is deleted, a RESTful API should respond with a ``204`` status code. Similar to the ``201`` status, this code indicates a success with no response body or special headers. 
 
 The deletion endpoint can be described in shorthand as:
 
@@ -247,7 +247,7 @@ If you attempt to delete a resource that doesn't exist (with an incorrect ``codi
 Summary
 ^^^^^^^
 
-Two endpoints at the entry point path, ``/events``, to interact with the collection as a whole:
+Two endpoints at the ``CodingEvents`` entry-point path, ``/api/events``, to interact with the collection as a whole:
 
 - **list Coding Events**: ``GET /api/events -> CodingEvent[]``
 - **create a Coding Event**: ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
@@ -439,7 +439,7 @@ Analyzing the Response
 
 You can see in the response that the API reflected back the representation of the new ``CodingEvent`` entity. Notice that a unique ``id`` has been assigned to it by the API. 
 
-Looking at the status code (``201``) and headers of the response we can see the API conformed to the OpenAPI spec. The URL value of the ``Location`` header
+Looking at the status code (``201``) and headers of the response we can see the API conformed to the REST convention. The URL value of the ``Location`` header
 
 ``http://localhost:5000/api/events/1``
 

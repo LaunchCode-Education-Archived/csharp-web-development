@@ -127,7 +127,7 @@ Transferring a Representation of State
 
    In REST, **State** is **transitioned** by interactions between a client and an API.
    
-   Aside from **D**\eleting, all other interactions involve **transferring** a **Representation of State**.
+   Each transition is driven by **transferring** a **Representation of State**.
    
 A RESTful API is designed to be stateless. This has the following implications:
 

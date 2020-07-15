@@ -4,15 +4,15 @@ REST: Practical Fundamentals
 Now that you have an understanding of the more abstract aspects of REST, let's turn our attention to the practical details. The previous article 
 covered the following terms in great depth -- below is a practical summary:
 
-   **State**: data that can change (transition) through interactions between an API and its client
+- **State**: data that can change (transition) through interactions between an API and its client
 
-   **Representation**: the convertible format that enables state to be transferred and used by the client and API
+- **Representation**: the convertible format that enables state to be transferred and used by the client and API
 
-   **Resource**: the representation of a type of state (as an entity or collection) that the API exposes to its client for interaction
+- **Resource**: the representation of a type of state (as an entity or collection) that the API exposes to its client for interaction
 
-   **Entity**: a single resource that is uniquely identifiable in a collection
+- **Entity**: a single resource that is uniquely identifiable in a collection
 
-   **Collection**: entities of the same resource type treated as a whole
+- **Collection**: entities of the same resource type treated as a whole
 
 Shapes
 ------
@@ -27,7 +27,7 @@ You can think of shape like a class definition in an object-oriented codebase:
 .. admonition:: Example
 
    .. sourcecode:: csharp
-		:linenos:
+      :linenos:
 
       public class CodingEvent {
          public int Id { get; set; }
@@ -36,10 +36,10 @@ You can think of shape like a class definition in an object-oriented codebase:
          public DateTime Date { get; set; }
       }
 
-	The output resource shape of a Coding Event
+   The output resource shape of a Coding Event
 
    .. sourcecode:: bash
-		:linenos:
+      :linenos:
 
       CodingEvent {
          Id: integer
@@ -56,7 +56,7 @@ Here's a Coding Event JSON Representation:
 .. admonition:: Example
    
    .. sourcecode:: bash
-		:linenos:
+      :linenos:
 
       {
          "Id": 1,
@@ -73,7 +73,7 @@ Consider the following example of an input shape used to create an event. Notice
 .. admonition:: Example
 
    .. sourcecode:: bash
-		:linenos:
+      :linenos:
 
       CodingEvent {
          Title: string
@@ -152,10 +152,10 @@ represented in a JSON array, ``[]``:
 
 .. admonition:: Example
 
-	Here is a response from a request to the GET ``/events`` endpoint:
+   Here is a response from a request to the GET ``/events`` endpoint:
 
    .. sourcecode:: bash
-		:linenos:
+      :linenos:
 
       [
          CodingEvent { ... },
@@ -166,7 +166,7 @@ represented in a JSON array, ``[]``:
 
 .. admonition:: Example
 
-	Here is a response from a request to the GET ``/tags`` endpoint:
+   Here is a response from a request to the GET ``/tags`` endpoint:
    
    .. sourcecode:: bash
       :linenos:
@@ -190,7 +190,7 @@ Because the unique identifier of the entity is variable, we use a path variable 
 .. admonition:: Tip
 
    The hierarchy of collections and entities is similar to directories and files. To identify an entity is like identifying a file within a directory. 
-	You need both the directory (collection) name and a sub-path that uniquely identifies the file (entity).
+   You need both the directory (collection) name and a sub-path that uniquely identifies the file (entity).
 
 Consider a request to the following endpoint for viewing a single resource entity:
 
@@ -221,7 +221,7 @@ Let's take another look at our example API:
    We could make a request to the ``GET /events/12`` endpoint to read its current state and receive this response:
 
    .. sourcecode:: bash
-		:linenos:
+      :linenos:
 
       {
          "Id": 12,
@@ -233,13 +233,11 @@ Let's take another look at our example API:
 CRUD Operations & HTTP Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   In a RESTful API the interactions a client takes on a Resource are described using HTTP methods
+In a RESTful API, the operations a client performs on a resource are described using HTTP methods. If the resource path describes the noun (subject), 
+the HTTP method describes the verb (action) that is taken on that subject's state. As we saw in the previous article, state is something that can be 
+interacted using CRUD operations. By convention, each of these operations corresponds to an HTTP method:
 
-If the Resource path describes the **noun** (subject) the HTTP method describes the **verb** (action) that is taken on that subject's State. 
-
-As we saw in the previous article, State is something that can be interacted using **CRUD** operations. *By convention*, each of these operations corresponds to an HTTP method:
-
-.. list-table:: HTTP method and corresponding **CRUD** operation
+.. list-table:: HTTP method and corresponding CRUD operation
    :stub-columns: 1
 
    * - HTTP method
@@ -248,26 +246,29 @@ As we saw in the previous article, State is something that can be interacted usi
      - ``PUT/PATCH*``
      - ``DELETE``
    * - CRUD operation
-     - **C**\reate
-     - **R**\ead
-     - **U**\pdate
-     - **D**\elete
+     - Create
+     - Read
+     - Update
+     - Delete
 
-The use case of an API dictates the design of its contract. This includes which actions the client can take on each Resource. In other words, **not every action must be exposed** for each Resource the API manages.
+The use case of an API dictates the design of its contract. This includes which actions the client can take on each resource. In other words, not every 
+action must be exposed for each resource the API manages.
 
-.. admonition:: note
+.. admonition:: Note
 
-   If a client tries to take an action on a Resource that is not supported by the API they will receive a ``405`` **status code** or ``Method not allowed`` error response.
+   If a client tries to take an action on a resource that is not supported by the API, they will receive a ``405`` status code or ``Method not allowed`` 
+   error response.
 
 Endpoint Behavior
-=================
+-----------------
 
-Depending on the endpoint the effect of the request can differ. In other words, the **behavior of an endpoint** is dependent on the subject -- an entity or the collection as a whole.
+Depending on the endpoint, the effect of a request can differ. In other words, the behavior of an endpoint is dependent on the subject -- an entity or 
+the collection as a whole.
 
 Operating On Collections
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Endpoint behaviors for a Resource collection
+.. list-table:: Endpoint behaviors for a resource collection
    :stub-columns: 1
 
    * - HTTP method
@@ -275,29 +276,33 @@ Operating On Collections
      - ``GET``
      - ``PUT/PATCH``
      - ``DELETE``
-   * - Behavior with Resource State
+   * - Behavior with resource state
      - create a new entity in the collection
-     - view the **current** list of all entities in the collection
+     - view the current list of all entities in the collection
      - bulk update of entities in the collection
      - remove all entities in the collection
 
-.. admonition:: note
+.. admonition:: Note
 
-   Exposing the ability to modify or delete *all of the entities in a collection* at once can be risky. In many cases the design of a RESTful API will only support ``GET`` and ``POST`` endpoints for collections. 
+   Exposing the ability to modify or delete all of the entities in a collection at once can be risky. In many cases, the design of a RESTful API will 
+   only support ``GET`` and ``POST`` endpoints for collections. 
 
-Let's consider a request for creating a Resource entity. Recall that this operation acts on **the State of the collection** by adding a new entity to it.
+Let's consider a request for creating a resource entity. Recall that this operation acts on the state of the collection by adding a new entity to it.
 
-The ``POST`` endpoint of the collection, that the entity belongs to, can be used with a **request body**. This request body is a **representation of the initial State** the client must provide as **an input** to the API. 
+The ``POST`` endpoint of the collection, that the entity belongs to, can be used with a request body. This request body is a representation of the initial 
+state the client must provide as an input to the API. 
 
 Let's take a look at this request in the context of our example API:
 
-.. admonition:: example
+.. admonition:: Example
 
-   As we saw earlier, the *input shape* for creating a ``CodingEvent`` only **includes the fields the consumer is responsible for**. The ``Id`` field is then managed internally by the API.
+   As we saw earlier, the input shape for creating an event only includes the fields the consumer is responsible for. The ``Id`` field is then managed 
+   internally by the API.
    
-   We refer to this shape as a ``NewCodingEvent`` to distinguish it from the ``CodingEvent`` Resource shape:
+   We refer to this shape as a ``NewCodingEvent`` to distinguish it from the ``CodingEvent`` resource shape:
 
    .. sourcecode:: bash
+      :linenos:
 
       NewCodingEvent {
          Title: string
@@ -305,20 +310,21 @@ Let's take a look at this request in the context of our example API:
          Date: string (ISO 8601 date format)
       }
 
+
    We can describe this request in a shorthand. This shorthand includes the endpoint, input, and outputs:
 
-      ``POST /events (NewCodingEvent) -> 201, CodingEvent``
+   ``POST /events (NewCodingEvent) -> 201, CodingEvent``
 
-   After sending this request the response would include:
+   After sending this request, the response would include:
 
-   - a ``201``, or ``Created``, **status code**
-   - a ``Location`` **response header**
-   - the representation of the created Resource entity State (including an assigned ``Id`` field)
+   - a ``201``, or ``Created``, status code
+   - a ``Location`` response header
+   - the representation of the created resource entity state (including an assigned ``Id`` field)
 
 Operating On Entities
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Endpoints behaviors for an individual Resource entity
+.. list-table:: Endpoint behaviors for an individual resource entity
    :stub-columns: 1
 
    * - HTTP method
@@ -326,56 +332,54 @@ Operating On Entities
      - ``GET``
      - ``PUT/PATCH``
      - ``DELETE``
-   * - Behavior with Resource State
+   * - Behavior with resource state
      - N/A (created inside a collection)
-     - view the **current** entity State
-     - update the entity State
+     - view the current entity state
+     - update the entity state
      - remove the entity from the collection
+ 
 
-.. admonition:: note
+When removing a resource, the client is requesting a transition to an empty state. This means that both the request body and response body that are 
+transferred, the representations of state, are empty. We can see this behavior in action with a request to the ``DELETE`` endpoint for a single resource 
+entity in our example API:
 
-   **U**\pdating using ``PUT`` or ``PATCH`` in REST is a choice left to the API designer. This article has a great `breakdown of the subject <https://restfulapi.net/rest-put-vs-post/>`_.
+.. admonition:: Example
 
-   In this course we will follow the convention that ``PATCH`` is used to **U**\pdate the **State of a Resource entity**. 
+   Let's once again assume a ``CodingEvent`` resource exists with an ``Id`` of ``12``. If we want to remove this entity, we need to issue a request to 
+   its uniquely identified ``DELETE`` endpoint:
 
-When removing a Resource the client is requesting a **transition to an empty State**. This means that both the **request body** and **response body** that are transferred, *the representations of State*, are empty.
-
-We can see this behavior in action with a request to the ``DELETE`` endpoint for a single Resource entity in our example API:
-
-.. admonition:: example
-
-   Let's once again assume a ``CodingEvent`` Resource exists with an ``Id`` of ``12``. If we want to remove this entity we need to issue a request to its **uniquely identified** ``DELETE`` endpoint:
-
-      ``DELETE /events/12 -> 204``
+   ``DELETE /events/12 -> 204``
    
-   In this shorthand you can see that this request has an *empty request body*. This is the *empty State* we are requesting a transition to. 
+   In this shorthand, you can see that this request has an empty request body. This is the empty state we are requesting a transition to. 
    
-   The ``204``, or ``No Content``, **status code** in the response indicates that the action was successful *and that the response body is empty*. The API transfers back a *representation of empty State* (no response body) to the client. 
+   The ``204``, or ``No Content``, status code in the response indicates that the action was successful and that the response body is empty. The API 
+   transfers back a representation of empty state (no response body) to the client. 
 
-.. admonition:: example
+.. admonition:: Example
 
-   What would happen if we made another request to the endpoint of a Resource entity that **doesn't exist**, ``DELETE /events/999``?
+   What would happen if we made another request to the endpoint of a resource entity that doesn't exist, ``DELETE /events/999``?
 
-   We would receive a ``404``, or ``Not Found``, status code that lets us know the **request failed** because of a **client error** (providing an ``Id`` for a nonexistent Resource).
+   We would receive a ``404``, or ``Not Found``, status code that lets us know the request failed because of a client error 
+   (providing an ``Id`` for a nonexistent resource).
 
 Headers & Status Codes
-======================
+----------------------
 
-Another aspect of a RESTful API dictates the usage of HTTP response status codes and HTTP request and response headers. 
-
-Response status codes inform the client on if their request was handled successfully. The response status code and the attached message will include the information the client must change to fix the request.
-
-HTTP headers are used to communicate additional information (**metadata**) about a request or response. We will explore some common HTTP headers and their usage in RESTful design.
+Another aspect of a RESTful API dictates the usage of HTTP response status codes and HTTP request and response headers. Response status codes inform 
+the client if their request was handled successfully. The response status code and the attached message will include the information the client must 
+change to fix the request. HTTP headers are used to communicate additional information (metadata) about a request or response. We will explore some 
+common HTTP headers and their usage in RESTful design.
 
 Status Codes
-------------
+^^^^^^^^^^^^
 
-   Every RESTful API response includes a **status code** that indicates whether the client's request succeeded or failed
+Every RESTful API response includes a status code that indicates whether the client's request succeeded or failed.
 
 Success Status Codes
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
-When a request is successful the ``2XX`` status codes are used. These codes communicate to the consumer the **type of success** relative to the action that was taken. Below is a list of the common success codes you will encounter:
+When a request is successful, the ``2XX`` status codes are used. These codes communicate to the consumer the type of success relative to the action that 
+was taken. Below is a list of the common success codes you will encounter:
 
 .. list-table:: Common client success status codes for each action
    :header-rows: 1
@@ -399,14 +403,15 @@ When a request is successful the ``2XX`` status codes are used. These codes comm
      - empty response body
 
 Failure Status Codes
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Requests can fail. A failed request is due to either the consumer or a bug in the API. Recall the status code groups that categorized the type of failure:
 
 - **client error**: ``4XX`` status code group
 - **server error**: ``5XX`` status code group
 
-Server errors are **not something the consumer can control**. However, client errors indicate that the request can be **reissued with corrections**. Each of these status codes and messages notify the consumer of the changes needed for a success.
+Server errors are not something the consumer can control. However, client errors indicate that the request can be reissued with corrections. Each of these 
+status codes and messages notify the consumer of the changes needed for a success.
 
 Let's look at some of the common client error status codes:
 
@@ -422,40 +427,45 @@ Let's look at some of the common client error status codes:
      - Client must fix errors in their request body
    * - ``401``
      - ``Unauthorized``
-     - Client must **authenticate** first*
+     - Client must authenticate first
    * - ``403``
      - ``Forbidden``
-     - An authenticated client is **not allowed** to perform the requested action
+     - An authenticated client is not allowed to perform the requested action
    * - ``404``
      - ``Not Found``
-     - The path to identify the Resource is incorrect or the Resource does not exist
+     - The path to identify the resource is incorrect or the resource does not exist
 
-A bad request will include an error message in its response. The response will indicate **what the client must change** in their request body to succeed. This failure is seen when **C**\reating or **U**\pdating a Resource entity:
+A bad request will include an error message in its response. The response will indicate what the client must change in their request body to succeed. 
+This failure is seen when creating or updating a resource entity:
 
-.. admonition:: example
+.. admonition:: Example
 
-   In the Coding Events API, **the State** of a ``CodingEvent`` is **validated** using the following criteria:
+   In the Coding Events API, the state of a ``CodingEvent`` is validated using the following criteria:
 
    - ``Title``: 10-100 characters
    - ``Description``: less than 1000 characters
 
-   Imagine a client sending a ``PATCH`` request to **U**\pdate the ``CodingEvents`` Resource entity with an ``Id`` of ``6``. 
+   Imagine a client sending a ``PATCH`` request to update the ``CodingEvents`` resource entity with an ``Id`` of ``6``. 
 
-      ``PATCH /events/6 (PartialCodingEvent) -> CodingEvent``
+   ``PATCH /events/6 (PartialCodingEvent) -> CodingEvent``
    
-   If their request body contained the following **invalid representation** of partial State (due to a ``Title`` field that is too short):
+   If their request body contained the following invalid representation of partial state (due to a ``Title`` field that is too short):
+
+   Here is an invalid representation in request to the ``PATCH /events/6`` endpoint:
 
    .. sourcecode:: bash
-      :caption: invalid representation in request to PATCH /events/6 endpoint
+      :linenos:
    
       {
          "Title": "short"
       }
 
-   The API response would have a ``400`` status code alerting the client that they must **correct their representation**. The response body would be used to communicate which aspects were invalid:
+
+   The API response would have a ``400`` status code, alerting the client that they must correct their representation. The response body would be used 
+   to communicate which aspects were invalid. This is a 400 failed response body:
 
    .. sourcecode:: bash
-      :caption: 400 failed response body
+      :linenos:
 
       {
          "error": "invalid fields",
@@ -466,18 +476,18 @@ A bad request will include an error message in its response. The response will i
          ]
       }
 
-   Using the hints in the response the client can fix their request body and reissue the request successfully.
+   Using the information in the response, the client can fix their request body and reissue the request successfully.
 
-.. admonition:: fun fact
+.. admonition:: Note
 
-   The ``401``, or ``Unauthorized``, status code actually indicates that the consumer is **not authenticated**. This means the consumer has **not proven their identity** to the API.
-   
-   The ``403``, or ``Forbidden``, status code is a more accurate description of being **unauthorized**. After authenticating, the consumer's **authorization** can determine if they are allowed or **forbidden** from taking the requested action.
+   The ``401``, or ``Unauthorized``, status code actually indicates that the consumer is not authenticated. This means the consumer has not proven their 
+   identity to the API. The ``403``, or ``Forbidden``, status code is a more accurate description of being unauthorized. After authenticating, the 
+   consumer's authorization can determine if they are allowed or forbidden from taking the requested action.
 
 Headers
--------
+^^^^^^^
 
-   In RESTful design **headers** are used to communicate **metadata** about each interaction with a Resource
+In RESTful design, headers are used to communicate metadata about each interaction with a resource.
 
 .. list-table:: Common request/response headers in REST
    :header-rows: 1
@@ -493,26 +503,27 @@ Headers
      - ``application/json``
    * - Request
      - ``Accept``
-     - The client expects the requested Resource representation in the given media type
+     - The client expects the requested resource representation in the given media type
      - ``application/json``
    * - Response
      - ``Location``
-     - The created Resource representation can be found at the given URL value
+     - The created resource representation can be found at the given URL value
      - ``/resources/{id}``
 
-.. admonition:: tip
+.. admonition:: Tip
 
-   The ``Authorization`` **request header** is also commonly used. Later in this course we will learn about **authenticating** with an API using this header and a `JWT access token <https://auth0.com/docs/protocols/oidc>`_.
+   The ``Authorization`` request header is also commonly used. 
 
 Learning More
-=============
+-------------
 
-These articles have covered the fundamental aspects of the RESTful mental model and practical usage. However, RESTful design is a deep topic that even extends *beyond the web and use of HTTP*! 
+These articles have covered the fundamental aspects of the RESTful mental model and practical usage. However, RESTful design is a deep topic that even 
+extends beyond the web and use of HTTP! 
 
-If you want to learn more the following links are a good start:
+If you want to learn more, the following links are a good start:
 
 Practical Understanding
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 - `Craig Dennis: APIs for beginners (YouTube) <https://www.youtube.com/watch?v=GZvSYJDk-us&t=0s>`_
 - `REST sub-collections, relationships and links <https://restful-api-design.readthedocs.io/en/latest/relationships.html>`_
@@ -520,8 +531,35 @@ Practical Understanding
 - The `GitHub API <https://developer.github.com/v3/>`_ and `Stripe (payment processing) API <https://stripe.com/docs/api>`_ are excellent examples of RESTful design (and fantastic documentation)
 
 Deep Understanding
-------------------
+^^^^^^^^^^^^^^^^^^
 
 - the `REST constraints <https://www.restapitutorial.com/lessons/whatisrest.html>`_
 - the `The Richardson REST maturity model <https://www.martinfowler.com/articles/richardsonMaturityModel.html>`_
 - the original `REST doctoral thesis by Roy Fielding <https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>`_
+
+Check Your Understanding
+------------------------
+
+.. admonition:: Question
+
+   QUESTION
+
+   a. True
+
+   b. False
+
+.. ans: 
+
+.. admonition:: Question
+
+   QUESTION
+
+   a. A point in our code where the debugger will stop running and provide information about the current state.
+
+   b. A point in our code that we anticipate will result in an exception or error. 
+
+   c. A point in our code where we include a print statement to see what's going on.
+
+   d. A point in our code where we want to throw the computer out of a window because nothing works.
+
+.. ans; 

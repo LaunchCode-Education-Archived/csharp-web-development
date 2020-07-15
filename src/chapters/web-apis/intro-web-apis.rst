@@ -263,3 +263,30 @@ Adopting the REST specification into the design of an API provides consistency d
 Much like following the patterns of MVC allows other developers to easily understand your code, following REST gives other developers the benefit of understanding how your API is structured and behaves.
 
 As an added bonus, a REST API also gives the client application a base-line understanding on how to interact with your API.
+
+Check Your Understanding
+------------------------
+
+.. admonition:: Question
+
+   QUESTION
+
+   a. True
+
+   b. False
+
+.. ans: 
+
+.. admonition:: Question
+
+   QUESTION
+
+   a. A point in our code where the debugger will stop running and provide information about the current state.
+
+   b. A point in our code that we anticipate will result in an exception or error. 
+
+   c. A point in our code where we include a print statement to see what's going on.
+
+   d. A point in our code where we want to throw the computer out of a window because nothing works.
+
+.. ans; 

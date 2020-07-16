@@ -1,88 +1,90 @@
-========
+.. index:: ! web API
+
 Web APIs
 ========
 
-Recall the high-level `definition of APIs <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/introduction.html#api>`_ from an earlier unit: *An API is the interface that allows one application to communicate with another application.*
-
-   **Web APIs** are how applications communicate with other applications **over a network**. 
-
-Throughout the remainder of this chapter we will explore web APIs and a pattern for organizing them called REST. Although REST may sound complicated, it is just another pattern like MVC.
+Recall the high-level `definition of APIs <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/introduction.html#api>`_ 
+from an earlier unit: An API is the interface that allows one application to communicate with another application. **Web APIs** are how applications 
+communicate with other applications over a network. Throughout the remainder of this chapter, we will explore web APIs and a pattern for organizing 
+them called REST. Although REST may sound complicated, it is just another design pattern, like MVC.
 
 MVC Without the V
-=================
+-----------------
 
-A good start to thinking about web APIs is that they are similar to MVC web applications with one major distinction:
-
-   Web APIs are **not concerned with the presentation** of data. 
-
-A web API encompasses the model and controller aspects of MVC but is not responsible for the view layer. In a web API the view, or presentation of data, is decoupled from the model and controller that manage and transfer data.
-
-This separation leads to the development of two different applications, a **client (front-end)** and a **web API (back-end)**. 
+Web APIs are similar to MVC web applications with one major distinction: Web APIs are not concerned with the presentation of data. A web API encompasses 
+the model and controller aspects of MVC, but is not responsible for the view layer. In a web API, the view, or presentation of data, is decoupled from 
+the model and controller that manage and transfer data. This separation leads to the development of two different applications, a client (front-end)
+and a web API (back-end). 
 
 The separation between client and web API provides the following benefits:
 
-- **platforms**: client can be developed for web, mobile, CLI, GUI, etc
-- **teams**: client and web API can be developed by different specialized groups
-- **scaling**: client and web API can be hosted on separate infrastructure
+- Client applications can be developed to operate on a range of platforms (web, mobile, CLI, GUI, etc).
+- Client and web API applications can be developed by different, specialized programming teams.
+- Client and web API applications can be hosted on separate infrastructure.
 
-.. admonition:: Fun Fact
+.. admonition:: Note
 
    Client applications involve User Interface (UI) and User Experience (UX) development.
 
 Client Interacts With Data
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Despite being separated from each other, the client application still relies on **interactions with the data** through the web API.
+Despite being separated from each other, the client application still relies on interactions with the data through the web API. A front-end client must 
+ultimately present data to an end-user. This means the client must request a representation of the data from the web API. After the client receives the 
+representation, it is parsed, styled and rendered to the user. 
 
-A front-end client must ultimately *present* data to an end-user. This means the client must request a *representation* of the data from the web API. After the client receives the representation, it is parsed, styled and rendered to the user. 
+.. admonition:: Note
 
-.. admonition:: note
-
-   A web API interacts with, or *is consumed by*, by a client application. This process involves transferring data representations and instructions like creating, reading, updating and deleting.
+   A web API interacts with, or *is consumed by*, by a client application. This process involves transferring data representations and instructions 
+	like creating, reading, updating and deleting.
 
 Responsibilities of a Web API
-=============================
+-----------------------------
 
-   The chief responsibility of a web API is to provide **interactions with** and exchange **representations of data** with its client application.
+The chief responsibility of a web API is to provide interactions and exchange representations of data with a corresponding client application.
+
+.. index:: ! server-side rendering, client-side rendering
 
 Data Delivery
--------------
+^^^^^^^^^^^^^
 
-Think about how a view works in MVC. Data is *injected* into a *template* file that is **rendered into HTML** in the controller before being sent back to the user. We call this approach **server-side rendering**.
+Think about how a view works in MVC. Data is injected into a template file that is rendered into HTML in the controller before being sent back to the user. 
+We call this approach **server-side rendering**. A client application and web API work in a similar way. However, instead of injecting the data into a 
+template on the server, data is transferred over the network through AJAX requests made by the client.
 
-A client application and web API work in a similar way. However, instead of injecting the data into a template on the server, data is transferred over the network through AJAX requests made by the client.
-
-When the client application receives data, it injects that data into its HTML using JavaScript. This all occurs from within the browser. This approach is called **client-side rendering** because the web API only sends data, the HTML is assembled on the user's end.
+When a client application receives data, it injects that data into its HTML using JavaScript. This all occurs from within a browser. This approach is 
+called **client-side rendering** because the web API only sends data, the HTML is assembled on the user's end.
 
 .. admonition:: Example
 
-   Consider requesting the ``/events`` path of your MVC project. The response is an HTML *presentation of the data*. In other words, the **data is already included** in the presentation.
+   Consider requesting the ``/events`` path of your MVC project. The response is an HTML presentation of the data. In other words, the 
+	data is already included in the presentation.
 
-      **MVC**: ``GET /events -> HTML with data``
+   **MVC**: ``GET /events -> HTML with data``
 
-   In a web API analog, the ``/events`` path would return **just the underlying data**. 
+   In a web API analog, the ``/events`` path would return just the underlying data. 
 
-      **web API**: ``GET /events -> just data``
+   **Web API**: ``GET /events -> just data``
 
    It is then the client application's responsibility to integrate the received data into its presentation.
 
 Management of Data
-------------------
+^^^^^^^^^^^^^^^^^^
 
-A web API manages data by modeling objects that line up with the underlying business data. This will seem familiar as it's the exact same process we saw in MVC. Our models are class files that drive the interactions in our codebase.
-
-Web APIs often take advantage of ORMs just like MVC applications do. If you have underlying classes that map to a database, you can easily make data available for use within the web API codebase.
+A web API manages data by modeling objects that line up with the underlying business data. This is actually the same process we saw in MVC. Our models 
+are class files that drive the interactions in our codebase. Web APIs often take advantage of ORMs just like MVC applications do. If you have underlying 
+classes that map to a database, you can easily make data available for use within a web API codebase.
 
 Transference of Data
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
-Beyond managing data, a web API also handles transferring data. 
-
-A client application will make a request for some data. Our web API must contain controller files that can handle the requests. As a part of handling the request, the controller file must understand the request, access the requested data, package the data in an accepted format and send the package as a response to the client application.
+Beyond managing data, a web API also handles transferring data. A client application will make a request for some data. Our web API must contain controller 
+files that can handle the requests. As a part of handling the request, the controller file must understand the request, access the requested data, package 
+the data in an accepted format and send the package as a response to the client application.
 
 Consider the steps of a hypothetical web API using an ORM:
 
-#. a request from a client application for data comes in
+#. A request from a client application for data is made.
 #. a controller file catches the request
 #. the controller determines if the request is valid
 #. the controller transfers data from the database to an object via the ORM

@@ -17,7 +17,7 @@ puts you in full control of configuring and executing API requests.
 
 In this studio, we will work with Postman to explore how APIs can be consumed.
 
-.. admonition:: wWrning
+.. admonition:: Warning
 
    If you have not already installed ``dotnet`` and ``git`` with PowerShell, you will need to go back to the previous studio before continuing with 
    this one. 

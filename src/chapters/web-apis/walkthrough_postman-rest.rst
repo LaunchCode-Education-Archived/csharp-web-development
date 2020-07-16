@@ -18,7 +18,7 @@ In this walkthrough, we will work with Postman to explore how APIs can be consum
 .. admonition:: wWrning
 
    If you have not already installed ``dotnet`` and ``git`` with PowerShell, you will need to go back to the previous walkthrough before continuing with 
-	this one. 
+   this one. 
 
 Setup
 -----
@@ -35,7 +35,7 @@ Select the ``Windows x64`` installer download then run the installer:
 .. figure:: figures/download-installer.png
    :alt: Download Windows x64 Postman installer
 
-	Download Windows x64 Postman installer
+   Download Windows x64 Postman installer
 
 After installation, Postman should open automatically. Making an account can be useful, but if you do not want to create one you can select the link to skip
 in grey at the bottom of the splash screen:
@@ -43,7 +43,7 @@ in grey at the bottom of the splash screen:
 .. figure:: figures/account.png
    :alt: Postman splash screen for new account
 
-	Postman splash screen for new account
+   Postman splash screen for new account
 
 .. admonition:: Tip
 
@@ -52,14 +52,14 @@ in grey at the bottom of the splash screen:
    .. figure:: figures/pin-taskbar.png
       :alt: Pin Postman application to taskbar on Windows
 
-	Pin Postman application to taskbar on Windows
+   Pin Postman application to taskbar on Windows
 
 You can leave the launchpad view open for now. We will explore Postman after setting up our API server.
 
 .. figure:: figures/launchpad-view.png
    :alt: Postman launchpad view
 
-	Postman launchpad view
+   Postman launchpad view
 
 Clone the Coding Events API Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,7 +72,7 @@ API.
 .. admonition:: Note
 
    Our focus in this course is on operations and as such we will not be going into the development of the API. However, feel free to explore the source 
-	code if you are curious about the similarities and differences between the .NET MVC and API implementations.
+   code if you are curious about the similarities and differences between the .NET MVC and API implementations.
 
 Let's begin by cloning the repo onto our machine:
 
@@ -104,7 +104,7 @@ You can leave this PowerShell window open, we will return to it in a later step:
 .. figure:: figures/powershell-in-repo-dir.png
    :alt: PowerShell in coding-events-api repo directory on 1-sqlite branch
 
-	PowerShell in coding-events-api repo directory on 1-sqlite branch
+   PowerShell in coding-events-api repo directory on 1-sqlite branch
 
 Coding Events API
 -----------------
@@ -117,7 +117,7 @@ CodingEvent Resource
 The shape of the ``CodingEvent`` resource describes the general form of its properties and value types:
 
 .. sourcecode:: bash
-	:linenos:
+   :linenos:
 
    CodingEvent {
       Id: integer
@@ -130,19 +130,19 @@ In our case, the ``CodingEvent`` shape is just the properties and types (transla
 `JSON types <https://json-schema.org/understanding-json-schema/reference/type.html>`_) defined in the ``CodingEvents`` model class.
 
 .. sourcecode:: csharp
-	:linenos:
+   :linenos:
 
    public class CodingEvent {
-		public int Id { get; set; }
-		public string Title { get; set; }
-		public string Description { get; set; }
-		public DateTime Date { get; set; }
+      public int Id { get; set; }
+      public string Title { get; set; }
+      public string Description { get; set; }
+      public DateTime Date { get; set; }
    }
 
 An example of a real ``CodingEvent`` JSON response would look like this:
 
 .. sourcecode:: bash
-	:linenos:
+   :linenos:
 
    {
       "id": 1,
@@ -170,7 +170,7 @@ Making a ``GET`` request to the entry-point of a resource should return a repres
 is a JSON array with ``CodingEvent`` elements:
 
 .. sourcecode:: bash
-	:linenos:
+   :linenos:
 
    [
       CodingEvent { ... },
@@ -215,7 +215,7 @@ required to create the entity.
 The shape of the ``NewCodingEvent`` describes the JSON body that the endpoint expects:
 
 .. sourcecode:: bash
-	:linenos:
+   :linenos:
 
    NewCodingEvent {
       Title: string
@@ -226,7 +226,7 @@ The shape of the ``NewCodingEvent`` describes the JSON body that the endpoint ex
 When making a request, you would need to send a JSON body like this to satisfy the general shape:
 
 .. sourcecode:: bash
-	:linenos:
+   :linenos:
 
    {
       "Title": "Halloween Hackathon!",
@@ -340,7 +340,7 @@ Now that our API server is running, we can make our first request using Postman.
 .. figure:: figures/new-button.png
    :alt: Postman New item button
 
-	Postman New item button
+   Postman New item button
 
 Creating a New Request
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -350,32 +350,31 @@ With the new item dialog open, select the *create new* tab (on the left) then se
 .. figure:: figures/new-item-dialog.png
    :alt: Postman New item dialog
 
-	Postman New item dialog
+   Postman New item dialog
 
 This will open the new request dialog:
 
 .. figure:: figures/new-request-dialog.png
    :alt: Postman New Request dialog
 
-	Postman New Request dialog
+   Postman New Request dialog
 
 Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export 
-collections of requests for portability across teams. For our first request, enter the "list coding events" in the *Request name* form field.
-
-At the bottom of the new request dialog,  you will see that the collections are empty. Select the orange *Create Collection** button then enter the 
-name ``coding events API``. The new request dialog button will change to say *Save to coding events API:
+collections of requests for portability across teams. For our first request, enter the "list coding events" in the *Request name* form field. At the 
+bottom of the new request dialog,  you will see that the collections are empty. Select the orange *Create Collection* button then enter the 
+name ``coding events API``. The new request dialog button will change to say *Save to coding events API*:
 
 .. figure:: figures/new-request-dialog-complete.png
    :alt: Postman New Request save to collection
 
-	Postman New Request save to collection
+   Postman New Request save to collection
 
 After saving, a new request tab will be created where you can customize its behavior:
 
 .. figure:: figures/empty-request-tab.png
    :alt: Postman new request tab
 
-	Postman new request tab
+   Postman new request tab
 
 Configuring the Request
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -395,8 +394,8 @@ In Postman, we can make this request by configuring the following settings:
 .. admonition:: Note
 
    Endpoints are described as relative paths with regards to a server's origin. An API uses relative paths because its origin is defined by where it 
-	is hosted. The hosting location can be locally on your machine, or remotely in the cloud. For example, our local server origin is 
-	``http://localhost:5000``. When combined with the endpoint path, becomes our request URL: ``http://localhost:5000/api/events``.
+   is hosted. The hosting location can be locally on your machine, or remotely in the cloud. For example, our local server origin is 
+   ``http://localhost:5000``. When combined with the endpoint path, becomes our request URL: ``http://localhost:5000/api/events``.
 
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET``. In the following requests, you will need to select the 
 appropriate method from this list. 
@@ -404,7 +403,7 @@ appropriate method from this list.
 .. figure:: figures/http-method-selector.png
    :alt: Postman HTTP method selector
 
-	Postman HTTP method selector
+   Postman HTTP method selector
 
 Underneath the URL bar are tabs for other aspects of the request. Select the ``Headers`` tab to configure our header. The ``Accept`` header lets the API 
 know that we accept responses that are formatted as JSON. 
@@ -412,8 +411,8 @@ know that we accept responses that are formatted as JSON.
 .. admonition:: Note
 
    In our context, the API only responds with JSON. However, some APIs offer multiple 
-	`MIME types <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types>`_ for their responses. It is a best practice to set this 
-	header explicitly to the content type the consuming application expects.
+   `MIME types <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types>`_ for their responses. It is a best practice to set this 
+   header explicitly to the content type the consuming application expects.
 
 You can set multiple headers in this section. As you begin to type the name and value of headers, Postman will autocomplete them for you. After 
 configuration, your request should look like this:
@@ -421,61 +420,73 @@ configuration, your request should look like this:
 .. figure:: figures/list-coding-events-request.png
    :alt: Postman list coding events request configured
 
-	Postman list coding events request configured
+   Postman list coding events request configured
 
 To issue the request, you can select the blue *Send* button on the right of the window, or use the *ctrl + enter* keyboard shortcut. 
 
 Viewing the Response
 ~~~~~~~~~~~~~~~~~~~~
 
-Below the request configuration, you can see the response section has been populated. From here you can see the response body along with the status code (top right) and **Headers**:
+Below the request configuration, you can see the response section has been populated. From here, you see the response body along with the status code 
+(top right) and headers:
 
 .. figure:: figures/list-coding-events-response.png
    :alt: Postman list coding events responses
 
-Since this is our first time running the application the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the **empty representation of the Coding Events collection**.
+   Postman list coding events responses
 
-If you select the **Headers** tab you can see the API satisfied our ``Accept`` *request header* and provided the response in ``application/json`` format.
+Since this is our first time running the application, the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the 
+empty representation of the Coding Events collection.
+
+If you select the *Headers* tab, you can see the API satisfied our ``Accept`` request header and provided the response in ``application/json`` format.
 
 .. figure:: figures/response-headers.png
    :alt: Postman response headers
 
-.. admonition:: note
+   Postman response headers
 
-   If you get a **connection refused** error it means you likely forgot to start the API server or mistyped the URL. Check both of these before attempting the request again.
+.. admonition:: Note
+
+   If you get a connection refused error, it means you likely forgot to start the API server or mistyped the URL. Check both of these before attempting 
+   the request again.
 
    .. figure:: figures/connection-refused.png
       :alt: Postman request connection refused error
 
+      Postman request connection refused error
+
 Create a Coding Event
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
-For our next request we will create a Coding Event. Repeat the steps you performed in the previous request:
+For our next request, we will create a Coding Event. Repeat the steps you performed in the previous request:
 
-#. create a new request named: ``create coding event``
-#. add it to the existing ``coding events API`` collection
+#. Create a new request named: ``create coding event``
+#. Add it to the existing ``coding events API`` collection
 
-This request will **change the state of the Coding Events collection** by adding a new entity to it. Recall that the shorthand for this request is:
+This request will change the state of the Coding Events collection by adding a new entity to it. Recall that the shorthand for this request is:
 
-   ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
+``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
 
 We will need to set the following request settings:
 
-#. the URL of the endpoint: ``http://localhost:5000/api/events``
-#. the HTTP method of the endpoint: ``POST``
-#. the request header: (``Content-Type`` ``application/json``)
-#. the request body: a JSON ``NewCodingEvent`` object
+#. The URL of the endpoint: ``http://localhost:5000/api/events``
+#. The HTTP method of the endpoint: ``POST``
+#. The request header: (``Content-Type`` ``application/json``)
+#. The request body: a JSON ``NewCodingEvent`` object
 
-As a best practice we explicitly define the ``Content-Type`` header. This header indicates that our request contains ``application/json`` data so that the API knows how to parse the incoming request body. 
+As a best practice, we explicitly define the ``Content-Type`` header. This header indicates that our request contains ``application/json`` data so that 
+the API knows how to parse the incoming request body. 
 
 Configure the Request Body
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition to the configurations you are now familiar with setting we will need to define the request body. For this task you can select the **Body** tab that is next to **Headers**. 
+In addition to the configurations you are now familiar with setting, we will need to define the request body. For this task, select the *Body* tab that 
+is next to *Headers*. 
 
-The body of the request must be in a **raw JSON** format. Once selecting this format enter the following JSON body:
+The body of the request must be in a raw JSON format. Once this format is selected, enter the following JSON body:
 
 .. sourcecode:: bash
+   :linenos:
 
    {
       "Title": "Halloween Hackathon!",
@@ -483,10 +494,12 @@ The body of the request must be in a **raw JSON** format. Once selecting this fo
       "Date": "2020-10-31"
    }
 
-**Before sending the request check that your configuration matches the following image:**
+Before sending the request, check that your configuration matches the following image:
 
 .. figure:: figures/create-coding-event-request.png
    :alt: Postman create coding event request configuration
+
+   Postman create coding event request configuration
 
 Analyzing the Response
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -518,21 +531,23 @@ You can see from the response that the API rejected the request due to **client 
    :alt: Postman response of create coding event with a bad request body
 
 Get a Single Coding Event
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this step we will make a request for **the state of a single entity**. You can use the URL from the ``Location`` header of the previous request to complete this task. Remember to follow the steps you performed before, keeping in mind the shorthand for this request:
+For this step, we will make a request for the state of a single entity. You can use the URL from the ``Location`` header of the previous request to 
+complete this task. Remember to follow the steps you performed before, keeping in mind the shorthand for this request:
 
-   ``GET /api/events/{codingEventId} -> CodingEvent``
+``GET /api/events/{codingEventId} -> CodingEvent``
 
-#. create a new request named: ``get a single coding event``
-#. add it to the existing ``coding events API`` collection
-#. configure the URL of the endpoint: ``http://localhost:5000/api/events/1``
-#. configure the HTTP method of the endpoint: ``GET``
-#. configure the request header: (``Accept`` ``application/json``)
+#. Create a new request named: ``get a single coding event``
+#. Add it to the existing ``coding events API`` collection
+#. Configure the URL of the endpoint: ``http://localhost:5000/api/events/1``
+#. Configure the HTTP method of the endpoint: ``GET``
+#. Configure the request header: (``Accept`` ``application/json``)
 
 You should get back the following JSON response body:
 
 .. sourcecode:: bash
+   :linenos:
 
    {
       "id": 1,
@@ -542,48 +557,53 @@ You should get back the following JSON response body:
    }
 
 Requesting a Non-Existent Entity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our REST API allows us to interact with the **state of its resources**. If we make a request for a resource that doesn't exist in this state we expect a ``404`` (not found) response. 
+Our REST API allows us to interact with the state of its resources. If we make a request for a resource that doesn't exist in this state, we expect a 
+``404`` (not found) response. 
 
 Try issuing the request again with a non-existent ``codingEventId`` of ``100``. You should get back the following response:
 
 .. figure:: figures/404-response.png
    :alt: Postman 404 response for a non-existent resource
 
+   Postman 404 response for a non-existent resource
+
 Delete a Coding Event
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
-In this final step we will issue a ``DELETE`` request. Before we make the request let's re-issue the request to list Coding Events. Now that we have added an entity we expect **the state of the Coding Events resource collection to have changed**. 
-
-Switch back to the ``list coding events`` request tab and re-issue the request. You should get a response of the collection's list representation containing the new entity! 
+In this final step, we will issue a ``DELETE`` request. Before we make the request, let's re-issue the request to list Coding Events. Now that we have 
+added an entity, we expect the state of the Coding Events resource collection to have changed. Switch back to the ``list coding events`` request tab and 
+re-issue the request. You should get a response of the collection's list representation containing the new entity.
 
 To delete this entity, and therefore change the state of our resources, we will need to issue the following shorthand request:
 
-   ``DELETE /api/events/{codingEventId} -> 204``
+``DELETE /api/events/{codingEventId} -> 204``
 
-Once again go through the methodical process of setting up the request:
+Once again, go through the methodical process of setting up the request:
 
-#. create a new request named: ``delete a coding event``
-#. add it to the existing ``coding events API`` collection
-#. configure the URL of the endpoint: ``http://localhost:5000/api/events/1``
-#. configure the HTTP method of the endpoint: ``DELETE``
+#. Create a new request named: ``delete a coding event``
+#. Add it to the existing ``coding events API`` collection
+#. Configure the URL of the endpoint: ``http://localhost:5000/api/events/1``
+#. Configure the HTTP method of the endpoint: ``DELETE``
 
-Notice that for this request we do not need to set any request headers. A ``DELETE`` request should send back an empty (``no-content``) response body with its ``204`` status code. 
+Notice that for this request, we do not need to set any request headers. A ``DELETE`` request should send back an empty (``no-content``) response body 
+with its ``204`` status code. 
 
 .. figure:: figures/delete-coding-event-response.png
    :alt: Postman delete a coding event response
 
-As a final confirmation check the state of the Coding Events collection and notice that it has returned to its initial state. The representation of this state is shown in the empty list ``[]`` response body.
+   Postman delete a coding event response
+
+As a final confirmation, check the state of the Coding Events collection and notice that it has returned to its initial state. The representation of this 
+state is shown in the empty list ``[]`` response body.
 
 Bonus
-=====
+-----
 
-If you complete this walkthrough early and want some additional practice consider the following bonus missions:
+If you complete this walkthrough early and want some additional practice, consider the following bonus missions:
 
-- explore the API source code using your IDE debugger to step through the request and response process
-- try consuming the API from the command-line using the Bash `curl <https://linuxhint.com/curl_bash_examples/>`_ program or the PowerShell `Invoke-RestMethod <https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-restmethod?view=powershell-7>`_ cmdlet.
+- Explore the API source code using your IDE debugger to step through the request and response process
+- Try consuming the API from the command-line using the Bash `curl <https://linuxhint.com/curl_bash_examples/>`_ program or the PowerShell 
+  `Invoke-RestMethod <https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-restmethod?view=powershell-7>`_ cmdlet.
 
-.. admonition:: note
-
-   We will revisit command-line web requests in later lessons. If you are able to complete this bonus mission you are **well ahead** of what is expected of you! 

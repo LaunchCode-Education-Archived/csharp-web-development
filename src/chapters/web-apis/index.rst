@@ -7,5 +7,5 @@ Introduction to Web APIs & REST
    intro-web-apis
    rest-abstract
    rest-practical
-   walkthrough_postman-rest
+   studio
    

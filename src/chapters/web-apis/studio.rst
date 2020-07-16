@@ -1,10 +1,12 @@
 .. index:: ! Postman
 
-Walkthrough: Consuming the Coding Events API With Postman
-=========================================================
+..todo: define headless API
 
-The UI of a browser is designed to make simple ``GET`` requests for URLs entered into its address bar. This design works great for browsing sites but 
-falls short when working with headless APIs. Anything beyond a ``GET`` request is handled behind the scenes, such as when you ``POST`` a form or through AJAX 
+Studio: Consuming the Coding Events API With Postman
+====================================================
+
+The UI of a browser is designed to make simple ``GET`` requests for URLs entered into its address bar. This design works great for browsing sites, but 
+falls short when working with headless APIs. Anything beyond a ``GET`` request is handled behind the scenes, such as when you ``POST`` a form or submit AJAX 
 requests with JavaScript. But before you develop the client-side logic for making background requests, you need a way to interact with the API server 
 directly and understand how it works.
 
@@ -13,11 +15,11 @@ to configure the HTTP method, headers or body of the request -- all of which the
 tools made specifically for interacting with APIs. One of the most popular API tools in the industry is **Postman**. Postman is a cross-platform tool that 
 puts you in full control of configuring and executing API requests. 
 
-In this walkthrough, we will work with Postman to explore how APIs can be consumed.
+In this studio, we will work with Postman to explore how APIs can be consumed.
 
 .. admonition:: wWrning
 
-   If you have not already installed ``dotnet`` and ``git`` with PowerShell, you will need to go back to the previous walkthrough before continuing with 
+   If you have not already installed ``dotnet`` and ``git`` with PowerShell, you will need to go back to the previous studio before continuing with 
    this one. 
 
 Setup
@@ -27,7 +29,7 @@ Installing Postman
 ^^^^^^^^^^^^^^^^^^
 
 Installing Postman is easy thanks to its cross-platform nature. You can download the installer on `their downloads page <https://www.postman.com/downloads/>`_. 
-We will show instructions for setting up on Windows. Because Postman is cross-platform, the other instructions in this walkthrough will apply regardless 
+We will show instructions for setting up on Windows. Because Postman is cross-platform, the other instructions in this studio will apply regardless 
 of your platform.
 
 Select the ``Windows x64`` installer download then run the installer:
@@ -598,10 +600,10 @@ with its ``204`` status code.
 As a final confirmation, check the state of the Coding Events collection and notice that it has returned to its initial state. The representation of this 
 state is shown in the empty list ``[]`` response body.
 
-Bonus
------
+Bonus Missions
+--------------
 
-If you complete this walkthrough early and want some additional practice, consider the following bonus missions:
+If you complete this studio early and want some additional practice, consider the following bonus missions:
 
 - Explore the API source code using your IDE debugger to step through the request and response process
 - Try consuming the API from the command-line using the Bash `curl <https://linuxhint.com/curl_bash_examples/>`_ program or the PowerShell 

@@ -82,7 +82,7 @@ application and an API.
    The state of a *single* ``CodingEvent`` entity is represented as a single JSON object:
 
    .. sourcecode:: js
-      :linesnos:
+      :linenos:
 
       {
          "Id": 1,

@@ -36,7 +36,7 @@ representation, it is parsed, styled and rendered to the user.
 .. admonition:: Note
 
    A web API interacts with, or *is consumed by*, by a client application. This process involves transferring data representations and instructions 
-	like creating, reading, updating and deleting.
+   like creating, reading, updating and deleting.
 
 Responsibilities of a Web API
 -----------------------------
@@ -58,7 +58,7 @@ called **client-side rendering** because the web API only sends data, the HTML i
 .. admonition:: Example
 
    Consider requesting the ``/events`` path of your MVC project. The response is an HTML presentation of the data. In other words, the 
-	data is already included in the presentation.
+   data is already included in the presentation.
 
    **MVC**: ``GET /events -> HTML with data``
 
@@ -85,92 +85,87 @@ the data in an accepted format and send the package as a response to the client 
 Consider the steps of a hypothetical web API using an ORM:
 
 #. A request from a client application for data is made.
-#. a controller file catches the request
-#. the controller determines if the request is valid
-#. the controller transfers data from the database to an object via the ORM
-#. the controller transforms the object into a package the client application can work with
-#. the controller responds to the client with the packaged data
+#. A controller file catches the request.
+#. The controller determines if the request is valid.
+#. The controller transfers data from the database to an object via the ORM.
+#. The controller transforms the object into a package the client application can work with.
+#. The controller responds to the client with the packaged data.
 
 Representation of Data
-======================
+----------------------
 
 Presentation vs Representation
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As mentioned above, the client application presents the data to the end-user. However, the client relies on consuming a representation of data from the web API.
-
-   Presentation is the rendered combination of data and visual styling intended for end-users.
-
-The client application needs to know what format the representation is in so that it can be transformed into a human readable presentation (HTML/CSS) of the data.
-
-Since the presentation is handled by the client application, the web API packages the representations into a format the client application accepts. The client application team and the web API team must agree to the underlying data format. A best practice is to use a *universal representation* widely accepted by client applications.
+As mentioned above, the client application presents the data to the end-user. However, the client relies on consuming a representation of data from the 
+web API. Presentation is the rendered combination of data and visual styling intended for end-users. The client application needs to know what format the 
+representation is in, so that it can be transformed into a human readable presentation (HTML/CSS) of the data. Since the presentation is handled by the 
+client application, the web API packages the representations into a format the client application accepts. The client application team and the web API 
+team must agree to the underlying data format. A best practice is to use a universal representation widely accepted by client applications.
 
 Universal Representation
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is necessary to adopt a *universal representation* because web APIs and client applications may be written in two different programming languages. Your web API may be written in C#/ASP.NET whereas the client application may be written using JavaScript and React.
-
-While there are many languages and frameworks available in web development, they all support the creation and parsing of JSON. 
-
-   JSON is a standard in web development because it is simple to process in any language, compatible with HTTP, and seamlessly represents the structure of data objects.
+It is necessary to adopt a universal representation because web APIs and client applications may be written in two different programming languages. Your 
+web API may be written in C#/ASP.NET but the client application may be written using JavaScript and React. While there are many languages and frameworks 
+available in web development, they all support the creation and parsing of JSON. JSON is a standard in web development because it is simple to process in 
+any language, compatible with HTTP, and seamlessly represents the structure of data objects.
 
 JSON
-^^^^
+~~~~
 
-We have already `worked with JSON <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/data-formats-json.html#json>`_ throughout this course.
+We have already `worked with JSON <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/data-formats-json.html#json>`_ 
+throughout this course. JSON is the universal representation of data accepted by client applications. This means our web API must package the data 
+requested by the client application as JSON and attach it to the response.
 
-JSON is the universal representation of data accepted by client applications. This means our web API must package the data requested by the client application as JSON and attach it to the response.
+Let's revisit the last two steps from our web API work flow above:
 
-Let's examine the steps we looked at earlier:
-
-#. a request from a client application for data comes in
-#. a controller file catches the request
-#. the controller determines if the request is valid
-#. the controller transfers data from the database to an object via the ORM
-#. the controller transforms the object into a JSON representation
-#. the controller responds to the client with the JSON representation
+5. The controller transforms the object into a JSON representation.
+6. The controller responds to the client with the JSON representation.
 
 .. admonition:: Tip
 
-   `XML <https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction>`_ is another popular data format. It is used less commonly than JSON for web API to client communications.
+   `XML <https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction>`_ is another popular data format. It is now used less commonly than 
+   JSON for web API-to-client communications.
 
 In the next section, we will discuss exactly how a client application makes a request and how a web API responds.
 
 HTTP as The Language of Web APIs
-================================
+--------------------------------
 
-   HTTP is the protocol used for communication between a web API and a client application.
-
-Web APIs communicate over a network. The most common protocol of the internet is HTTP so it comes as no surprise that HTTP is the language of web APIs. 
-
-Similarly, our MVC applications use HTTP as the protocol for an end-user to access the application. HTTP also facilitates the communication between a client application and a web API.
+HTTP is the protocol used for communication between a web API and a client application. Web APIs communicate over a network. The most common protocol of 
+the internet is HTTP, so it comes as no surprise that HTTP is the language of web APIs. Similarly, our MVC applications use HTTP as the protocol for an 
+end-user to access the application. HTTP also facilitates the communication between a client application and a web API.
 
 .. admonition:: Tip
 
-   We will refer to web APIs as APIs going forward since the web prefix is implied.
+   We will refer to web APIs as APIs going forward, since the web prefix is implied.
 
-We have worked with `HTTP in this class <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/how-the-internet-works.html#http>`_ previously. It is a very important protocol to understand when working with web applications.
+We have worked with `HTTP in this class <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/how-the-internet-works.html#http>`_ 
+previously. It is a very important protocol to understand when working with web applications.
 
 As a primer, recall HTTP:
 
-- is a stateless request/response protocol
-- requests and responses **may** include HTTP bodies
-- responses always contain a three digit HTTP status code
-- requests and responses **always** include HTTP headers
+- Is a stateless request/response protocol.
+- Requests and responses may include HTTP bodies.
+- Responses always contain a three digit HTTP status code.
+- Requests and responses always include HTTP headers.
 
-Since HTTP is a stateless request/response protocol, **every request and response must transfer the necessary state** required by the client application or API. State is transferred via HTTP in the form of HTTP bodies, HTTP status codes, and HTTP headers.
+Since HTTP is a stateless request/response protocol, every request and response must transfer the necessary state required by the client application or 
+API. State is transferred via HTTP in the form of HTTP bodies, HTTP status codes, and HTTP headers.
 
 Bodies
-------
+^^^^^^
 
-The HTTP body is part of how we express state through the stateless HTTP protocol. An HTTP body can contain a large number of different media types know as `MIME types <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types>`_. 
+The HTTP body is part of how we express state through the stateless HTTP protocol. An HTTP body can contain a large number of different media types, 
+known as `MIME types <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types>`_. A MIME type is associated with the 
+HTTP header ``Content-Type``. This header instructs the recipient of the HTTP request/response on what MIME type the HTTP body contains. In this class, 
+you have seen a ``Content-Type`` HTTP header that has been set to ``text/html``.
 
-A MIME type is associated with the HTTP header ``Content-Type``. This header instructs the recipient of the HTTP request/response on what MIME type the HTTP body contains.
-
-In this class, you have seen a ``Content-Type`` HTTP header that has been set to ``text/html``.
+.. todo: reference this? Example from `HTML chapter <https://education.launchcode.org/intro-to-professional-web-dev/chapters/html/structure.html#structure-rules>`_
 
 .. sourcecode:: html
-   :caption: Example from `HTML chapter <https://education.launchcode.org/intro-to-professional-web-dev/chapters/html/structure.html#structure-rules>`_
+   :linenos:
 
    <!DOCTYPE html>
    <html>
@@ -183,12 +178,13 @@ In this class, you have seen a ``Content-Type`` HTTP header that has been set to
       </body>
    </html>
 
-This is the header for HTML documents and is used throughout the web.
- 
-APIs send representations of data in the format of JSON requiring the header ``Content-Type`` to be ``application/json``. This allows us to pass the state of the data as the HTTP body.
+This is the header for HTML documents and is used throughout the web. APIs send representations of data in the format of JSON requiring the header 
+``Content-Type`` to be ``application/json``. This allows us to pass the state of the data as the HTTP body.
+
+.. todo: reference this? Example from `JSON chapter <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/data-formats-json.html#json>`_
 
 .. sourcecode:: json
-   :caption: Example from `JSON chapter <https://education.launchcode.org/intro-to-professional-web-dev/chapters/fetch-json/data-formats-json.html#json>`_
+   :linenos:
 
    {
       "title": "An Astronaut's Guide to Life on Earth",
@@ -199,14 +195,16 @@ APIs send representations of data in the format of JSON requiring the header ``C
       "available": true
    }
 
-The HTTP body **may** include JSON that represents the data being passed between an API and that client application. In the following article, you will learn about which HTTP requests/responses will include HTTP bodies.
+The HTTP body may include JSON that represents the data being passed between an API and that client application. In the following article, you will learn 
+about which HTTP requests/responses will include HTTP bodies.
 
 Status Codes
-------------
+^^^^^^^^^^^^
 
-The next HTTP component that transfers state is the HTTP status code. The HTTP status code is included as a part of **every** HTTP response. The status code is the API's way of telling the client application how their initial request was handled. 
-
-`HTTP response status codes <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status>`_ are a part of the HTTP spec and their usage goes beyond API design. However, many of their codes have been adopted as a standard within API design.
+The next HTTP component that transfers state is the HTTP status code. The HTTP status code is included as a part of every HTTP response. The status code 
+is the API's way of telling the client application how their initial request was handled. 
+`HTTP response status codes <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status>`_ are a part of the HTTP spec and their usage goes beyond API 
+design. However, many of their codes have been adopted as a standard within API design.
 
 .. list-table:: Common HTTP status codes in API design
    :widths: 25 20 60
@@ -229,42 +227,38 @@ The next HTTP component that transfers state is the HTTP status code. The HTTP s
      - server error
 
 Headers
--------
+^^^^^^^
 
-The final HTTP component that transfers state are the HTTP headers. Any `number of headers <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers>`_ can be included in a request or response.
-
-We saw the ``Content-Type`` header above. This is the header that informs the API (request header) or client application (response header) of the format of the data included in the body. 
+The final HTTP component that transfers state are the HTTP headers. Any `number of headers <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers>`_ 
+can be included in a request or response. We saw the ``Content-Type`` header above. This is the header that informs the API (request header) or client 
+application (response header) of the format of the data included in the body. 
 
 .. admonition:: Tip
 
    A client can specify which ``Content-Type`` they want to receive in the API response using the ``Accept`` request header.
 
 API Design
-==========
+----------
 
-   The design of an API is **a contract that defines how the client and API interact with data**. 
+The design of an API is a contract that defines how the client and API interact with data. The API is responsible for upholding the data management and 
+transfer behaviors of the contract. The client application is responsible for consuming (via AJAX requests) an API according to the contract.
 
-The API is responsible for **upholding** the data management and transfer **behaviors** of the **contract**.
+As long as both sides of the interface (the client and API logic) uphold the contract, then front and back-end teams can operate independently. This 
+provides the following freedoms:
 
-The client application is responsible for **consuming** (AJAX requests) an API according to the **contract**.
-
-As long as both sides of the *interface* (the client and API logic) uphold the contract, then front and back-end teams can operate independently. This provides the following freedoms:
-
-- Front-end developers can choose or change the internal styling, libraries, frameworks and design patterns
-- Back-end developers can choose or change the internal server language, libraries, frameworks and design patterns
-- Both sides can choose or change their external hosting infrastructure at any time without affecting the other
-- Both sides can make and deploy changes to their code bases at any time without needing to coordinate with, or wait for, the other
+- Front-end developers can choose, or change, the internal styling, libraries, frameworks and design patterns.
+- Back-end developers can choose, or change, the internal server language, libraries, frameworks and design patterns.
+- Both sides can choose, or change, their external hosting infrastructure at any time without affecting the other.
+- Both sides can make and deploy changes to their code bases at any time, without needing to coordinate with, or wait for, the other.
 
 Only when a change must be made to either the client AJAX requests or API behavior do the two teams need to communicate and agree upon a new contract.
 
 REST
-----
+^^^^
 
-Adopting the REST specification into the design of an API provides consistency during development and consumption.
-
-Much like following the patterns of MVC allows other developers to easily understand your code, following REST gives other developers the benefit of understanding how your API is structured and behaves.
-
-As an added bonus, a REST API also gives the client application a base-line understanding on how to interact with your API.
+Adopting the REST specification into the design of an API provides consistency during development and consumption. Much like following the patterns of MVC 
+allows other developers to easily understand your code, following REST patterns gives other developers the benefit of understanding how your API is 
+structured and behaves. As an added bonus, a REST API also gives the client application a base-line understanding on how to interact with your API.
 
 Check Your Understanding
 ------------------------

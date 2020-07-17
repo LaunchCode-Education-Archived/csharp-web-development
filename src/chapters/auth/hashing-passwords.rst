@@ -5,11 +5,16 @@ Hashing Passwords
 
 .. index:: ! password hashing
 
-Simple authentication allows users to log in to a site with a username and password. To implement authentication, we need to be able to verify that a user's password is correct. However, **you should NEVER store passwords in a database.** Seriously. Don't do it. Ever.
+Simple authentication allows users to log in to a site with a username and password.
+To implement authentication, we need to be able to verify that a user's password is correct.
+However, **you should NEVER store passwords in a database.** Seriously. Don't do it. Ever.
 
-Storing passwords in a database is incredibly insecure. A hacker may break into the database, gaining access to every user account. Or a deviant employee with access to the database may do the same. 
+Storing passwords in a database is incredibly insecure.
+A hacker may break into the database, gaining access to every user account.
+Or a deviant employee with access to the database may do the same. 
 
-Fortunately, it is possible for us to implement simple authentication *without* storing passwords, by using a technique called **password hashing**. Password hashing is a particular type of encryption that we will explore throughout the rest of this section.
+Fortunately, it is possible for us to implement simple authentication *without* storing passwords, by using a technique called **password hashing**.
+Password hashing is a particular type of encryption that we will explore throughout the rest of this section.
 
 Two-Way Encryption
 ------------------
@@ -17,7 +22,9 @@ Two-Way Encryption
 .. index::
    single: encryption; two-way
 
-When you think of encryption, you might think of WWII or the Cold War, when the militaries of various countries exchanged secret messages that were unreadable by their enemies. This type of encryption is **two-way encryption**. A message is *encoded* with a key before being sent, and when it is received, it is *decoded* by another key. 
+When you think of encryption, you might think of WWII or the Cold War, when the militaries of various countries exchanged secret messages that were unreadable by their enemies.
+This type of encryption is **two-way encryption**.
+A message is *encoded* with a key before being sent, and when it is received, it is *decoded* by another key. 
 
 .. figure:: figures/two-way-encryption.png
    :alt: A two-way encryption flow. A key is used to encrypt sensitive data. After being transmitted, another key decrypts it. 
@@ -32,9 +39,13 @@ One-Way Encryption
 
 .. index:: ! hashing, ! hash function
 
-**One-way encryption**, also known as **hashing**, encodes a message in a way that makes it *nearly* impossible to decode. An algorithm implementing a one-way encryption algorithm is a **cryptographic hash function** (we'll usually leave off "cryptographic"). For a specific message, the output of a hash function is a **hash**. 
+**One-way encryption**, also known as **hashing**, encodes a message in a way that makes it *nearly* impossible to decode.
+An algorithm implementing a one-way encryption algorithm is a **cryptographic hash function** (we'll usually leave off "cryptographic").
+For a specific message, the output of a hash function is a **hash**. 
 
-The hashing process is essentially just the top half of the diagram above. While it might not be clear yet, hashing allows us to securely store passwords and still be able to validate a user's submitted password. Precisely *how* this is done will be explored in a moment.
+The hashing process is essentially just the top half of the diagram above.
+While it might not be clear yet, hashing allows us to securely store passwords and still be able to validate a user's submitted password.
+Precisely *how* this is done will be explored in a moment.
 The diagram below shows the general flow of how hashing works to secure the site.
 
 .. figure:: figures/hashingdiagram.png
@@ -42,28 +53,33 @@ The diagram below shows the general flow of how hashing works to secure the site
 
    Diagram showing how encoded passwords are compared to a submitted password to authenticate a user.
 
-It can be difficult to write a good hash function, so thankfully you will never have to. Over the years, some very smart people have created some very good hash functions. However, it is important to understand how the properties of a hash function allow for secure password storage. For our purposes, it is only important that we consider a hash function to have these properties:
+It can be difficult to write a good hash function, so thankfully you will never have to.
+Over the years, some very smart people have created some very good hash functions.
+However, it is important to understand how the properties of a hash function allow for secure password storage.
+For our purposes, it is only important that we consider a hash function to have these properties:
 
 .. _hash_properties:
 
 #. **Deterministic**: If we encode a message with the function at different points in time then we always get the same result.
 #. **Hard to reverse**: It is infeasible to calculate the input value that yields a given hash.
-#. **Hash values are ALMOST unique**: If ``a`` and ``b`` are two different messages, then is is *extremely* unlikely that they have the same hash value. By "extremely unlikely" we mean that this is something like a one-in-a-trillion likelihood (for example, there are only about 8 billion people on earth). 
+#. **Hash values are ALMOST unique**: If ``a`` and ``b`` are two different messages, then it is *extremely* unlikely that they have the same hash value. By "extremely unlikely" we mean that this is something like a one-in-a-trillion likelihood (for example, there are only about 8 billion people on earth). 
 #. **Similar messages have VERY different hash values**: In other words, if we change a message only slightly, the resulting hash value is *very* different. A function that returned ``AlXL3M_ws`` for the message ``"LaunchCode"`` and ``AlXL3M_wt`` for the message ``"LaunchCodf"`` would not be a suitable hash function. 
 
 Password Verification With Hashes
 ---------------------------------
 
-Our application will select a particular hash function. Let's call it ``h``. Then, for a message ``x``, the hash value will be the result of calling ``h`` with the argument ``x``. Invoked, this looks like ``h(x)``.  Rather than store passwords in a database, we will store their hash values.
+Our application will select a particular hash function. Let's call it ``h``.
+Then, for a message ``x``, the hash value will be the result of calling ``h`` with the argument ``x``.
+Invoked, this looks like ``h(x)``.  Rather than store passwords in a database, we will store their hash values.
 
-Consider a fictional user that wants to sign up for our site, Jamie. Jamie likes Taylor Swift, so their desired username is ``tswizzle_fan`` and their desired password is ``lover1989`` (not a great password choice, by the way, but we've seen worse).
+Consider a fictional user that wants to sign up for our site, Jamie.
+Jamie likes Taylor Swift, so their desired username is ``tswizzle_fan`` and their desired password is ``lover1989`` (not a great password choice, by the way, but we've seen worse).
 
 When Jamie registers for an account on our site, we will call our hash function with their password:
 
-.. sourcecode:: java
-   :linenos:
+.. sourcecode:: csharp
 
-   String hash = h("lover1989"); // returns "bd62d7e13ef465fa705f30de198ba0cb"
+   string hash = h("lover1989"); // returns "bd62d7e13ef465fa705f30de198ba0cb"
 
 Then we store Jamie's username along with her hashed password in our ``user`` table.
 
@@ -79,9 +95,11 @@ This is very secure. Even if somebody breaks into the database and finds Jamie's
 
 We can still authenticate Jamie, however. When they come to our site to log in, they will submit a username and password. Let's call the password value ``submittedPassword``. Some basic logic will allow us to determine, with an *extremely* high rate of probability, whether or not the pair is valid.
 
-To check Jamie's username/password pair, we can do something like this: 
+To check Jamie's username/password pair, we could do something like this: 
 
-.. sourcecode:: java
+.. TODO: Update this whole code block with identity syntax
+
+.. sourcecode:: csharp
    :linenos:
 
    // fetches Jamie's user object from the database
@@ -93,9 +111,12 @@ To check Jamie's username/password pair, we can do something like this:
    // hashes the submitted password
    String submittedHash = h(submittedPassword);
 
-   if (passwordHash.equals(submittedHash)) {
+   if (passwordHash.equals(submittedHash))
+   {
       // the hashes are the same, the passwords can be assumed to be the same
-   } else {
+   }
+   else
+   {
       // the hashes are different, so the passwords are definitely different
    }
 
@@ -106,13 +127,20 @@ Hashing Isn't Perfect
 
 .. index:: ! collision
 
-Using hash functions to process passwords is not a cure-all. One vulnerability is the possibility for **collisions**. A collision occurs when two different messages have the same hash value. By :ref:`property 3 <hash_properties>`, this is supposed to be rare. However, if a collision is found for a given hash function, then it may be possible to create an algorithm to *generate* collisions. In other words, given a specific hash value, the algorithm could generate a string with the *same* hash value.
+Using hash functions to process passwords is not a cure-all.
+One vulnerability is the possibility for **collisions**.
+A collision occurs when two different messages have the same hash value.
+By :ref:`property 3 <hash_properties>`, this is supposed to be rare.
+However, if a collision is found for a given hash function, then it may be possible to create an algorithm to *generate* collisions.
+In other words, given a specific hash value, the algorithm could generate a string with the *same* hash value.
 
 .. index:: ! MD5, ! SHA1
 
 The once-popular MD5 and SHA1 hash algorithms `quickly become obsolete <https://arstechnica.com/information-technology/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/>`_ (for cryptographic purposes, at least) once collisions were found. 
 
-Most hashing algorithms become more vulnerable as global computing power increases. If a hacker breaks into a database, they will obtain the hashes of all of its users' passwords. Since only a small handful of hash functions are commonly used, they might simply try millions of strings with each of the more popular hash functions and wait until they find a match. 
+Most hashing algorithms become more vulnerable as global computing power increases.
+If a hacker breaks into a database, they will obtain the hashes of all of its users' passwords.
+Since only a small handful of hash functions are commonly used, they might simply try millions of strings with each of the more popular hash functions and wait until they find a match. 
 
 .. admonition:: Note
 
@@ -126,6 +154,8 @@ Most hashing algorithms become more vulnerable as global computing power increas
 
 Which Hash Function Should I Use?
 ---------------------------------
+
+.. TODO: Figure out Identity's hash algorithm
 
 .. index:: ! bcrypt
 

@@ -1,7 +1,10 @@
 Introduction to Authentication
 ==============================
 
-We log into many, many websites every day. The process has become so routine that we expect it to work flawlessly every time. How surprised would you be if you logged into a website and saw a different user's account info? What if you entered the wrong password and were still let in? What we have come to expect as routine is anything but when we consider the code needed to make it happen. 
+We log into many, many websites every day. The process has become so routine that we expect it to work flawlessly every time.
+How surprised would you be if you logged into a website and saw a different user's account info?
+What if you entered the wrong password and were still let in?
+What we have come to expect as routine is anything but when we consider the code needed to make it happen. 
 
 What Is Authentication?
 -----------------------
@@ -10,7 +13,10 @@ What Is Authentication?
 
 **Authentication** is the process of determining a user's *identity*. In other words, are they who they say they are? 
 
-This is typically done by asking a user to provide a *secret* piece of data, which theoretically only they should know. Passwords are the most commonly used secrets, but there are others such as RSA keys and physical authentication tokens. Authentication relies on the ability of the user to keep their secret data, well, *secret*. If we are given as user's secret data, we assume that only one person could have provided it.
+This is typically done by asking a user to provide a *secret* piece of data, which theoretically only they should know.
+Passwords are the most commonly used secrets, but there are others such as RSA keys and physical authentication tokens.
+Authentication relies on the ability of the user to keep their secret data, well, *secret*.
+If we are given as user's secret data, we assume that only one person could have provided it.
 
 .. index:: ! authorization
 
@@ -25,7 +31,11 @@ Most applications that store personal data use authentication and authorization 
 Flow for Simple Authentication
 ------------------------------
 
-Using authentication allows a web application to restrict access to certain pages to known users only. The simplest form of authentication treats all users the same. If a user is signed in, then they are allowed to view *all* restricted pages. Otherwise, they may not view any. With simple authentication, it is not possible to restrict a page to some users while allowing access by others.
+Using authentication allows a web application to restrict access to certain pages to known users only.
+The simplest form of authentication treats all users the same.
+If a user is signed in, then they are allowed to view *all* restricted pages.
+Otherwise, they may not view any.
+With simple authentication, it is not possible to restrict a page to some users while allowing access by others.
 
 Simple authentication requires that for *every* request, the application answers two questions before the request is handled by a controller:
 
@@ -98,18 +108,18 @@ A logout request to a web app simply destroys the user's session, erasing any me
 A Note On Authentication In ASP.NET
 -----------------------------------
 
-Before we proceed, we want to point out something important about authentication in Spring. Spring contains a sub-project, `Spring Security <https://spring.io/projects/spring-security>`_, that provides extensive support for authentication *and* authorization. In addition to supporting simple authentication, Spring Security also supports more sophisticated authorization flows/processes like `OAuth 2 <https://oauth.net/2/>`_. Professional developers working with Spring nearly always use Spring Security.
+Before we proceed, we want to point out something important about authentication in ASP.NET.
+ASP.NET contains a library, `Identity <https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/introduction-to-aspnet-identity>`_, that provides extensive support for authentication *and* authorization.
+In addition to supporting simple authentication, Identity also supports more sophisticated authorization flows/processes like `OAuth 2 <https://oauth.net/2/>`_. Professional developers working with ASP.NET use ASP.NET Core Identity.
 
-In this book, we are explicitly not introducing Spring Security for two reasons:
+In this book, three notes before we dive into using Identity:
 
-#. The project handles many aspects of the authentication process for you. This hides many of the steps that are important to understand as you learn about authentication.
-#. Setting up Spring Security is fairly complicated, and requires concepts that are beyond the scope of this course.
+#. Identity handles many aspects of the authentication process for you. This may hide steps that are important to understand as you learn about authentication.
+#. Some of the inner workings of Identity are beyond the scope of this course. Do not fear when troubleshooting!
+#. Identity has lots of different configuration options and can handle complex authentication setups.
 
-That said, the authentication approach outlined in this chapter is sufficient for use in your personal projects. When you begin working with a team on professional applications, a senior developer will likely be on hand to help with authentication setup.
-
-.. admonition:: Note
-
-   If you are curious about simple authentication using Spring Security, check out `an example <https://github.com/chrisbay/event-log/>`_ on GitHub. Start with the `SecurityConfig class <https://github.com/chrisbay/event-log/blob/master/src/main/java/net/chrisbay/eventlog/SecurityConfig.java>`_.
+That said, the authentication approach outlined in this chapter is sufficient for use in your personal projects.
+When you begin working with a team on professional applications, a senior developer will likely be on hand to help with authentication setup.
 
 Check Your Understanding
 ------------------------

@@ -1,6 +1,6 @@
 .. index:: ! Postman
 
-..todo: define headless API
+.. todo: define headless API
 
 Studio: Consuming the Coding Events API With Postman
 ====================================================
@@ -11,36 +11,29 @@ requests with JavaScript. But before you develop the client-side logic for makin
 directly and understand how it works.
 
 When exploring and testing a web API, it is invaluable to have an interactive environment that allows you to fine-tune requests. For example, you may need 
-to configure the HTTP method, headers or body of the request -- all of which the browser does not provide a UI for. Instead of the browser, we can use 
+to configure the HTTP method, headers, or body of the request -- all of which the browser does not allow you to do. Instead of the browser, we can use 
 tools made specifically for interacting with APIs. One of the most popular API tools in the industry is **Postman**. Postman is a cross-platform tool that 
-puts you in full control of configuring and executing API requests. 
-
-In this studio, we will work with Postman to explore how APIs can be consumed.
-
-.. admonition:: Warning
-
-   If you have not already installed ``dotnet`` and ``git`` with PowerShell, you will need to go back to the previous studio before continuing with 
-   this one. 
+puts you in full control of configuring and executing API requests. In this studio, we work with Postman to explore how APIs can be consumed.
 
 Setup
 -----
+
+.. todo: detail alt text
 
 Installing Postman
 ^^^^^^^^^^^^^^^^^^
 
 Installing Postman is easy thanks to its cross-platform nature. You can download the installer on `their downloads page <https://www.postman.com/downloads/>`_. 
-We will show instructions for setting up on Windows. Because Postman is cross-platform, the other instructions in this studio will apply regardless 
-of your platform.
 
-Select the ``Windows x64`` installer download then run the installer:
+**Windows Users**: Select the *Windows x64* installer download then run the installer:
 
 .. figure:: figures/download-installer.png
    :alt: Download Windows x64 Postman installer
 
    Download Windows x64 Postman installer
 
-After installation, Postman should open automatically. Making an account can be useful, but if you do not want to create one you can select the link to skip
-in grey at the bottom of the splash screen:
+After installation, if Postman does not open automatically, locate the download and open it manually. Making an account can be useful, but if you do not 
+want to create one, select the link in grey at the bottom of the splash screen to skip this step:
 
 .. figure:: figures/account.png
    :alt: Postman splash screen for new account
@@ -49,7 +42,7 @@ in grey at the bottom of the splash screen:
 
 .. admonition:: Tip
 
-   Once installed, you can right-click the Postman icon and pin it to your taskbar for easy access in the future:
+   **Windows Users**: Once installed, you can right-click the Postman icon and pin it to your taskbar for easy access in the future:
 
    .. figure:: figures/pin-taskbar.png
       :alt: Pin Postman application to taskbar on Windows
@@ -63,8 +56,8 @@ You can leave the launchpad view open for now. We will explore Postman after set
 
    Postman launchpad view
 
-Clone the Coding Events API Source Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fork and Clone the API Source Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will be using a modified version of the MVC Coding Events application you created. The 
 `Coding Events API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`_ is designed as a RESTful API. 
@@ -76,17 +69,14 @@ API.
    Our focus in this course is on operations and as such we will not be going into the development of the API. However, feel free to explore the source 
    code if you are curious about the similarities and differences between the .NET MVC and API implementations.
 
-Let's begin by cloning the repo onto our machine:
-
-.. admonition:: Note
-
-   If you just opened PowerShell, then it will default to a CWD of your ``HOME`` directory, ``C:\Users\<username>``. 
-   
-   If you want to clone the repo somewhere else, make sure to change to that directory first.
+Let's begin by forking and cloning the repo onto our machine. In your Powershell or terminal window, move into a directory were you plan to save your local
+copy of the API codebase.
 
 .. sourcecode:: bash
 
-   > git clone https://github.com/launchcodeeducation/coding-events-api
+   > git clone https://github.com/<GitUsername>/coding-events-api
+
+.. todo: explain sqlite usage, swagger docs, what the app looks like, which code to examine, what does running the application produce.
 
 For today's studio, we will start with the first branch of the API codebase, ``1-sqlite``. This branch has an API with a single (``CodingEvent``) 
 resource and a built-in SQLite database. 
@@ -108,13 +98,15 @@ You can leave this PowerShell window open, we will return to it in a later step:
 
    PowerShell in coding-events-api repo directory on 1-sqlite branch
 
-Coding Events API
------------------
+The API
+-------
 
-This branch of the API starts by only exposing a single resource and 4 endpoints for interacting with it.
+This branch of the API starts by only exposing a single resource and four endpoints for interacting with it.
 
 CodingEvent Resource
 ^^^^^^^^^^^^^^^^^^^^
+
+.. todo: show this in the running app schema 
 
 The shape of the ``CodingEvent`` resource describes the general form of its properties and value types:
 
@@ -128,8 +120,10 @@ The shape of the ``CodingEvent`` resource describes the general form of its prop
       Date: string (ISO 8601 date format)
    }
 
+.. todo: note that this is the equivalent of the Event model class 
+
 In our case, the ``CodingEvent`` shape is just the properties and types (translated to portable 
-`JSON types <https://json-schema.org/understanding-json-schema/reference/type.html>`_) defined in the ``CodingEvents`` model class.
+`JSON types <https://json-schema.org/understanding-json-schema/reference/type.html>`_) defined in the ``CodingEvent`` model class.
 
 .. sourcecode:: csharp
    :linenos:
@@ -161,7 +155,14 @@ conversion, or serialization, so that our API can output data in a portable form
 Endpoints
 ^^^^^^^^^
 
-This branch of the API has the following 4 endpoints. Recall that an endpoint is made up of a path (to the resource) and a method (action to take on the 
+This branch of the API has four endpoints: 
+
+- GET Coding Events
+- GET Single Coding Event
+- Create a Coding Event
+- Delete a Coding Event
+
+Remember an endpoint is made up of a path (to the resource) and a method (action to take on the 
 resource). They all operate on Coding Events and share a common entry-point path of ``/api/events``. Request and response bodies are all in JSON, or more 
 specifically, they have a ``Content-Type`` header value of ``application/json``.
 

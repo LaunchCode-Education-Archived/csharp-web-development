@@ -6,4 +6,5 @@ Authentication
 
    intro
    hashing-passwords
+   scaffolding
    

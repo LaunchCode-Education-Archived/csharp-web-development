@@ -103,15 +103,15 @@ To check Jamie's username/password pair, we could do something like this:
    :linenos:
 
    // fetches Jamie's user object from the database
-   User user = getUserByUsername("tswizzle_fan");
+   User user = GetUserByUsername("tswizzle_fan");
 
    // gets the hash value stored on their object
-   String passwordHash = user.getPasswordHash();
+   string passwordHash = user.PasswordHash;
 
    // hashes the submitted password
-   String submittedHash = h(submittedPassword);
+   string submittedHash = h(submittedPassword);
 
-   if (passwordHash.equals(submittedHash))
+   if (passwordHash == submittedHash)
    {
       // the hashes are the same, the passwords can be assumed to be the same
    }
@@ -121,6 +121,11 @@ To check Jamie's username/password pair, we could do something like this:
    }
 
 The conditional compares the values of the hash stored in the database with the hash generated from the *submitted* password. By :ref:`property 1 <hash_properties>`, we know that if the hash values are different, then there is no way the passwords are the same. By :ref:`property 3 <hash_properties>`, we can safely assume that the passwords are the same. 
+
+.. admonition:: Note
+
+   When using Identity, the library handles hashing passwords for newly registered users and comparing hashes when logging in a user.
+   The example above is just an example and meant to illustrate what is going on under the hood of Identity.
 
 Hashing Isn't Perfect
 ^^^^^^^^^^^^^^^^^^^^^
@@ -152,8 +157,8 @@ Since only a small handful of hash functions are commonly used, they might simpl
 
    When trying to crack a password hash using brute force, these are the first items a hacker will attempt to use.
 
-Which Hash Function Should I Use?
----------------------------------
+Which Hash Function Does Identity Use?
+--------------------------------------
 
 .. TODO: Figure out Identity's hash algorithm
 

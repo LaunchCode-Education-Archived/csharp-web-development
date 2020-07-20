@@ -54,6 +54,7 @@ Studios
    chapters/sql-part1/studio
    chapters/sql-part2/studio
    chapters/orm-intro/studio
+   chapters/auth/studio
 
 Assignments
 ===========

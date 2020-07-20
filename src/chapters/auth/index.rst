@@ -7,4 +7,7 @@ Authentication
    intro
    hashing-passwords
    scaffolding
+   configuration
+   users
+   studio
    

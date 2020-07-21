@@ -60,3 +60,11 @@ Here are some examples of what you can do with it.
 #. Customize the UI
 #. Add new settings to user passwords
 #. Change the default settings around user sign-in
+
+.. admonition:: Note
+
+   If you want to customize user data, it is best to do so when initially scaffolding the app.
+   Identity has a default user class called ``IdentityUser``.
+   `IdentityUser <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1>`__ has a number of properties that are important and relevant to storing user data.
+   However, when you read through the requirements you may notice that you need additional properties.
+   If you create a custom class for a user, it should extend ``IdentityUser``.

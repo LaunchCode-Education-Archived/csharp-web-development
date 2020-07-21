@@ -98,202 +98,6 @@ You can leave this PowerShell window open, we will return to it in a later step:
 
    PowerShell in coding-events-api repo directory on 1-sqlite branch
 
-The API
--------
-
-This branch of the API starts by only exposing a single resource and four endpoints for interacting with it.
-
-CodingEvent Resource
-^^^^^^^^^^^^^^^^^^^^
-
-.. todo: show this in the running app schema 
-
-The shape of the ``CodingEvent`` resource describes the general form of its properties and value types:
-
-.. sourcecode:: bash
-   :linenos:
-
-   CodingEvent {
-      Id: integer
-      Title: string
-      Description: string
-      Date: string (ISO 8601 date format)
-   }
-
-.. todo: note that this is the equivalent of the Event model class 
-
-In our case, the ``CodingEvent`` shape is just the properties and types (translated to portable 
-`JSON types <https://json-schema.org/understanding-json-schema/reference/type.html>`_) defined in the ``CodingEvent`` model class.
-
-.. sourcecode:: csharp
-   :linenos:
-
-   public class CodingEvent {
-      public int Id { get; set; }
-      public string Title { get; set; }
-      public string Description { get; set; }
-      public DateTime Date { get; set; }
-   }
-
-An example of a real ``CodingEvent`` JSON response would look like this:
-
-.. sourcecode:: bash
-   :linenos:
-
-   {
-      "id": 1,
-      "title": "Consuming the Coding Events API With Postman",
-      "description": "Learn how to use Postman to interact with the Coding Events API!",
-      "date": "2020-07-24"
-   }
-
-Notice how this JSON is just a representation of an instance of the ``CodingEvent`` model class. 
-
-It has been converted from a C# object representation to a JSON string representation so it can be transported over HTTP. Recall that we perform this 
-conversion, or serialization, so that our API can output data in a portable format that is language-agnostic.
-
-Endpoints
-^^^^^^^^^
-
-This branch of the API has four endpoints: 
-
-- GET Coding Events
-- GET Single Coding Event
-- Create a Coding Event
-- Delete a Coding Event
-
-Remember an endpoint is made up of a path (to the resource) and a method (action to take on the 
-resource). They all operate on Coding Events and share a common entry-point path of ``/api/events``. Request and response bodies are all in JSON, or more 
-specifically, they have a ``Content-Type`` header value of ``application/json``.
-
-GET Coding Events
-~~~~~~~~~~~~~~~~~
-
-Making a ``GET`` request to the entry-point of a resource should return a representation of the state of the collection. In our case, this representation 
-is a JSON array with ``CodingEvent`` elements:
-
-.. sourcecode:: bash
-   :linenos:
-
-   [
-      CodingEvent { ... },
-      ...
-   ]
-
-If the current state of the collection is empty, then we will just get back an empty JSON array:
-
-.. sourcecode:: bash
-
-   []
-
-In more terse terms, we can describe this endpoint as:
-
-``GET /api/events -> CodingEvent[]``
-
-GET Single Coding Event
-~~~~~~~~~~~~~~~~~~~~~~~
-
-If you want to view the representation of a single entity, you need to provide information to uniquely identify it in the collection. Since the 
-entry-point represents the collection, it can be followed by an ``Id`` value in the path to look inside the collection and return just the corresponding 
-entity.
-
-When describing entity endpoints, we use a path variable notation, ``{variableName}``, to symbolize where the value needs to be put in the path. 
-
-We can describe this ``CodingEvent`` entity endpoint in shorthand as:
-
-``GET /api/events/{codingEventId} -> CodingEvent``
-
-If an entity with the given ``codingEventId`` is found, we will get a single ``CodingEvent`` JSON object back. If it is not found, we will receive a 
-response with a ``404`` status code to indicate the failed lookup.
-
-Create a Coding Event
-~~~~~~~~~~~~~~~~~~~~~
-
-Think about what it means to create an entity. You need to provide the required data and the collection it belongs to. When we want to create a 
-``CodingEvent``, we are asking the API to change the state of the collection (the list of entities) so our path must be ``/api/events``. Recall that the 
-"C" in CRUD stands for "create" and corresponds to the ``POST`` HTTP method in a RESTful API. Putting the resource and the action together, we know we 
-need to ``POST`` to the ``/api/events`` endpoint. Finally, as part of our ``POST`` request, we will need to send a request body containing the data 
-required to create the entity.
-
-The shape of the ``NewCodingEvent`` describes the JSON body that the endpoint expects:
-
-.. sourcecode:: bash
-   :linenos:
-
-   NewCodingEvent {
-      Title: string
-      Description: string
-      Date: string (ISO 8601 date format)
-   }
-
-When making a request, you would need to send a JSON body like this to satisfy the general shape:
-
-.. sourcecode:: bash
-   :linenos:
-
-   {
-      "Title": "Halloween Hackathon!",
-      "Description": "A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions",
-      "Date": "2020-10-31"
-   }
-
-.. admonition:: Note
-
-   We only provide the user editable fields, not the unique ``Id`` which the API handles internally when saving to the database.
-
-Recall that when a ``POST`` request is successful, the API should respond with the ``201``, or *Created*, HTTP status code. As part of the ``2XX`` 
-HTTP success status codes, it indicates a particular type of successful response with a special header.
-
-One of the REST conventions states that when an entity is created, the response should include both this status and the ``Location`` header that provides 
-the URL of the new entity:
-
-.. sourcecode:: bash
-
-   Location=<server origin>/api/events/<new entity Id>
-
-As an example:
-
-.. sourcecode:: bash
-
-   Location=http://localhost:5000/api/events/1
-
-You could then issue a ``GET`` request to the ``Location`` header value and view the new entity. In shorthand format, this endpoint can be described as:
-
-``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
-
-If the request fails because of a client error, then it will respond with a ``400`` status code and a message about what went wrong. In the case of 
-``CodingEvent`` entities, the following validation criteria must be met:
-
-- ``Title``: 10-100 characters
-- ``Description``: less than 1000 characters
-
-Delete a Coding Event
-~~~~~~~~~~~~~~~~~~~~~
-
-Deleting a ``CodingEvent`` resource means to operate on a single entity. This should make sense as it would be too powerful to expose the ability to 
-delete the entire collection. Just like the endpoint for getting a single entity, this endpoint requires a ``codingEventId`` path variable. When a 
-resource is deleted, a RESTful API should respond with a ``204`` status code. Similar to the ``201`` status, this code indicates a success with no response 
-body or special headers. 
-
-The deletion endpoint can be described in shorthand as:
-
-``DELETE /api/events/{codingEventId} -> 204``
-
-If you attempt to delete a resource that doesn't exist, (with an incorrect ``codingEventId``) then the endpoint will respond with an expected ``404`` 
-status and message.
-
-Summary
-~~~~~~~
-
-Two endpoints at the ``CodingEvents`` entry-point path, ``/api/events``, to interact with the collection as a whole:
-
-- **list Coding Events**: ``GET /api/events -> CodingEvent[]``
-- **create a Coding Event**: ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
-
-And two that require a sub-path variable, ``/events/{codingEventId}``, to interact with a single entity:
-
-- **delete a Coding Event**: ``DELETE /api/events/{codingEventId} -> 201, CodingEvent``
-- **find single Coding Event**: ``GET /api/events/{codingEventId} -> CodingEvent``
 
 .. todo: potentially break off here, top is exercises? bottom studio?
 
@@ -303,17 +107,8 @@ Making Requests to the Coding Events API
 Start the API Server
 ^^^^^^^^^^^^^^^^^^^^
 
-In a PowerShell window, enter the following commands to run the API from the command-line. 
-
-.. admonition:: Note
-
-   Make sure to navigate back to the ``coding-events-api`` repo directory before issuing the following commands.
-
-We will need to change to the ``CodingEventsAPI`` project directory (inside the repo directory) to run the project. 
-
-If you cloned the repo into your ``HOME`` directory, then the absolute path will be:
-
-``C:\Users\<username>\coding-events-api\CodingEventsAPI``
+We'll start the API server from the terminal using the ``dotnet run`` command. Navigate to the ``CodingEventsAPI`` project folder *within* your 
+``coding-events-api`` solution. This is the folder that contains ``Controllers/`` and so on, and is NOT the main project folder.
 
 .. sourcecode:: bash
 
@@ -334,6 +129,8 @@ If you cloned the repo into your ``HOME`` directory, then the absolute path will
    info: Microsoft.Hosting.Lifetime[0]
          Content root path: C:\Users\<username>\coding-events-api\CodingEventsAPI
 
+.. todo : add note to describe the intended output
+
 
 List the Coding Events
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -348,7 +145,7 @@ Now that our API server is running, we can make our first request using Postman.
 Creating a New Request
 ^^^^^^^^^^^^^^^^^^^^^^
 
-With the new item dialog open, select the *create new* tab (on the left) then select *Request*. 
+With the new item dialog open, select the *Create New* tab (on the left) then select *Request*. 
 
 .. figure:: figures/new-item-dialog.png
    :alt: Postman New item dialog
@@ -364,7 +161,7 @@ This will open the new request dialog:
 
 Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export 
 collections of requests for portability across teams. For our first request, enter the "list coding events" in the *Request name* form field. At the 
-bottom of the new request dialog,  you will see that the collections are empty. Select the orange *Create Collection* button then enter the 
+bottom of the new request dialog, you will see that the collections are empty. Select the orange *Create Collection* button then enter the 
 name ``coding events API``. The new request dialog button will change to say *Save to coding events API*:
 
 .. figure:: figures/new-request-dialog-complete.png
@@ -392,13 +189,7 @@ In Postman, we can make this request by configuring the following settings:
 
 - the URL of the endpoint: ``http://localhost:5000/api/events``
 - the HTTP method of the endpoint: ``GET``
-- the request header: (``Accept`` ``application/json``)
-
-.. admonition:: Note
-
-   Endpoints are described as relative paths with regards to a server's origin. An API uses relative paths because its origin is defined by where it 
-   is hosted. The hosting location can be locally on your machine, or remotely in the cloud. For example, our local server origin is 
-   ``http://localhost:5000``. When combined with the endpoint path, becomes our request URL: ``http://localhost:5000/api/events``.
+- the request header: (``Accept: application/json``)
 
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET``. In the following requests, you will need to select the 
 appropriate method from this list. 
@@ -407,6 +198,8 @@ appropriate method from this list.
    :alt: Postman HTTP method selector
 
    Postman HTTP method selector
+
+Next to the request method type, enter the request URL where the API request should be sent: ``http://localhost:5000/api/events``.
 
 Underneath the URL bar are tabs for other aspects of the request. Select the ``Headers`` tab to configure our header. The ``Accept`` header lets the API 
 know that we accept responses that are formatted as JSON. 
@@ -430,8 +223,8 @@ To issue the request, you can select the blue *Send* button on the right of the 
 Viewing the Response
 ~~~~~~~~~~~~~~~~~~~~
 
-Below the request configuration, you can see the response section has been populated. From here, you see the response body along with the status code 
-(top right) and headers:
+Below the request configuration, you will see the response section has been populated. From here, you see the response body along with the status code 
+(on the right) and a tab for headers:
 
 .. figure:: figures/list-coding-events-response.png
    :alt: Postman list coding events responses
@@ -441,7 +234,7 @@ Below the request configuration, you can see the response section has been popul
 Since this is our first time running the application, the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the 
 empty representation of the Coding Events collection.
 
-If you select the *Headers* tab, you can see the API satisfied our ``Accept`` request header and provided the response in ``application/json`` format.
+If you select the *Headers* tab in the response pane, you see the API satisfied our ``Accept`` request header and provided the response in ``application/json`` format.
 
 .. figure:: figures/response-headers.png
    :alt: Postman response headers
@@ -463,7 +256,7 @@ Create a Coding Event
 
 For our next request, we will create a Coding Event. Repeat the steps you performed in the previous request:
 
-#. Create a new request named: ``create coding event``
+#. Click on the orange *New* button in the top left corner to create a new request named: ``create coding event``
 #. Add it to the existing ``coding events API`` collection
 
 This request will change the state of the Coding Events collection by adding a new entity to it. Recall that the shorthand for this request is:
@@ -486,7 +279,8 @@ Configure the Request Body
 In addition to the configurations you are now familiar with setting, we will need to define the request body. For this task, select the *Body* tab that 
 is next to *Headers*. 
 
-The body of the request must be in a raw JSON format. Once this format is selected, enter the following JSON body:
+The body of the request must be in a raw JSON format. In the *Body* tab, open the the dropdown to select your data format. Select *raw* from the menu. Once 
+this format is selected, enter the following JSON body:
 
 .. sourcecode:: bash
    :linenos:
@@ -504,21 +298,21 @@ Before sending the request, check that your configuration matches the following 
 
    Postman create coding event request configuration
 
+Hit send and we'll take a look at the result.
+
 Analyzing the Response
 ^^^^^^^^^^^^^^^^^^^^^^
 
-You can see in the response that the API reflected back the representation of the new ``CodingEvent`` entity. Notice that a unique ``id`` has been assigned to it by the API. 
-
-Looking at the status code (``201``) and headers of the response we can see the API conformed to the REST convention. The URL value of the ``Location`` header
-
-``http://localhost:5000/api/events/1``
-
-can be used to view the individual ``CodingEvent`` entity that was created.
+You can see in the response that the API reflected back the representation of the new ``CodingEvent`` entity. Notice that a unique ``id`` has been 
+assigned to it by the API. Looking at the status code (``201``) and headers of the response, we can see the API conformed to the REST convention. Open the *Headers*
+tab in the response panel. The URL value of the ``Location`` header is: ``http://localhost:5000/api/events/1``. This location can be can now be used to 
+view the individual ``CodingEvent`` entity that was created by our request.
 
 Sending a Bad Request
 ^^^^^^^^^^^^^^^^^^^^^
 
-To illustrate the rejection of bad requests let's send one that violates the ``NewCodingEvent`` validation constraints. Send another request with the following JSON body:
+To illustrate the rejection of bad requests, let's send one that violates the ``NewCodingEvent`` validation constraints. Send another request with the 
+following JSON body:
 
 .. sourcecode:: bash
 
@@ -528,10 +322,13 @@ To illustrate the rejection of bad requests let's send one that violates the ``N
       "Date": "2020-10-31"
    }
 
-You can see from the response that the API rejected the request due to **client error**. The response had a **bad request** status of ``400`` and the body included information about what needs to be corrected to issue a successful request:
+You can see from the response that the API rejected the request. The response returns a bad request status of ``400`` which indicates a client-side error. 
+The response body includes information about what needs to be corrected to issue a successful request:
 
 .. figure:: figures/create-coding-event-bad-request.png
    :alt: Postman response of create coding event with a bad request body
+
+   Postman response of create coding event with a bad request body
 
 Get a Single Coding Event
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -545,7 +342,7 @@ complete this task. Remember to follow the steps you performed before, keeping i
 #. Add it to the existing ``coding events API`` collection
 #. Configure the URL of the endpoint: ``http://localhost:5000/api/events/1``
 #. Configure the HTTP method of the endpoint: ``GET``
-#. Configure the request header: (``Accept`` ``application/json``)
+#. Configure the request header: (``Accept: application/json``)
 
 You should get back the following JSON response body:
 
@@ -556,7 +353,7 @@ You should get back the following JSON response body:
       "id": 1,
       "title": "Halloween Hackathon!",
       "description": "A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions",
-      "date": "2020-10-31"
+      "date": "2020-10-31T00:00:00"
    }
 
 Requesting a Non-Existent Entity
@@ -578,6 +375,18 @@ Delete a Coding Event
 In this final step, we will issue a ``DELETE`` request. Before we make the request, let's re-issue the request to list Coding Events. Now that we have 
 added an entity, we expect the state of the Coding Events resource collection to have changed. Switch back to the ``list coding events`` request tab and 
 re-issue the request. You should get a response of the collection's list representation containing the new entity.
+
+.. sourcecode:: bash
+   :linenos:
+
+   [
+     {
+        "id": 1,
+        "title": "Halloween Hackathon!",
+        "description": "A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions",
+        "date": "2020-10-31T00:00:00"
+     }	
+   ]
 
 To delete this entity, and therefore change the state of our resources, we will need to issue the following shorthand request:
 

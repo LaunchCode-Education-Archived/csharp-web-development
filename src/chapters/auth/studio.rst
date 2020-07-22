@@ -4,7 +4,7 @@ Studio: TechJobs Authentication
 For this studio, you'll be tasked with adding simple user authentication to your 
 ``TechJobs`` application. The steps to do this will match what you have already done 
 in ``CodingEvents``. You should refer back to the tutorial starting 
-:ref:`here <user_auth_walkthrough>`.
+:ref:`here <user-auth-walkthrough>`.
 
 #. :ref:`auth_studio_scaffolding`
 #. :ref:`auth_studio_config`
@@ -50,7 +50,7 @@ Scaffolding
 
 #. In the project you have cloned, scaffold Identity onto the codebase.
 
-   #. Use the default UI and ``JobDbContext``.
+   #. Use the same files as the chapter content and ``JobDbContext``.
 
 #. Update ``IdentityHostingStartup.cs``, ``Startup.cs``, and ``JobDbContext`` as necessary.
 #. Add the ``LoginPartial`` partial view to the navbar.
@@ -70,11 +70,11 @@ Configuration
 
 .. _auth_studio_user:
 
-User-Facing Forms
------------------
+Authorization
+-------------
 
-#. Add the necessary pages for a user to register for a new account, log into an existing account, and log out.
+#. Add the necessary attributes so only logged-in users can add jobs, but all visitors to the application can see the listing of jobs.
 
-That's it, that's all. You're done. Go forth and test the auth flow. 
+That's it, that's all. You're done. Go forth and test the auth flow by visiting the home page, registering for a new account, and logging into and out of an existing account. 
 Then add this to any other ASP.NET project you're working on!
       

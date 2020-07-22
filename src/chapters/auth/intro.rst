@@ -26,7 +26,8 @@ A related, but different, concept is **authorization**. Authorization is the pro
 
    I can share a Google doc with my coworker with read-only permission. They are then *authorized* to view the document, but not to make changes.
 
-Most applications that store personal data use authentication and authorization together. In this book, however, we will only discuss authentication.
+Most applications that store personal data use authentication and authorization together.
+In this book, however, we will focus on authentication.
 
 Flow for Simple Authentication
 ------------------------------
@@ -109,8 +110,9 @@ A Note On Authentication In ASP.NET
 -----------------------------------
 
 Before we proceed, we want to point out something important about authentication in ASP.NET.
-ASP.NET contains a library, `Identity <https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/introduction-to-aspnet-identity>`_, that provides extensive support for authentication *and* authorization.
-In addition to supporting simple authentication, Identity also supports more sophisticated authorization flows/processes like `OAuth 2 <https://oauth.net/2/>`_. Professional developers working with ASP.NET use ASP.NET Core Identity.
+ASP.NET contains a Razor Class library, `Identity <https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/introduction-to-aspnet-identity>`_, that provides extensive support for authentication *and* authorization.
+In addition to supporting simple authentication, Identity also supports more sophisticated authorization flows/processes like `OAuth 2 <https://oauth.net/2/>`_.
+Professional developers working with ASP.NET use ASP.NET Core Identity for authentication.
 
 In this book, three notes before we dive into using Identity:
 

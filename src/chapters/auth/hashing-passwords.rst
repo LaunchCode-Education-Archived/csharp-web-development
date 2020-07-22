@@ -97,8 +97,6 @@ We can still authenticate Jamie, however. When they come to our site to log in, 
 
 To check Jamie's username/password pair, we could do something like this: 
 
-.. TODO: Update this whole code block with identity syntax
-
 .. sourcecode:: csharp
    :linenos:
 
@@ -157,14 +155,17 @@ Since only a small handful of hash functions are commonly used, they might simpl
 
    When trying to crack a password hash using brute force, these are the first items a hacker will attempt to use.
 
+.. index:: ! IdentityV3
+
 Which Hash Function Does Identity Use?
 --------------------------------------
 
-.. TODO: Figure out Identity's hash algorithm
+Identity contains its own password hasher called **IdentityV3**. When a new user is added to the database, their inputted password is passed to IdentityV3.
+IdentityV3 is not its own hashing algorithm, but it uses `HMACSHA256 <https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1>`__ for hashing.
 
-.. index:: ! bcrypt
-
-You should use `bcrypt <https://en.wikipedia.org/wiki/Bcrypt>`_. This hash function is considered not only the best hash function at the moment, but also likely to be able to stand the test of time. Bcrypt uses hashing best practices (such as `salts <https://en.wikipedia.org/wiki/Salt_(cryptography)>`_) along with an algorithm that can be made to run as long as you like. So even as computing power grows, bcrypt will be resistant to brute force techniques.
+IdentityV3 is named after the third version of Identity and is the default password hasher.
+IdentityV2 corresponds to the second version of Identity and may still be in use in some code bases.
+As a result, developers can still specify that IdentityV2 needs to be used in the configuration options.  
 
 Check Your Understanding
 ------------------------

@@ -10,17 +10,6 @@ For the purposes of this book, we will focus on just two: registering for a new 
    The logic that we might be inclined to put in a controller for each of the actions that we look at is actually contained within a Razor page.
    Our goal is to locate the correct page and understand what is going on.
 
-Getting Started
----------------
-
-Previously, when scaffolding Identity onto our codebase, we used the default UI.
-If you navigate to the ``Areas/Identity/Pages`` directory, you may find only a few pages there, but nothing that explicitly says it is for the users to register or login.
-Run one more code generation command to get these files out of the library and into the solution.
-
-.. sourcecode:: guess
-
-   dotnet aspnet-codegenerator identity --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
-
 Registration
 ------------
 

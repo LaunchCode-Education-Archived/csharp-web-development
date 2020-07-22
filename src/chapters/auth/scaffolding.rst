@@ -3,6 +3,8 @@
 Getting Started with Identity
 =============================
 
+.. TODO: Add branch info
+
 As a developer, you may find yourself wanting to add Identity in one of the two following situations:
 
 #. You are creating a new project and you know that you need Identity in the project.
@@ -85,19 +87,21 @@ Adding Identity through the Command Line
 
    .. sourcecode:: guess
 
-      dotnet aspnet-codegenerator identity --useDefaultUI --dbContext EventDbContext
+      dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 
    .. admonition:: Note
 
-      In the above command, we used the option for ``useDefaultUI``. Identity is a Razor Class Library so it comes with Razor pages preconfigured for registration, login, etc.
-      This option means that we want to use the default pages.
+      In the above command, we used the option for ``files``.
+      Identity is a Razor Class Library so it comes with Razor pages preconfigured for registration, login, etc.
+      This option means that we want the scaffolder to generate these files and add them to the solution, making it easier for us to customize these files in the future.
+      The option for ``defaultUI`` means that we have no need to have these files in the solution and so we won't have the ability to customize them. 
 
 #. Once we run this series of commands, we will have successfully scaffolded Identity code onto our existing project.
 
 ``DbContext``
 ^^^^^^^^^^^^^
 
-If you ran the application right now, you might encounter some build errors.
+If you ran the application right now, you would encounter some build errors.
 While we specified in our scaffolding commands that we wanted to use ``EventDbContext``, we need to open up two files to make sure that Identity is properly using ``EventDbContext``: ``Startup.cs`` and ``IdentityHostingStartup.cs``.
 
 ``IdentityHostingStartup.cs`` can be found in the ``Areas/Identity`` directory. 
@@ -135,8 +139,25 @@ Add one line to ``ConfigureServices()`` in ``Startup.cs`` for the use of the Raz
 
    services.AddRazorPages();
 
+Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``Startup.cs``:
+
+.. sourcecode:: csharp
+   :lineno-start: 62
+   :emphasize-lines: 6
+
+   app.UseEndpoints(endpoints =>
+   {
+      endpoints.MapControllerRoute(
+         name: "default",
+         pattern: "{controller=Home}/{action=Index}/{id?}");
+      endpoints.MapRazorPages();
+   });
+
+``endpoints.MapRazorPages()`` specifies to the app that the Identity pages should follow the routing laid out in ``_LoginPartial.cshtml``.
+
 These initial steps were to make sure that the application is still using ``EventDbContext`` for its connection to the database now that we have added Identity.
-Now we just need to dive into ``EventDbContext`` itself and do the following:
+However, if you take a look inside the ``Areas/Identity/Data`` directory, you will find a file also called ``EventDbContext``. Delete that generated file and continue to use the one we initially created for ``CodingEvents``.
+Now we just need to dive into our copy of ``EventDbContext`` and do the following:
 
 #. ``EventDbContext`` should now extend ``IdentityDbContext<IdentityUser>``.
 #. We need to add an additional line to ``OnModelCreating()``:

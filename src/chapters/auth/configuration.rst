@@ -1,6 +1,8 @@
 Configuring Identity
 ====================
 
+.. TODO: Add branch info
+
 With Identity in place, we can start to configure the settings of the library to meet our authentication requirements.
 The first place to start with configuring Identity to fit the needs of the project is in ``Startup.cs``.
 
@@ -38,11 +40,6 @@ Below ``ConfigureServices()``, you will find ``Configure()``. Inside ``Configure
 
    app.UseAuthentication();
    app.UseAuthorization();
-
-   app.UseEndpoints(endpoints =>
-   {
-      endpoints.MapRazorPages();
-   });
 
 While we did properly scaffold Identity onto our code base, we need to add the calls to ``UseAuthentication()`` and ``UseAuthorization()``.
 Our application uses middleware to relay requests between our application and our database.

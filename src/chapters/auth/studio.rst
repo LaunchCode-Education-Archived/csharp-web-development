@@ -32,6 +32,8 @@ The Starter Code
          To create a new user with permissions, refresh your memory
          in :ref:`setup-orm-database`.
 
+   #. Before getting started with setting up Identity, run a new migration to make sure that all of the database info is correct.
+
 .. admonition:: Note
    
       We've greatly reduced the functionality of the app so you can focus
@@ -74,5 +76,5 @@ User-Facing Forms
 #. Add the necessary pages for a user to register for a new account, log into an existing account, and log out.
 
 That's it, that's all. You're done. Go forth and test the auth flow. 
-Then add this to any other Spring project you're working on!
+Then add this to any other ASP.NET project you're working on!
       

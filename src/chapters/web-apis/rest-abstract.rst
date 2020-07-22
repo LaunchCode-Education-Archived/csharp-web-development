@@ -3,10 +3,20 @@
 What is REST?
 =============
 
-**REST** is an acronym that stands for **REpresentational State Transfer**. **RESTful web services** give us a pattern for organizing the behavior of an API. REST is an architectural pattern that provides uniformity and 
-predictability to any API that adheres to it. The same benefits are experienced by the API consumer. REST is a set of guiding principles for supporting 
-the organization of an API's core responsibilities -- managing and transferring data. Its pattern organizes the external interface, or contract, and 
-does not concern itself with the internal implementation of the API . 
+**REST** is an acronym that stands for **REpresentational State Transfer**. **RESTful web services** refer to web technologies that use
+this design pattern. REST, as we've mentioned, is an architectural pattern that provides uniformity and predictability to any API 
+that adheres to it. The same benefits are experienced by the API consumer. REST is a set of guiding principles for supporting 
+the organization of an API's core responsibilities -- managing and transferring data. The REST pattern organizes the external 
+interface, or contract, and does not concern itself with the internal implementation of the API.
+
+Adopting the REST specification into the design of an API provides consistency during development and consumption. Much like 
+following the patterns of MVC allows other developers to easily understand your code, following REST patterns gives other developers 
+the benefit of understanding how your API is structured and behaves. As an added bonus, a REST API also gives the client application 
+a base-line understanding on how to interact with your API.
+
+The following sections reference the CodingEvents MVC project we've been creating over the last several lessons to illustrate 
+some of the more abstract notions of an alternative CodingEvents API project.
+
 
 .. admonition:: Tip
 
@@ -18,7 +28,7 @@ What is State?
 State is transitional application data that can be viewed or changed by external interaction. Though state is abstract, programmers interact with it 
 using CRUD operations. 
 
-Imagine viewing, or reading, the state as it transitions through each of the following interactions:
+Imagine viewing, or reading, the state of an application's data as it transitions through each of the following interactions:
 
 #. **Before creating**: Empty state
 #. **After creating**: Initial state
@@ -29,15 +39,14 @@ You can see that the state is defined by how the data exists after its latest in
 
 .. admonition:: Note
 
-   The concept of state is both the most abstract and most fundamental aspect of REST. All of the following sections will reference the 
-	Coding Events MVC project you created to illustrate the concepts in a more relatable way. 
+   The concept of state is both the most abstract and most fundamental aspect of REST. 
 
 What is a Representation?
 -------------------------
 
-Representation refers to a depiction of state that is usable in a given context. Representations are a way of working with application state in across various 
+Representation refers to a depiction of state that is usable in a given context. Representations are a way of working with application state across various 
 contexts. Think about the difference in representation between the state stored in a database row and an object in your code *representing* that row. First, 
-consider how we *represent* state in a database row. Traditionally, the representation of a row is visualized as a table with columns listing the 
+consider how we represent state in a database row. Traditionally, the representation of a row is visualized as a table with columns listing the 
 properties and values that make up the state:
 
 .. admonition:: Example
@@ -72,7 +81,7 @@ The ``ToString()`` method is used to visualize the representation as an object t
          Date: 2020-10-31
       }
 
-In both cases, the application state is the same* The difference is in the representation that makes it usable in its context. In REST, state must be 
+In both cases, the application state is the same. The difference is in the representation that makes it usable in its context. In REST, state must be 
 represented in a way that is portable and compatible with both the client and API. Consider a third representation, JSON. JSON is itself a format that 
 provides structure, portability and compatibility. For these reasons, JSON is the standard representation used when transferring state between a client 
 application and an API. 

@@ -8,5 +8,3 @@ Introduction to Web APIs & REST
    rest-abstract
    rest-practical
    exercises
-   studio
-   

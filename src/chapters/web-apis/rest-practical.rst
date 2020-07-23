@@ -196,7 +196,7 @@ Because the unique identifier of the entity is variable, we use a path variable 
 CRUD Operations & HTTP Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As we saw in the previous article, state is something that can be interacted using CRUD operations. By convention, each of these 
+As we saw in the previous article, state is something that can be interacted with using CRUD operations. By convention, each of these 
 operations corresponds to an HTTP method:
 
 .. list-table:: HTTP method and corresponding CRUD operation

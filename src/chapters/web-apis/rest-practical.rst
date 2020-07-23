@@ -1,8 +1,7 @@
 REST: Practical Fundamentals
 ============================
 
-Now that you have an understanding of the more abstract aspects of REST, let's turn our attention to the practical details. The previous article 
-covered the following terms in great depth -- below is a practical summary:
+Here's a takeaway of the abstract ideas we covered on the last page:
 
 - **State**: data that can change (transition) through interactions between an API and its client
 
@@ -10,14 +9,16 @@ covered the following terms in great depth -- below is a practical summary:
 
 - **Resource**: the representation of a type of state (as an entity or collection) that the API exposes to its client for interaction
 
-- **Entity**: a single resource that is uniquely identifiable in a collection
+Now that you have an understanding of these concepts, let's turn our attention to the practical details of working with REST APIs. 
+The following sections reference the CodingEvents MVC project we've been creating over the last several lessons to illustrate 
+the capabilities of an alternative CodingEvents API project.
 
-- **Collection**: entities of the same resource type treated as a whole
+.. index:: ! shape, 
 
 Shapes
 ------
 
-Shape describes the input or output of an API in terms of its fields and data types. There are no rules for how shapes should be defined. However, the 
+**Shape** describes the input or output of an API in terms of its fields and data types. There are no rules for how shapes should be defined. However, the 
 goal should be to describe shapes in a way that is easy to understand. For this reason, shapes are typically shown in a way that is similar to the 
 representation format. Because we use JSON as the representation format, the 
 `JSON data types <https://json-schema.org/understanding-json-schema/reference/type.html>`_ are used. 
@@ -36,7 +37,9 @@ You can think of shape like a class definition in an object-oriented codebase:
          public DateTime Date { get; set; }
       }
 
-   The output resource shape of a Coding Event
+   Notice, the class called ``CodingEvent`` is equivalent to the ``Event`` class in our MVC application.
+
+   The output resource shape of a CodingEvent entity:
 
    .. sourcecode:: bash
       :linenos:
@@ -48,9 +51,10 @@ You can think of shape like a class definition in an object-oriented codebase:
          Date: string (ISO 8601 date format)
       }
 
-The JSON representation of the resource that the API sends out is then based on the shape. This is like how an object is based on the blueprint of its class:
+The JSON representation of the resource that the API sends out is then based on the shape. This is like how an object is based on 
+the blueprint of its class.
 
-Here's a Coding Event JSON Representation:
+Here's a CodingEvent JSON Representation:
 
 
 .. admonition:: Example
@@ -65,8 +69,8 @@ Here's a Coding Event JSON Representation:
          "Date": "2020-10-31"
       }
 
-We can think of inputs as a *partial state* provided by the client during create and update operations. Only some of the fields are included because the 
-API is responsible for providing the others.
+We can think of inputs as a *partial state* provided by the client during create and update operations. Only some of the fields 
+are included because the API is responsible for providing the others.
 
 Consider the following example of an input shape used to create an event. Notice that the ``Id`` field is not included:
 
@@ -94,7 +98,7 @@ Endpoints
 
 An API **endpoint** refers to the HTTP path and method that defines the location of a resource and the action to take on its state.
 
-Endpoints are what an API exposes to its consumers. Each endpoint is made up of a:
+Endpoints are what an API exposes to its consumers. Each endpoint is made up of two components:
 
 - **path**: the noun that identifies the resource
 - **method**: the verb, or action, to take on the resource's state
@@ -102,22 +106,21 @@ Endpoints are what an API exposes to its consumers. Each endpoint is made up of 
 Identifying the Resource
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Paths are used to identify the resource. Recall the hierarchal nature of resources where an entity only exists within a collection. RESTful APIs separate 
-the resources they expose into one or more resource entry-points. As the name implies, these entry-points are the start of the hierarchy and identify 
-each top-level resource collection.
+Paths are used to identify the resource being interacted with. Recall the hierarchal nature of resources where an entity only 
+exists within a collection. RESTful APIs separate the resources they expose into one or more resource entry-points.
 
 Let's consider two resources exposed by a RESTful API:
 
 .. admonition:: Example
 
-   The Coding Events API would have the following familiar resources (among others):
+   The CodingEvents API would have the following familiar resources (among others):
 
    .. list-table:: Resource and corresponding collection entry-point
 
       * - Resource
         - ``CodingEvent``
         - ``Tag``
-      * - Collection entry-point
+      * - Path
         - ``/events``
         - ``/tags``
 
@@ -125,30 +128,10 @@ Let's consider two resources exposed by a RESTful API:
 
    - is lowercase and separated by underscores if necessary
    - adequately describes the resource in as few characters as necessary
-   - is a noun (actions are described by the method of the endpoint)
+   - is a plural noun (actions are described by the method of the endpoint)
 
-Notice that the entry-points are pluralized. The pluralized path indicates that the state of the resource collection is the subject of the interaction. 
-
-Consider a request to the following endpoint (path and method):
-
-.. list-table:: Identify the Resource
-   :header-rows: 1
-
-   * - Path
-     - Noun (subject)
-   * - ``/collection``
-     - Resource collection
-
-.. list-table:: Interact with its State
-   :header-rows: 1
-
-   * - HTTP method
-     - Verb (action)
-   * - ``GET``
-     - view representation of the collection
-
-Let's see this in action with our Coding Events API. Using what we have learned so far, we can expect the state of the resource collection to be 
-represented in a JSON array, ``[]``:
+Let's see this in action with a CodingEvents API. Using what we have learned so far, we can expect the state of the resource 
+collection to be represented in a JSON array:
 
 .. admonition:: Example
 
@@ -189,34 +172,14 @@ Because the unique identifier of the entity is variable, we use a path variable 
 
 .. admonition:: Tip
 
-   The hierarchy of collections and entities is similar to directories and files. To identify an entity is like identifying a file within a directory. 
-   You need both the directory (collection) name and a sub-path that uniquely identifies the file (entity).
-
-Consider a request to the following endpoint for viewing a single resource entity:
-
-.. list-table:: Identify the Resource
-   :header-rows: 1
-
-   * - Path
-     - Noun (subject)
-   * - ``/collection/{entityId}``
-     - Resource entity
-
-.. list-table:: Interact with its State
-   :header-rows: 1
-
-   * - HTTP method
-     - Verb (action)
-   * - ``GET``
-     - view representation of a single entity
-
-Let's take another look at our example API:
+   The hierarchy of collections and entities is similar to directories and files. To identify an entity is like identifying a 
+   file within a directory. You need both the directory (collection) name and a sub-path that uniquely identifies the file (entity).
 
 .. admonition:: Example
 
-   The generic path to identify a ``CodingEvent`` resource would be described as ``/events/{codingEventId}``.
+   The generic path to identify a ``CodingEvent`` resource is noted as ``/events/{codingEventId}``.
    
-   Let's assume a Coding Event exists with an ``Id`` of ``12``.
+   Let's assume a CodingEvent entity exists with an ``Id`` of ``12``.
    
    We could make a request to the ``GET /events/12`` endpoint to read its current state and receive this response:
 
@@ -233,9 +196,8 @@ Let's take another look at our example API:
 CRUD Operations & HTTP Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In a RESTful API, the operations a client performs on a resource are described using HTTP methods. If the resource path describes the noun (subject), 
-the HTTP method describes the verb (action) that is taken on that subject's state. As we saw in the previous article, state is something that can be 
-interacted using CRUD operations. By convention, each of these operations corresponds to an HTTP method:
+As we saw in the previous article, state is something that can be interacted using CRUD operations. By convention, each of these 
+operations corresponds to an HTTP method:
 
 .. list-table:: HTTP method and corresponding CRUD operation
    :stub-columns: 1
@@ -251,13 +213,13 @@ interacted using CRUD operations. By convention, each of these operations corres
      - Update
      - Delete
 
-The use case of an API dictates the design of its contract. This includes which actions the client can take on each resource. In other words, not every 
-action must be exposed for each resource the API manages.
+The use case of an API dictates the design of its contract. This includes which actions the client can take on each resource. In 
+other words, not every action must be exposed for each resource the API manages.
 
 .. admonition:: Note
 
-   If a client tries to take an action on a resource that is not supported by the API, they will receive a ``405`` status code or ``Method not allowed`` 
-   error response.
+   If a client tries to take an action on a resource that is not supported by the API, they will receive a ``405`` status code or 
+   ``Method not allowed`` error response.
 
 Endpoint Behavior
 -----------------
@@ -287,17 +249,13 @@ Operating On Collections
    Exposing the ability to modify or delete all of the entities in a collection at once can be risky. In many cases, the design of a RESTful API will 
    only support ``GET`` and ``POST`` endpoints for collections. 
 
-Let's consider a request for creating a resource entity. Recall that this operation acts on the state of the collection by adding a new entity to it.
-
-The ``POST`` endpoint of the collection, that the entity belongs to, can be used with a request body. This request body is a representation of the initial 
-state the client must provide as an input to the API. 
-
-Let's take a look at this request in the context of our example API:
+Let's consider a request for creating a resource entity. Recall that this operation acts on the state of the collection by 
+adding a new entity to it.
 
 .. admonition:: Example
 
-   As we saw earlier, the input shape for creating an event only includes the fields the consumer is responsible for. The ``Id`` field is then managed 
-   internally by the API.
+   As we saw earlier, the input shape for creating an event only includes the fields the consumer is responsible for. The ``Id`` 
+   field is then managed internally by the API.
    
    We refer to this shape as a ``NewCodingEvent`` to distinguish it from the ``CodingEvent`` resource shape:
 
@@ -310,12 +268,18 @@ Let's take a look at this request in the context of our example API:
          Date: string (ISO 8601 date format)
       }
 
-
-   We can describe this request in a shorthand. This shorthand includes the endpoint, input, and outputs:
+   We can describe this request in a shorthand: 
 
    ``POST /events (NewCodingEvent) -> 201, CodingEvent``
 
-   After sending this request, the response would include:
+   This shorthand includes:
+   #. The endpoint method: ``POST``
+   #. The endpoint path: ``/events``
+   #. The name of the request body: ``(NewCodingEvent)``
+   #. The returned status code: ``201``
+   #. The returned response body: ``CodingEvent``
+
+   After sending this request, the response includes:
 
    - a ``201``, or ``Created``, status code
    - a ``Location`` response header
@@ -340,7 +304,7 @@ Operating On Entities
  
 
 When removing a resource, the client is requesting a transition to an empty state. This means that both the request body and response body that are 
-transferred, the representations of state, are empty. We can see this behavior in action with a request to the ``DELETE`` endpoint for a single resource 
+transferred (the representations of state) are empty. We can see this behavior in action with a request to the ``DELETE`` endpoint for a single resource 
 entity in our example API:
 
 .. admonition:: Example
@@ -351,7 +315,6 @@ entity in our example API:
    ``DELETE /events/12 -> 204``
    
    In this shorthand, you can see that this request has an empty request body. This is the empty state we are requesting a transition to. 
-   
    The ``204``, or ``No Content``, status code in the response indicates that the action was successful and that the response body is empty. The API 
    transfers back a representation of empty state (no response body) to the client. 
 
@@ -365,15 +328,14 @@ entity in our example API:
 Headers & Status Codes
 ----------------------
 
-Another aspect of a RESTful API dictates the usage of HTTP response status codes and HTTP request and response headers. Response status codes inform 
-the client if their request was handled successfully. The response status code and the attached message will include the information the client must 
-change to fix the request. HTTP headers are used to communicate additional information (metadata) about a request or response. We will explore some 
-common HTTP headers and their usage in RESTful design.
+A RESTful API uses HTTP response status codes and HTTP request and response headers. Response status codes inform 
+the client if their request is handled successfully or if changes are needed to fix a request. HTTP headers are used to communicate additional information 
+(metadata) about a request or response. Let's take a look at the status codes now.
 
 Status Codes
 ^^^^^^^^^^^^
 
-Every RESTful API response includes a status code that indicates whether the client's request succeeded or failed.
+Every RESTful API response includes a status code that indicates whether the client's request has succeeded or failed.
 
 Success Status Codes
 ~~~~~~~~~~~~~~~~~~~~
@@ -405,13 +367,14 @@ was taken. Below is a list of the common success codes you will encounter:
 Failure Status Codes
 ~~~~~~~~~~~~~~~~~~~~
 
-Requests can fail. A failed request is due to either the consumer or a bug in the API. Recall the status code groups that categorized the type of failure:
+Requests can fail. Status code groups categorize two types of failure:
 
 - **client error**: ``4XX`` status code group
 - **server error**: ``5XX`` status code group
 
-Server errors are not something the consumer can control. However, client errors indicate that the request can be reissued with corrections. Each of these 
-status codes and messages notify the consumer of the changes needed for a success.
+Client errors indicate that a request can be reissued with corrections. Each of these 
+status codes and messages notify the consumer of the changes needed for a success. In contrast, server errors cannot be remedied by the client sending the 
+request. 
 
 Let's look at some of the common client error status codes:
 
@@ -435,12 +398,12 @@ Let's look at some of the common client error status codes:
      - ``Not Found``
      - The path to identify the resource is incorrect or the resource does not exist
 
-A bad request will include an error message in its response. The response will indicate what the client must change in their request body to succeed. 
+A bad request will include an error message in its response. The message should indicate what the client must change in their request body to succeed. 
 This failure is seen when creating or updating a resource entity:
 
 .. admonition:: Example
 
-   In the Coding Events API, the state of a ``CodingEvent`` is validated using the following criteria:
+   In the CodingEvents API, the state of a ``CodingEvent`` is validated using the following criteria:
 
    - ``Title``: 10-100 characters
    - ``Description``: less than 1000 characters
@@ -449,20 +412,20 @@ This failure is seen when creating or updating a resource entity:
 
    ``PATCH /events/6 (PartialCodingEvent) -> CodingEvent``
    
-   If their request body contained the following invalid representation of partial state (due to a ``Title`` field that is too short):
+   If their request body contains a ``Title`` field that is too short, the request will receive a ``400`` status code:
 
-   Here is an invalid representation in request to the ``PATCH /events/6`` endpoint:
+   Here is a portion of an invalid request to the ``PATCH /events/6`` endpoint:
 
    .. sourcecode:: bash
       :linenos:
    
       {
-         "Title": "short"
+         "Title": "Foo"
       }
 
-
-   The API response would have a ``400`` status code, alerting the client that they must correct their representation. The response body would be used 
-   to communicate which aspects were invalid. This is a 400 failed response body:
+   ``Foo`` does not contain enough characters to be a valid CodingEvent title. The CodingEvents API response to such a request therefore includes a ``400`` status code. 
+   This alerts the client that they must correct their data representation. The response body indicates which aspects of the request are invalid. 
+   This is a 400 failed response body:
 
    .. sourcecode:: bash
       :linenos:
@@ -487,7 +450,7 @@ This failure is seen when creating or updating a resource entity:
 Headers
 ^^^^^^^
 
-In RESTful design, headers are used to communicate metadata about each interaction with a resource.
+In RESTful design, HTTP headers communicate metadata about each interaction with a resource.
 
 .. list-table:: Common request/response headers in REST
    :header-rows: 1
@@ -542,24 +505,28 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION
+   A ``POST`` request performs which type of action?
 
-   a. True
+   a. Create
 
-   b. False
+   b. Read
 
-.. ans: 
+   c. Update
+
+   d. Delete
+
+.. ans: a, Create
 
 .. admonition:: Question
 
-   QUESTION
+   The _________ portion of a RESTful URL identifies the resource.
 
-   a. A point in our code where the debugger will stop running and provide information about the current state.
+   a. path
 
-   b. A point in our code that we anticipate will result in an exception or error. 
+   b. query
 
-   c. A point in our code where we include a print statement to see what's going on.
+   c. host
 
-   d. A point in our code where we want to throw the computer out of a window because nothing works.
+   d. user
 
-.. ans; 
+.. ans: a, path

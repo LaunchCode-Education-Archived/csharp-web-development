@@ -263,24 +263,27 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION
+   True or False: Web API programmers must be code with HTML/CSS/Javascript to create a client application.
 
    a. True
 
    b. False
 
-.. ans: 
+.. ans: b, An API is view-agnostic so its programmers are not responsible for creating a corresponding client application.
 
 .. admonition:: Question
 
-   QUESTION
+   Match the class of HTTP response codes to the approximate definition:
 
-   a. A point in our code where the debugger will stop running and provide information about the current state.
+   ``2XX``, ``3XX``, ``4XX``, ``5XX``
 
-   b. A point in our code that we anticipate will result in an exception or error. 
+   a. Request is valid, but server cannot receive and accept it.
 
-   c. A point in our code where we include a print statement to see what's going on.
+   b. Request received and accepted
 
-   d. A point in our code where we want to throw the computer out of a window because nothing works.
+   c. Due to the request containing an error, it cannot be received.
 
-.. ans; 
+   d. Another action needs to be done to fulfill request.
+
+
+.. ans: 2xx: b. Request received and accepted, 3xx: d. Another action needs to be done to fulfill request., 4xx: c. Due to the request containing an error, it cannot be received., 5xx: a. Request is valid, but server cannot receive and accept it.

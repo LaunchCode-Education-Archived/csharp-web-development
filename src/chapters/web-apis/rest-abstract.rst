@@ -14,10 +14,6 @@ following the patterns of MVC allows other developers to easily understand your 
 the benefit of understanding how your API is structured and behaves. As an added bonus, a REST API also gives the client application 
 a base-line understanding on how to interact with your API.
 
-The following sections reference the CodingEvents MVC project we've been creating over the last several lessons to illustrate 
-some of the more abstract notions of an alternative CodingEvents API project.
-
-
 .. admonition:: Tip
 
    The topics of state and representation are *purposefully abstract* in REST so that they can be applied to any API. Don't get overwhelmed!
@@ -44,47 +40,9 @@ You can see that the state is defined by how the data exists after its latest in
 What is a Representation?
 -------------------------
 
-Representation refers to a depiction of state that is usable in a given context. Representations are a way of working with application state across various 
-contexts. Think about the difference in representation between the state stored in a database row and an object in your code *representing* that row. First, 
-consider how we represent state in a database row. Traditionally, the representation of a row is visualized as a table with columns listing the 
-properties and values that make up the state:
-
-.. admonition:: Example
-
-   .. list-table:: CodingEvent State represented as a database row
-      :widths: 10 30 30 30
-      :header-rows: 1
-
-      * - Id
-        - Title
-        - Description
-        - Date
-      * - ``1``
-        - ``"Halloween Hackathon"``
-        - ``"A gathering of nerdy ghouls to..."``
-        - ``2020-10-31``
-      
-Recall that raw state held in a database row is not usable in the context of our application code. Instead, we use an ORM to represent the state as an 
-object that is suitable for our application's object-oriented context. 
-
-The ``ToString()`` method is used to visualize the representation as an object that looks something like this:
-
-.. admonition:: Example
-
-   .. sourcecode:: js
-      :linenos:
-
-      CodingEvent {
-         Id: 1
-         Title: "Halloween Hackathon!"
-         Description: "A gathering of nerdy ghouls..."
-         Date: 2020-10-31
-      }
-
-In both cases, the application state is the same. The difference is in the representation that makes it usable in its context. In REST, state must be 
-represented in a way that is portable and compatible with both the client and API. Consider a third representation, JSON. JSON is itself a format that 
-provides structure, portability and compatibility. For these reasons, JSON is the standard representation used when transferring state between a client 
-application and an API. 
+Representation refers to a depiction of state that is usable in a given context. In the REST context, state must be 
+represented in a way that is portable and compatible with both the client and API. JSON is a data format that provides structure, portability and 
+compatibility. For these reasons, JSON is the standard representation used when transferring state between a client application and an API. 
 
 .. admonition:: Example
 
@@ -117,7 +75,7 @@ application and an API.
 
    Notice that the state here is represented as the collective state of all of the ``CodingEvents`` in the collection.
 
-.. index:: ! JSON serialization, ! JSON sdeerialization
+.. index:: ! JSON serialization, ! JSON deserialization
 
 .. admonition:: Tip
 
@@ -128,13 +86,13 @@ application and an API.
 Transferring a Representation of State
 --------------------------------------
 
-In REST, state is transitioned by interactions between a client and an API. Each transition is driven by transferring a representation of state. A 
+In REST, state is transitioned by interactions between a client and an API. Each transition is driven by transferring a JSON object or collection. A 
 RESTful API is designed to be stateless. 
 
 This has the following implications:
 
 - The state of data is maintained by the client application and the database that are on either side of the interface. 
-- State transitions are are signals driven by the client and facilitated by the API containing representations of the desired state.
+- State transitions are are signals containing data representations, driven by the client and facilitated by the API.
 
 In order to maintain portability between different client and API contexts, we transfer representations of state. These representations can then be 
 converted between the *portable representation* (JSON) and the representation that fits a given context (a JavaScript or C# object). Remember, state 
@@ -147,39 +105,38 @@ What this means is that the client can:
 - Create & Update: transition to a new state by sending a new representation
 - Delete: transition to an empty state by requesting its removal
 
-However, it is up the API to define the contract, or **expose**:
+However, it is up the API to define the contract, or expose:
 
 - the types of state, or resources, the client can interact with
 - which (CRUD) interactions are supported for each resource 
 
 These decisions are what drive the design of the contract. 
 
-.. index:: ! resource entity, ! resource collection
+.. index:: ! resource, ! resource entity, ! resource collection
    
 Resources
 ---------
 
-A resource is the representation of a specific type of state that a RESTful API exposes for a client to interact with.
+While state is an abstract concept, a resource is something more tangible. Simply put, a **resource** is a type of object that an API allows 
+client applications to interact with. Resources are categorized as an individual entity or a collection.
 
-While state is an abstract concept, a resource is something more tangible. In simple terms, a resource is like a type of object that an API allows 
-clients to interact with. Resources are categorized as an individual entity or a collection.
+**Entity**: a single resource that is uniquely identifiable in a collection.
 
-	**Entity**: a single resource that is uniquely identifiable in a collection.
+**Collection**: entities of the same resource type treated as a whole.
 
-   **Collection**: entities of the same resource type treated as a whole.
-
-We refer to the state of a resource in terms of a single entity or the collective state of a collection.
+We refer to the state of a resource in terms of a single entity or the shared state of a collection.
 
 .. admonition:: Note
    
    Initially, a collection's state is just empty. If you were to read the collection's state, it would be represented as an empty JSON array, ``[]``.
 
-In RESTful design, an individual entity only exists as part of a collection. A change to the state of an entity inherently changes the state of 
+In RESTful design, an individual entity only exists as a part of a collection. A change to the state of an entity inherently changes the state of 
 the collection it is a part of.
 
-When creating an entity, you are operating on the state of the collection. In order to create it, you must know what collection the entity belongs to.
+When creating an entity, you are operating on the state of the collection that holds it. In order to create it, you must know what collection the entity 
+belongs to.
 
-When reading, epdating or deleting an entity, you are directly operating on the state of the entity and indirectly on the state of its collection.
+When reading, updating or deleting an entity, you are directly operating on the state of the entity and indirectly on the state of its collection.
 
 In order to fulfill these operations, you need to know:
 
@@ -194,24 +151,24 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   QUESTION
+   True or False: Using HTTP requests, we can perform all four CRUD operations.
 
    a. True
 
    b. False
 
-.. ans: 
+.. ans: a. True! REST API design relies on HTTP request types to perform CRUD operations on application data
 
 .. admonition:: Question
 
-   QUESTION
+   Reshaping data from object representation to JSON representation is called:
 
-   a. A point in our code where the debugger will stop running and provide information about the current state.
+   a. JSON parsing
 
-   b. A point in our code that we anticipate will result in an exception or error. 
+   b. JSON reshaping 
 
-   c. A point in our code where we include a print statement to see what's going on.
+   c. JSON reserialization
 
-   d. A point in our code where we want to throw the computer out of a window because nothing works.
+   d. JSON serialization
 
-.. ans; 
+.. ans: d, JSON serialization

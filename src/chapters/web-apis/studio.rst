@@ -1,45 +1,28 @@
-.. index:: ! Postman
-
-.. todo: define headless API
-
-Summary
-~~~~~~~
-
-Two endpoints at the ``CodingEvents`` entry-point path, ``/api/events``, to interact with the collection as a whole:
-
-- **list CodingEvents**: ``GET /api/events -> CodingEvent[]``
-- **create a CodingEvent**: ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
-
-And two that require a sub-path variable, ``/events/{codingEventId}``, to interact with a single entity:
-
-- **delete a CodingEvent**: ``DELETE /api/events/{codingEventId} -> 201, CodingEvent``
-- **find single CodingEvent**: ``GET /api/events/{codingEventId} -> CodingEvent``
+.. index:: ! headless API
 
 Studio: Consuming the Coding Events API With Postman
 ====================================================
 
 The UI of a browser is designed to make simple ``GET`` requests for URLs entered into its address bar. This design works great for browsing sites, but 
-falls short when working with headless APIs. Anything beyond a ``GET`` request is handled behind the scenes, such as when you ``POST`` a form or submit AJAX 
-requests with JavaScript. But before you develop the client-side logic for making background requests, you need a way to interact with the API server 
-directly and understand how it works.
-
-When exploring and testing a web API, it is invaluable to have an interactive environment that allows you to fine-tune requests. For example, you may need 
-to configure the HTTP method, headers, or body of the request -- all of which the browser does not allow you to do. Instead of the browser, we can use 
-tools made specifically for interacting with APIs. One of the most popular API tools in the industry is **Postman**. Postman is a cross-platform tool that 
-puts you in full control of configuring and executing API requests. In this studio, we work with Postman to explore how APIs can be consumed.
+falls short when working with APIs. Anything beyond a ``GET`` request is difficult to send via a browser address bar alone. Think about what is needed to 
+create a new CodingEvent. This type of request contains a body. Our MVC application included a view to allow us to test inputs. Our API, however, is 
+**headless**. It does not contain the client-side form. In order to test how it handles requests then, we need a way to interact with the API server without 
+the browser. In this studio, we work with Postman to explore how APIs can be consumed.
 
 Setup
 -----
 
-.. todo: detail alt text
+Install Postman
+^^^^^^^^^^^^^^^
+
+If you haven't done so already, :ref:`install Postman <postman-installation>`.
 
 Fork and Clone the API Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will be using a modified version of the MVC Coding Events application you created. The 
-`Coding Events API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`_ is designed as a RESTful API. 
-Although they are implemented differently, you will find that most of the features from the MVC application have been supported through endpoints in the 
-API.
+With Postman installed, we're ready to fork and clone the `CodingEvent API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`__. 
+Although it is implemented differently from CodingEvents MVC, you will find that most of the features from the MVC application have been supported through 
+endpoints in the API.
 
 .. admonition:: Note
 
@@ -53,10 +36,13 @@ copy of the API codebase.
 
    > git clone https://github.com/<GitUsername>/coding-events-api
 
-.. todo: explain sqlite usage, swagger docs, what the app looks like, which code to examine, what does running the application produce.
-
-For today's studio, we will start with the first branch of the API codebase, ``1-sqlite``. This branch has an API with a single (``CodingEvent``) 
+For this studio, we want to have the ``1-sqlite`` checked out. This branch has an API with a single (``CodingEvent``) 
 resource and a built-in SQLite database. 
+
+.. admonition:: Note
+
+	Including a SQLite database in this project means you don't need to have your MySQL server running to test the API. We won't get into what this looks like
+	and instead just concentrate on testing the API endpoints.
 
 Let's change into the repo and switch to this branch:
 
@@ -71,15 +57,9 @@ Let's change into the repo and switch to this branch:
 You can leave this PowerShell window open, we will return to it in a later step:
 
 .. figure:: figures/powershell-in-repo-dir.png
-   :alt: PowerShell in coding-events-api repo directory on 1-sqlite branch
+   :alt: A PowerShell window in coding-events-api repo directory on 1-sqlite branch
 
-   PowerShell in coding-events-api repo directory on 1-sqlite branch
-
-
-.. todo: potentially break off here, top is exercises? bottom studio?
-
-Making Requests to the Coding Events API
-----------------------------------------
+   A PowerShell window in coding-events-api repo directory on 1-sqlite branch
 
 Start the API Server
 ^^^^^^^^^^^^^^^^^^^^
@@ -106,59 +86,87 @@ We'll start the API server from the terminal using the ``dotnet run`` command. N
    info: Microsoft.Hosting.Lifetime[0]
          Content root path: C:\Users\<username>\coding-events-api\CodingEventsAPI
 
-.. todo : add note to describe the intended output
+If you see something like this output above, then your API is running! You'll note, we're not using Visual Studio here to run the application but feel free to 
+open the solution in VS and explore the source code. 
 
+Swagger Documentation
+^^^^^^^^^^^^^^^^^^^^^
+
+With the application running, go to the first location listed as: "Now listening on:". Enter ``https://localhost:5001`` into your browser. You'll see a page
+that looks nothing like any view we created in our CodingEvents MVC applications. This view indeed not an equivalent. What you see running in the browser is not
+at all a client-side application, but rather, some documentation resources for the API itself. 
+
+You'll see a list of those endpoints we asked you to describe for this lesson's exercises:
+
+Two endpoints at the ``CodingEvents`` entry-point path, ``/api/events``, to interact with the collection as a whole:
+
+- **list CodingEvents**: ``GET /api/events -> CodingEvent[]``
+- **create a CodingEvent**: ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``
+
+And two that require a sub-path variable, ``/events/{codingEventId}``, to interact with a single entity:
+
+- **delete a CodingEvent**: ``DELETE /api/events/{codingEventId} -> 201, CodingEvent``
+- **find single CodingEvent**: ``GET /api/events/{codingEventId} -> CodingEvent``
+
+And below this list are two *Schemas*, or shapes, of resources the API handles. 
+
+**Swagger** is a popular tool API developers use to include fast documentation for their API codebase. The page we're looking at is generated by this tool and gives
+us a nice summary of the endpoints made available by the CodingEvents API we currently have running. But remember, we'll test the API in Postman.
+
+
+Making Requests to the Coding Events API
+----------------------------------------
 
 List the Coding Events
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Now that our API server is running, we can make our first request using Postman. To create a new request, select the *New* button in the top left corner:
+To create our first request using Postman, select the *New* button in the top left corner:
 
 .. figure:: figures/new-button.png
-   :alt: Postman New item button
+   :alt: Close up of the Postman New item button
 
-   Postman New item button
+   Close up of the Postman New item button
 
 Creating a New Request
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 With the new item dialog open, select the *Create New* tab (on the left) then select *Request*. 
 
 .. figure:: figures/new-item-dialog.png
-   :alt: Postman New item dialog
+   :alt: Close up of the top of the Postman New item dialog
 
-   Postman New item dialog
+   Close up of the top of the Postman New item dialog
 
 This will open the new request dialog:
 
 .. figure:: figures/new-request-dialog.png
-   :alt: Postman New Request dialog
+   :alt: Top of the Postman New Request dialog
 
-   Postman New Request dialog
+   Top of the Postman New Request dialog
 
 Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export 
-collections of requests for portability across teams. For our first request, enter the "list coding events" in the *Request name* form field. At the 
-bottom of the new request dialog, you will see that the collections are empty. Select the orange *Create Collection* button then enter the 
+collections of requests for portability across teams. For our first request, enter "list coding events" in the *Request name* form field. At the 
+bottom of the new request dialog, you will see that the collections are empty. Select the orange *Create Collection* button, then enter the 
 name ``coding events API``. The new request dialog button will change to say *Save to coding events API*:
 
 .. figure:: figures/new-request-dialog-complete.png
-   :alt: Postman New Request save to collection
+   :alt: Full view of the Postman New Request dialog
 
-   Postman New Request save to collection
+   Full view of the Postman New Request dialog
 
 After saving, a new request tab will be created where you can customize its behavior:
 
 .. figure:: figures/empty-request-tab.png
-   :alt: Postman new request tab
+   :alt: Postman new request tab view after creation
 
-   Postman new request tab
+   Postman new request tab view after creation
 
 Configuring the Request
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Postman exposes an exhaustive set of tools for configuring every aspect of a request. Fortunately, this request is relatively simple.
 
-We want to request the state of the Coding Events collection, in shorthand:
+We want to request the state of the CodingEvents collection, in shorthand:
 
 ``GET /api/events -> CodingEvent[]``
 
@@ -168,13 +176,17 @@ In Postman, we can make this request by configuring the following settings:
 - the HTTP method of the endpoint: ``GET``
 - the request header: (``Accept: application/json``)
 
+.. admonition:: Note
+
+	Though we view the Swagger docs from port 5001, we request the resources on port 5001.
+
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET``. In the following requests, you will need to select the 
 appropriate method from this list. 
 
 .. figure:: figures/http-method-selector.png
-   :alt: Postman HTTP method selector
+   :alt: Opening the Postman HTTP method dropdown menu
 
-   Postman HTTP method selector
+   Opening the Postman HTTP method dropdown menu
 
 Next to the request method type, enter the request URL where the API request should be sent: ``http://localhost:5000/api/events``.
 
@@ -191,9 +203,9 @@ You can set multiple headers in this section. As you begin to type the name and 
 configuration, your request should look like this:
 
 .. figure:: figures/list-coding-events-request.png
-   :alt: Postman list coding events request configured
+   :alt: Postman view of Accept header configured in request
 
-   Postman list coding events request configured
+   Postman view of Accept header configured in request
 
 To issue the request, you can select the blue *Send* button on the right of the window, or use the *ctrl + enter* keyboard shortcut. 
 
@@ -204,9 +216,10 @@ Below the request configuration, you will see the response section has been popu
 (on the right) and a tab for headers:
 
 .. figure:: figures/list-coding-events-response.png
-   :alt: Postman list coding events responses
+   :alt: Postman response window displays an empty array returned from requesting all CodingEvents 
 
-   Postman list coding events responses
+	Postman response window displays an empty array returned from requesting all CodingEvents 
+
 
 Since this is our first time running the application, the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the 
 empty representation of the Coding Events collection.
@@ -214,9 +227,9 @@ empty representation of the Coding Events collection.
 If you select the *Headers* tab in the response pane, you see the API satisfied our ``Accept`` request header and provided the response in ``application/json`` format.
 
 .. figure:: figures/response-headers.png
-   :alt: Postman response headers
+   :alt: Postman close up view of response headers tab opened
 
-   Postman response headers
+   Postman close up view of response headers tab opened
 
 .. admonition:: Note
 
@@ -224,14 +237,14 @@ If you select the *Headers* tab in the response pane, you see the API satisfied 
    the request again.
 
    .. figure:: figures/connection-refused.png
-      :alt: Postman request connection refused error
+      :alt: Error message displayed in Postman from a refused connection 
 
-      Postman request connection refused error
+      Error message displayed in Postman from a refused connection 
 
-Create a Coding Event
-^^^^^^^^^^^^^^^^^^^^^
+Create a CodingEvent
+^^^^^^^^^^^^^^^^^^^^
 
-For our next request, we will create a Coding Event. Repeat the steps you performed in the previous request:
+For our next request, we will create a CodingEvent. Repeat the steps you performed in the previous request:
 
 #. Click on the orange *New* button in the top left corner to create a new request named: ``create coding event``
 #. Add it to the existing ``coding events API`` collection
@@ -271,14 +284,14 @@ this format is selected, enter the following JSON body:
 Before sending the request, check that your configuration matches the following image:
 
 .. figure:: figures/create-coding-event-request.png
-   :alt: Postman create coding event request configuration
+   :alt: Postman request display of new CodingEvent item in Body tab 
 
-   Postman create coding event request configuration
+   Postman request display of new CodingEvent item in Body tab 
 
 Hit send and we'll take a look at the result.
 
 Analyzing the Response
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 You can see in the response that the API reflected back the representation of the new ``CodingEvent`` entity. Notice that a unique ``id`` has been 
 assigned to it by the API. Looking at the status code (``201``) and headers of the response, we can see the API conformed to the REST convention. Open the *Headers*
@@ -286,9 +299,9 @@ tab in the response panel. The URL value of the ``Location`` header is: ``http:/
 view the individual ``CodingEvent`` entity that was created by our request.
 
 Sending a Bad Request
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
-To illustrate the rejection of bad requests, let's send one that violates the ``NewCodingEvent`` validation constraints. Send another request with the 
+To test the rejection of bad requests, let's send one that violates the ``NewCodingEvent`` validation constraints. Send another request with the 
 following JSON body:
 
 .. sourcecode:: bash
@@ -303,9 +316,9 @@ You can see from the response that the API rejected the request. The response re
 The response body includes information about what needs to be corrected to issue a successful request:
 
 .. figure:: figures/create-coding-event-bad-request.png
-   :alt: Postman response of create coding event with a bad request body
+   :alt: Postman response returned from CodingEvent creation request containing an invalid request body
 
-   Postman response of create coding event with a bad request body
+   Postman response returned from CodingEvent creation request containing an invalid request body
 
 Get a Single Coding Event
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -349,9 +362,9 @@ Try issuing the request again with a non-existent ``codingEventId`` of ``100``. 
 Delete a Coding Event
 ^^^^^^^^^^^^^^^^^^^^^
 
-In this final step, we will issue a ``DELETE`` request. Before we make the request, let's re-issue the request to list Coding Events. Now that we have 
-added an entity, we expect the state of the Coding Events resource collection to have changed. Switch back to the ``list coding events`` request tab and 
-re-issue the request. You should get a response of the collection's list representation containing the new entity.
+In this final step, we will issue a ``DELETE`` request. Before we make the request, let's re-issue the request to list the collection of CodingEvents. Now 
+that we have added an entity, we expect the state of the CodingEvents resource collection to have changed. Switch back to the ``list coding events`` request 
+tab and re-issue the request. You should get a response of the collection's list representation containing the single entity we have created.
 
 .. sourcecode:: bash
    :linenos:
@@ -380,11 +393,11 @@ Notice that for this request, we do not need to set any request headers. A ``DEL
 with its ``204`` status code. 
 
 .. figure:: figures/delete-coding-event-response.png
-   :alt: Postman delete a coding event response
+   :alt: Postman delete a CodingEvent response
 
-   Postman delete a coding event response
+   Postman delete a CodingEvent response
 
-As a final confirmation, check the state of the Coding Events collection and notice that it has returned to its initial state. The representation of this 
+As a final confirmation, check the state of the CodingEvents collection and notice that it has returned to its initial state. The representation of this 
 state is shown in the empty list ``[]`` response body.
 
 Bonus Missions

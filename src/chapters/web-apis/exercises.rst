@@ -243,7 +243,7 @@ Install Postman
 ---------------
 
 Now that we've explored working with those endpoints, we're almost ready to start running the API and test sending those requests. 
-You'll need to install **Postman** to work with this lesson's studio and practice running these requests. 
+You'll need to install Postman to work with this lesson's studio and practice running these requests. 
 
 :ref:`postman-installation`
 

@@ -1,11 +1,11 @@
-.. index:: ! API, ! application programming interface, ! web API
+.. index:: ! API, ! application programming interface, ! web API, REST
 
 Web APIs
 ========
 
 An **API**, or **application programming interface**, is a set of rules that allow one application to communicate with another application. **Web APIs** 
 are how applications communicate with other applications over a network. Throughout the remainder of this chapter, we will explore web APIs and a pattern 
-for organizing them called REST. REST is an application design pattern, not unlike MVC. REST, however, relies on an abstract concept called 
+for organizing them called REST. REST is an application design pattern, not unlike MVC. **REST**, however, relies on an abstract concept called 
 *application state* that we'll cover in more detail on the following pages. Here, we dive what differentiates all web APIs from MVC applications.
 
 MVC Without the V
@@ -41,7 +41,8 @@ representation, it is parsed, styled and rendered to the user.
 Responsibilities of a Web API
 -----------------------------
 
-The chief responsibility of a web API is to provide interactions and exchange representations of data with a corresponding client application.
+The chief responsibility of a web API is to exchange representations of data with a corresponding client application. APIs are also gatekeepers, maintaining 
+rules about how end-users may interact with application data.
 
 .. index:: ! server-side rendering, client-side rendering
 
@@ -67,7 +68,7 @@ called **client-side rendering** because the web API only sends data, the HTML i
 
    **MVC**: ``GET /events -> HTML with data``
 
-   In a web API analog, a the ``/events`` path would return just the underlying data. 
+   In a web API analog, an ``/events`` path would return just the underlying data. 
 
    **Web API**: ``GET /events -> just data``
 
@@ -86,6 +87,8 @@ Transference of Data
 Beyond managing data, a web API also handles transferring data. A client application will make a request for some data. Our web API must contain controller 
 files that can handle the requests. As a part of handling the request, the controller file must understand the request, access the requested data, package 
 the data in an accepted format, and send the package as a response to the client application.
+
+.. _client-api-transfer:
 
 Here's an overview of the steps to transfer data between a web API and client application:
 
@@ -125,7 +128,7 @@ JSON
 JSON is currently a universal representation of data accepted by client applications. This means our web API packages data 
 requested by a client application as JSON. The web API also transfers this JSON in its communication with a client application.
 
-Let's revisit the last two steps from our web API work flow above:
+Let's revisit the last two steps from our web API work flow :ref:`above <client-api-transfer>`:
 
 5. The controller transforms the object into a JSON representation.
 6. The controller responds to the client with the JSON representation.
@@ -150,7 +153,7 @@ end-user to access the application. HTTP also facilitates the communication betw
 
    We will refer to web APIs as APIs going forward, since the web prefix is implied.
 
-Here's a refresher on the basics of HTTP:
+Here's a refresher on `the basics of HTTP <https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html>`__:
 
 - Is a stateless request/response protocol.
 - Requests and responses may include HTTP bodies.
@@ -165,7 +168,7 @@ and HTTP headers.
 Bodies
 ^^^^^^
 
-The HTTP body is part of how we express state through the stateless HTTP protocol. An HTTP body can contain a large number of different media types, 
+An HTTP body can contain a large number of different media types, 
 known as `MIME types <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types>`_. A MIME type is associated with the 
 HTTP header ``Content-Type``. This header instructs the recipient of the HTTP request/response on what MIME type the HTTP body contains. We've seen a 
 ``Content-Type: text/html`` HTTP header before. Here's a simple example of it:

@@ -92,7 +92,7 @@ RESTful API is designed to be stateless.
 This has the following implications:
 
 - The state of data is maintained by the client application and the database that are on either side of the interface. 
-- State transitions are are signals containing data representations, driven by the client and facilitated by the API.
+- State transitions are signals containing data representations, driven by the client and facilitated by the API.
 
 In order to maintain portability between different client and API contexts, we transfer representations of state. These representations can then be 
 converted between the *portable representation* (JSON) and the representation that fits a given context (a JavaScript or C# object). Remember, state 
@@ -105,7 +105,7 @@ What this means is that the client can:
 - Create & Update: transition to a new state by sending a new representation
 - Delete: transition to an empty state by requesting its removal
 
-However, it is up the API to define the contract, or expose:
+However, it is up to the API to define the contract, or expose:
 
 - the types of state, or resources, the client can interact with
 - which (CRUD) interactions are supported for each resource 

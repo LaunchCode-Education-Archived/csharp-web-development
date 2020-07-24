@@ -78,3 +78,4 @@ Appendices
 
    appendices/sql-install
    appendices/vs-troubleshooting
+   appendices/postman-install

@@ -1,5 +1,7 @@
 .. index:: ! scaffolding
 
+.. _user-auth-walkthrough:
+
 Getting Started with Identity
 =============================
 

@@ -5,7 +5,7 @@ Studio: Consuming the Coding Events API With Postman
 
 The UI of a browser is designed to make simple ``GET`` requests for URLs entered into its address bar. This design works great for browsing sites, but 
 falls short when working with APIs. Anything beyond a ``GET`` request is difficult to send via a browser address bar alone. Think about what is needed to 
-create a new CodingEvent. This type of request contains a body. Our MVC application included a view to allow us to test inputs. Our API, however, is 
+create a new ``CodingEvent``. This type of request contains a body. Our MVC application included a view to allow us to test inputs. Our API, however, is 
 **headless**. It does not contain the client-side form. In order to test how it handles requests then, we need a way to interact with the API server without 
 the browser. In this studio, we work with Postman to explore how APIs can be consumed.
 
@@ -20,7 +20,7 @@ If you haven't done so already, :ref:`install Postman <postman-installation>`.
 Fork and Clone the API Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-With Postman installed, we're ready to fork and clone the `CodingEvent API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`__. 
+With Postman installed, we're ready to fork and clone the `CodingEvents API <https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite>`__. 
 Although it is implemented differently from CodingEvents MVC, you will find that most of the features from the MVC application have been supported through 
 endpoints in the API.
 
@@ -29,20 +29,20 @@ endpoints in the API.
    Our focus in this course is on operations and as such we will not be going into the development of the API. However, feel free to explore the source 
    code if you are curious about the similarities and differences between the .NET MVC and API implementations.
 
-Let's begin by forking and cloning the repo onto our machine. In your Powershell or terminal window, move into a directory were you plan to save your local
+Let's begin by forking and cloning the repo onto our machine. In your Powershell or terminal window, move into a directory where you plan to save your local
 copy of the API codebase.
 
 .. sourcecode:: bash
 
    > git clone https://github.com/<GitUsername>/coding-events-api
 
-For this studio, we want to have the ``1-sqlite`` checked out. This branch has an API with a single (``CodingEvent``) 
+For this studio, we want to have the ``1-sqlite`` branch checked out. This branch has an API with a single (``CodingEvent``) 
 resource and a built-in SQLite database. 
 
 .. admonition:: Note
 
-	Including a SQLite database in this project means you don't need to have your MySQL server running to test the API. We won't get into what this looks like
-	and instead just concentrate on testing the API endpoints.
+   Including a SQLite database in this project means you don't need to have your MySQL server running to test the API. We won't get into what this looks like
+   and instead just concentrate on testing the API endpoints.
 
 Let's change into the repo and switch to this branch:
 
@@ -59,7 +59,7 @@ You can leave this PowerShell window open, we will return to it in a later step:
 .. figure:: figures/powershell-in-repo-dir.png
    :alt: A PowerShell window in coding-events-api repo directory on 1-sqlite branch
 
-   A PowerShell window in coding-events-api repo directory on 1-sqlite branch
+   A PowerShell window after cloning the ``coding-events-api`` repo
 
 Start the API Server
 ^^^^^^^^^^^^^^^^^^^^
@@ -120,12 +120,12 @@ Making Requests to the Coding Events API
 List the Coding Events
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To create our first request using Postman, select the *New* button in the top left corner:
+To create our first request using Postman, select the *New* button in the top left corner of the Postman window:
 
 .. figure:: figures/new-button.png
    :alt: Close up of the Postman New item button
 
-   Close up of the Postman New item button
+   Select the *New* button to create a new request
 
 Creating a New Request
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -135,14 +135,14 @@ With the new item dialog open, select the *Create New* tab (on the left) then se
 .. figure:: figures/new-item-dialog.png
    :alt: Close up of the top of the Postman New item dialog
 
-   Close up of the top of the Postman New item dialog
+   Create a new request item in Postman
 
 This will open the new request dialog:
 
 .. figure:: figures/new-request-dialog.png
    :alt: Top of the Postman New Request dialog
 
-   Top of the Postman New Request dialog
+   The new request dialog includes fields for a request name, description, and collection
 
 Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export 
 collections of requests for portability across teams. For our first request, enter "list coding events" in the *Request name* form field. At the 
@@ -152,14 +152,14 @@ name ``coding events API``. The new request dialog button will change to say *Sa
 .. figure:: figures/new-request-dialog-complete.png
    :alt: Full view of the Postman New Request dialog
 
-   Full view of the Postman New Request dialog
+   Once the collection is selected, save the new request
 
 After saving, a new request tab will be created where you can customize its behavior:
 
 .. figure:: figures/empty-request-tab.png
    :alt: Postman new request tab view after creation
 
-   Postman new request tab view after creation
+   A new request has been created in Postman 
 
 Configuring the Request
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,7 +178,7 @@ In Postman, we can make this request by configuring the following settings:
 
 .. admonition:: Note
 
-	Though we view the Swagger docs from port 5001, we request the resources on port 5001.
+   Though we view the Swagger docs from port 5001, we request the resources on port 5001.
 
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET``. In the following requests, you will need to select the 
 appropriate method from this list. 
@@ -186,7 +186,7 @@ appropriate method from this list.
 .. figure:: figures/http-method-selector.png
    :alt: Opening the Postman HTTP method dropdown menu
 
-   Opening the Postman HTTP method dropdown menu
+   The dropdown menu contains all of the HTTP request types available to send
 
 Next to the request method type, enter the request URL where the API request should be sent: ``http://localhost:5000/api/events``.
 
@@ -205,7 +205,7 @@ configuration, your request should look like this:
 .. figure:: figures/list-coding-events-request.png
    :alt: Postman view of Accept header configured in request
 
-   Postman view of Accept header configured in request
+   The request Accept header is given a value of "application/json"
 
 To issue the request, you can select the blue *Send* button on the right of the window, or use the *ctrl + enter* keyboard shortcut. 
 
@@ -218,7 +218,7 @@ Below the request configuration, you will see the response section has been popu
 .. figure:: figures/list-coding-events-response.png
    :alt: Postman response window displays an empty array returned from requesting all CodingEvents 
 
-	Postman response window displays an empty array returned from requesting all CodingEvents 
+   The initial CodingEvents collection state is empty
 
 
 Since this is our first time running the application, the database is empty. We expectedly received an empty JSON list ``[]`` which corresponds to the 
@@ -229,7 +229,7 @@ If you select the *Headers* tab in the response pane, you see the API satisfied 
 .. figure:: figures/response-headers.png
    :alt: Postman close up view of response headers tab opened
 
-   Postman close up view of response headers tab opened
+   The response is returned as ``application/json``
 
 .. admonition:: Note
 
@@ -239,14 +239,14 @@ If you select the *Headers* tab in the response pane, you see the API satisfied 
    .. figure:: figures/connection-refused.png
       :alt: Error message displayed in Postman from a refused connection 
 
-      Error message displayed in Postman from a refused connection 
+      If sending the request results in a connection error, check your setup and request settings
 
-Create a CodingEvent
-^^^^^^^^^^^^^^^^^^^^
+Create a ``CodingEvent``
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-For our next request, we will create a CodingEvent. Repeat the steps you performed in the previous request:
+For our next request, we will create a ``CodingEvent``. Repeat the steps you performed in the previous request:
 
-#. Click on the orange *New* button in the top left corner to create a new request named: ``create coding event``
+#. Click on the orange *New* button in the top left corner of the Postman window to create a new request named: ``create coding event``
 #. Add it to the existing ``coding events API`` collection
 
 This request will change the state of the Coding Events collection by adding a new entity to it. Recall that the shorthand for this request is:
@@ -286,7 +286,7 @@ Before sending the request, check that your configuration matches the following 
 .. figure:: figures/create-coding-event-request.png
    :alt: Postman request display of new CodingEvent item in Body tab 
 
-   Postman request display of new CodingEvent item in Body tab 
+   You can write JSON directly into the request Body tab 
 
 Hit send and we'll take a look at the result.
 
@@ -318,7 +318,7 @@ The response body includes information about what needs to be corrected to issue
 .. figure:: figures/create-coding-event-bad-request.png
    :alt: Postman response returned from CodingEvent creation request containing an invalid request body
 
-   Postman response returned from CodingEvent creation request containing an invalid request body
+   The response body error message tells us we need to modify our ``CodingEvent`` title
 
 Get a Single Coding Event
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -357,7 +357,7 @@ Try issuing the request again with a non-existent ``codingEventId`` of ``100``. 
 .. figure:: figures/404-response.png
    :alt: Postman 404 response for a non-existent resource
 
-   Postman 404 response for a non-existent resource
+   We got a 404 response when requesting a resource that cannot be found on the server
 
 Delete a Coding Event
 ^^^^^^^^^^^^^^^^^^^^^
@@ -395,7 +395,7 @@ with its ``204`` status code.
 .. figure:: figures/delete-coding-event-response.png
    :alt: Postman delete a CodingEvent response
 
-   Postman delete a CodingEvent response
+   Deleting a ``CodingEvent`` returns no body in the response
 
 As a final confirmation, check the state of the CodingEvents collection and notice that it has returned to its initial state. The representation of this 
 state is shown in the empty list ``[]`` response body.

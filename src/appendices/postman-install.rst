@@ -17,15 +17,15 @@ Installing Postman is easy thanks to its cross-platform nature. You can download
 .. figure:: figures/download-installer.png
    :alt: Close up of webpage to install Postman, user selecting Windows x64 option
 
-   Close up of webpage to install Postman, user selecting Windows x64 option
+   Windows user should select the *Windows 64-bit* download option
 
 After installation, if Postman does not open automatically, locate the download and open it manually. Making an account can be useful, but if you do not 
-want to create one, select the link in grey at the bottom of the splash screen to skip this step:
+want to create one, select the link in grey at the bottom of the splash screen that reads: "Skip signing in and take me straight to the to the app":
 
 .. figure:: figures/account.png
-   :alt: Postman splash screen for na ew account
+   :alt: Postman splash screen for a new account
 
-   Postman splash screen for a new account
+   You may skip the step to create an account 
 
 .. admonition:: Tip
 
@@ -34,11 +34,11 @@ want to create one, select the link in grey at the bottom of the splash screen t
    .. figure:: figures/pin-taskbar.png
       :alt: User pins the Postman application to their taskbar on Windows
 
-   User pins the Postman application to their taskbar on Windows
+   Pinning the Postman application to your Windows taskbar could make your life easier
 
 You can leave the launchpad view open for now. We will explore Postman after setting up our API server.
 
 .. figure:: figures/launchpad-view.png
    :alt: Postman launchpad view, contains overview of initial actions a user can make with the software
 
-   Postman launchpad view
+   Now that Postman is installed, there are a lot of features of the software to explore

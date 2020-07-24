@@ -26,6 +26,7 @@ Chapters
    chapters/orm-intro/index
    chapters/orm-relationships/index
    chapters/auth/index
+   chapters/web-apis/index
 
 .. toctree::
 
@@ -54,6 +55,8 @@ Studios
    chapters/sql-part2/studio
    chapters/orm-intro/studio
    chapters/auth/studio
+   chapters/web-apis/studio
+   
 
 Assignments
 ===========
@@ -77,3 +80,4 @@ Appendices
 
    appendices/sql-install
    appendices/vs-troubleshooting
+   appendices/postman-install

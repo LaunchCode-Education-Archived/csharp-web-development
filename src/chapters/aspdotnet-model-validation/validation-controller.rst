@@ -101,7 +101,7 @@ Recall that *both* the model and controller play a role in validation.
 The model's responsibility is simply to define validation rules.
 The controller must check that those rules are satisfied.
 
-``ModelState.IsValid`` will check in the constraints on the model properties are met.
+``ModelState.IsValid`` will check if the constraints on the model properties are met.
 If these constraints are met, ``ModelState.IsValid`` equates to true and we want to create and add an ``Event`` object to our list of events.
 If these constraints are not met and the ViewModel object is *not* valid, we want to redirect the user back to the *Add Event* form.  
 

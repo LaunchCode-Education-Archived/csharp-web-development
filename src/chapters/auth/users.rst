@@ -10,10 +10,13 @@ For the purposes of this book, we will focus on just two: registering for a new 
    The logic that we might be inclined to put in a controller for each of the actions that we look at is actually contained within a Razor page.
    Our goal is to locate the correct page and understand what is going on.
 
+   The pages we are looking at end with the file extension ``.cshtml.cs``.
+   Some Mac users may have to click on a small arrow on to expand the ``.cshtml`` pages to find the ``cshtml.cs`` files.  
+
 Registration
 ------------
 
-Open up ``Register.cshtml`` and inspect it.
+Open up ``Register.cshtml.cs`` in ``Areas/Identity/Pages/Account`` and inspect it.
 Here are some things to note:
 
 #. The return type of the action to register a new user is ``Task<IActionResult>``.
@@ -29,7 +32,7 @@ Here are some things to note:
 Login
 -----
 
-Open up ``Login.cshtml``.
+Open up ``Login.cshtml.cs`` in ``Areas/Identity/Pages/Account``.
 Here are some things to note:
 
 #. ``Task<IActionResult>`` is back meaning the action of signing in is asynchronous.
@@ -41,7 +44,7 @@ Here are some things to note:
 Logout
 ------
 
-There are two main things to note about ``Logout.cshtml``:
+There are two main things to note about ``Logout.cshtml.cs`` in ``Areas/Identity/Pages/Account``:
 
 #. ``Task<IActionResult>`` is the return type.
 #. ``SignInManager`` has a method called ``SignOutAsync()`` which ends the session. Once that action is completed, the user is redirected to an unrestricted page.

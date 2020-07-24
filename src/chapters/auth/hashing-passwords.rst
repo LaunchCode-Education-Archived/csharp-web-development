@@ -161,7 +161,7 @@ Which Hash Function Does Identity Use?
 --------------------------------------
 
 Identity contains its own password hasher called **IdentityV3**. When a new user is added to the database, their inputted password is passed to IdentityV3.
-IdentityV3 is not its own hashing algorithm, but it uses `HMACSHA256 <https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1>`__ for hashing.
+IdentityV3 is not its own hashing algorithm, but it uses `PBKDF2 <https://tools.ietf.org/html/rfc2898#section-5.2>`__ for hashing.
 
 IdentityV3 is named after the third version of Identity and is the default password hasher.
 IdentityV2 corresponds to the second version of Identity and may still be in use in some code bases.

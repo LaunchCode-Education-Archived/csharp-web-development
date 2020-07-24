@@ -3,8 +3,6 @@
 Getting Started with Identity
 =============================
 
-.. TODO: Add branch info
-
 As a developer, you may find yourself wanting to add Identity in one of the two following situations:
 
 #. You are creating a new project and you know that you need Identity in the project.
@@ -13,23 +11,42 @@ As a developer, you may find yourself wanting to add Identity in one of the two 
 For this chapter, we are going to focus on the second situation and how we might add Identity to ``CodingEvents``.
 The process of adding Identity to an existing code base is called **scaffolding**.
 
+.. admonition:: Note
+
+   Try and code along as you read more about Identity!
+   This page starts off with the code in the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`__ branch in ``CodingEventsDemo``.
+   The final code for this page is in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
+
+Before You Start
+----------------
+
+You need to install three NuGet packages before getting started with this process:
+
+#. ``Microsoft.AspNetCore.Identity.UI``
+#. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
+#. ``Microsoft.EntityFrameworkCore.SqlServer``
+
+With these packages installed, you are ready to go!
+
 Scaffolding Identity in an Exisiting Project
 --------------------------------------------
 
-In both Visual Studio for Mac and Visual Studio for Windows machines, you have the option to add new scaffolded items through the UI and through the terminal.
+In both Visual Studio for Mac and Visual Studio for Windows, you have the option to add new scaffolded items through the UI and through the terminal.
 
-Adding Identity through the UI
+Adding Identity Through the UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Right click on the project folder at the top of the solution.
 #. Select *Add* > *New Scaffolded Item*.
 #. From the menu, select *Identity*.
 
-This approach is the simpler of the two approaches. However, when you may not find Identity as an option when you use this approach.
+This approach is the simpler of the two approaches. However, for some Mac users, you may not find Identity as an option when you use this approach.
 If that is the case, use the terminal method.
 
 Adding Identity through the Command Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All of these commmands should be run in the project directory *inside* of the solution.
 
 #. Use the following command to make sure you have the necessary code generator tools installed.
 
@@ -52,8 +69,7 @@ Adding Identity through the Command Line
 
    When you use this command, you will see a menu of options in your terminal and can configure from there.
 
-   .. sourcecode:: bash
-      :linenos:
+   ::
 
       Usage: aspnet-codegenerator [arguments] [options]
 
@@ -101,11 +117,11 @@ Adding Identity through the Command Line
 ``DbContext``
 ^^^^^^^^^^^^^
 
-If you ran the application right now, you would encounter some build errors.
+If you tried to run the application right now, you would encounter some build errors.
 While we specified in our scaffolding commands that we wanted to use ``EventDbContext``, we need to open up two files to make sure that Identity is properly using ``EventDbContext``: ``Startup.cs`` and ``IdentityHostingStartup.cs``.
 
 ``IdentityHostingStartup.cs`` can be found in the ``Areas/Identity`` directory. 
-You should update this file to make sure it includes the following:
+You should update this file to make sure that it uses MySQL and the ``"DefaultConnection"`` string:
 
 .. sourcecode:: csharp
    :lineno-start: 14
@@ -236,7 +252,7 @@ If you peek inside the file, you will find these links live inside a conditional
 `UserManager <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1?view=aspnetcore-3.1>`__ deals with the user information in the database. We can use the properties and methods to perform operations on user objects such as adding a new user or fetching user information.
 On line 11 in the code above, ``UserManager`` is used to fetch the signed-in user's username so we greet them by name!
 `SignInManager <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1?view=aspnetcore-3.1>`__ deals with users signing in. 
-On line 8, ``SignInManager`` is used to check in the user is signed in. If the user is signed in, then the links that will be displayed are to manage the account or log out of the account.
+On line 8, ``SignInManager`` is used to check if the user is signed in. If the user is signed in, then the links that will be displayed are to manage the account or log out of the account.
 If the user is not signed in, then the links are to either log in or register for an account on the site.
 
 This partial view can be placed anywhere you need it, but we recommend starting with placing it in ``_Layout.cshtml`` so that a signed-in user can easily access the necessary links from any page.

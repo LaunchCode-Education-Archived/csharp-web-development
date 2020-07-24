@@ -1,10 +1,15 @@
 Configuring Identity
 ====================
 
-.. TODO: Add branch info
-
 With Identity in place, we can start to configure the settings of the library to meet our authentication requirements.
 The first place to start with configuring Identity to fit the needs of the project is in ``Startup.cs``.
+
+.. admonition:: Note
+
+   Try and code along as you read more about Identity!
+   This page starts off with the code in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
+   The final code for this page is in the `identity-config <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-config>`__ branch in ``CodingEventsDemo``.
+
 
 ``Startup.cs``
 --------------

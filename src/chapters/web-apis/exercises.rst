@@ -104,9 +104,6 @@ If the current state of the collection is empty, then we will just get back an e
    #. Is there a request body being sent? What is included in it?
    #. If the request is successful, what information can we expect to be included in the response?
 
-.. ans: ``GET /api/events -> CodingEvent[]``
-
-
 .. _get_single_coding_event:
 
 GET a Single Coding Event
@@ -132,9 +129,6 @@ response with a ``404`` status code to indicate the failed lookup.
    #. Is there a request body being sent? What is included in it?
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
-
-.. ans: ``GET /api/events/{codingEventId} -> 200, CodingEvent``(success), ``GET /api/events/{codingEventId} -> 404, errorMessage``(failure)
-
 
 .. _create_coding_event:
 
@@ -210,9 +204,6 @@ If the request fails because of a client error, then it will respond with a ``40
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
 
-.. ans: ``POST /api/events (NewCodingEvent) -> 201, CodingEvent``(success), ``POST /api/events (NewCodingEvent) -> 400, errorMessage``(failure)
-
-
 .. _delete_coding_event:
 
 Delete a Coding Event
@@ -237,7 +228,6 @@ status and message.
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
 
-.. ans: ``DELETE /api/events/{codingEventId} -> 204``(success), ``DELETE /api/events/{codingEventId} -> 404, errorMessage``(failure)
 
 Install Postman
 ---------------

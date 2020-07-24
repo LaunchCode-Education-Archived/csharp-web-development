@@ -21,6 +21,12 @@ The Starter Code
 
    #. Open ``appsettings.json`` and find the following statement:
 
+      ::
+
+         "ConnectionStrings": {
+            "DefaultConnection": "server=localhost;userid=techjobs_auth;password=ILoveTechJobs;database=techjobs_auth;"
+         }
+
    #. You likely do not already have a schema named ``techjobs_auth`` or 
       this combination of username and password so you must create them.
 

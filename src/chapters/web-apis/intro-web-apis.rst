@@ -266,7 +266,7 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True or False: Web API programmers must be code with HTML/CSS/Javascript to create a client application.
+   True or False: Web API programmers must be knowledgeable in HTML/CSS/Javascript to create a client application.
 
    a. True
 
@@ -282,7 +282,7 @@ Check Your Understanding
 
    a. Request is valid, but server cannot receive and accept it.
 
-   b. Request received and accepted
+   b. Request received and accepted.
 
    c. Due to the request containing an error, it cannot be received.
 

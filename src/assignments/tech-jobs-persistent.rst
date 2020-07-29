@@ -206,7 +206,6 @@ Updaing ``AddJobViewModel``
 
 In order to add additional functionality to the form for adding a job, we need to add properties to ``AddJobViewModel``.
 
-#. Add a property for a list of integers called ``SkillId``. This list will hold the IDs of all of the skills in the database.
 #. Add a property for a list of each ``Skill`` object in the database.
 #. Previously, in an ``AddJobViewModel`` constructor, you probably set up a ``SelectListItem`` list of ``Employer`` information.
    Pass another parameter of a list of ``Skill`` objects. Set the ``List<Skill>`` property equal to the parameter you have just passed in.
@@ -223,7 +222,7 @@ You next need to update ``HomeController`` so that skills data is being shared w
    In this case, each ``<input>`` tag on the form for the skills checkboxes should have ``"selectedSkills"`` as the name.
 
    a. After you add a new parameter, you want to set up a loop to go through each item in ``selectedSkills``. This loop should go right after you create a new ``Job`` object and before you add that ``Job`` object to the database.
-   b. Inside the loop, you will create a new ``JobSkill`` object with the ``Id`` and ``Name`` of the newly-created ``Job`` object. You will also need to parse each item in ``selectedSkills`` as an integer to use for ``SkillId``.
+   b. Inside the loop, you will create a new ``JobSkill`` object with the newly-created ``Job`` object. You will also need to parse each item in ``selectedSkills`` as an integer to use for ``SkillId``.
    c. Add each new ``JobSkill`` object to the ``DbContext`` object, but do not add an additional call to ``SaveChanges()`` inside the loop! One call at the end of the method is enough to get the updated info to the database.
 
 Updating ``Home/AddJob.cshtml``

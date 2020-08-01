@@ -1,7 +1,7 @@
 .. index:: ! headless API
 
-Studio: Consuming the Coding Events API With Postman
-====================================================
+Studio: Consuming the CodingEvents API With Postman
+===================================================
 
 The UI of a browser is designed to make simple ``GET`` requests for URLs entered into its address bar. This design works great for browsing sites, but 
 falls short when working with APIs. Anything beyond a ``GET`` request is difficult to send via a browser address bar alone. Think about what is needed to 

@@ -1,6 +1,6 @@
 .. _postman-installation:
 
-.. index:: ! Postman, 
+.. index:: ! Postman 
 
 Installing Postman
 ==================

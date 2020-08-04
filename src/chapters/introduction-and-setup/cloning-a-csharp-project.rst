@@ -40,7 +40,7 @@ Windows Users
 Mac Users
 ---------
 
-#. With Visual Studio open, select *Version Control > Checkout* from the menu bar. 
+#. With Visual Studio open, select *Version Control > Clone Repository* from the menu bar. 
 
 #. This opens a window to connect to a remote repository. Copy the address for your forked exercises repository 
    and enter it into the *url* section of the form. The rest of the form fields will auto-populate:

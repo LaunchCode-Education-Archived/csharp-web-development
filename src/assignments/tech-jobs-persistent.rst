@@ -114,7 +114,7 @@ Controllers
 
 #. Set up a private ``DbContext`` variable so you can perform CRUD operations on the database. Pass it into a ``EmployerController`` constructor.
 #. Complete ``Index()`` so that it passes all of the ``Employer`` objects in the database to the view. 
-#. Pass an instance of ``AddEmployerViewModel`` to ``Add()``. Also, make sure that it is returning the view that contains the form users will use to add new employers.
+#. Create an instance of ``AddEmployerViewModel`` inside of the ``Add()`` method and pass the instance into the ``View()`` return method.
 #. Add the appropriate code to ``ProcessAddEmployerForm()`` so that it will process form submissions and make sure that only valid ``Employer`` objects are being saved to the database.
 #. ``About()`` currently returns a view with vital information about each employer such as their name and location. Make sure that the method is actually passing an ``Employer`` object to the view for display.
 

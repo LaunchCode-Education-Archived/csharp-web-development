@@ -24,7 +24,7 @@ MySQL is open-source and user-friendly.
 
 To get started with the chapter, you need to :ref:`install MySQL <sql-installation>` and the appropriate tooling.
 
-MySQL has many of the same data types as Java. However, some of the types, like ``String``, have a different name in MySQL.
+MySQL has many of the same data types as C#. However, some of the types, like ``String``, have a different name in MySQL.
 
 Numbers
 ^^^^^^^
@@ -32,7 +32,7 @@ Numbers
 For integers, we will be using the ``INT`` data type. As you grow in your career, you may see others such as ``BIGINT`` or ``MEDIUMINT`` in MySQL databases.
 The `MySQL documentation <https://dev.mysql.com/doc/refman/8.0/en/integer-types.html>`_ offers a full breakdown of these different integer types.
 
-MySQL also has a ``DOUBLE`` data type that is similar to what we have already worked with in Java. 
+MySQL also has a ``DOUBLE`` data type that is similar to what we have already worked with in C#. 
 
 Strings
 ^^^^^^^

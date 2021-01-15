@@ -69,6 +69,6 @@ Bonus Mission
 -------------
 
 #. Update your solution from the *List Practice* section to use the 
-   string from the *Array Practice* section. Search "C# convert string to
+   string from the *String Practice* section. Search "C# convert string to
    list" online to see how to split a string into the more flexible
    ``List`` collection.

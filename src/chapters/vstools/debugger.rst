@@ -47,8 +47,8 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   True/False: Breakpoints on ``Console.WriteLine()`` are helpful because they stepping into them
-   reveals what is printed in the console.
+   True/False: Breakpoints on ``Console.WriteLine()`` are helpful because
+   stepping into them reveals what is printed in the console.
 
    a. True
 

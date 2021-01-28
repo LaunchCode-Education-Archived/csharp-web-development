@@ -151,7 +151,7 @@ Think about when we stored events as key-value pairs. At that stage, more signif
 to add fields.
 
 In the ``Views`` folder, the ``Events/Add.cshtml`` template still uses a ``desc`` field so we don't need to update
-this view. We do, however, need to do into ``Events/Index.cshtml`` to add the table data for an event's description.
+this view. We do, however, need to go into ``Events/Index.cshtml`` to add the table data for an event's description.
 
 ``Events/Index.cshtml``:
 

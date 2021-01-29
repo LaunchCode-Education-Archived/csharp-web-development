@@ -1,11 +1,12 @@
 The Shared Directory
 ====================
 
-Earlier in the lesson, we touched upon the role of ``_Layout.cshtml``.
-When we set ``Layout`` to ``null``, the header, footer, and Bootstrap disappear from our site and we are left with static HTML.
-``_Layout`` is in the ``Shared`` directory of the ``Views`` directory.
-Files inside this ``Shared`` directory are used sitewide and can accessed by the templates we create when we are working with our controllers.
-These files help us DRY our code.
+Earlier in the lesson, we touched upon the role of ``_Layout.cshtml``. When we
+set ``Layout`` to ``null``, the header, footer, and Bootstrap disappear from
+our site and we are left with static HTML. ``_Layout`` is in the ``Shared``
+directory of the ``Views`` directory. Files inside this ``Shared`` directory
+are used sitewide and can be accessed by the templates we create when we are
+working with our controllers. These files help us DRY our code.
 
 Layout pages
 ------------

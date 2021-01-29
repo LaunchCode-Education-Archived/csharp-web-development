@@ -70,7 +70,8 @@ Check Your Understanding
 
       Temperature[] temps = new Temperature[] { };
 
-   What, if any, exception would expect to encounter when the following line executes:
+   What, if any, exception would you expect to encounter when the following
+   line executes:
 
    .. sourcecode:: c#
 

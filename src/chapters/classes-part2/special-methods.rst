@@ -254,7 +254,7 @@ If the comparison evaluates to ``true``, then we know the object is null and
    }
 
 Line 3 checks ``toBeCompared`` for ``null``, preventing an error in line 8.
-Line 8 checks the class of ``toBeCompared``, preventing an error in line 12.
+Line 8 checks the class of ``toBeCompared``, preventing an error in line 13.
 
 Problem #3
 ~~~~~~~~~~~

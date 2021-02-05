@@ -257,7 +257,7 @@ easily reactivate it by removing the ``//`` token from the line.
 .. admonition:: Note
 
    In addition to single-line comments and multi-line comments, C# developers can also use XML documentation comments.
-   XML documentation comments start with ``\\\`` and when properly written, can be used to generate documentation for a project.
+   XML documentation comments start with ``///`` and when properly written, can be used to generate documentation for a project.
    This comment type is something you may encounter working on enterprise code for a company, but is not something that you would use in smaller, personal projects.
    For more information on XML documentation comments, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/csharp/codedoc>`__.
 

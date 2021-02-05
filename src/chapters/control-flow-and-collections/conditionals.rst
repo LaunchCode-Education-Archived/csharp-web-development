@@ -7,7 +7,7 @@ straightforward.
 Operators
 ---------
 
-Before we review the syntax for conditionals, let's go over the comparison and logical operators that we need to use in control flow statements
+Before we review the syntax for conditionals, let's go over the comparison and logical operators that we need to use in control flow statements.
 
 Comparison Operators
 ^^^^^^^^^^^^^^^^^^^^
@@ -26,9 +26,9 @@ Comparison Operators
    * - ``<=``
      - Checks if item on left is lesser than or equal to item on right 
    * - ``>``
-     - Check if item on left is greater than item on right 
+     - Checks if item on left is greater than item on right 
    * - ``>=``
-     - Check if item on left is greater than or equal to item on right 
+     - Checks if item on left is greater than or equal to item on right 
 
 Logical Operators
 ^^^^^^^^^^^^^^^^^

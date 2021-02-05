@@ -188,7 +188,7 @@ Coding a New ``Equals`` Method
 
 You’ll often want to implement ``Equals()`` yourself. When you do, be sure you
 understand the best practices around how the method should behave. These are
-`a little more involved <https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netframework-4.8/>`__
+`a little more involved <https://docs.microsoft.com/en-us/dotnet/api/system.object.equals>`__
 compared to coding a new ``ToString`` method.
 
 In fact, the ``Equals()`` method we defined above isn’t very good by most
@@ -254,7 +254,7 @@ If the comparison evaluates to ``true``, then we know the object is null and
    }
 
 Line 3 checks ``toBeCompared`` for ``null``, preventing an error in line 8.
-Line 8 checks the class of ``toBeCompared``, preventing an error in line 12.
+Line 8 checks the class of ``toBeCompared``, preventing an error in line 13.
 
 Problem #3
 ~~~~~~~~~~~
@@ -345,7 +345,7 @@ applications.
    Seasoned C# developers, will tell you that every time you implement your own version of ``Equals()`` you should also implement your own version of ``GetHashCode()``.
    ``GetHashCode()`` is another special method that every class has.
    Understanding ``GetHashCode()`` would take us a bit far afield at this point, but we would be remiss to not mention it.
-   If you want to read more, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netframework-4.8>`_ on the ``GetHashCode()`` method and this `Stack Overflow discussion <https://stackoverflow.com/questions/371328/why-is-it-important-to-override-gethashcode-when-equals-method-is-overridden>`_.
+   If you want to read more, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode>`_ on the ``GetHashCode()`` method and this `Stack Overflow discussion <https://stackoverflow.com/questions/371328/why-is-it-important-to-override-gethashcode-when-equals-method-is-overridden>`_.
    We will cover how to override ``Equals()`` and ``GetHashCode()`` in the next section using some fun shortcuts in Visual Studio.
 
 

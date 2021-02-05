@@ -48,7 +48,7 @@ Temperature Conversion
 
 #. Run the program to verify that it works. Entering a Fahrenheit
    temperature of ``212`` yields the result, ``The temperature in Celsius is:
-   100.0°C``.
+   100``.
 
 There are several new concepts introduced in this example. We will look
 at them in the following order:
@@ -65,7 +65,7 @@ at them in the following order:
 ---------
 
 The ``using`` statement in C# allows us to access classes, methods, and
-data stored different files other than the one we are currently in. 
+data stored in different files other than the one we are currently in.
 
 In C#, you can use any class that is available without having to import
 the class - subject to two very important conditions:
@@ -125,10 +125,10 @@ We get a few errors! The end of the build output looks something like this:
 
    Build FAILED.
 
-   Program.cs(11,13,11,20): error CS0103: The name 'celcius' does not exist in the current context
+   Program.cs(11,13,11,20): error CS0103: The name 'celsius' does not exist in the current context
    Program.cs(11,13,11,20): error CS0201: Only assignment, call, increment, decrement, await, and new object expressions can be used as a statement
-   Program.cs(24,13,24,20): error CS0103: The name 'celcius' does not exist in the current context
-   Program.cs(25,61,25,68): error CS0103: The name 'celcius' does not exist in the current context
+   Program.cs(24,13,24,20): error CS0103: The name 'celsius' does not exist in the current context
+   Program.cs(25,61,25,68): error CS0103: The name 'celsius' does not exist in the current context
       0 Warning(s)
       4 Error(s)
 

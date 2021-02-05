@@ -136,7 +136,7 @@ with an accepted ``.001`` variance.
 
 .. admonition:: Tip
 
-   Visual Studio can offer info on the parameters of previously defined function.
+   Visual Studio can offer info on the parameters of a previously defined function.
    Hover over the function call to see a tooltip:
 
    .. figure:: ./figures/function-parameters-tooltip.png

@@ -378,7 +378,7 @@ If there are no results, it should print an appropriate message.
 
 Test this method before moving on to your next step:
 
-#. Run your program with your changes. Select “1” to list the jobs, and then “0” to list them all.
+#. Run your program with your changes. Select “1” to list the jobs, and then “4” to list them all.
 #. Make sure the printout matches the styling above.
 #. To test what happens if no jobs are found, select
    “0” to search and then “3” to search for a location. Then, enter a location

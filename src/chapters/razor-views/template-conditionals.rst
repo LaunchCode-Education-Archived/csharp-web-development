@@ -120,7 +120,7 @@ the clip.
 
    The starter code for this video is found at the 
    `views-static branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static>`__
-   of ``HelloASPDotNETDemo``. The final code presented in this video is found on the `views-dynamic branch <TBD>`__.
+   of ``HelloASPDotNETDemo``. The final code presented in this video is found on the `views-dynamic branch <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-dynamic>`__.
 
 The text on this page and the previous two provides details for some of the
 concepts presented in the clip. Note that these summaries are NOT intended as

@@ -68,7 +68,7 @@ Make a program similar to ``GradebookDictionary`` that does the following:
 Bonus Mission
 -------------
 
-#. Update your solution to the *List Practice* section using to use the 
-   string from the *Array Practice* section. Search "C# convert string to
+#. Update your solution from the *List Practice* section to use the 
+   string from the *String Practice* section. Search "C# convert string to
    list" online to see how to split a string into the more flexible
    ``List`` collection.

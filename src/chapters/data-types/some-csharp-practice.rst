@@ -65,7 +65,7 @@ at them in the following order:
 ---------
 
 The ``using`` statement in C# allows us to access classes, methods, and
-data stored different files other than the one we are currently in. 
+data stored in different files other than the one we are currently in.
 
 In C#, you can use any class that is available without having to import
 the class - subject to two very important conditions:

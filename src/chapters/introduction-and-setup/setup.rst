@@ -36,7 +36,7 @@ Unlike it's predecessor, just called .NET or .NET Framework, .NET Core is open-s
 operating systems. The SDK provides the runtime environment and the virtual machine for compiling 
 and running C# programs. 
 
-Starting with .NET 5, in November of 2020, the terms Core and Framework will disappear as there becomes just one
+Starting with .NET 5, in November of 2020, the terms *Core and Framework* have been deprecated. There is now just one
 version of .NET that is based on .NET Core.
 
 .NET Core also notably contains the base class libraries. This is the built-in code that takes care of common programming items,

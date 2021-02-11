@@ -18,7 +18,7 @@ this course, so it's time to get familiar with some of the basics.
 
 .. admonition:: Note
 
-   Visual Studio is not the same application as the text editor called Visual Studio Code. 
+   Visual Studio IDE is not the same application as the text editor called Visual Studio Code. 
    If you already have VS Code installed on your machine, you will still need to 
    install and configure Visual Studio.
 

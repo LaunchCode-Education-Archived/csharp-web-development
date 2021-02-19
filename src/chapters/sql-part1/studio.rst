@@ -35,7 +35,7 @@ As you consider which data types to use for your ``movies`` columns, you might
 find yourself thinking, *If this were a property of a C# object, what data
 type would I use?*
 
-For example, if the ``movie`` object has a ``title`` and a ``director`` field,
+For example, if the ``Movie`` object has a ``Title`` and a ``Director`` property,
 you would expect both of these data types to be ``String``. Similarly, the year
 the movie was released would be stored as an integer. This conceptual overlap
 between databases and C# objects is very useful, and we will explore this
@@ -62,9 +62,9 @@ Take a moment to discuss with a partner:
 Directors Table
 ^^^^^^^^^^^^^^^
 
-Next, let's consider the properties we'd want for a ``director`` object in
-C#. These could include a ``first_name``, a ``last_name``, and maybe the
-``country`` where the director was born.
+Next, let's consider the properties we'd want for a ``Director`` object in
+C#. These could include a ``FirstName``, a ``LastName``, and maybe the
+``Country`` where the director was born.
 
 Once we identify the data types for these properties, we can write the SQL
 command to create the ``directors`` table. Also, we should include a

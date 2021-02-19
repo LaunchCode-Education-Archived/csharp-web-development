@@ -4,6 +4,47 @@ Conditionals
 Control flow statements in C#, conditionals and loops, are very
 straightforward.
 
+Operators
+---------
+
+Before we review the syntax for conditionals, let's go over the comparison and logical operators that we need to use in control flow statements.
+
+Comparison Operators
+^^^^^^^^^^^^^^^^^^^^
+
+.. list-table:: Comparison Operators
+   :header-rows: 1
+
+   * - Operator
+     - Description
+   * - ``==``
+     - Checks if two items are equal
+   * - ``!=`` 
+     - Checks if two items are not equal
+   * - ``<``
+     - Checks if item on left is lesser than item on right
+   * - ``<=``
+     - Checks if item on left is lesser than or equal to item on right 
+   * - ``>``
+     - Checks if item on left is greater than item on right 
+   * - ``>=``
+     - Checks if item on left is greater than or equal to item on right 
+
+Logical Operators
+^^^^^^^^^^^^^^^^^
+
+.. list-table:: Logical Operators
+   :header-rows: 1
+
+   * - Operator
+     - Description
+   * - ``!``
+     - Reverses the evaluation of the operand 
+   * - ``||``
+     - Combines two expressions with OR
+   * - ``&&``
+     - Combines two expressions with AND
+
 .. index:: ! if statement
 
 ``if`` Statements

@@ -293,6 +293,11 @@ through processes called boxing and unboxing. Converting from a value type to a 
 **boxing**, and the reverse process (reference to value) is called **unboxing**. C# is known as a unified 
 type system because it implicitly boxes values types to be treated as objects. 
 
+.. sourcecode:: c#
+
+   int i = 123;     // This is a value type.
+   object o = i;    // Boxing the value type into a reference type.
+   int j = (int)o;  // Unboxing the reference type back into a value type.
 
 Check Your Understanding
 -------------------------

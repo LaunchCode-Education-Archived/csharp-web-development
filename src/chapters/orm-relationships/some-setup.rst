@@ -97,4 +97,4 @@ This method takes a boolean lambda expression and filters the ``Context.Events``
 
    We use ``Single`` instead of ``Find`` here because we also need to call ``Include`` to eagerly fetch the ``Category`` property. ``Include`` can not be chained with ``Find``.
 
-The only remaining task is to create the view. It should consist of a table displaying the properties of the ``Event``. Since this is straightforward, so we'll skip over the details here. 
+The only remaining task is to create the view. It should consist of a table displaying the properties of the ``Event``. This is straightforward, so we'll skip over the details here. 

@@ -1,7 +1,7 @@
 Setup For C#
 ============
 
-For the entirety of this course, we will be coding in C# with the help of Visual Studio IDE and .NET Core. 
+For the entirety of this course, we will be coding in C# with the help of Visual Studio and .NET. 
 
 .. index:: ! integrated development environment, IDE
 
@@ -20,8 +20,7 @@ this course, so it's time to get familiar with some of the basics.
 
    Visual Studio IDE is not the same application as the text editor called Visual Studio Code. 
    If you already have VS Code installed on your machine, you will still need to 
-   install and configure Visual Studio IDE. In this book, we will periodically refer to Visual Studio IDE
-   as Visual Studio.
+   install and configure Visual Studio.
 
 
 .. _dotnet-intro: 
@@ -36,7 +35,11 @@ The tools together make what is known as a **software development kit**, or **SD
 Unlike it's predecessor, just called .NET or .NET Framework, .NET Core is open-source and available on several 
 operating systems. The SDK provides the runtime environment and the virtual machine for compiling 
 and running C# programs. 
-.NET Core also notably contains the class library. This is the built-in code that takes care of common programming items,
+
+Starting with .NET 5, in November of 2020, the terms *Core and Framework* have been deprecated. There is now just one
+version of .NET that is based on .NET Core.
+
+.NET Core also notably contains the base class libraries. This is the built-in code that takes care of common programming items,
 such as object types.
 
 .. _compiling-csharp:
@@ -53,7 +56,7 @@ Fortunately for us, .NET Core can be installed along with Visual Studio IDE.
 Windows Users vs. Mac Users
 ---------------------------
 
-Windows users will setup their C# development environment with a community version of Visual Studio IDE. Mac users
+Windows users will setup their C# development environment with a community version of Visual Studio. Mac users
 need to download and install a different version of Visual Studio called Visual Studio for Mac. While the names of 
 these two programs are very similar, the user-experiences are quite different.
 

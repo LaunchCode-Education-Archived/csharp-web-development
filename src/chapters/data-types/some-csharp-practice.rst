@@ -65,7 +65,7 @@ at them in the following order:
 ---------
 
 The ``using`` statement in C# allows us to access classes, methods, and
-data stored different files other than the one we are currently in. 
+data stored in different files other than the one we are currently in.
 
 In C#, you can use any class that is available without having to import
 the class - subject to two very important conditions:
@@ -254,6 +254,12 @@ easily reactivate it by removing the ``//`` token from the line.
          }
       }
 
+.. admonition:: Note
+
+   In addition to single-line comments and multi-line comments, C# developers can also use XML documentation comments.
+   XML documentation comments start with ``///`` and when properly written, can be used to generate documentation for a project.
+   This comment type is something you may encounter working on enterprise code for a company, but is not something that you would use in smaller, personal projects.
+   For more information on XML documentation comments, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/csharp/codedoc>`__.
 
 Check Your Understanding
 -------------------------

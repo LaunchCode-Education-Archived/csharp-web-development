@@ -28,6 +28,12 @@ Class diagrams can be created within some IDEs (including Visual Studio) and
 with specialized software. However, most of the time you’ll be drawing
 them by hand, so that’s what we’ll do here.
 
+.. admonition:: Note
+
+   Describing how to install and use software to create class diagrams is
+   beyond the scope of this book. That said, drawing class diagrams by hand is
+   still quick and immensely satisfying!
+
 Diagramming a Single Class
 --------------------------
 

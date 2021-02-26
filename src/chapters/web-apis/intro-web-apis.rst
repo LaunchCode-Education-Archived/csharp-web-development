@@ -6,7 +6,8 @@ Web APIs
 An **API**, or **application programming interface**, is a set of rules that allow one application to communicate with another application. **Web APIs** 
 are how applications communicate with other applications over a network. Throughout the remainder of this chapter, we will explore web APIs and a pattern 
 for organizing them called REST. REST is an application design pattern, not unlike MVC. **REST**, however, relies on an abstract concept called 
-*application state* that we'll cover in more detail on the following pages. Here, we dive what differentiates all web APIs from MVC applications.
+*application state* that we'll cover in more detail on the following pages.
+Here, we dive into what differentiates all web APIs from MVC applications.
 
 MVC Without the V
 -----------------

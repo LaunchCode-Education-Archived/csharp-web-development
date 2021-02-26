@@ -9,7 +9,7 @@ with class selectors. Style updates can add features or improve the usability of
 Bootstrap, and other styling libraries for that matter, use a standardized color scheme for items like clickable
 buttons. As the user of the helper library, you can apply the ``btn btn-primary`` classes to a button 
 on your page and Bootstrap works behind the CSS scenes to render a blue button with white text in a legible 
-font. For more customization, you could also choose which color you want all of a the buttons labelled with 
+font. For more customization, you could also choose which color you want all of the buttons labelled with 
 ``btn-primary`` on your web page to be. 
 
 Straight out of the box, Bootstrap helps developers to get their web apps well-styled without needing to spend 
@@ -22,14 +22,15 @@ Image of standard HTML buttons without CSS:
 .. figure:: figures/htmlDefaultButtons.png
    :alt: Standard HTML buttons.
 
-HTML buttons without styling.
+   HTML buttons without styling.
 
 Same buttons with Bootstrap:
 
 .. figure:: figures/bootstrapButtonOptions.png
    :alt: Some simple Bootstrap buttons.
+   :width: 50%
 
-Buttons styled with Bootstrap.
+   Buttons styled with Bootstrap.
 
 Bootstrap is already included in the given ``_Layout.cshtml``, which means that as long as your view is using that layout, you can access Bootstrap styling.
 

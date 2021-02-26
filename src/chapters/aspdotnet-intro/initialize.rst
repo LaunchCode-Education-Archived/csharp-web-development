@@ -60,12 +60,26 @@ To create a ASP.NET MVC project, start a new project in Visual Studio.
 **All Users:**
 
 #. Visual Studio creates a fully-functional web application for you.
-#. Hit *Run* (Mac) / *IIS Express* (Windows) and take note of the port number your application opens up to.
+#. Now launch the application!
+
+   a. **Mac Users**: Click *Run*.
+   b. **Windows Users**: Try clicking *IIS Express* first. If this results in
+      an ``HTTP Error 500.0``, use the dropdown arrow next to *IIS Express*.
+      Select ``HelloAspDotNet`` (or whatever you named your project) and try
+      launching the application again.
+      
+   .. figure:: figures/iis-alternative.png
+      :alt: Arrow points to HelloAspDotNet in a dropdown menu.
+
+      Select ``HelloAspDotNet`` as an alternative.
+
+#. Eventually, your browser will open and display your application. Take note of
+   the port number in the address bar.
 
    .. figure:: figures/portnumber.png
       :alt: Arrow points to URL indicating port number is 5001.
 
-   Taking note of the port number used by the server
+      Taking note of the port number used by the server
 
 .. admonition:: Note
 

@@ -19,6 +19,8 @@ The process of adding Identity to an existing code base is called **scaffolding*
    This page starts off with the code in the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`__ branch in ``CodingEventsDemo``.
    The final code for this page is in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
 
+.. TODO: Check package version compitibility.
+
 Before You Start
 ----------------
 
@@ -103,6 +105,7 @@ All of these commmands should be run in the project directory *inside* of the so
 #. Configuration of Identity is dependent on you and your project requirements. In the case of ``CodingEvents``, you would want to continue to use ``EventDbContext``.
    This is how your final generation command would look:
 
+.. TODO: Investigate alternative command: dotnet aspnet-codegenerator identity -dc CodingEventsDemo.Data.EventDbContext -sqlite --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
    .. sourcecode:: guess
 
       dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
@@ -115,6 +118,10 @@ All of these commmands should be run in the project directory *inside* of the so
       The option for ``defaultUI`` means that we have no need to have these files in the solution and so we won't have the ability to customize them. 
 
 #. Once we run this series of commands, we will have successfully scaffolded Identity code onto our existing project.
+
+.. admonition:: Note
+
+   If you do not see any new scaffolding, try using the command ``dotnet restore``. This will restore our NuGet packages manually as opposed to them automatically restoring. 
 
 ``DbContext``
 ^^^^^^^^^^^^^

@@ -58,7 +58,7 @@ compatibility. For these reasons, JSON is the standard representation used when 
          "Date": "2020-10-31"
       }
 
-	Whereas the state of a collection of ``CodingEvents`` is represented by a JSON array of objects.
+   Whereas the state of a collection of ``CodingEvents`` is represented by a JSON array of objects.
 
    .. sourcecode:: js
       :linenos:

@@ -68,7 +68,7 @@ This branch of the API has four endpoints:
 We'll ask you to consider some details of how to describe these endpoints.
 
 Remember, an endpoint is made up of a path (to the resource) and a method (action to take on the 
-resource). Because we only have one resource, ach of our endpoints share a common entry-point path of ``/api/events``. Request and response bodies are all 
+resource). Because we only have one resource, each of our endpoints share a common entry-point path of ``/api/events``. Request and response bodies are all 
 in JSON, or more specifically, they have a ``Content-Type`` header value of ``application/json``.
 
 .. _get_coding_events:

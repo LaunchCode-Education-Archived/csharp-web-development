@@ -205,7 +205,7 @@ operations corresponds to an HTTP method:
    * - HTTP method
      - ``POST``
      - ``GET``
-     - ``PUT/PATCH*``
+     - ``PUT/PATCH``
      - ``DELETE``
    * - CRUD operation
      - Create
@@ -273,6 +273,7 @@ adding a new entity to it.
    ``POST /events (NewCodingEvent) -> 201, CodingEvent``
 
    This shorthand includes:
+   
    #. The endpoint method: ``POST``
    #. The endpoint path: ``/events``
    #. The name of the request body: ``(NewCodingEvent)``

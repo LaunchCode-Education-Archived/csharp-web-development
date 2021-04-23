@@ -19,12 +19,14 @@ The process of adding Identity to an existing code base is called **scaffolding*
    This page starts off with the code in the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`__ branch in ``CodingEventsDemo``.
    The final code for this page is in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
 
-.. TODO: Check package version compitibility.
+.. TODO: Check package version compatibility. Asp Net Core 5.0 was causing some issues
 
 Before You Start
 ----------------
 
 You need to install three NuGet packages before getting started with this process:
+
+.. Microsoft.AspNetCore.Identity, Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 #. ``Microsoft.AspNetCore.Identity.UI``
 #. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
@@ -106,7 +108,10 @@ All of these commmands should be run in the project directory *inside* of the so
    This is how your final generation command would look:
 
 .. TODO: Investigate alternative command: dotnet aspnet-codegenerator identity -dc CodingEventsDemo.Data.EventDbContext -sqlite --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
-   .. sourcecode:: guess
+
+.. This seems to have worked for previous classes because of issues with MySQL but since SQLite is a different beast, we should probably focus on the alleviating student issues with MySQL
+   
+.. sourcecode:: guess
 
       dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 

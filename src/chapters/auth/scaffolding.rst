@@ -21,16 +21,61 @@ The process of adding Identity to an existing code base is called **scaffolding*
 
 .. TODO: Check package version compatibility. Asp Net Core 5.0 was causing some issues
 
+.. Students need to check with SDK is being used by global.json and which sdks they have available. Starter code is set up to use 3.1 so they may have to generate new global.json and roll package versions to 3.1 to work with CLI tools and ensure scaffolding is successful.
+
 Before You Start
 ----------------
 
-You need to install three NuGet packages before getting started with this process:
+Before getting started, you need to make note of the version of .NET Core SDK your project is using.
+Inside the project directory, run the following command:
 
-.. Microsoft.AspNetCore.Identity, Microsoft.VisualStudio.Web.CodeGeneration.Design
+.. sourcecode:: guess
 
+   dotnet --info
+
+When you run this command, the output may look something like the following:
+
+.. sourcecode:: guess
+
+   .NET Core SDK (reflecting any global.json):
+   Version:   3.1.101
+   Commit:    b377529961
+
+   Runtime Environment:
+   OS Name:     Mac OS X
+   OS Version:  10.15
+   OS Platform: Darwin
+   RID:         osx.10.15-x64
+   Base Path:   /usr/local/share/dotnet/sdk/3.1.101/
+
+   Host (useful for support):
+   Version: 5.0.5
+   Commit:  2f740adc14
+
+   .NET SDKs installed:
+   3.1.101 [/usr/local/share/dotnet/sdk]
+   5.0.202 [/usr/local/share/dotnet/sdk]
+
+   .NET runtimes installed:
+   Microsoft.AspNetCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+   Microsoft.AspNetCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+   Microsoft.NETCore.App 2.1.15 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 2.1.23 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+
+   To install additional .NET runtimes or SDKs:
+   https://aka.ms/dotnet-download
+
+
+
+You need to install five NuGet packages before getting started with this process:
+
+#. ``Microsoft.AspNetCore.Identity``
 #. ``Microsoft.AspNetCore.Identity.UI``
 #. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
 #. ``Microsoft.EntityFrameworkCore.SqlServer``
+#. ``Microsoft.VisualStudio.Web.CodeGeneration.Design``
 
 With these packages installed, you are ready to go!
 
@@ -66,7 +111,7 @@ All of these commmands should be run in the project directory *inside* of the so
    .. sourcecode:: guess
 
       dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-
+ 
 #. Now you are ready to add Identity to your project! You can configure Identity in any number of ways to fit the project requirements. To see all of the options use this command:
 
    .. sourcecode:: guess

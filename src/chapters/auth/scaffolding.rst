@@ -19,14 +19,66 @@ The process of adding Identity to an existing code base is called **scaffolding*
    This page starts off with the code in the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`__ branch in ``CodingEventsDemo``.
    The final code for this page is in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
 
+.. TODO: Check package version compatibility. Asp Net Core 5.0 was causing some issues
+
+.. Students need to check with SDK is being used by global.json and which sdks they have available. Starter code is set up to use 3.1 so they may have to generate new global.json and roll package versions to 3.1 to work with CLI tools and ensure scaffolding is successful.
+
 Before You Start
 ----------------
 
-You need to install three NuGet packages before getting started with this process:
+Before getting started, you need to make note of the version of .NET Core SDK your project is using.
+Inside the project directory, run the following command:
 
+.. sourcecode:: guess
+
+   dotnet --info
+
+When you run this command, the output may look something like the following:
+
+.. sourcecode:: guess
+   :linenos:
+
+   .NET Core SDK (reflecting any global.json):
+   Version:   3.1.101
+   Commit:    b377529961
+
+   Runtime Environment:
+   OS Name:     Mac OS X
+   OS Version:  10.15
+   OS Platform: Darwin
+   RID:         osx.10.15-x64
+   Base Path:   /usr/local/share/dotnet/sdk/3.1.101/
+
+   Host (useful for support):
+   Version: 5.0.5
+   Commit:  2f740adc14
+
+   .NET SDKs installed:
+   3.1.101 [/usr/local/share/dotnet/sdk]
+   5.0.202 [/usr/local/share/dotnet/sdk]
+
+   .NET runtimes installed:
+   Microsoft.AspNetCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+   Microsoft.AspNetCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+   Microsoft.NETCore.App 2.1.15 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 2.1.23 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+   Microsoft.NETCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+
+   To install additional .NET runtimes or SDKs:
+   https://aka.ms/dotnet-download
+
+If the .NET Core SDK listed on line 2 does not match the SDK specified in your ``csproj`` file, you need to open up your ``global.json`` and edit it so that the SDK used by the project matches.
+
+You need to install five NuGet packages before getting started with this process:
+
+#. ``Microsoft.AspNetCore.Identity``
 #. ``Microsoft.AspNetCore.Identity.UI``
 #. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
 #. ``Microsoft.EntityFrameworkCore.SqlServer``
+#. ``Microsoft.VisualStudio.Web.CodeGeneration.Design``
+
+When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. You can confirm this is the case by reviewing the code in your ``csproj`` file.
 
 With these packages installed, you are ready to go!
 
@@ -62,7 +114,7 @@ All of these commmands should be run in the project directory *inside* of the so
    .. sourcecode:: guess
 
       dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-
+ 
 #. Now you are ready to add Identity to your project! You can configure Identity in any number of ways to fit the project requirements. To see all of the options use this command:
 
    .. sourcecode:: guess
@@ -105,7 +157,7 @@ All of these commmands should be run in the project directory *inside* of the so
 
    .. sourcecode:: guess
 
-      dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
+         dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 
    .. admonition:: Note
 
@@ -115,6 +167,10 @@ All of these commmands should be run in the project directory *inside* of the so
       The option for ``defaultUI`` means that we have no need to have these files in the solution and so we won't have the ability to customize them. 
 
 #. Once we run this series of commands, we will have successfully scaffolded Identity code onto our existing project.
+
+.. admonition:: Note
+
+   If you do not see any new scaffolding, try using the command ``dotnet restore``. This will restore our NuGet packages manually as opposed to them automatically restoring. 
 
 ``DbContext``
 ^^^^^^^^^^^^^

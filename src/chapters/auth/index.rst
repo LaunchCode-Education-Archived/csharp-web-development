@@ -10,5 +10,6 @@ Authentication
    users
    configuration
    authorization
+   identity-management
    studio
    

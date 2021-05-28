@@ -36,6 +36,7 @@ Inside the project directory, run the following command:
 When you run this command, the output may look something like the following:
 
 .. sourcecode:: guess
+   :linenos:
 
    .NET Core SDK (reflecting any global.json):
    Version:   3.1.101
@@ -67,7 +68,7 @@ When you run this command, the output may look something like the following:
    To install additional .NET runtimes or SDKs:
    https://aka.ms/dotnet-download
 
-
+If the .NET Core SDK listed on line 2 does not match the SDK specified in your ``csproj`` file, you need to open up your ``global.json`` and edit it so that the SDK used by the project matches.
 
 You need to install five NuGet packages before getting started with this process:
 
@@ -76,6 +77,8 @@ You need to install five NuGet packages before getting started with this process
 #. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
 #. ``Microsoft.EntityFrameworkCore.SqlServer``
 #. ``Microsoft.VisualStudio.Web.CodeGeneration.Design``
+
+When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. You can confirm this is the case by reviewing the code in your ``csproj`` file.
 
 With these packages installed, you are ready to go!
 
@@ -152,13 +155,9 @@ All of these commmands should be run in the project directory *inside* of the so
 #. Configuration of Identity is dependent on you and your project requirements. In the case of ``CodingEvents``, you would want to continue to use ``EventDbContext``.
    This is how your final generation command would look:
 
-.. TODO: Investigate alternative command: dotnet aspnet-codegenerator identity -dc CodingEventsDemo.Data.EventDbContext -sqlite --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
+   .. sourcecode:: guess
 
-.. This seems to have worked for previous classes because of issues with MySQL but since SQLite is a different beast, we should probably focus on the alleviating student issues with MySQL
-   
-.. sourcecode:: guess
-
-      dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
+         dotnet aspnet-codegenerator identity --dbContext EventDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 
    .. admonition:: Note
 

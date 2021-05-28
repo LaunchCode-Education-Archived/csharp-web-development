@@ -93,7 +93,7 @@ Swagger Documentation
 ^^^^^^^^^^^^^^^^^^^^^
 
 With the application running, go to the first location listed as: "Now listening on:". Enter ``https://localhost:5001`` into your browser. You'll see a page
-that looks nothing like any view we created in our CodingEvents MVC applications. This view indeed not an equivalent. What you see running in the browser is not
+that looks nothing like any view we created in our CodingEvents MVC applications. This view is indeed not an equivalent. What you see running in the browser is not
 at all a client-side application, but rather, some documentation resources for the API itself. 
 
 You'll see a list of those endpoints we asked you to describe for this lesson's exercises:
@@ -178,7 +178,7 @@ In Postman, we can make this request by configuring the following settings:
 
 .. admonition:: Note
 
-   Though we view the Swagger docs from port 5001, we request the resources on port 5001.
+   Though we view the Swagger docs from port 5001, we request the resources on port 5000.
 
 To the left of the URL bar is a dropdown selector for HTTP methods. It will default to ``GET``. In the following requests, you will need to select the 
 appropriate method from this list. 

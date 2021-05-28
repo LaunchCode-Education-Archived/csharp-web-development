@@ -212,7 +212,7 @@ students:
    Console.WriteLine("Average grade: " + avg);
 
 List Methods
------------------
+------------
 
 Let’s gather up a few of the ``List`` methods that we’ve encountered so
 far, along with a few new ones. While these will be the most common methods and
@@ -288,11 +288,14 @@ Thus, the first item in this table:
       // Option B
       string[] planetsArray = planets.ToArray();
 
-In addition to these different methods we can use, the ``List`` class has a number of properties that are very helpful.
-You may find yourself using the ``Count`` property quite a bit. This property holds the number of values in the list.
-In our example, after we add all of the planets in the solar system, ``planets.Count`` has a value of 9.
+In addition to these different methods we can use, the ``List`` class has a
+number of properties that are very helpful. You may find yourself using the
+``Count`` property quite a bit. This property holds the number of values in the
+list. In our example, after we add all of the planets in the solar system,
+``planets.Count`` has a value of ``8`` (unless you also added Pluto to
+``planets``, in which ``planets.Count`` returns ``9``).
 
-Speaking of arrays, let's see the array version of Gradebook next.
+Speaking of arrays, let's see the array version of ``Gradebook`` next.
 
 Check Your Understanding
 -------------------------

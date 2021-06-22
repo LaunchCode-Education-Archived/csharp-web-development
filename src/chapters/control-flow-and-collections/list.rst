@@ -319,34 +319,34 @@ Check Your Understanding
          :linenos:
 
          List<string> charStars = new List<string>();
-         charStars.add('a');
-         charStars.add('b');
-         charStars.add('c');
+         charStars.Add('a');
+         charStars.Add('b');
+         charStars.Add('c');
 
    #.
       .. sourcecode:: C#
          :linenos:
 
          List<char> charStars = new List<string>();
-         charStars.add('a');
-         charStars.add('b');
-         charStars.add('c');
+         charStars.Add('a');
+         charStars.Add('b');
+         charStars.Add('c');
 
    #.
       .. sourcecode:: C#
 
-         List<char> charStars = new List<char>('a', 'b', 'c');
+         List<char> charStars = new List<char>("a", "b", "c");
 
    #.
       .. sourcecode:: C#
          :linenos:
 
          List<string> charStars = new List<string>();
-         charStars.add("a");
-         charStars.add("b");
-         charStars.add("c");
+         charStars.Add("a");
+         charStars.Add("b");
+         charStars.Add("c");
 
 .. ans: List<string> charStars = new List<string>();
-         charStars.add("a");
-         charStars.add("b");
-         charStars.add("c");
+         charStars.Add("a");
+         charStars.Add("b");
+         charStars.Add("c");

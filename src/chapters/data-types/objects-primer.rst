@@ -90,7 +90,7 @@ We will explore exactly what ``static`` does in more detail in later lessons.
 ----------------
 
 Let’s examine two classes in C# to explore defining and using methods. Open the 
-``HelloMethods`` project in ``csharp-web-dev-lsn1datatypes``.
+``HelloMethods`` project in ``csharp-web-dev-datatypes``.
 
 The first class is defined in the ``HelloMethods/Program.cs`` file, and it has a
 ``Main`` method. The second class is defined in a separate ``HelloMethods/Message.cs``

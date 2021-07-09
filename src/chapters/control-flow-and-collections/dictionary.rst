@@ -21,7 +21,7 @@ dictionary. This means specifying both key and value data types, which are allow
 to be different types for a given dictionary.
 
 We suggest you run another version of the gradebook program called ``DictionaryGradebook`` in Visual Studio.
-This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
+This program lives in the `csharp-web-dev-controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-controlflowandcollections>`_ repository.
 If you haven't forked and cloned the repository, you should do so now.
 
 .. sourcecode:: csharp

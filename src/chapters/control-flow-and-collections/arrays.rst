@@ -66,7 +66,7 @@ using ``Arrays`` instead of ``Lists``:
    Console.WriteLine("Average grade: " + avg);
 
 We suggest you try running this version of the gradebook program called ``ArrayGradebook`` in Visual Studio.
-This program lives in the `csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`_ repository.
+This program lives in the `csharp-web-dev-controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-controlflowandcollections>`_ repository.
 If you haven't forked and cloned the repository, you should do so now.
 
 .. index:: ! bracket notation

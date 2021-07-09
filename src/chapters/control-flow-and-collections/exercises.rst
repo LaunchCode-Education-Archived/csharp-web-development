@@ -2,7 +2,7 @@ Exercises: Control Flow and Collections
 =======================================
 
 If you haven't done so already, fork and clone 
-`csharp-web-dev-lsn2controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn2controlflowandcollections>`__.
+`csharp-web-dev-controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-controlflowandcollections>`__.
 Work on these exercises in this solution and create a new class for each item. 
 You may call these classes whatever you
 like, but remember to use the proper

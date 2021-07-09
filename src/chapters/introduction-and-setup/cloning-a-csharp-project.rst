@@ -6,7 +6,7 @@ Cloning a C# Project
 The steps here walk you through setting up a repository that you’ll
 use to study example code and work on coding exercises.
 
-#. Visit the `LaunchCodeEducation/csharp-web-dev-lsn1datatypes <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn1datatypes>`__
+#. Visit the `LaunchCodeEducation/csharp-web-dev-datatypes <https://github.com/LaunchCodeEducation/csharp-web-dev-datatypes>`__
    repository page and fork the repository into your own GitHub account by
    selecting *Fork* from the top right of the page.
 
@@ -32,7 +32,7 @@ Windows Users
       "Continue without code ->".
 
 #. Once connected, select *Clone* from the GitHub section of the *Team Explorer* and select
-   your ``csharp-web-dev-lsn1datatypes`` copy from the modal window. **Be sure to
+   your ``csharp-web-dev-datatypes`` copy from the modal window. **Be sure to
    change the Path field** to the location you would like the project to
    live, ideally inside of a folder you’ve been using to store other
    projects.

@@ -11,7 +11,7 @@ review different kinds of ``for`` loops used in C#.
 
 Before going any further, we suggest you run the ``ListGradebook``
 program in Visual Studio. This program is in `csharp-web-dev-controlflowandcollections <https://github.com/LaunchCodeEducation/csharp-web-dev-controlflowandcollections>`_.
-Once you’ve forked and cloned the repository following the directions on how to :ref:`clone a C# project <clone-csharp-project>`, let’s look at what is happening in the source code.
+Once you’ve forked and cloned the repository following the directions on how to :ref:`clone a C# project <clone-sharp-project>`, let’s look at what is happening in the source code.
 
 .. sourcecode:: csharp
    :linenos:

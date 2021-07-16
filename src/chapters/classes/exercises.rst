@@ -3,7 +3,7 @@
 Exercises: Classes and Objects
 ==============================
 
-Before you get started, make sure you have forked and cloned the `starter code <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn3and4classes>`_.
+Before you get started, make sure you have forked and cloned the `starter code <https://github.com/LaunchCodeEducation/csharp-web-dev-classespart1and2>`_.
 
 #. Open up the file, ``Student.cs``, and update the starter code to make use of auto-implemented properties.
 #. In ``Program.cs``, instantiate the ``Student`` class using yourself as the student. For the

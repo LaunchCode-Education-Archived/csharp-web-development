@@ -12,7 +12,7 @@ What are some examples of input? What would the desired output be for each input
 Getting Started
 ---------------
 
-#. Fork and clone the `studio repository <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5unittesting-studio>`__.
+#. Fork and clone the `studio repository <https://github.com/LaunchCodeEducation/csharp-web-dev-unittesting-studio>`__.
 #. In Visual Studio, check out your repository.
 #. Write unit tests to find the errors in ``BalancedBrackets.cs``.
    

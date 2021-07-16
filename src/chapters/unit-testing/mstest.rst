@@ -31,7 +31,7 @@ To test a simple .NET Core console project, we add an MSTest project into the sa
 project is a console project with an added MSTest dependency.
 
 
-Fork and clone `this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5unittesting>`__. Inside the solution, we have two projects,
+Fork and clone `this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-unittesting>`__. Inside the solution, we have two projects,
 ``Car`` and ``CarTests``. The ``Car`` project is a simple .NET Console app like the others you have encountered
 in this course so far. ``CarTests`` is a new type of project, MSTest Project. 
 

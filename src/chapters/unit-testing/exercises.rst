@@ -1,7 +1,7 @@
 Exercises: Unit Testing
 =======================
 
-Work on these exercises in your local copy of the `csharp-web-dev-lsn5unittesting <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn5unittesting>`_ repo.
+Work on these exercises in your local copy of the `csharp-web-dev-unittesting <https://github.com/LaunchCodeEducation/csharp-web-dev-unittesting>`_ repo.
 You were directed to fork and clone this repo earlier in the chapter. If you have not done so, do so now!
 Before starting work on the exercises, check out the ``exercises-start`` branch.
 

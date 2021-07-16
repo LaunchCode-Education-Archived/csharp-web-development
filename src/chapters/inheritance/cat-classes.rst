@@ -2,7 +2,7 @@ A Tale of Two Cats
 ==================
 
 Let’s revisit our ``Cat`` and ``HouseCat`` friends.
-Check out this `repository <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn6inheritance>`_ for the code for the lesson.
+Check out this `repository <https://github.com/LaunchCodeEducation/csharp-web-dev-inheritance>`_ for the code for the lesson.
 In Visual Studio, open the solution and examine the two classes inside the ``Cats`` project.
 
 Inheriting Fields and Properties 

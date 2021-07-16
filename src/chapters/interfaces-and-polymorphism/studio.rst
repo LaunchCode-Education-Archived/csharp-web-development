@@ -10,7 +10,7 @@ Getting Ready
 
 Set up a local copy of the project:
 
-#. Visit the `repository page <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn7interfaces-studio>`__
+#. Visit the `repository page <https://github.com/LaunchCodeEducation/csharp-web-dev-interfaces-studio>`__
    for this project and fork it to create a copy under your own GitHub account.
 #. Open up the solution in Visual Studio to get started.
 

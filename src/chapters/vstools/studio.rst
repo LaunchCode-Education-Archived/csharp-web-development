@@ -1,7 +1,7 @@
 Studio: If It Ain't Broke, Add a Breakpoint!
 ============================================
 
-On your machine, open up your copy of ``csharp-web-dev-lsn7interfaces-studio`` in Visual Studio.
+On your machine, open up your copy of ``csharp-web-dev-interfaces-studio`` in Visual Studio.
 The purpose of this studio is to talk about your current debugging strategies and how to make the most of the debugger tools discussed in this chapter.
 
 Before we start practicing with debugging tools, go over with the group one error you encountered when working on your own version of last lesson's studio.
@@ -12,7 +12,7 @@ This could be the result of a typo or a logical error.
 #. Could one of the debugging tools help you when addressing this error?
    For example, if you encountered an error where data was not being written onto a disc object, could you track the properties of the object with a debugging tool?
 
-Now, checkout the `debugging branch <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn7interfaces-studio/tree/debugging>`__ of
+Now, checkout the `debugging branch <https://github.com/LaunchCodeEducation/csharp-web-dev-interfaces-studio/tree/debugging>`__ of
 the studio repo. Review the code and use the debugging tools in Visual Studio to practice assessing the program.
 
 To get started, try the following:

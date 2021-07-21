@@ -10,7 +10,7 @@ Name your solution ``Technology`` and make a project inside of it with the same 
 
    #. For a parent class: add 3 fields, 2 methods, and a constructor.
    #. For a child class: add *at least* 1 additional field and 1 additional method.
-   #. At least one of your fields in should be either ``static``, ``readonly``, or a ``const``.
+   #. At least one of your fields should be either ``static``, ``readonly``, or a ``const``.
 
 #. **Class implementation:** Implement your design and add unit tests to a new ``TechnologyTests`` MSTest project.
    

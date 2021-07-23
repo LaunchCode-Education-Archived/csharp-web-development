@@ -76,7 +76,7 @@ provided argument falls outside of an acceptable range. Later, we refine our
    }
 
 This example is also provided in the ``TemperatureExceptions`` project in 
-`this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn9exceptions>`__.
+`this repo <https://github.com/LaunchCodeEducation/csharp-web-dev-exceptions>`__.
 
 The program provides a plan for what to do in the event that bad data is passed into a class's field. 
 Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value outside of the appropriate range. 

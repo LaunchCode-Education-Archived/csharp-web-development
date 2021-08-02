@@ -1,7 +1,7 @@
 Exercises: Exceptions
 =====================
 
-To get started, fork and clone this `repo <https://github.com/LaunchCodeEducation/csharp-web-dev-lsn9exceptions>`_ from Github. 
+To get started, fork and clone this `repo <https://github.com/LaunchCodeEducation/csharp-web-dev-exceptions>`_ from Github. 
 
 Divide By Zero!
 ---------------

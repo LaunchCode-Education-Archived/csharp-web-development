@@ -347,7 +347,7 @@ This page needs to show full job listings---ID, employer, location, etc.
 Add ``View All`` Link
 ^^^^^^^^^^^^^^^^^^^^^
 
-Open the ``list.html`` template. This file builds the table to display all of
+Open the ``index/list.cshtml`` template. This file builds the table to display all of
 the links for the different ``Job`` fields. However, the link for the ``All``
 column is missing.
 

@@ -3,11 +3,4 @@
 Databases and SQL
 =================
 
-.. toctree::
-   :maxdepth: 3
-
-   background
-   queries
-   joins
-   exercises
-   studio
+Use the `LaunchCode SQL textbook <https://education.launchcode.org/SQL/chapters/mysql-part-1/index.html>`_ to access this lesson.

@@ -51,8 +51,6 @@ Studios
    chapters/razor-views/studio
    chapters/aspdotnet-model-classes/studio
    chapters/aspdotnet-model-validation/studio
-   chapters/sql-part1/studio
-   chapters/sql-part2/studio
    chapters/orm-intro/studio
    chapters/auth/studio
    chapters/web-apis/studio

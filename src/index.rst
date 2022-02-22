@@ -22,8 +22,6 @@ Chapters
    chapters/aspdotnet-model-classes/index
    chapters/aspdotnet-model-validation/index
    chapters/enums/index
-   chapters/sql-part1/index
-   chapters/sql-part2/index
    chapters/orm-intro/index
    chapters/orm-relationships/index
    chapters/auth/index

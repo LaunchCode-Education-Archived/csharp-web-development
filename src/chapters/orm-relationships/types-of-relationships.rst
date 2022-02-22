@@ -1,7 +1,7 @@
 Types of Relationships
 ======================
 
-Just as database tables :ref:`can relate <one-to-many-sql>` to each other, so can classes and objects. In fact, ORM translates relationships between objects into relationships between database rows.
+Just as database tables `can relate <https://education.launchcode.org/SQL/chapters/mysql-part-2/relationships.html#one-to-many-relationships>`_ to each other, so can classes and objects. In fact, ORM translates relationships between objects into relationships between database rows.
 
 This chapter introduces the tools needed to create meaningful relationships using ORM. Let's consider the different types of relationships at a conceptual level. In later sections, we will learn how to implement these relationships using EntityFrameworkCore.
 

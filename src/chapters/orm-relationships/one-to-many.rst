@@ -32,7 +32,7 @@ In the ``Event`` class, replace the ``Type`` property with a new property of typ
 
    public int CategoryId { get; set; }
 
-The ``CategoryId`` property functions as a :ref:`foreign key <foreign-key>`. EF will create a ``CategoryId`` column in the ``Event`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
+The ``CategoryId`` property functions as a `foreign key <https://education.launchcode.org/SQL/chapters/mysql-part-2/relationships.html#adding-a-foreign-key>`_. EF will create a ``CategoryId`` column in the ``Event`` table. The value of this column for a given row will determine which row in the ``Category`` table is related to the given event. Our code is now set up so that each ``Event`` will knows about its ``EventCategory`` object, and that relationship persists.
 
 .. admonition:: Note
 

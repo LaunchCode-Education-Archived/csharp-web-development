@@ -21,8 +21,6 @@ Chapters
    chapters/aspdotnet-model-classes/index
    chapters/aspdotnet-model-validation/index
    chapters/enums/index
-   chapters/sql-part1/index
-   chapters/sql-part2/index
    chapters/orm-intro/index
    chapters/orm-relationships/index
    chapters/auth/index
@@ -51,8 +49,6 @@ Studios
    chapters/razor-views/studio
    chapters/aspdotnet-model-classes/studio
    chapters/aspdotnet-model-validation/studio
-   chapters/sql-part1/studio
-   chapters/sql-part2/studio
    chapters/orm-intro/studio
    chapters/auth/studio
    chapters/web-apis/studio

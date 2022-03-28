@@ -64,6 +64,7 @@ and each ``<li>`` element, in addition to a couple of fun links. The CSS file
       </div>
    </body>
 
+
 We could drastically improve the appearance and content of the page by playing
 around with the tags, classes, styles and text. However, any change we want to
 make needs to be coded directly into the HTML and CSS files, and this quickly
@@ -77,7 +78,7 @@ structure to display the data delivered by the controller, and the template
 guides where that information goes. This provides much more flexibility than
 hard-coding, since data can change based on a user's actions.
 
-.. sourcecode:: guess
+.. sourcecode:: bash
    :linenos:
 
    <body>
@@ -93,6 +94,7 @@ hard-coding, since data can change based on a user's actions.
          <a href={templateInstructions}></a>
       </div>
    </body>
+
 
 This HTML looks similar to the previous example, but it replaces some of the
 code with *instructions*.

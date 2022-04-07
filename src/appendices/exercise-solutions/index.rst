@@ -2,6 +2,6 @@ Exercise Solutions
 ==================
 
 .. toctree::
-   :max-depth: 3
+   :maxdepth: 3
 
    data-types

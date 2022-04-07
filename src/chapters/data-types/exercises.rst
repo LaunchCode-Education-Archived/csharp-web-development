@@ -37,7 +37,7 @@ Input/Output
 
    #. Run your program.
 
-:ref:`Check Your Solution <data-types-solution1>`
+:ref:`Check your solution <data-types-solution1>`
 
 Numeric Types
 -------------

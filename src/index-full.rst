@@ -77,3 +77,4 @@ Appendices
    appendices/sql-install
    appendices/vs-troubleshooting
    appendices/postman-install
+   appendices/exercise-solutions/index

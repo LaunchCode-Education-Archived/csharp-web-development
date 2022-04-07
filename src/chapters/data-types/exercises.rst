@@ -1,3 +1,5 @@
+.. _data-types-exercises:
+
 Exercises: Data Types
 =====================
 
@@ -35,6 +37,8 @@ Input/Output
 
    #. Run your program.
 
+:ref:`Check your solution <data-types-solution1>`
+
 Numeric Types
 -------------
 
@@ -43,11 +47,20 @@ Numeric Types
    user for the dimensions. (What data types should the dimensions be?)
 
    #. Add a print line to prompt the user for the length of the rectangle.
+
+      :ref:`Check your solution <data-types-solution2>`
+
    #. Define a variable to handle the user's response.
    #. Repeat the previous two steps to ask for and store the rectangle's width.
+
+      :ref:`Check your solution <data-types-solution2>`
+
    #. Use the length and width values to calculate the rectangle's area.
    #. Print a statement using concatenation to communicate to the user what the area of
       their rectangle is.
+
+      :ref:`Check your solution <data-types-solution2>`
+
    #. Run the program to verify your code.
 
 More on Numeric Types
@@ -56,6 +69,8 @@ More on Numeric Types
 #. Write a program that asks a user for the number of
    miles they have driven and the amount of gas they’ve consumed (in
    gallons), and print their miles-per-gallon.
+
+   :ref:`Check your solution <data-types-solution3>`
 
 Strings
 -------
@@ -71,6 +86,8 @@ Strings
       book her sister was reading, but it had no pictures or conversations in
       it, 'and what is the use of a book,' thought Alice 'without pictures or
       conversation?'``
+
+   :ref:`Check your solution <data-types-solution4>`
 
 #. Extend the previous exercise. Assume the user enters a word that is
    in the sentence. Print out its index within the string and its length. Next,

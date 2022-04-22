@@ -6,3 +6,6 @@ Exercise Solutions
 
    data-types
    control-flow
+
+   classes-2
+   

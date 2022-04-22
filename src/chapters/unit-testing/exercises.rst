@@ -11,6 +11,8 @@ Before starting work on the exercises, check out the ``exercises-start`` branch.
    Be sure to take note of the values of the ``make``, ``model``, ``gasTankSize``, and ``milesPerGallon`` fields!
    Having a note you can quickly reference of how big the gas tank is will you help you decide on values to use in your tests!
 
+.. _unit_testing-exercises1:
+
 ``TestGasTankAfterDriving()``
 -----------------------------
 
@@ -29,6 +31,10 @@ Add a test for the third TODO, "GasTankLevel is accurate after driving within ta
 
       Assert.AreEqual(9, test_car.GasTankLevel, .001);
 
+   :ref:`Check your solution <unit_testing_solution-1>` 
+
+.. _unit_testing-exercises2:
+
 ``TestGasTankAfterExceedingTankRange()``
 ----------------------------------------
 
@@ -36,6 +42,10 @@ Add a test for the fourth TODO, "GasTankLevel is accurate after attempting to dr
 
 #. You're on your own for this one. You'll need to simulate the ``Car``
    travelling farther than it's ``gasTankLevel`` allows.
+
+:ref:`Check your solution <unit_testing_solution-2>`
+
+.. _unit_testing-exercises3:
 
 ``TestGasOverfillException()``
 ------------------------------
@@ -100,7 +110,7 @@ to our car that exceeds the gas tank size.
 
 #. Now, run the test - it should pass!
 
-   
+  :ref:`Check your solution <unit_testing_solution-3>` 
 
 
 

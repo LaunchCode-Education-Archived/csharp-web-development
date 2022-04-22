@@ -1,3 +1,5 @@
+.. _control-flow-collections-exercises:
+
 Exercises: Control Flow and Collections
 =======================================
 
@@ -19,6 +21,8 @@ Array Practice
 
 #. Loop through the array and print out each value. 
 #. Modify the loop to only print the odd numbers from the array.
+
+:ref:`Check your solution <control-flow-solution-1>`
 
 String Practice
 ---------------
@@ -43,6 +47,9 @@ String Practice
 #. Repeat steps 2 and 3, but change the delimiter to split the string into
    separate sentences.
 
+
+:ref:`Check your solution <control-flow-solution-2>`
+
 List Practice
 -------------
 
@@ -54,6 +61,8 @@ List Practice
    letters.
 #. Modify your code to prompt the user to enter the word length for the search.
 
+:ref:`Check your solution <control-flow-solution-3>`
+
 Dictionary Practice
 -------------------
 
@@ -64,6 +73,7 @@ Make a program similar to ``GradebookDictionary`` that does the following:
 #. The keys should be the IDs and the values should be the names.
 #. Modify the roster printing code accordingly.
 
+:ref:`Check your solution <control-flow-solution-4>`
 
 Bonus Mission
 -------------

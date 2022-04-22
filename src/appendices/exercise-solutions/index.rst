@@ -5,3 +5,4 @@ Exercise Solutions
    :maxdepth: 3
 
    data-types
+   control-flow

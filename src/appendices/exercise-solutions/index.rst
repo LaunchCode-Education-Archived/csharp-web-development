@@ -8,5 +8,6 @@ Exercise Solutions
    control-flow
    classes-part1
    classes-2
+   inheritance
    
    

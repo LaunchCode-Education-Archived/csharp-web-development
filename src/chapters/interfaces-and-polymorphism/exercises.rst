@@ -1,3 +1,5 @@
+.. _interfaces-exercises:
+
 Exercises: Interfaces and Polymorphism
 =======================================
 
@@ -122,6 +124,8 @@ as well as specific ``availableFlavors`` and ``availableCones`` collections.
 
       availableFlavors.Sort(new FlavorComparer());
 
+.. _cones:
+
 Sorting Cones by Cost
 ----------------------
 
@@ -129,9 +133,13 @@ Now let's sort our ``availableCones`` list by cost, from least expensive to most
 expensive.
 
 #. Create the new class ``ConeComparer``.
+
 #. Follow the example above to implement the ``IComparer`` interface and
    evaluate ``Cone`` objects by cost.
    Since comparing two numbers is different from comparing strings, try getting the difference between the two numbers. If the difference is positive, then we know the first number is greater. If the difference is negative, then we know that the second number is greater.
+
+   :ref:`Check your solution<interfaces-cones>`
+
 #. In the ``Main()`` method, sort the ``availableCones`` list, then print the elements to the screen
    to verify the results.
 
@@ -144,14 +152,20 @@ expensive.
       Wafer: $0.50         Sugar: $0.75
       Bowl: $0.05          Waffle: $1.25
 
+
+:ref:`Check your solutions<interfaces-sort>`
+
 .. admonition:: Tip
 
    Remember that the ``cost`` field is of type ``double`` and ``Compare()`` has a return type of type ``int``!
+
+.. _bonus:
 
 Bonus Mission
 -------------
 
 Modify ``FlavorComparer`` to sort ``Flavor`` objects by the number of allergens, from lowest to highest.
+
 
 Next Steps
 ----------

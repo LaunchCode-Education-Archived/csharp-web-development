@@ -9,5 +9,6 @@ Exercise Solutions
    classes-part1
    classes-2
    inheritance
+   interfaces-solutions
    
    

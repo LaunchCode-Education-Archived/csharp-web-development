@@ -11,5 +11,6 @@ Exercise Solutions
    inheritance
    interfaces-solutions
    controllers-routes
+   exceptions
    
    

@@ -6,6 +6,8 @@ To get started, fork and clone this `repo <https://github.com/LaunchCodeEducatio
 Divide By Zero!
 ---------------
 
+.. _exercise-1:
+
 The professor you TA for, Professor Jackson, shared with you the code she uses to auto-grade students' work.
 She and the other TAs have encountered some problems with the code in the past when they enter the total possible point value for an assignment.
 Occasionally, they accidentally enter ``0`` for the total number of possible points and the program encounters a fatal error when trying to divide by 0.
@@ -18,6 +20,9 @@ Your function should return the result of ``x/y``.
 However, if ``y`` is zero, you should throw an exception.
 Try to use an ``ArgumentOutOfRangeException`` and put your ``try/catch`` block in ``Main()`` to test out your error-handling skills.
 If an exception is caught, make sure to print out the error message.
+
+
+:ref:`Check your solutions<divide-by-zero>`
 
 Test Student Labs
 -----------------

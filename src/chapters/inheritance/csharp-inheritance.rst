@@ -32,6 +32,8 @@ We say that ``HouseCat`` is a **subclass**, **derived class**, or
 **child class** of ``Cat``, and we say that ``Cat`` is the
 **superclass**, **base class**, or **parent class** of ``HouseCat``. 
 
+.. _inheritance-diagram:
+
 In C#, a class may extend only one class. Classes may extend each
 other in turn, however. This creates hierarchies of classes. We often visualize these
 by drawing each class as a box, with an arrow pointing from the subclass

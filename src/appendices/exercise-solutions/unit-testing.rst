@@ -10,7 +10,7 @@ Add a test for the third TODO, "GasTankLevel is accurate after driving within ta
 
 .. sourcecode:: csharp
 
-   [TestMethod]
+    [TestMethod]
         public void TestGasTankAfterDriving()
         {
             test_car.Drive(50);
@@ -52,31 +52,31 @@ to our car that exceeds the gas tank size.
 
 2. Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute ``[ExpectedException]``.
 
-   .. sourcecode:: csharp
+.. sourcecode:: csharp
 
-      //TODO: can't have more gas than tank size, expect an exception
-      [TestMethod]
-      [ExpectedException(typeof(ArgumentOutOfRangeException))]
-      public void TestGasOverfillException() 
-      {
+    //TODO: can't have more gas than tank size, expect an exception
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void TestGasOverfillException() 
+    {
 
-      }
+    }
 
 :ref:`Back to the exercises <unit_testing-exercises3>`   
 
 4. Back in ``CarTests``, implement the new ``AddGas()`` method and a 
    ``Assert.Fail()`` scenario.
 
-   .. sourcecode:: csharp
+.. sourcecode:: csharp
 
-        //TODO: can't have more gas than tank size, expect an exception
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestGasOverfillException()
-        {
-            test_car.AddGas(5);
-            Assert.Fail("Shouldn't get here, car cannot have more gas in tank than the size of the tank");
-        }
+    //TODO: can't have more gas than tank size, expect an exception
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void TestGasOverfillException()
+    {
+        test_car.AddGas(5);
+        Assert.Fail("Shouldn't get here, car cannot have more gas in tank than the size of the tank");
+    }
 
 
 :ref:`Back to the exercises <unit_testing-exercises3>`
@@ -85,15 +85,15 @@ to our car that exceeds the gas tank size.
    gas is added to the tank. Find the ``AddGas()`` method and
    modify it by adding the following code in the appropriate place.
 
-   .. sourcecode:: csharp
+.. sourcecode:: csharp
 
-      public void AddGas(double gas)
+    public void AddGas(double gas)
+    {
+        GasTankLevel += gas;
+        if (GasTankLevel > GasTankSize)
         {
-            GasTankLevel += gas;
-            if (GasTankLevel > GasTankSize)
-            {
-                throw new ArgumentOutOfRangeException("Can't exceed tank size");
-            }
+            throw new ArgumentOutOfRangeException("Can't exceed tank size");
         }
+    }
 
 :ref:`Back to the exercises <unit_testing-exercises3>`

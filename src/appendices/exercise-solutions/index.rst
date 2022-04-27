@@ -8,6 +8,7 @@ Exercise Solutions
    control-flow
    classes-part1
    classes-2
+   unit-testing
    inheritance
    interfaces-solutions
    controllers-routes

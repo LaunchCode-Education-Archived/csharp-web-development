@@ -55,6 +55,7 @@ The ``CheckFileExtension()`` function should do the following:
 * If the file submitted is ``null`` or an empty string, an exception should be thrown. What kind of exception is up to you!
 
 .. sourcecode:: csharp
+   :linenos:
 
    static int CheckFileExtension(string fileName)
    {

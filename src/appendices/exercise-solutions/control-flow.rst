@@ -50,34 +50,34 @@ List Practice
 
 .. sourcecode:: csharp
 
-      static int sumEven(List<int> arr)
+   static int sumEven(List<int> arr)
+   {
+      int total = 0;
+      foreach (int integer in arr)
       {
-         int total = 0;
-         foreach (int integer in arr)
+         if (integer % 2 == 0)
          {
-               if (integer % 2 == 0)
-               {
-                  total += integer;
-               }
+            total += integer;
          }
-         return total;
       }
+      return total;
+   }
 
 
 3. Write a static method to print out each word in a list that has exactly 5 letters.
 
 .. sourcecode:: csharp
 
-      static void printFiveLetterWords(List<string> wordlist)
+   static void printFiveLetterWords(List<string> wordlist)
+   {
+      foreach (string word in wordlist)
       {
-            foreach (string word in wordlist)
-            {
-               if (word.Length == 5)
-               {
-                  Console.WriteLine(word);
-               }
-            }
+         if (word.Length == 5)
+         {
+            Console.WriteLine(word);
+         }
       }
+   }
 
 4. Modify your code to prompt the user to enter the word length for the search.
 
@@ -92,15 +92,15 @@ List Practice
 
 
    static void printXLetterWords(List<string> wordlist, int length)
+   {
+      foreach (string word in wordlist)
       {
-         foreach (string word in wordlist)
+         if (word.Length == length)
          {
-               if (word.Length == length)
-               {
-                  Console.WriteLine(word);
-               }
+            Console.WriteLine(word);
          }
       }
+   }
 
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 
@@ -135,7 +135,7 @@ Dictionary Practice
 
    foreach (KeyValuePair<int, string> student in students)
    {
-         Console.WriteLine(student.Value + "'s ID: " + student.Key);
+      Console.WriteLine(student.Value + "'s ID: " + student.Key);
    }
 
    Console.WriteLine("Number of students in roster: " + students.Count);

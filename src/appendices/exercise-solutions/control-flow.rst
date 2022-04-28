@@ -37,7 +37,6 @@ String Practice
    string[] words = sentence.Split(" ");
    Console.WriteLine(string.Join("/", words));
 
-
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 
 List Practice
@@ -70,15 +69,15 @@ List Practice
 .. sourcecode:: csharp
 
       static void printFiveLetterWords(List<string> wordlist)
-        {
+      {
             foreach (string word in wordlist)
             {
-                if (word.Length == 5)
-                {
-                    Console.WriteLine(word);
-                }
+               if (word.Length == 5)
+               {
+                  Console.WriteLine(word);
+               }
             }
-        }
+      }
 
 4. Modify your code to prompt the user to enter the word length for the search.
 
@@ -102,8 +101,6 @@ List Practice
                }
          }
       }
-
-
 
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 

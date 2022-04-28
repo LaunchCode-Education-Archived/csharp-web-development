@@ -16,11 +16,11 @@ Divide by Zero
    {
       if (y == 0.0)
       {
-            throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
+         throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
       }
       else
       {
-            return x / y;
+         return x / y;
       }
    }
 

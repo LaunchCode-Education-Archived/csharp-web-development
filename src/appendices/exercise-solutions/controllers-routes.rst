@@ -10,6 +10,7 @@ Modify your ``HelloController`` class to display a form on a ``GET`` request
 that asks the user for both their name and the language they would like to be greeted in.
 
 .. sourcecode:: csharp
+   :linenos:
 
    //GET: /<controller>/
    public IActionResult Index()
@@ -40,6 +41,7 @@ Part 2: ``POST`` Request
    Based on the language string, you’ll display the proper greeting.
 
 .. sourcecode:: csharp
+   :linenos:
 
    public static string CreateMessage(string name, string language)
    {

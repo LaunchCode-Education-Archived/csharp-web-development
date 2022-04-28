@@ -6,6 +6,7 @@ Classes and Objects Exercises Solutions
 1. Open up the file, ``Student.cs``, and update the starter code to make use of auto-implemented properties.
 
 .. sourcecode:: csharp
+    :linenos:
 
     public class Student
     {
@@ -25,10 +26,10 @@ Classes and Objects Exercises Solutions
         }
 
         public Student(string name, int studentId)
-        : this(name, studentId, 0, 0) { }
+            : this(name, studentId, 0, 0) { }
 
         public Student(string name)
-        : this(name, nextStudentId)
+            : this(name, nextStudentId)
         {
             nextStudentId++;
         }
@@ -49,7 +50,6 @@ Classes and Objects Exercises Solutions
         // TODO: Instantiate your objects and test your exercise solutions with print statements here.
         Student kimberly = new Student("Kimberly", 1, 1, 4.0);
         Console.WriteLine("The Student class works! " + kimberly.Name + " is a student!");
-
     }
 
 :ref:`Back to the exercises <classes_part1-exercises2>`
@@ -75,7 +75,6 @@ Classes and Objects Exercises Solutions
             private string topic;
             private Teacher instructor;
             private List<Student> enrolledStudents;
-
         }
     }
 

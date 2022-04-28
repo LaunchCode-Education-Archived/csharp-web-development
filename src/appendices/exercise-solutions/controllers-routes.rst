@@ -15,13 +15,13 @@ that asks the user for both their name and the language they would like to be gr
    public IActionResult Index()
    {
       string html = "<form method='post'>" +
-            "<input type='text' name='name' />" +
-            "<select name='language'>" +
-            "<option value='english' selected>English</option>" +
-            "<option value='french'>French</option></select>" +
-            // ... add any other languages here ... 
-            "<input type='submit' value='Greet Me!'/>" +
-            "</form>";
+         "<input type='text' name='name' />" +
+         "<select name='language'>" +
+         "<option value='english' selected>English</option>" +
+         "<option value='french'>French</option></select>" +
+         // ... add any other languages here ... 
+         "<input type='submit' value='Greet Me!'/>" +
+         "</form>";
 
       return Content(html, "text/html");
    }
@@ -46,13 +46,13 @@ Part 2: ``POST`` Request
       string helloTranslation = "";
       switch (language)
       {
-            case "french":
-               helloTranslation = "Bonjour ";
-               break;
-            case "english":
-               helloTranslation = "Hello ";
-               break;
-            // ... add any other languages here ...
+         case "french":
+            helloTranslation = "Bonjour ";
+            break;
+         case "english":
+            helloTranslation = "Hello ";
+            break;
+         // ... add any other languages here ...
       }
       return helloTranslation + name;
    }

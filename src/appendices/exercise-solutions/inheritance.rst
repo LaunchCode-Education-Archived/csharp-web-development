@@ -18,57 +18,59 @@ This is *one* example of how 1 base class (``Computer``) and 2 derived classes (
 * Testing the ``Computer`` class.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   public class Computer
-   {
-      public double Ram { get; set; }
-      public double Storage { get; set; }
-      public readonly bool hasKeyboard;
-
-      public Computer(double ram, double storage, bool hasKeyboard)
+      public class Computer
       {
+         public double Ram { get; set; }
+         public double Storage { get; set; }
+         public readonly bool hasKeyboard;
+
+         public Computer(double ram, double storage, bool hasKeyboard)
+         {
             Ram = ram;
             Storage = storage;
             this.hasKeyboard = hasKeyboard;
-      }
+         }
 
-      public double IncreaseRam(double extraRam)
-      {
+         public double IncreaseRam(double extraRam)
+         {
             return Ram += extraRam;
-      }
+         }
 
-      public double IncreaseStorage(double extraStorage)
-      {
-         return Storage += extraStorage;
+         public double IncreaseStorage(double extraStorage)
+         {
+            return Storage += extraStorage;
+         }
       }
-   }
 
 
 *  Use inheritance to create the ``Laptop`` derived class. 
 
 .. sourcecode:: csharp
+   :linenos:
 
-    public class Laptop : Computer
-    {
+   public class Laptop : Computer
+   {
       public double Weight { get; set; }
 
       public Laptop(double ram, double storage, bool hasKeyboard, double weight) : base(ram, storage, hasKeyboard)
       {
-            Weight = weight;
+         Weight = weight;
       }
 
       public bool IsClunky()
       {
-            if (Weight > 5.0)
-            {
-               return true;
-            }
-            else
-            {
-               return false;
-            }
+         if (Weight > 5.0)
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
-    }
+   }
 
 
 :ref:`Back to the exercises <inheritance-exercises>`
@@ -185,9 +187,9 @@ Testing ``AbstractEntity`` using MSTest:
    [TestMethod]
       public void TestInheritingBaseConstructor()
       {
-            SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
-            Assert.IsNotNull(testingSmartphone.Id);
-            //...
+         SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
+         Assert.IsNotNull(testingSmartphone.Id);
+         //...
       }   
 
 

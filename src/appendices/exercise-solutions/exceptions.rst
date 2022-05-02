@@ -1,5 +1,5 @@
-Exceptions Exercise Solutions
-=============================
+Exercise Solutions: Exceptions
+==============================
 
 Divide by Zero
 --------------
@@ -11,35 +11,37 @@ Divide by Zero
 * However, if ``y`` is zero, you should throw an exception.
 
 .. sourcecode:: csharp
+   :linenos:
 
    static double Divide(double x, double y)
-        {
-            if (y == 0.0)
-            {
-                throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
-            }
-            else
-            {
-                return x / y;
-            }
-        }
+   {
+      if (y == 0.0)
+      {
+         throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
+      }
+      else
+      {
+         return x / y;
+      }
+   }
 
 .. _try-catch:
 
 * Put your ``try/catch`` block in ``Main()`` to test out your error-handling skills. If an exception is caught, make sure to print out the error message.
 
 .. sourcecode:: csharp
+   :linenos:
 
    double a = 9.9;
    double b = 0.0;
 
    try
    {
-         Divide(a, b);
+      Divide(a, b);
    }
    catch (ArgumentOutOfRangeException e)
    {
-         Console.WriteLine(e.Message);
+      Console.WriteLine(e.Message);
    }
 
 :ref:`Back to the exercises<exercise-1>`
@@ -58,23 +60,24 @@ The ``CheckFileExtension()`` function should do the following:
 * If the file submitted is ``null`` or an empty string, an exception should be thrown. What kind of exception is up to you!
 
 .. sourcecode:: csharp
+   :linenos:
 
    static int CheckFileExtension(string fileName)
    {
       if (fileName == null || fileName == "")
       {
-            throw new ArgumentNullException("fileName","Student did not submit any work!");
+         throw new ArgumentNullException("fileName","Student did not submit any work!");
       }
       else
       {
-            if (fileName.Substring(fileName.Length - 3, 3) == ".cs")
-            {
-               return 1;
-            }
-            else
-            {
-               return 0;
-            }
+         if (fileName.Substring(fileName.Length - 3, 3) == ".cs")
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
       }
    }
 

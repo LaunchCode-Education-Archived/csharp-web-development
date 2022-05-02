@@ -1,4 +1,4 @@
-Unit Testing Exercises Solutions
+Exercise Solutions: Unit Testing
 ================================
 
 .. _unit_testing_solution-1: 
@@ -9,13 +9,14 @@ Unit Testing Exercises Solutions
 Add a test for the third TODO, "GasTankLevel is accurate after driving within tank range".
 
 .. sourcecode:: csharp
+	:linenos:
 
-    [TestMethod]
-        public void TestGasTankAfterDriving()
-        {
-            test_car.Drive(50);
-            Assert.AreEqual(9, test_car.GasTankLevel, .001);
-        }
+	[TestMethod]
+	public void TestGasTankAfterDriving()
+	{
+		test_car.Drive(50);
+		Assert.AreEqual(9, test_car.GasTankLevel, .001);
+	}
 
 :ref:`Back to the exercises <unit_testing-exercises1>`
 
@@ -30,13 +31,14 @@ Add a test for the fourth TODO, "GasTankLevel is accurate after attempting to dr
    travelling farther than it's ``gasTankLevel`` allows.
 
 .. sourcecode:: csharp
+	:linenos:
 
-    [TestMethod]
-        public void TestGasTankAfterExceedingTankRange()
-        {
-            test_car.Drive(501);
-            Assert.AreEqual(test_car.GasTankLevel, 0, .001);
-        }
+	[TestMethod]
+	public void TestGasTankAfterExceedingTankRange()
+	{
+		test_car.Drive(501);
+		Assert.AreEqual(test_car.GasTankLevel, 0, .001);
+	}
 
 :ref:`Back to the exercises <unit_testing-exercises2>`
 
@@ -53,14 +55,15 @@ to our car that exceeds the gas tank size.
 2. Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute ``[ExpectedException]``.
 
 .. sourcecode:: csharp
+	:linenos:
 
-    //TODO: can't have more gas than tank size, expect an exception
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestGasOverfillException() 
-    {
+	//TODO: can't have more gas than tank size, expect an exception
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void TestGasOverfillException() 
+	{
 
-    }
+	}
 
 :ref:`Back to the exercises <unit_testing-exercises3>`   
 
@@ -68,16 +71,16 @@ to our car that exceeds the gas tank size.
    ``Assert.Fail()`` scenario.
 
 .. sourcecode:: csharp
+	:linenos:
 
-    //TODO: can't have more gas than tank size, expect an exception
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestGasOverfillException()
-    {
-        test_car.AddGas(5);
-        Assert.Fail("Shouldn't get here, car cannot have more gas in tank than the size of the tank");
-    }
-
+	//TODO: can't have more gas than tank size, expect an exception
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void TestGasOverfillException()
+	{
+		test_car.AddGas(5);
+		Assert.Fail("Shouldn't get here, car cannot have more gas in tank than the size of the tank");
+	}
 
 :ref:`Back to the exercises <unit_testing-exercises3>`
 
@@ -86,14 +89,15 @@ to our car that exceeds the gas tank size.
    modify it by adding the following code in the appropriate place.
 
 .. sourcecode:: csharp
+	:linenos:
 
-    public void AddGas(double gas)
-    {
-        GasTankLevel += gas;
-        if (GasTankLevel > GasTankSize)
-        {
-            throw new ArgumentOutOfRangeException("Can't exceed tank size");
-        }
-    }
+	public void AddGas(double gas)
+	{
+		GasTankLevel += gas;
+		if (GasTankLevel > GasTankSize)
+		{
+			throw new ArgumentOutOfRangeException("Can't exceed tank size");
+		}
+	}
 
 :ref:`Back to the exercises <unit_testing-exercises3>`

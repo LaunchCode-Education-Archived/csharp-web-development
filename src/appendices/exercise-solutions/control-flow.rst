@@ -1,4 +1,4 @@
-Control Flow & Collections Exercises Solutions
+Exercise Solutions: Control Flow & Collections
 ==============================================
 
 Array Practice
@@ -49,16 +49,17 @@ List Practice
    List. 
 
 .. sourcecode:: csharp
+   :linenos:
 
       static int sumEven(List<int> arr)
       {
          int total = 0;
          foreach (int integer in arr)
          {
-               if (integer % 2 == 0)
-               {
-                  total += integer;
-               }
+            if (integer % 2 == 0)
+            {
+               total += integer;
+            }
          }
          return total;
       }
@@ -67,21 +68,23 @@ List Practice
 3. Write a static method to print out each word in a list that has exactly 5 letters.
 
 .. sourcecode:: csharp
+   :linenos:
 
       static void printFiveLetterWords(List<string> wordlist)
       {
-            foreach (string word in wordlist)
+         foreach (string word in wordlist)
+         {
+            if (word.Length == 5)
             {
-               if (word.Length == 5)
-               {
-                  Console.WriteLine(word);
-               }
+               Console.WriteLine(word);
             }
+         }
       }
 
 4. Modify your code to prompt the user to enter the word length for the search.
 
 .. sourcecode:: csharp
+   :linenos:
 
    Console.WriteLine("Enter a word length: ");
    string numInput = Console.ReadLine();
@@ -92,15 +95,15 @@ List Practice
 
 
    static void printXLetterWords(List<string> wordlist, int length)
+   {
+      foreach (string word in wordlist)
       {
-         foreach (string word in wordlist)
+         if (word.Length == length)
          {
-               if (word.Length == length)
-               {
-                  Console.WriteLine(word);
-               }
+            Console.WriteLine(word);
          }
       }
+   }
 
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 
@@ -112,6 +115,7 @@ Dictionary Practice
 1. It takes in student names and ID numbers (as integers) instead of names and grades.
 
 .. sourcecode:: csharp
+   :linenos:
 
    Console.WriteLine("Enter your students' names and ID numbers (or ENTER to finish):");
 
@@ -123,19 +127,19 @@ Dictionary Practice
       Console.WriteLine("ID: ");
       int newID = int.Parse(Console.ReadLine());
       students.Add(newID, newStudent);
-
    }
 
 
 2. The keys should be the IDs and the values should be the names
 
 .. sourcecode:: csharp
+   :linenos:
 
    Console.WriteLine("\nClass roster:");
 
    foreach (KeyValuePair<int, string> student in students)
    {
-         Console.WriteLine(student.Value + "'s ID: " + student.Key);
+      Console.WriteLine(student.Value + "'s ID: " + student.Key);
    }
 
    Console.WriteLine("Number of students in roster: " + students.Count);

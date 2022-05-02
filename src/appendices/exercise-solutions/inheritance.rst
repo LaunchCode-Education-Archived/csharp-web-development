@@ -1,5 +1,5 @@
-Inheritance Exercise Solutions
-==============================
+Exercise Solutions: Inheritance
+===============================
 
 Class Design
 ------------
@@ -12,68 +12,66 @@ Class Design
 
 This is *one* example of how 1 base class (``Computer``) and 2 derived classes (``Laptop`` & ``Smartphone``) can use inheritance.
 
-
 1. Using the diagram above, set up the base class: ``Computer``.
 
 * Testing the ``Computer`` class.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   public class Computer
-   {
-      public double Ram { get; set; }
-      public double Storage { get; set; }
-      public readonly bool hasKeyboard;
+	public class Computer
+	{
+		public double Ram { get; set; }
+		public double Storage { get; set; }
+		public readonly bool hasKeyboard;
 
-      public Computer(double ram, double storage, bool hasKeyboard)
-      {
-            Ram = ram;
-            Storage = storage;
-            this.hasKeyboard = hasKeyboard;
-      }
+		public Computer(double ram, double storage, bool hasKeyboard)
+		{
+			Ram = ram;
+			Storage = storage;
+			this.hasKeyboard = hasKeyboard;
+		}
 
-      public double IncreaseRam(double extraRam)
-      {
-            return Ram += extraRam;
-      }
+		public double IncreaseRam(double extraRam)
+		{
+			return Ram += extraRam;
+		}
 
-      public double IncreaseStorage(double extraStorage)
-      {
-         return Storage += extraStorage;
-      }
-   }
+		public double IncreaseStorage(double extraStorage)
+		{
+			return Storage += extraStorage;
+		}
+	}
 
 
 *  Use inheritance to create the ``Laptop`` derived class. 
 
 .. sourcecode:: csharp
+	:linenos:
 
-    public class Laptop : Computer
-    {
-      public double Weight { get; set; }
+	public class Laptop : Computer
+	{
+		public double Weight { get; set; }
 
-      public Laptop(double ram, double storage, bool hasKeyboard, double weight) : base(ram, storage, hasKeyboard)
-      {
-            Weight = weight;
-      }
+		public Laptop(double ram, double storage, bool hasKeyboard, double weight) : base(ram, storage, hasKeyboard)
+		{
+			Weight = weight;
+		}
 
-      public bool IsClunky()
-      {
-            if (Weight > 5.0)
-            {
-               return true;
-            }
-            else
-            {
-               return false;
-            }
-      }
-    }
-
+		public bool IsClunky()
+		{
+			if (Weight > 5.0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
 
 :ref:`Back to the exercises <inheritance-exercises>`
-
-
 
 Class Implementation
 --------------------
@@ -83,53 +81,51 @@ Class Implementation
 1. Add a new MSTest project to your solution.
 
 .. sourcecode:: csharp
+	:linenos:
 
-   // one Computer class tests in the Computer Class
-      [TestMethod]
-      public void TestIncreasingRam()
-      {
-         Computer testingComputer = new Computer(2, 3, true);
-         Assert.AreEqual(2, testingComputer.Ram);
-         testingComputer.IncreaseRam(3);
-         Assert.AreEqual(5, testingComputer.Ram);
-      }
-
+	// one Computer class tests in the Computer Class
+	[TestMethod]
+	public void TestIncreasingRam()
+	{
+		Computer testingComputer = new Computer(2, 3, true);
+		Assert.AreEqual(2, testingComputer.Ram);
+		testingComputer.IncreaseRam(3);
+		Assert.AreEqual(5, testingComputer.Ram);
+	}
 
 2. Try to add three MSTest tests to each class.  Consider testing each method or field.
-
-
 
 *  Testing the ``Smartphone`` class
 
 .. sourcecode:: csharp
+	:linenos:
 
-   //Smartphone Class
-   [TestMethod]
-   public void TestTakingSelfies()
-   {
-      SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
-      testingSmartphone.TakeSelfie();
-      Assert.AreEqual(801, testingSmartphone.NumberOfSelfies);
-   }
+	//Smartphone Class
+	[TestMethod]
+	public void TestTakingSelfies()
+	{
+		SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
+		testingSmartphone.TakeSelfie();
+		Assert.AreEqual(801, testingSmartphone.NumberOfSelfies);
+	}
 
 * Testing the ``Laptop`` class
 
 .. sourcecode:: csharp
+	:linenos:
 
-   //Laptop Class
-   [TestMethod]
-   public void TestingBaseClassInheritance()
-   {
-      Laptop testingLaptop = new Laptop(3, 5, false, 4.6);
-      Assert.AreEqual(false, testingLaptop.hasKeyboard);
-      Assert.AreEqual(3, testingLaptop.Ram);
-      Assert.AreEqual(7, testingLaptop.IncreaseRam(4));
-      Assert.AreEqual(8, testingLaptop.IncreaseStorage(3));
-   }
-
+	//Laptop Class
+	[TestMethod]
+	public void TestingBaseClassInheritance()
+	{
+		Laptop testingLaptop = new Laptop(3, 5, false, 4.6);
+		Assert.AreEqual(false, testingLaptop.hasKeyboard);
+		Assert.AreEqual(3, testingLaptop.Ram);
+		Assert.AreEqual(7, testingLaptop.IncreaseRam(4));
+		Assert.AreEqual(8, testingLaptop.IncreaseStorage(3));
+	}
 
 :ref:`Back to the exercises <inheritance-exercises>`
-
 
 Abstract class design
 ---------------------
@@ -139,19 +135,20 @@ Abstract class design
 1. Create the ``AbstractEntity`` Class.  
 
 .. sourcecode:: csharp
+	:linenos:
 
-   // AbstractEntity Class
-   public class AbstractEntity
-   {
-      public int Id { get; set; }
-      private static int nextId = 1;
+	// AbstractEntity Class
+	public class AbstractEntity
+	{
+		public int Id { get; set; }
+		private static int nextId = 1;
 
-      public AbstractEntity()
-      {
-         Id = nextId;
-         nextId++;
-      }
-   }
+		public AbstractEntity()
+		{
+			Id = nextId;
+			nextId++;
+		}
+	}
 
 2. Update the ``Computer`` class.  Remember ``Computer`` extends ``AbstractEntity``.
   
@@ -165,30 +162,31 @@ Testing ``AbstractEntity`` using MSTest:
 3. Testing the ``Computer`` Class 
 
 .. sourcecode:: csharp
+	:linenos:
 
-   //Computer Class
-   [TestMethod]
-      public void TestInheritsId()
-      {
-         Computer testingComputer = new Computer(2, 3, true);
-         Assert.AreEqual(1, testingComputer.Id);
+	//Computer Class
+	[TestMethod]
+	public void TestInheritsId()
+	{
+		Computer testingComputer = new Computer(2, 3, true);
+		Assert.AreEqual(1, testingComputer.Id);
 
-         Computer testingComputer2 = new Computer(4, 6, true);
-         Assert.AreEqual(2, testingComputer2.Id);
-      }
+		Computer testingComputer2 = new Computer(4, 6, true);
+		Assert.AreEqual(2, testingComputer2.Id);
+	}
 
-#. Testing the ``Smartphone`` class
+4. Testing the ``Smartphone`` class
 
 .. sourcecode:: csharp
+	:linenos:
 
-   //Smartphone class
-   [TestMethod]
-      public void TestInheritingBaseConstructor()
-      {
-            SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
-            Assert.IsNotNull(testingSmartphone.Id);
-            //...
-      }   
-
+	//Smartphone class
+	[TestMethod]
+	public void TestInheritingBaseConstructor()
+	{
+		SmartPhone testingSmartphone = new SmartPhone(2, 3, true, 800);
+		Assert.IsNotNull(testingSmartphone.Id);
+		//...
+	}   
 
 :ref:`Back to the exercises <inheritance-exercises>`

@@ -1,5 +1,5 @@
-Interfaces and Polymorphism Exercise Solutions
-==============================================
+Exercise Solutions: Interfaces and Polymorphism
+===============================================
 
 Sorting Flavors by Cones by Cost
 --------------------------------
@@ -11,6 +11,7 @@ Sorting Flavors by Cones by Cost
 2. Implement the ``IComparer`` interface and evaluate Cone objects by cost
 
 .. sourcecode:: csharp
+   :linenos:
 
    public class ConeComparer : IComparer<Cone>
    {
@@ -23,15 +24,15 @@ Sorting Flavors by Cones by Cost
          double diff = x.Cost - y.Cost;
          if(diff == 0)
          {
-               return 0;
+            return 0;
          }
          else if (diff < 0)
          {
-               return -1;
+            return -1;
          }
          else
          {
-               return 1;
+            return 1;
          }
       }
    }
@@ -44,6 +45,7 @@ Sorting Flavors by Cones by Cost
 .. _interfaces-sort:
 
 .. sourcecode:: csharp
+   :linenos:
 
    ConeComparer compareCones = new ConeComparer();
    availableCones.Sort(compareCones);

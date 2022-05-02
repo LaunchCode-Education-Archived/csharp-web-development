@@ -1,5 +1,5 @@
-Classes Part 2 Exercise Solutions
-=================================
+Exercise Solutions: Classes Part 2
+==================================
 
 ``GetGradeLevel`` Method
 ------------------------
@@ -9,27 +9,27 @@ Classes Part 2 Exercise Solutions
 This method returns the student’s level based on the number of credits they have earned.
 
 .. sourcecode:: csharp
+   :linenos:
 
    public string GetGradeLevel(int credits)
    {
       if (credits <= 29)
       {
-            return "freshman";
+         return "freshman";
       }
       else if (credits <= 59)
       {
-            return "sophomore";
+         return "sophomore";
       }
       else if (credits <= 89)
       {
-            return "junior";
+         return "junior";
       }
       else
       {
-            return "senior";
+         return "senior";
       }
    }
-
 
 :ref:`Back to the Exercises <classes-part-2-exercises>`
 
@@ -41,6 +41,7 @@ This method returns the student’s level based on the number of credits they ha
 This method accepts two parameters—a number of course credits and a numerical grade (0.0-4.0).
 
 .. sourcecode:: csharp
+   :linenos:
 
    public void AddGrade(int courseCredits, double grade)
    {
@@ -51,9 +52,7 @@ This method accepts two parameters—a number of course credits and a numerical 
       Gpa = totalQualityScore / NumberOfCredits;
    }
 
-
 :ref:`Back to the Exercises <classes-part-2-exercises>`
-
 
 ``ToString`` & ``Equals``
 -------------------------
@@ -64,32 +63,33 @@ This method accepts two parameters—a number of course credits and a numerical 
 Add custom Equals() and ToString() methods to the Student class.
 
 .. sourcecode:: csharp
+   :linenos:
 
    public override string ToString()
-      {
-         return Name + " (Credits: " + NumberOfCredits + ", GPA: " + Gpa + ")";
-      }
+   {
+      return Name + " (Credits: " + NumberOfCredits + ", GPA: " + Gpa + ")";
+   }
 
    public override bool Equals(object obj)
+   {
+      if (obj == this)
       {
-         if (obj == this)
-         {
-               return true;
-         }
-
-         if (obj == null)
-         {
-               return false;
-         }
-
-         if (obj.GetType() != GetType())
-         {
-               return false;
-         }
-
-         Student studentObj = obj as Student;
-         return StudentId == studentObj.StudentId;
+         return true;
       }
+
+      if (obj == null)
+      {
+         return false;
+      }
+
+      if (obj.GetType() != GetType())
+      {
+         return false;
+      }
+
+      Student studentObj = obj as Student;
+      return StudentId == studentObj.StudentId;
+   }
    
 
 :ref:`Back to the Exercises <classes-part-2-exercises>`

@@ -13,5 +13,6 @@ Exercise Solutions
    interfaces
    controllers-routes
    exceptions
+   razor-views
    
    

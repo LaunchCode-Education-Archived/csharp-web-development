@@ -18,6 +18,8 @@ As always, give the branch a useful name, like ``view-exercises``.
 
 Now, let's add descriptions to our events.
 
+.. _ex-part-1:
+
 Expanding our Events Schedule
 -----------------------------
 
@@ -38,6 +40,8 @@ Expanding our Events Schedule
       You'll want to also add some ``label`` tags to your form to let the user know what 
       data they are entering.
 
+   :ref:`Check your solution<view-dictionary>`
+
 #. Back in ``EventsController.cs``, add the description parameter to the ``NewEvent`` action method
    and within the method, add the new event key/value pair to the ``Events`` dictionary.
 
@@ -46,8 +50,13 @@ Expanding our Events Schedule
       Whatever value you provided in the ``name`` attribute of your new description field 
       is the name of the parameter.
 
+   :ref:`Check your solution<view-kvp>`
+
 #. Now to ``Events/Index.cshtml``. Replace the ``ul`` with a ``table`` to display event names 
    and descriptions.
 
+   :ref:`Check your solution<view-table>`
+
 #. Lastly, modify ``_Layout.cshtml`` to display links for the Coding Events app (only ``Events/Index`` and ``Events/Add`` for now).
 
+:ref:`Check your solution<view-layout>`

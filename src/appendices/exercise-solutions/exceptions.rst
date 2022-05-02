@@ -32,12 +32,9 @@ Divide by Zero
 .. sourcecode:: csharp
    :linenos:
 
-   double a = 9.9;
-   double b = 0.0;
-
    try
    {
-      Divide(a, b);
+      Divide(num1, num2);
    }
    catch (ArgumentOutOfRangeException e)
    {

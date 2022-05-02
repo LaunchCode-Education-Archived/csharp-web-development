@@ -46,11 +46,11 @@ Part 2: ``POST`` Request
       switch (language)
       {
          case "french":
-         helloTranslation = "Bonjour ";
-         break;
+            helloTranslation = "Bonjour ";
+            break;
          case "english":
-         helloTranslation = "Hello ";
-         break;
+            helloTranslation = "Hello ";
+            break;
          // ... add any other languages here ...
       }
       return helloTranslation + name;

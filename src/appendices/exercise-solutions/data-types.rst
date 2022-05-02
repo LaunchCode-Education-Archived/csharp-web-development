@@ -57,6 +57,7 @@ More on Numeric Types
 1. Write a program that asks a user for the number of miles they have driven and the amount of gas they’ve consumed (in gallons), and print their miles-per-gallon.
 
 .. sourcecode:: csharp
+   :linenos:
 
    Console.WriteLine("How many miles did you drive on your trip?");
    string mi = Console.ReadLine();
@@ -89,6 +90,7 @@ Strings
       conversation?'``
 
 .. sourcecode:: csharp
+   :linenos:
 
    string alice = @"Alice was beginning to get very tired of sitting by her sister on the
    bank, and of having nothing to do: once or twice she had peeped into the

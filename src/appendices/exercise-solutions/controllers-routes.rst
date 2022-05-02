@@ -1,5 +1,5 @@
-Controllers and Routes Exercise Solutions
-=========================================
+Exercise Solutions: Controllers and Routes
+==========================================
 
 Part 1: ``GET`` Request
 -----------------------
@@ -27,10 +27,7 @@ that asks the user for both their name and the language they would like to be gr
       return Content(html, "text/html");
    }
 
-
-
 :ref:`Return to exercises<controller-routes-exercises-1>`
-
 
 Part 2: ``POST`` Request
 ------------------------

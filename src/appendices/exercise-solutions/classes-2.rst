@@ -1,5 +1,5 @@
-Classes Part 2 Exercise Solutions
-=================================
+Exercise Solutions: Classes Part 2
+==================================
 
 ``GetGradeLevel`` Method
 ------------------------
@@ -31,7 +31,6 @@ This method returns the student’s level based on the number of credits they ha
       }
    }
 
-
 :ref:`Back to the Exercises <classes-part-2-exercises>`
 
 ``AddGrade`` Method
@@ -42,6 +41,7 @@ This method returns the student’s level based on the number of credits they ha
 This method accepts two parameters—a number of course credits and a numerical grade (0.0-4.0).
 
 .. sourcecode:: csharp
+   :linenos:
 
    public void AddGrade(int courseCredits, double grade)
    {
@@ -52,9 +52,7 @@ This method accepts two parameters—a number of course credits and a numerical 
       Gpa = totalQualityScore / NumberOfCredits;
    }
 
-
 :ref:`Back to the Exercises <classes-part-2-exercises>`
-
 
 ``ToString`` & ``Equals``
 -------------------------

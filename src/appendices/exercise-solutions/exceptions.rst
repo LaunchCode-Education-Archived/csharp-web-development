@@ -1,5 +1,5 @@
-Exceptions Exercise Solutions
-=============================
+Exercise Solutions: Exceptions
+==============================
 
 Divide by Zero
 --------------
@@ -11,6 +11,7 @@ Divide by Zero
 * However, if ``y`` is zero, you should throw an exception.
 
 .. sourcecode:: csharp
+   :linenos:
 
    static double Divide(double x, double y)
    {
@@ -29,6 +30,7 @@ Divide by Zero
 * Put your ``try/catch`` block in ``Main()`` to test out your error-handling skills. If an exception is caught, make sure to print out the error message.
 
 .. sourcecode:: csharp
+   :linenos:
 
    try
    {

@@ -2,7 +2,7 @@ Exercise Solutions
 ==================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    data-types
    control-flow
@@ -10,7 +10,7 @@ Exercise Solutions
    classes-2
    unit-testing
    inheritance
-   interfaces-solutions
+   interfaces
    controllers-routes
    exceptions
    razor-views

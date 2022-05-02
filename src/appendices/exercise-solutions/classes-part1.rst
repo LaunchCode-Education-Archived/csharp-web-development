@@ -1,4 +1,4 @@
-Classes and Objects Exercises Solutions
+Exercise Solutions: Classes and Objects
 =======================================
 
 .. _classes_part1_solution-1: 
@@ -6,34 +6,31 @@ Classes and Objects Exercises Solutions
 1. Open up the file, ``Student.cs``, and update the starter code to make use of auto-implemented properties.
 
 .. sourcecode:: csharp
-    :linenos:
+   :linenos:
 
-    public class Student
-    {
-        private static int nextStudentId = 1;
-        public string Name { get; set; }
-        public int StudentId { get; set; }
-        public int NumberOfCredits { get; set; } = 0;
-        public double Gpa { get; set; } = 0.0;
+	public class Student
+	{
+		private static int nextStudentId = 1;
+		public string Name { get; set; }
+		public int StudentId { get; set; }
+		public int NumberOfCredits { get; set; } = 0;
+		public double Gpa { get; set; } = 0.0;
 
-        public Student(string name, int studentId,
-            int numberOfCredits, double gpa)
-        {
-            Name = name;
-            StudentId = studentId;
-            NumberOfCredits = numberOfCredits;
-            Gpa = gpa;
-        }
+		public Student(string name, int studentId, int numberOfCredits, double gpa)
+		{
+			Name = name;
+			StudentId = studentId;
+			NumberOfCredits = numberOfCredits;
+			Gpa = gpa;
+		}
 
-        public Student(string name, int studentId)
-            : this(name, studentId, 0, 0) { }
+		public Student(string name, int studentId): this(name, studentId, 0, 0) { }
 
-        public Student(string name)
-            : this(name, nextStudentId)
-        {
-            nextStudentId++;
-        }
-    }
+		public Student(string name): this(name, nextStudentId)
+		{
+			nextStudentId++;
+		}
+	}
 
 :ref:`Back to the exercises <classes_part1-exercises1>`
 
@@ -44,13 +41,14 @@ Classes and Objects Exercises Solutions
    because you are a C# superstar!
 
 .. sourcecode:: csharp
+	:linenos:
 
-    public static void Main(string[] args)
-    {
-        // TODO: Instantiate your objects and test your exercise solutions with print statements here.
-        Student kimberly = new Student("Kimberly", 1, 1, 4.0);
-        Console.WriteLine("The Student class works! " + kimberly.Name + " is a student!");
-    }
+	public static void Main(string[] args)
+	{
+		// TODO: Instantiate your objects and test your exercise solutions with print statements here.
+		Student kimberly = new Student("Kimberly", 1, 1, 4.0);
+		Console.WriteLine("The Student class works! " + kimberly.Name + " is a student!");
+	}
 
 :ref:`Back to the exercises <classes_part1-exercises2>`
 
@@ -62,20 +60,21 @@ Classes and Objects Exercises Solutions
    or ``Dictionary``, and you should use your ``Student`` class.
 
 .. sourcecode:: csharp
+	:linenos:
 
-    // Create a new file Course.cs
-    
-    using System;
-    using System.Collections.Generic;
+	// Create a new file Course.cs
 
-    namespace SchoolPractice
-    {
-        public class Course
-        {
-            private string topic;
-            private Teacher instructor;
-            private List<Student> enrolledStudents;
-        }
-    }
+	using System;
+	using System.Collections.Generic;
+
+	namespace SchoolPractice
+	{
+		public class Course
+		{
+			private string topic;
+			private Teacher instructor;
+			private List<Student> enrolledStudents;
+		}
+	}
 
 :ref:`Back to the exercises <classes_part1-exercises3>`

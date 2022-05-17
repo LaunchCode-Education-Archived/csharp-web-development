@@ -15,5 +15,6 @@ Exercise Solutions
    exceptions
    razor-views
    models
+   model-validation
    
    

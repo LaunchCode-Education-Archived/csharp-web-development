@@ -1,3 +1,5 @@
+.. _model-validation-exercises:
+
 Exercises: ViewModels and Model Validation
 ==========================================
 
@@ -18,10 +20,14 @@ Event information to add:
 #. Add a property to collect information about where the event will take place. This property should not be 
    null or blank. 
 
+   :ref:`Check your solutions<mv-ex-1>`
+
 #. Add a property to collect information about the number of attendees for the event. Valid values for this 
    property should be any number between zero and 100,000.
 
 #. Add columns for the location and number of attendees to the ``Events/Index.cshtml`` view.
+
+   :ref:`Check your solutions<mv-ex-3>`
 
 Bonus Mission
 -------------

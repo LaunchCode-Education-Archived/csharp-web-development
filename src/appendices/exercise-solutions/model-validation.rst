@@ -31,8 +31,6 @@ This property should not be null or blank.
    public string Location { get; set; }
 
 
-
-
 :ref:`Return to exercises<model-validation-exercises>`
 
 .. _mv-ex-3:

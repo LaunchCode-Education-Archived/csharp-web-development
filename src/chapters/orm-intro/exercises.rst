@@ -26,10 +26,14 @@ First, create a new class called ``EventCategory`` in the ``Models`` directory.
 
 ``EventCategory`` represents data that will be stored in our database.
 
+:ref:`Check your solutions<orm1-ex-1>`
+
 Adding to ``DbContext``
 -----------------------
 
 Once you have created ``EventCategory``, you need to add to ``EventDbContext`` to set up a table in the database for storing categories.
+
+:ref:`Check your solutions<orm1-ex-2>`
 
 Adding a New Table to the Database
 ----------------------------------
@@ -53,6 +57,8 @@ For now, we are just going to set up our ``Index()`` action method so that it di
 #. Responds to ``GET`` requests at ``EventCategory/Index`` and returns a view called ``Index.cshtml``.
 #. Pass the ``DbContext`` category values as a list into the view template as a model.
 
+:ref:`Check your solutions<orm1-ex-3>`
+
 Adding a View
 -------------
 
@@ -64,6 +70,8 @@ Add a new view called ``Index.cshtml``.
 #. Use the list passed in from the action method in the controller as a model to populate the view.
 #. An ``h1`` with an appropriate heading for the page.
 #. A table that will display all of the category names of the event categories stored in our database.
+
+:ref:`Check your solutions<orm1-ex-4>`
 
 Test Your Application
 ---------------------

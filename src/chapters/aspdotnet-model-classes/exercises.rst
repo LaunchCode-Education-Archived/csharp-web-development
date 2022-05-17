@@ -42,12 +42,12 @@ The edit form will resemble the form used to create an event.
 
 #. Add the necessary annotations to the ``SubmitEditEventForm()`` method for it to live at the path ``/Events/Edit``.
 
-   :ref:`Check your solution<model-ex-1>`
+   :ref:`Check your solution<model-ex-2>`
 
 #. You’ll need to configure the route for ``Edit()`` to include the path variable ``eventId``, 
    so that paths like ``/Events/Edit/3`` will work.
 
-   :ref:`Check your solution<model-ex-2>`
+   :ref:`Check your solution<model-ex-3>`
 
 #. Create an ``Edit.cshtml`` view in ``Views/Events``.
 
@@ -88,7 +88,7 @@ The edit form will resemble the form used to create an event.
       You may not have named your ``ViewBag`` property ``eventToEdit``.
       Make sure you are using the name you gave your property!
 
-   :ref:`Check your solution<model-ex-5>`
+   :ref:`Check your solution<model-ex-8>`
 
 #. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads ``“Edit Event
    NAME (id=ID)”`` where ``"NAME"`` and ``"ID"`` are replaced by the values for the

@@ -1,7 +1,9 @@
+.. _model-ex-2:
+
 Exercises Solutions: Edit Model Classes
 =======================================
 
-.. _model-ex-1:
+.. _model-ex-3:
 
 2. Add the necessary annotations to the ``SubmitEditEventForm()`` method for it to live at the path ``/Events/Edit``.  See **Line 2**.
 
@@ -17,7 +19,7 @@ Exercises Solutions: Edit Model Classes
    
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-2:
+.. _model-ex-5:
 
 
 3. You’ll need to configure the route for ``Edit()`` to include the path variable ``eventId``, so that paths like ``/Events/Edit/3`` will work.  See **Line 2**.
@@ -35,7 +37,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-5:
+.. _model-ex-6:
 
 5. Copy the code from ``Add.cshtml`` into ``Edit.cshtml``. 
    
@@ -61,7 +63,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-6:
+.. _model-ex-7:
 
 6. Back in ``EventsController``, round out the ``Edit()`` method.
 
@@ -79,7 +81,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-7:
+.. _model-ex-8:
 
 7. Within the form fields in ``Edit.cshtml``,
 
@@ -107,7 +109,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-8:
+.. _model-ex-9:
 
 8. Add another input to hold the id of the event being edited. This should be hidden from the user:
 
@@ -123,7 +125,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-9:
+.. _model-ex-10:
 
 9. Back in the ``Edit()`` action method, add a title to ``ViewBag`` that reads ``“Edit Event NAME (id=ID)”`` where ``"NAME"`` and ``"ID"`` are replaced by the values for the given event.
 
@@ -143,7 +145,7 @@ Exercises Solutions: Edit Model Classes
 
    :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-10:
+.. _model-ex-11:
 
 10. In ``SubmitEditEventForm()``,
    
@@ -166,7 +168,7 @@ c. Redirect the user to ``/Events`` (the event listing page).
 
 :ref:`Back to exercises<model-exercises>`
 
-.. _model-ex-11:
+
 
 11. In ``Index.cshtml``, add a link to edit the event as a column in the event table.  See **Line 38**.
 

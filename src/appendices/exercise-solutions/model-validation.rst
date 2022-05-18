@@ -35,30 +35,32 @@ This property should not be null or blank.
 
 .. _mv-ex-3:
 
-3. Add columns for the location and number of attendees to the Events/Index.cshtml view.
+3. Add columns for the location and number of attendees to the ``Events/Index.cshtml`` view.
+Line numbers for reference only.
 
 
 .. sourcecode:: html
+   :linenos:
 
-   <!-- inside your table -->
-      <th>
-         Location
-      </th>
-      <th>
-         Number of Attendees
-      </th>
-      @foreach (var evt in Model)
-      {
-         <tr>
-               <td>@evt.Id</td>
-               <td>@evt.Name</td>
-               <td>@evt.Description</td>
-               <td>@evt.ContactEmail</td>
-               <td>@evt.Location</td>
-               <td>@evt.NumberOfAttendees</td>
-         </tr>
-      }
-   </table>
+      <!-- inside your table -->
+         <th>
+            Location
+         </th>
+         <th>
+            Number of Attendees
+         </th>
+         @foreach (var evt in Model)
+         {
+            <tr>
+                  <td>@evt.Id</td>
+                  <td>@evt.Name</td>
+                  <td>@evt.Description</td>
+                  <td>@evt.ContactEmail</td>
+                  <td>@evt.Location</td>
+                  <td>@evt.NumberOfAttendees</td>
+            </tr>
+         }
+      </table>
 
 
 :ref:`Return to exercises<model-validation-exercises>`

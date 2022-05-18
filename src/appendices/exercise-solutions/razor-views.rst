@@ -1,6 +1,8 @@
 Exercise Solutions: Razor Views
 ===============================
 
+Line numbers are for reference. They may not match your code exactly.
+
 Expanding our Events Schedule
 -----------------------------
 
@@ -47,24 +49,24 @@ Expanding our Events Schedule
 .. sourcecode:: csharp
    :linenos:
 
-   // inside the "else" block 
-   <table>
-      <tr>
-         <th>
-            Name
-         </th>
-         <th>
-            Description
-         </th>
-      </tr>
-      @foreach (KeyValuePair<string, string> evt in ViewBag.events)
-      {
+      // inside the "else" block 
+      <table>
          <tr>
-            <td>@evt.Key</td>
-            <td>@evt.Value</td>
+            <th>
+               Name
+            </th>
+            <th>
+               Description
+            </th>
          </tr>
-      }
-   </table>
+         @foreach (KeyValuePair<string, string> evt in ViewBag.events)
+         {
+            <tr>
+               <td>@evt.Key</td>
+               <td>@evt.Value</td>
+            </tr>
+         }
+      </table>
 
 .. _view-layout:
 
@@ -74,17 +76,18 @@ Expanding our Events Schedule
 
 
 .. sourcecode:: html
+   :linenos:
 
-   <header>
-   <!-- html code -->
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-         <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item">
-               <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Add">Add</a>
-            </li>
-         </ul>
-      </div>
-   <!-- more html -->
-   </header>
+      <header>
+      <!-- html code -->
+         <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+               <li class="nav-item">
+                  <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Add">Add</a>
+               </li>
+            </ul>
+         </div>
+      <!-- more html -->
+      </header>
 
 :ref:`Return to exercises<ex-part-1>`

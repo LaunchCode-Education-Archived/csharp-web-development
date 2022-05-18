@@ -1,6 +1,8 @@
 Exercise Solutions: Exceptions
 ==============================
 
+Line numbers are for reference. They may not match your code exactly.
+
 Divide by Zero
 --------------
 
@@ -13,17 +15,17 @@ Divide by Zero
 .. sourcecode:: csharp
    :linenos:
 
-   static double Divide(double x, double y)
-   {
-      if (y == 0.0)
+      static double Divide(double x, double y)
       {
-         throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
+         if (y == 0.0)
+         {
+            throw new ArgumentOutOfRangeException("y", "You cannot divide by zero!");
+         }
+         else
+         {
+            return x / y;
+         }
       }
-      else
-      {
-         return x / y;
-      }
-   }
 
 .. _try-catch:
 
@@ -32,14 +34,14 @@ Divide by Zero
 .. sourcecode:: csharp
    :linenos:
 
-   try
-   {
-      Divide(num1, num2);
-   }
-   catch (ArgumentOutOfRangeException e)
-   {
-      Console.WriteLine(e.Message);
-   }
+      try
+      {
+         Divide(num1, num2);
+      }
+      catch (ArgumentOutOfRangeException e)
+      {
+         Console.WriteLine(e.Message);
+      }
 
 :ref:`Back to the exercises<exercise-1>`
 
@@ -59,23 +61,23 @@ The ``CheckFileExtension()`` function should do the following:
 .. sourcecode:: csharp
    :linenos:
 
-   static int CheckFileExtension(string fileName)
-   {
-      if (fileName == null || fileName == "")
+      static int CheckFileExtension(string fileName)
       {
-         throw new ArgumentNullException("fileName","Student did not submit any work!");
-      }
-      else
-      {
-         if (fileName.Substring(fileName.Length - 3, 3) == ".cs")
+         if (fileName == null || fileName == "")
          {
-            return 1;
+            throw new ArgumentNullException("fileName","Student did not submit any work!");
          }
          else
          {
-            return 0;
+            if (fileName.Substring(fileName.Length - 3, 3) == ".cs")
+            {
+               return 1;
+            }
+            else
+            {
+               return 0;
+            }
          }
       }
-   }
 
 :ref:`Back to the exercises<exercise-2>`

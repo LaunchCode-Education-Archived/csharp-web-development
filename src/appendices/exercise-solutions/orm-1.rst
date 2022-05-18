@@ -3,6 +3,8 @@
 Exercise Solutions: OMG the ORM!
 ================================
 
+Line numbers are for reference. They may not match your code exactly.
+
 The ``EventCategory`` Class
 ---------------------------
 
@@ -15,22 +17,23 @@ The ``EventCategory`` Class
 ``EventCategory`` represents data that will be stored in our database.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   public class EventCategory
-    {
-        public string Name { get; set; }
+      public class EventCategory
+      {
+         public string Name { get; set; }
 
-        public int Id { get; set; }
+         public int Id { get; set; }
 
-        public EventCategory(string name)
-        {
+         public EventCategory(string name)
+         {
             Name = name;
-        }
+         }
 
-        public EventCategory()
-        {
-        }
-    }
+         public EventCategory()
+         {
+         }
+      }
 
 
 :ref:`Return to exercises<orm1-exercises>`
@@ -58,27 +61,29 @@ Create ``EventCategoryController`` in the ``Controllers`` directory. To get our 
 ``Index()`` needs to do the following:
    #. Responds to ``GET`` requests at ``EventCategory/Index`` and returns a view called ``Index.cshtml``.
    #. Pass the ``DbContext`` category values as a list into the view template as a model
+   
 
 .. sourcecode:: csharp
+   :linenos:
 
-   public class EventCategoryController : Controller
-    {
-        private EventDbContext context;
+      public class EventCategoryController : Controller
+      {
+         private EventDbContext context;
 
-        public EventCategoryController(EventDbContext dbContext)
-        {
+         public EventCategoryController(EventDbContext dbContext)
+         {
             context = dbContext;
-        }
+         }
 
-        // GET: /<controller>/
-        [HttpGet]
-        public IActionResult Index()
-        {
+         // GET: /<controller>/
+         [HttpGet]
+         public IActionResult Index()
+         {
             ViewBag.title = "All Categories";
             List<EventCategory> categories = context.Categories.ToList();
             return View(categories);
-        }
-    }
+         }
+      }
 
 :ref:`Return to exercises<orm1-exercises>`
 
@@ -93,21 +98,22 @@ Adding a View
    #. A table that will display all of the category names of the event categories stored in our database.
 
    .. sourcecode:: html
+      :linenos:
 
-      @model List<CodingEventsDemo.Models.EventCategory>
+         @model List<CodingEventsDemo.Models.EventCategory>
 
-      <h1>All Event Categories</h1>
+         <h1>All Event Categories</h1>
 
-      <table>
-         <tr>
-         <th>Category Name</th>
-         </tr>
-         @foreach(EventCategory category in Model)
-         {
+         <table>
             <tr>
-                  <td>@category.Name</td>
+            <th>Category Name</th>
             </tr>
-         }
-      </table>
+            @foreach(EventCategory category in Model)
+            {
+               <tr>
+                     <td>@category.Name</td>
+               </tr>
+            }
+         </table>
 
 :ref:`Return to exercises<orm1-exercises>`

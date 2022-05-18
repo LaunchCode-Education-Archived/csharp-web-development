@@ -60,10 +60,12 @@ The Endpoints
 
 This branch of the API has four endpoints: 
 
-#. :ref:`get_coding_events`
-#. :ref:`get_single_coding_event`
-#. :ref:`create_coding_event`
-#. :ref:`delete_coding_event`
+#. :ref:`GET Coding Events<get_coding_events>`
+#. :ref:`GET a Single Coding Event<get-single-coding-event>`
+#. :ref:`Create a Coding Event<create_coding_event>`
+#. :ref:`Delete a Coding Event<delete_coding_event>`
+
+.. _get_coding_events:
 
 We'll ask you to consider some details of how to describe these endpoints.
 
@@ -71,7 +73,8 @@ Remember, an endpoint is made up of a path (to the resource) and a method (actio
 resource). Because we only have one resource, each of our endpoints share a common entry-point path of ``/api/events``. Request and response bodies are all 
 in JSON, or more specifically, they have a ``Content-Type`` header value of ``application/json``.
 
-.. _get_coding_events:
+
+.. _web-api-exercises: 
 
 GET Coding Events
 ~~~~~~~~~~~~~~~~~
@@ -104,7 +107,10 @@ If the current state of the collection is empty, then we will just get back an e
    #. Is there a request body being sent? What is included in it?
    #. If the request is successful, what information can we expect to be included in the response?
 
-.. _get_single_coding_event:
+
+.. _get-single-coding-event:
+
+:ref:`Check your solutions<web-api-ex-1>`
 
 GET a Single Coding Event
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,6 +124,8 @@ When describing entity endpoints, we use a path variable notation, ``{variableNa
 If an entity with the given ``codingEventId`` is found, we will get a single ``CodingEvent`` JSON object back. If it is not found, we will receive a 
 response with a ``404`` status code to indicate the failed lookup.
 
+.. _create_coding_event:
+
 .. admonition:: Question
 
    Using our endpoint shorthand, how would we describe this action?
@@ -130,7 +138,7 @@ response with a ``404`` status code to indicate the failed lookup.
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
 
-.. _create_coding_event:
+
 
 Create a Coding Event
 ~~~~~~~~~~~~~~~~~~~~~
@@ -192,6 +200,8 @@ If the request fails because of a client error, then it will respond with a ``40
 - ``Title``: 10-100 characters
 - ``Description``: less than 1000 characters
 
+.. _delete_coding_event:
+ 
 .. admonition:: Question
 
    Using our endpoint shorthand, how would we describe this action?
@@ -204,7 +214,7 @@ If the request fails because of a client error, then it will respond with a ``40
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
 
-.. _delete_coding_event:
+
 
 Delete a Coding Event
 ~~~~~~~~~~~~~~~~~~~~~

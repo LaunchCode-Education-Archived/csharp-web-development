@@ -1,6 +1,8 @@
 Exercise Solutions: Control Flow & Collections
 ==============================================
 
+Line numbers are for reference. They may not match your code exactly.
+
 Array Practice
 --------------
 
@@ -9,11 +11,12 @@ Array Practice
 2. Loop through the array and print out each value.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   foreach(int num in numberArray)
-   {
-      Console.WriteLine(num);
-   }
+      foreach(int num in numberArray)
+      {
+         Console.WriteLine(num);
+      }
 
 .. admonition:: Note
 
@@ -32,10 +35,11 @@ String Practice
 3. Print the array of words to verify that your code works.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   string sentence = "I would not, could not, in a box. I would not, could not with a fox. I will not eat them in a house. I will not eat them with a mouse.";
-   string[] words = sentence.Split(" ");
-   Console.WriteLine(string.Join("/", words));
+      string sentence = "I would not, could not, in a box. I would not, could not with a fox. I will not eat them in a house. I will not eat them with a mouse.";
+      string[] words = sentence.Split(" ");
+      Console.WriteLine(string.Join("/", words));
 
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 
@@ -45,24 +49,23 @@ List Practice
 .. _control-flow-solution-3: 
 
 
-1. Write a static method to find the sum of all the even numbers in a
-   List. 
+1. Write a static method to find the sum of all the even numbers in a List. 
 
 .. sourcecode:: csharp
    :linenos:
 
-   static int sumEven(List<int> arr)
-   {
-      int total = 0;
-      foreach (int integer in arr)
+      static int sumEven(List<int> arr)
       {
-         if (integer % 2 == 0)
+         int total = 0;
+         foreach (int integer in arr)
          {
-            total += integer;
+            if (integer % 2 == 0)
+            {
+               total += integer;
+            }
          }
+         return total;
       }
-      return total;
-   }
 
 
 3. Write a static method to print out each word in a list that has exactly 5 letters.
@@ -70,40 +73,40 @@ List Practice
 .. sourcecode:: csharp
    :linenos:
 
-   static void printFiveLetterWords(List<string> wordlist)
-   {
-      foreach (string word in wordlist)
+      static void printFiveLetterWords(List<string> wordlist)
       {
-         if (word.Length == 5)
+         foreach (string word in wordlist)
          {
-            Console.WriteLine(word);
+            if (word.Length == 5)
+            {
+               Console.WriteLine(word);
+            }
          }
       }
-   }
 
 4. Modify your code to prompt the user to enter the word length for the search.
 
 .. sourcecode:: csharp
    :linenos:
 
-   Console.WriteLine("Enter a word length: ");
-   string numInput = Console.ReadLine();
-   int numChars = int.Parse(numInput);
+      Console.WriteLine("Enter a word length: ");
+      string numInput = Console.ReadLine();
+      int numChars = int.Parse(numInput);
 
-   // Call the method to print out list words of the chosen length:
-   printXLetterWords(wordList, numChars);
+      // Call the method to print out list words of the chosen length:
+      printXLetterWords(wordList, numChars);
 
 
-   static void printXLetterWords(List<string> wordlist, int length)
-   {
-      foreach (string word in wordlist)
+      static void printXLetterWords(List<string> wordlist, int length)
       {
-         if (word.Length == length)
+         foreach (string word in wordlist)
          {
-            Console.WriteLine(word);
+            if (word.Length == length)
+            {
+               Console.WriteLine(word);
+            }
          }
       }
-   }
 
 :ref:`Back to the exercises <control-flow-collections-exercises>`
 
@@ -117,17 +120,17 @@ Dictionary Practice
 .. sourcecode:: csharp
    :linenos:
 
-   Console.WriteLine("Enter your students' names and ID numbers (or ENTER to finish):");
+      Console.WriteLine("Enter your students' names and ID numbers (or ENTER to finish):");
 
-   Console.WriteLine("Student Name: ");
-   newStudent = Console.ReadLine();
+      Console.WriteLine("Student Name: ");
+      newStudent = Console.ReadLine();
 
-   if (newStudent!= "")
-   {
-      Console.WriteLine("ID: ");
-      int newID = int.Parse(Console.ReadLine());
-      students.Add(newID, newStudent);
-   }
+      if (newStudent!= "")
+      {
+         Console.WriteLine("ID: ");
+         int newID = int.Parse(Console.ReadLine());
+         students.Add(newID, newStudent);
+      }
 
 
 2. The keys should be the IDs and the values should be the names
@@ -135,14 +138,14 @@ Dictionary Practice
 .. sourcecode:: csharp
    :linenos:
 
-   Console.WriteLine("\nClass roster:");
+      Console.WriteLine("\nClass roster:");
 
-   foreach (KeyValuePair<int, string> student in students)
-   {
-      Console.WriteLine(student.Value + "'s ID: " + student.Key);
-   }
+      foreach (KeyValuePair<int, string> student in students)
+      {
+         Console.WriteLine(student.Value + "'s ID: " + student.Key);
+      }
 
-   Console.WriteLine("Number of students in roster: " + students.Count);
+      Console.WriteLine("Number of students in roster: " + students.Count);
 
 
 .. admonition:: Note

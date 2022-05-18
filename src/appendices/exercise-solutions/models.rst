@@ -3,6 +3,8 @@
 Exercises Solutions: Edit Model Classes
 =======================================
 
+Line numbers are for reference. They may not match your code exactly.
+
 .. _model-ex-3:
 
 2. Add the necessary annotations to the ``SubmitEditEventForm()`` method for it to live at the path ``/Events/Edit``.  See **Line 2**.
@@ -114,7 +116,7 @@ Exercises Solutions: Edit Model Classes
 8. Add another input to hold the id of the event being edited. This should be hidden from the user:
 
    .. sourcecode:: html
-      :lineno-start: 11      
+      :lineno-start: 10      
          
             <!-- description div code here -->
             </div>

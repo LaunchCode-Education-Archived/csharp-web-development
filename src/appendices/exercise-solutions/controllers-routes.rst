@@ -1,6 +1,8 @@
 Exercise Solutions: Controllers and Routes
 ==========================================
 
+Line numbers are for reference. They may not match your code exactly.
+
 Part 1: ``GET`` Request
 -----------------------
 
@@ -12,20 +14,20 @@ that asks the user for both their name and the language they would like to be gr
 .. sourcecode:: csharp
    :linenos:
 
-   //GET: /<controller>/
-   public IActionResult Index()
-   {
-      string html = "<form method='post'>" +
-         "<input type='text' name='name' />" +
-         "<select name='language'>" +
-         "<option value='english' selected>English</option>" +
-         "<option value='french'>French</option></select>" +
-         // ... add any other languages here ... 
-         "<input type='submit' value='Greet Me!'/>" +
-         "</form>";
+      //GET: /<controller>/
+      public IActionResult Index()
+      {
+         string html = "<form method='post'>" +
+            "<input type='text' name='name' />" +
+            "<select name='language'>" +
+            "<option value='english' selected>English</option>" +
+            "<option value='french'>French</option></select>" +
+            // ... add any other languages here ... 
+            "<input type='submit' value='Greet Me!'/>" +
+            "</form>";
 
-      return Content(html, "text/html");
-   }
+         return Content(html, "text/html");
+      }
 
 :ref:`Return to exercises<controller-routes-exercises-1>`
 
@@ -40,21 +42,21 @@ Part 2: ``POST`` Request
 .. sourcecode:: csharp
    :linenos:
 
-   public static string CreateMessage(string name, string language)
-   {
-      string helloTranslation = "";
-      switch (language)
+      public static string CreateMessage(string name, string language)
       {
-         case "french":
-            helloTranslation = "Bonjour ";
-            break;
-         case "english":
-            helloTranslation = "Hello ";
-            break;
-         // ... add any other languages here ...
+         string helloTranslation = "";
+         switch (language)
+         {
+            case "french":
+               helloTranslation = "Bonjour ";
+               break;
+            case "english":
+               helloTranslation = "Hello ";
+               break;
+            // ... add any other languages here ...
+         }
+         return helloTranslation + name;
       }
-      return helloTranslation + name;
-   }
 
 
 :ref:`Return to exercises<controller-routes-exercises-2>`

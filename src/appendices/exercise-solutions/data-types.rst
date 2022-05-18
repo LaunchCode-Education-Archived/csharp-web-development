@@ -1,6 +1,8 @@
 Exercise Solutions: Data Types
 ==============================
 
+Line numbers are for reference. They may not match your code exactly.
+
 .. _data-types-solution1:
 
 Input/Output
@@ -9,10 +11,11 @@ Input/Output
 1. Write a new “Hello, World” program to prompt the user for their name and greet them by name.
 
 .. sourcecode:: csharp
+   :linenos:
 
-   Console.WriteLine("What is your name?");
-   string myName = Console.ReadLine();
-   Console.WriteLine("Hello " + myName + "!");
+      Console.WriteLine("What is your name?");
+      string myName = Console.ReadLine();
+      Console.WriteLine("Hello " + myName + "!");
 
 :ref:`Back to the exercises <data-types-exercises>`
 
@@ -59,16 +62,16 @@ More on Numeric Types
 .. sourcecode:: csharp
    :linenos:
 
-   Console.WriteLine("How many miles did you drive on your trip?");
-   string mi = Console.ReadLine();
-   int miles = Int32.Parse(mi);
+      Console.WriteLine("How many miles did you drive on your trip?");
+      string mi = Console.ReadLine();
+      int miles = Int32.Parse(mi);
 
-   Console.WriteLine("How many gallons of gas did you use?");
-   string gal = Console.ReadLine();
-   int gallons = Int32.Parse(gal);
+      Console.WriteLine("How many gallons of gas did you use?");
+      string gal = Console.ReadLine();
+      int gallons = Int32.Parse(gal);
 
-   int mpg = miles / gallons;
-   Console.WriteLine("The MPG for the trip was: " + mpg);
+      int mpg = miles / gallons;
+      Console.WriteLine("The MPG for the trip was: " + mpg);
 
 :ref:`Back to the exercises <data-types-exercises>`
 
@@ -92,25 +95,26 @@ Strings
 .. sourcecode:: csharp
    :linenos:
 
-   string alice = @"Alice was beginning to get very tired of sitting by her sister on the
-   bank, and of having nothing to do: once or twice she had peeped into the
-   book her sister was reading, but it had no pictures or conversations in
-   it, 'and what is the use of a book,' thought Alice 'without pictures or
-   conversation?'";
-   Console.WriteLine(alice);
-   Console.WriteLine("What sentence would you like to look for in the sentence above?");
-   string searchTerm = Console.ReadLine();
-   string compSearchTerm = searchTerm.ToLower();
-   string compAlice = alice.ToLower();
+      string alice = @"Alice was beginning to get very tired of sitting by her sister on the
+      bank, and of having nothing to do: once or twice she had peeped into the
+      book her sister was reading, but it had no pictures or conversations in
+      it, 'and what is the use of a book,' thought Alice 'without pictures or
+      conversation?'";
+      
+      Console.WriteLine(alice);
+      Console.WriteLine("What sentence would you like to look for in the sentence above?");
+      string searchTerm = Console.ReadLine();
+      string compSearchTerm = searchTerm.ToLower();
+      string compAlice = alice.ToLower();
 
-   if (compAlice.IndexOf(compSearchTerm, 0) != -1)
-   {
-      Console.WriteLine("true");
-   }
-   else 
-   {
-      Console.WriteLine("false");
-   }
+      if (compAlice.IndexOf(compSearchTerm, 0) != -1)
+      {
+         Console.WriteLine("true");
+      }
+      else 
+      {
+         Console.WriteLine("false");
+      }
 
 :ref:`Back to the exercises <data-types-exercises>`
 

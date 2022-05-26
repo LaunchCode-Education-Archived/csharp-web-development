@@ -1,7 +1,7 @@
 .. _tech-jobs-console:
 
 Assignment #1: Tech Jobs (Console Edition)
-==========================================
+===========================================
 
 Introduction
 ------------
@@ -16,7 +16,7 @@ help them easily manage data for currently available jobs. Over the next few
 weeks, you will help them build this application alongside mentors from the
 Tech Team.
 
-This first project will be a simple proof-of-concept prototype. It won’t be
+This first project will be a simple proof-of-concept prototype. It won't be
 pretty or have lots of features, but it will give you a chance to work through
 some initial concepts and get feedback from LaunchCode staff.
 
@@ -24,9 +24,7 @@ Your mentor on this project is Blake.
 
 .. figure:: figures/LC-Blake.png
    :scale: 50%
-   :alt: LaunchCode mentor Blake.
-
-Your LaunchCode mentor, Blake.
+   :alt: LaunchCode mentor image.
 
 Learning Objectives
 --------------------
@@ -42,13 +40,13 @@ In this project, you will show that you can:
 TechJobs (Console Edition)
 ---------------------------
 
-The app you must help design is a simple console (i.e. command-line) prototype
+The app you must help design is a simple console (i.e. command-line) prototype
 of the new TechJobs app. It will allow LaunchCode staff to browse and search
 listings of open jobs by employer partners.
 
 The prototype process gives everybody a chance to work out some initial ideas
 without investing a ton of time into developing a finished product. Once
-everybody likes the prototype, the Tech Team will begin work on a
+everybody likes the prototype, the Tech Team will begin work toward a
 full-fledged application.
 
 Your Assignment
@@ -56,7 +54,7 @@ Your Assignment
 
 Blake created a console application and started to fill in some features. His
 code allows users to search job listings by one of several fields. It can also
-display lists of all of the values of a given field in the system (e.g. all
+display lists of all of the values of a given field in the system (e.g. all
 employers, or all locations).
 
 Blake has now handed the task off to you. You must add a couple of features and
@@ -68,56 +66,46 @@ or more of the :ref:`bonus missions <tech-jobs-console-bonus-missions>`.
 Getting Started
 ----------------
 
-#. Visit the `repository page <https://github.com/LaunchCodeEducation/TechJobsConsole>`__
-   for this project and fork the repository to create a copy under your own
-   GitHub account.
-#. Open Visual Studio and follow the :ref:`clone-csharp-project` instructions for your operating system. 
-
+In Canvas, **Graded Assignment #1: TechJobs Console** contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details. 
 
 Before diving in and starting to code, make sure you understand what the code
-you’ve been given does. Since you’re starting with a functioning---albeit
-unfinished---program, go ahead and run it to get an idea of how it works. 
+you've been given does. Since you're starting with a functioning---albeit
+unfinished---program, go ahead and run it to get an idea of how it works. To do
+this, right-click on the project that contains the ``TechJobs`` class and select *Run Project*.
 
 .. admonition:: Warning
 
    The application will run until you force it to quit, re-prompting time
-   after time. To kill it, enter *ctrl+C* in the terminal or use the square 
-   *stop* icon in the vicinity of the triangle *run* icon. We’ll learn precisely 
-   how the program manages to work this way below.
+   after time. To kill it, press the "stop" icon in the Run pane. We'll learn precisely how the program manages to work this way below.
 
-Let’s explore the code by starting with the source of the data our program is
+Let's explore the code by starting with the source of the data our program is
 providing access to.
 
-.. admonition:: Warning
-
-   What follows is a deep-dive into the functionality of this codebase. In future 
-   assignments, you should plan to do your own exploration of the starter code.
-
 The Data File: ``jobs_data.csv``
---------------------------------
+---------------------------------
 
-Our simple app doesn’t connect to a database. If the prototype proves
-useful and we continue development, we’ll add that functionality later.
-But for now, we’ve been given a CSV (comma-separated values) file from
-the Company Team at LaunchCode that contains some recent job openings. 
-This file was exported from an Excel spreadsheet into this format, which 
-is easy for programs to read in.
+Our simple app doesn't connect to a database. If the prototype proves
+useful and we continue development, we'll add that functionality later.
+But for now, we've been given a CSV (comma-separated values) file from
+the Company Team at LaunchCode that contains some recent jobs. This file
+was exported from an Excel spreadsheet into this format, which is easy
+for programs to read in.
 
-If CSV files are new to you, don’t worry.
-CSV files are conceptually similar to simple spreadsheets in that data 
-is organized in rows and columns. The major differences are that we can't 
-carry out calculations in a CSV the way that we can with a spreadsheet, 
-but we can easily open, read, and edit CSV files in plain text editors.
+If CSV files are new to you, don't worry, they're easy to understand.
+CSV files are conceptually similar to simple spreadsheets in that they
+organize data in rows and columns. The major difference is that they
+don't have the ability to carry out calculations the way spreadsheets
+do, and you can easily open, read, and edit them in plain text editors.
 
-Open up ``jobs_data.csv``. You’ll see that the first line is:
+Open up ``jobs_data.csv``, which is in the project. You'll see that the first line is:
 
 .. sourcecode:: bash
 
    name,employer,location,position type,core competency
 
-While it isn’t required, the first line of a CSV file often represents
+While it isn't required, the first line of a CSV file often represents
 the column names. We have 5 names here, which indicates that each of our
-rows in the CSV file should have 5 fields. In this file format, a *row*
+rows in the CSV file should have 5 fields. In this file format, a "row"
 corresponds to a new line. So each line below the first will constitute
 a row of data, or a record.
 
@@ -125,43 +113,48 @@ Have a look at the data below line 1, and ask yourself the following
 questions:
 
 #. Which fields match up with which column names above?
-#. Why do some lines/rows (e.g. line 10) have more commas than others, if
+#. Why do some lines/rows (e.g. line 10) have more commas than others, if
    commas are supposed to separate columns?
-#. What role do the double-quotes play on lines 10 and 79?
+#. What role do the double-quotes play?
 
-The ``Program`` Class
----------------------
+The TechJobs Class
+-------------------
 
-The ``Program`` class contains the ``Main`` method that will drive our
-program’s functionality. It contains three methods:
+The ``TechJobs`` class contains the method that will drive our
+program's functionality. It contains three methods:
 
-#. ``Main`` - The main application runner.
-#. ``GetUserSelection`` - A utility method that displays a menu of choices and
-   returns the user’s selection.
-#. ``PrintJobs`` - This is meant to print a list of jobs to the console in a
-   nicely formatted manner, but hasn’t been implemented yet. This will be part
+#. ``RunProgram()`` - The main application runner.
+#. ``GetUserSelection()`` - A utility method that displays a menu of choices and
+   returns the user's selection.
+#. ``PrintJobs()`` - This is meant to print a list of jobs to the console in a
+   nicely formatted manner, but hasn't been implemented yet. This will be part
    of your job.
 
-Let’s look at each of these.
+Let's look at each of these.
 
-The ``Main`` Method
-^^^^^^^^^^^^^^^^^^^
+The ``RunProgram()`` Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
-The logic within ``Main`` presents menus in turn and based on the
-user’s choice, takes appropriate action.
+The logic within ``RunProgram()`` presents menus in turn, and based on the
+user's choice, takes appropriate action.
 
 It begins by declaring two local variables: ``columnChoices`` and
 ``actionChoices``. These contain information relating to the menus that
-we’ll display, and we’ll look at them in more detail later.
+we'll display, and we'll look at them in more detail later.
 
 Next, we notice a ``while loop`` that starts ``while (true)``. While we usually
 want to avoid creating infinite loops, we have a good reason for doing so in
 this case! We want our application to continually run until the user decides
 they want to quit. The simplest way to do this is to loop forever. When the
-user wants to quit, they can kill our program by pressing *ctrl+C* (a
-widely-known command to kill a console application). 
+user wants to quit, they can enter ``x`` at the initial ``View jobs by`` prompt. As you saw above, however,
+Visual Studio's *Run* pane works slightly differently and you'll need to rely on the "stop" icon to stop the program.
 
-The ``Main`` method can be summarized as follows:
+.. admonition:: Note
+
+   Another way to kill a running program from the terminal is by pressing ctrl-C (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program
+   in Visual Studio
+
+The ``RunProgram()`` method can be summarized as follows:
 
 #. Present the user with choices on how to view data: *list* or *search*.
 #. Based on that choice, prompt them for the column to apply the choice to. In
@@ -171,31 +164,30 @@ The ``Main`` method can be summarized as follows:
 #. Display the results of the request.
 #. Repeat.
 
-``Main`` simulates a *query* to an external data source:
+``RunProgram()`` simulates a *query* to an external source:
 
 #. We ask the method for data that originates from a non-C# source.
 #. The method parses and filters that data.
 #. The method presents the data in a useful manner.
 
-The ``GetUserSelection`` Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ``GetUserSelection()`` Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``GetUserSelection`` method takes in a string to display above the
-menu, to provide context for what the user is being asked. It also takes in
-a dictionary with string keys and string values. How is this used? What
-will this dictionary contain when the method runs?
+The ``GetUserSelection()`` method takes in a string to display above the
+menu, to provide context for what they are being asked. It also takes in
+a ``Dictionary`` with string keys and string values. How is this used? What
+will this ``Dictionary`` contain when the method runs?
 
-To figure this out, right-click on the method name and select *Find (All)
+To figure this out, right-click on the method name and select *Find
 References*. This will open a pane and display each location in the program
-where ``GetUserSelection`` is invoked. The first such usage is the first
-line of the ``while`` loop in the ``Main`` method:
+where ``GetUserSelection()`` is called. The first such usage is the first
+line of the main ``while loop``:
 
-.. sourcecode:: c#
-   :lineno-start: 31
+.. sourcecode:: csharp
 
-   string actionChoice = GetUserSelection("View jobs", actionChoices);
+   string actionChoice = GetUserSelection("View Jobs", actionChoices);
 
-What is this dictionary named ``actionChoices``? If we look a few lines
+What is this ``Dictionary`` named ``actionChoices``? If we look a few lines
 above, we see:
 
 .. sourcecode:: csharp
@@ -212,78 +204,78 @@ correspond to the entries in ``actionChoices``. This is, in fact, the
 case. This is the data that is used to generate the first menu we see
 when running the program.
 
-The second usage of ``GetUserSelection`` is a few lines below:
+The second usage of ``GetUserSelection()`` is a few lines below:
 
-.. sourcecode:: c#
-   :lineno-start: 35
+.. sourcecode:: csharp
+   :lineno-start: 39
 
    string columnChoice = GetUserSelection("List", columnChoices);
 
 This references ``columnChoices``, which is declared at the top of
-``Main`` and has a similar structure to ``actionChoices`` (they’re the
+``RunProgram()`` and has a similar structure to ``actionChoices`` (they're the
 same data type and are used in calls to the same method, so this
-shouldn’t be surprising). Most of the entries in ``columnChoices``
-correspond to columns in the jobs data set, but there’s one additional
-entry with key/value pair ``"all"``/``"All"``. These entries will help
+shouldn't be surprising). Most of the entries in ``columnChoices``
+correspond to columns in the jobs data set, but there's one additional
+entry with key/value pair ``"all"``/ ``"All"``. These entries will help
 us present to the user the options for searching our data, which will
 correspond to searching within a given column, or searching all columns
 at once.
 
 The keys in ``actionChoices`` and ``columnChoices`` represent the
-*internal* strings we’ll use to refer to these options (e.g. when representing
-the user’s menu choice, or querying data). The values in the dictionary represent the
-*external* way that these are represented to the user.
+"internal" String we'll use to refer to these options (e.g. when representing
+the user's menu choice, or querying data). The values in the map represent the
+"external" way that these are represented to the user.
 
-Within ``GetUserSelection`` itself, most of the code is within a
-``do-while loop``. Recall that a :ref:`do-while loop <do-while>`
+Within ``GetUserSelection()`` itself, most of the code is within a
+``do-while loop``. A `do-while
+loop <https://www.tutorialsteacher.com/csharp/csharp-do-while-loop>`__
 is similar to a ``while`` loop, but the conditional check is at the
-*end* of the loop’s code block. This has the net consequence that the
-loop’s code block *always runs at least once*. At the end of the block’s
+*end* of the loop's code block. This has the net consequence that the
+loop's code block *always runs at least once*. At the end of the block's
 execution, we check a condition to determine if we should run the block
 again. This nicely mimics the behavior of simple menu-driven
 applications.
 
 Within this loop, menu options are printed to the screen, and user input
-is collected. If the input is valid, it returns the choice as a string
-to the caller. This string corresponds to the chosen key (from
+is collected. If the input is valid, it returns the choice as a ``string``
+to the caller. This ``string`` corresponds to the chosen key (from
 ``choices``, which will be either ``actionChoices`` or
 ``columnChoices``) of the item the user selected. If invalid, it
 re-prompts the user.
 
 The local variable ``choiceKeys`` is used to easily enumerate the
-``choices`` dictionary. In other words, it gives us a simple way to
-provide an ordering to ``choices``, which doesn’t have an ordering of
+``choices`` ``Dictionary``. In other words, it gives us a simple way to
+provide an ordering to ``choices``, which doesn't have an ordering of
 its own.
 
 The ``JobData`` Class
 ---------------------
 
 The ``JobData`` class is responsible for importing the data from the CSV
-file and parsing it into a C#-friendly format; that is, into
+file and parsing it into a C#-friendly format, that is, into
 ``Dictionary`` and ``List`` form. Look toward the bottom of the class
-and you will see a method named ``LoadData``, which does just what it
+and you will see a method named ``LoadData()``, which does just what it
 advertises. After parsing the file data, it stores the data in the
 private property ``AllJobs`` which is of type
 ``List<Dictionary<string, string>>``.
 
 .. admonition:: Note
 
-   We haven't covered static properties and methods in-depth yet. For this 
-   assignment, we just need to know that using the ``static`` keyword with 
-   properties and methods allows us to use those properties and methods 
-   outside of the class without creating an object from that class. For 
-   example, we can call ``JobData.FindAll()`` from the ``Program`` class.
+   We haven't covered static properties and methods in-depth yet. For this
+   assignment, know simply that they allow us to use properties and methods
+   of a class without creating an object from that class. For example, we
+   can call ``JobData.FindAll()`` from the ``TechJob`` class.
 
-   If you want to create a new method or add a property in ``JobData``, be
+   If you want to create a new method in ``JobData``, or add a property, be
    sure to declare it as ``static``.
 
-Let’s look more closely at the data type of ``AllJobs``. It purports to
-be a ``List`` that stores ``Dictionary`` objects which have
+Let's look more closely at the data type of ``AllJobs``. It purports to
+be an ``List`` that stores ``Dictionary`` objects which have
 ``string`` keys and ``string`` values. If we were to represent some of
-this data visually, using ``[]`` for a ``List`` and ``{}`` for a collection of
-key/value pairs (i.e., a dictionary), it would look like this:
+this data visually, using ``[]`` for an ``List`` and ``{}`` with
+key/value pairs, it would look like this:
 
-.. sourcecode:: bash
+.. sourcecode:: csharp
    :linenos:
 
    [
@@ -304,34 +296,26 @@ key/value pairs (i.e., a dictionary), it would look like this:
        ...
    ]
 
-If you look at the ``LoadData`` method you’ll see a lot of unfamiliar code.
-Blake wrote this essential piece of code for you, and while you won’t have to
+If you look at the ``LoadData()`` method you'll see a lot of unfamiliar code.
+Blake wrote this essential piece of code for you, and while you won't have to
 modify it, it will be useful to have an idea of how it works. Read
 through the code until you feel like you can describe its functionality
 at a basic level.
 
-.. index:: ! overloading
+.. index:: overloading
 
 There are three more methods in ``JobData``, each of which is public
-(and ``static``, per our earlier note): 
-
-- ``FindAll()``,
-- ``FindAll(string)``, 
-- ``FindByColumnAndValue(string, string)`` 
-
-Note that there are two methods named ``FindAll``, but this is allowed in
+(and ``static``, per our earlier note): ``FindAll()``,
+``FindAll(string)``, and ``FindByColumnAndValue(string, string)``. Note
+that there are two methods named ``FindAll()``, but this is allowed in
 C# via a feature called **overloading**. Overloading happens when
 multiple methods have the same name, but they each have different input
-parameters. Read more about overloading
-`here <https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/member-overloading>`__.
-
-.. admonition:: Note
-
-   We'll dive deeper into overloading when we discuss classes in C#.
+parameters (also called argument lists). Read more about
+`overloading <https://www.geeksforgeeks.org/c-sharp-method-overloading//>`__.
 
 Here are some questions to ask yourself while reading this code:
 
-#. What is the data type of a *job*?
+#. What is the data type of a "job" record?
 #. Why does ``FindAll(string)`` return something of type ``List<string>``
    while ``FindByColumnAndValue(string, string)`` and ``FindAll()`` return
    something of type ``List<Dictionary<string, string>>``?
@@ -340,102 +324,119 @@ Here are some questions to ask yourself while reading this code:
    is called?
 
 Your Tasks
-----------
+-----------
 
-Here are the tasks for you to carry out for your first apprenticeship
-assignment.
+Before diving into your tasks, review :ref:`assignment0` for details on running the autograding tests for this assignment. This assignment has multiple tests, and we highly recommend the following workflow:
 
-Implement ``PrintJobs``
-^^^^^^^^^^^^^^^^^^^^^^^
+#. Write the code for the task, verifying manually that it works by running the ``TechJobsConsoleAutograded`` project.
+#. When you think you've completed a task, run the individual test that corresponds to the task. 
+#. If the test fails, review the test output and go back to your code to try to fix it.
+#. Once the single test passes, run *all* of the tests to make sure you didn't break any tests that previously passed.
+#. Repeat this process until all tests pass. 
+
+Now we'll outline the tasks for your first apprenticeship assignment.
+
+Implement ``PrintJobs()``
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When trying out the program, and later when reading the code, you
-hopefully noticed that there’s some work to do in the ``PrintJobs``
+hopefully noticed that there's some work to do in the ``PrintJobs()``
 method. As it stands, it currently just prints a message:
 ``"PrintJobs is not implemented yet"``.
 
-Complete this method. It should print out something like this:
+Complete this method. It should print out jobs *in this precise format*:
 
 .. sourcecode:: bash
 
    *****
+   position type: Data Scientist / Business Intelligence
    name: Sr. IT Analyst (Data/BI)
    employer: Bull Moose Industries
    location: Saint Louis
-   position type: Data Scientist / Business Intelligence
    core competency: Statistical Analysis
    *****
 
-If there are no results, it should print an appropriate message.
+   *****
+   position type: Web - Back End
+   name: Ruby specialist
+   employer: LaunchCode
+   location: Saint Louis
+   core competency: Javascript
+   *****
+
+For the autograding script to correctly grade your code, you'll need to match this format *exactly*. In particular, note the number of asterisks surrounding each listing, and the blank line between listings.
+
+If there are no results, it should print ``No results``. Again, you should use this *exact* message.
 
 .. admonition:: Tip
 
-   To do this, you’ll need to iterate over a ``List`` of jobs. Each
+   To do this, you'll need to iterate over a ``List`` of jobs. Each
    job is itself a ``Dictionary``. While you can get each of the items out of
-   the dictionary using the known keys (``employer``, ``location``, etc.),
-   think instead about creating a nested loop to iterate over each
-   dictionary key. If a new field is added to the job records, this approach
-   will print out the new field without any updates to ``PrintJobs``.
+   the ``Dictionary`` using the known keys (``employer``, ``location``, etc.),
+   think instead about creating a nested loop to loop over each
+   ``Dictionary``. If a new field is added to the job records, this approach
+   will print out the new field without any updates to ``PrintJobs()``.
 
 Test this method before moving on to your next step:
 
-#. Run your program with your changes. Select “1” to list the jobs, and then “4” to list them all.
+#. Save your changes.
+#. Run the project.
+#. Select "1" to list the jobs, and then "0" to list them all.
 #. Make sure the printout matches the styling above.
-#. To test what happens if no jobs are found, select
-   “0” to search and then “3” to search for a location. Then, enter a location
-   that is not in the data (e.g. “Cancun”). Your "no results" message should be displayed.
+#. Test that it prints a descriptive message if no jobs are found by selecting
+   "0" to search and then "3" to search for a location. Then enter a location
+   that is not in the data (e.g. "Cancun"). Your message should be displayed.
 
-Create Method ``FindByValue``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create Method ``FindByValue()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At this stage, the application will allow users to search a *given
-column* of the data for a given string. Your next task is to enable a
+column* of the data for a given String. Your next task is to enable a
 search that looks for the search term in *all* of the columns.
 
-In the ``JobData`` class, create a new ``public static`` method that
-will search for a string within each of the columns. Name it
-``FindByValue``. Here are a few observations:
+In the ``JobData`` class, find the method ``FindByValue()``. This method has been outlined
+for you but contains none of the code needed to work (you should leave the ``LoadData()`` call as the first line of the method, however). Here are a few observations:
 
-#. The method that you write should not contain duplicate jobs. So, for
-   example, if a listing has position type “Web - Front End” and name
-   “Front end web dev” then searching for “web” should not include the
+#. The code that you write should not contain duplicate jobs. So, for
+   example, if a listing has position type "Web - Front End" and name
+   "Front end web dev" then searching for "web" should not include the
    listing twice.
-#. As with ``PrintJobs``, you should write your code in a way that if a
+#. As with ``PrintJobs()``, you should write your code in a way that if a
    new column is added to the data, your code will automatically search
    the new column as well.
-#. You should NOT write code that calls ``FindByColumnAndValue`` once
+#. You should NOT write code that calls ``FindByColumnAndValue()`` once
    for each column. Rather, utilize loops and collection methods as you
    did above.
 #. You *should*, on the other hand, read and understand
-   ``FindByColumnAndValue``, since your code will look similar in some
+   ``FindByColumnAndValue()``, since your code will look similar in some
    ways.
 
-You’ll need to call ``FindByValue`` from somewhere in ``Main``. We’ll
+You'll need to call ``FindByValue()`` from somewhere in ``RunProgram()``. We'll
 leave it up to you to find where. You might have noticed that when you
 try to search all columns using the app, a message is printed, so that
 is a good clue to help you find where to place this new method call.
-
-Once you find a spot to call your new method, run the program again to
-test your method call.
+Once you find where to call your new method, you can *Run* the program
+again to test your code.
 
 Make Search Methods Case-Insensitive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You’ve completed your first two tasks!
+You've completed your first two tasks!
 
 Let's assume you demonstrated the updated application for the Company Team, and
 they noticed a feature that could be improved. When searching for jobs with
-the skill ``"JavaScript"``, some results were missing (e.g. the Watchtower
+the skill ``JavaScript`` some results were missing (e.g. the Watchtower
 Security job on line 31 of the CSV file). The search methods turn out to be
-case-sensitive, so they treat ``"JavaScript"`` and ``"Javascript"`` as different
+case-sensitive, so they treat ``JavaScript`` and ``Javascript`` as different
 strings.
 
-The Company Team strongly requested that this needs to be fixed, and of course,
+The Company Team strongly requested that this needs to be fixed, and of course
 you told them that you are up to the task.
 
 Here are some questions to ask yourself as you get started:
 
 #. Which methods are called when searching?
-#. How is the user’s search string compared against the values of fields of the
+#. How is the user's search string compared against the values of fields of the
    job ``Dictionary`` objects?
 #. How can you make this comparison in a way that effectively ignores the case
    of the strings?
@@ -443,14 +444,13 @@ Here are some questions to ask yourself as you get started:
    ``AllJobs`` so that the data gets printed out the same way that it appears
    in ``job_data.csv``?
 
-Once you have an idea for how to approach this, you’ll likely benefit from your 
-favorite search engine to find out exactly how to do this in C#. You may also find 
-it useful to review :ref:`string-methods`.
+You might find it useful to review the String methods listed in the
+chapter on :ref:`Data Types <data-types>`.
 
-When this task is completed, you’re done!
+When this task is completed, you're done!
 
 Sanity Check
-------------
+-------------
 
 Before submitting, make sure that your application:
 
@@ -461,18 +461,18 @@ Before submitting, make sure that your application:
 #. Returns case-insensitive results.
 
 Solution Demo
--------------
+--------------
 
 Watch a demo of a working solution.
 
 .. youtube::
-   :video_id: mKXOXVeeqOg
+   :video_id: Ai9ceGDWkac
 
 How to Submit
--------------
+--------------
 
 To turn in your assignment and get credit, follow the
-:ref:`submission instructions <how-to-submit-work>`.
+:ref:`submission instructions <submitting-your-work>`.
 
 .. _tech-jobs-console-bonus-missions:
 
@@ -480,7 +480,7 @@ Bonus Missions
 --------------
 
 If you want to take your learning a few steps further, here are some
-additional problems you can try to solve. We’re not providing you much
+additional problems you can try to solve. We're not providing you much
 guidance here, but we have confidence that you can figure these problems
 out!
 
@@ -488,9 +488,9 @@ out!
    locations, position types, etc., it would be nice if results were
    sorted alphabetically. Make this happen.
 #. **Returning a copy of AllJobs**: Look at ``JobData.FindAll()``.
-   Notice that it’s returning the ``AllJobs`` property, which is a
+   Notice that it's returning the ``AllJobs`` property, which is a
    static property of the ``JobData`` class. In general, this is not a
-   great thing to do, since the person calling our ``FindAll`` method
+   great thing to do, since the person calling our ``FindAll()`` method
    could then mess with the data that ``AllJobs`` contains. Fix this by
-   creating a copy of ``AllJobs``. *Hint:* Look at the methods of the
-   ``List`` class listed in the Microsoft documentation.
+   creating a copy of ``AllJobs``. *Hint:* Look at the constructors in
+   the Oracle ``List`` documentation.

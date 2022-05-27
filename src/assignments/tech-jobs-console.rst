@@ -460,14 +460,6 @@ Before submitting, make sure that your application:
 #. Allows the user to search for a string across all columns.
 #. Returns case-insensitive results.
 
-Solution Demo
---------------
-
-Watch a demo of a working solution.
-
-.. youtube::
-   :video_id: Ai9ceGDWkac
-
 How to Submit
 --------------
 

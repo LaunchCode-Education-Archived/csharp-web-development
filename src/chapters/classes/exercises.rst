@@ -15,6 +15,8 @@ Before you get started, make sure you have forked and cloned the `starter code <
    ``NumberOfCredits`` give yourself ``1`` for this class and a GPA of ``4.0``
    because you are a C# superstar!
 
+   Test your  new ``Student`` object with print statements.  Are you able to get and set each field?
+
    :ref:`Check your solution <classes_part1_solution-2>`
 
 .. _classes_part1-exercises3:

@@ -105,7 +105,7 @@ Open up ``jobs_data.csv``, which is in the project. You'll see that the first li
 
 While it isn't required, the first line of a CSV file often represents
 the column names. We have 5 names here, which indicates that each of our
-rows in the CSV file should have 5 fields. In this file format, a "row"
+rows in the CSV file should have 5 fields. In this file format, a **row**
 corresponds to a new line. So each line below the first will constitute
 a row of data, or a record.
 
@@ -115,7 +115,7 @@ questions:
 #. Which fields match up with which column names above?
 #. Why do some lines/rows (e.g. line 10) have more commas than others, if
    commas are supposed to separate columns?
-#. What role do the double-quotes play?
+#. What role do the double-quotes play in lines 10 and 79?
 
 The TechJobs Class
 -------------------
@@ -138,20 +138,23 @@ The ``RunProgram()`` Method
 The logic within ``RunProgram()`` presents menus in turn, and based on the
 user's choice, takes appropriate action.
 
-It begins by declaring two local variables: ``columnChoices`` and
-``actionChoices``. These contain information relating to the menus that
+It begins by declaring two local variables: ``actionChoices`` and
+``columnChoices``. These contain information relating to the menus that
 we'll display, and we'll look at them in more detail later.
 
 Next, we notice a ``while loop`` that starts ``while (true)``. While we usually
 want to avoid creating infinite loops, we have a good reason for doing so in
 this case! We want our application to continually run until the user decides
 they want to quit. The simplest way to do this is to loop forever. When the
-user wants to quit, they can enter ``x`` at the initial ``View jobs by`` prompt. As you saw above, however,
-Visual Studio's *Run* pane works slightly differently and you'll need to rely on the "stop" icon to stop the program.
+user wants to quit our app, they can enter ``x`` at the initial ``View jobs by`` prompt. 
 
 .. admonition:: Note
 
-   Another way to kill a running program from the terminal is by pressing ctrl-C (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program
+How to Stop a Running App.
+
+Option 1: Use the IDE.  Click Visual Studio's *Stop* icon.  The light red square that replaces the green *Run* triangle once an app is running.  
+
+Option 2: Use the terminal.   Press *ctrl+C* (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program
    in Visual Studio
 
 The ``RunProgram()`` method can be summarized as follows:
@@ -178,7 +181,7 @@ menu, to provide context for what they are being asked. It also takes in
 a ``Dictionary`` with string keys and string values. How is this used? What
 will this ``Dictionary`` contain when the method runs?
 
-To figure this out, right-click on the method name and select *Find
+To figure this out, right-click on the method name and select *Find (All)
 References*. This will open a pane and display each location in the program
 where ``GetUserSelection()`` is called. The first such usage is the first
 line of the main ``while loop``:
@@ -222,9 +225,9 @@ correspond to searching within a given column, or searching all columns
 at once.
 
 The keys in ``actionChoices`` and ``columnChoices`` represent the
-"internal" String we'll use to refer to these options (e.g. when representing
-the user's menu choice, or querying data). The values in the map represent the
-"external" way that these are represented to the user.
+*internal* strings we'll use to refer to these options (e.g. when representing
+the user's menu choice, or querying data). The values in the ``Dictionary`` represent the
+*external* way that these are represented to the user.
 
 Within ``GetUserSelection()`` itself, most of the code is within a
 ``do-while loop``. A `do-while
@@ -270,10 +273,10 @@ private property ``AllJobs`` which is of type
    sure to declare it as ``static``.
 
 Let's look more closely at the data type of ``AllJobs``. It purports to
-be an ``List`` that stores ``Dictionary`` objects which have
+be a ``List`` that stores ``Dictionary`` objects which have
 ``string`` keys and ``string`` values. If we were to represent some of
-this data visually, using ``[]`` for an ``List`` and ``{}`` with
-key/value pairs, it would look like this:
+this data visually, using ``[]`` for a ``List`` and ``{}`` for a collection of
+key/value pairs (i.e., a ``Dictionary``), it would look like this:
 
 .. sourcecode:: csharp
    :linenos:
@@ -305,9 +308,12 @@ at a basic level.
 .. index:: overloading
 
 There are three more methods in ``JobData``, each of which is public
-(and ``static``, per our earlier note): ``FindAll()``,
-``FindAll(string)``, and ``FindByColumnAndValue(string, string)``. Note
-that there are two methods named ``FindAll()``, but this is allowed in
+(and ``static``, per our earlier note): 
+- ``FindAll()``
+- ``FindAll(string)``
+- ``FindByColumnAndValue(string, string)``. 
+
+Note: there are two methods named ``FindAll()``, but this is allowed in
 C# via a feature called **overloading**. Overloading happens when
 multiple methods have the same name, but they each have different input
 parameters (also called argument lists). Read more about
@@ -367,7 +373,11 @@ Complete this method. It should print out jobs *in this precise format*:
 For the autograding script to correctly grade your code, you'll need to match this format *exactly*. In particular, note the number of asterisks surrounding each listing, and the blank line between listings.
 
 If there are no results, it should print ``No results``. Again, you should use this *exact* message.
+.. admonition Warning
 
+To create new lines for your output, use ``Environment.NewLine``.  
+
+Using the ``Environment.NewLine``  will allow the autograding unit tests pass regardless of your operating system.  ``\n`` is a new line in Mac OS, but will be read as ``\r\n`` in Windows.    Read about the differences in line breaks `here <https://dev.to/pieter/why-windows-uses-rn-newlines-instead-of-n-126l>`.  Read more about ``Environment.NewLine`` `here<https://www.dotnetperls.com/newline>`.
 .. admonition:: Tip
 
    To do this, you'll need to iterate over a ``List`` of jobs. Each
@@ -391,7 +401,7 @@ Create Method ``FindByValue()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At this stage, the application will allow users to search a *given
-column* of the data for a given String. Your next task is to enable a
+column* of the data for a given string. Your next task is to enable a
 search that looks for the search term in *all* of the columns.
 
 In the ``JobData`` class, find the method ``FindByValue()``. This method has been outlined
@@ -425,9 +435,9 @@ You've completed your first two tasks!
 
 Let's assume you demonstrated the updated application for the Company Team, and
 they noticed a feature that could be improved. When searching for jobs with
-the skill ``JavaScript`` some results were missing (e.g. the Watchtower
+the skill ``"JavaScript"`` some results were missing (e.g. the Watchtower
 Security job on line 31 of the CSV file). The search methods turn out to be
-case-sensitive, so they treat ``JavaScript`` and ``Javascript`` as different
+case-sensitive, so they treat ``"JavaScript"`` and ``"Javascript"`` as different
 strings.
 
 The Company Team strongly requested that this needs to be fixed, and of course
@@ -445,7 +455,7 @@ Here are some questions to ask yourself as you get started:
    in ``job_data.csv``?
 
 You might find it useful to review the String methods listed in the
-chapter on :ref:`Data Types <data-types>`.
+chapter on :ref:`string-methods`.
 
 When this task is completed, you're done!
 
@@ -484,5 +494,4 @@ out!
    static property of the ``JobData`` class. In general, this is not a
    great thing to do, since the person calling our ``FindAll()`` method
    could then mess with the data that ``AllJobs`` contains. Fix this by
-   creating a copy of ``AllJobs``. *Hint:* Look at the constructors in
-   the Oracle ``List`` documentation.
+   creating a copy of ``AllJobs``. *Hint:* Look at the methods of the ``List`` class listed in the Microsoft documentation.

@@ -207,6 +207,14 @@ Each ``TestTaskX`` contains multiple tests.
 Select ``TestTask2`` tests.  You should see 8 tests listed by their names.
 These are all of the tests that will be run after you complete ``Task 2`` in the instructions below.
 
+.. admonition:: Note
+
+      Upon initial examination of the starter code, you may notice that there ONLY 2 ``TestTaskXs``
+      in the ``Test Explorer`` and 6 ``TestTaskXs`` in the ``Solution Explorer``.  
+      
+      ``TestTask4``, ``TestTask5``, and ``TestTask6`` have all been commented out so that you can run
+      the auto-grading unit tests for tasks 2-3. 
+
 To run a *single* group of tests, you will right-click on the name of the Task.  
 For example, if you finish Task 5, right-click on ``TestTask5`` and select ``Run`` from the pop-up menu.
 
@@ -352,6 +360,12 @@ Do not move onto Task 3 until you have passed all of Task 2's auto-grading unit 
 Task 3: Complete the ``Job`` Class
 ----------------------------------
 
+.. admonition:: Note
+
+   The starter code in the ``Job`` class has been commented out for the rest of the tests to run.
+   
+   Remove the ``/*`` in **line 6** and ``*/`` in **line 20**.
+
 .. admonition:: Warning
 
    Due to the fact that this code is being auto-graded as you work through it, 
@@ -382,6 +396,12 @@ Do not move onto Task 4 until you have passed all of Task 3's auto-grading unit 
 
 Task 4: Use Unit Testing to Verify Parts of the ``Job`` Class
 --------------------------------------------------------------
+
+.. admonition:: Note
+
+   This test has been commented out for the rest of the tests to run.
+   
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 155**.
 
 .. admonition:: Warning
 
@@ -466,6 +486,13 @@ Do not move onto Task 5 until you have passed all of Task 4's auto-grading unit 
 
 Task 5: Use TDD to Build The ``ToString()`` Method
 --------------------------------------------------
+
+.. admonition:: Note
+
+   This test has been commented out for the rest of the tests to run.
+   
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 167**.
+
 
 .. admonition:: Warning
 
@@ -555,6 +582,12 @@ And don't forget to ``add``, ``commit`` and ``push`` the latest version of your 
 Task 6: Refactor to DRY the Support Classes
 -------------------------------------------
 
+.. admonition:: Note
+
+   This test has been commented out for the rest of the tests to run.
+   
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 96**.
+
 .. admonition:: Warning
 
    Due to the fact that this code is being auto-graded as you work through it, 
@@ -638,7 +671,7 @@ Sanity Check
 Once you finish all of the tasks outlined above, all that remains is to check
 the console display.
 
-Sally has provided some commented-out code in ``Program.cs`` that prints out a small
+Sally has provided some commented-out code in ``TechJobs.cs`` that prints out a small
 list of ``Job`` objects. Go ahead and activate this code and run it.
 Properly done, your output should look something like:
 

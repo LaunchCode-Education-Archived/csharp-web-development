@@ -160,6 +160,67 @@ difficult moving forward.
 Your Assignment
 ---------------
 
+Running the Auto-grading Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Before diving into your tasks, review ``Assignment #0: Hello, World! -- NEED LINK`` for details on 
+running the auto-grading tests for this assignment. 
+
+This assignment has many more tests than the previous two, so we’ve organized them 
+into separate files. The tests are visible in the Project's Solution, but they won't run from there.
+
+.. figure:: figures/Tests-In-Solution-A2OO.png
+   :scale: 50%
+   :alt: List of projects in the solution.  Tests are in "TechJobsOOTest" project.
+
+Each of the one test files, ``TestTaskX``, contains the tests to grade one of the six tasks 
+outlined in below (there’s no coding work for your first task, so there is **no** ``TestTask1``). 
+
+In order to run any of the tests, we need to use Visual Studio's ``Test Explorer``.  
+Open ``Test Explorer``, but do NOT ``Run All Tests`` at this time.  
+Visual Studio will not be able to run many of these tests at this time because you have not 
+any written code they are designed to test.  It will only throw errors.  
+If you did run ALL the test, stop the tests by clicking on the red square in ``Test Explorer``.
+
+**Mac Users:** To open ``Test Explorer``, select ``Run Unit Tests`` which can be found at the very bottom of the ``Run`` menu. 
+This will try to run all the tests, but you can stop them by clicking on the red square at the top of the test panel. 
+
+.. figure:: figures/Running-Tests-A2OO.png
+   :scale: 50%
+   :alt: "Run Unit Tests" can be found at the bottom of the "Run" Menu.
+
+This will open your ``Test Explorer`` in a new panel and create a tab on the right side of Visual Studio.  
+If ``Test Explorer`` is closed, the tab on the right called ``Tests`` will reopen it for you.
+
+.. figure:: figures/Test-Tab-A2OO.png
+   :scale: 50%
+
+**Windows Users:**  Select the ``Test`` (1) menu.  ``Test Explorer`` (3) can be found at the bottom of the menu.
+Visual Studio will open your ``Test Explorer`` in a new panel.  Recommend **pinning** that panel into Visual Studio.
+If ``Test Explorer`` closes, you can reopen it using the ``Test`` menu and selecting ``Test Explorer`` (3).  
+We will not be using ``Run All Tests`` (2) at this time. 
+
+.. figure:: figures/Testing-Windows-A2OO.png
+   :alt: "Run All Tests" can be found at the top of the "Test" Menu.
+
+Inside ``Test Explorer``, you should see ``TestTaskX``.  
+Each ``TestTaskX`` contains multiple tests.
+Select ``TestTask2`` tests.  You should see 8 tests listed by their names.
+These are all of the tests that will be run after you complete ``Task 2`` in the instructions below.
+
+To run a *single* group of tests, you will right-click on the name of the Task.  
+For example, if you finish Task 5, right-click on ``TestTask5`` and select ``Run`` from the pop-up menu.
+
+.. figure:: figures/Running-Single-Test-A2OO.png
+   :scale: 50%
+   :alt: 
+
+When you start on one of the tasks below, begin by running only the tests associated with that task. 
+As you work on the components of the given tasks, continually re-run the tests to see the 
+failing tests gradually turn to passing. When all tests within the file pass, you’re ready to move onto the next task. 
+As you expand your codebase, none of your earlier tests should fail.  
+
+Your Tasks
+^^^^^^^^^^
 The list below provides a general overview of your assigned tasks. Specific
 details for each part appear in the following sections, so be sure to read them
 carefully as you solve each problem.
@@ -176,8 +237,8 @@ carefully as you solve each problem.
 #. Use inheritance to DRY the code within ``Employer``, ``Location``,
    ``CoreCompetency``, and ``PositionType``.
 
-Explore the ``Employer`` Class
-------------------------------
+Task 1: Explore the ``Employer`` Class
+--------------------------------------
 
 Open the ``Employer`` file in Visual Studio and examine the code. In addition to the
 three members---``nextId``, ``Id``, and ``Value``---the class includes some methods like ``ToString()`` and ``Equals()``.
@@ -232,11 +293,16 @@ ID number.
    By adding ``: this()`` to the signature of the second ``Employer`` constructor, we are using a new technique called constructor chaining.
    For more info on how this chaining technique works, check out this `blog post <https://www.codecompiled.com/csharp/constructor-chaining-c/>`_!
 
-Complete the Support Classes
-----------------------------
+Task 2: Complete the Support Classes
+------------------------------------
 
 Sally needs you to build up the remaining classes. In each case, refer to the
 ``Employer`` class for hints on how to structure your code.
+
+.. admonition:: Warning
+
+   Due to the fact that this code is being auto-graded as you work through it, 
+   make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
 
 The ``Location`` Class
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -273,12 +339,24 @@ Sally's comments direct you to where you need to add the custom methods.
 #. Assume that two ``PositionType`` objects are equal when their ``id`` fields
    match.
 
+Run Your Tests
+^^^^^^^^^^^^^^
+
+Run your ``TestTask2`` unit tests.  Refactor your code as needed.  
+Do not move onto Task 3 until you have passed all of Task 2's auto-grading unit tests.
+
 .. admonition:: Tip
 
    Now would be a good time to save, commit, and push your work up to GitHub.
 
-Complete the ``Job`` Class
---------------------------
+Task 3: Complete the ``Job`` Class
+----------------------------------
+
+.. admonition:: Warning
+
+   Due to the fact that this code is being auto-graded as you work through it, 
+   make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
+
 
 Now open the ``Job`` file. OOF! There are a lot of fields and properties declared and not much
 else.
@@ -292,12 +370,23 @@ else.
 #. Generate the ``Equals()`` and ``GetHashCode()`` methods. Consider two ``Job``
    objects equal when their ``id`` fields match.
 
+Run Your Tests
+^^^^^^^^^^^^^^
+
+Run your ``TestTask3`` unit tests.  Refactor your code as needed.  
+Do not move onto Task 4 until you have passed all of Task 3's auto-grading unit tests.
+
 .. admonition:: Tip
 
    Save, commit, and push your work to GitHub.
 
-Use Unit Testing to Verify Parts of the ``Job`` Class
------------------------------------------------------
+Task 4: Use Unit Testing to Verify Parts of the ``Job`` Class
+--------------------------------------------------------------
+
+.. admonition:: Warning
+
+   Due to the fact that this code is being auto-graded as you work through it, 
+   make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
 
 Create a new project inside the ``TechJobsOO`` solution called ``TechJobsTests``, then
 rename the existing class inside this folder to ``JobTests.cs``.
@@ -357,19 +446,31 @@ It might seem logical to follow up the ``false`` case by testing to make sure
 that ``Equals()`` returns ``true`` when two objects have the same ID. However,
 the positive test is irrelevant in this case.
 
-The way you built your ``Job`` class, each ``id`` field gets assigned a unique
+The way you build your ``Job`` class, each ``id`` field gets assigned a unique
 value, and the class does not contain a setter for the ``id`` field. You also verified
 that each new object gets a different ID when you tested the constructors.
 Without modifying the constructors or adding a setter, there is no scenario in
 which two different jobs will have the same ID number. Thus, we can skip the
 test for this condition.
 
+Run Your Tests
+^^^^^^^^^^^^^^
+
+Run your ``TestTask4`` unit tests.  Refactor your code as needed.  
+Do not move onto Task 5 until you have passed all of Task 4's auto-grading unit tests.
+
+
 .. admonition:: Tip
 
    Time to save, commit, and push your work to GitHub again.
 
-Use TDD to Build The ``ToString()`` Method
-------------------------------------------
+Task 5: Use TDD to Build The ``ToString()`` Method
+--------------------------------------------------
+
+.. admonition:: Warning
+
+   Due to the fact that this code is being auto-graded as you work through it, 
+   make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
 
 To display the data for a particular ``Job`` object, you need to implement a
 custom ``ToString()`` method. Rather than creating this method and then testing
@@ -399,13 +500,23 @@ Before writing your first test, consider how we want the method to behave:
 #. (Bonus) If a ``Job`` object ONLY contains data for the ``id`` field, the
    method should return, "OOPS! This job does not seem to exist."
 
-In ``JobTests``, add a new test to check the first requirement (item 1 in the above list), then run
+We will need three tests to test our ``ToString`` method.  
+
+Test 1: ``TestToStringStartsAndEndsWithNewLine``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In ``JobTests``, add a new test called ``TestToStringStartsAndEndsWithNewLine`` to check the first requirement (item 1 in the above list), then run
 that test (it should fail).
+
+.. admonition:: Note
+
+   When testing the ``TestToStringStartsAndEndsWithNewLine``, do NOT test this one individually or it will fail.
+   You need to test this one by running all ``TestTask5`` tests or the ``Id`` numbers will cause a failure.
 
 Woo hoo! Failure is what we want here! Now you get to fix that.
 
-Code ``ToString()`` to Pass the First Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Code ``ToString()`` to Pass Test 1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the ``Job`` class, create a ``ToString()`` method that passes the first test.
 Since the test only checks if the returned string starts and ends with a blank
@@ -416,20 +527,38 @@ line, make that happen.
    Do NOT add anything beyond what is needed to make the test pass. You will
    add the remaining behaviors for ``ToString()`` as you code each new test.
 
-Finish the TDD for ``ToString()``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Test 2: ``TestToStringContainsCorrectLabelsAndData``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #. Code a new test for the second required behavior, then run the tests to make
-   sure the new one fails.
+   sure the new one fails.  Call this test ``TestToStringContainsCorrectLabelsAndData``.
 #. Modify ``ToString()`` to make the new test pass. Also, make sure that your
    updates still pass all of the old tests.
 #. Continue this test-refactor cycle until all of the behaviors we want for
    ``ToString()`` work. Remember to add only ONE new test at a time.
 
+Test 3: ``TestToStringHandlesEmptyField``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Code your final test for the last required behavior, 
+   then run the tests to make sure the new one fails. Call this test ``TestToStringHandlesEmptyField``.
+#. Modify ``ToString()`` to make the new test pass.  Also make sure that your updates still pass all the old tests.
+
 Cool! Your ``Job`` class is now complete and operates as desired.
 
-Refactor to DRY the Support Classes
------------------------------------
+Run Your Tests
+^^^^^^^^^^^^^^
+
+Run your ``TestTask5`` unit tests.  Refactor your code as needed.  
+Do not move onto Task 6 until you have passed all of Task 5's auto-grading unit tests.
+
+And don't forget to ``add``, ``commit`` and ``push`` the latest version of your code.
+
+Task 6: Refactor to DRY the Support Classes
+-------------------------------------------
+
+.. admonition:: Warning
+
+   Due to the fact that this code is being auto-graded as you work through it, 
+   make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
 
 Review the code in the ``Employer``, ``Location``, ``CoreCompetency``, and
 ``PositionType`` classes. What similarities do you see?
@@ -491,6 +620,13 @@ Finish DRYing Your Code
    ``PositionType`` classes.
 #. Rerun your unit tests to verify that your classes and methods still work.
 
+Run Your Tests
+^^^^^^^^^^^^^^
+
+Run your ``TestTask6`` unit tests.  Refactor your code as needed.  
+This is the last set of test!  Congrats!  
+Submit your assignment once you have passed all of Task 6's auto-graded unit tests.
+
 .. admonition:: Tip
 
    You know you need to do this, but here is the reminder anyway. Save, commit,
@@ -507,7 +643,7 @@ list of ``Job`` objects. Go ahead and activate this code and run it.
 Properly done, your output should look something like:
 
 ::
-
+    
    ID: 1
    Name: Product tester
    Employer: ACME
@@ -530,7 +666,9 @@ Properly done, your output should look something like:
    Location: Home
    Position Type: UX
    Core Competency: Tasting ability
+    
 
+ 
 Excellent! You successfully shifted the old console app into a more useful
 object oriented configuration.
 
@@ -543,4 +681,4 @@ How to Submit
 --------------
 
 To turn in your assignment and get credit, follow the
-:ref:`submission instructions <how-to-submit-work>`.
+``SHOULD LINK BACK TO HELLO WORLD AUTOGRADER'S SUBMISSION INSTRUCTIONS``

@@ -3,13 +3,13 @@
 C# Naming Conventions
 =====================
 
-C# has some very straightforward naming conventions. These are
+C# has some very straightforward `naming conventions <https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions#naming-conventions>`__. These are
 universally used by C# programmers, and differ in some cases from
 conventions commonly used in Python or other languages.
 
 Again, these are conventions. Not following them will not prevent your
-code from running, as long as you are following `C#’s naming
-rules <https://msdn.microsoft.com/en-us/library/aa664670(v=vs.71).aspx>`__.
+code from running, as long as you are following `C#'s naming
+rules <https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names>`__.
 
 .. list-table::
    :header-rows: 1
@@ -27,7 +27,5 @@ rules <https://msdn.microsoft.com/en-us/library/aa664670(v=vs.71).aspx>`__.
      - ``Program`` , ``HelloWorld``, ``TempConv``
 
 
-Microsoft provides some `more detailed naming
-conventions <https://msdn.microsoft.com/en-us/library/ms229002.aspx>`__.
-(From the date on this article, you’ll note that these have been
-relatively standard for a very long time!)
+Microsoft provides `more detailed naming
+guidelines here <https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines?redirectedfrom=MSDN>`__.

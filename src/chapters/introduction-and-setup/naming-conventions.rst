@@ -5,7 +5,7 @@ C# Naming Conventions
 
 C# has some very straightforward `naming conventions <https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions#naming-conventions>`__. These are
 universally used by C# programmers, and differ in some cases from
-conventions commonly used in Python or other languages.
+conventions commonly used in Python or other coding languages.
 
 Again, these are conventions. Not following them will not prevent your
 code from running, as long as you are following `C#'s naming

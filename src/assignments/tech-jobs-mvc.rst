@@ -225,7 +225,7 @@ In line 24, we set these parameters by using ``asp-route-column=`` and ``asp-rou
 values of these parameters are determined dynamically based on
 ``@category.key`` and ``@item``. Since these values come from
 ``TableChoices``, the *keys* will be ``employer``, ``location``, etc. The
-*values* will be the individual elements from the related ArrayList. When the
+*values* will be the individual elements from the related ``List``. When the
 user clicks on these links, they will be routed to the
 ``Jobs()`` action method in ``ListController``, which looks for
 these parameters.

@@ -109,7 +109,7 @@ would be *TechJobs VC*).
 
 The ``JobData`` class serves the same purpose as before---it reads data from
 the ``job_data.csv`` file and stores it in a format we can use. In this case,
-that format is an ArrayList of ``Job`` objects, which is stored in the ``Models`` folder. Note that Carly changed the
+that format is a ``List`` of ``Job`` objects, which is stored in the ``Models`` folder. Note that Carly changed the
 path to the ``job_data.csv`` file to store it in the ``Data`` folder too.
 
 You’ll use some of the static methods provided by ``JobData`` in your

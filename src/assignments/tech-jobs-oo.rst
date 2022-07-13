@@ -170,7 +170,7 @@ into separate files. The tests are visible in the Project's Solution, but they w
 
 .. figure:: figures/Tests-In-Solution-A2OO.png
    :scale: 50%
-   :alt: List of projects in the solution.  Tests are in "TechJobsOOTest" project.
+   :alt: List of projects in the solution.  Auto-grading tests are in "TechJobsOOTest" project.
 
 Each of the one test files, ``TestTaskX``, contains the tests to grade one of the six tasks 
 outlined in below (there’s no coding work for your first task, so there is **no** ``TestTask1``). 

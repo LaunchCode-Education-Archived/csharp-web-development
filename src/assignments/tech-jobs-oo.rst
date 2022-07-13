@@ -179,7 +179,7 @@ In order to run any of the tests, we need to use Visual Studio's ``Test Explorer
 Open ``Test Explorer``, but do NOT ``Run All Tests`` at this time.  
 Visual Studio will not be able to run many of these tests at this time because you have not 
 any written code they are designed to test.  It will only throw errors.  
-If you did run ALL the test, stop the tests by clicking on the red square in ``Test Explorer``.
+If you did run ALL the tests, stop the tests by clicking on the red square in ``Test Explorer``.
 
 **Mac Users:** To open ``Test Explorer``, select ``Run Unit Tests`` which can be found at the very bottom of the ``Run`` menu. 
 This will try to run all the tests, but you can stop them by clicking on the red square at the top of the test panel. 

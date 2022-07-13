@@ -714,4 +714,4 @@ How to Submit
 --------------
 
 To turn in your assignment and get credit, follow the
-``SHOULD LINK BACK TO HELLO WORLD AUTOGRADER'S SUBMISSION INSTRUCTIONS``
+:ref:`submission instructions <submitting-your-work>`.

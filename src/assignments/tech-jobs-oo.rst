@@ -162,7 +162,7 @@ Your Assignment
 
 Running the Auto-grading Tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Before diving into your tasks, review ``Assignment #0: Hello, World! -- NEED LINK`` for details on 
+Before diving into your tasks, review :ref:`Assignment #0: Hello, World! <assignment0>` for details on 
 running the auto-grading tests for this assignment. 
 
 This assignment has many more tests than the previous two, so we’ve organized them 

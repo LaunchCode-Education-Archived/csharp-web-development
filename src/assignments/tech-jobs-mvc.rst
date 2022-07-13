@@ -216,7 +216,7 @@ The most interesting part of this template is how we generate the links:
    ``PositionType`` objects.
 #. In line 17, ``category`` represents one key/value pair from
    ``TableChoices``, and in line 21, ``item`` represents one entry from the
-   stored ArrayList.
+   stored ``List``.
 #. We’ve seen some of the syntax to generate a link within a Razor
    template, but we don't have as much experience with ``asp-route-column`` and ``asp-route-value``.This syntax causes Razor
    to dynamically generate query parameters for our URL.

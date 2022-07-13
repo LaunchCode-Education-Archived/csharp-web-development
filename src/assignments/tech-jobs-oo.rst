@@ -657,7 +657,7 @@ Run Your Tests
 ^^^^^^^^^^^^^^
 
 Run your ``TestTask6`` unit tests.  Refactor your code as needed.  
-This is the last set of test!  Congrats!  
+This is the last set of tests!  Congrats!  
 Submit your assignment once you have passed all of Task 6's auto-graded unit tests.
 
 .. admonition:: Tip

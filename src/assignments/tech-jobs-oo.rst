@@ -399,9 +399,9 @@ Task 4: Use Unit Testing to Verify Parts of the ``Job`` Class
 
 .. admonition:: Note
 
-   This test has been commented out for the rest of the tests to run.
+   All of the tests in ``TestTask4`` are commented out right now.
    
-   Remove the ``/*`` in **line 1** and ``*/`` in **line 155**.
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 155** to run the ``TestTask4`` tests.
 
 .. admonition:: Warning
 
@@ -489,9 +489,9 @@ Task 5: Use TDD to Build The ``ToString()`` Method
 
 .. admonition:: Note
 
-   This test has been commented out for the rest of the tests to run.
+   This tests in ``TestTask5`` are commented out right now.
    
-   Remove the ``/*`` in **line 1** and ``*/`` in **line 167**.
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 167** to run the ``TestTask5`` tests.
 
 
 .. admonition:: Warning
@@ -584,9 +584,9 @@ Task 6: Refactor to DRY the Support Classes
 
 .. admonition:: Note
 
-   This test has been commented out for the rest of the tests to run.
+   The tests in ``TestTask6`` are commented out right now.
    
-   Remove the ``/*`` in **line 1** and ``*/`` in **line 96**.
+   Remove the ``/*`` in **line 1** and ``*/`` in **line 96** to run all of the ``TestTask6`` tests.
 
 .. admonition:: Warning
 

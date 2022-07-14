@@ -109,7 +109,7 @@ would be *TechJobs VC*).
 
 The ``JobData`` class serves the same purpose as before---it reads data from
 the ``job_data.csv`` file and stores it in a format we can use. In this case,
-that format is a List of ``Job`` objects, which is stored in the ``Models`` folder. Note that Carly changed the
+that format is a ``List`` of ``Job`` objects, which is stored in the ``Models`` folder. Note that Carly changed the
 path to the ``job_data.csv`` file to store it in the ``Data`` folder too.
 
 You’ll use some of the static methods provided by ``JobData`` in your
@@ -216,7 +216,7 @@ The most interesting part of this template is how we generate the links:
    ``PositionType`` objects.
 #. In line 17, ``category`` represents one key/value pair from
    ``TableChoices``, and in line 21, ``item`` represents one entry from the
-   stored List.
+   stored ``List``.
 #. We’ve seen some of the syntax to generate a link within a Razor
    template, but we don't have as much experience with ``asp-route-column`` and ``asp-route-value``.This syntax causes Razor
    to dynamically generate query parameters for our URL.
@@ -225,7 +225,7 @@ In line 24, we set these parameters by using ``asp-route-column=`` and ``asp-rou
 values of these parameters are determined dynamically based on
 ``@category.key`` and ``@item``. Since these values come from
 ``TableChoices``, the *keys* will be ``employer``, ``location``, etc. The
-*values* will be the individual elements from the related List. When the
+*values* will be the individual elements from the related ``List``. When the
 user clicks on these links, they will be routed to the
 ``Jobs()`` action method in ``ListController``, which looks for
 these parameters.

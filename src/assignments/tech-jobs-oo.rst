@@ -408,9 +408,9 @@ Task 4: Use Unit Testing to Verify Parts of the ``Job`` Class
    Due to the fact that this code is being auto-graded as you work through it, 
    make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.
 
-Create a new project inside the ``TechJobsOO`` solution called ``TechJobsTests``, then
-rename the existing class inside this folder to ``JobTests.cs``.
-Add the appropriate dependency to ``TechJobsTests`` to test the classes in the ``TechJobsOO`` project.
+The solution currently contains a testing project called ``TechJobsTests``.  
+If you open this project, you will find a class called ``JobTests.cs``. 
+You will need to add the appropriate dependency to ``TechJobsTests`` to test the classes in the ``TechJobsOO`` project.
 The ``JobTests.cs`` file will hold all of the tests for the ``Job`` class.
 
 Test the Empty Constructor

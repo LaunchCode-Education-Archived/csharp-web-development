@@ -49,6 +49,6 @@ Road Trip!
 Bonus Missions
 --------------
 
-#. Think about how we could make this program more modular by breaking out some of the code into a separate class. For example, we could pull out the circle information into a ``Circle`` class and leave the user questions and console messages in ``Program``. Take a look at for a refresher on using another class file.
+#. Think about how we could make this program more modular by breaking out some of the code into a separate class. For example, we could pull out the circle information into a ``Circle`` class and leave the user questions and console messages in ``Program``. Take a look at :ref:`the using statement <using-statement>` for a refresher on how to reference another class file.
 #. Extend your program further by using a `while or do-while loop <https://www.w3schools.com/cs/cs_while_loop.asp>`__, so that when the user enters a negative number they are re-prompted for a radius.
 #. Add additional validation to your program. If the user enters a non-numeric character or a empty string? Print an error message and quit. You’ll need to peek ahead to learn about `conditional syntax in C# <https://www.w3schools.com/cs/cs_conditions.asp>`__.

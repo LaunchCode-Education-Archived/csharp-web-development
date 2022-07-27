@@ -15,10 +15,17 @@ you'll need to do the work to connect the project to a database for storing user
 
 Each of the three sections of this assignment will also ask you to demonstrate your SQL skills under an item labelled **SQL TASK**.
 
+Getting Started
+----------------
+
+Set up a local copy of the project:
+
+#. In Canvas, **Graded Assignment #4: TechJobs (Persistent Edition)** contains a GitHub Classroom assignment invitation link and then set up the project in IntelliJ. Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details. 
+#. Launch the application to make sure it starts up properly. Then shut it down.
+#. Run the autograding tests. The tests for this assignment are set up the same way as for :ref:`assignment 2 <assignment-2-autograding>`. There are four tasks for this assignment, but the first doesn't require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.
+
 Checkout and Review the Starter Code
 ------------------------------------
-
-Fork and clone the starter code from the `repository <https://github.com/LaunchCodeEducation/TechJobsPersistent>`__.
 
 You will be able to run your application without any build errors. However, you'll likely see a host of errors relating to the
 Entity Framework annotations and classes when you attempt to add any data or load different pages.
@@ -33,8 +40,7 @@ Take a gander at the ``Job`` class. It will look somewhat similar to the model i
 You're no longer using a csv file to load job data, instead, we'll be creating new ``Job`` objects via a
 user form. The job data will be stored in a MySQL database that you'll setup in :ref:`Part 1 <tech-jobs-persistent-pt1>` of this assignment.
 
-As you explore
-the starter code, you'll notice that the ``JobField`` class is missing. You will focus on just two aspects of a job listing: the employer and the skills required.
+As you explore the starter code, you'll notice that the ``JobField`` class is missing. You will focus on just two aspects of a job listing: the employer and the skills required.
 Your task for :ref:`Part 2 <tech-jobs-persistent-pt2>` is to add code to let a user create an employer object.
 
 The ``Job`` class will also look different from how you have last seen it.
@@ -46,9 +52,16 @@ Since you are entering your own data, the queries we ask you to write will retur
 any data yet, there may be an empty result set. However, as the architect of the database, you have the knowledge to write the
 appropriate queries nonetheless.
 
+``JobRepository``
+^^^^^^^^^^^^^^^^^
+
+In the ``Data`` directory, you will find ``JobRepository``. Instead of accessing ``JobDbContext`` in your controllers, each controller will have a ``repo`` object that you can use to access the repository which, in turn, accesses ``JobDbContext``.
+Review each method to see what is returned so you can call the repository's methods in the controllers as opposed to add a ``JobDbContext`` object. 
+This is a widely-accepted design pattern when making ASP.NET Core MVC apps called the Repository Pattern. The Microsoft Documentation has an `article <https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application>`__ on the topic if you are interested in learning more.
+
 .. _tech-jobs-persistent-pt1:
 
-Part 1: Connect a Database to an ASP.NET App
+Task 1: Connect a Database to an ASP.NET App
 --------------------------------------------
 
 #. Start MySQL Workbench and create a new schema named ``techjobs``.
@@ -58,7 +71,7 @@ Part 1: Connect a Database to an ASP.NET App
       Remember to double click on the schema name in the file tree to make it the default schema.
 
 #. In the administration tab, create a new user, ``techjobs`` with the same settings as described in
-   the lesson tutorial.
+   the lesson tutorial and set the password to ``techjobs``.
 
 #. Make sure that ``TechJobsPersistent`` has all of the necessary dependencies.
 
@@ -83,6 +96,8 @@ Test It with SQL
 
 #. **SQL TASK:** At this point, you will have tables for ``Jobs``, ``Employers``, ``Skills``, and ``JobSkills``. In ``queries.sql`` under "Part 1", list the columns and their data types
    in the ``Jobs`` table.
+
+Before moving on to Task 2, run the autograding tests for Task 1. Once the tests pass, you are ready to go!
 
 Your running application still has limited functionality. You won't yet be able to add a job with the *Add Job* form. You also
 won't yet be able to view the list of jobs or search for jobs - but this is mostly because you have no job data. Move on to
@@ -112,7 +127,7 @@ Controllers
 
 ``EmployerController`` contains four relatively empty action methods. Take the following steps to handle traffic between the views and the model:
 
-#. Set up a private ``DbContext`` variable so you can perform CRUD operations on the database. Pass it into a ``EmployerController`` constructor.
+#. Set up a private ``JobRepository`` variable so you can perform CRUD operations on the database. Pass it into a ``EmployerController`` constructor.
 #. Complete ``Index()`` so that it passes all of the ``Employer`` objects in the database to the view. 
 #. Create an instance of ``AddEmployerViewModel`` inside of the ``Add()`` method and pass the instance into the ``View()`` return method.
 #. Add the appropriate code to ``ProcessAddEmployerForm()`` so that it will process form submissions and make sure that only valid ``Employer`` objects are being saved to the database.
@@ -185,7 +200,7 @@ You should be able to create Employer objects and view them.
 
    #. Ensure you’re passing the list into the view.
 
-   When everything works, move on to Part 3 below.
+Un-comment and then run the tests in ``TaskTwo`` to make sure that you have completed everything. When your tests pass, move on to Part 3 below.
 
 .. _tech-jobs-persistent-pt3:
 
@@ -223,7 +238,7 @@ You next need to update ``HomeController`` so that skills data is being shared w
 
    a. After you add a new parameter, you want to set up a loop to go through each item in ``selectedSkills``. This loop should go right after you create a new ``Job`` object and before you add that ``Job`` object to the database.
    b. Inside the loop, you will create a new ``JobSkill`` object with the newly-created ``Job`` object. You will also need to parse each item in ``selectedSkills`` as an integer to use for ``SkillId``.
-   c. Add each new ``JobSkill`` object to the ``DbContext`` object, but do not add an additional call to ``SaveChanges()`` inside the loop! One call at the end of the method is enough to get the updated info to the database.
+   c. Add each new ``JobSkill`` object to the database using the appropriate ``JobRepository`` method, but do not add an additional call to ``SaveChanges()`` inside the loop! One call at the end of the method is enough to get the updated info to the database.
 
 Updating ``Home/AddJob.cshtml``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,11 +271,11 @@ full list and search capabilities.
 
       You will need to make use of "is not null".
 
-When you are able to add new employers and skills and use those objects to create a new job, you’re done! Congrats!
-
+When you are able to add new employers and skills and use those objects to create a new job, you’re ready to un-comment and run the tests in ``TaskThree``.
+If those tests pass, you are done! Congrats!
 
 How to Submit
 -------------
 
-To turn in your assignment and get credit, follow the :ref:`submission instructions <how-to-submit-work>`.
+To turn in your assignment and get credit, follow the :ref:`submission instructions <submitting-your-work>`.
 

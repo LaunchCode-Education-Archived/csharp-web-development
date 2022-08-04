@@ -22,7 +22,7 @@ Set up a local copy of the project:
 
 #. In Canvas, **Graded Assignment #4: TechJobs (Persistent Edition)** contains a GitHub Classroom assignment invitation link and then set up the project in IntelliJ. Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details. 
 #. Launch the application to make sure it starts up properly. Then shut it down.
-#. Run the autograding tests. The tests for this assignment are set up the same way as for :ref:`assignment 2 <assignment-2-autograding>`. There are four tasks for this assignment, but the first doesn't require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.
+#. Run the autograding tests. The tests for this assignment are set up the same way as for :ref:`assignment 2 <tech-jobs-oo>`. There are four tasks for this assignment, but the first doesn't require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.
 
 Checkout and Review the Starter Code
 ------------------------------------
@@ -89,6 +89,12 @@ Task 1: Connect a Database to an ASP.NET App
 
 #. Run a new migration and update the database.
 
+.. admonition:: Progress Check
+   
+  **Testing:** You may now run the ``TestTaskOne.cs`` tests found in the ``Autograding Tests`` folder.  
+
+  **Build:** You should be able to connect to your MySQL database and perform an initial migration.
+
 Test It with SQL
 ^^^^^^^^^^^^^^^^
 
@@ -128,7 +134,8 @@ Controllers
 ``EmployerController`` contains four relatively empty action methods. Take the following steps to handle traffic between the views and the model:
 
 #. Set up a private ``JobRepository`` variable so you can perform CRUD operations on the database. Pass it into a ``EmployerController`` constructor.
-#. Complete ``Index()`` so that it passes all of the ``Employer`` objects in the database to the view. 
+#. Complete ``Index()`` so that it passes all of the ``Employer`` objects in the database to the view.  For the purpose of this assignment, 
+   you will need to use ``IEnumerable<Employers>`` in order for your code to interact with the ``JobRepository`` and the interface ``IJobRepository``. 
 #. Create an instance of ``AddEmployerViewModel`` inside of the ``Add()`` method and pass the instance into the ``View()`` return method.
 #. Add the appropriate code to ``ProcessAddEmployerForm()`` so that it will process form submissions and make sure that only valid ``Employer`` objects are being saved to the database.
 #. ``About()`` currently returns a view with vital information about each employer such as their name and location. Make sure that the method is actually passing an ``Employer`` object to the view for display.
@@ -166,6 +173,13 @@ As you work on the application, you will add more fields to this form to add emp
    In addition, add a link to the ``<div>`` element to add new employers.
    This way, if a user doesn't see the employer they are looking for, they can easily click on the link and add a new employer to the database.
 #. In ``ProcessAddJobForm()``, you need to take in an instance of ``AddJobViewModel`` and make sure that any validation conditions you want to add are met before creating a new ``Job`` object and saving it to the database.
+
+.. admonition:: Progress Check
+
+   **Testing:**  You can run the tests found in ``TechJobsPersistentAutograded.Test`` folder.  This folder contains all the tests for task 2.
+
+   **Build:**  You may have a website at this point with more functionality, but it will not be complete.  You should have data in your MySQL database. 
+
 
 Test It with SQL
 ^^^^^^^^^^^^^^^^
@@ -273,6 +287,12 @@ full list and search capabilities.
 
 When you are able to add new employers and skills and use those objects to create a new job, you’re ready to un-comment and run the tests in ``TaskThree``.
 If those tests pass, you are done! Congrats!
+
+.. admonition:: Progress Check
+
+   **Testing:**  Run ``TestTaskThree.cs`` in the ``Autograding Tests``.
+
+   **Build:** You should have a working website and see data in MySQL database. 
 
 How to Submit
 -------------

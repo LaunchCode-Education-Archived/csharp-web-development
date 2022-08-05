@@ -91,9 +91,9 @@ Task 1: Connect a Database to an ASP.NET App
 
 .. admonition:: Progress Check
    
-  **Testing:** You may now run the ``TestTaskOne.cs`` tests found in the ``Autograding Tests`` folder.  
+  **Testing:** You may now run the tests found in ``TaskOne.Test``.  
 
-  **Build:** You should be able to connect to your MySQL database and perform an initial migration.
+  **Build:** You should be able to connect to your MySQL database and perform an initial migration.  Your project should open a localhost browser window, but not much else. You need to add more to your project.
 
 Test It with SQL
 ^^^^^^^^^^^^^^^^
@@ -176,7 +176,7 @@ As you work on the application, you will add more fields to this form to add emp
 
 .. admonition:: Progress Check
 
-   **Testing:**  You can run the tests found in ``TechJobsPersistentAutograded.Test`` folder.  This folder contains all the tests for task 2.
+   **Testing:**  You can run the tests found in ``TaskTwo.Tests`` folder.  
 
    **Build:**  You may have a website at this point with more functionality, but it will not be complete.  You should have data in your MySQL database. 
 
@@ -290,7 +290,7 @@ If those tests pass, you are done! Congrats!
 
 .. admonition:: Progress Check
 
-   **Testing:**  Run ``TestTaskThree.cs`` in the ``Autograding Tests``.
+   **Testing:**  Run the tests found in ``TaskThree.Tests``.
 
    **Build:** You should have a working website and see data in MySQL database. 
 

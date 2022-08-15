@@ -9,53 +9,45 @@ While `ASP.NET <https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.
 Getting Started
 ---------------
 
-To create a ASP.NET MVC project, start a new project in Visual Studio.
+To create a new ASP.NET MVC project, start a new project in Visual Studio.
 
 **Windows Users:**
 
-#. When selecting the type of project, choose *ASP.NET Core Web Application* for C#.
+#. Use the **Get started** Menu to **Create a new project**.
 
-   .. figure:: figures/vs-windows-create-asp-app.png
-      :alt: User selects ASP.NET Core Web Application for C# from the project type menu.
+   .. figure:: figures/WindowsNewProjectPage0.png
+      :alt: User selects "Create a new project". 
 
-      User selects the appropriate project type.
+      User selects "Create a new project".
 
-#. Name your project *HelloASPDotNET* and put it in the appropriate directory for all of your classwork. Hit *Create*!
+
+#. When selecting the type of project, select **ASP.NET Core Web App (Model-View-Controller)**.  
    
-   .. figure:: figures/vs-windows-name-asp-app.png
-      :alt: User names new project HelloASPDotNET
+   There are 2 ways to find this easily:
+      A. Select "Web" from the dropdown menu.  
+      B. Use the search bar.
 
-      User names their new project.
+   Once you have your project type, click *Next*.
 
-#. After naming, select *Web Application (Model-View-Controller)* from the project template options and unselect
-   *Configure for HTTPS* under the *Advanced* header on the right.
-   
-   .. figure:: figures/vs-windows-select-mvc-asp-app.png
-      :alt: User selects MVC template type from selection menu
+   .. figure:: figures/WindowsNewProjectPage1.png
+      :alt: User selects "ASP.NET Core Web App (Model-View-Controller)" by using option A's dropdown menu.  
 
-      User selects the MVC template type.
+      User selects "ASP.NET Core Web App (Model-View-Controller)" by using option A's dropdown menu.  
 
-**Mac Users:**
+#. Name your project ``HelloASPDotNET`` and put it in the appropriate directory for all of your classwork. Hit Next. 
 
-#. When selecting the type of project, head over to *.NET Core* and select *Web Application (model-view-controller)* for Mac users.
-   For Windows users, select *ASP.NET Core*.
+   .. figure:: figures/WindowsNewProjectPage2.png
+      :alt: User names project and selects location for repo.
 
-   .. figure:: figures/userselectmvc.png
-      :alt: User selects Web Application MVC from the .NET Core Application menu
+      User names project and selects location for repo.
 
-      User selects the appropriate project type.
+#. Select the Framework.  We are going to use *.NET Core 3.1 (Long-term support)*. 
+   We are using this version because it is stable for creating the projects in this textbook.
+   You do not need to adjust any other options at this point.  Select Create!
 
-   .. admonition:: Warning
+   .. figure:: figures/WindowsNewProjectPage3.png
+      :alt: User selects ".NET Core 3.1 (Long-term support)".
 
-      A page may appear asking if you want to add authentication to the app. If you do get this page, make sure to select *No Authentication* before proceeding forward.
-   
-#. Name your project *HelloASPDotNET* and put it in the appropriate directory for all of your classwork. Hit *Create*!
-   Windows users may have to take one additional step and select *Web Application (model-view-controller)* after hitting *Create*.
-
-   .. figure:: figures/usernamesproject.png
-      :alt: User names new project HelloASPDotNET
-
-      User names their new project.
 
 **All Users:**
 

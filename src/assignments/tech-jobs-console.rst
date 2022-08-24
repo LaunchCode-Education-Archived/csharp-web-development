@@ -373,11 +373,11 @@ Complete this method. It should print out jobs *in this precise format*:
 For the autograding script to correctly grade your code, you'll need to match this format *exactly*. In particular, note the number of asterisks surrounding each listing, and the blank line between listings.
 
 If there are no results, it should print ``No results``. Again, you should use this *exact* message.
-.. admonition Warning
+.. admonition:: Warning
 
-To create new lines for your output, use ``Environment.NewLine``.  
+   To create new lines for your output, use ``Environment.NewLine``.  
 
-Using the ``Environment.NewLine``  will allow the autograding unit tests pass regardless of your operating system.  ``\n`` is a new line in Mac OS, but will be read as ``\r\n`` in Windows.    Read about the differences in line breaks `here <https://dev.to/pieter/why-windows-uses-rn-newlines-instead-of-n-126l>`.  Read more about ``Environment.NewLine`` `here<https://www.dotnetperls.com/newline>`.
+Using the ``Environment.NewLine``  will allow the autograding unit tests pass regardless of your operating system.  ``\n`` is a new line in Mac OS, but will be read as ``\r\n`` in Windows.    Read about the differences in line breaks `here <https://dev.to/pieter/why-windows-uses-rn-newlines-instead-of-n-126l>`_.  Read more about how ``Environment.NewLine`` `works <https://www.dotnetperls.com/newline>`_.
 .. admonition:: Tip
 
    To do this, you'll need to iterate over a ``List`` of jobs. Each

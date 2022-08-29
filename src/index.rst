@@ -62,6 +62,7 @@ Assignments
    :name: assignmentstoc
 
    assignments/how-to-submit
+   assignments/hello-world
    assignments/tech-jobs-console
    assignments/tech-jobs-oo
    assignments/tech-jobs-mvc

@@ -42,9 +42,7 @@ In this project, you’ll show that you can:
 Get the Starter Code
 --------------------
 
-#. Set up a local copy of the project. Visit the `repository page <https://github.com/LaunchCodeEducation/csharp-web-dev-techjobs-oo>`_ 
-   for this project and fork the repo to create a copy in your own GitHub
-   account.
+#. In Canvas, Graded Assignment #2: TechJobs (Object-Oriented Edition) contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio.  Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details.
 #. Open Visual Studio.
 #. If the app opens up to an existing project, close it.
 #. From the Visual Studio dialog box, open your copy of the starter code.

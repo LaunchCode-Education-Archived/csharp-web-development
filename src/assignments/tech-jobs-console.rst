@@ -150,12 +150,10 @@ user wants to quit our app, they can enter ``x`` at the initial ``View jobs by``
 
 .. admonition:: Note
 
-How to Stop a Running App.
-
-Option 1: Use the IDE.  Click Visual Studio's *Stop* icon.  The light red square that replaces the green *Run* triangle once an app is running.  
-
-Option 2: Use the terminal.   Press *ctrl+C* (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program
-   in Visual Studio
+   There are two ways to stop a running app. Either option works so you can pick the one that works best for you!
+   
+   #. Use the IDE.  Click Visual Studio's *Stop* icon.  The light red square that replaces the green *Run* triangle once an app is running.
+   #. Use the terminal. Press *ctrl+C* (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program in Visual Studio
 
 The ``RunProgram()`` method can be summarized as follows:
 

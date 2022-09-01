@@ -150,12 +150,10 @@ user wants to quit our app, they can enter ``x`` at the initial ``View jobs by``
 
 .. admonition:: Note
 
-How to Stop a Running App.
-
-Option 1: Use the IDE.  Click Visual Studio's *Stop* icon.  The light red square that replaces the green *Run* triangle once an app is running.  
-
-Option 2: Use the terminal.   Press *ctrl+C* (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program
-   in Visual Studio
+   There are two ways to stop a running app. Either option works so you can pick the one that works best for you!
+   
+   #. Use the IDE.  Click Visual Studio's *Stop* icon.  The light red square that replaces the green *Run* triangle once an app is running.
+   #. Use the terminal. Press *ctrl+C* (a widely-known command to kill a console application). This will work in any terminal context, and not just for our console program in Visual Studio
 
 The ``RunProgram()`` method can be summarized as follows:
 
@@ -373,11 +371,13 @@ Complete this method. It should print out jobs *in this precise format*:
 For the autograding script to correctly grade your code, you'll need to match this format *exactly*. In particular, note the number of asterisks surrounding each listing, and the blank line between listings.
 
 If there are no results, it should print ``No results``. Again, you should use this *exact* message.
+
 .. admonition:: Warning
 
    To create new lines for your output, use ``Environment.NewLine``.  
 
 Using the ``Environment.NewLine``  will allow the autograding unit tests pass regardless of your operating system.  ``\n`` is a new line in Mac OS, but will be read as ``\r\n`` in Windows.    Read about the differences in line breaks `here <https://dev.to/pieter/why-windows-uses-rn-newlines-instead-of-n-126l>`_.  Read more about how ``Environment.NewLine`` `works <https://www.dotnetperls.com/newline>`_.
+
 .. admonition:: Tip
 
    To do this, you'll need to iterate over a ``List`` of jobs. Each

@@ -20,7 +20,7 @@ Getting Started
 
 Set up a local copy of the project:
 
-#. In Canvas, **Graded Assignment #4: TechJobs (Persistent Edition)** contains a GitHub Classroom assignment invitation link and then set up the project in IntelliJ. Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details. 
+#. In Canvas, **Graded Assignment #4: TechJobs (Persistent Edition)** contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from :ref:`assignment0` for details. 
 #. Launch the application to make sure it starts up properly. Then shut it down.
 #. Run the autograding tests. The tests for this assignment are set up the same way as for :ref:`assignment 2 <tech-jobs-oo>`. There are four tasks for this assignment, but the first doesn't require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.
 

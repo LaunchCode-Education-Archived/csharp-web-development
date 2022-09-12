@@ -72,6 +72,8 @@
 {% block relbar2 %}{% endblock %}
 {% block sidebarsourcelink %}{% endblock %}
 
+{%- block body_tag %}<body class="{{ body_class }}">{% endblock %}
+
 {%- block content %}
 {{ navBar() }}
 {%- if not is_toc %}

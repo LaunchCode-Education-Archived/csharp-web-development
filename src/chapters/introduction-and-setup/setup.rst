@@ -7,51 +7,66 @@ For the entirety of this course, we will be coding in C# with the help of Visual
 
 .. _install-visual-studio:
 
-Visual Studio
--------------
+The Integrated Development Environment 
+--------------------------------------
 
-Visual Studio is an **integrated development environment (IDE)**. An IDE is like a text
-editor on steroids. We can write and edit code *and* make use of additional features that 
-enhance our coding experience. Visual Studio offers
-code completion hints, debugging, and even it's own compiler. We'll be using it throughout
-this course, so it's time to get familiar with some of the basics.
+Visual Studio (VS) is an **integrated development environment (IDE)**. 
+An IDE is like a text editor on steroids. 
+We can write and edit code *and* make use of additional features that enhance our coding experience. 
+VS offers code completion hints, debugging, and even it's own compiler. 
+
+We'll be using it throughout this course, so it's time to get familiar with some of the basics.
 
 .. admonition:: Note
 
-   Visual Studio IDE is not the same application as the text editor called Visual Studio Code. 
-   If you already have VS Code installed on your machine, you will still need to 
-   install and configure Visual Studio.
+   Visual Studio IDE is *not* the same application as the source-code editor called Visual Studio Code (VS Code). 
+   If you already have VS Code installed on your machine, you will still need to install and configure VS.
 
 
 .. _dotnet-intro: 
 
-.. index:: ! .NET Core, ! Software Development Kit, ! SDK
+.. index:: ! .NET, ! Software Development Kit, ! SDK
 
-.NET Core
----------
+Development Frameworks
+----------------------
 
-**.NET Core** is a set of tools for developing software in a number of different programming languages, including C#.
+.NET
+^^^^
+
+**.NET** is a set of tools for developing software in a number of different programming languages, including C#.
 The tools together make what is known as a **software development kit**, or **SDK**.
-Unlike it's predecessor, just called .NET or .NET Framework, .NET Core is open-source and available on several 
-operating systems. The SDK provides the runtime environment and the virtual machine for compiling 
-and running C# programs. 
 
-Starting with .NET 5, in November of 2020, the terms *Core and Framework* have been deprecated. There is now just one
-version of .NET that is based on .NET Core.
+Some of its featuers:
 
-.NET Core also notably contains the base class libraries. This is the built-in code that takes care of common programming items,
-such as object types.
+* Open-source and available on several operating systems.
+* The SDK provides the runtime environment and the virtual machine for compiling and running C# programs. 
+* Contains the **base class libraries** which include the built-in code that takes care of common programming items, such as object types.
+* Able to be extended using additional frameworks such as ASP.NET.
+
+You can learn more about .NET `here <https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet>`_.
+
+ASP.NET Core
+^^^^^^^^^^^^
+
+As we progress through this portion of the course, we will start creating web projects.  
+.NET will compile C#, but does not contain any libraries for web development.  
+ASP.NET Core is an open source collection of libraries specifically for web development and creating dynamic web applications.
+
+We will use ASP.NET Core midway through this course; however, you can to learn more about this framework at `this <https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet-core>`_ site.
 
 .. _compiling-csharp:
 
-A summary of the relationship between the code you write in C# and tools provided by .NET Core:
+C# and the Frameworks
+---------------------
+
+A summary of the relationship between the code you write in C# and tools provided by .NET:
 
 #. We write code in C#.
 #. The source code is compiled (like translating) into another intermediate language.
 #. The intermediate code is read by a runtime program included in the .NET SDK.
 #. The runtime environment translates the intermediate code into machine-readable language.
 
-Fortunately for us, .NET Core can be installed along with Visual Studio IDE.
+Fortunately for us, .NET can be installed along with Visual Studio IDE.
 
 Windows Users vs. Mac Users
 ---------------------------

@@ -1,90 +1,97 @@
 Windows Users: Visual Studio Community Edition
 ==============================================
 
-#. Download the Community version of Visual Studio from `this page <https://visualstudio.microsoft.com/downloads/>`__.
+Before you start the installation guide, read through each step below.
+You will find the recommended features and functionality to install listed in each step.
+
+.. admonition:: Warning
+
+   Allow at least **an hour** for the installation process.
+
+Installation Steps
+------------------
+Walk through the installation process by following Microsoft's `Install Visual Studio <https://learn.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022>`_ guide.      
+
+#. Verify that your computer can run Visual Studio 2022.
+
+#. Download the **Community** version of **Visual Studio 2022**.
 
    .. admonition:: Note
 
-      Users can select from multiple options for software downloads, such as Visual Studio Code and 
+      Make sure you select **Visual Studio 2022**.
+
+      You will see multiple options for software downloads, such as Visual Studio Code and 
       Visual Studio for Mac, on this page. Do NOT select either of these options!
 
-      Allow at least an hour for the installation process.
 
-#. Run the installer, and select the following packages from the *Workloads* pane: 
+#. Install the Visual Studio Installer
+
+#. Chose your **Workloads:** 
+   
+   Select the following packages from the *Workloads* pane: 
 
    - ASP.NET and web development 
    - Azure development 
    - Data storage and processing 
    - .NET core cross-platform development
 
-   Your selections will look like these screens:
+   You may need to scroll down to find all of the recommended workloads.
 
-   .. figure:: figures/vs-packages.png
-      :alt: VS install ASP.NET and web development, Azure development, and data storage and processing packages.
+   .. admonition:: Note
 
-      VS install ASP.NET and web development, Azure development, and data storage and processing packages.
+      Steps 5 - 7 are for customizing your Visual Studio.  
+      They are optional, and will use the default setting if applicable.
+      This is perfectly acceptable and will work well for this course.
 
-   .. figure:: figures/vs-packages-2.png
-      :alt: VS install .NET core cross-platform development package.
+      If you do NOT want to customize your installation process skip to Step 8.
+
+#. *Optional*.  Choose individual components
+
+   .. admonition:: Note 
+
+      If you are customizing your **Individual components**, make sure that you are installing .NET 6.0 Runtime.
+      This is a default setting.  Do not uncheck the box.
+   
+#. *Optional*.  Install language packs
+
+#. *Optional*. Select installation location
+   
+#. Start developing
 
 
-      VS install .NET core cross-platform development package.
+A Tour of Your New IDE
+----------------------
 
-#. When the install finishes running, Visual Studio will open by default.
+Microsoft has created a `walkthrough <https://learn.microsoft.com/en-us/visualstudio/ide/quickstart-ide-orientation?view=vs-2022>`_ of the Visual Studio 2022.
+We recommend you read through this to learn the location of key components within your new IDE.
 
-#. Sign in to an existing Microsoft account or create a new one to take advantage of the Community Edition. 
+Visual Studio Extensions
+------------------------
 
-   .. figure:: figures/vs-windows-welcome.png
-      :alt: VS welcome modal for windows.
-
-      Visual Studio welcome window.	
-
-#. The launcher window will prompt you with some choices via a window
-   similar to what you see below. Select the displayed options. (If you
-   don’t see the box about applying customizations, don’t worry about it,
-   just proceed.)
-
-   .. figure:: figures/launch-options.png
-      :scale: 40%
-      :alt: Visual Studio Launch Options, Visual C# selected
-
-      Launch Options, , Visual C# selected
-
-.. _vs-windows-project-opener:
-
-#. Finally, you have made it to the project selection window. 
-   This will be the item you will see when you open Visual Studio. 
-   You do not need to create or open a new project just yet.
-
-   .. figure:: figures/vs-windows-installed.png
-      :scale: 70%
-      :alt: VS Windows Project Opener
-
-      VS Windows Project Opener
-
-.. admonition:: Note
-
-   If you fail to install one or more of the required packages, you can do
-   so by closing Visual Studio and running the installer again. Select
-   *Modify* in the Visual Studio section of the window, and then
-   select the additional package(s) to install.
-
-.. admonition:: Warning
-
-   If you don’t have this most recent version of Visual Studio
-   installed, you will need to install it via the instructions above.
-
-   If you have a pre-existing Visual Studio install, you may need to
-   install the .NET Core Tools package. To do so, follow the `instructions
-   provided by
-   Microsoft <https://www.microsoft.com/net/core#windowsvs2017>`__.
-
+Extensions can help make your workflow smoother.  
+These are usually add-ons that you can add or remove from your IDE as you grow in your coding skills.
 
 Connect to GitHub for Windows Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Visit this page to download and install the `GitHub Extension for Visual
-Studio <https://visualstudio.github.com/>`__.
+In this course, we will continue to use GitHub and GitHub Classroom for code storage.  
+Visual Studio has an extension for making it easier to connect with GitHub.
+Visit this page to download and install the `GitHub Extension for Visual Studio <https://visualstudio.github.com/>`_.
 
+Troubleshooting Your Install
+----------------------------
 
+Missing or Wrong Components?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+If you realize (or worry) that you did not install Visual Studio correctly, 
+the `Modify Visual Studio Guide <https://learn.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2022>`_ 
+can help you make any needed modifications. This includes changing your workloads or individual components.
+
+Already have Visual Studio on Your Computer?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If you don’t have this most recent version of Visual Studio installed, you will need to updated it.
+The `Update Visual Studio Guide <https://learn.microsoft.com/en-us/visualstudio/install/update-visual-studio?view=vs-2022>`_ can help you update your old version of VS to the latest.  
+At the time of this writing, the current version for the course is 2022.
+
+Updating can also help you keep any of your workloads, extensions, or other installed packages up to date.

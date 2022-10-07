@@ -3,6 +3,13 @@
 Simple Controllers
 ==================
 
+.. admonition:: Warning
+
+   Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.  
+   We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.  
+   If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
+   Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.
+
 The first of the MVC elements we'll work on implementing are the controllers. Recall that controllers 
 are like the traffic cops of our application. They handle the requests made from users interacting with the 
 application's view and update model data accordingly. Conversely, changes to model data are sent to the view 
@@ -37,8 +44,8 @@ Controllers and Static Responses - Video
    If you are exploring the starter code and are not able to build a website by using the "Run" button in Visual Studio, 
    try the following in your terminal:
 
-   * Using the terminal, navigate into your project
-   * Enter the command: ``dotnet run`` and follow the instructions 
+   #. Using the terminal, navigate into your project
+   #. Enter the command: ``dotnet run`` and follow the prompts in your terminal 
 
 .. admonition:: Tip
 
@@ -58,7 +65,8 @@ Some tools may depend on us following the convention of the MVC design pattern, 
 If you want to change something about the provided structure, be sure to double check the documentation to make sure a tool does not depend on you following it!
 
 To designate a given class as a controller within the ASP.NET framework, we extend the ``Controller`` class.
-The `Controller class <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-3.1>`__ provides us with the necessary members and methods to manage traffic between the three components in our MVC application. 
+The `Controller class <https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-6.0>`_ 
+provides us with the necessary members and methods to manage traffic between the three components in our MVC application. 
 
 .. sourcecode:: csharp
 
@@ -79,9 +87,21 @@ ASP.NET MVC has two different ways to map these routes: conventional routing and
 **Conventional routing** establishes the routes as endpoints in one of the application's configuration files.
 **Attribute routing** establishes the routes using :ref:`C# attributes <csharp-attributes>` that are placed in the controller file.
 
-Routes in conventional routing are setup via endpoints in a configuration file called ``Startup.cs``.
+Routes in conventional routing are setup via endpoints in a configuration file called ``Program.cs``.
 When an HTTP request comes in, routing matches the request with an endpoint.
 **Endpoints** designate the controller action that executes when the appropriate HTTP request comes into the application.
+
+.. admonition:: Note on the Startup.cs file
+
+   ASP.NET 6.0 combines the ``Program.cs`` and ``Startup.cs`` files.  
+   If you are following along with Sally's video, you will see the files are separated.  She is using ASP.NET 3.1 in her video.
+   This discrepancy between ASP.NET frameworks should not affect this project.  
+
+   If you started your project on your own in .NET 6.0, we recommend exploring `Sally's repo <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`_  
+   and see if you can identify where and how these two files were combined.
+
+   This `documentation <https://learn.microsoft.com/en-us/aspnet/core/migration/50-to-60-samples?view=aspnetcore-6.0>`_ 
+   illustrates some of the changes between .NET 5.0 and .NET 6.0.
 
 When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
 This is because the MVC application we start out with already has the routing and endpoints set up.
@@ -101,12 +121,15 @@ If we added a new method, ``Hello()``, to the ``HomeController``, we would see t
 .. admonition:: Note
 
    Throughout this book, we will be using attribute routing to break the pattern established by conventional routing.
-   However, if you want to investigate further on how to use an endpoint for a rule-breaking route in conventional routing, Microsoft has a great `article <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#special-case-for-dedicated-conventional-routes>`_ on the subject.
-   For example, endpoints preconfigured in ``Startup.cs`` is how we can navigate to ``localhost:5001`` and ``localhost:5001/Home/Index`` to see the same page.
+   However, if you want to investigate further on how to use an endpoint for a rule-breaking route in conventional routing, 
+   Microsoft has a great `article <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#special-case-for-dedicated-conventional-routes>`_ on the subject.
+   For example, endpoints preconfigured in ``Program.cs`` is how we can navigate to ``localhost:5001`` and ``localhost:5001/Home/Index`` to see the same page.
 
-When adding a new controller, such as ``HelloController``, we need to make sure that routing is properly configured whether we use conventional routing or attribute routing.
-We want to start by adding a new action method to ``HelloController``.
-**Action methods** are the public methods in a controller class.
+   **Remember:** ``Program.cs`` contain the endpoints in an ASP.NET 6.0 application.
+
+When adding a new controller, such as ``HelloController``, we need to make sure that routing is properly configured whether 
+we use conventional routing or attribute routing.
+We want to start by adding a new action method to ``HelloController``.  **Action methods** are the public methods in a controller class.
 Action methods respond at a specific route and that response can be an update to a view, sending new data to a model, returning some simple HTML, and so on.
 When we are creating a new action method, we want to think about what route the method needs to respond at, what request type the action method should respond to, and what that response entails.
 Let's start by adding the following ``Index()`` method:
@@ -136,12 +159,10 @@ We also want to make use of attribute routing in our new ``HelloController``.
 To do so, we can add attributes to our ``Index()`` method.
 As you may recall from the :ref:`chapter <csharp-attributes>` on unit testing, attributes in C# lie somewhere between code and comments.
 While an attribute cannot change the code inside the method or class, an attribute in attribute routing does supply critical information about routes and request types.
-Attribute routing is powerful because it does not depend on any endpoint mapping info in ``Startup.cs``, can defy the pattern established by conventional routing, and specify one request type for a method to respond to.
-
-.. admonition:: Note
-
-   ASP.NET has many different attributes that we can use in our controllers.
-   For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#http-verb-templates>`__.
+Attribute routing is powerful because it does not depend on any endpoint mapping info in ``Program.cs``, can defy the pattern established by conventional routing, and specify one request type for a method to respond to.
+  
+ASP.NET has many different attributes that we can use in our controllers.
+For a more in-depth catalog of different attributes, check out the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#http-verb-templates>`__.
 
 .. index:: ! [HttpGet], ! [HttpPost], ! [Route("path")]
 

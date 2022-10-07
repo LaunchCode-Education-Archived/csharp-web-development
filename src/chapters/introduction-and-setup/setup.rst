@@ -88,17 +88,18 @@ Check Your Understanding
 ------------------------
 
 .. admonition:: Question
-
-   True/False: .NET Core is the MacOS version of .NET Framework
+   
+   Visual Studio is a framework. 
 
    #. True
    #. False
 
-.. ans: False, while .NET Core can operate in MacOS, it is not specific to that operating system
+.. ans: False, Visual Studio is an IDE.  The .NET and ASP.NET Core are frameworks that we use inside Visual Studio. 
 
 .. admonition:: Question
 
-   .NET Core contains:
+   .NET contains:
+   (Select all that apply)
 
    #. A C# compiler
    #. A virtual machine

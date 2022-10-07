@@ -31,8 +31,14 @@ Controllers and Static Responses - Video
 
 .. admonition:: Note 
 
-   If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`__ for this video is on the ``master`` branch.
+   If you ever want to verify what code you started this video with, the `starter code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo>`__ for this video is on the ``main`` branch.
    If you ever want to verify what code you end this video with, the `final code <https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses>`__ for this video is on the ``static-responses`` branch.
+
+   If you are exploring the starter code and are not able to build a website by using the "Run" button in Visual Studio, 
+   try the following in your terminal:
+
+   * Using the terminal, navigate into your project
+   * Enter the command: ``dotnet run`` and follow the instructions 
 
 .. admonition:: Tip
 

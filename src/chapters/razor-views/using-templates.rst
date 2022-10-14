@@ -16,13 +16,13 @@ These methods have a structure similar to:
 .. sourcecode:: c#
    :linenos:
 
-   public IActionResult ActionMethod()
-   {
-      // method code here
+     public IActionResult ActionMethod()
+     {
+        // method code here
       
-      ViewBag.property = Data;
-      return View();
-   }
+        ViewBag.property = Data;
+        return View();
+     }
 
 **ViewBag** is an object that passes data into a template. ``Data`` can
 be a variable of any type, a number, a collection of some sort, or an object. 

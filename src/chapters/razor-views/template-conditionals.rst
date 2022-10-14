@@ -39,18 +39,18 @@ Let's look at an example:
    .. sourcecode:: guess
       :linenos:
 
-      @if (ViewBag.userSelection == "Instant")
-      {
-         <p>Are you sure about that?</p>
-      } 
-      else if (ViewBag.userSelection == "French Roast")
-      {
-         <p>Oooh la la!</p>
-      } 
-      else
-      {
-         <p>Thanks for your order</p>
-      }
+        @if (ViewBag.userSelection == "Instant")
+        {
+           <p>Are you sure about that?</p>
+        } 
+        else if (ViewBag.userSelection == "French Roast")
+        {
+           <p>Oooh la la!</p>
+        } 
+        else
+        {
+           <p>Thanks for your order</p>
+        }
 
 The ``@if`` statement in line 1 compares a user's brew choice to the string
 ``"Instant"``. If they match, then Razor adds the paragraph element to the
@@ -78,15 +78,15 @@ Just as we can nest loops, we can nest any C# in Razor for advanced control flow
    .. sourcecode:: guess
       :linenos:
 
-      @if (ViewBag.coffeeOptions.Count > 1)
-      {
-         <ol>
-            @foreach(string coffeeType in ViewBag.coffeeOptions)
-            {
-               <li>@coffeeType</li>
-            }
-         </ol>
-      }
+        @if (ViewBag.coffeeOptions.Count > 1)
+        {
+           <ol>
+              @foreach(string coffeeType in ViewBag.coffeeOptions)
+              {
+                 <li>@coffeeType</li>
+              }
+           </ol>
+        }
 
 
 The conditional in line 1 checks that ``coffeeOptions`` contains more than one
@@ -136,12 +136,12 @@ the values in an unordered list.
 .. sourcecode:: html
    :linenos:
 
-   <ul>
-      @foreach(int number in ViewBag.numbers)
-      {
-         <li>@number</li>
-      }
-   </ul>
+     <ul>
+        @foreach(int number in ViewBag.numbers)
+        {
+           <li>@number</li>
+        }
+     </ul>
 
 .. admonition:: Question
 

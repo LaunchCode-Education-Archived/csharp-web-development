@@ -39,7 +39,7 @@ CodingEvents Setup - Text
 #. Within the action method, create an empty list and add a few event names to it.
 #. Add the list to ``ViewBag``. Then return the corresponding view.
 #. Within the ``Views`` directory, create a new directory named ``Events``. Within this directory, create a new view named ``Index.cshtml``.
-#. Within the new template, loop over the list and display the name of each event.
+#. Within the new template, loop over the list and display the name of each event.  Make sure your template can handle an empty List.
 
 Create and Render a Form - Video
 --------------------------------
@@ -61,14 +61,14 @@ The method for the form should be of type ``post``.
 .. sourcecode:: html
    :linenos:
 
-   <!-- Other HTML -->
+     <!-- Other HTML -->
 
-   <form method="post">
-      <input type="text" name="inputName">
-      <input type="submit" value="submitButtonText">
-   </form>
+     <form method="post">
+        <input type="text" name="inputName">
+        <input type="submit" value="submitButtonText">
+     </form>
 
-   <!-- Other HTML -->
+     <!-- Other HTML -->
 
 You can include as many inputs as you need in the form, and these can be of
 different types (e.g. text, email, checkbox, etc.). However, each different
@@ -79,13 +79,13 @@ To *render* the form in the view, add a method to the controller with an ``[Http
 .. sourcecode:: csharp
    :lineno-start: 26
 
-   [HttpGet]
-   public IActionResult Add()
-   {
-      // Any additional method code here
+     [HttpGet]
+     public IActionResult Add()
+     {
+        // Any additional method code here
 
-      return View();
-   }
+        return View();
+     }
 
 .. admonition:: Note
 
@@ -118,22 +118,22 @@ a method to the controller using the ``[HttpPost]`` annotation:
 .. sourcecode:: csharp
    :lineno-start: 31
 
-   [HttpPost]
-   [Route("/Events/Add")]
-   public IActionResult NewEvent(string name)
-   {
-      // Method code...
+     [HttpPost]
+     [Route("/Events/Add")]
+     public IActionResult NewEvent(string name)
+     {
+        // Method code...
 
-      return Redirect("/Events");
-   }
+        return Redirect("/Events");
+     }
 
 Some points to note:
 
-#. Line 2: For each piece of data that needs to be retrieved from the form,
+#. **Line 2:** For each piece of data that needs to be retrieved from the form,
    declare a parameter of the appropriate type.
 #. The method code performs any data manipulation required after the
    information gets submitted.
-#. Line 6: We may want to send the user to a different page after they
+#. **Line 6:** We may want to send the user to a different page after they
    successfully submit a form. Instead of re-rendering the form, we want
    to use ``Redirect()`` to *redirect* the user to a different template.
 

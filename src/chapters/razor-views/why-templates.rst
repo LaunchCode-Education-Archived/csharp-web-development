@@ -46,23 +46,23 @@ and each ``<li>`` element, in addition to a couple of fun links. The CSS file
 .. sourcecode:: html
    :linenos:
 
-   <body>
-      <h1>Java Types</h1>
-      <div class="coffeeList">
-         <ol>
-            <li>French Roast</li>
-            <li>Espresso</li>
-            <li>Kopi Luwak</li>
-            <li>Instant</li>
-         </ol>
-      </div>
-      <hr>
-      <div class="links">
-         <h2>Links</h2>
-         <a href="https://www.launchcode.org/">LaunchCode</a> <br>
-         <a href="https://en.wikipedia.org/wiki/Coffee">Coffee</a>
-      </div>
-   </body>
+     <body>
+        <h1>Java Types</h1>
+        <div class="coffeeList">
+           <ol>
+              <li>French Roast</li>
+              <li>Espresso</li>
+              <li>Kopi Luwak</li>
+              <li>Instant</li>
+           </ol>
+        </div>
+        <hr>
+        <div class="links">
+           <h2>Links</h2>
+           <a href="https://www.launchcode.org/">LaunchCode</a> <br>
+           <a href="https://en.wikipedia.org/wiki/Coffee">Coffee</a>
+        </div>
+     </body>
 
 
 We could drastically improve the appearance and content of the page by playing
@@ -81,19 +81,19 @@ hard-coding, since data can change based on a user's actions.
 .. sourcecode:: bash
    :linenos:
 
-   <body>
-      <h1>{templateInstructions}</h1>
-      <div class="coffeeList">
-         <ul>
-            <li {templateInstructions}></li>
-         </ul>
-      </div>
-      <hr>
-      <div class="links">
-         <h2>Links</h2>
-         <a href={templateInstructions}></a>
-      </div>
-   </body>
+     <body>
+        <h1>{templateInstructions}</h1>
+        <div class="coffeeList">
+           <ul>
+              <li {templateInstructions}></li>
+           </ul>
+        </div>
+        <hr>
+        <div class="links">
+           <h2>Links</h2>
+           <a href={templateInstructions}></a>
+        </div>
+     </body>
 
 
 This HTML looks similar to the previous example, but it replaces some of the

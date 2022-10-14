@@ -1,6 +1,13 @@
 Razor Forms
 ===========
 
+.. admonition:: Warning
+
+   Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.  
+   We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.  
+   If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
+   Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.
+
 Already we have seen that templates allow us to build generic forms.
 Using templates, you can reuse the structure by rendering the same form, but with different labels and data.
 Thus, a single form can serve different purposes, saving you extra effort.

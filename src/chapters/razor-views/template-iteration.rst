@@ -9,12 +9,12 @@ hard-coded coffee options in a list.
 .. sourcecode:: html
    :linenos:
 
-   <ol>
-      <li>French Roast</li>
-      <li>Espresso</li>
-      <li>Kopi Luwak</li>
-      <li>Instant</li>
-   </ol>
+     <ol>
+        <li>French Roast</li>
+        <li>Espresso</li>
+        <li>Kopi Luwak</li>
+        <li>Instant</li>
+     </ol>
 
 If we want to add, remove, or edit the list items, we need to go in and change
 the individual tags, which is a poor use of our time. Fortunately, there is a
@@ -37,12 +37,12 @@ collection.
 .. sourcecode:: guess
    :linenos:
 
-   <ol>
-      @foreach (type collectionItem in ViewBag.collectionProperty)
-      {
-         <li>@collectionItem</li>
-      }
-   </ol>
+     <ol>
+        @foreach (type collectionItem in ViewBag.collectionProperty)
+       {
+           <li>@collectionItem</li>
+        }
+     </ol>
 
 #. The ``@foreach`` loop is initiated inside of a list element (either ``<ol>`` or ``<ul>``).
 #. ``ViewBag.collectionProperty`` represents any collection that has been assigned as a property on ``ViewBag``.
@@ -59,12 +59,12 @@ the coffee names as strings in a ``List`` called ``ViewBag.coffeeOptions``.
 .. sourcecode:: guess
    :linenos:
 
-   <ol>
-      @foreach (string coffeeType in ViewBag.coffeeOptions)
-      {
-         <li>@coffeeType</li>
-      }
-   </ol>
+     <ol>
+        @foreach (string coffeeType in ViewBag.coffeeOptions)
+        {
+           <li>@coffeeType</li>
+        }
+     </ol>
 
 Some points to note:
 
@@ -89,15 +89,15 @@ Some points to note:
    .. sourcecode:: guess
       :linenos:
 
-      <div>
-         <h3>Coffee Types</h3>
-         @foreach (string coffeeType in ViewBag.coffeeTypes)
-         {
-            <ol>
-               <li>@coffeeType</li>
-            </ol>
-         }
-      </div>
+        <div>
+           <h3>Coffee Types</h3>
+           @foreach (string coffeeType in ViewBag.coffeeTypes)
+           {
+              <ol>
+                 <li>@coffeeType</li>
+              </ol>
+           }
+        </div>
 
    The final HTML produced is one heading, 4 ordered lists, and 4 coffee names. 
    When this view is rendered, each coffee type is labelled with "1".
@@ -105,21 +105,24 @@ Some points to note:
    .. sourcecode:: html
       :linenos:
 
-      <div>
-         <h3>Coffee Types</h3>
-         <ol>
-            <li>French Roast</li>
-         </ol>
-         <ol>
-            <li>Espresso</li>
-         </ol>
-         <ol>
-            <li>Kopi Luwak</li>
-         </ol>
-         <ol>
-            <li>Instant</li>
-         </ol>
-      </div>
+        <div>
+           <h3>Coffee Types</h3>
+           <ol>
+              <li>French Roast</li>
+           </ol>
+          
+           <ol>
+              <li>Espresso</li>
+           </ol>
+          
+           <ol>
+              <li>Kopi Luwak</li>
+           </ol>
+          
+           <ol>
+              <li>Instant</li>
+           </ol>
+        </div>
 
    
 .. index:: ! var
@@ -139,35 +142,35 @@ Sample Razor template:
 .. sourcecode:: html
    :linenos:
 
-   @foreach (var coffeeShop in ViewBag.coffeeShops)
-   {
-      @*Each shop name*@
-      <p>@coffeeShop.Name</p>
-      <ul>
-         @foreach(string coffeeType in coffeeShop.CoffeeOptions)
-         {
-            @*Each coffee type available*@
-            <li>@coffeeType</li>
-         }
-      </ul>
-   }
+     @foreach (var coffeeShop in ViewBag.coffeeShops)
+     {
+        @*Each shop name*@
+        <p>@coffeeShop.Name</p>
+        <ul>
+           @foreach(string coffeeType in coffeeShop.CoffeeOptions)
+           {
+              @*Each coffee type available*@
+              <li>@coffeeType</li>
+           }
+        </ul>
+     }
 
 Sample HTML output:
 
 .. sourcecode:: html
    :linenos:
 
-   <p>Central Perk</p>
-   <ul>
-      <li>Espresso</li>
-      <li>Instant</li>
-   </ul>
+     <p>Central Perk</p>
+     <ul>
+        <li>Espresso</li>
+        <li>Instant</li>
+     </ul>
 
-   <p>Brews Brothers</p>
-   <ul>
-      <li>French Roast</li>
-      <li>Kopi Luwak</li>
-   </ul>
+     <p>Brews Brothers</p>
+     <ul>
+        <li>French Roast</li>
+        <li>Kopi Luwak</li>
+     </ul>
 
 
 Apart from the nested loops displayed above, here are some other items you may find useful
@@ -217,15 +220,15 @@ Check Your Understanding
    .. sourcecode:: guess
       :linenos:
 
-      <div>
-         <h3>Coffee Types</h3>
-         <ol>
-            @foreach (string coffeeType in ViewBag.coffeeTypes)
-            {
-               <li>@coffeeType</li>
-            }
-         </ol>
-      </div>
+         <div>
+           <h3>Coffee Types</h3>
+           <ol>
+              @foreach (string coffeeType in ViewBag.coffeeTypes)
+              {
+                 <li>@coffeeType</li>
+              }
+           </ol>
+        </div>
 
    #. One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
    #. One heading, one ordered list, and 4 coffee names (with the names labeled "1", "2", "3"…)?
@@ -241,15 +244,15 @@ Check Your Understanding
    .. sourcecode:: guess
       :linenos:
 
-      @foreach (string coffeeType in ViewBag.coffeeTypes)
-      {
-         <div>
-            <h3>Coffee Types</h3>
-            <ol>
-               <li>@coffeeType</li>
-            </ol>
-         </div>
-      }
+        @foreach (string coffeeType in ViewBag.coffeeTypes)
+        {
+           <div>
+              <h3>Coffee Types</h3>
+              <ol>
+                 <li>@coffeeType</li>
+              </ol>
+           </div>
+        }
 
    #. One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?
    #. One heading, one ordered list, and 4 coffee names (with the names labeled "1", "2", "3"…)?

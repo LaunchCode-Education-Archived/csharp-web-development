@@ -31,7 +31,7 @@ A summary of Chris's debugger tips:
 
 .. admonition:: Tip
 
-   Visual Studio for Mac extra tips:
+   **Visual Studio for Mac** extra tips:
 
    - Your IDE may not default to *Debug* mode. To select for it, in the top menu, select *View > Debug*.
    - To view the debugging panes, select *View* in the top menu and scroll down to *Debug Pads*. Select 

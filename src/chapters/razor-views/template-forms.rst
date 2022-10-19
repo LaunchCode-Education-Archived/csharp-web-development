@@ -3,7 +3,7 @@ Razor Forms
 
 .. admonition:: Warning
 
-   Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.  
+   Many changes have happened in the world of Visual Studio and ASP.NET since the original writing of this book.  
    We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.  
    If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
    Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.

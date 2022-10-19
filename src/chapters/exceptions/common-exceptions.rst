@@ -12,7 +12,7 @@ extend the ``System.Exception`` class.
    `here <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/exceptions/creating-and-throwing-exceptions#defining-exception-classes>`__.
 
 The examples in this table are excerpted from 
-`this page <https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netframework-4.8#choosing-standard-exceptions>`__,
+`this page <https://learn.microsoft.com/en-us/dotnet/api/system.exception?view=net-6.0#choosing-standard-exceptions>`__,
 where you can find several other commonly used exception types.
 
 .. list-table:: Common Exception Types in C#

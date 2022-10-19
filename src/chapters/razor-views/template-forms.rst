@@ -43,10 +43,10 @@ CodingEvents Setup - Text
 
 #. In the ``Controllers`` directory, create a new controller named ``EventsController``.
 #. In the new controller, create an action method for ``GET`` requests. 
-#. Within the action method, create an empty list and add a few event names to it.
-#. Add the list to ``ViewBag``. Then return the corresponding view.
+#. Within the action method, create an empty ``List`` and add a few event names to it.
+#. Add the ``List`` to ``ViewBag``. Then return the corresponding view.
 #. Within the ``Views`` directory, create a new directory named ``Events``. Within this directory, create a new view named ``Index.cshtml``.
-#. Within the new template, loop over the List and display the name of each event.  Make sure your template can handle an empty List.
+#. Within the new template, loop over the ``List`` and display the name of each event.  Make sure your template can handle an empty ``List``.
 
 Create and Render a Form - Video
 --------------------------------

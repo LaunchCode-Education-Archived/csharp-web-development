@@ -28,7 +28,7 @@ The following documentation can help you become more familiar with downloading a
 
 **Windows Users:** `Follow this guide <https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio>`_.
 
-**Mac Users:** `User this guide <https://learn.microsoft.com/en-us/visualstudio/mac/nuget-walkthrough?toc=%2Fnuget%2Ftoc.json&view=vsmac-2022>`_
+**Mac Users:** `Follow this guide <https://learn.microsoft.com/en-us/visualstudio/mac/nuget-walkthrough?toc=%2Fnuget%2Ftoc.json&view=vsmac-2022>`_
 
 
 

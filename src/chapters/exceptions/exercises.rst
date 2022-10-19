@@ -1,7 +1,9 @@
 Exercises: Exceptions
 =====================
 
-To get started, fork and clone this `repo <https://github.com/LaunchCodeEducation/csharp-web-dev-exceptions>`_ from Github. 
+To get started, fork and clone this `repo <https://github.com/LaunchCodeEducation/ExceptionsInCSharp>`_ from Github.
+
+You will be working in the **ExceptionExercises** directory of the repository.
 
 Divide By Zero!
 ---------------

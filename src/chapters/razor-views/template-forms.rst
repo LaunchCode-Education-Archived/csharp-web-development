@@ -46,7 +46,7 @@ CodingEvents Setup - Text
 #. Within the action method, create an empty list and add a few event names to it.
 #. Add the list to ``ViewBag``. Then return the corresponding view.
 #. Within the ``Views`` directory, create a new directory named ``Events``. Within this directory, create a new view named ``Index.cshtml``.
-#. Within the new template, loop over the list and display the name of each event.  Make sure your template can handle an empty List.
+#. Within the new template, loop over the List and display the name of each event.  Make sure your template can handle an empty List.
 
 Create and Render a Form - Video
 --------------------------------

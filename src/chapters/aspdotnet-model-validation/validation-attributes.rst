@@ -1,7 +1,8 @@
 Validation Attributes
 =====================
 
-Within the ViewModel or model of a C# web application, we can define validation rules using attributes.
+Within the ViewModel or model of a C# web application, 
+we can define validation rules using attributes.
 Validation attributes can be applied to model fields. 
 
 .. index::
@@ -12,7 +13,8 @@ Validation attributes can be applied to model fields.
 Common Attributes
 ------------------
 
-We'll use only a few of these attributes, but you can find a full list in the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-3.1#built-in-attributes>`_.
+We'll use only a few of these attributes, but you can find a 
+full list in the `documentation <https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#built-in-attributes>`_.
 
 .. list-table:: Common Validation Attributes
    :header-rows: 1

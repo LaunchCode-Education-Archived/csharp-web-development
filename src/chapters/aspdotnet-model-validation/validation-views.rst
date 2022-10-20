@@ -83,7 +83,7 @@ In the ``Add`` View, you will need to add more ``class`` attributes for the libr
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
-Note in line 10 the addition of ``class="form-control`` and in line 11 ``class="text-danger"``.
+Note in line 10 the addition of ``class="form-control"`` and in line 11 ``class="text-danger"``.
 These attributes will be noted by the jQuery Unobtrusive Validation library and print our red
 if the client does not meet the requirements.
 

@@ -37,23 +37,23 @@ First, in ``EventsController``, we want to convert the collection of Events we h
 .. sourcecode:: csharp
    :lineno-start: 19
 
-   List<Event> events = new List<Event>(EventData.GetAll());
+      List<Event> events = new List<Event>(EventData.GetAll());
 
 Now that we are storing our items in a ``List``, we need to import the model into our ``Events/Index.cshtml`` view so we can use the new ``events`` collection.
 We can add a small statement up on line 1 to do so: 
 
 .. sourcecode:: csharp
 
-   @model List<CodingEventsDemo.Models.Event>
+      @model List<CodingEventsDemo.Models.Event>
 
 Or, as we write in the video:
 
 .. sourcecode:: csharp
    :linenos:
 
-   @using CodingEventsDemo.Models
+      @using CodingEventsDemo.Models
 
-   @model List<Event>
+      @model List<Event>
 
 Wherever we used our ``ViewBag`` property, we can now use ``Model`` syntax.
 Once the view has been updated, run the application!

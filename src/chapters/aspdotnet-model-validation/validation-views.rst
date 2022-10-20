@@ -30,7 +30,7 @@ Now when we run our application and enter a bad event name or forget our descrip
 .. admonition:: Warning
 
    In the video, we note that the ``<span>`` element will only be materialized if the validation fails. This isn't true. The ``<span>`` element
-	to contain the error message is always created, it just doesn't contain any text if the validation rule it met.
+   to contain the error message is always created, it just doesn't contain any text if the validation rule it met.
 
 Check Your Understanding
 ------------------------

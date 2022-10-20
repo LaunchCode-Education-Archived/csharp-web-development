@@ -96,21 +96,85 @@ We now need to add a couple of NuGet packages to support our database connection
 Install MySQL Dependency
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Working with the NuGet Package Manager**
+
 Open the NuGet Package Manager in Visual Studio:
 
 - **Windows** - *Tools > NuGet Package Manager > Manage NuGet Packages for Solution*
 - **Mac** - *Project > Manage NuGet Dependencies*
 
-Search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. This dependency provides code that is able to connect to a MySQL database from within an ASP.NET Core application using EF. Note that this package itself depends on the main EntityFrameworkCore package, ``Microsoft.EntityFrameworkCore.Relational``, so it is also installed.
+We will need to install the following NuGet packages:
 
-.. tip:: 
+* ``Pomelo.EntityFrameworkCore.MySql``
+* ``Microsoft.EntityFrameworkCore.Relational``
+* ``Microsoft.EntityFrameworkCore.Design``
 
-   You can view installed packages and their dependencies by navigating to *Dependencies > NuGet* in the Solution Explorer (or the Solution pane on Mac) and expanding a given package. 
+Search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. 
+This dependency provides code that is able to connect to a MySQL database 
+from within an ASP.NET Core application using EF. Note that this package 
+itself depends on two EntityFrameworkCore packages: 
+``Microsoft.EntityFrameworkCore.Relational`` and 
+``Microsoft.EntityFrameworkCore.Design`` which must also be installed.
 
-Install EF Core Tools
-~~~~~~~~~~~~~~~~~~~~~
+``Microsoft.EntityFrameworkCore.Design`` was not installed in the video, but will be required later 
+when we begin to migrate our data into a persistent database.
 
-In this section, "terminal" refers to the Terminal app in MacOS and Powershell in Windows (use *Tools > Command Line > Developer Powershell* to open).
+.. admonition:: Tip 
+
+   You can view installed packages and their dependencies by navigating to 
+   *Dependencies > NuGet* in the Solution Explorer (or the Solution pane on Mac) 
+   and expanding a given package. 
+
+Verify EF Core Tools are Present
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EntityFramework Core is typically installed with Visual Studio 2022.
+
+You can test that it has been installed by running the following in your terminal.
+
+#. ``cd`` your way down into the project folders.  
+   Verify your location by running the ``ls`` command.  You should see all the folders within your project.
+
+   .. sourcecode:: bash
+
+      students-computer:CodingEventsDemo student$ ls
+      CodingEventsDemo.csproj		ViewModels
+      Controllers			Views
+      Data				appsettings.Development.json
+      Models				appsettings.json
+      Program.cs			bin
+      Properties			obj
+      Startup.cs			wwwroot
+
+#. When you are this level run the following command:
+
+   .. sourcecode:: bash
+
+      dotnet ef 
+
+   You should see the following output:
+
+   .. sourcecode:: bash
+
+      students-computer:CodingEventsDemo student$ dotnet ef
+
+                     _/\__       
+               ---==/    \\      
+         ___  ___   |.    \|\    
+        | __|| __|  |  )   \\\   
+        | _| | _|   \_/ |  //|\\ 
+        |___||_|       /   \\\/\\
+
+        // version and command prompts to follow
+
+Troubleshooting EF Core Tools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are not able to see the EntityFrameworkCore logo, 
+then try the following steps to troubleshoot the issue.
+
+In this section, "terminal" refers to the Terminal app in MacOS and 
+Powershell in Windows (use *Tools > Command Line > Developer Powershell* to open).
 
 Open a terminal and run:
 
@@ -122,15 +186,14 @@ This command installs a set of command-line tools for working with EntityFramewo
 
 .. admonition:: Note
 
-   This note applies to *Mac users only*.
-
+   **Mac users only**
    For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with this command: 
 	
-	.. sourcecode:: bash
+   .. sourcecode:: bash
 
-		code ~/.bash_profile 
-		
-	Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window).
+      code ~/.bash_profile 
+      
+   Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window).
 
    .. sourcecode:: bash
 
@@ -157,7 +220,7 @@ Setting the value of the ``DefaultConnection`` property using the values of the 
 
    To avoid this in the future, you can configure your ``DefaultConnection`` string to reference **environment variables**. You then hide the appropriate info by setting the environment variable's value equal to the password, for example.
 
-See Microsoft `documentation <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#environment-variables>`_ to learn how to keep the username and password to your database safe and secure.
+See Microsoft `documentation <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-6.0#environment-variables>`_ to learn how to keep the username and password to your database safe and secure.
 
 Check Your Understanding
 ------------------------

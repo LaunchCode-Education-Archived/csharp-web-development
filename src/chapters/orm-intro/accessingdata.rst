@@ -18,6 +18,11 @@ While classes determine the structure of a table in our relational database, a *
 
    If you want to verify what code this video starts with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
 
+.. admonition:: Warning
+
+   The video is using an out of date syntax for registering a data store.  
+   The text that accompanies the video has the most current syntax.
+
 .. youtube::
    :video_id: NV_Tw9sQeEQ
 
@@ -56,13 +61,20 @@ To create a persistent data store for our ``Event`` class, we can extend the cla
       }
    }
 
-This new class is placed in the ``Data`` directory and namespace. By convention, we name it ``EventDbContext`` since it is going to be used to work with ``Event`` objects and data. We extend ``DbContext``, which will provide most of the base functionality that we need. More on this in the next section. 
+This new class is placed in the ``Data`` directory and namespace. 
+By convention, we name it ``EventDbContext`` since it is going to be used to work with 
+``Event`` objects and data. We extend ``DbContext``, which will provide most of the base 
+functionality that we need. More on this in the next section. 
 
-This extension *must* provide a property of type ``DbSet<Event>``. The ``DbSet`` class provides methods for querying sets of objects of the given type (in this case, ``Event``). In the next section, we will explore how to use these methods.
+This extension *must* provide a property of type ``DbSet<Event>``. 
+The ``DbSet`` class provides methods for querying sets of objects of the 
+given type (in this case, ``Event``). In the next section, we will explore how to use these methods.
 
-The only additional code that we need to add is a constructor that calls the constructor from the base class. 
+The only additional code that we need to add is a constructor that calls 
+the constructor from the base class. 
 
-This basic data store template can be used for any class that you want to persist in a database. Each such class will need its own data store. 
+This basic data store template can be used for any class that you 
+want to persist in a database. Each such class will need its own data store. 
 
 Registering a Data Store
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,8 +96,11 @@ A persistent data store is considered a service in ASP.NET, and we can register 
 .. sourcecode:: csharp
    :lineno-start: 29
 
-   services.AddDbContext<EventDbContext>(options =>
-         options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+      var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));  
+      var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
+      
+      services.AddDbContext<EventDbContext>(options =>
+              options.UseMySql(defaultConnection, serverVersion));
 
 Don't worry too much about the intricate details of what this code is doing. Simply note the following points:
 
@@ -131,9 +146,15 @@ However, there are two changes we need to make:
 
 So the code sample above can be simplified to the following.
 
+.. admonition:: Note
+
+   Need to write about why [Key] needs to be declared.  
+   source: https://learn.microsoft.com/en-us/ef/core/modeling/keys?tabs=data-annotations
+
 .. sourcecode:: csharp
    :lineno-start: 16
 
+   [Key]
    public int Id { get; set; }
 
 	public Event()

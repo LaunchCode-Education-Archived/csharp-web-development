@@ -3,65 +3,120 @@
 Cloning a C# Project
 ====================
 
-The steps here walk you through setting up a repository that you’ll
-use to study example code and work on coding exercises.
+Follow along with the provided walkthroughs to learn how to clone repos into Visual Studio.  
+Try it out on your own by cloning the `LaunchCodeEducation/csharp-web-dev-datatypes <https://github.com/LaunchCodeEducation/csharp-web-dev-datatypes>`__
+repository page and fork the repository into your own GitHub account by selecting *Fork* from the top right of the page.
 
-#. Visit the `LaunchCodeEducation/csharp-web-dev-datatypes <https://github.com/LaunchCodeEducation/csharp-web-dev-datatypes>`__
-   repository page and fork the repository into your own GitHub account by
-   selecting *Fork* from the top right of the page.
+
 
 Windows Users
 -------------
 
-#. From within Visual Studio, choose the
-   *Team Explorer* tab near the bottom of the *Solution Explorer* pane. If
-   you don’t see this tab, you can open it via the application menu: *View
-   > Team Explorer*. The first time you do this, you will need to click
-   *Connect…* and then sign in to GitHub.
+`Clone a Git Repository in Visual Studio <https://learn.microsoft.com/en-us/visualstudio/version-control/git-clone-repository?view=vs-2022>`_
 
-   .. figure:: ./figures/vs-windows-team-explorer.png
-      :alt: Visual Studio Team Explorer Connect to GitHub
+Note the path where you save this repo. 
 
-      Visual Studio Team Explorer Connect to GitHub
-
-   .. admonition:: Tip
-
-      If you are currently viewing the 
-      :ref:`project opener pane <vs-windows-project-opener>`, you can
-      open the editor to access the Team Explorer tab by choosing 
-      "Continue without code ->".
-
-#. Once connected, select *Clone* from the GitHub section of the *Team Explorer* and select
-   your ``csharp-web-dev-datatypes`` copy from the modal window. **Be sure to
-   change the Path field** to the location you would like the project to
-   live, ideally inside of a folder you’ve been using to store other
-   projects.
-
-Mac Users
+Mac Users 
 ---------
 
-#. With Visual Studio open, select *Version Control > Clone Repository* from the menu bar. 
+`Cloning an Existing Repo <https://learn.microsoft.com/en-us/visualstudio/mac/set-up-git-repository?view=vsmac-2022#clone-an-existing-repository>`_
 
-#. This opens a window to connect to a remote repository. Copy the address for your forked exercises repository 
-   and enter it into the *url* section of the form. The rest of the form fields will auto-populate:
+Be sure to note the Target Folder where this repo is saved.
 
-   .. figure:: ./figures/vsmac-checkout-github.png
-      :alt: Visual Studio for Mac checkout Github repository
+Exploring the Cloned Repo in Your Terminal
+------------------------------------------
 
-      Visual Studio for Mac checkout Github repository
+Once you have cloned it into Visual Studio, locate the repo using your terminal.
 
-   .. admonition:: Note
+On a Windows machine, it is a path you saved your repo at.  On a Mac, it's in the Target Folder.
 
-      We use SSH to clone the repo above, but you can use HTTPS if you prefer it.
-      If you're not sure which you want to use, that's ok too.
+Once you find the repo, ``cd`` into it.  
+Look for the **Solution** file which uses the ``.sln`` file type.  
 
-#. Enter the *Target Directory* where you would like to keep your project
+.. sourcecode:: 
 
-   .. admonition:: Tip
+   students-computer:csharp-web-dev-datatypes student$ ls
+   HelloMethods			csharp-web-dev-datatypes.sln
+   TempConverter
+
+.. admonition:: Note
+
+   The ``csharp-web-dev-datatype`` solution contains 2 separate projects:  ``HelloMethods`` and ``TempConverter``.
+   A single solution can hold multiple projects.
+
+Try to open the solution using the command line prompt: 
+
+* Windows Users: ``start *.sln``
+* Mac Users: ``open *.sln``
+
+
+Return to the terminal.  Locate your ``Program.cs`` file for the ``HelloMethods`` project.  
+This will be contained in the project directory of the same name.
+
+.. sourcecode:: 
+
+   students-computer:csharp-web-dev-datatypes student$ ls
+   HelloMethods			csharp-web-dev-datatypes.sln
+   TempConverter
+
+   students-computer:csharp-web-dev-datatypes student$ cd HelloMethods
+   students-computer:csharp-web-dev-datatypes student$ ls
+   HelloMethods.csproj	Message.cs		Program.cs
+
+You have now stepped into the project files for ``HelloMethods``.
+All of the files here are related to the ``HelloMethods`` project.
+
+As you work with repos in this unit, some solutions may contain a single project and others may contain multiple.
+
+How to Work with a Cloned Repo
+------------------------------
+
+We recommend using the terminal to open and work with your repos.  You will be able to interact with git easily this way.
+
+Use the terminal to locate the repo you wish to open.  ``cd`` into the solution.  
+You can verify this by looking for a file that has the ``.sln`` type.
+Use the command prompt above for your operating system.
+
+Open the solution file tree in Visual Studio.
+If you see multiple projects, you can select which one to run two ways:
+
+#. Right-clicking on the name of the project and selecting the **Run** option.
+#. Open the project's ``Program.cs`` file then use the run button in the menu bar.
+
+Check Your Understanding
+------------------------
+
+.. admonition:: Question
+
+   Which file is the solution?
+
+   .. sourcecode:: 
+
+      students-computer:csharp-web-dev-datatypes student$ ls
+      HelloMethods			csharp-web-dev-datatypes.sln
+      TempConverter
+
+   #. ``TempConverter``
+   #. ``HelloMethods``	
+   #. ``csharp-web-dev-datatypes.sln``
+   #. ``Program.cs``
+
+.. ans: c, csharp-web-dev-datatypes.sln
+
+.. admonition:: Question
+
+   Where would Willow find the ``Program.cs`` file for the ``TempConverter`` project?
    
-      Make this a new, empty folder inside of your designated C# practice directory.
 
+   .. sourcecode:: 
 
+      students-computer:csharp-web-dev-datatypes student$ ls
+      HelloMethods			csharp-web-dev-datatypes.sln
+      TempConverter
 
+   #. Inside the ``TempConverter`` project
+   #. Inside the ``HelloMethods`` project
+   #. Inside the ``csharp-web-dev-datatypes.sln``
+   #. None of the above
 
-
+.. ans: a, Inside the ``TempConverter`` project

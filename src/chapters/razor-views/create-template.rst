@@ -87,21 +87,22 @@ string of HTML. In ``Views``, create a new subdirectory called ``Hello``.
 
 Within ``Hello`` create a new file of the *Razor View* file template. 
 
-**WINDOWS USERS:** Right click on the ``Views`` directory or any subdirectory and select *Add -> New Item*. 
-Avoid selecting *Add -> View* from your options. 
+**Windows Users:** 
+   * Right click on the ``Views`` directory or any subdirectory and select *Add -> New Item*. 
+   * The *Razor View - Empty* option is found in the *ASP.NET Core* menu. 
 
-**MAC USERS:** Right click on the ``Views`` directory or any subdirectory and select *Add -> New File*.
+**Mac Users:** 
+   * Right click on the ``Views`` directory or any subdirectory and select *Add -> New File*.
+   * The *Razor View* option is found in the *ASP.NET Core* menu.  
 
-**ALL USERS:** In the modal window that appears, look for the item labelled *Razor View*. 
-
-.. figure:: figures/razor-view-template-selection.png
-   :alt: User selects the Razor View file template.
-
-   Select the *Razor View* file template.
-
+**All Users:** 
+   * Once you have your *Razor View* or *Razor View - Empty* selected, name it ``Index``.
+   * We are naming our Views after there corresponding action methods. 
 
 Add the HTML form from the ``Index()`` method to your new template. Once you are done 
 with that, update the ``Index()`` method to return ``View()``.
+
+.. _layout.cshtml:
 
 ``_Layout.cshtml``
 ~~~~~~~~~~~~~~~~~~

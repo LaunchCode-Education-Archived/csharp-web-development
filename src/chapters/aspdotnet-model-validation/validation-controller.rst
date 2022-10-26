@@ -17,20 +17,20 @@ objects from form submissions.
 .. sourcecode:: csharp
    :lineno-start: 32
 
-   [HttpPost]
-   public IActionResult Add(AddEventViewModel addEventViewModel)
-   {
-      Event newEvent = new Event
+      [HttpPost]
+      public IActionResult Add(AddEventViewModel addEventViewModel)
       {
-         Name = addEventViewModel.Name,
-         Description = addEventViewModel.Description,
-         ContactEmail = addEventViewModel.ContactEmail
-      };
+         Event newEvent = new Event
+         {
+            Name = addEventViewModel.Name,
+            Description = addEventViewModel.Description,
+            ContactEmail = addEventViewModel.ContactEmail
+         };
 
-      EventData.Add(newEvent);
+         EventData.Add(newEvent);
 
-      return Redirect("/Events");
-   }
+         return Redirect("/Events");
+      }
 
 The flow of this request can be described as follows:
 
@@ -110,25 +110,25 @@ Once we are done refactoring the ``Add()`` action method to use ``ModelState.IsV
 .. sourcecode:: csharp
    :lineno-start: 32
 
-   [HttpPost]
-   public IActionResult Add(AddEventViewModel addEventViewModel)
-   {
-      if (ModelState.IsValid)
+      [HttpPost]
+      public IActionResult Add(AddEventViewModel addEventViewModel)
       {
-         Event newEvent = new Event
+         if (ModelState.IsValid)
          {
-            Name = addEventViewModel.Name,
-            Description = addEventViewModel.Description,
-            ContactEmail = addEventViewModel.ContactEmail
-         };
+            Event newEvent = new Event
+            {
+               Name = addEventViewModel.Name,
+               Description = addEventViewModel.Description,
+               ContactEmail = addEventViewModel.ContactEmail
+            };
 
-         EventData.Add(newEvent);
+            EventData.Add(newEvent);
 
-         return Redirect("/Events");
+            return Redirect("/Events");
+         }
+
+         return View(addEventViewModel);
       }
-
-      return View(addEventViewModel);
-   }
 
 Now we have refactored our action method to handle any errors in form submission.
 However, if you submit a value that doesn't meet our conditions, you won't see any error messages indicating what was wrong with your submission.

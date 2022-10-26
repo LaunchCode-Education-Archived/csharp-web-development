@@ -43,6 +43,8 @@ For the purposes of validation practice, make this property only able to be mark
 
       public bool IsTrue { get { return true; } }
 
-   With ``IsTrue`` in ``AddEventViewModel``, you can use a ``[Compare]`` attribute to compare the value of the ``IsTrue`` property which is always ``true`` and the value of the property you add for registration requirements.
-   The `documentation <https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.compareattribute?view=netcore-3.1>`__ has more information on how the ``[Compare]`` attribute.
-
+   With ``IsTrue`` in ``AddEventViewModel``, you can use a ``[Compare]`` 
+   attribute to compare the value of the ``IsTrue`` property which is always ``true`` 
+   and the value of the property you add for registration requirements. The 
+   `documentation <https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.compareattribute?view=net-6.0>`__ 
+   has more information on how the ``[Compare]`` attribute.

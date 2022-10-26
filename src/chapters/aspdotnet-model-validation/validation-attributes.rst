@@ -1,7 +1,8 @@
 Validation Attributes
 =====================
 
-Within the ViewModel or model of a C# web application, we can define validation rules using attributes.
+Within the ViewModel or model of a C# web application, 
+we can define validation rules using attributes.
 Validation attributes can be applied to model fields. 
 
 .. index::
@@ -12,7 +13,8 @@ Validation attributes can be applied to model fields.
 Common Attributes
 ------------------
 
-We'll use only a few of these attributes, but you can find a full list in the `documentation <https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-3.1#built-in-attributes>`_.
+We'll use only a few of these attributes, but you can find a 
+full list in the `documentation <https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#built-in-attributes>`_.
 
 .. list-table:: Common Validation Attributes
    :header-rows: 1
@@ -41,13 +43,13 @@ We'll use only a few of these attributes, but you can find a full list in the `d
    .. sourcecode:: csharp
       :linenos:
 
-      [Required]
-      [StringLength(12, MinimumLength = 3)]
-      public string Username { get; set; }
+         [Required]
+         [StringLength(12, MinimumLength = 3)]
+         public string Username { get; set; }
 
-      [Reguired]
-      [StringLength(20, MinimumLength=6)]
-      public string Password { get; set; }
+         [Reguired]
+         [StringLength(20, MinimumLength=6)]
+         public string Password { get; set; }
 
 Defining Validation Messages
 ----------------------------
@@ -64,13 +66,13 @@ Each of these attributes takes an optional ``ErrorMessage`` parameter that allow
    .. sourcecode:: csharp
       :linenos:
 
-      [Required(ErrorMessage = "Username is required")]
-      [StringLength(12, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 12 characters long")]
-      public string Username { get; set; }
+         [Required(ErrorMessage = "Username is required")]
+         [StringLength(12, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 12 characters long")]
+         public string Username { get; set; }
 
-      [Required(ErrorMessage = "Password is required")]
-      [StringLength(20, MinimumLength = 6, ErrorMessage = "Sorry, but the given password is too short. Passwords must be at least 6 characters long.")]
-      public string Password { get; set; }
+         [Required(ErrorMessage = "Password is required")]
+         [StringLength(20, MinimumLength = 6, ErrorMessage = "Sorry, but the given password is too short. Passwords must be at least 6 characters long.")]
+         public string Password { get; set; }
 
 We will see how to ensure these error messages are properly displayed in the next section, :ref:`validating-models`.
 
@@ -95,13 +97,13 @@ For our ``AddEventViewModel`` class, we add ``[StringLength]`` and ``[Required]`
 .. sourcecode:: csharp
    :lineno-start: 8
 
-   [Required(ErrorMessage = "Name is required.")]
-   [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters.")]
-   public string Name { get; set; }
+      [Required(ErrorMessage = "Name is required.")]
+      [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters.")]
+      public string Name { get; set; }
 
-   [Required(ErrorMessage = "Please enter a description for your event.")]
-   [StringLength(500, ErrorMessage = "Description is too long!")]
-   public string Description { get; set; }
+      [Required(ErrorMessage = "Please enter a description for your event.")]
+      [StringLength(500, ErrorMessage = "Description is too long!")]
+      public string Description { get; set; }
 
 The required ``MaximumLength`` and optional ``MinimumLength`` parameters for ``[StringLength]`` specify the maximum and minimum number of allowed characters, respectively.
 Omitting the minimum length requirement means that no min or max will be applied for the field.
@@ -118,8 +120,8 @@ Thankfully, there is an ``[EmailAddress]`` validation attribute that we can appl
 .. sourcecode:: csharp
    :lineno-start: 16
 
-   [EmailAddress]
-   public string ContactEmail { get; set; }
+      [EmailAddress]
+      public string ContactEmail { get; set; }
 
 Before we can start up our application, we need to add a new input to our form in ``Events/Add.cshtml`` to take in the contact email for 
 an event organizer. While we don't demonstrate these items in the video above, we cover them on the next page before tackling validation in the controller.
@@ -127,40 +129,41 @@ an event organizer. While we don't demonstrate these items in the video above, w
 .. sourcecode:: html
    :lineno-start: 14
 
-   <div class="form-group">
-      <label asp-for="ContactEmail">Contact Email</label>
-      <input asp-for="ContactEmail" />
-   </div>
+      <div class="form-group">
+         <label asp-for="ContactEmail">Contact Email</label>
+         <input asp-for="ContactEmail" />
+      </div>
 
 We also need to add a new column to the ``Events/Index.cshtml`` template to make ``ContactEmail`` visible. 
 
 .. sourcecode:: html
    :lineno-start: 20
 
-   <table class="table">
-		<tr>
-			<th>
-				Id
-			</th>
-			<th>
-				Name
-			</th>
-			<th>
-				Description
-			</th>
-			<th>
-				Contact Email
-			</th>
-		</tr>
-		@foreach (var evt in Model)
-		{
-			<tr>
-				<td>@evt.Id</td>
-				<td>@evt.Name</td>
-				<td>@evt.Description</td>
-				<td>@evt.ContactEmail</td>
-			</tr>
-		}
+    <table class="table">
+      <tr>
+         <th>
+            Id
+         </th>
+         <th>
+            Name
+         </th>
+         <th>
+            Description
+         </th>
+         <th>
+            Contact Email
+         </th>
+      </tr>
+      
+      @foreach (var evt in Model)
+      {
+         <tr>
+            <td>@evt.Id</td>
+            <td>@evt.Name</td>
+            <td>@evt.Description</td>
+            <td>@evt.ContactEmail</td>
+         </tr>
+      }
     </table>
 
 Now we can start up our application and test.

@@ -87,7 +87,7 @@ Note in line 10 the addition of ``class="form-control"`` and in line 11 ``class=
 These attributes will be noted by the jQuery Unobtrusive Validation library and print our red
 if the client does not meet the requirements.
 
-You can read morea about client-side validation 
+You can read more about client-side validation 
 and the jQuery Unobtrusive Validation library `here <https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#client-side-validation>`_.
 That is were we found the syntax for this portion of the project.
 

@@ -141,6 +141,11 @@ When introducing this property previously, we intentionally named it ``Id`` in a
 
 However, there are two changes we need to make:
 
+``TODO: TEST THIS OUT IN A NEW PROJECT``
+
+``TODO:  note if using the repos``
+
+If using the repos then need to do this!
 #. Primary key properties must have both a getter and setter.
 #. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor. So we can remove the code in the constructors that explicitly sets the value of ``Id``, along with the ``nextId`` field.
 
@@ -148,7 +153,7 @@ So the code sample above can be simplified to the following.
 
 .. admonition:: Note
 
-   Need to write about why [Key] needs to be declared.  
+   Need to write about why ``[Key]`` needs to be declared.  
    source: https://learn.microsoft.com/en-us/ef/core/modeling/keys?tabs=data-annotations
 
 .. sourcecode:: csharp

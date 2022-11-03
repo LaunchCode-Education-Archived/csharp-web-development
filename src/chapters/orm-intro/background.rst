@@ -103,21 +103,23 @@ Open the NuGet Package Manager in Visual Studio:
 - **Windows** - *Tools > NuGet Package Manager > Manage NuGet Packages for Solution*
 - **Mac** - *Project > Manage NuGet Dependencies*
 
+Search for for all of the packages listed below. Select the package and install.
+
 We will need to install the following NuGet packages:
 
 * ``Pomelo.EntityFrameworkCore.MySql``
+   This dependency provides code that is able to connect to a MySQL database 
+   from within an ASP.NET Core application using EF. Note that this package 
+   itself depends on two EntityFrameworkCore packages:
+
 * ``Microsoft.EntityFrameworkCore.Relational``
+   This is a mapping framework that automates access and storage of data in your project's database.
+
 * ``Microsoft.EntityFrameworkCore.Design``
+   This helps manage data migrations and the design-time logic.
+   **Note:** This was not installed in the video above.  
+   If you do not install it, EntityFrameworkCore print an error message asking you to install it.
 
-Search for ``Pomelo.EntityFrameworkCore.MySql``. Select the package and install. 
-This dependency provides code that is able to connect to a MySQL database 
-from within an ASP.NET Core application using EF. Note that this package 
-itself depends on two EntityFrameworkCore packages: 
-``Microsoft.EntityFrameworkCore.Relational`` and 
-``Microsoft.EntityFrameworkCore.Design`` which must also be installed.
-
-``Microsoft.EntityFrameworkCore.Design`` was not installed in the video, but will be required later 
-when we begin to migrate our data into a persistent database.
 
 .. admonition:: Tip 
 
@@ -178,9 +180,9 @@ Powershell in Windows (use *Tools > Command Line > Developer Powershell* to open
 
 Open a terminal and run:
 
-.. sourcecode:: bash
+   .. sourcecode:: bash
 
-   $ dotnet tool install -g dotnet-ef
+      $ dotnet tool install -g dotnet-ef
 
 This command installs a set of command-line tools for working with EntityFrameworkCore *globally*, which means it will be available for any ASP.NET project we use in the future. We will use the tools provided by this package to update our database schema after adding or changing model classes. 
 
@@ -239,6 +241,6 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   **True/False:** We need EntityFrameworkCore AND a MySQL provider to successfully use ORM.
+   **True/False:** We need EntityFrameworkCore AND a MySQL provider to successfully use ORM in this project.
 
 .. ans: True

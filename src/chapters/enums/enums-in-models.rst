@@ -1,7 +1,9 @@
 Enums in Model Classes
 ======================
 
-One application of enum types is to represent categories of objects. We will take this approach in our ``CodingEvents`` application to categorize events based on their type, such as *conference* or *meetup*.
+One application of enum types is to represent categories of objects. 
+We will take this approach in our ``CodingEvents`` application to 
+categorize events based on their type, such as *conference* or *meetup*.
 
 Enum Types in Models - Video
 ----------------------------
@@ -11,8 +13,11 @@ Enum Types in Models - Video
 
 .. admonition:: Note
 
-   If you ever want to verify what code the video starts with, check out the `display-error-messages <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-error-messages>`__ branch in ``CodingEventsDemo``.
-   If you ever want to verify what code the video ends with, check out the `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`__ branch in ``CodingEventsDemo``.
+   If you ever want to verify what code the video starts with, 
+   check out the `display-error-messages <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-error-messages>`__ \
+   branch in ``CodingEventsDemo``.  If you ever want to verify what code the video ends with,
+   check out the `enums <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums>`__ 
+   branch in ``CodingEventsDemo``.
 
 Enum Types in Models - Text
 ---------------------------
@@ -53,7 +58,8 @@ we create a ``Type`` property in ``Event`` amongst the other properties declared
 
    // Event methods
 
-Once we have added an ``EventType`` property to our model, we need to add an ``EventType`` property to our ViewModel.
+Once we have added an ``EventType`` property to our model, we need to add an 
+``EventType`` property to our ViewModel.
 
 Add an Enum Property to a ViewModel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -67,7 +73,8 @@ The first thing we need to do is add an ``EventType`` property to ``AddEventView
 
    public EventType Type { get; set; }
 
-Now that we have a property to hold the event type that the user selects, we need to create a list of all of the possible event types.
+Now that we have a property to hold the event type that the user selects, 
+we need to create a list of all of the possible event types.
 We will use this list to populate the ``select`` element in a later step.
 
 .. sourcecode:: csharp
@@ -82,13 +89,17 @@ We will use this list to populate the ``select`` element in a later step.
    };
 
 Because the ``EventType`` options are not changing, we can populate this property with a default value.
-We add each of the constants to the ``EventTypes`` list. ``SelectListItem`` is an ASP.NET-provided class that represents each ``<option>`` 
-element in a ``<select>`` element. The ``SelectListItem`` constructor requires a ``Text`` and ``Value`` property assignment.
-The ``Text`` property sets the displayed text in the ``<option>`` tag. This is created by getting each ``EventType`` and casting it to a ``string`` type.
-The ``Value`` property sets the ``value`` attribute on the ``<option>`` tag. This is created by getting each ``EventType``, casting it to 
-its implicit ``int`` value, and then casting that to a ``string`` type.
+We add each of the constants to the ``EventTypes`` list. ``SelectListItem`` 
+is an ASP.NET-provided class that represents each ``<option>`` element in a ``<select>`` element. 
+The ``SelectListItem`` constructor requires a ``Text`` and ``Value`` property assignment.
+The ``Text`` property sets the displayed text in the ``<option>`` tag. 
+This is created by getting each ``EventType`` and casting it to a ``string`` type.
+The ``Value`` property sets the ``value`` attribute on the ``<option>`` tag. 
+This is created by getting each ``EventType``, casting it to its implicit ``int`` value, 
+and then casting that to a ``string`` type.
 
-This list only exists in ``AddEventViewModel`` because we need it only for the purposes of displaying all of the options.
+This list only exists in ``AddEventViewModel`` because we need it only for 
+the purposes of displaying all of the options.
 We do not need a list of the different event types in our ``Event`` model.
 We just need the type of one event. 
 This is another great reason to use a ViewModel! 

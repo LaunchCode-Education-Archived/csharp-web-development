@@ -120,21 +120,23 @@ Our ``Event`` class currently has an ID field.
 .. sourcecode:: csharp
    :lineno-start: 16
 
-   public int Id { get; }
-   static private int nextId = 1;
+      public int Id { get; }
+      static private int nextId = 1;
 
-	public Event()
-   {
-      Id = nextId;
-      nextId++;
-   }
+      public Event()
+      {
+         Id = nextId;
+         nextId++;
+      }
 
-   public Event(string name, string description, string contactEmail) : this()
-   {
-      Name = name;
-      Description = description;
-      ContactEmail = contactEmail;
-   }
+      public Event(string name, string description, string contactEmail) : this()
+      {
+         Name = name;
+         Description = description;
+         ContactEmail = contactEmail;
+      }
+
+
 
 
 When introducing this property previously, we intentionally named it ``Id`` in anticipation of using EF and a data store to persist ``Event`` objects. EF will *automatically* consider any property named ``Id`` to be the primary key for that class. Therefore, we already have the necessary property! 
@@ -146,8 +148,8 @@ However, there are two changes we need to make:
 ``TODO:  note if using the repos``
 
 If using the repos then need to do this!
-#. Primary key properties must have both a getter and setter.
-#. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor. So we can remove the code in the constructors that explicitly sets the value of ``Id``, along with the ``nextId`` field.
+   #. Primary key properties must have both a getter and setter.
+   #. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor. So we can remove the code in the constructors that explicitly sets the value of ``Id``, along with the ``nextId`` field.
 
 So the code sample above can be simplified to the following.
 
@@ -159,19 +161,19 @@ So the code sample above can be simplified to the following.
 .. sourcecode:: csharp
    :lineno-start: 16
 
-   [Key]
-   public int Id { get; set; }
+      [Key]
+      public int Id { get; set; }
 
-	public Event()
-   {
-   }
+      public Event()
+      {
+      }
 
-   public Event(string name, string description, string contactEmail)
-   {
-      Name = name;
-      Description = description;
-      ContactEmail = contactEmail;
-   }
+      public Event(string name, string description, string contactEmail)
+      {
+         Name = name;
+         Description = description;
+         ContactEmail = contactEmail;
+      }
 
 .. index:: ! migration
 

@@ -15,6 +15,8 @@ you'll need to do the work to connect the project to a database for storing user
 
 Each of the three sections of this assignment will also ask you to demonstrate your SQL skills under an item labelled **SQL TASK**.
 
+As you work through each part, refer to our `demo app <https://techjobs-persistent.launchcodetechnicaltraining.org/>`_ to clarify questions about intended application behavior.
+
 Getting Started
 ----------------
 

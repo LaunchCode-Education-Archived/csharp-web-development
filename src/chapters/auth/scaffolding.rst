@@ -38,45 +38,43 @@ When you run this command, the output may look something like the following:
 .. sourcecode:: guess
    :linenos:
 
-   .NET Core SDK (reflecting any global.json):
-   Version:   3.1.101
-   Commit:    b377529961
+   .NET SDK (reflecting any global.json):
+      Version:   6.0.403
+      Commit:    2bc18bf292
 
    Runtime Environment:
-   OS Name:     Mac OS X
-   OS Version:  10.15
-   OS Platform: Darwin
-   RID:         osx.10.15-x64
-   Base Path:   /usr/local/share/dotnet/sdk/3.1.101/
+      OS Name:     Mac OS X
+      OS Version:  12.4
+      OS Platform: Darwin
+      RID:         osx.12-x64
+      Base Path:   /usr/local/share/dotnet/sdk/6.0.403/
 
-   Host (useful for support):
-   Version: 5.0.5
-   Commit:  2f740adc14
+   global.json file:
+      Not found
 
-   .NET SDKs installed:
-   3.1.101 [/usr/local/share/dotnet/sdk]
-   5.0.202 [/usr/local/share/dotnet/sdk]
+   Host:
+      Version:      6.0.11
+      Architecture: x64
+      Commit:       943474ca16
 
-   .NET runtimes installed:
-   Microsoft.AspNetCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
-   Microsoft.AspNetCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
-   Microsoft.NETCore.App 2.1.15 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
-   Microsoft.NETCore.App 2.1.23 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
-   Microsoft.NETCore.App 3.1.1 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
-   Microsoft.NETCore.App 5.0.5 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+If the .NET Core SDK listed on line 2 does not match the SDK specified in your ``csproj`` file, you may need to open up your ``global.json`` and edit it so that the SDK used by the project matches.
 
-   To install additional .NET runtimes or SDKs:
-   https://aka.ms/dotnet-download
+.. admonition:: Note
 
-If the .NET Core SDK listed on line 2 does not match the SDK specified in your ``csproj`` file, you need to open up your ``global.json`` and edit it so that the SDK used by the project matches.
+   If you are do not have a ``global.json`` file, but the .NET Core SDK is still not matching your ``csproj`` file, you can create a new ``global.json`` file with the following command:
 
-You need to install five NuGet packages before getting started with this process:
+   ::
 
-#. ``Microsoft.AspNetCore.Identity``
+      dotnet new globaljson --sdk-version 6.0.403
+
+You need to install six NuGet packages before getting started with this process:
+
+#. ``Microsoft.EntityFrameworkCore.Design``
 #. ``Microsoft.AspNetCore.Identity.UI``
 #. ``Microsoft.AspNetCore.Identity.EntityFrameworkCore``
 #. ``Microsoft.EntityFrameworkCore.SqlServer``
 #. ``Microsoft.VisualStudio.Web.CodeGeneration.Design``
+#. ``Microsoft.EntityFrameworkCore.Tools``
 
 When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. You can confirm this is the case by reviewing the code in your ``csproj`` file.
 
@@ -106,9 +104,9 @@ All of these commmands should be run in the project directory *inside* of the so
 
    .. sourcecode:: guess
 
-      dotnet tool install -g dotnet-aspnet-codegenerator
+      dotnet tool install --global dotnet-aspnet-codegenerator --version <YOUR .NET VERSION>
 
-   If the tool is installed, you are ready to proceed.
+   If the tool is installed, check the version before proceeding to make sure it works with your .NET version.
 #. Use the following command to add the full package necessary to generate the actual Identity code.
 
    .. sourcecode:: guess
@@ -176,42 +174,58 @@ All of these commmands should be run in the project directory *inside* of the so
 ^^^^^^^^^^^^^
 
 If you tried to run the application right now, you would encounter some build errors.
-While we specified in our scaffolding commands that we wanted to use ``EventDbContext``, we need to open up two files to make sure that Identity is properly using ``EventDbContext``: ``Startup.cs`` and ``IdentityHostingStartup.cs``.
+While we specified in our scaffolding commands that we wanted to use ``EventDbContext``, we need to open up ``EventDbContext`` and make some changes.
 
-``IdentityHostingStartup.cs`` can be found in the ``Areas/Identity`` directory. 
-You should update this file to make sure that it uses MySQL and the ``"DefaultConnection"`` string:
-
-.. sourcecode:: csharp
-   :lineno-start: 14
-
-   public class IdentityHostingStartup : IHostingStartup
-    {
-        public void Configure(IWebHostBuilder builder)
-        {
-            builder.ConfigureServices((context, services) => {
-                services.AddDbContext<EventDbContext>(options =>
-                    options.UseMySql(
-                        context.Configuration.GetConnectionString("DefaultConnection")));
-
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<EventDbContext>();
-            });
-        }
-    }
-
-Now go to ``Startup.cs`` and comment out the following lines in ``ConfigureServices()``:
-
-.. sourcecode:: csharp
-   :lineno-start: 29
-
-   services.AddDbContext<EventDbContext>(options =>
-      options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-
-Add one line to ``ConfigureServices()`` in ``Startup.cs`` for the use of the Razor pages in Identity:
+In order to use Identity, we need to change what ``EventDbContext`` extends. Currently, it extends ``DbContext``. Let's change that to ``IdentityDbContext`` like so:
 
 .. sourcecode:: csharp
 
+   public class JobDbContext: IdentityDbContext<IdentityUser, IdentityRole, string>
+
+You may note that we didn't add any ``DbSet`` for ``IdentityUser`` like we did for other models in the application.
+This is not an oversight! With ``EventDbContext`` properly set up, we can run a migration and the database will add the appropriate tables for our authentication data.
+
+Add a line to ``ConfigureServices()`` in ``Startup.cs`` for the use of the Razor pages in Identity:
+
+.. sourcecode:: csharp
+
+   services.AddControllersWithViews();
    services.AddRazorPages();
+
+.. admonition:: Note
+
+   While you are editing ``ConfigureServices()``, you may need to also add a default identity user.
+   We will learn more about how to configure this user in a later section.
+   For now, you can add code to ``ConfigureServices()`` to address this:
+
+   .. sourcecode:: csharp
+      :linenos:
+
+      services.AddControllersWithViews();
+      services.AddRazorPages();
+
+      var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
+      var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
+      services.AddDbContext<JobDbContext>(options =>
+      options.UseMySql(defaultConnection, serverVersion));
+
+      services.AddDefaultIdentity<IdentityUser>
+      (options =>
+      {
+         options.SignIn.RequireConfirmedAccount = true;
+         options.Password.RequireDigit = false;
+         options.Password.RequiredLength = 10;
+         options.Password.RequireNonAlphanumeric = false;
+         options.Password.RequireUppercase = true;
+         options.Password.RequireLowercase = false;
+      }).AddEntityFrameworkStores<JobDbContext>();
+
+Review ``Configure()`` in ``Startup.cs``. Above ``app.UseAuthorization()``, add one line of code like so:
+
+.. sourcecode:: csharp
+
+   app.UseAuthentication();
+   app.UseAuthorization();
 
 Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``Startup.cs``:
 
@@ -224,6 +238,7 @@ Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``
       endpoints.MapControllerRoute(
          name: "default",
          pattern: "{controller=Home}/{action=Index}/{id?}");
+      endpoints.MapControllers();
       endpoints.MapRazorPages();
    });
 
@@ -231,42 +246,6 @@ Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``
 
 These initial steps were to make sure that the application is still using ``EventDbContext`` for its connection to the database now that we have added Identity.
 However, if you take a look inside the ``Areas/Identity/Data`` directory, you will find a file also called ``EventDbContext``. Delete that generated file and continue to use the one we initially created for ``CodingEvents``.
-Now we just need to dive into our copy of ``EventDbContext`` and do the following:
-
-#. ``EventDbContext`` should now extend ``IdentityDbContext<IdentityUser>``.
-#. We need to add an additional line to ``OnModelCreating()``:
-
-   .. sourcecode:: csharp
-
-      base.OnModelCreating(modelBuilder);
-
-With these changes made, ``EventDbContext`` will look like the following:      
-
-.. sourcecode:: csharp
-   :lineno-start: 13
-
-   public class EventDbContext : IdentityDbContext<IdentityUser>
-   {
-        public DbSet<Event> Events { get; set; }
-        public DbSet<EventCategory> Categories { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<EventTag> EventTags { get; set; }
-
-        public EventDbContext(DbContextOptions<EventDbContext> options)
-            : base(options)
-        {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<EventTag>().HasKey(et => new { et.EventId, et.TagId });
-
-            base.OnModelCreating(modelBuilder);
-        }
-   }
-
-You may note that we didn't add any ``DbSet`` for ``IdentityUser`` like we did for other models in the application.
-This is not an oversight! With ``EventDbContext`` properly set up, we can run a migration and the database will add the appropriate tables for our authentication data.
 
 Views
 ^^^^^

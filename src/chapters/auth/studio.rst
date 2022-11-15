@@ -58,7 +58,7 @@ Scaffolding
 
    #. Use the same files as the chapter content and ``JobDbContext``.
 
-#. Update ``IdentityHostingStartup.cs``, ``Startup.cs``, and ``JobDbContext`` as necessary.
+#. Update ``Startup.cs`` and ``JobDbContext`` as necessary.
 #. Add the ``LoginPartial`` partial view to the navbar.
 #. Run a new migration and test the application.
 

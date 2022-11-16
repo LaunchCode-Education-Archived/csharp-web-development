@@ -9,14 +9,23 @@ Now that we have connected our C# application to a MySQL database, we need to se
 
 .. _intro-to-data-stores:
 
+.. admonition::  Warning
+
+   Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
+   We will provide notes in the text for working with the ``CodingEventsDemo`` repos as well as 
+   projects you created yourself.  
+   
+
 Data Stores - Video
 -------------------
 
-While classes determine the structure of a table in our relational database, a **data store** does the work of inserting, updating, and retrieving data from the database. 
+While classes determine the structure of a table in our relational database, 
+a **data store** does the work of inserting, updating, and retrieving data from the database. 
 
 .. admonition:: Note
 
-   If you want to verify what code this video starts with, check out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
+   If you want to verify what code this video starts with, c
+   heck out the `db-setup <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup>`_ branch. If you want to verify what code this video ends with, check out the `persistent-data-store <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store>`_ branch.
 
 .. admonition:: Warning
 
@@ -33,8 +42,8 @@ Data Stores - Text
    single: data store; in-memory
    single: data store; persistent
 
-In our work so far, we have been using an in-application data store,. This is the class ``EventData``. The ``EventData`` class is an 
-**in-memory data store**. I keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts 
+In our work so far, we have been using an in-application data store. This is the class ``EventData``. The ``EventData`` class is an 
+**in-memory data store**. It keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts 
 down. With EF, we can create a **persistent data store**. A persistent data store retains data even when an app shuts down.
 
 Creating a ``DbContext``
@@ -79,7 +88,13 @@ want to persist in a database. Each such class will need its own data store.
 Registering a Data Store
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to make ASP.NET aware of this data store, we need to register ``EventDbContext`` in the ``Startup`` class. ``Startup`` is automatically executed every time our app starts up, and is a place where application configuration can be customized.
+If you are using the ``CodingEventsDemo`` repos, follow these instructions. 
+If you created the project on your own, skip to :ref:`17.2.2.2.2 Using Your Own Code <usingYourOwnCodingEvents>`.
+
+Using the ``CodingEventsDemo`` repos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To make ASP.NET aware of this data store, we need to register ``EventDbContext`` in the ``Startup`` class. ``Startup`` is automatically executed every time our app starts up, and is a place where application configuration can be customized.
 
 Open up ``Startup.cs`` and find the ``ConfigureServices`` method. By default, it looks like this.
 
@@ -91,7 +106,8 @@ Open up ``Startup.cs`` and find the ``ConfigureServices`` method. By default, it
       services.AddControllersWithViews();
    }
 
-A persistent data store is considered a service in ASP.NET, and we can register this service by add the following code to ``ConfigureServices``.
+A persistent data store is considered a service in ASP.NET, 
+and we can register this service by adding the following code to ``ConfigureServices``.
 
 .. sourcecode:: csharp
    :lineno-start: 29
@@ -99,14 +115,64 @@ A persistent data store is considered a service in ASP.NET, and we can register 
       var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));  
       var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
       
-      services.AddDbContext<EventDbContext>(options =>
-              options.UseMySql(defaultConnection, serverVersion));
+      services.AddDbContext<EventDbContext>(options => options.UseMySql(defaultConnection, serverVersion));
 
 Don't worry too much about the intricate details of what this code is doing. Simply note the following points:
 
-- We are calling the ``AddDbContext<EventDbContext>`` method of the ``services`` object. Referencing ``EventDbContext`` here ensures that we are registering the data store that we just created.
-- ``Configuration.GetConnectionString("DefaultConnection")`` will retrieve the database connection string from ``appsettings.json`` that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.
-- The method ``options.UseMySql`` is called. This ensures that ``EventDbContext`` is a data store that interacts with a MySQL database.
+* We are calling the ``AddDbContext<EventDbContext>`` method of the ``services`` object. Referencing ``EventDbContext`` here ensures that we are registering the data store that we just created.
+* ``Configuration.GetConnectionString("DefaultConnection")`` will retrieve the database connection string from ``appsettings.json`` that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.
+* The method ``options.UseMySql`` is called. This ensures that ``EventDbContext`` is a data store that interacts with a MySQL database.
+
+.. admonition:: Note 
+
+   If you have connection troubles, make sure your username, password, and database information match the connection string in your ``appsettings.json`` file.
+   This is important if you drop tables or schemas and update any of these elements.
+
+Using Your Own Code
+~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Warning
+
+   The video is using an older version of Visual Studio.  
+   Visual Studio 2022 uses a minimal format and has combined the ``Startup.cs`` file into the ``Program.cs`` file.
+   The functionality is the same, but the syntax has changed.  
+   Use the syntax below to connect your C# project to your MySql Workbench.
+
+To make ASP.NET aware of this data store, 
+we need to register ``EventDbContext`` in the ``Program`` class. 
+``Program`` is automatically executed every time our app starts up, 
+and is a place where application configuration can be customized.
+
+We will be using the ``WebApplication`` class to customize our configurations. 
+
+.. sourcecode:: csharp
+   :lineno-start: 5
+   
+      var builder = WebApplication.CreateBuilder(args);
+      
+      builder.Services.AddControllersWithViews();
+
+A persistent data store is considered a service in ASP.NET, and we can register this service by applying the following code to ``builder``.
+
+.. sourcecode:: csharp
+   :lineno-start: 10
+
+      var connectionString = "server=localhost;user=username;password=password;database=database";
+      var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
+
+      builder.Services.AddDbContext<EventDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
+
+Don’t worry too much about the intricate details of what this code is doing. 
+Simply note the following points:
+
+* We are calling the ``AddDbContext<EventDbContext>`` method of the builder object. Referencing ``EventDbContext`` here ensures that we are registering the data store that we just created.   
+* ``dbContextOptions`` will retrieve the database connection string from ``appsettings.json`` that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.
+* The method ``UseMySql`` is called. This ensures that ``EventDbContext`` is a data store that interacts with a MySQL database
+
+.. admonition:: Note 
+
+   If you have connection troubles, make sure your username, password, and database information match the connection string in your ``appsettings.json`` file.
+   This is important if you drop tables or schemas and update any of these elements.
 
 .. index:: ! persistent class, primary key
 
@@ -136,32 +202,19 @@ Our ``Event`` class currently has an ID field.
          ContactEmail = contactEmail;
       }
 
-
-
-
-When introducing this property previously, we intentionally named it ``Id`` in anticipation of using EF and a data store to persist ``Event`` objects. EF will *automatically* consider any property named ``Id`` to be the primary key for that class. Therefore, we already have the necessary property! 
-
-However, there are two changes we need to make:
-
-``TODO: TEST THIS OUT IN A NEW PROJECT``
-
-``TODO:  note if using the repos``
-
-If using the repos then need to do this!
-   #. Primary key properties must have both a getter and setter.
-   #. The value of a primary key property is set by the database when an object is first stored. Therefore, we shouldn't be setting this value in the constructor. So we can remove the code in the constructors that explicitly sets the value of ``Id``, along with the ``nextId`` field.
+When introducing this property previously, 
+we intentionally named it ``Id`` in anticipation of using EF and a data store to persist ``Event`` objects. 
+EF will *automatically* `configure <https://learn.microsoft.com/en-us/ef/core/modeling/keys?tabs=data-annotations#configuring-a-primary-key>`_ 
+any property named ``Id`` to be the primary key for that class. 
+Therefore, we already have the necessary property! 
 
 So the code sample above can be simplified to the following.
 
-.. admonition:: Note
-
-   Need to write about why ``[Key]`` needs to be declared.  
-   source: https://learn.microsoft.com/en-us/ef/core/modeling/keys?tabs=data-annotations
+.. _usingYourOwnCodingEvents:
 
 .. sourcecode:: csharp
    :lineno-start: 16
 
-      [Key]
       public int Id { get; set; }
 
       public Event()

@@ -3,6 +3,12 @@ Object-Relational Mapping
 
 .. index:: ! Object-Relational Mapping, ! ORM, ! Data Layer, ! object-relational mapper
 
+.. admonition::  Warning
+
+   Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
+   We will provide notes in the text for working with the ``CodingEventsDemo`` repos as well as 
+   projects you created yourself. 
+
 We are now ready to connect our MVC application to a relational database and add persistent data storage to our apps. To do so, we need to use *object-relational mapping*.
 
 **Object-Relational Mapping** or **ORM** is a technique for converting data between C# objects and relational databases.

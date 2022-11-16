@@ -3,6 +3,11 @@ Working with Data Stores
 
 With our data store and persistent class configured, we are ready to realize the full power of ORM.
 
+.. admonition:: Note
+
+   This chapter has no syntax changes.  
+   You should be able to follow along with your own code or the ``CodingEventsDemo`` projects.
+
 Data Stores in the Controller - Video
 -------------------------------------
 
@@ -139,6 +144,13 @@ Our final refactored method looks like this:
    }
 
 Now that we are no longer using ``EventData``, we can delete it from our application. And as always, be sure to start your app and test after refactoring.
+
+.. admonition:: 
+
+   Remember that any time you update your database, 
+   you need to add a migration to your project and update your database. 
+
+   If you do not, you will not see any of the changes you made.
 
 Check Your Understanding
 ------------------------

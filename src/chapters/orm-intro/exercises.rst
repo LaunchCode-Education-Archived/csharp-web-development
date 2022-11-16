@@ -41,6 +41,42 @@ Adding a New Table to the Database
 With the two steps completed above, you now need to add a new migration and update your database.
 You should see a new table in your database!
 
+.. admonition:: Tip
+
+   **Where is my table!?**
+
+   If you are not able to see your new ``EventCategory`` table try the following:
+
+   1. **Drop tables**
+      
+      a. Start by dropping all of your tables in MySql Workbench
+      
+      b. Add a new migration in your terminal
+      
+      c. Update your database in the terminal
+      
+      d. Refresh your schema in MySql Workbench
+
+   If you still can't see your table, then you will need to drop your schema and delete old migrations.
+
+   2. **Drop schema**
+      
+      a. Drop the schema in MySql Workbench.  Don't worry, we'll get it back.
+      
+      b. Recreate your schema in MySql Workbench like you did earlier. 
+         You can use the same names and passwords if you like.  If you change any of the names and passwords, make sure you update your MySql connections that you made in the ``appsettings.json`` file as well as either you ``Program.cs`` or ``Startup.cs`` files.
+      
+      c. Delete your old migrations from your C# project.  
+      
+      d. Add a new migration in your terminal
+      
+      e. Update your database in the terminal
+      
+      f. Refresh your schema in MySql Workbench
+
+   You should see your new table in MySql Workbench now.
+
+
 The ``EventCategoryController`` Class
 -------------------------------------
 

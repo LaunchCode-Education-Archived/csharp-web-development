@@ -145,7 +145,7 @@ Our final refactored method looks like this:
 
 Now that we are no longer using ``EventData``, we can delete it from our application. And as always, be sure to start your app and test after refactoring.
 
-.. admonition:: 
+.. admonition:: Tip
 
    Remember that any time you update your database, 
    you need to add a migration to your project and update your database. 

@@ -43,18 +43,18 @@ When we create a new model class and configure it to be stored in a database, a 
       VARCHAR(255) Email
    );
 
-One of the most widely used object-relational mappers available for C# and ASP.NET Core is **EntityFrameworkCore**. This framework makes use of **data layers**. When we learned about models, we learned that :ref:`data layers <data-layer-dev>` add abstraction between models and the data we want to store. With EntityFrameworkCore, data layers take the form of classes that extend ``DbContext``. Models are NOT persistent data stores and relational databases do NOT shape the C# objects we will be using. We want to make sure that the two remain separate.
+One of the most widely used object-relational mappers available for C# and ASP.NET Core is **Entity Framework Core**. This framework makes use of **data layers**. When we learned about models, we learned that :ref:`data layers <data-layer-dev>` add abstraction between models and the data we want to store. With Entity FrameworkCore, data layers take the form of classes that extend ``DbContext``. Models are NOT persistent data stores and relational databases do NOT shape the C# objects we will be using. We want to make sure that the two remain separate.
 
 .. admonition:: Note
 
-   We'll often shorten EntityFrameworkCore to EntityFramework or just EF. The "Core" in the name indicates that we're talking about the version of EF that is compatible with ASP.NET Core.
+   We'll often shorten Entity Framework Core to EF. The "Core" in the name indicates that we're talking about the version of EF that is compatible with ASP.NET Core.
 
 .. index:: ! EntityFrameworkCore 
 
 ORM in ASP.NET
 --------------
 
-To enable ORM in our apps, we need to connect our mapper, EntityFrameworkCore, to a MySQL database. Let's do this with ``CodingEvents``!
+To enable ORM in our apps, we need to connect our EF mapper to a MySQL database. Let's do this with ``CodingEvents``!
 
 .. _setup-orm-database:
 
@@ -104,21 +104,23 @@ Open the NuGet Package Manager in Visual Studio:
 - **Mac** - *Project > Manage NuGet Dependencies*
 
 Search for for all of the packages listed below. Select the package and install.
+Note the version numbers.  When using the package manager, you should be able to select a version.
+Match the versions provided below.
 
 We will need to install the following NuGet packages:
 
-* ``Pomelo.EntityFrameworkCore.MySql``
+* ``Pomelo.EntityFrameworkCore.MySql``  Version 6.0.2
    This dependency provides code that is able to connect to a MySQL database 
    from within an ASP.NET Core application using EF. Note that this package 
-   itself depends on two EntityFrameworkCore packages:
+   itself depends on the following EF packages:
 
-* ``Microsoft.EntityFrameworkCore.Relational``
+* ``Microsoft.EntityFrameworkCore.Relational``  Version 6.0.11
    This is a mapping framework that automates access and storage of data in your project's database.
 
-* ``Microsoft.EntityFrameworkCore.Design``
+* ``Microsoft.EntityFrameworkCore.Design``  Version 6.0.11
    This helps manage data migrations and the design-time logic.
    **Note:** This was not installed in the video above.  
-   If you do not install it, EntityFrameworkCore print an error message asking you to install it.
+   If you do not install it, Entity Framework Core will print an error message asking you to install it.
 
 
 .. admonition:: Tip 
@@ -130,7 +132,7 @@ We will need to install the following NuGet packages:
 Verify EF Core Tools are Present
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-EntityFramework Core is typically installed with Visual Studio 2022.
+EF 6.0.X is typically installed with Visual Studio 2022.
 
 You can test that it has been installed by running the following in your terminal.
 
@@ -139,7 +141,7 @@ You can test that it has been installed by running the following in your termina
 
    .. sourcecode:: bash
 
-      students-computer:CodingEventsDemo student$ ls
+      student-computer:CodingEventsDemo student$ ls
       CodingEventsDemo.csproj		ViewModels
       Controllers			Views
       Data				appsettings.Development.json
@@ -158,7 +160,7 @@ You can test that it has been installed by running the following in your termina
 
    .. sourcecode:: bash
 
-      students-computer:CodingEventsDemo student$ dotnet ef
+      student-computer:CodingEventsDemo student$ dotnet ef
 
                      _/\__       
                ---==/    \\      
@@ -167,45 +169,63 @@ You can test that it has been installed by running the following in your termina
         | _| | _|   \_/ |  //|\\ 
         |___||_|       /   \\\/\\
 
-        // version and command prompts to follow
+        Entity Framework Core .NET Command-line Tools 6.0.X
+
+        
+.. admonition:: Note
+
+   We recommend installing either version 6.0.11 or higher
+
 
 Troubleshooting EF Core Tools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are not able to see the EntityFrameworkCore logo, 
+If you are not able to see the Entity Framework Core logo, 
 then try the following steps to troubleshoot the issue.
 
-In this section, "terminal" refers to the Terminal app in MacOS and 
-Powershell in Windows (use *Tools > Command Line > Developer Powershell* to open).
+#. Open a terminal window using your terminal app outside of Visual Studio.
 
-Open a terminal and run:
+#. Open a terminal and run:
 
    .. sourcecode:: bash
 
       $ dotnet tool install -g dotnet-ef
 
-This command installs a set of command-line tools for working with EntityFrameworkCore *globally*, which means it will be available for any ASP.NET project we use in the future. We will use the tools provided by this package to update our database schema after adding or changing model classes. 
+   This command installs a set of command-line tools for working with EF *globally*, 
+   which means it will be available for any ASP.NET project we use in the future. 
+   We will use the tools provided by this package to update our database schema after adding or changing model classes. 
 
-.. admonition:: Note
+#. Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We'll do that in the next section.
+#. To test that this install worked, run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
 
-   **Mac users only**
-   For these tools to be accessible from the command line, they must be within your user path. Open ``~/.bash_profile`` with this command: 
-	
-   .. sourcecode:: bash
+.. admonition:: Note for Mac users only
+   
+   For these tools to be accessible from the command line, they must be within your user path.
+   We create or update your `bash profile <https://friendly-101.readthedocs.io/en/latest/bashprofile.html>`_.  
+   Your bash profile is a text file that you can add any paths needed.  
+   You may add to this as you continue on your programming journey.
 
-      code ~/.bash_profile 
+   1. Open your ``~/.bash_profile`` with this command: 
+
+      .. sourcecode:: bash
+
+         open ~/.bash_profile 
       
-   Add the following line to the very bottom (recall that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window).
+      `Recall <https://education.launchcode.org/intro-to-professional-web-dev/chapters/terminal/basic-commands.html>`_ 
+      that ``~`` is shorthand for your home directory, which is the directory you are in when you open a new terminal window.
+   
+   2. Add the following line to the very bottom of your profile:
+   
+      .. sourcecode:: bash
 
-   .. sourcecode:: bash
+            export PATH="$PATH:$HOME/.dotnet/tools/"
 
-      export PATH="$PATH:$HOME/.dotnet/tools/"
+   3. Save and close the file. Then close your terminal window and open a new one, so that the changes can take effect.
 
-   This will append the location of the EF tools to your user path. Save and close the file. Then close your terminal window and open a new one, so that the changes can take effect.
+   4. To test that this install worked, run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
 
-To test that this install worked, run ``dotnet ef``. The output should be a message displaying basic EF tool commands and options.
 
-Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We'll do that in the next section.
+Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We’ll do that in the next section.
 
 .. index:: ! environment variables
 
@@ -241,6 +261,6 @@ Check Your Understanding
 
 .. admonition:: Question
 
-   **True/False:** We need EntityFrameworkCore AND a MySQL provider to successfully use ORM in this project.
+   **True/False:** We need Entity Framework Core AND a MySQL provider to successfully use ORM in this project.
 
 .. ans: True

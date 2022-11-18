@@ -32,7 +32,7 @@ Earlier you may have added the following:
       options.Password.RequireNonAlphanumeric = false;
       options.Password.RequireUppercase = true;
       options.Password.RequireLowercase = false;
-   }).AddEntityFrameworkStores<JobDbContext>();
+   }).AddEntityFrameworkStores<EventDbContext>();
 
 This code is dictating the settings for account creation. Right now, for a user to create an account, they have to have the following:
 
@@ -47,7 +47,7 @@ The following is not true for a user to create an account.
 #. Their password does not have to include lowercase letters.
 
 These are just some basic requirements that can be changed to suit the needs of your application.
-For a full list of the default settings for users' passwords and how we can change those settings, check out the `documentation <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordoptions?view=aspnetcore-3.1>`__.
+For a full list of the default settings for users' passwords and how we can change those settings, check out the `documentation <https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordoptions?view=aspnetcore-6.0>`__.
 
 In ``ConfigureServices()``, we can also configure cookie settings, password hashers, user validation requirements, sign in settings and more.
 
@@ -68,4 +68,4 @@ Here are some examples of what you can do with it.
    If you want to customize user data, it is best to do so when initially scaffolding the app.
    `IdentityUser <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1>`__ has a number of properties that are important and relevant to storing user data.
    However, when you read through the requirements you may notice that you need additional properties, such as the user's first and last name.
-   If you want to add custom properties, check out this `article <https://docs.microsoft.com/en-us/aspnet/core/security/authentication/add-user-data?view=aspnetcore-5.0&tabs=visual-studio>`__ from Microsoft.
+   If you want to add custom properties, check out this `article <https://learn.microsoft.com/en-us/aspnet/core/security/authentication/add-user-data?view=aspnetcore-6.0&tabs=visual-studio>`__ from Microsoft.

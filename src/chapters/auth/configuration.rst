@@ -9,7 +9,7 @@ The first place to start with configuring Identity to fit the needs of the proje
    Try and code along as you read more about Identity!
    This page starts off with the code in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
    The final code for this page is in the `identity-config <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-config>`__ branch in ``CodingEventsDemo``.
-
+   If you are looking for an additional walkthrough, check out this `article <https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?source=recommendations&view=aspnetcore-6.0>`__ from Microsoft.
 
 ``Startup.cs``
 --------------

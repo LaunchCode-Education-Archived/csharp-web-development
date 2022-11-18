@@ -19,10 +19,6 @@ The process of adding Identity to an existing code base is called **scaffolding*
    This page starts off with the code in the `display-tag-items <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items>`__ branch in ``CodingEventsDemo``.
    The final code for this page is in the `identity-scaffolding <https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding>`__ branch in ``CodingEventsDemo``.
 
-.. TODO: Check package version compatibility. Asp Net Core 5.0 was causing some issues
-
-.. Students need to check with SDK is being used by global.json and which sdks they have available. Starter code is set up to use 3.1 so they may have to generate new global.json and roll package versions to 3.1 to work with CLI tools and ensure scaffolding is successful.
-
 Before You Start
 ----------------
 
@@ -79,6 +75,11 @@ You need to install six NuGet packages before getting started with this process:
 When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. You can confirm this is the case by reviewing the code in your ``csproj`` file.
 
 With these packages installed, you are ready to go!
+
+.. admonition:: Note
+
+   If you are a Mac user and are getting errors related to versioning with package installs because you have multiple versions of .NET on your machine, you may need to uninstall several versions of .NET.
+   You will find a number of approaches for uninstalling .NET online, but here is `one <https://devkimchi.com/2021/11/24/removing-dotnet-sdks-from-macos-manually/>`__ to get you started.
 
 Scaffolding Identity in an Exisiting Project
 --------------------------------------------
@@ -182,6 +183,37 @@ In order to use Identity, we need to change what ``EventDbContext`` extends. Cur
 
    public class JobDbContext: IdentityDbContext<IdentityUser, IdentityRole, string>
 
+We also need to add an additional line to ``OnModelCreating()``:
+
+   .. sourcecode:: csharp
+
+      base.OnModelCreating(modelBuilder);
+
+With these changes made, ``EventDbContext`` will look like the following:      
+
+.. sourcecode:: csharp
+   :lineno-start: 13
+
+   public class EventDbContext : IdentityDbContext<IdentityUser>
+   {
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventCategory> Categories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<EventTag> EventTags { get; set; }
+
+        public EventDbContext(DbContextOptions<EventDbContext> options)
+            : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<EventTag>().HasKey(et => new { et.EventId, et.TagId });
+
+            base.OnModelCreating(modelBuilder);
+        }
+   }
+
 You may note that we didn't add any ``DbSet`` for ``IdentityUser`` like we did for other models in the application.
 This is not an oversight! With ``EventDbContext`` properly set up, we can run a migration and the database will add the appropriate tables for our authentication data.
 
@@ -247,6 +279,10 @@ Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``
 These initial steps were to make sure that the application is still using ``EventDbContext`` for its connection to the database now that we have added Identity.
 However, if you take a look inside the ``Areas/Identity/Data`` directory, you will find a file also called ``EventDbContext``. Delete that generated file and continue to use the one we initially created for ``CodingEvents``.
 
+.. admonition:: Note
+
+   If you do not immediately see Identity scaffolding, that is okay! Sometimes it takes a moment to appear.
+
 Views
 ^^^^^
 
@@ -286,9 +322,9 @@ If you peek inside the file, you will find these links live inside a conditional
    }
    </ul>
 
-`UserManager <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1?view=aspnetcore-3.1>`__ deals with the user information in the database. We can use the properties and methods to perform operations on user objects such as adding a new user or fetching user information.
+`UserManager <https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.usermanager-1?view=aspnetcore-6.0>`__ deals with the user information in the database. We can use the properties and methods to perform operations on user objects such as adding a new user or fetching user information.
 On line 11 in the code above, ``UserManager`` is used to fetch the signed-in user's username so we greet them by name!
-`SignInManager <https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1?view=aspnetcore-3.1>`__ deals with users signing in. 
+`SignInManager <https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1?view=aspnetcore-6.0>`__ deals with users signing in. 
 On line 8, ``SignInManager`` is used to check if the user is signed in. If the user is signed in, then the links that will be displayed are to manage the account or log out of the account.
 If the user is not signed in, then the links are to either log in or register for an account on the site.
 
@@ -296,8 +332,17 @@ This partial view can be placed anywhere you need it, but we recommend starting 
 To add it to the navbar, use the following syntax:
 
 .. sourcecode:: guess
+   :lineno-start: 19
 
-   <partial name="_LoginPartial" />
+   <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+      <partial name="_LoginPartial" />
+      <ul class="navbar-nav flex-grow-1">
+         <li class="nav-item">
+               <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Add">Add Job</a>
+         </li>
+      </ul>
+   </div>
+
 
 Final Steps
 ^^^^^^^^^^^

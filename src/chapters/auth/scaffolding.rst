@@ -57,7 +57,7 @@ If the .NET Core SDK listed on line 2 does not match the SDK specified in your `
 
 .. admonition:: Note
 
-   If you are do not have a ``global.json`` file, but the .NET Core SDK is still not matching your ``csproj`` file, you can create a new ``global.json`` file with the following command:
+   If you do not have a ``global.json`` file, but the .NET Core SDK is still not matching your ``csproj`` file, you can create a new ``global.json`` file with the following command:
 
    ::
 
@@ -181,7 +181,7 @@ In order to use Identity, we need to change what ``EventDbContext`` extends. Cur
 
 .. sourcecode:: csharp
 
-   public class JobDbContext: IdentityDbContext<IdentityUser, IdentityRole, string>
+   public class EventDbContext: IdentityDbContext<IdentityUser, IdentityRole, string>
 
 We also need to add an additional line to ``OnModelCreating()``:
 
@@ -238,7 +238,7 @@ Add a line to ``ConfigureServices()`` in ``Startup.cs`` for the use of the Razor
 
       var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
       var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
-      services.AddDbContext<JobDbContext>(options =>
+      services.AddDbContext<EventDbContext>(options =>
       options.UseMySql(defaultConnection, serverVersion));
 
       services.AddDefaultIdentity<IdentityUser>
@@ -250,7 +250,7 @@ Add a line to ``ConfigureServices()`` in ``Startup.cs`` for the use of the Razor
          options.Password.RequireNonAlphanumeric = false;
          options.Password.RequireUppercase = true;
          options.Password.RequireLowercase = false;
-      }).AddEntityFrameworkStores<JobDbContext>();
+      }).AddEntityFrameworkStores<EventDbContext>();
 
 Review ``Configure()`` in ``Startup.cs``. Above ``app.UseAuthorization()``, add one line of code like so:
 
@@ -259,7 +259,7 @@ Review ``Configure()`` in ``Startup.cs``. Above ``app.UseAuthorization()``, add 
    app.UseAuthentication();
    app.UseAuthorization();
 
-Add an additional line to ``app.UseEndpoints()`` inside of ``Configure()`` in ``Startup.cs``:
+Add 2 additional lines to ``app.UseEndpoints()`` inside of ``Configure()`` in ``Startup.cs``:
 
 .. sourcecode:: csharp
    :lineno-start: 62

@@ -42,6 +42,8 @@ In this project, you’ll show that you can:
 #. Use Razor syntax to display data within a view.
 #. Create new action methods to process form submission.
 
+
+
 TechJobs (MVC Edition)
 ----------------------
 
@@ -69,6 +71,8 @@ carefully as you solve each problem.
    writing the code to display the search form. She’s handed the project to you
    to finish the rest. First, you'll create a controller method to retrieve search results.
 #. Finally, you'll display search results in the view. 
+
+Throughout your work, refer to our `demo app <https://csharp-mvc.launchcodetechnicaltraining.org/>`_ as needed to clarify questions about intended application behavior.
 
 Getting Started
 ----------------

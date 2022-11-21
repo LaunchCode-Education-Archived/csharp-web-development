@@ -54,12 +54,7 @@ Let's change into the repo and switch to this branch:
    # check out the 1-sqlite branch
    > git checkout 1-sqlite
 
-You can leave this PowerShell window open, we will return to it in a later step:
-
-.. figure:: figures/powershell-in-repo-dir.png
-   :alt: A PowerShell window in coding-events-api repo directory on 1-sqlite branch
-
-   A PowerShell window after cloning the ``coding-events-api`` repo
+Keep your terminal open! We have some more work to do.
 
 Start the API Server
 ^^^^^^^^^^^^^^^^^^^^
@@ -93,7 +88,7 @@ Swagger Documentation
 ^^^^^^^^^^^^^^^^^^^^^
 
 With the application running, go to the first location listed as: "Now listening on:". Enter ``https://localhost:5001`` into your browser. You'll see a page
-that looks nothing like any view we created in our CodingEvents MVC applications. This view is indeed not an equivalent. What you see running in the browser is not
+that looks nothing like any view we created in our CodingEvents MVC applications. What you see running in the browser is not
 at all a client-side application, but rather, some documentation resources for the API itself. 
 
 You'll see a list of those endpoints we asked you to describe for this lesson's exercises:
@@ -127,6 +122,10 @@ To create our first request using Postman, select the *New* button in the top le
 
    Select the *New* button to create a new request
 
+.. admonition:: Note
+
+   **Mac Users**: The above screenshot and the screenshots on this page are of the Windows version of Postman. The *New* button on your launchpad is also in the top left corner of the window, but is white.
+
 Creating a New Request
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -144,9 +143,15 @@ This will open the new request dialog:
 
    The new request dialog includes fields for a request name, description, and collection
 
+.. admonition:: Note
+
+   Depending on the version of Postman you use, when you select the option to make a new request, you may not encounter this dialog.
+   Instead you are taken directly to a new request form and your request is just labeled "Untitled Request". In the top right corner, you will find a *Save* button with an arrow next to it. 
+   Clicking on the arrow displays a dropdown menu where you can select *Save As* to change the name and save it to a specific collection.
+
 Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export 
 collections of requests for portability across teams. For our first request, enter "list coding events" in the *Request name* form field. At the 
-bottom of the new request dialog, you will see that the collections are empty. Select the orange *Create Collection* button, then enter the 
+bottom of the new request dialog, you will see that the collections are empty. Select the *Create Collection* button, then enter the 
 name ``coding events API``. The new request dialog button will change to say *Save to coding events API*:
 
 .. figure:: figures/new-request-dialog-complete.png
@@ -246,7 +251,7 @@ Create a ``CodingEvent``
 
 For our next request, we will create a ``CodingEvent``. Repeat the steps you performed in the previous request:
 
-#. Click on the orange *New* button in the top left corner of the Postman window to create a new request named: ``create coding event``
+#. Click on the *New* button in the top left corner of the Postman window to create a new request named: ``create coding event``
 #. Add it to the existing ``coding events API`` collection
 
 This request will change the state of the Coding Events collection by adding a new entity to it. Recall that the shorthand for this request is:

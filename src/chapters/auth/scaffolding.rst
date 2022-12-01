@@ -31,27 +31,27 @@ Inside the project directory, run the following command:
 
 When you run this command, the output may look something like the following:
 
-.. sourcecode:: guess
+.. sourcecode:: bash
    :linenos:
 
-   .NET SDK (reflecting any global.json):
-      Version:   6.0.403
-      Commit:    2bc18bf292
+      .NET SDK (reflecting any global.json):
+         Version:   6.0.403
+         Commit:    2bc18bf292
 
-   Runtime Environment:
-      OS Name:     Mac OS X
-      OS Version:  12.4
-      OS Platform: Darwin
-      RID:         osx.12-x64
-      Base Path:   /usr/local/share/dotnet/sdk/6.0.403/
+      Runtime Environment:
+         OS Name:     Mac OS X
+         OS Version:  12.4
+         OS Platform: Darwin
+         RID:         osx.12-x64
+         Base Path:   /usr/local/share/dotnet/sdk/6.0.403/
 
-   global.json file:
-      Not found
+      global.json file:
+         Not found
 
-   Host:
-      Version:      6.0.11
-      Architecture: x64
-      Commit:       943474ca16
+      Host:
+         Version:      6.0.11
+         Architecture: x64
+         Commit:       943474ca16
 
 If the .NET Core SDK listed on line 2 does not match the SDK specified in your ``csproj`` file, you may need to open up your ``global.json`` and edit it so that the SDK used by the project matches.
 

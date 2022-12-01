@@ -32,12 +32,12 @@ To access data from the database in a controller, we'll need an instance of ``Ev
 .. sourcecode:: csharp
    :lineno-start: 17
 
-   private EventDbContext context;
+      private EventDbContext context;
 
-   public EventsController(EventDbContext dbContext)
-   {
-      context = dbContext;
-   }
+      public EventsController(EventDbContext dbContext)
+      {
+         context = dbContext;
+      }
 
 We can now reference ``context`` anywhere within our controller in order to query the database.
 
@@ -57,12 +57,12 @@ The first such usage is in the ``Index`` method, which displays a listing of all
 .. sourcecode:: csharp
    :lineno-start: 25
 
-   public IActionResult Index()
-   {
-      List<Event> events = context.Events.ToList();
+      public IActionResult Index()
+      {
+         List<Event> events = context.Events.ToList();
 
-      return View(events);
-   }
+         return View(events);
+      }
 
 We use the ``ToList`` method of ``context.Events`` (recall that this property is a ``DbSet``) to fetch a list of *all* ``Event`` objects stored in the database.
 
@@ -71,8 +71,8 @@ Our next usage of ``EventData`` that needs to be replaced is in the ``Add`` meth
 .. sourcecode:: csharp
    :lineno-start: 53
 
-   context.Events.Add(newEvent);
-   context.SaveChanges();
+      context.Events.Add(newEvent);
+      context.SaveChanges();
 
 Line 53 adds the object to ``context.Events``, which only stores it within that ``DbSet`` object. For this change to be pushed to the database, we must also call ``context.SaveChanges()``.
 
@@ -87,28 +87,28 @@ The next usage of ``EventData`` is in the ``Delete`` method that handles GET req
 .. sourcecode:: csharp
    :lineno-start: 62
 
-   public IActionResult Delete()
-   {
-      ViewBag.events = context.Events.ToList();
+      public IActionResult Delete()
+      {
+         ViewBag.events = context.Events.ToList();
 
-      return View();
-   }
+         return View();
+      }
 
 The final usage of ``EventData`` is in the ``Delete`` method that handles POST requests. That method currently looks like this:
 
 .. sourcecode:: csharp
    :lineno-start: 61
 
-   [HttpPost]
-   public IActionResult Delete(int[] eventIds)
-   {
-      foreach (int eventId in eventIds)
+      [HttpPost]
+      public IActionResult Delete(int[] eventIds)
       {
-         EventData.Remove(eventId);
-      }
+         foreach (int eventId in eventIds)
+         {
+            EventData.Remove(eventId);
+         }
 
-      return Redirect("/Events");
-   }
+         return Redirect("/Events");
+      }
 
 The method takes in an array of IDs corresponding to objects that should be deleted. It then loops through the array and deletes the corresponding objects one-by-one.
 
@@ -117,8 +117,8 @@ Line 66 can be replaced with the following:
 .. sourcecode:: csharp
    :lineno-start: 66
 
-   Event theEvent = context.Events.Find(eventId);
-   context.Events.Remove(theEvent);
+      Event theEvent = context.Events.Find(eventId);
+      context.Events.Remove(theEvent);
 
 The first line searches ``context.Events`` for an object with the given ID using its ``Find`` method. It returns the given object or ``null`` (if none is found). We can then delete the object by calling the ``Remove`` method of ``context.Events`` and passing in the object we want to delete. 
 
@@ -129,19 +129,19 @@ Our final refactored method looks like this:
 .. sourcecode:: csharp
    :lineno-start: 70
 
-   [HttpPost]
-   public IActionResult Delete(int[] eventIds)
-   {
-      foreach (int eventId in eventIds)
+      [HttpPost]
+      public IActionResult Delete(int[] eventIds)
       {
-            Event theEvent = context.Events.Find(eventId);
-            context.Events.Remove(theEvent);
+         foreach (int eventId in eventIds)
+         {
+               Event theEvent = context.Events.Find(eventId);
+               context.Events.Remove(theEvent);
+         }
+
+         context.SaveChanges();
+
+         return Redirect("/Events");
       }
-
-      context.SaveChanges();
-
-      return Redirect("/Events");
-   }
 
 Now that we are no longer using ``EventData``, we can delete it from our application. And as always, be sure to start your app and test after refactoring.
 

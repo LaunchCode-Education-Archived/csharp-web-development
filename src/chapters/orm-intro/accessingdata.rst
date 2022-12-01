@@ -54,21 +54,21 @@ To create a persistent data store for our ``Event`` class, we can extend the cla
 .. sourcecode:: csharp
    :linenos:
 
-   using CodingEventsDemo.Models;
-   using Microsoft.EntityFrameworkCore;
+      using CodingEventsDemo.Models;
+      using Microsoft.EntityFrameworkCore;
 
-   namespace CodingEventsDemo.Data
-   {
-      public class EventDbContext : DbContext
+      namespace CodingEventsDemo.Data
       {
-         public DbSet<Event> Events { get; set; }
-
-         public EventDbContext(DbContextOptions<EventDbContext> options)
-               : base(options)
+         public class EventDbContext : DbContext
          {
+            public DbSet<Event> Events { get; set; }
+
+            public EventDbContext(DbContextOptions<EventDbContext> options)
+                  : base(options)
+            {
+            }
          }
       }
-   }
 
 This new class is placed in the ``Data`` directory and namespace. 
 By convention, we name it ``EventDbContext`` since it is going to be used to work with 
@@ -101,10 +101,10 @@ Open up ``Startup.cs`` and find the ``ConfigureServices`` method. By default, it
 .. sourcecode:: csharp
    :lineno-start: 26
 
-   public void ConfigureServices(IServiceCollection services)
-   {
-      services.AddControllersWithViews();
-   }
+      public void ConfigureServices(IServiceCollection services)
+      {
+         services.AddControllersWithViews();
+      }
 
 A persistent data store is considered a service in ASP.NET, 
 and we can register this service by adding the following code to ``ConfigureServices``.

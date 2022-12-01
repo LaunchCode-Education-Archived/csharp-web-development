@@ -110,20 +110,21 @@ Open the NuGet Package Manager in Visual Studio:
 - **Mac** - *Project > Manage NuGet Dependencies*
 
 Search for for all of the packages listed below. Select the package and install.
-Note the version numbers.  When using the package manager, you should be able to select a version.
-Match the versions provided below.
+
+When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. 
+You can confirm this is the case by reviewing the code in your csproj file.
 
 We will need to install the following NuGet packages:
 
-* ``Pomelo.EntityFrameworkCore.MySql``  Version 6.0.2
+* ``Pomelo.EntityFrameworkCore.MySql``  
    This dependency provides code that is able to connect to a MySQL database 
    from within an ASP.NET Core application using EF. Note that this package 
    itself depends on the following EF packages:
 
-* ``Microsoft.EntityFrameworkCore.Relational``  Version 6.0.11
+* ``Microsoft.EntityFrameworkCore.Relational``  
    This is a mapping framework that automates access and storage of data in your project's database.
 
-* ``Microsoft.EntityFrameworkCore.Design``  Version 6.0.11
+* ``Microsoft.EntityFrameworkCore.Design``  
    This helps manage data migrations and the design-time logic.
    **Note:** This was not installed in the video above.  
    If you do not install it, Entity Framework Core will print an error message asking you to install it.
@@ -176,7 +177,6 @@ You can test that it has been installed by running the following in your termina
         |___||_|       /   \\\/\\
 
         Entity Framework Core .NET Command-line Tools 6.0.X
-
         
 .. admonition:: Note
 

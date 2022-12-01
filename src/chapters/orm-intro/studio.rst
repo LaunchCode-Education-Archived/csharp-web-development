@@ -52,9 +52,9 @@ To do so, open up ``_Layout.cshtml`` and scroll down to approximately line 24 wh
 .. sourcecode:: guess
    :lineno-start: 24
 
-   <li class="nav-item">
-      <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Add">Add</a>
-   </li>
+      <li class="nav-item">
+         <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Add">Add</a>
+      </li>
 
 Using this code as a template, add links to the ``Events/Index.cshtml``, ``EventCategory/Create.cshtml``, and ``EventCategory/Index.cshtml`` views.
 

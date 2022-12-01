@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Solutions: Controllers and Routes &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercise Solutions: Exceptions" href="exceptions.html" />
+    <link rel="prev" title="Exercise Solutions: Interfaces and Polymorphism" href="interfaces.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html">Exercise Solutions</a></li>
+    <li class="active">Exercise Solutions: Controllers and Routes</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercise-solutions-controllers-and-routes">
+<h1>Exercise Solutions: Controllers and Routes<a class="headerlink" href="#exercise-solutions-controllers-and-routes" title="Permalink to this headline">¶</a></h1>
+<p>Line numbers are for reference. They may not match your code exactly.</p>
+<div class="section" id="part-1-get-request">
+<h2>Part 1: <code class="docutils literal notranslate"><span class="pre">GET</span></code> Request<a class="headerlink" href="#part-1-get-request" title="Permalink to this headline">¶</a></h2>
+<p id="modify-controller">Modify your <code class="docutils literal notranslate"><span class="pre">HelloController</span></code> class to display a form on a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request
+that asks the user for both their name and the language they would like to be greeted in.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="c1">//GET: /&lt;controller&gt;/</span>
+   <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="kt">string</span> <span class="n">html</span> <span class="p">=</span> <span class="s">&quot;&lt;form method=&#39;post&#39;&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;input type=&#39;text&#39; name=&#39;name&#39; /&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;select name=&#39;language&#39;&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;option value=&#39;english&#39; selected&gt;English&lt;/option&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;option value=&#39;french&#39;&gt;French&lt;/option&gt;&lt;/select&gt;&quot;</span> <span class="p">+</span>
+         <span class="c1">// ... add any other languages here ...</span>
+         <span class="s">&quot;&lt;input type=&#39;submit&#39; value=&#39;Greet Me!&#39;/&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;/form&gt;&quot;</span><span class="p">;</span>
+
+      <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/aspdotnet-controllers-and-routes/exercises.html#controller-routes-exercises-1"><span class="std std-ref">Return to exercises</span></a></p>
+</div>
+<div class="section" id="part-2-post-request">
+<h2>Part 2: <code class="docutils literal notranslate"><span class="pre">POST</span></code> Request<a class="headerlink" href="#part-2-post-request" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="modify-post" start="2">
+<li>Include a new <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span></code> method, <code class="docutils literal notranslate"><span class="pre">CreateMessage</span></code>, in the <code class="docutils literal notranslate"><span class="pre">HelloController</span></code> that takes a name as well as a language string.
+Based on the language string, you’ll display the proper greeting.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">CreateMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">language</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="kt">string</span> <span class="n">helloTranslation</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+      <span class="k">switch</span> <span class="p">(</span><span class="n">language</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">case</span> <span class="s">&quot;french&quot;</span><span class="p">:</span>
+            <span class="n">helloTranslation</span> <span class="p">=</span> <span class="s">&quot;Bonjour &quot;</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+         <span class="k">case</span> <span class="s">&quot;english&quot;</span><span class="p">:</span>
+            <span class="n">helloTranslation</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+         <span class="c1">// ... add any other languages here ...</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">helloTranslation</span> <span class="p">+</span> <span class="n">name</span><span class="p">;</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/aspdotnet-controllers-and-routes/exercises.html#controller-routes-exercises-2"><span class="std std-ref">Return to exercises</span></a></p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="interfaces.html"><span aria-hidden="true">&larr;</span> Exercise Solutions: Interfaces and Polymorphism</a></li>
+        
+        
+        <li class="next"><a href="exceptions.html">Exercise Solutions: Exceptions <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/appendices/exercise-solutions/controllers-routes.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

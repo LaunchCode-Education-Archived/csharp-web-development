@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10.2. Controllers with Parameters &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10.3. Controllers with Forms" href="controllers-forms.html" />
+    <link rel="prev" title="10.1. Simple Controllers" href="controllers-simple.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">10. </span>Controllers and Routing</a></li>
+    <li class="active"><span class="section-number">10.2. </span>Controllers with Parameters</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="controllers-with-parameters">
+<h1><span class="section-number">10.2. </span>Controllers with Parameters<a class="headerlink" href="#controllers-with-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Now that you know the basics of action methods and controllers, we can start to add some more variables into the mix.
+Some action methods can take in parameters in the form of query strings or sections of the URL path.
+Passing this URL data to the controller is one step closer to more flexible web applications.</p>
+<p>On the previous page, we learned that a route is the mechanism by which a request path gets assigned to a controller within our application.
+In this section, we’ll further explore routes and how data is transferred from a webpage with a given route to a specific controller.</p>
+<div class="section" id="query-strings-are-url-data">
+<span id="index-0"></span><h2><span class="section-number">10.2.1. </span>Query Strings are URL Data<a class="headerlink" href="#query-strings-are-url-data" title="Permalink to this headline">¶</a></h2>
+<p>A brief refresher: <strong>query strings</strong> are additional bits of information tacked onto the ends of urls.
+They contain data in key-value pairs.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>www.galaxyglossary.net?aKey=aValue&amp;anotherKey=anotherValue&amp;thirdKey=thirdValue
+</pre></div>
+</div>
+</div>
+<div class="section" id="controllers-and-query-parameters-video">
+<h2><span class="section-number">10.2.2. </span>Controllers and Query Parameters - Video<a class="headerlink" href="#controllers-and-query-parameters-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/CQ8WB7-oy4o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">static-responses</span></code> branch.
+If you ever want to verify what code you end this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/query-parameters" target="_blank">final code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">query-parameters</span></code> branch.</p>
+</div>
+</div>
+<div class="section" id="controllers-and-parameters-text">
+<h2><span class="section-number">10.2.3. </span>Controllers and Parameters - Text<a class="headerlink" href="#controllers-and-parameters-text" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="query-strings">
+<h3><span class="section-number">10.2.3.1. </span>Query Strings<a class="headerlink" href="#query-strings" title="Permalink to this headline">¶</a></h3>
+<p>We can pass different parameters into an action method.
+Let’s add a method called <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> to <code class="docutils literal notranslate"><span class="pre">HelloController.cs</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// GET: /&lt;controller&gt;/welcome</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Right now, the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method is using conventional routing, so it will respond to requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello/welcome</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method has one argument, <code class="docutils literal notranslate"><span class="pre">name</span></code>. However, when we run the app and navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello/welcome</span></code>, we can see that <code class="docutils literal notranslate"><span class="pre">name</span></code> has no value.</p>
+<div class="figure align-default">
+<img alt="Simple webpage that only displays Welcome to my app." src="../../_images/nodefaultvalue.png" />
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> does not receive a value from anywhere, so to start, we need to pass <code class="docutils literal notranslate"><span class="pre">name</span></code> a value.
+We can do so with a query string. <code class="docutils literal notranslate"><span class="pre">name</span></code> will act as the key and the value will be <code class="docutils literal notranslate"><span class="pre">&quot;Tillie&quot;</span></code>.
+Let’s navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello/welcome?name=Tillie</span></code>.
+Now the webpage displays a simple string of HTML that says “Welcome to my app, Tillie!”.</p>
+<div class="figure align-default">
+<img alt="Simple webpage that displays welcome to my app Tillie." src="../../_images/valuegiventoname.png" />
+</div>
+<p>When we are adding arguments to an action method, we need to not only think about the request type and route, we need to think about where those variables are going to get values.
+Here we were able to give a value to that argument in the URL itself with a query string.
+However, when working with query strings, we want to provide a value to <code class="docutils literal notranslate"><span class="pre">name</span></code> in case the user navigates to a URL without a query string.</p>
+<p>We can do so by modifying the method signature slightly.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// GET: /&lt;controller&gt;/welcome</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;World&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>On line 2, we give the argument, <code class="docutils literal notranslate"><span class="pre">name</span></code>, a value of <code class="docutils literal notranslate"><span class="pre">&quot;World&quot;</span></code>.
+We do this to make <code class="docutils literal notranslate"><span class="pre">name</span></code> an <strong>optional parameter</strong>.
+Optional parameters are designated with a default value (in our case, <code class="docutils literal notranslate"><span class="pre">&quot;World&quot;</span></code>) and method calls do not have to include a value for that parameter.
+When working with query strings, it is wise to make the key an optional parameter in case no value is provided for it.
+If a query string is not provided and we navigate to just <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello/welcome</span></code>, then our webpage will display “Welcome to my app, World!”.</p>
+<div class="figure align-default" id="id1">
+<img alt="Webpage displaying &quot;Welcome to my app, World!&quot;" src="../../_images/queryparamdefault.png" />
+<p class="caption"><span class="caption-text">Our webpage when we don’t provide a query string.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Now, we can dive into using attribute routing to get <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> to respond at the same route and to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.
+We know from our experiment above we can do this without attributes, but we want to be specific in our routes and the request type.
+First, we need to add a <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute to specify that our method responds to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.
+We also want to specify the path with the <code class="docutils literal notranslate"><span class="pre">[Route]</span></code> attribute.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpGet]</span>
+<span class="na">[Route(&quot;/helloworld/welcome/{name}&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;World&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>When writing the path for our <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> attribute, we have surrounded <code class="docutils literal notranslate"><span class="pre">name</span></code> in curly braces.
+The use of curly braces in the path portion of the attribute means that we don’t want to use the word “name” in the route, but the value of the variable, <code class="docutils literal notranslate"><span class="pre">name</span></code>.
+If we ran the app now and navigated to <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome</span></code> or <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome?name=Tillie</span></code>, the webpages are not found.
+We have given <code class="docutils literal notranslate"><span class="pre">name</span></code> a default value in the method signature, however, we have to designate in the <em>path</em> inside <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> that <code class="docutils literal notranslate"><span class="pre">name</span></code> is optional.
+When we do so, we are making the action method more flexible so it can respond at <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome</span></code> or <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome?name=Tillie</span></code>.
+In attribute routing, if we want to designate a parameter as optional, we will use a <code class="docutils literal notranslate"><span class="pre">?</span></code> after the variable name like so:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpGet]</span>
+<span class="na">[Route(&quot;/helloworld/welcome/{name?}&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;World&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Adding the <code class="docutils literal notranslate"><span class="pre">?</span></code> in the curly braces after <code class="docutils literal notranslate"><span class="pre">name</span></code> designates that portion of the path as optional.
+If we don’t provide a query string, the webpage will display the classic “Welcome to my app, World!”.
+If we do provide a query string, we will see the resulting page:</p>
+<div class="figure align-default" id="id2">
+<img alt="Simple webpage displaying welcome to my app, Tillie" src="../../_images/queryparamused.png" />
+<p class="caption"><span class="caption-text">The end result</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="path-variables">
+<span id="index-1"></span><h3><span class="section-number">10.2.3.2. </span>Path Variables<a class="headerlink" href="#path-variables" title="Permalink to this headline">¶</a></h3>
+<p>Above, we briefly mentioned that some controller methods could take in parameters in the form of a section of a URL path.
+These types of parameters are called <strong>path variables</strong>.
+Path variables differ from query strings in that the data is not passed in as a key-value pair and that a path variable is a portion of the URL path.
+Query strings are a separate component of a URL that occurs after a <code class="docutils literal notranslate"><span class="pre">?</span></code> and are separate from the path.
+When using a path variable, instead of typing the name of a variable into the path, we type the value we want to pass to the action method at that route.</p>
+<p>When we added the <code class="docutils literal notranslate"><span class="pre">[Route(&quot;/helloworld/welcome/{name?}&quot;)]</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method, we made it possible for the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method to respond to requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome/Tillie</span></code>.
+In that route, <code class="docutils literal notranslate"><span class="pre">name</span></code> is used as a path variable and passed the value of <code class="docutils literal notranslate"><span class="pre">Tillie</span></code> in the path, displaying the following webpage.</p>
+<div class="figure align-default" id="id3">
+<img alt="Webpage displaying welcome to my app, Tillie" src="../../_images/pathvariables.png" />
+<p class="caption"><span class="caption-text">The result when we use <code class="docutils literal notranslate"><span class="pre">name</span></code> as a path variable</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Diving into the mechanics of how this worked, we remember that enclosing <code class="docutils literal notranslate"><span class="pre">name</span></code> in curly braces specifies that we want to use the value of <code class="docutils literal notranslate"><span class="pre">name</span></code>, not the word “name”.
+While path variables and query strings are drastically different, the two share a similarity.
+Both path variables and query strings allow us to give an action method a value for a parameter as part of a URL.
+This is because <code class="docutils literal notranslate"><span class="pre">name</span></code> is a <strong>route parameter</strong>.
+A route parameter is a portion of the route (which encompasses both the path and the query string) that is passed from the route to the action method.
+While our controllers and applications are still small, the differences between a query string and a path variable may seem negligible.
+However, as applications become larger and controllers more complex, the different use cases for path variables and query strings will become clear.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Before moving on, make sure to add info about the different routes the method maps to in comments in your code!</p>
+</div>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">10.2.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Your application is served at <code class="docutils literal notranslate"><span class="pre">myfavoriteplanets.net</span></code>. What is the path
+that this controller maps to?</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpGet]</span>
+<span class="na">[Route(&quot;/venus/{terrestrial?}&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">VenusSurface</span><span class="p">(</span><span class="kt">string</span> <span class="n">terrestrial</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">terrestrial</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">return</span> <span class="s">&quot;Venus is rocky.&quot;</span>
+   <span class="p">}</span>
+   <span class="k">else</span>
+   <span class="p">{</span>
+      <span class="k">return</span> <span class="s">&quot;Venus is gaseous.&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="last loweralpha simple">
+<li><code class="docutils literal notranslate"><span class="pre">myfavoriteplanets.net/venus?terrestrial=true</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">net.myfavoriteplanets/venus?terrestrial=true</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">myfavoriteplanets/venus?terrestrial=true</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">myfavoriteplanets/venus/terrestrial</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="controllers-simple.html"><span aria-hidden="true">&larr;</span> <span class="section-number">10.1. </span>Simple Controllers</a></li>
+        
+        
+        <li class="next"><a href="controllers-forms.html"><span class="section-number">10.3. </span>Controllers with Forms <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-controllers-and-routes/controllers-parameters.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

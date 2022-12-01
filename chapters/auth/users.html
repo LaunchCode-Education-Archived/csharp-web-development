@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>19.4. Registrations and Logins &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="19.5. Configuring Identity" href="configuration.html" />
+    <link rel="prev" title="19.3. Getting Started with Identity" href="scaffolding.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">19. </span>Authentication</a></li>
+    <li class="active"><span class="section-number">19.4. </span>Registrations and Logins</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="registrations-and-logins">
+<h1><span class="section-number">19.4. </span>Registrations and Logins<a class="headerlink" href="#registrations-and-logins" title="Permalink to this headline">¶</a></h1>
+<p>In order for users to successfully navigate through the application, Identity will handle a number of functions related to both authentication and authorization.
+For the purposes of this book, we will focus on just two: registering for a new account and logging in.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Razor Class Libraries do not have separate controllers like in the traditional MVC design pattern.
+The logic that we might be inclined to put in a controller for each of the actions that we look at is actually contained within a Razor page.
+Our goal is to locate the correct page and understand what is going on.</p>
+<p class="last">The pages we are looking at end with the file extension <code class="docutils literal notranslate"><span class="pre">.cshtml.cs</span></code>.
+Some Mac users may have to click on a small arrow on to expand the <code class="docutils literal notranslate"><span class="pre">.cshtml</span></code> pages to find the <code class="docutils literal notranslate"><span class="pre">cshtml.cs</span></code> files.</p>
+</div>
+<div class="section" id="registration">
+<h2><span class="section-number">19.4.1. </span>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
+<p>Open up <code class="docutils literal notranslate"><span class="pre">Register.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code> and inspect it.
+Here are some things to note:</p>
+<ol class="arabic simple">
+<li>The return type of the action to register a new user is <code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code>.
+We have encountered <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> before.
+<code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is an asynchronous return type.
+The action of adding a new user to a database is asynchronous so our function must return an asynchronous action.</li>
+<li>We can still use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> to make sure that the user’s input matches our validation requirements.</li>
+<li><code class="docutils literal notranslate"><span class="pre">UserManager</span></code> comes back into play here for the addition of the new user to the database.
+The method used for that action is called <code class="docutils literal notranslate"><span class="pre">CreateAsync()</span></code>. The new user’s password is hashed as part of this method, so there aren’t any additional method calls here.</li>
+<li>If the new user row in the database is successfully created, then we want to direct the user to a page to start working.
+If not, the user registration form is reloaded, just as when the validation requirements are not met.</li>
+</ol>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you are interested in learning more about asynchronous return types in C#, check out the <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/async-return-types" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+</div>
+</div>
+<div class="section" id="login">
+<h2><span class="section-number">19.4.2. </span>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h2>
+<p>Open up <code class="docutils literal notranslate"><span class="pre">Login.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code>.
+Here are some things to note:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is back meaning the action of signing in is asynchronous.</li>
+<li>If the form input is valid, then we want to try and sign in the user.</li>
+<li><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">PasswordSignInAsync()</span></code> which takes in parameters like the inputted email and password and compares those values to the values stored in the database.</li>
+<li>If the action of signing in is successful, the user is directed on to a new page.
+If the action is not successful, then the user is redirected back to the login form with an error message explaining that they could not log in.</li>
+</ol>
+</div>
+<div class="section" id="logout">
+<h2><span class="section-number">19.4.3. </span>Logout<a class="headerlink" href="#logout" title="Permalink to this headline">¶</a></h2>
+<p>There are two main things to note about <code class="docutils literal notranslate"><span class="pre">Logout.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code>:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is the return type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">SignOutAsync()</span></code> which ends the session. Once that action is completed, the user is redirected to an unrestricted page.</li>
+</ol>
+<p>These are the three main actions we want to focus on when it comes to authentication with user accounts.
+We could additional elements to these three actions such as 2FA or two factor authentication on log in as the authentication requirements of our project grow.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="scaffolding.html"><span aria-hidden="true">&larr;</span> <span class="section-number">19.3. </span>Getting Started with Identity</a></li>
+        
+        
+        <li class="next"><a href="configuration.html"><span class="section-number">19.5. </span>Configuring Identity <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/auth/users.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

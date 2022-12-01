@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17.5. Studio: OMG More ORM! &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18. Relationships in Object-Relational Mapping" href="../orm-relationships/index.html" />
+    <link rel="prev" title="17.4. Exercises: OMG the ORM!" href="exercises.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">17. </span>Introduction to Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">17.5. </span>Studio: OMG More ORM!</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="studio-omg-more-orm">
+<span id="orm1-studio"></span><h1><span class="section-number">17.5. </span>Studio: OMG More ORM!<a class="headerlink" href="#studio-omg-more-orm" title="Permalink to this headline">¶</a></h1>
+<p>Today’s studio depends on completion of the <a class="reference internal" href="exercises.html#orm1-exercises"><span class="std std-ref">exercises</span></a>.
+If you have not completed the exercises, go back and complete them before continuing with the studio.
+If you want to check out one possible solution to the exercises before you get started, look at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/studio16-starter" target="_blank">studio16-starter<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.</p>
+<div class="section" id="adding-a-viewmodel">
+<h2><span class="section-number">17.5.1. </span>Adding a ViewModel<a class="headerlink" href="#adding-a-viewmodel" title="Permalink to this headline">¶</a></h2>
+<p>With the new table set up in our database and our application displaying event categories, we need to add a ViewModel so we can add validation for new event categories.
+Create a new ViewModel called <code class="docutils literal notranslate"><span class="pre">AddEventCategoryViewModel</span></code>.
+Add one property to your ViewModel for the name of the event category.
+Add validation attributes to the property so that it is required and that it has to be between 3 and 20 characters long.</p>
+</div>
+<div class="section" id="updating-eventcategorycontroller">
+<h2><span class="section-number">17.5.2. </span>Updating <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code><a class="headerlink" href="#updating-eventcategorycontroller" title="Permalink to this headline">¶</a></h2>
+<p>We will be creating 2 new action methods in our controller:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Create()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code></li>
+</ol>
+<div class="section" id="create">
+<h3><span class="section-number">17.5.2.1. </span><code class="docutils literal notranslate"><span class="pre">Create()</span></code><a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Create()</span></code> needs to do the following:</p>
+<ol class="arabic simple">
+<li>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Create</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Create.cshtml</span></code>.</li>
+<li>Pass a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventCategoryViewModel</span></code> to <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</li>
+</ol>
+</div>
+<div class="section" id="processcreateeventcategoryform">
+<h3><span class="section-number">17.5.2.2. </span><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code><a class="headerlink" href="#processcreateeventcategoryform" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code> needs to do the following:</p>
+<ol class="arabic simple">
+<li>Responds to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests at the route of your choosing.</li>
+<li>Use error validation and <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> appropriately. If you want to review how to use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code>, check out the section on <a class="reference internal" href="../aspdotnet-model-validation/validation-controller.html#validating-models"><span class="std std-ref">error validation</span></a>.</li>
+<li>Create a new instance of <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> and add it to the database if the form input meets the validation conditions.</li>
+<li>Either reload the form or add a new event category to the database and direct the user back to the <code class="docutils literal notranslate"><span class="pre">EventCategory/Index.cshtml</span></code> template.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="razor-templates">
+<h2><span class="section-number">17.5.3. </span>Razor Templates<a class="headerlink" href="#razor-templates" title="Permalink to this headline">¶</a></h2>
+<p>To finish the studio, we need to make a new template, <code class="docutils literal notranslate"><span class="pre">EventCategory/Create.cshtml</span></code>, which will contain a form for adding new event categories.</p>
+<p>We also need to add links to the pages for all of the events, all of the event categories, and the form to add a new event category to the navbar.
+To do so, open up <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> and scroll down to approximately line 24 where you find the code for the link to add an event:</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;nav-item&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;nav-link text-dark&quot;</span> <span class="na">asp-area=</span><span class="s">&quot;&quot;</span> <span class="na">asp-controller=</span><span class="s">&quot;Events&quot;</span> <span class="na">asp-action=</span><span class="s">&quot;Add&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/a&gt;</span>
+   <span class="nt">&lt;/li&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Using this code as a template, add links to the <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>, <code class="docutils literal notranslate"><span class="pre">EventCategory/Create.cshtml</span></code>, and <code class="docutils literal notranslate"><span class="pre">EventCategory/Index.cshtml</span></code> views.</p>
+</div>
+<div class="section" id="the-final-application">
+<h2><span class="section-number">17.5.4. </span>The Final Application<a class="headerlink" href="#the-final-application" title="Permalink to this headline">¶</a></h2>
+<p>Once you are done, launch your app and head to the <code class="docutils literal notranslate"><span class="pre">/EventCategory</span></code> route!
+If you added categories already, you will see any categories already stored in the database.</p>
+<p>If you click on “Create Category”, you should be directed to the <code class="docutils literal notranslate"><span class="pre">/EventCategory/Create</span></code> route.
+Once you hit submit, you are redirected back to <code class="docutils literal notranslate"><span class="pre">/EventCategory</span></code>, and your table now contains the newest event category!</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="exercises.html"><span aria-hidden="true">&larr;</span> <span class="section-number">17.4. </span>Exercises: OMG the ORM!</a></li>
+        
+        
+        <li class="next"><a href="../orm-relationships/index.html"><span class="section-number">18. </span>Relationships in Object-Relational Mapping <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-intro/studio.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

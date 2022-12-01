@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8.2. Interfaces &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.3. Interfaces and Abstract Classes" href="interfaces-and-abstract-classes.html" />
+    <link rel="prev" title="8.1. Introduction" href="introduction.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">8. </span>Interfaces and Polymorphism</a></li>
+    <li class="active"><span class="section-number">8.2. </span>Interfaces</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="interfaces">
+<h1><span class="section-number">8.2. </span>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">An <strong>interface</strong> is similar to an abstract class, with some important differences. Interfaces allow us to
+create code organized by behavior, rather than static data. While some object-oriented languages encourage
+creating classes that behave like interfaces to improve software design, C# is a language that includes interfaces
+as a formal construction. Like abstract classes, interfaces cannot be instantiated and they have limitations on what
+kind of behavioral information they may contain. A C# interface may contain:</p>
+<ol class="arabic simple">
+<li>Constants</li>
+<li>Method signatures</li>
+<li>Static methods</li>
+<li>Default methods</li>
+</ol>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Some of these are newer features of the latest language version. This text supports .NET Core 3.1,
+which provides C# version 8.0. If you are using an earlier version of either .NET Core or C#, you
+may only define a method signature within an interface.</p>
+</div>
+<div class="section" id="creating-an-interface">
+<span id="create-an-interface"></span><h2><span class="section-number">8.2.1. </span>Creating an Interface<a class="headerlink" href="#creating-an-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="method-signatures">
+<h3><span class="section-number">8.2.1.1. </span>Method Signatures<a class="headerlink" href="#method-signatures" title="Permalink to this headline">¶</a></h3>
+<p id="index-1">One really useful aspect of using an interface is the ability to specify method signatures.
+A <strong>method signature</strong> includes the name, parameters, and return
+type of a method, but no body.</p>
+<p>As part of our cat application, let’s create a method signature, <code class="docutils literal notranslate"><span class="pre">Eat</span></code>, as part of an
+interface, <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>. “I” for interface, of course! More on this name below.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IFeedable</span>
+<span class="p">{</span>
+
+   <span class="k">void</span> <span class="nf">Eat</span><span class="p">();</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>In the code above, notice the following:</p>
+<ol class="arabic simple">
+<li>We need to use the <code class="docutils literal notranslate"><span class="pre">interface</span></code> keyword to define our interface, <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Eat</span></code> only has a signature. We only provide a body for methods defined
+in interfaces in special circumstances, defined below under <em>Default Methods</em>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Eat</span></code> also does not have an access modifier. Interface members are <code class="docutils literal notranslate"><span class="pre">public</span></code> by default and it’s
+best practice to keep them public.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface itself is declared <code class="docutils literal notranslate"><span class="pre">public</span></code>, which means any other class may
+use it. We may also leave off <code class="docutils literal notranslate"><span class="pre">public</span></code>, making the interface <code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">internal</span></code>, or
+usable only within the same assembly. Recall this access modifier described in this
+<a class="reference internal" href="../classes/modifiers.html#access-modifier-table"><span class="std std-ref">table</span></a>.</li>
+<li>The name is indicative of the behavior that the interface is intended to describe. While this
+is only a convention, most interfaces have names that are adjectives preceded with an “I”.
+While this is only a convention, you should follow it in the interest of code-readability.</li>
+</ol>
+</div>
+<div class="section" id="static-methods">
+<h3><span class="section-number">8.2.1.2. </span>Static Methods<a class="headerlink" href="#static-methods" title="Permalink to this headline">¶</a></h3>
+<p>A static method in an interface can contain code in the body.
+However, a static method cannot contain any references to instance properties in other classes.
+This means that our static methods should only deal with universal behaviors that are NOT
+dependent on instance properties.</p>
+</div>
+<div class="section" id="default-methods">
+<h3><span class="section-number">8.2.1.3. </span>Default Methods<a class="headerlink" href="#default-methods" title="Permalink to this headline">¶</a></h3>
+<p id="index-2">A <strong>default method</strong> has a body and is a fully-formed method. It may be extended by classes
+implementing the interface.</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IFeedable</span> <span class="p">{</span>
+
+   <span class="k">void</span> <span class="nf">Eat</span><span class="p">();</span>
+
+   <span class="k">void</span> <span class="nf">Nap</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;snooooozzze&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The intended purpose of default methods is to allow
+programmers to add a method to an interface that has already been
+released, while not forcing those already using the interface to add new
+code to their classes. <em>You should avoid using default methods in all situations other than the
+one described here.</em></p>
+</div>
+</div>
+<div class="section" id="implementing-an-interface">
+<h2><span class="section-number">8.2.2. </span>Implementing an Interface<a class="headerlink" href="#implementing-an-interface" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of an interface is to define a contract of behaviors that classes uphold. In
+doing so, we say that they “<em>implement</em> the interface”. The syntax for implementation is
+the same as that for inheritance — so adhering to the interface naming convention comes in
+handy to identify a case of extension versus implementation. Here’s how we can use the
+<code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface in defining our <code class="docutils literal notranslate"><span class="pre">Cat</span></code> class.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="n">IFeedable</span>
+<span class="p">{</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">Eat</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;nom nom&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">// ...rest of the class definition...</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Since we’ve declared that <code class="docutils literal notranslate"><span class="pre">Cat</span></code> implements <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>, we have to
+provide an implementation for the <code class="docutils literal notranslate"><span class="pre">Eat</span></code> method, with the signature as
+specified in the interface definition.</p>
+<p>Note the absence of the <code class="docutils literal notranslate"><span class="pre">virtual</span></code> and <code class="docutils literal notranslate"><span class="pre">override</span></code> keywords we used in <a class="reference internal" href="../inheritance/cat-classes.html#method-overriding"><span class="std std-ref">inheritance</span></a>. The class is
+<em>implementing</em> the interface, rather than extending it so different method rules apply.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You may both extend a class and implement an interface at the same time.
+Here’s an example of how we might define <code class="docutils literal notranslate"><span class="pre">HouseCat</span></code> to extend the class <code class="docutils literal notranslate"><span class="pre">Cat</span></code>,
+as well as an interface <code class="docutils literal notranslate"><span class="pre">IPetable</span></code> that is not already inherited by <code class="docutils literal notranslate"><span class="pre">Cat</span></code>:</p>
+<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">HouseCat</span> <span class="p">:</span> <span class="n">Cat</span><span class="p">,</span> <span class="n">IPetable</span>
+<span class="p">{</span>
+   <span class="c1">// ^^ Note that order matters here. The class being extended</span>
+   <span class="c1">// must come before any interfaces being implemented</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>As with classes, interfaces define a type that can be used when
+declaring fields and methods. This allows us to make our code more abstract, thus making it
+more extensible and adaptable. If an application is extensible, it is easier for programmers
+for new capabilities to be added later on. For example,
+here’s how we might modify our <code class="docutils literal notranslate"><span class="pre">CatSitter</span></code> class:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">CatSitter</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="n">IFeedable</span> <span class="n">Pet</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">CatSitter</span><span class="p">(</span><span class="n">IFeedable</span> <span class="n">pet</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Pet</span> <span class="p">=</span> <span class="n">pet</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">FeedTheCat</span><span class="p">()</span> <span class="p">{</span>
+
+      <span class="c1">// ...code to prepare the cat&#39;s meal...</span>
+
+      <span class="n">Pet</span><span class="p">.</span><span class="n">Eat</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that we’ve declared the property <code class="docutils literal notranslate"><span class="pre">Pet</span></code> to be of type
+<code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>. This class assumes that the only behavior of <code class="docutils literal notranslate"><span class="pre">Pet</span></code> that
+we’ll need within the class is the ability to <code class="docutils literal notranslate"><span class="pre">Eat</span></code>. But if that’s all
+we need, then we should relax the requirements on the <code class="docutils literal notranslate"><span class="pre">Pet</span></code> property
+as much as possible. In fact, there’s nothing specific about cats in
+this class, so we might make our code a step more abstract and flexible
+by doing the following:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">PetSitter</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="n">IFeedable</span> <span class="n">Pet</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">PetSitter</span><span class="p">(</span><span class="n">IFeedable</span> <span class="n">pet</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Pet</span> <span class="p">=</span> <span class="n">pet</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">FeedThePet</span><span class="p">()</span> <span class="p">{</span>
+
+      <span class="c1">// ...code to prepare the pet&#39;s meal...</span>
+
+      <span class="n">Pet</span><span class="p">.</span><span class="n">Eat</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">CatSitter</span> <span class="p">:</span> <span class="n">PetSitter</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="nf">CatSitter</span><span class="p">(</span><span class="n">IFeedable</span> <span class="n">pet</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Pet</span> <span class="p">=</span> <span class="n">pet</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="c1">// other Cat-specific behavior</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>We’ve created a <code class="docutils literal notranslate"><span class="pre">PetSitter</span></code> class that encapsulates the behavior for any pet (any
+<code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>, actually), and have <code class="docutils literal notranslate"><span class="pre">CatSitter</span></code> extend <code class="docutils literal notranslate"><span class="pre">PetSitter</span></code>. This allows other
+classes to extend <code class="docutils literal notranslate"><span class="pre">PetSitter</span></code> to make, say, a <code class="docutils literal notranslate"><span class="pre">DogSitter</span></code> that knows how to play fetch
+with their pet, or a <code class="docutils literal notranslate"><span class="pre">HorseSitter</span></code> that knows how to go for trail rides with their pet. It
+also reduces the dependency of the <code class="docutils literal notranslate"><span class="pre">FeedThePet</span></code> method on the specific
+type of pet, since the basic feeding behavior is the same for all types of pets.</p>
+<p>Since the base class does not have a no-arg constructor, we must, at minimum, extend the <code class="docutils literal notranslate"><span class="pre">PetSitter</span></code>
+constructor in any subclass. Of course, we can always add more constructors to the subclass.</p>
+<p>To use this new class design, we can revise the sample code from above
+as follows:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">HouseCat</span> <span class="n">suki</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HouseCat</span><span class="p">(</span><span class="s">&quot;Suki&quot;</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
+<span class="n">CatSitter</span> <span class="n">annie</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CatSitter</span><span class="p">(</span><span class="n">suki</span><span class="p">);</span>
+
+<span class="n">annie</span><span class="p">.</span><span class="n">FeedThePet</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>While the code usage here remains unchanged except for changing the
+method name from <code class="docutils literal notranslate"><span class="pre">FeedTheCat</span></code> to the more generic <code class="docutils literal notranslate"><span class="pre">FeedThePet</span></code>, the
+opportunities for using the classes we’ve built are much wider since the
+defined classes are no longer dependent on the specific <code class="docutils literal notranslate"><span class="pre">Cat</span></code> class.
+Also notice that we’ve used the object <code class="docutils literal notranslate"><span class="pre">suki</span></code> in a polymorphic way,
+creating it as a <code class="docutils literal notranslate"><span class="pre">HouseCat</span></code>, but using it as an <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> to instantiate a
+<code class="docutils literal notranslate"><span class="pre">CatSitter</span></code> object.</p>
+<p>As is the case with classes inherited from others, interfaces also enable polymorphic usage of
+objects. We can create an object and then use it in different contexts based on the
+interfaces that it implements.</p>
+<p>Crucially, <em>interfaces may not be instantiated</em>.
+You may implement an interface, or declare variables and parameters as
+interface types. You cannot, however, create an instance of an
+interface.</p>
+</div>
+<div class="section" id="benefits-of-using-interfaces">
+<h2><span class="section-number">8.2.3. </span>Benefits of Using Interfaces<a class="headerlink" href="#benefits-of-using-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>Once you get used to interfaces, you’ll begin to think more abstractly about which
+<em>behaviors</em> your code requires rather than which <em>classes</em> your code requires. This means
+you will start to “code to interfaces” (an OOP principle) instead of
+coding to classes, and your code will become more flexible and
+extensible.</p>
+<p>Here are a few benefits of using interfaces:</p>
+<ol class="arabic simple">
+<li>You can only extend one class, but you may implement many interfaces.</li>
+<li>You can extend a class and implement an interface at the same time.</li>
+<li>By declaring variables and parameters as interface types, you make
+your code useful for a much wider variety of situations.</li>
+<li>When you declare properties and return types to be interface types,
+you decouple code using your classes from the actual class types you
+use. This means that you are free to change the specific
+implementation of your classes without affecting those using them.</li>
+</ol>
+<p>You don’t need to start creating interfaces to use their
+power! As we cover later in this chapter, there are several interface types provided by
+the C# language spec that you may find handy.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">8.2.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Choose the appropriate option to fill in the blanks.</p>
+<p>A class can extend _______ class(es) and implement ________ interface(s).</p>
+<ol class="last loweralpha simple">
+<li>one, one</li>
+<li>one, more than one</li>
+<li>more than one, one</li>
+<li>more than one, more than one</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True or False:</p>
+<p class="last">An interface in C# must begin with the letter “I”.</p>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="introduction.html"><span aria-hidden="true">&larr;</span> <span class="section-number">8.1. </span>Introduction</a></li>
+        
+        
+        <li class="next"><a href="interfaces-and-abstract-classes.html"><span class="section-number">8.3. </span>Interfaces and Abstract Classes <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/interfaces-and-polymorphism/interfaces.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

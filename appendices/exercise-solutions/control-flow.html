@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Solutions: Control Flow &amp; Collections &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercise Solutions: Classes and Objects" href="classes-part1.html" />
+    <link rel="prev" title="Exercise Solutions: Data Types" href="data-types.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html">Exercise Solutions</a></li>
+    <li class="active">Exercise Solutions: Control Flow &amp; Collections</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercise-solutions-control-flow-collections">
+<h1>Exercise Solutions: Control Flow &amp; Collections<a class="headerlink" href="#exercise-solutions-control-flow-collections" title="Permalink to this headline">¶</a></h1>
+<p>Line numbers are for reference. They may not match your code exactly.</p>
+<div class="section" id="array-practice">
+<h2>Array Practice<a class="headerlink" href="#array-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="control-flow-solution-1" start="2">
+<li>Loop through the array and print out each value.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">foreach</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="k">in</span> <span class="n">numberArray</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Remember: this is not the only way to loop through an array.</p>
+</div>
+<p><a class="reference internal" href="../../chapters/control-flow-and-collections/exercises.html#control-flow-collections-exercises"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+<div class="section" id="string-practice">
+<h2>String Practice<a class="headerlink" href="#string-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="control-flow-solution-2">
+<li>For this exercise, create a string for the value.</li>
+<li>Use the Split method to divide the string at each space and store the individual words in an array.</li>
+<li>Print the array of words to verify that your code works.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">string</span> <span class="n">sentence</span> <span class="p">=</span> <span class="s">&quot;I would not, could not, in a box. I would not, could not with a fox. I will not eat them in a house. I will not eat them with a mouse.&quot;</span><span class="p">;</span>
+   <span class="kt">string</span><span class="p">[]</span> <span class="n">words</span> <span class="p">=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">words</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/control-flow-and-collections/exercises.html#control-flow-collections-exercises"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+<div class="section" id="list-practice">
+<h2>List Practice<a class="headerlink" href="#list-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="control-flow-solution-3">
+<li>Write a static method to find the sum of all the even numbers in a List.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">static</span> <span class="kt">int</span> <span class="nf">sumEven</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">arr</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">total</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+      <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">integer</span> <span class="k">in</span> <span class="n">arr</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">integer</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+         <span class="p">{</span>
+            <span class="n">total</span> <span class="p">+=</span> <span class="n">integer</span><span class="p">;</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="3">
+<li>Write a static method to print out each word in a list that has exactly 5 letters.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">static</span> <span class="k">void</span> <span class="nf">printFiveLetterWords</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">wordlist</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">word</span> <span class="k">in</span> <span class="n">wordlist</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">word</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="m">5</span><span class="p">)</span>
+         <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="4">
+<li>Modify your code to prompt the user to enter the word length for the search.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Enter a word length: &quot;</span><span class="p">);</span>
+   <span class="kt">string</span> <span class="n">numInput</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+   <span class="kt">int</span> <span class="n">numChars</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">numInput</span><span class="p">);</span>
+
+   <span class="c1">// Call the method to print out list words of the chosen length:</span>
+   <span class="n">printXLetterWords</span><span class="p">(</span><span class="n">wordList</span><span class="p">,</span> <span class="n">numChars</span><span class="p">);</span>
+
+
+   <span class="k">static</span> <span class="k">void</span> <span class="nf">printXLetterWords</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">wordlist</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">word</span> <span class="k">in</span> <span class="n">wordlist</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">word</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="n">length</span><span class="p">)</span>
+         <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/control-flow-and-collections/exercises.html#control-flow-collections-exercises"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+<div class="section" id="dictionary-practice">
+<h2>Dictionary Practice<a class="headerlink" href="#dictionary-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="control-flow-solution-4">
+<li>It takes in student names and ID numbers (as integers) instead of names and grades.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Enter your students&#39; names and ID numbers (or ENTER to finish):&quot;</span><span class="p">);</span>
+
+   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Student Name: &quot;</span><span class="p">);</span>
+   <span class="n">newStudent</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">newStudent</span><span class="p">!=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;ID: &quot;</span><span class="p">);</span>
+      <span class="kt">int</span> <span class="n">newID</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">());</span>
+      <span class="n">students</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newID</span><span class="p">,</span> <span class="n">newStudent</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="2">
+<li>The keys should be the IDs and the values should be the names</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;\nClass roster:&quot;</span><span class="p">);</span>
+
+   <span class="k">foreach</span> <span class="p">(</span><span class="n">KeyValuePair</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">student</span> <span class="k">in</span> <span class="n">students</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">Value</span> <span class="p">+</span> <span class="s">&quot;&#39;s ID: &quot;</span> <span class="p">+</span> <span class="n">student</span><span class="p">.</span><span class="n">Key</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Number of students in roster: &quot;</span> <span class="p">+</span> <span class="n">students</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Review the Array and List Gradebooks to see how they used loops</p>
+</div>
+<p><a class="reference internal" href="../../chapters/control-flow-and-collections/exercises.html#control-flow-collections-exercises"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="data-types.html"><span aria-hidden="true">&larr;</span> Exercise Solutions: Data Types</a></li>
+        
+        
+        <li class="next"><a href="classes-part1.html">Exercise Solutions: Classes and Objects <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/appendices/exercise-solutions/control-flow.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

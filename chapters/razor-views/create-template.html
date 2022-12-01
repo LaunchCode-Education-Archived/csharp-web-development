@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.2. Creating a Template &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.3. Using a Template" href="using-templates.html" />
+    <link rel="prev" title="13.1. Templates" href="why-templates.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.2. </span>Creating a Template</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="creating-a-template">
+<h1><span class="section-number">13.2. </span>Creating a Template<a class="headerlink" href="#creating-a-template" title="Permalink to this headline">¶</a></h1>
+<p>Using templates is a useful way to reduce the effort required to create and
+maintain a web-based project. Before you can dive into using templates,
+however, you need to take care of a little groundwork first.</p>
+<div class="section" id="razor">
+<h2><span class="section-number">13.2.1. </span>Razor<a class="headerlink" href="#razor" title="Permalink to this headline">¶</a></h2>
+<p id="index-0"><strong>Razor</strong> is a templating syntax included in the application framework for our MVC project.
+It allows us to write C# code directly into an HTML tree.</p>
+<p>More information on Razor can be found in this
+<a class="reference external" href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-3.1" target="_blank">reference page<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p>For the most part, Razor templates look and operate just like
+regular HTML code. Any C# logic we add to a template is preceded with
+the <em>at sign</em>, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. You can open any template in a browser and view it just
+like a static HTML file. Before we begin adding C# logic to Razor templates, we’ll
+first demonstrate creating a view using only HTML.</p>
+<p>In this chapter, you will construct some small practice projects to help you
+learn how to implement Razor templates.</p>
+</div>
+<div class="section" id="hello-views">
+<h2><span class="section-number">13.2.2. </span>Hello Views<a class="headerlink" href="#hello-views" title="Permalink to this headline">¶</a></h2>
+<p>Before you start coding, we refactored <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>. Now <code class="docutils literal notranslate"><span class="pre">Index()</span></code> is responding to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code> and <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> is only responding to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code>.
+Check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter" target="_blank">views-starter<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch of the <code class="docutils literal notranslate"><span class="pre">HelloASPDotNETDemo</span></code> repo to see how we refactored our code.</p>
+<p>Open up your <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code> project in Visual Studio and make sure you have committed any recent changes.
+Make a new branch and code along with the following video.</p>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>In the videos in this chapter, we select the <em>View Page</em> type when creating a new view instead of <em>Razor View</em>.
+In this system, these are the same!
+However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.</p>
+<p class="last">The videos in this chapter walk you through building small web-based
+projects. Do NOT skip this practice, because the end of chapter exercises
+pick up where the tutorials end.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/mdrsb7yKGKs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter" target="_blank">views-starter branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">HelloASPDotNETDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static" target="_blank">views-static branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+</div>
+<div class="section" id="controllers-return-view-templates">
+<span id="index-1"></span><h3><span class="section-number">13.2.2.1. </span>Controllers Return View Templates<a class="headerlink" href="#controllers-return-view-templates" title="Permalink to this headline">¶</a></h3>
+<p>So far, you’ve seen action methods in controller classes return <code class="docutils literal notranslate"><span class="pre">Content</span></code> objects
+to render some view. Now, we pivot to another option. We mention in the introduction
+to controller classes that action methods can return HTML templates. Indeed, the
+<code class="docutils literal notranslate"><span class="pre">HomeController</span></code> contains a few methods that do just that.</p>
+<p>Out of the box, your MVC project contains several Razor templates within the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory.
+The sub-directory <code class="docutils literal notranslate"><span class="pre">Home</span></code>, found inside of <code class="docutils literal notranslate"><span class="pre">Views</span></code>, contains the Razor templates returned from the
+<code class="docutils literal notranslate"><span class="pre">HomeController</span></code> action methods. Just as an action method’s name will map to a route with the same
+name, an action method’s name can also correspond to a Razor template’s name. The <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method
+inside of <code class="docutils literal notranslate"><span class="pre">HomeController</span></code> returns the <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> template found inside of <code class="docutils literal notranslate"><span class="pre">Views/Home</span></code>.</p>
+<p>In order to return that template, the action method calls a <strong>View() method</strong>. The <code class="docutils literal notranslate"><span class="pre">View()</span></code> method finds
+a template that’s associated with the particular controller and action method that it is called from.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">To override the default behavior of the <code class="docutils literal notranslate"><span class="pre">View()</span></code> method, you can pass in a
+parameter which is the name of the template you want to render. For example,
+if we want an action method named <code class="docutils literal notranslate"><span class="pre">Form()</span></code> to return a Razor template named
+<code class="docutils literal notranslate"><span class="pre">WelcomeForm.cshtml</span></code>, we have <code class="docutils literal notranslate"><span class="pre">Form()</span></code> return <code class="docutils literal notranslate"><span class="pre">View(&quot;WelcomeForm&quot;);</span></code>.</p>
+</div>
+</div>
+<div class="section" id="add-a-template">
+<h3><span class="section-number">13.2.2.2. </span>Add a Template<a class="headerlink" href="#add-a-template" title="Permalink to this headline">¶</a></h3>
+<p>To create a template, we update <code class="docutils literal notranslate"><span class="pre">HelloController.Index()</span></code> to return a Razor template instead of a
+string of HTML. In <code class="docutils literal notranslate"><span class="pre">Views</span></code>, create a new subdirectory called <code class="docutils literal notranslate"><span class="pre">Hello</span></code>.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">Hello</span></code> create a new file of the <em>Razor View</em> file template.</p>
+<dl class="docutils">
+<dt><strong>Windows Users:</strong></dt><dd><ul class="simple">
+<li>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New Item</em>.</li>
+<li>The <em>Razor View - Empty</em> option is found in the <em>ASP.NET Core</em> menu.</li>
+</ul>
+</dd>
+<dt><strong>Mac Users:</strong></dt><dd><ul class="simple">
+<li>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New File</em>.</li>
+<li>The <em>Razor View</em> option is found in the <em>ASP.NET Core</em> menu.</li>
+</ul>
+</dd>
+<dt><strong>All Users:</strong></dt><dd><ul class="simple">
+<li>Once you have your <em>Razor View</em> or <em>Razor View - Empty</em> selected, name it <code class="docutils literal notranslate"><span class="pre">Index</span></code>.</li>
+<li>We are naming our Views after there corresponding action methods.</li>
+</ul>
+</dd>
+</dl>
+<p>Add the HTML form from the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method to your new template. Once you are done
+with that, update the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method to return <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</p>
+<div class="section" id="layout-cshtml">
+<span id="id1"></span><h4><span class="section-number">13.2.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code><a class="headerlink" href="#layout-cshtml" title="Permalink to this headline">¶</a></h4>
+<p>When you re-render the app now, you’ll notice some additional features and different styling.
+There is a <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> file inside of the <code class="docutils literal notranslate"><span class="pre">Views/Shared</span></code> folder that provides some scaffolding
+for the application views. You can edit this file once and any other template will also render whatever
+elements you add to it. This can help give your application a polished, unified look and feel.
+If you do not want to use this file, adding <code class="docutils literal notranslate"><span class="pre">&#64;{Layout</span> <span class="pre">=</span> <span class="pre">null;}</span></code> at
+the top of the template will cause this shared layout template to be ignored.</p>
+</div>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">13.2.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Which symbol is required to use C# code in a Razor template?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">#</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">$</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">!</span></code></li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>What is the file type for Razor templates?</p>
+<ol class="last arabic simple">
+<li>.razor</li>
+<li>.rzr</li>
+<li>.html</li>
+<li>.cshtml</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="why-templates.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.1. </span>Templates</a></li>
+        
+        
+        <li class="next"><a href="using-templates.html"><span class="section-number">13.3. </span>Using a Template <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/create-template.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

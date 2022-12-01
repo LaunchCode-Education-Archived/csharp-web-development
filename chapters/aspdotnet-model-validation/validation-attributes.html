@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15.3. Validation Attributes &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15.4. Validating Models in a Controller" href="validation-controller.html" />
+    <link rel="prev" title="15.2. Server-Side Validation" href="server-side-validation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">15. </span>ViewModels and Model Validation</a></li>
+    <li class="active"><span class="section-number">15.3. </span>Validation Attributes</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="validation-attributes">
+<h1><span class="section-number">15.3. </span>Validation Attributes<a class="headerlink" href="#validation-attributes" title="Permalink to this headline">¶</a></h1>
+<p>Within the ViewModel or model of a C# web application,
+we can define validation rules using attributes.
+Validation attributes can be applied to model fields.</p>
+<span class="target" id="index-0"></span><div class="section" id="common-attributes">
+<span id="index-1"></span><h2><span class="section-number">15.3.1. </span>Common Attributes<a class="headerlink" href="#common-attributes" title="Permalink to this headline">¶</a></h2>
+<p>We’ll use only a few of these attributes, but you can find a
+full list in the <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#built-in-attributes" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<table border="1" class="docutils align-default" id="id1">
+<caption><span class="caption-text">Common Validation Attributes</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Annotation</th>
+<th class="head">Description</th>
+<th class="head">Syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">[Required]</span></code></td>
+<td>Specifies that a field cannot be null</td>
+<td><code class="docutils literal notranslate"><span class="pre">[Required]</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">[Range]</span></code></td>
+<td>Specifies the range of potential values of a numeric field.</td>
+<td><code class="docutils literal notranslate"><span class="pre">[Range(0,100)]</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">[StringLength]</span></code></td>
+<td>Specifies the maximum length of a string field. Has additional optional parameters to specify the minimum length of a string field.</td>
+<td><code class="docutils literal notranslate"><span class="pre">[StringLength(100)]</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">[EmailAddress]</span></code></td>
+<td>Specifies that a string field should conform to email formatting standards.</td>
+<td><code class="docutils literal notranslate"><span class="pre">[EmailAddress]</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>To apply the validation rules of the <a class="reference internal" href="server-side-validation.html#validation-example"><span class="std std-ref">example on the previous page</span></a> to the fields of an <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> class, we can use <code class="docutils literal notranslate"><span class="pre">[StringLength]</span></code> and <code class="docutils literal notranslate"><span class="pre">[Required]</span></code>.</p>
+<div class="last highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [Required]</span>
+<span class="na">   [StringLength(12, MinimumLength = 3)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">   [Reguired]</span>
+<span class="na">   [StringLength(20, MinimumLength=6)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Password</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="defining-validation-messages">
+<h2><span class="section-number">15.3.2. </span>Defining Validation Messages<a class="headerlink" href="#defining-validation-messages" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="validation-messages"></span><p id="index-2">Each of these attributes takes an optional <code class="docutils literal notranslate"><span class="pre">ErrorMessage</span></code> parameter that allows you to define a user-friendly description to be used when validation fails.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="last highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [Required(ErrorMessage = &quot;Username is required&quot;)]</span>
+<span class="na">   [StringLength(12, MinimumLength = 3, ErrorMessage = &quot;Username must be between 3 and 12 characters long&quot;)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">   [Required(ErrorMessage = &quot;Password is required&quot;)]</span>
+<span class="na">   [StringLength(20, MinimumLength = 6, ErrorMessage = &quot;Sorry, but the given password is too short. Passwords must be at least 6 characters long.&quot;)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Password</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>We will see how to ensure these error messages are properly displayed in the next section, <a class="reference internal" href="validation-controller.html#validating-models"><span class="std std-ref">Validating Models in a Controller</span></a>.</p>
+</div>
+<div class="section" id="applying-validation-attributes-video">
+<h2><span class="section-number">15.3.3. </span>Applying Validation Attributes - Video<a class="headerlink" href="#applying-validation-attributes-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/CIdCQ-7fHDY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/adding-viewmodels" target="_blank">adding-viewmodels<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes" target="_blank">validation-attributes<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+</div>
+</div>
+<div class="section" id="applying-validation-attributes-text">
+<h2><span class="section-number">15.3.4. </span>Applying Validation Attributes - Text<a class="headerlink" href="#applying-validation-attributes-text" title="Permalink to this headline">¶</a></h2>
+<p>To configure validation on the model-side, we begin by adding validation attributes to each field to which we want to apply constraints.</p>
+<p>For our <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> class, we add <code class="docutils literal notranslate"><span class="pre">[StringLength]</span></code> and <code class="docutils literal notranslate"><span class="pre">[Required]</span></code> to the <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code> properties.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [Required(ErrorMessage = &quot;Name is required.&quot;)]</span>
+<span class="na">   [StringLength(50, MinimumLength = 3, ErrorMessage = &quot;Name must be between 3 and 50 characters.&quot;)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">   [Required(ErrorMessage = &quot;Please enter a description for your event.&quot;)]</span>
+<span class="na">   [StringLength(500, ErrorMessage = &quot;Description is too long!&quot;)]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The required <code class="docutils literal notranslate"><span class="pre">MaximumLength</span></code> and optional <code class="docutils literal notranslate"><span class="pre">MinimumLength</span></code> parameters for <code class="docutils literal notranslate"><span class="pre">[StringLength]</span></code> specify the maximum and minimum number of allowed characters, respectively.
+Omitting the minimum length requirement means that no min or max will be applied for the field.
+Not adding a <code class="docutils literal notranslate"><span class="pre">[Required]</span></code> attribute onto a property would make the field optional to the form submission.</p>
+<p>Each of our attributes also receives an <code class="docutils literal notranslate"><span class="pre">ErrorMessage</span></code> parameter. This parameter provides a user-friendly message to display to the user if the particular validation rule fails.
+We will see how to display these in a view a bit later.</p>
+<p>Next, we add a new property to store a contact email for each event.
+This is a <code class="docutils literal notranslate"><span class="pre">string</span></code> named <code class="docutils literal notranslate"><span class="pre">ContactEmail</span></code>.
+Validating email addresses by directly applying each of the rules that an email must satisfy is <em>extremely</em> difficult.
+Thankfully, there is an <code class="docutils literal notranslate"><span class="pre">[EmailAddress]</span></code> validation attribute that we can apply to our new field.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [EmailAddress]</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">ContactEmail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Before we can start up our application, we need to add a new input to our form in <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> to take in the contact email for
+an event organizer. While we don’t demonstrate these items in the video above, we cover them on the next page before tackling validation in the controller.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;ContactEmail&quot;</span><span class="p">&gt;</span>Contact Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;ContactEmail&quot;</span> <span class="p">/&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>We also need to add a new column to the <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code> template to make <code class="docutils literal notranslate"><span class="pre">ContactEmail</span></code> visible.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+         Id
+      <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+         Name
+      <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+         Description
+      <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+         Contact Email
+      <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+
+   @foreach (var evt in Model)
+   {
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>@evt.Id<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>@evt.Name<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>@evt.Description<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>@evt.ContactEmail<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+   }
+ <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now we can start up our application and test.
+Submitting an empty form at <code class="docutils literal notranslate"><span class="pre">/Events/Add</span></code> still results in an event being created, which may not be what you were expecting.</p>
+<p>Rather than a bug, this is expected behavior.
+Validation involves <em>both</em> the model and controller, but we have not modified the controller in any way.
+Validation attributes simply define the validation rules that <em>should</em> be used to check data.
+The responsibility of checking the data before saving a new event lies with the controller.</p>
+<p>In the next section, we’ll modify the controller to properly check for valid data.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">15.3.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="last"><strong>True or False:</strong> When using <code class="docutils literal notranslate"><span class="pre">[StringLength]</span></code> you must provide both minimum and maximum length arguments.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="last"><strong>True or False:</strong> Adding validation attributes to a model ensures that bad data is not saved.</p>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="server-side-validation.html"><span aria-hidden="true">&larr;</span> <span class="section-number">15.2. </span>Server-Side Validation</a></li>
+        
+        
+        <li class="next"><a href="validation-controller.html"><span class="section-number">15.4. </span>Validating Models in a Controller <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-model-validation/validation-attributes.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

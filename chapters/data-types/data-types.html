@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1. Data Types &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.2. Some C# Practice" href="some-csharp-practice.html" />
+    <link rel="prev" title="2. Data Types" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">2. </span>Data Types</a></li>
+    <li class="active"><span class="section-number">2.1. </span>Data Types</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="data-types">
+<h1><span class="section-number">2.1. </span>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="static-vs-dynamic-typing">
+<h2><span class="section-number">2.1.1. </span>Static vs.&nbsp;Dynamic Typing<a class="headerlink" href="#static-vs-dynamic-typing" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">In a <strong>dynamically typed</strong> programming language (like JavaScript or Python), a
+variable or parameter can refer to a value of any data type (string, number,
+object, etc.) at any time. When the variable is used, the interpreter figures
+out what type it is and behaves accordingly.</p>
+<p>C# is a <strong>statically typed</strong> language. When a variable or parameter is
+declared in a statically typed language, the data type for the value must be
+specified. Once the declaration is made, the variable or parameter cannot refer
+to a value of any other type.</p>
+<p>For example, this is legal in JavaScript, a dynamically typed language:</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-JavaScript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">dynamicVariable</span> <span class="o">=</span> <span class="s2">&quot;dog&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">dynamicVariable</span><span class="p">));</span>
+<span class="nx">dynamicVariable</span> <span class="o">=</span> <span class="mf">42</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">dynamicVariable</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>Output</strong></p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>string
+number
+</pre></div>
+</div>
+</div>
+<p>After line 1 executes, <code class="docutils literal notranslate"><span class="pre">dynamicVariable</span></code> holds a <code class="docutils literal notranslate"><span class="pre">string</span></code> data type. After
+line 3 runs, <code class="docutils literal notranslate"><span class="pre">dynamicVariable</span></code> becomes a <code class="docutils literal notranslate"><span class="pre">number</span></code> type. <code class="docutils literal notranslate"><span class="pre">dynamicVariable</span></code>
+is allowed to hold values of different types, which can be reassigned as
+needed when the program runs.</p>
+<p>However, the corresponding code in C# will result in a build error:</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">staticVariable</span> <span class="p">=</span> <span class="s">&quot;dog&quot;</span><span class="p">;</span>
+<span class="n">staticVariable</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>Output</strong></p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>Error CS0029: Cannot implicitly convert <span class="nb">type</span> <span class="s1">&#39;int&#39;</span> to <span class="s1">&#39;string&#39;</span> <span class="o">(</span>CS0029<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<p>The compiler error occurs when we try to assign <code class="docutils literal notranslate"><span class="pre">42</span></code> to a variable of type
+<code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<p>Take-home lesson: <em>We must declare the type of every variable and parameter in
+a statically typed language</em>. This is done by declaring the data type for the
+variable or parameter BEFORE its name, as we did in the example above:
+<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">staticVariable</span> <span class="pre">=</span> <span class="pre">&quot;dog&quot;</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">We only need to specify the type of a variable or parameter when declaring
+it. Further use of the variable or parameter does not require us to identify
+its type. Doing so will result in an error.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>It is allowed in some situations in C# to declare a variable without
+specifying a type by using the keyword <code class="docutils literal notranslate"><span class="pre">var</span></code>, as in
+<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">&quot;dog&quot;;</span></code>. In this case, C# still assigns a type to <code class="docutils literal notranslate"><span class="pre">x</span></code>
+through inference. It looks and sees that we are assigning <code class="docutils literal notranslate"><span class="pre">x</span></code> the
+value <code class="docutils literal notranslate"><span class="pre">&quot;dog&quot;</span></code>, which is a <code class="docutils literal notranslate"><span class="pre">string</span></code>. Thus, <code class="docutils literal notranslate"><span class="pre">x</span></code> has type <code class="docutils literal notranslate"><span class="pre">string</span></code>
+and attempting to assign <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">42</span></code> will still result in a build error.</p>
+<p class="last">We recommend avoiding use of <code class="docutils literal notranslate"><span class="pre">var</span></code> while you are learning C#. Even
+after you become more experienced with the language you will still only
+want to use it sparingly and in specific circumstances. Explicitly
+declaring the type of your variables makes for more readable code, in
+general.</p>
+</div>
+<p id="index-1">Dynamic and static typing are examples of different <a class="reference external" href="https://en.wikipedia.org/wiki/Type_system" target="_blank">type
+systems<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. The <strong>type system</strong> of
+a programming language is one of the most important high-level characteristics
+that programmers use when discussing the differences between languages. Here
+are a few examples of popular languages falling into these two categories:</p>
+<ol class="arabic simple">
+<li><strong>Dynamic</strong>: Python, Ruby, JavaScript, PHP</li>
+<li><strong>Static</strong>: C#, C, C++, Java, TypeScript</li>
+</ol>
+<p>Because we need to give plenty of attention to types when writing C# code,
+let’s begin by exploring the most common data types in this language.</p>
+</div>
+<div class="section" id="built-in-types">
+<h2><span class="section-number">2.1.2. </span>Built-In Types<a class="headerlink" href="#built-in-types" title="Permalink to this headline">¶</a></h2>
+<p>In C#, all of the basic data types are objects — we’ll get into this idea shortly. Though the so-called
+built-in data types also have short names that differ from typical class name
+conventions.</p>
+<p>We provide here a list of some of the most common types, along with the official .NET class name.
+Recall that .NET gives us a class library with
+object types. We’ll generally prefer to use the short names for
+each of these.</p>
+<table border="1" class="docutils align-default" id="id1">
+<caption><span class="caption-text">Some Built-In Types in C#</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Short name</th>
+<th class="head">.NET Class</th>
+<th class="head">Examples</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">int</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Int32</span></code></td>
+<td>-5, 1024</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">float</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Single</span></code></td>
+<td>1.212, 3.14</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">double</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Double</span></code></td>
+<td>3.14159, 2.0</td>
+<td>Doubles are twice as precise (i.e.&nbsp;can hold much longer decimal numbers than floats)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">char</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Char</span></code></td>
+<td>‘a’, ‘!’</td>
+<td>A single Unicode character. Must be enclosed in single quotes <code class="docutils literal notranslate"><span class="pre">''</span></code> to be a character; double
+quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> indicate a string</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">bool</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">Boolean</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td>Note that booleans in C# are not capitalized as they are in Python</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>As we will see in a later section, the <code class="docutils literal notranslate"><span class="pre">float</span></code> data type sacrifices some
+accuracy for speed of calculation. Thus, evaluating 1.11111 + 3 results in an
+answer of 4.1111097 instead of 4.11111.</p>
+<p class="last">Anytime you need to perform calculations with decimal values, consider using
+the <code class="docutils literal notranslate"><span class="pre">double</span></code> type instead of <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</div>
+<p>Not all built-in data types in C# are listed here, only the most
+commonly used types that beginners are likely to encounter. If you’re
+curious, <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ya5y69ds.aspx" target="_blank">read more about built-in types in
+C#<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<div class="section" id="primitive-types">
+<span id="index-2"></span><h3><span class="section-number">2.1.2.1. </span>Primitive Types<a class="headerlink" href="#primitive-types" title="Permalink to this headline">¶</a></h3>
+<p>The types in the table above are known as <strong>primitive types</strong>. A primitive data type is a basic
+building block of a programming language. Using primitive data types, we
+can build more complex data structures.</p>
+</div>
+<div class="section" id="non-primitive-types">
+<h3><span class="section-number">2.1.2.2. </span>Non-primitive Types<a class="headerlink" href="#non-primitive-types" title="Permalink to this headline">¶</a></h3>
+<p>Primitive data types are <em>immutable</em> and can be combined to build larger data
+structures. One example is forming the <code class="docutils literal notranslate"><span class="pre">string</span></code> “LaunchCode” from multiple
+<code class="docutils literal notranslate"><span class="pre">char</span></code> characters (<code class="docutils literal notranslate"><span class="pre">'L'</span></code>, <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, <code class="docutils literal notranslate"><span class="pre">'u'</span></code>, etc.).</p>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code> is another built-in type in C# and it is also a non-primitive data type. We’ll delve into
+how strings work in C# on the next page, as well as other complex data types.</p>
+</div>
+<div class="section" id="operations">
+<h3><span class="section-number">2.1.2.3. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+<p>Operators, such as <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code>, are type-dependent.
+That is, we can only use them on allowed types, and their effects are
+different depending on which types we use them on. The <code class="docutils literal notranslate"><span class="pre">+</span></code> operator is
+a good example of this. We can use <code class="docutils literal notranslate"><span class="pre">+</span></code> to add numeric types together,
+such as <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">2</span></code> which results in <code class="docutils literal notranslate"><span class="pre">4</span></code>. But we can also use it to
+concatenate strings: <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span> <span class="pre">+</span> <span class="pre">&quot;2&quot;</span></code>, for example, which results in
+<code class="docutils literal notranslate"><span class="pre">&quot;22&quot;</span></code>. What the operators do depends on the type they are operating
+on, and we may not mix types in arbitrary ways (<code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span> <span class="pre">+</span> <span class="pre">2</span></code> results in a
+compiler error).</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Numeric types such as <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code> may be freely mixed when
+using numeric operators. Generally, the result of such mixing is that
+the output has the type of the more precise input. For example, the
+following snippet would print out <code class="docutils literal notranslate"><span class="pre">System.double</span></code>.</p>
+<div class="last highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span> <span class="n">a</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">b</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">).</span><span class="n">GetType</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reference-and-value-types">
+<span id="reference-variable"></span><h2><span class="section-number">2.1.3. </span>Reference and Value Types<a class="headerlink" href="#reference-and-value-types" title="Permalink to this headline">¶</a></h2>
+<p>We can group types in C# into two categories: <strong>value types</strong> and
+<strong>reference types</strong>. Variables holding value types directly contain
+their data, and include numeric types (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, etc.),
+<code class="docutils literal notranslate"><span class="pre">bool</span></code>, and a handful of others that we won’t encounter in this
+course. The primitive, built-in types we list above are all value types.</p>
+<div class="section" id="class-types">
+<span id="index-3"></span><h3><span class="section-number">2.1.3.1. </span>Class Types<a class="headerlink" href="#class-types" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>class</strong> is a template for creating objects. In addition to the built-in
+types provided by .NET, any class in C# defines its own type. A class is a template,
+or blueprint, for creating objects. We’ll have much more to say about classes and objects — this
+is an object-oriented course, after all. For now, you need to be
+comfortable seeing the basic syntax of class types and class creation.</p>
+<p>If we have a class <code class="docutils literal notranslate"><span class="pre">Cat</span></code> with a constructor that takes no arguments, we
+declare and create a new instance of <code class="docutils literal notranslate"><span class="pre">Cat</span></code> using its constructor.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Cat</span> <span class="n">myCat</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">();</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Cat</span> <span class="pre">myCat</span></code> declares the variable <code class="docutils literal notranslate"><span class="pre">myCat</span></code> and sets it to be of type
+<code class="docutils literal notranslate"><span class="pre">Cat</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">new</span> <span class="pre">Cat()</span></code> initializes the variable with a new <code class="docutils literal notranslate"><span class="pre">Cat</span></code> object.</li>
+<li>Any arguments that are required to build the new <code class="docutils literal notranslate"><span class="pre">Cat</span></code> object must be
+included within the parentheses. In this case, there are no required arguments.</li>
+</ol>
+<p>This statement creates a new variable that is initialized to
+hold a new <code class="docutils literal notranslate"><span class="pre">Cat</span></code> object. Note that in C#, we must declare the
+variable’s type. Also note that we precede the constructor with the
+<code class="docutils literal notranslate"><span class="pre">new</span></code> keyword. And, as we’ll see with all C# statements, the
+declaration ends with a semi-colon.</p>
+<p>Variables and parameters that are of the type of a class are said to be
+of <strong>reference type</strong> (in contrast to <strong>primitive type</strong>). In plain
+English, we would say of the C# example: “<code class="docutils literal notranslate"><span class="pre">myCat</span></code> is a reference
+variable of type <code class="docutils literal notranslate"><span class="pre">Cat</span></code>.”</p>
+<p>As mentioned above, classes define reference types. A variable of a
+reference type (such as <code class="docutils literal notranslate"><span class="pre">myCat</span></code> above) does not actually store the
+object in question. Instead, it stores a <strong>reference</strong> to the object. A
+reference is literally a memory address. We visualize references as an
+arrow pointing to the object in memory.</p>
+<p>Consider this code:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">catAge</span> <span class="p">=</span> <span class="m">11</span><span class="p">;</span>
+<span class="n">Cat</span> <span class="n">myCat</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">();</span>
+<span class="n">Cat</span> <span class="n">sameCat</span> <span class="p">=</span> <span class="n">myCat</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Visually, we can represent these three variables as shown here.</p>
+<div class="figure align-default" id="id2">
+<img alt="Reference Types" src="../../_images/references.png" />
+<p class="caption"><span class="caption-text">Reference Types</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">int</span></code> is a value type, the variable <code class="docutils literal notranslate"><span class="pre">catAge</span></code> functions as a
+box holding the integer value 11. On the other hand, <code class="docutils literal notranslate"><span class="pre">myCat</span></code> is a
+reference variable, since it refers to an object of type <code class="docutils literal notranslate"><span class="pre">Cat</span></code>. The
+variable actually stores the memory address of the object, which we visualize
+as an arrow from the variable box to the object. Instead of holding the actual <code class="docutils literal notranslate"><span class="pre">Cat</span></code>
+data, <code class="docutils literal notranslate"><span class="pre">myCat</span></code> stores <em>directions</em> for finding the data in memory.</p>
+<p>When we assign <code class="docutils literal notranslate"><span class="pre">myCat</span></code> to another variable, as in <code class="docutils literal notranslate"><span class="pre">Cat</span> <span class="pre">sameCat</span> <span class="pre">=</span> <span class="pre">myCat</span></code>,
+we do NOT create a second copy of the object or its data. Instead, we make a
+second <em>pointer</em> to the same memory location.</p>
+<p>The distinction between reference types and value types is important,
+but can be difficult to wrap your brain around at first. We will see
+that reference types are handled differently in essential and important
+ways in a lot of different situations.</p>
+</div>
+<div class="section" id="boxing">
+<span id="index-4"></span><h3><span class="section-number">2.1.3.2. </span>Boxing<a class="headerlink" href="#boxing" title="Permalink to this headline">¶</a></h3>
+<p>As we mention above, all types in C# are treated as objects. Even value types. This can be accomplished
+through processes called boxing and unboxing. Converting from a value type to a reference type is called
+<strong>boxing</strong>, and the reverse process (reference to value) is called <strong>unboxing</strong>. C# is known as a unified
+type system because it implicitly boxes values types to be treated as objects.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>     <span class="c1">// This is a value type.</span>
+<span class="kt">object</span> <span class="n">o</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span>    <span class="c1">// Boxing the value type into a reference type.</span>
+<span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">o</span><span class="p">;</span>  <span class="c1">// Unboxing the reference type back into a value type.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">2.1.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Which of the following is NOT a number data type in C#:</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">number</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">int</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">float</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">double</span></code></li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Which of the following terms refers to C#’s behavior of treating all types as objects:</p>
+<ol class="last arabic simple">
+<li>static type system</li>
+<li>dynamic type system</li>
+<li>reference type system</li>
+<li>unified type system</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="index.html"><span aria-hidden="true">&larr;</span> <span class="section-number">2. </span>Data Types</a></li>
+        
+        
+        <li class="next"><a href="some-csharp-practice.html"><span class="section-number">2.2. </span>Some C# Practice <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/data-types/data-types.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

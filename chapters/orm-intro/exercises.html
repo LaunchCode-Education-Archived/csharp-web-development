@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17.4. Exercises: OMG the ORM! &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="17.5. Studio: OMG More ORM!" href="studio.html" />
+    <link rel="prev" title="17.3. Working with Data Stores" href="data-stores.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">17. </span>Introduction to Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">17.4. </span>Exercises: OMG the ORM!</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercises-omg-the-orm">
+<span id="orm1-exercises"></span><h1><span class="section-number">17.4. </span>Exercises: OMG the ORM!<a class="headerlink" href="#exercises-omg-the-orm" title="Permalink to this headline">¶</a></h1>
+<p>For the exercises, we are going to continue building on our <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> application.
+The exercise instructions assume that your code resembles the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller" target="_blank">persistent-controller<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+Create a new branch in your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> repo to get started on the exercises.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">You will be making one model class and adding to <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>.
+If you are not sure what these classes should look like, refer back to the <a class="reference internal" href="accessingdata.html#intro-to-data-stores"><span class="std std-ref">section</span></a> on data stores and <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>.</p>
+</div>
+<div class="section" id="the-eventcategory-class">
+<h2><span class="section-number">17.4.1. </span>The <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> Class<a class="headerlink" href="#the-eventcategory-class" title="Permalink to this headline">¶</a></h2>
+<p>First, create a new class called <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> in the <code class="docutils literal notranslate"><span class="pre">Models</span></code> directory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> needs to have the following:</p>
+<ol class="arabic simple">
+<li>An <code class="docutils literal notranslate"><span class="pre">Id</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</li>
+<li>A <code class="docutils literal notranslate"><span class="pre">Name</span></code> property of type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</li>
+<li>A no arg constructor.</li>
+<li>A constructor that sets the value of <code class="docutils literal notranslate"><span class="pre">Name</span></code>.</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> represents data that will be stored in our database.</p>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-1"><span class="std std-ref">Check your solutions</span></a></p>
+</div>
+<div class="section" id="adding-to-dbcontext">
+<h2><span class="section-number">17.4.2. </span>Adding to <code class="docutils literal notranslate"><span class="pre">DbContext</span></code><a class="headerlink" href="#adding-to-dbcontext" title="Permalink to this headline">¶</a></h2>
+<p>Once you have created <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>, you need to add to <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> to set up a table in the database for storing categories.</p>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-2"><span class="std std-ref">Check your solutions</span></a></p>
+</div>
+<div class="section" id="adding-a-new-table-to-the-database">
+<h2><span class="section-number">17.4.3. </span>Adding a New Table to the Database<a class="headerlink" href="#adding-a-new-table-to-the-database" title="Permalink to this headline">¶</a></h2>
+<p>With the two steps completed above, you now need to add a new migration and update your database.
+You should see a new table in your database!</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p><strong>Where is my table!?</strong></p>
+<p>If you are not able to see your new <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> table try the following:</p>
+<ol class="arabic simple">
+<li><strong>Drop tables</strong><ol class="loweralpha">
+<li>Start by dropping all of your tables in MySql Workbench</li>
+<li>Add a new migration in your terminal</li>
+<li>Update your database in the terminal</li>
+<li>Refresh your schema in MySql Workbench</li>
+</ol>
+</li>
+</ol>
+<p>If you still can’t see your table, then you will need to drop your schema and delete old migrations.</p>
+<ol class="arabic simple" start="2">
+<li><strong>Drop schema</strong><ol class="loweralpha">
+<li>Drop the schema in MySql Workbench.  Don’t worry, we’ll get it back.</li>
+<li>Recreate your schema in MySql Workbench like you did earlier.
+You can use the same names and passwords if you like.  If you change any of the names and passwords, make sure you update your MySql connections that you made in the <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file as well as either you <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> or <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> files.</li>
+<li>Delete your old migrations from your C# project.</li>
+<li>Add a new migration in your terminal</li>
+<li>Update your database in the terminal</li>
+<li>Refresh your schema in MySql Workbench</li>
+</ol>
+</li>
+</ol>
+<p class="last">You should see your new table in MySql Workbench now.</p>
+</div>
+</div>
+<div class="section" id="the-eventcategorycontroller-class">
+<h2><span class="section-number">17.4.4. </span>The <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code> Class<a class="headerlink" href="#the-eventcategorycontroller-class" title="Permalink to this headline">¶</a></h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code> in the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory.
+To get our action methods working, we also need a variable of type <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code>.</p>
+<p>For now, we are just going to set up our <code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method so that it displays all of the categories in our table.</p>
+<div class="section" id="index">
+<h3><span class="section-number">17.4.4.1. </span><code class="docutils literal notranslate"><span class="pre">Index()</span></code><a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Index()</span></code> needs to do the following:</p>
+<ol class="arabic simple">
+<li>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Index</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</li>
+<li>Pass the <code class="docutils literal notranslate"><span class="pre">DbContext</span></code> category values as a list into the view template as a model.</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-3"><span class="std std-ref">Check your solutions</span></a></p>
+</div>
+</div>
+<div class="section" id="adding-a-view">
+<h2><span class="section-number">17.4.5. </span>Adding a View<a class="headerlink" href="#adding-a-view" title="Permalink to this headline">¶</a></h2>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> directory inside of our <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory.
+Add a new view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> needs to have the following:</p>
+<ol class="arabic simple">
+<li>Use the list passed in from the action method in the controller as a model to populate the view.</li>
+<li>An <code class="docutils literal notranslate"><span class="pre">h1</span></code> with an appropriate heading for the page.</li>
+<li>A table that will display all of the category names of the event categories stored in our database.</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-4"><span class="std std-ref">Check your solutions</span></a></p>
+</div>
+<div class="section" id="test-your-application">
+<h2><span class="section-number">17.4.6. </span>Test Your Application<a class="headerlink" href="#test-your-application" title="Permalink to this headline">¶</a></h2>
+<p>If you navigate to the <code class="docutils literal notranslate"><span class="pre">/eventcategory</span></code> route, you will see an empty table on the page.
+That is what you should see!
+We haven’t added the ability to add a new category to our table yet.
+We will do so in the <a class="reference internal" href="studio.html#orm1-studio"><span class="std std-ref">studio</span></a> this week.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="data-stores.html"><span aria-hidden="true">&larr;</span> <span class="section-number">17.3. </span>Working with Data Stores</a></li>
+        
+        
+        <li class="next"><a href="studio.html"><span class="section-number">17.5. </span>Studio: OMG More ORM! <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-intro/exercises.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10.1. Simple Controllers &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10.2. Controllers with Parameters" href="controllers-parameters.html" />
+    <link rel="prev" title="10. Controllers and Routing" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">10. </span>Controllers and Routing</a></li>
+    <li class="active"><span class="section-number">10.1. </span>Simple Controllers</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="simple-controllers">
+<span id="index-0"></span><h1><span class="section-number">10.1. </span>Simple Controllers<a class="headerlink" href="#simple-controllers" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.
+We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.
+If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
+Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.</p>
+</div>
+<p>The first of the MVC elements we’ll work on implementing are the controllers. Recall that controllers
+are like the traffic cops of our application. They handle the requests made from users interacting with the
+application’s view and update model data accordingly. Conversely, changes to model data are sent to the view
+via controller methods. When the client issues an HTTP request via a URL, we want to make sure that the URL leads to the correct controller so we get an appropriate response.
+A <strong>route</strong> is the mechanism by which a request path gets assigned to a controller within our application.</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/mvcOverviewDetail.png"><img alt="MVC Flow Diagram showing controllers in the middle passing data between the view and the model" src="../../_images/mvcOverviewDetail.png" style="width: 900.0px; height: 600.0px;" /></a>
+<p class="caption"><span class="caption-text">MVC Flow</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Do HTTP requests and responses feel unfamiliar?
+If you’re feeling rusty on these topics, it’s a good idea to brush up now, as routing requires a foundational understanding of HTTP data transfer.</p>
+<p class="last">Here’s our <a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html" target="_blank">introduction to HTTP<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+for reviewing the concepts.</p>
+</div>
+<div class="section" id="controllers-and-static-responses-video">
+<h2><span class="section-number">10.1.1. </span>Controllers and Static Responses - Video<a class="headerlink" href="#controllers-and-static-responses-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/wpk2q5zOIG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.
+If you ever want to verify what code you end this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses" target="_blank">final code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">static-responses</span></code> branch.</p>
+<p>If you are exploring the starter code and are not able to build a website by using the “Run” button in Visual Studio,
+try the following in your terminal:</p>
+<ol class="last arabic simple">
+<li>Using the terminal, navigate into your project</li>
+<li>Enter the command: <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">run</span></code> and follow the prompts in your terminal</li>
+</ol>
+</div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last"><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+Refer to <a class="reference internal" href="../../appendices/vs-troubleshooting.html#vs-troubleshooting"><span class="std std-ref">Visual Studio Operational Tips</span></a> for help.</p>
+</div>
+</div>
+<div class="section" id="controllers-and-static-responses-intro">
+<h2><span class="section-number">10.1.2. </span>Controllers and Static Responses - Intro<a class="headerlink" href="#controllers-and-static-responses-intro" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="controller">
+<span id="index-1"></span><h3><span class="section-number">10.1.2.1. </span><code class="docutils literal notranslate"><span class="pre">Controller</span></code><a class="headerlink" href="#controller" title="Permalink to this headline">¶</a></h3>
+<p>In ASP.NET, we’ll organize controller code into the provided <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory.
+Some tools may depend on us following the convention of the MVC design pattern, so it is important to put our controller code in this directory.
+If you want to change something about the provided structure, be sure to double check the documentation to make sure a tool does not depend on you following it!</p>
+<p>To designate a given class as a controller within the ASP.NET framework, we extend the <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class.
+The <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-6.0" target="_blank">Controller class<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+provides us with the necessary members and methods to manage traffic between the three components in our MVC application.</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+
+   <span class="c1">// class code here ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controllers-map-to-requests">
+<span id="index-2"></span><h3><span class="section-number">10.1.2.2. </span>Controllers Map to Requests<a class="headerlink" href="#controllers-map-to-requests" title="Permalink to this headline">¶</a></h3>
+<p>Controllers need to handle HTTP requests coming in and routes are a key component of that process.
+ASP.NET MVC has two different ways to map these routes: conventional routing and attribute routing.
+<strong>Conventional routing</strong> establishes the routes as endpoints in one of the application’s configuration files.
+<strong>Attribute routing</strong> establishes the routes using <a class="reference internal" href="../unit-testing/mstest.html#csharp-attributes"><span class="std std-ref">C# attributes</span></a> that are placed in the controller file.</p>
+<p>Routes in conventional routing are setup via endpoints in a configuration file called <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>.
+When an HTTP request comes in, routing matches the request with an endpoint.
+<strong>Endpoints</strong> designate the controller action that executes when the appropriate HTTP request comes into the application.</p>
+<div class="admonition-note-on-the-startup-cs-file admonition">
+<p class="first admonition-title">Note on the Startup.cs file</p>
+<p>ASP.NET 6.0 combines the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> and <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> files.
+If you are following along with Sally’s video, you will see the files are separated.  She is using ASP.NET 3.1 in her video.
+This discrepancy between ASP.NET frameworks should not affect this project.</p>
+<p>If you started your project on your own in .NET 6.0, we recommend exploring <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo" target="_blank">Sally’s repo<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+and see if you can identify where and how these two files were combined.</p>
+<p class="last">This <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/migration/50-to-60-samples?view=aspnetcore-6.0" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+illustrates some of the changes between .NET 5.0 and .NET 6.0.</p>
+</div>
+<p>When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
+This is because the MVC application we start out with already has the routing and endpoints set up.
+When we open the application, we see in the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory that Microsoft has a preconfigured <code class="docutils literal notranslate"><span class="pre">HomeController</span></code>.
+Straight out of the box, ASP.NET is set up to use conventional routing with a configured default route that maps to the <code class="docutils literal notranslate"><span class="pre">HomeController</span></code>.
+While the default route maps to <code class="docutils literal notranslate"><span class="pre">localhost:5001</span></code>, when we are using conventional routing, our routes follow the same general pattern:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>localhost:5001/&lt;controller&gt;/&lt;action&gt;
+</pre></div>
+</div>
+<p>This pattern is key in conventional routing and something to commit to memory.
+To see the result of any given action method in a controller, we can count on this pattern.
+Navigating to <code class="docutils literal notranslate"><span class="pre">localhost:5001/home/index</span></code>, we see the result of the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method, a view.
+If we added a new method, <code class="docutils literal notranslate"><span class="pre">Hello()</span></code>, to the <code class="docutils literal notranslate"><span class="pre">HomeController</span></code>, we would see the result of that method at <code class="docutils literal notranslate"><span class="pre">localhost:5001/home/hello</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Throughout this book, we will be using attribute routing to break the pattern established by conventional routing.
+However, if you want to investigate further on how to use an endpoint for a rule-breaking route in conventional routing,
+Microsoft has a great <a class="reference external" href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#special-case-for-dedicated-conventional-routes" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> on the subject.
+For example, endpoints preconfigured in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> is how we can navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001</span></code> and <code class="docutils literal notranslate"><span class="pre">localhost:5001/Home/Index</span></code> to see the same page.</p>
+<p class="last"><strong>Remember:</strong> <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> contain the endpoints in an ASP.NET 6.0 application.</p>
+</div>
+<p>When adding a new controller, such as <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>, we need to make sure that routing is properly configured whether
+we use conventional routing or attribute routing.
+We want to start by adding a new action method to <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>.  <strong>Action methods</strong> are the public methods in a controller class.
+Action methods respond at a specific route and that response can be an update to a view, sending new data to a model, returning some simple HTML, and so on.
+When we are creating a new action method, we want to think about what route the method needs to respond at, what request type the action method should respond to, and what that response entails.
+Let’s start by adding the following <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// GET: /&lt;controller&gt;/</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="kt">string</span> <span class="n">html</span> <span class="p">=</span> <span class="s">&quot;&lt;h1&gt;&quot;</span> <span class="p">+</span> <span class="s">&quot;Hello World!&quot;</span> <span class="p">+</span> <span class="s">&quot;&lt;h1&gt;&quot;</span><span class="p">;</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Every time you add a new action method, you should write a comment above it to make note of the route that you want the method to respond to and the type of request that it should respond to at that route.
+With conventional routing, the action methods can respond to different types of requests at the given route.
+So even though we made a note that we want the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method to respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at the route, <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code>, the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method could also respond to a <code class="docutils literal notranslate"><span class="pre">POST</span></code>, <code class="docutils literal notranslate"><span class="pre">PUT</span></code>, or <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request at that route.
+Attribute routing is a way for us to specify which request type the method can respond to.
+But for now, let’s run the app and navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code> to check our work.</p>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Conventional routing makes use of the controller’s name and action method’s name.
+If you mistype either in the URL when testing out your application, you will run into an error.</p>
+</div>
+<p>We also want to make use of attribute routing in our new <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>.
+To do so, we can add attributes to our <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method.
+As you may recall from the <a class="reference internal" href="../unit-testing/mstest.html#csharp-attributes"><span class="std std-ref">chapter</span></a> on unit testing, attributes in C# lie somewhere between code and comments.
+While an attribute cannot change the code inside the method or class, an attribute in attribute routing does supply critical information about routes and request types.
+Attribute routing is powerful because it does not depend on any endpoint mapping info in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>, can defy the pattern established by conventional routing, and specify one request type for a method to respond to.</p>
+<p>ASP.NET has many different attributes that we can use in our controllers.
+For a more in-depth catalog of different attributes, check out the <a class="reference external" href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#http-verb-templates" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p id="index-3">As we noted above, we want the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method to respond to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request at a specified route.
+Every time we write an action method, we should be thinking about what type of request the action method should respond to.
+Once we have noted our decision about the request type in a comment, we could add an HTTP verb attribute above the action method.
+While we know that our <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method can respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code>, we should always be adding HTTP verb attributes to action methods for practice.
+As our controllers grow in complexity, HTTP verb attributes grow in importance!
+We are going to focus on action methods that respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code> and <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests for now.
+An <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute is used for action methods responding to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests and an <code class="docutils literal notranslate"><span class="pre">[HttpPost]</span></code> attribute is used for action methods responding to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests.</p>
+<p>The route we now want to go to see the result of the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method is <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld</span></code>.
+We will use an <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute to specify that the method will respond to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.
+We also want to use a <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> attribute.
+<code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> is used above the action method to establish the route that maps to that method.</p>
+<p>Let’s see how we can use these attributes in our <code class="docutils literal notranslate"><span class="pre">HelloController</span></code> class.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+<span class="na">   [HttpGet]</span>
+<span class="na">   [Route(&quot;/helloworld/&quot;)]</span>
+   <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="kt">string</span> <span class="n">html</span> <span class="p">=</span> <span class="s">&quot;&lt;h1&gt;&quot;</span> <span class="p">+</span> <span class="s">&quot;Hello World!&quot;</span> <span class="p">+</span> <span class="s">&quot;&lt;h1&gt;&quot;</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>On line 4, you may have noted that we did not include <code class="docutils literal notranslate"><span class="pre">localhost:5001</span></code> in the path we used in our <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> attribute.
+The path portion of a URL is a specific section that comes after the host and port.
+If you want a quick refresher on the structure of a web address, check out this <a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/how-the-internet-works.html#web-addresses" target="_blank">section<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from our introduction to HTTP.</p>
+<p>Now when we run our application, we can head over to <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld</span></code> to see the result.
+If we head over to the route that was mapped through conventional routing, <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code>, we will find a broken page.
+The result is a simple web page with one heading that says “Hello World!”.</p>
+<div class="figure align-default" id="id2">
+<img alt="Simple webpage resulting from adding a new method to the controller" src="../../_images/staticresponseresult.png" />
+<p class="caption"><span class="caption-text">Our end result!</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">While the book focuses on attribute routing, in this chapter, we will map our routes with both approaches.
+Many applications contain a combination of both conventional and attribute routing.
+We encourage you to try out both approaches to make sure that you can recognize and understand both approaches to routing.</p>
+</div>
+<p>Now that our new controller and action method are working, we can take a closer look at the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method.
+<code class="docutils literal notranslate"><span class="pre">Index()</span></code> above returns an unfamiliar type, <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code>.
+We will be using <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> quite a bit in our applications and it is an important interface for us to be aware of.</p>
+</div>
+<div class="section" id="iactionresult">
+<span id="index-4"></span><h3><span class="section-number">10.1.2.3. </span><code class="docutils literal notranslate"><span class="pre">IActionResult</span></code><a class="headerlink" href="#iactionresult" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> is an interface in the ASP.NET framework and often times the return type of action methods.
+When we specify the return type as <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code>, the returned value dictates what the client will display after the action is complete.
+We can use <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> to get the client to display plain text or other data types.
+In a later section on views, we will use <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> to return HTML templates.
+We will only scratch the surface of what <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> can do so for now, let’s focus on <code class="docutils literal notranslate"><span class="pre">Content</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Content</span></code> is a class that implements the <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> interface.</p>
+<p>In our <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method, we want to return a simple string of HTML to be displayed on the webpage.
+We use <code class="docutils literal notranslate"><span class="pre">Content()</span></code> to specify which string we want to use for our content and we specify the content type with <code class="docutils literal notranslate"><span class="pre">&quot;text/html&quot;</span></code>.
+When using <code class="docutils literal notranslate"><span class="pre">Content()</span></code>, we need to specify the content type in order the page to render how we want it to!</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">For more info on the different types of results we could specify as return types, check out this <a class="reference external" href="https://exceptionnotfound.net/asp-net-core-demystified-action-results/" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>!</p>
+</div>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">10.1.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: The <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class does not have to be extended to classify a class as a controller.</p>
+<ol class="last loweralpha simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Which of the following is true about controllers?</p>
+<ol class="last loweralpha simple">
+<li>Controllers handle the data storage of an MVC app.</li>
+<li>Controllers manage what the user of an MVC application sees.</li>
+<li>Controllers relay the messages between data and views in an MVC application.</li>
+<li>Controllers determine what information can be submitted in an online form.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="index.html"><span aria-hidden="true">&larr;</span> <span class="section-number">10. </span>Controllers and Routing</a></li>
+        
+        
+        <li class="next"><a href="controllers-parameters.html"><span class="section-number">10.2. </span>Controllers with Parameters <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-controllers-and-routes/controllers-simple.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

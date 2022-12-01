@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.3. Using a Template &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.4. Iterating in a Template" href="template-iteration.html" />
+    <link rel="prev" title="13.2. Creating a Template" href="create-template.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.3. </span>Using a Template</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="using-a-template">
+<h1><span class="section-number">13.3. </span>Using a Template<a class="headerlink" href="#using-a-template" title="Permalink to this headline">¶</a></h1>
+<p>Now that we know a little bit about views, we can start talking about how to pass
+data between MVC elements. Models are a key component of this, but for now, we
+will focus on how to pass data between the view and the controller.</p>
+<div class="section" id="passing-data-to-a-template">
+<span id="index-0"></span><h2><span class="section-number">13.3.1. </span>Passing Data to a Template<a class="headerlink" href="#passing-data-to-a-template" title="Permalink to this headline">¶</a></h2>
+<p>The controller class contains methods that send data to different templates.
+These methods have a structure similar to:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">ActionMethod</span><span class="p">()</span>
+  <span class="p">{</span>
+     <span class="c1">// method code here</span>
+
+     <span class="n">ViewBag</span><span class="p">.</span><span class="n">property</span> <span class="p">=</span> <span class="n">Data</span><span class="p">;</span>
+     <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+  <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>ViewBag</strong> is an object that passes data into a template. <code class="docutils literal notranslate"><span class="pre">Data</span></code> can
+be a variable of any type, a number, a collection of some sort, or an object.
+A <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property is created and given a value as simply as is done on line 5 above. In fact, we can
+just as easily create a second property on <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> as follows:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">ViewBag</span><span class="p">.</span><span class="n">anotherNewProperty</span> <span class="p">=</span> <span class="n">someOtherData</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can think of <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> as like an empty container object who exists for the purpose of carrying
+variables from the controller into the view.</p>
+<div class="section" id="accessing-data-in-a-template">
+<h3><span class="section-number">13.3.1.1. </span>Accessing Data in a Template<a class="headerlink" href="#accessing-data-in-a-template" title="Permalink to this headline">¶</a></h3>
+<p>The data assigned to properties on <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> is available inside of Razor templates.
+It can be accessed with the syntax <code class="docutils literal notranslate"><span class="pre">&#64;ViewBag.propertyName</span></code>.</p>
+<p>For example, if the controller stores a vegetable name as string in
+<code class="docutils literal notranslate"><span class="pre">ViewBag.vegetable</span></code>, then the template can display that value like so:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>@ViewBag.vegetable<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Let’s say that <code class="docutils literal notranslate"><span class="pre">&#64;ViewBag.vegetable</span></code> stores the string “Rutabaga”. When the program
+runs, the application interprets <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;&#64;ViewBag.vegetable&lt;/p&gt;</span></code> as:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Rutabaga<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>By using <code class="docutils literal notranslate"><span class="pre">&#64;ViewBag.vegetable</span></code>, we make our webpage <em>dynamically</em> display
+data within the <code class="docutils literal notranslate"><span class="pre">p</span></code> element. Changing the value of <code class="docutils literal notranslate"><span class="pre">vegetable</span></code> leads to a
+corresponding change in the text in the view after refreshing.</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">13.3.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Given the code:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Name: @ViewBag.name<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>What will be displayed on the screen if the controller sends in a <code class="docutils literal notranslate"><span class="pre">name</span></code>
+variable with a value of “Blake”?</p>
+<ol class="last arabic simple">
+<li>Name: name</li>
+<li>Blake</li>
+<li>Blake: Blake</li>
+<li>Name: Blake</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>We want a list element to read, “Item name: ______, Price: ______”, where
+the blanks need to be filled in with <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">price</span></code> values sent from
+the controller.</p>
+<p>Which of the following will produce the desired result?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;ViewBag.name,</span> <span class="pre">Price:</span> <span class="pre">&#64;ViewBag.price&lt;/li&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;ViewBag(&quot;Item</span> <span class="pre">name:</span> <span class="pre">name,</span> <span class="pre">Price:</span> <span class="pre">price&quot;)&lt;/li&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;Item</span> <span class="pre">name:</span> <span class="pre">,</span> <span class="pre">&#64;Price</span> <span class="pre">=</span> <span class="pre">&lt;/li&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;name,</span> <span class="pre">Price</span> <span class="pre">=</span> <span class="pre">&#64;price&lt;/li&gt;</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="create-template.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.2. </span>Creating a Template</a></li>
+        
+        
+        <li class="next"><a href="template-iteration.html"><span class="section-number">13.4. </span>Iterating in a Template <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/using-templates.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

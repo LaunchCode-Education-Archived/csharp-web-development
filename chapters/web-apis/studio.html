@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20.5. Studio: Consuming the CodingEvents API With Postman &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Index" href="../../genindex.html" />
+    <link rel="prev" title="20.4. Exercises: Web APIs and REST" href="exercises.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">20. </span>Introduction to Web APIs &amp; REST</a></li>
+    <li class="active"><span class="section-number">20.5. </span>Studio: Consuming the CodingEvents API With Postman</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="studio-consuming-the-codingevents-api-with-postman">
+<span id="index-0"></span><h1><span class="section-number">20.5. </span>Studio: Consuming the CodingEvents API With Postman<a class="headerlink" href="#studio-consuming-the-codingevents-api-with-postman" title="Permalink to this headline">¶</a></h1>
+<p>The UI of a browser is designed to make simple <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests for URLs entered into its address bar. This design works great for browsing sites, but
+falls short when working with APIs. Anything beyond a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request is difficult to send via a browser address bar alone. Think about what is needed to
+create a new <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code>. This type of request contains a body. Our MVC application included a view to allow us to test inputs. Our API, however, is
+<strong>headless</strong>. It does not contain the client-side form. In order to test how it handles requests then, we need a way to interact with the API server without
+the browser. In this studio, we work with Postman to explore how APIs can be consumed.</p>
+<div class="section" id="setup">
+<h2><span class="section-number">20.5.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-postman">
+<h3><span class="section-number">20.5.1.1. </span>Install Postman<a class="headerlink" href="#install-postman" title="Permalink to this headline">¶</a></h3>
+<p>If you haven’t done so already, <a class="reference internal" href="../../appendices/postman-install.html#postman-installation"><span class="std std-ref">install Postman</span></a>.</p>
+</div>
+<div class="section" id="fork-and-clone-the-api-source-code">
+<h3><span class="section-number">20.5.1.2. </span>Fork and Clone the API Source Code<a class="headerlink" href="#fork-and-clone-the-api-source-code" title="Permalink to this headline">¶</a></h3>
+<p>With Postman installed, we’re ready to fork and clone the <a class="reference external" href="https://github.com/LaunchCodeEducation/coding-events-api/tree/1-sqlite" target="_blank">CodingEvents API<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+Although it is implemented differently from CodingEvents MVC, you will find that most of the features from the MVC application have been supported through
+endpoints in the API.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Our focus in this course is on operations and as such we will not be going into the development of the API. However, feel free to explore the source
+code if you are curious about the similarities and differences between the .NET MVC and API implementations.</p>
+</div>
+<p>Let’s begin by forking and cloning the repo onto our machine. In your Powershell or terminal window, move into a directory where you plan to save your local
+copy of the API codebase.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; git clone https://github.com/&lt;GitUsername&gt;/coding-events-api
+</pre></div>
+</div>
+<p>For this studio, we want to have the <code class="docutils literal notranslate"><span class="pre">1-sqlite</span></code> branch checked out. This branch has an API with a single (<code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code>)
+resource and a built-in SQLite database.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Including a SQLite database in this project means you don’t need to have your MySQL server running to test the API. We won’t get into what this looks like
+and instead just concentrate on testing the API endpoints.</p>
+</div>
+<p>Let’s change into the repo and switch to this branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd is an alias (like a nick-name) for the Set-Location cmdlet in PowerShell</span>
+&gt; <span class="nb">cd</span> coding-events-api
+
+<span class="c1"># check out the 1-sqlite branch</span>
+&gt; git checkout <span class="m">1</span>-sqlite
+</pre></div>
+</div>
+<p>Keep your terminal open! We have some more work to do.</p>
+</div>
+<div class="section" id="start-the-api-server">
+<h3><span class="section-number">20.5.1.3. </span>Start the API Server<a class="headerlink" href="#start-the-api-server" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start the API server from the terminal using the <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">run</span></code> command. Navigate to the <code class="docutils literal notranslate"><span class="pre">CodingEventsAPI</span></code> project folder <em>within</em> your
+<code class="docutils literal notranslate"><span class="pre">coding-events-api</span></code> solution. This is the folder that contains <code class="docutils literal notranslate"><span class="pre">Controllers/</span></code> and so on, and is NOT the main project folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># change to the CodingEventsAPI project directory</span>
+&gt; <span class="nb">cd</span> CodingEventsAPI
+
+<span class="c1"># run the project</span>
+&gt; dotnet run
+
+info: Microsoft.Hosting.Lifetime<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+   Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+      Content root path: C:<span class="se">\U</span>sers<span class="se">\&lt;</span>username&gt;<span class="se">\c</span>oding-events-api<span class="se">\C</span>odingEventsAPI
+</pre></div>
+</div>
+<p>If you see something like this output above, then your API is running! You’ll note, we’re not using Visual Studio here to run the application but feel free to
+open the solution in VS and explore the source code.</p>
+</div>
+<div class="section" id="swagger-documentation">
+<h3><span class="section-number">20.5.1.4. </span>Swagger Documentation<a class="headerlink" href="#swagger-documentation" title="Permalink to this headline">¶</a></h3>
+<p>With the application running, go to the first location listed as: “Now listening on:”. Enter <code class="docutils literal notranslate"><span class="pre">https://localhost:5001</span></code> into your browser. You’ll see a page
+that looks nothing like any view we created in our CodingEvents MVC applications. What you see running in the browser is not
+at all a client-side application, but rather, some documentation resources for the API itself.</p>
+<p>You’ll see a list of those endpoints we asked you to describe for this lesson’s exercises:</p>
+<p>Two endpoints at the <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> entry-point path, <code class="docutils literal notranslate"><span class="pre">/api/events</span></code>, to interact with the collection as a whole:</p>
+<ul class="simple">
+<li><strong>list CodingEvents</strong>: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/events</span> <span class="pre">-&gt;</span> <span class="pre">CodingEvent[]</span></code></li>
+<li><strong>create a CodingEvent</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/events</span> <span class="pre">(NewCodingEvent)</span> <span class="pre">-&gt;</span> <span class="pre">201,</span> <span class="pre">CodingEvent</span></code></li>
+</ul>
+<p>And two that require a sub-path variable, <code class="docutils literal notranslate"><span class="pre">/events/{codingEventId}</span></code>, to interact with a single entity:</p>
+<ul class="simple">
+<li><strong>delete a CodingEvent</strong>: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/api/events/{codingEventId}</span> <span class="pre">-&gt;</span> <span class="pre">201,</span> <span class="pre">CodingEvent</span></code></li>
+<li><strong>find single CodingEvent</strong>: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/events/{codingEventId}</span> <span class="pre">-&gt;</span> <span class="pre">CodingEvent</span></code></li>
+</ul>
+<p>And below this list are two <em>Schemas</em>, or shapes, of resources the API handles.</p>
+<p><strong>Swagger</strong> is a popular tool API developers use to include fast documentation for their API codebase. The page we’re looking at is generated by this tool and gives
+us a nice summary of the endpoints made available by the CodingEvents API we currently have running. But remember, we’ll test the API in Postman.</p>
+</div>
+</div>
+<div class="section" id="making-requests-to-the-coding-events-api">
+<h2><span class="section-number">20.5.2. </span>Making Requests to the Coding Events API<a class="headerlink" href="#making-requests-to-the-coding-events-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-the-coding-events">
+<h3><span class="section-number">20.5.2.1. </span>List the Coding Events<a class="headerlink" href="#list-the-coding-events" title="Permalink to this headline">¶</a></h3>
+<p>To create our first request using Postman, select the <em>New</em> button in the top left corner of the Postman window:</p>
+<div class="figure align-default" id="id1">
+<img alt="Close up of the Postman New item button" src="../../_images/new-button.png" />
+<p class="caption"><span class="caption-text">Select the <em>New</em> button to create a new request</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last"><strong>Mac Users</strong>: The above screenshot and the screenshots on this page are of the Windows version of Postman. The <em>New</em> button on your launchpad is also in the top left corner of the window, but is white.</p>
+</div>
+<div class="section" id="creating-a-new-request">
+<h4><span class="section-number">20.5.2.1.1. </span>Creating a New Request<a class="headerlink" href="#creating-a-new-request" title="Permalink to this headline">¶</a></h4>
+<p>With the new item dialog open, select the <em>Create New</em> tab (on the left) then select <em>Request</em>.</p>
+<div class="figure align-default" id="id2">
+<img alt="Close up of the top of the Postman New item dialog" src="../../_images/new-item-dialog.png" />
+<p class="caption"><span class="caption-text">Create a new request item in Postman</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>This will open the new request dialog:</p>
+<div class="figure align-default" id="id3">
+<img alt="Top of the Postman New Request dialog" src="../../_images/new-request-dialog.png" />
+<p class="caption"><span class="caption-text">The new request dialog includes fields for a request name, description, and collection</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Depending on the version of Postman you use, when you select the option to make a new request, you may not encounter this dialog.
+Instead you are taken directly to a new request form and your request is just labeled “Untitled Request”. In the top right corner, you will find a <em>Save</em> button with an arrow next to it.
+Clicking on the arrow displays a dropdown menu where you can select <em>Save As</em> to change the name and save it to a specific collection.</p>
+</div>
+<p>Postman requests require a name and a collection. A collection is just a container to hold related requests. They make it easy to import and export
+collections of requests for portability across teams. For our first request, enter “list coding events” in the <em>Request name</em> form field. At the
+bottom of the new request dialog, you will see that the collections are empty. Select the <em>Create Collection</em> button, then enter the
+name <code class="docutils literal notranslate"><span class="pre">coding</span> <span class="pre">events</span> <span class="pre">API</span></code>. The new request dialog button will change to say <em>Save to coding events API</em>:</p>
+<div class="figure align-default" id="id4">
+<img alt="Full view of the Postman New Request dialog" src="../../_images/new-request-dialog-complete.png" />
+<p class="caption"><span class="caption-text">Once the collection is selected, save the new request</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>After saving, a new request tab will be created where you can customize its behavior:</p>
+<div class="figure align-default" id="id5">
+<img alt="Postman new request tab view after creation" src="../../_images/empty-request-tab.png" />
+<p class="caption"><span class="caption-text">A new request has been created in Postman</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="configuring-the-request">
+<h4><span class="section-number">20.5.2.1.2. </span>Configuring the Request<a class="headerlink" href="#configuring-the-request" title="Permalink to this headline">¶</a></h4>
+<p>Postman exposes an exhaustive set of tools for configuring every aspect of a request. Fortunately, this request is relatively simple.</p>
+<p>We want to request the state of the CodingEvents collection, in shorthand:</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/events</span> <span class="pre">-&gt;</span> <span class="pre">CodingEvent[]</span></code></p>
+<p>In Postman, we can make this request by configuring the following settings:</p>
+<ul class="simple">
+<li>the URL of the endpoint: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events</span></code></li>
+<li>the HTTP method of the endpoint: <code class="docutils literal notranslate"><span class="pre">GET</span></code></li>
+<li>the request header: (<code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">application/json</span></code>)</li>
+</ul>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Though we view the Swagger docs from port 5001, we request the resources on port 5000.</p>
+</div>
+<p>To the left of the URL bar is a dropdown selector for HTTP methods. It will default to <code class="docutils literal notranslate"><span class="pre">GET</span></code>. In the following requests, you will need to select the
+appropriate method from this list.</p>
+<div class="figure align-default" id="id6">
+<img alt="Opening the Postman HTTP method dropdown menu" src="../../_images/http-method-selector.png" />
+<p class="caption"><span class="caption-text">The dropdown menu contains all of the HTTP request types available to send</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Next to the request method type, enter the request URL where the API request should be sent: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events</span></code>.</p>
+<p>Underneath the URL bar are tabs for other aspects of the request. Select the <code class="docutils literal notranslate"><span class="pre">Headers</span></code> tab to configure our header. The <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header lets the API
+know that we accept responses that are formatted as JSON.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">In our context, the API only responds with JSON. However, some APIs offer multiple
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types" target="_blank">MIME types<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for their responses. It is a best practice to set this
+header explicitly to the content type the consuming application expects.</p>
+</div>
+<p>You can set multiple headers in this section. As you begin to type the name and value of headers, Postman will autocomplete them for you. After
+configuration, your request should look like this:</p>
+<div class="figure align-default" id="id7">
+<img alt="Postman view of Accept header configured in request" src="../../_images/list-coding-events-request.png" />
+<p class="caption"><span class="caption-text">The request Accept header is given a value of “application/json”</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>To issue the request, you can select the blue <em>Send</em> button on the right of the window, or use the <em>ctrl + enter</em> keyboard shortcut.</p>
+</div>
+<div class="section" id="viewing-the-response">
+<h4><span class="section-number">20.5.2.1.3. </span>Viewing the Response<a class="headerlink" href="#viewing-the-response" title="Permalink to this headline">¶</a></h4>
+<p>Below the request configuration, you will see the response section has been populated. From here, you see the response body along with the status code
+(on the right) and a tab for headers:</p>
+<div class="figure align-default" id="id8">
+<img alt="Postman response window displays an empty array returned from requesting all CodingEvents" src="../../_images/list-coding-events-response.png" />
+<p class="caption"><span class="caption-text">The initial CodingEvents collection state is empty</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>Since this is our first time running the application, the database is empty. We expectedly received an empty JSON list <code class="docutils literal notranslate"><span class="pre">[]</span></code> which corresponds to the
+empty representation of the Coding Events collection.</p>
+<p>If you select the <em>Headers</em> tab in the response pane, you see the API satisfied our <code class="docutils literal notranslate"><span class="pre">Accept</span></code> request header and provided the response in <code class="docutils literal notranslate"><span class="pre">application/json</span></code> format.</p>
+<div class="figure align-default" id="id9">
+<img alt="Postman close up view of response headers tab opened" src="../../_images/response-headers.png" />
+<p class="caption"><span class="caption-text">The response is returned as <code class="docutils literal notranslate"><span class="pre">application/json</span></code></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you get a connection refused error, it means you likely forgot to start the API server or mistyped the URL. Check both of these before attempting
+the request again.</p>
+<div class="last figure align-default" id="id10">
+<img alt="Error message displayed in Postman from a refused connection" src="../../_images/connection-refused.png" />
+<p class="caption"><span class="caption-text">If sending the request results in a connection error, check your setup and request settings</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-codingevent">
+<h3><span class="section-number">20.5.2.2. </span>Create a <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code><a class="headerlink" href="#create-a-codingevent" title="Permalink to this headline">¶</a></h3>
+<p>For our next request, we will create a <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code>. Repeat the steps you performed in the previous request:</p>
+<ol class="arabic simple">
+<li>Click on the <em>New</em> button in the top left corner of the Postman window to create a new request named: <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">coding</span> <span class="pre">event</span></code></li>
+<li>Add it to the existing <code class="docutils literal notranslate"><span class="pre">coding</span> <span class="pre">events</span> <span class="pre">API</span></code> collection</li>
+</ol>
+<p>This request will change the state of the Coding Events collection by adding a new entity to it. Recall that the shorthand for this request is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/events</span> <span class="pre">(NewCodingEvent)</span> <span class="pre">-&gt;</span> <span class="pre">201,</span> <span class="pre">CodingEvent</span></code></p>
+<p>We will need to set the following request settings:</p>
+<ol class="arabic simple">
+<li>The URL of the endpoint: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events</span></code></li>
+<li>The HTTP method of the endpoint: <code class="docutils literal notranslate"><span class="pre">POST</span></code></li>
+<li>The request header: (<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>)</li>
+<li>The request body: a JSON <code class="docutils literal notranslate"><span class="pre">NewCodingEvent</span></code> object</li>
+</ol>
+<p>As a best practice, we explicitly define the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header. This header indicates that our request contains <code class="docutils literal notranslate"><span class="pre">application/json</span></code> data so that
+the API knows how to parse the incoming request body.</p>
+<div class="section" id="configure-the-request-body">
+<h4><span class="section-number">20.5.2.2.1. </span>Configure the Request Body<a class="headerlink" href="#configure-the-request-body" title="Permalink to this headline">¶</a></h4>
+<p>In addition to the configurations you are now familiar with setting, we will need to define the request body. For this task, select the <em>Body</em> tab that
+is next to <em>Headers</em>.</p>
+<p>The body of the request must be in a raw JSON format. In the <em>Body</em> tab, open the the dropdown to select your data format. Select <em>raw</em> from the menu. Once
+this format is selected, enter the following JSON body:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">{</span>
+   <span class="s2">&quot;Title&quot;</span>: <span class="s2">&quot;Halloween Hackathon!&quot;</span>,
+   <span class="s2">&quot;Description&quot;</span>: <span class="s2">&quot;A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions&quot;</span>,
+   <span class="s2">&quot;Date&quot;</span>: <span class="s2">&quot;2020-10-31&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Before sending the request, check that your configuration matches the following image:</p>
+<div class="figure align-default" id="id11">
+<img alt="Postman request display of new CodingEvent item in Body tab" src="../../_images/create-coding-event-request.png" />
+<p class="caption"><span class="caption-text">You can write JSON directly into the request Body tab</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>Hit send and we’ll take a look at the result.</p>
+</div>
+<div class="section" id="analyzing-the-response">
+<h4><span class="section-number">20.5.2.2.2. </span>Analyzing the Response<a class="headerlink" href="#analyzing-the-response" title="Permalink to this headline">¶</a></h4>
+<p>You can see in the response that the API reflected back the representation of the new <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> entity. Notice that a unique <code class="docutils literal notranslate"><span class="pre">id</span></code> has been
+assigned to it by the API. Looking at the status code (<code class="docutils literal notranslate"><span class="pre">201</span></code>) and headers of the response, we can see the API conformed to the REST convention. Open the <em>Headers</em>
+tab in the response panel. The URL value of the <code class="docutils literal notranslate"><span class="pre">Location</span></code> header is: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events/1</span></code>. This location can be can now be used to
+view the individual <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> entity that was created by our request.</p>
+</div>
+<div class="section" id="sending-a-bad-request">
+<h4><span class="section-number">20.5.2.2.3. </span>Sending a Bad Request<a class="headerlink" href="#sending-a-bad-request" title="Permalink to this headline">¶</a></h4>
+<p>To test the rejection of bad requests, let’s send one that violates the <code class="docutils literal notranslate"><span class="pre">NewCodingEvent</span></code> validation constraints. Send another request with the
+following JSON body:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+   <span class="s2">&quot;Title&quot;</span>: <span class="s2">&quot;too short&quot;</span>,
+   <span class="s2">&quot;Description&quot;</span>: <span class="s2">&quot;A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions&quot;</span>,
+   <span class="s2">&quot;Date&quot;</span>: <span class="s2">&quot;2020-10-31&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>You can see from the response that the API rejected the request. The response returns a bad request status of <code class="docutils literal notranslate"><span class="pre">400</span></code> which indicates a client-side error.
+The response body includes information about what needs to be corrected to issue a successful request:</p>
+<div class="figure align-default" id="id12">
+<img alt="Postman response returned from CodingEvent creation request containing an invalid request body" src="../../_images/create-coding-event-bad-request.png" />
+<p class="caption"><span class="caption-text">The response body error message tells us we need to modify our <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> title</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="get-a-single-coding-event">
+<h3><span class="section-number">20.5.2.3. </span>Get a Single Coding Event<a class="headerlink" href="#get-a-single-coding-event" title="Permalink to this headline">¶</a></h3>
+<p>For this step, we will make a request for the state of a single entity. You can use the URL from the <code class="docutils literal notranslate"><span class="pre">Location</span></code> header of the previous request to
+complete this task. Remember to follow the steps you performed before, keeping in mind the shorthand for this request:</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/events/{codingEventId}</span> <span class="pre">-&gt;</span> <span class="pre">CodingEvent</span></code></p>
+<ol class="arabic simple">
+<li>Create a new request named: <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">a</span> <span class="pre">single</span> <span class="pre">coding</span> <span class="pre">event</span></code></li>
+<li>Add it to the existing <code class="docutils literal notranslate"><span class="pre">coding</span> <span class="pre">events</span> <span class="pre">API</span></code> collection</li>
+<li>Configure the URL of the endpoint: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events/1</span></code></li>
+<li>Configure the HTTP method of the endpoint: <code class="docutils literal notranslate"><span class="pre">GET</span></code></li>
+<li>Configure the request header: (<code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">application/json</span></code>)</li>
+</ol>
+<p>You should get back the following JSON response body:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">{</span>
+   <span class="s2">&quot;id&quot;</span>: <span class="m">1</span>,
+   <span class="s2">&quot;title&quot;</span>: <span class="s2">&quot;Halloween Hackathon!&quot;</span>,
+   <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions&quot;</span>,
+   <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-10-31T00:00:00&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="requesting-a-non-existent-entity">
+<h4><span class="section-number">20.5.2.3.1. </span>Requesting a Non-Existent Entity<a class="headerlink" href="#requesting-a-non-existent-entity" title="Permalink to this headline">¶</a></h4>
+<p>Our REST API allows us to interact with the state of its resources. If we make a request for a resource that doesn’t exist in this state, we expect a
+<code class="docutils literal notranslate"><span class="pre">404</span></code> (not found) response.</p>
+<p>Try issuing the request again with a non-existent <code class="docutils literal notranslate"><span class="pre">codingEventId</span></code> of <code class="docutils literal notranslate"><span class="pre">100</span></code>. You should get back the following response:</p>
+<div class="figure align-default" id="id13">
+<img alt="Postman 404 response for a non-existent resource" src="../../_images/404-response.png" />
+<p class="caption"><span class="caption-text">We got a 404 response when requesting a resource that cannot be found on the server</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="delete-a-coding-event">
+<h3><span class="section-number">20.5.2.4. </span>Delete a Coding Event<a class="headerlink" href="#delete-a-coding-event" title="Permalink to this headline">¶</a></h3>
+<p>In this final step, we will issue a <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request. Before we make the request, let’s re-issue the request to list the collection of CodingEvents. Now
+that we have added an entity, we expect the state of the CodingEvents resource collection to have changed. Switch back to the <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">coding</span> <span class="pre">events</span></code> request
+tab and re-issue the request. You should get a response of the collection’s list representation containing the single entity we have created.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">[</span>
+  <span class="o">{</span>
+     <span class="s2">&quot;id&quot;</span>: <span class="m">1</span>,
+     <span class="s2">&quot;title&quot;</span>: <span class="s2">&quot;Halloween Hackathon!&quot;</span>,
+     <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;A gathering of nerdy ghouls to work on GitHub Hacktoberfest contributions&quot;</span>,
+     <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-10-31T00:00:00&quot;</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</pre></div>
+</td></tr></table></div>
+<p>To delete this entity, and therefore change the state of our resources, we will need to issue the following shorthand request:</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/api/events/{codingEventId}</span> <span class="pre">-&gt;</span> <span class="pre">204</span></code></p>
+<p>Once again, go through the methodical process of setting up the request:</p>
+<ol class="arabic simple">
+<li>Create a new request named: <code class="docutils literal notranslate"><span class="pre">delete</span> <span class="pre">a</span> <span class="pre">coding</span> <span class="pre">event</span></code></li>
+<li>Add it to the existing <code class="docutils literal notranslate"><span class="pre">coding</span> <span class="pre">events</span> <span class="pre">API</span></code> collection</li>
+<li>Configure the URL of the endpoint: <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/api/events/1</span></code></li>
+<li>Configure the HTTP method of the endpoint: <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></li>
+</ol>
+<p>Notice that for this request, we do not need to set any request headers. A <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request should send back an empty (<code class="docutils literal notranslate"><span class="pre">no-content</span></code>) response body
+with its <code class="docutils literal notranslate"><span class="pre">204</span></code> status code.</p>
+<div class="figure align-default" id="id14">
+<img alt="Postman delete a CodingEvent response" src="../../_images/delete-coding-event-response.png" />
+<p class="caption"><span class="caption-text">Deleting a <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> returns no body in the response</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+<p>As a final confirmation, check the state of the CodingEvents collection and notice that it has returned to its initial state. The representation of this
+state is shown in the empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code> response body.</p>
+</div>
+</div>
+<div class="section" id="bonus-missions">
+<h2><span class="section-number">20.5.3. </span>Bonus Missions<a class="headerlink" href="#bonus-missions" title="Permalink to this headline">¶</a></h2>
+<p>If you complete this studio early and want some additional practice, consider the following bonus missions:</p>
+<ul class="simple">
+<li>Explore the API source code using your IDE debugger to step through the request and response process</li>
+<li>Try consuming the API from the command-line using the Bash <a class="reference external" href="https://linuxhint.com/curl_bash_examples/" target="_blank">curl<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> program or the PowerShell
+<a class="reference external" href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-restmethod?view=powershell-7" target="_blank">Invoke-RestMethod<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> cmdlet.</li>
+</ul>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="exercises.html"><span aria-hidden="true">&larr;</span> <span class="section-number">20.4. </span>Exercises: Web APIs and REST</a></li>
+        
+        
+        <li class="next"><a href="../../genindex.html">Index <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/web-apis/studio.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

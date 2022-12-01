@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #2: Tech Jobs (Object-Oriented Edition) &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment #3: Tech Jobs (MVC Edition)" href="tech-jobs-mvc.html" />
+    <link rel="prev" title="Assignment #1: Tech Jobs (Console Edition)" href="tech-jobs-console.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../index.html"><span><img src="../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../index.html">Contents</a></li>
+    <li class="active">Assignment #2: Tech Jobs (Object-Oriented Edition)</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="assignment-2-tech-jobs-object-oriented-edition">
+<span id="tech-jobs-oo"></span><h1>Assignment #2: Tech Jobs (Object-Oriented Edition)<a class="headerlink" href="#assignment-2-tech-jobs-object-oriented-edition" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Your apprenticeship at LaunchCode is going well! Only a few weeks in and you’re
+regularly making contributions to code that will eventually be used by all
+LaunchCode staff.</p>
+<p>Your last task was to get the prototype Tech Jobs app in good shape. Now it’s
+time to advance the underlying structure of the program.</p>
+<p>Your mentor on this project is Sally, one of the developers at LaunchCode. She
+regularly supports coders who are just getting started with their careers.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/LC-Sally.png"><img alt="Sally's LaunchCode avatar." src="../_images/LC-Sally.png" style="width: 217.0px; height: 488.0px;" /></a>
+</div>
+<p>After seeing your strong work with your last project, Blake reported that you
+performed well and learned quickly. Because of your success, he and Sally feel
+comfortable assigning you to a set of tasks that are a notch up in difficulty.</p>
+<p>Sally completed some initial work on the project and left you some TODOs.</p>
+</div>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>In this project, you’ll show that you can:</p>
+<ol class="arabic simple">
+<li>Read and understand code written by others.</li>
+<li>Work with objects to encapsulate data and methods.</li>
+<li>Use the generator in Visual Studio to automate routine tasks.</li>
+<li>Use unit testing and Test-Driven-Development (TDD) to verify and create new
+methods.</li>
+<li>Apply the concept of inheritance to streamline your classes (the DRY
+idea—Don’t Repeat Yourself).</li>
+</ol>
+</div>
+<div class="section" id="get-the-starter-code">
+<h2>Get the Starter Code<a class="headerlink" href="#get-the-starter-code" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In <strong>Canvas, Graded Assignment #2: TechJobs (Object-Oriented Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio.  Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</li>
+<li>Open Visual Studio.</li>
+<li>If the app opens up to an existing project, close it.</li>
+<li>From the Visual Studio dialog box, open your copy of the starter code.</li>
+</ol>
+</div>
+<div class="section" id="techjobs-object-oriented-edition">
+<h2>TechJobs (Object-Oriented Edition)<a class="headerlink" href="#techjobs-object-oriented-edition" title="Permalink to this headline">¶</a></h2>
+<p>Sally has gotten the ball rolling by adding a <code class="docutils literal notranslate"><span class="pre">Job</span></code> class, along with classes
+to represent the individual properties of a job: <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code>, and <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>. She completed the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class,
+and she left you the task of filling in the others.</p>
+<p>As the team gets closer to deploying the app—and abandoning the test data
+they’ve been using—they’ll want an easy way to add and remove jobs via a
+user interface. Before that, however, you need to finish shifting the project
+to an object-oriented design.</p>
+</div>
+<div class="section" id="why-change-to-object-oriented">
+<h2>Why Change to Object-Oriented?<a class="headerlink" href="#why-change-to-object-oriented" title="Permalink to this headline">¶</a></h2>
+<p>Working with data stored as strings in dictionaries and lists isn’t a good
+long-term solution, for reasons that we point out below.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Job</span></code> class introduces an object-oriented design to the application. It
+contains all of the properties you used in the console version of TechJobs:
+<code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>, <code class="docutils literal notranslate"><span class="pre">EmployerLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.
+There’s also an <code class="docutils literal notranslate"><span class="pre">Id</span></code> property which will be used to uniquely identify <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+objects.</p>
+<p>The main difference between the object representation of a job and the
+string-based representation is that the values of <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>, <code class="docutils literal notranslate"><span class="pre">EmployerLocation</span></code>,
+and the other non-ID properties are no longer strings. Instead, they are classes of
+their own.</p>
+<div class="section" id="job-members">
+<h3>Job Members<a class="headerlink" href="#job-members" title="Permalink to this headline">¶</a></h3>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class file. You’ll see the following properties (among other class members):</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">Employer</span> <span class="n">EmployerName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">Location</span> <span class="n">EmployerLocation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">PositionType</span> <span class="n">JobType</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">CoreCompetency</span> <span class="n">JobCoreCompetency</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Of these, only <code class="docutils literal notranslate"><span class="pre">Name</span></code> is a string. Sally created classes to represent each of
+the other properties. These classes—<code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, <code class="docutils literal notranslate"><span class="pre">PositionType</span></code>—have members to hold values and IDs.</p>
+<p>So, for example, if you had a <code class="docutils literal notranslate"><span class="pre">Job</span></code> instance, you could get the name of the
+employer this way:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// job is an instance of Job</span>
+<span class="kt">string</span> <span class="n">employerName</span> <span class="p">=</span> <span class="n">job</span><span class="p">.</span><span class="n">EmployerName</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class is set up to
+return whatever the <code class="docutils literal notranslate"><span class="pre">value</span></code> field holds. Thus, using one of these objects in another string
+context like <code class="docutils literal notranslate"><span class="pre">Console.WriteLine</span></code> will print the data stored in <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Prints the name of the employer</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">job</span><span class="p">.</span><span class="n">EmployerName</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Why do we go to all of this trouble when we could store this job-related data
+as strings? There are a couple of reasons.</p>
+<div class="section" id="eliminate-duplication-of-data">
+<h4>Eliminate Duplication of Data<a class="headerlink" href="#eliminate-duplication-of-data" title="Permalink to this headline">¶</a></h4>
+<p>In our app, we have multiple jobs that have the same value in a given field.
+For example, there are multiple jobs with position type “Web - Full Stack”, and
+each employer may list several jobs. If we store the values of these fields as
+strings directly within each <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, that data would be repeated in
+several places across the application.</p>
+<p>By using objects, we can have a single <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> object with value “Web
+- Full Stack”. Each job that wants to use that position type holds onto a
+reference to the given object. Similarly, we can have one <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object
+for each employer.</p>
+<p>Aside from reducing the amount of raw data / memory that the application uses,
+this will allow data to be updated more easily and properly. If we need to
+change the name of an employer (e.g.&nbsp;due to a typo or a name change at the
+company), we can change it in one place, the single <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object that
+represents that company.</p>
+<p>As you continue to work on the assignment, you will find further ways to streamline the application.</p>
+</div>
+<div class="section" id="enable-extension">
+<h4>Enable Extension<a class="headerlink" href="#enable-extension" title="Permalink to this headline">¶</a></h4>
+<p>While the four <code class="docutils literal notranslate"><span class="pre">Job</span></code> properties represented by objects will primarily be used
+for their string values, it’s easy to imagine adding new properties to address
+future needs.</p>
+<p>For example, it would be useful for an <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object to have an address,
+a primary contact, and a list of jobs available at that employer.</p>
+<p>For a <code class="docutils literal notranslate"><span class="pre">Location</span></code> object, useful information includes a list of zip codes
+associated with that location, in order to determine the city and state for an
+employer or job.</p>
+<p>If we were to store these four new properties as strings within the <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+class, extending and modifying this behavior would be much more complicated and
+difficult moving forward.</p>
+</div>
+</div>
+</div>
+<div class="section" id="your-assignment">
+<h2>Your Assignment<a class="headerlink" href="#your-assignment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-the-auto-grading-tests">
+<h3>Running the Auto-grading Tests<a class="headerlink" href="#running-the-auto-grading-tests" title="Permalink to this headline">¶</a></h3>
+<p>Before diving into your tasks, review <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details on
+running the auto-grading tests for this assignment.</p>
+<p>This assignment has many more tests than the previous two, so we’ve organized them
+into separate files. The tests are visible in the Project’s Solution, but they won’t run from there.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/Tests-In-Solution-A2OO.png"><img alt="List of projects in the solution.  Auto-grading tests are in &quot;TechJobsOOTest&quot; project." src="../_images/Tests-In-Solution-A2OO.png" style="width: 326.0px; height: 278.0px;" /></a>
+</div>
+<p>Each of the one test files, <code class="docutils literal notranslate"><span class="pre">TestTaskX</span></code>, contains the tests to grade one of the six tasks
+outlined in below (there’s no coding work for your first task, so there is <strong>no</strong> <code class="docutils literal notranslate"><span class="pre">TestTask1</span></code>).</p>
+<p>In order to run any of the tests, we need to use Visual Studio’s <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code>.
+Open <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code>, but do NOT <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">All</span> <span class="pre">Tests</span></code> at this time.
+Visual Studio will not be able to run many of these tests at this time because you have not
+any written code they are designed to test.  It will only throw errors.
+If you did run ALL the tests, stop the tests by clicking on the red square in <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code>.</p>
+<p><strong>Mac Users:</strong> To open <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code>, select <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Unit</span> <span class="pre">Tests</span></code> which can be found at the very bottom of the <code class="docutils literal notranslate"><span class="pre">Run</span></code> menu.
+This will try to run all the tests, but you can stop them by clicking on the red square at the top of the test panel.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/Running-Tests-A2OO.png"><img alt="&quot;Run Unit Tests&quot; can be found at the bottom of the &quot;Run&quot; Menu." src="../_images/Running-Tests-A2OO.png" style="width: 361.0px; height: 563.0px;" /></a>
+</div>
+<p>This will open your <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> in a new panel and create a tab on the right side of Visual Studio.
+If <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> is closed, the tab on the right called <code class="docutils literal notranslate"><span class="pre">Tests</span></code> will reopen it for you.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/Test-Tab-A2OO.png"><img alt="../_images/Test-Tab-A2OO.png" src="../_images/Test-Tab-A2OO.png" style="width: 318.0px; height: 295.0px;" /></a>
+</div>
+<p><strong>Windows Users:</strong>  Select the <code class="docutils literal notranslate"><span class="pre">Test</span></code> (1) menu.  <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> (3) can be found at the bottom of the menu.
+Visual Studio will open your <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> in a new panel.  Recommend <strong>pinning</strong> that panel into Visual Studio.
+If <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> closes, you can reopen it using the <code class="docutils literal notranslate"><span class="pre">Test</span></code> menu and selecting <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> (3).
+We will not be using <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">All</span> <span class="pre">Tests</span></code> (2) at this time.</p>
+<div class="figure align-default">
+<img alt="&quot;Run All Tests&quot; can be found at the top of the &quot;Test&quot; Menu." src="../_images/Testing-Windows-A2OO.png" />
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code>, you should see <code class="docutils literal notranslate"><span class="pre">TestTaskX</span></code>.
+Each <code class="docutils literal notranslate"><span class="pre">TestTaskX</span></code> contains multiple tests.
+Select <code class="docutils literal notranslate"><span class="pre">TestTask2</span></code> tests.  You should see 8 tests listed by their names.
+These are all of the tests that will be run after you complete <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">2</span></code> in the instructions below.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Upon initial examination of the starter code, you may notice that there ONLY 2 <code class="docutils literal notranslate"><span class="pre">TestTaskXs</span></code>
+in the <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> and 6 <code class="docutils literal notranslate"><span class="pre">TestTaskXs</span></code> in the <code class="docutils literal notranslate"><span class="pre">Solution</span> <span class="pre">Explorer</span></code>.</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">TestTask4</span></code>, <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code>, and <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> have all been commented out so that you can run
+the auto-grading unit tests for tasks 2-3.</p>
+</div>
+<p>To run a <em>single</em> group of tests, you will right-click on the name of the Task.
+For example, if you finish Task 5, right-click on <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> and select <code class="docutils literal notranslate"><span class="pre">Run</span></code> from the pop-up menu.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../_images/Running-Single-Test-A2OO.png"><img alt="" src="../_images/Running-Single-Test-A2OO.png" style="width: 495.0px; height: 363.0px;" /></a>
+</div>
+<p>When you start on one of the tasks below, begin by running only the tests associated with that task.
+As you work on the components of the given tasks, continually re-run the tests to see the
+failing tests gradually turn to passing. When all tests within the file pass, you’re ready to move onto the next task.
+As you expand your codebase, none of your earlier tests should fail.</p>
+</div>
+<div class="section" id="your-tasks">
+<h3>Your Tasks<a class="headerlink" href="#your-tasks" title="Permalink to this headline">¶</a></h3>
+<p>The list below provides a general overview of your assigned tasks. Specific
+details for each part appear in the following sections, so be sure to read them
+carefully as you solve each problem.</p>
+<ol class="arabic simple">
+<li>Review Sally’s code in the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class to learn how to assign a
+unique ID.</li>
+<li>Add properties and custom methods as needed to the <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</li>
+<li>Complete the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class using what you learned in steps 1 and 2.</li>
+<li>Use unit testing to verify the constructors and <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> methods for the
+<code class="docutils literal notranslate"><span class="pre">Job</span></code> class.</li>
+<li>Use TDD to design and code a custom <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method for the <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+class.</li>
+<li>Use inheritance to DRY the code within <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="task-1-explore-the-employer-class">
+<h2>Task 1: Explore the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> Class<a class="headerlink" href="#task-1-explore-the-employer-class" title="Permalink to this headline">¶</a></h2>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> file in Visual Studio and examine the code. In addition to the
+three members—<code class="docutils literal notranslate"><span class="pre">nextId</span></code>, <code class="docutils literal notranslate"><span class="pre">Id</span></code>, and <code class="docutils literal notranslate"><span class="pre">Value</span></code>—the class includes some methods like <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> and <code class="docutils literal notranslate"><span class="pre">Equals()</span></code>.</p>
+<p>You can refer to these examples as you fill in the missing pieces in the other
+classes, but for now let’s take a closer look at the constructors.</p>
+<div class="section" id="assign-a-unique-id">
+<h3>Assign a Unique ID<a class="headerlink" href="#assign-a-unique-id" title="Permalink to this headline">¶</a></h3>
+<p>One neat trick we can use is to automatically assign each new object a unique
+ID number.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>Examine the two constructors in <code class="docutils literal notranslate"><span class="pre">Employer.cs</span></code>:</p>
+<div class="last highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Employer</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Value</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">Employer</span> <span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">Id</span> <span class="p">=</span> <span class="n">nextId</span><span class="p">;</span>
+      <span class="n">nextId</span><span class="p">++;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">Employer</span> <span class="p">(</span><span class="kt">string</span> <span class="k">value</span><span class="p">)</span> <span class="p">:</span> <span class="k">this</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">Value</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="c1">// Additional methods omitted from this code block</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<ol class="arabic simple">
+<li>Line 3 declares the field <code class="docutils literal notranslate"><span class="pre">nextId</span></code>. Since it is <code class="docutils literal notranslate"><span class="pre">static</span></code>, its
+changing value is NOT stored within any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object.</li>
+<li>The first constructor (lines 6 - 10) accepts no arguments and assigns the
+value of <code class="docutils literal notranslate"><span class="pre">nextId</span></code> to the <code class="docutils literal notranslate"><span class="pre">id</span></code> field. It then increments <code class="docutils literal notranslate"><span class="pre">nextId</span></code>.
+Thus, every new <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object will get a different ID number.</li>
+<li>The second constructor (lines 12 - 15) assigns the <code class="docutils literal notranslate"><span class="pre">value</span></code>
+field. It ALSO initializes <code class="docutils literal notranslate"><span class="pre">id</span></code> for the object by calling the
+first constructor statement with the <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> syntax. Including <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> in
+any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor makes initializing <code class="docutils literal notranslate"><span class="pre">id</span></code> a default behavior.</li>
+</ol>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">By adding <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> to the signature of the second <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor, we are using a new technique called constructor chaining.
+For more info on how this chaining technique works, check out this <a class="reference external" href="https://www.codecompiled.com/csharp/constructor-chaining-c/" target="_blank">blog post<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>!</p>
+</div>
+</div>
+</div>
+<div class="section" id="task-2-complete-the-support-classes">
+<h2>Task 2: Complete the Support Classes<a class="headerlink" href="#task-2-complete-the-support-classes" title="Permalink to this headline">¶</a></h2>
+<p>Sally needs you to build up the remaining classes. In each case, refer to the
+<code class="docutils literal notranslate"><span class="pre">Employer</span></code> class for hints on how to structure your code.</p>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
+</div>
+<div class="section" id="the-location-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Location</span></code> Class<a class="headerlink" href="#the-location-class" title="Permalink to this headline">¶</a></h3>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">Location.cs</span></code> file. Note that the
+methods for this class are done, as is the constructor for initializing the
+<code class="docutils literal notranslate"><span class="pre">Id</span></code> property.</p>
+<p>Sally left you a <code class="docutils literal notranslate"><span class="pre">TODO</span></code> comment with instructions for coding a second
+constructor:</p>
+<ol class="arabic simple">
+<li>It should call the first constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</li>
+<li>It must also initialize the <code class="docutils literal notranslate"><span class="pre">value</span></code> field for a new <code class="docutils literal notranslate"><span class="pre">Location</span></code> object.</li>
+</ol>
+</div>
+<div class="section" id="the-corecompetency-class">
+<span id="generator-shortcut"></span><h3>The <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code> Class<a class="headerlink" href="#the-corecompetency-class" title="Permalink to this headline">¶</a></h3>
+<p>Open the class file. In this case, the constructors and custom methods are
+ready. Sally needs you to change the <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> fields to auto-implemented properties, but NOT <code class="docutils literal notranslate"><span class="pre">nextId</span></code>.</p>
+</div>
+<div class="section" id="the-positiontype-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> Class<a class="headerlink" href="#the-positiontype-class" title="Permalink to this headline">¶</a></h3>
+<p>Open the class file. This time the constructors are done.
+Sally’s comments direct you to where you need to add the custom methods.</p>
+<ol class="arabic simple">
+<li>Code a <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method that just returns the <code class="docutils literal notranslate"><span class="pre">value</span></code> of a
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> object.</li>
+<li>Use the <em>Generate</em> option again to add the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code>
+methods. Refer to the <a class="reference internal" href="../chapters/classes-part2/equals-shortcut.html#equals-shortcut"><span class="std std-ref">final section</span></a> of the
+“Classes and Objects, Part 2” chapter if you need a quick review.</li>
+<li>Assume that two <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> objects are equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields
+match.</li>
+</ol>
+</div>
+<div class="section" id="run-your-tests">
+<h3>Run Your Tests<a class="headerlink" href="#run-your-tests" title="Permalink to this headline">¶</a></h3>
+<p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask2</span></code> unit tests.  Refactor your code as needed.
+Do not move onto Task 3 until you have passed all of Task 2’s auto-grading unit tests.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">Now would be a good time to save, commit, and push your work up to GitHub.</p>
+</div>
+</div>
+</div>
+<div class="section" id="task-3-complete-the-job-class">
+<h2>Task 3: Complete the <code class="docutils literal notranslate"><span class="pre">Job</span></code> Class<a class="headerlink" href="#task-3-complete-the-job-class" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The starter code in the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class has been commented out for the rest of the tests to run.</p>
+<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 6</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 20</strong>.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
+</div>
+<p>Now open the <code class="docutils literal notranslate"><span class="pre">Job</span></code> file. OOF! There are a lot of fields and properties declared and not much
+else.</p>
+<ol class="arabic simple">
+<li>Code a constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field with a unique value. This
+constructor should take no parameters.</li>
+<li>Code a second constructor that takes 5 parameters and assigns values to
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">employerName</span></code>, <code class="docutils literal notranslate"><span class="pre">employerLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">jobType</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">jobCoreCompetency</span></code>. Also, this constructor should call the first in order to
+initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</li>
+<li>Generate the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods. Consider two <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+objects equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields match.</li>
+</ol>
+<div class="section" id="id1">
+<h3>Run Your Tests<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask3</span></code> unit tests.  Refactor your code as needed.
+Do not move onto Task 4 until you have passed all of Task 3’s auto-grading unit tests.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">Save, commit, and push your work to GitHub.</p>
+</div>
+</div>
+</div>
+<div class="section" id="task-4-use-unit-testing-to-verify-parts-of-the-job-class">
+<h2>Task 4: Use Unit Testing to Verify Parts of the <code class="docutils literal notranslate"><span class="pre">Job</span></code> Class<a class="headerlink" href="#task-4-use-unit-testing-to-verify-parts-of-the-job-class" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>All of the tests in <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> are commented out right now.</p>
+<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 155</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> tests.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
+</div>
+<p>The solution currently contains a testing project called <code class="docutils literal notranslate"><span class="pre">TechJobsTests</span></code>.
+If you open this project, you will find a class called <code class="docutils literal notranslate"><span class="pre">JobTests.cs</span></code>.
+You will need to add the appropriate dependency to <code class="docutils literal notranslate"><span class="pre">TechJobsTests</span></code> to test the classes in the <code class="docutils literal notranslate"><span class="pre">TechJobsOO</span></code> project.
+The <code class="docutils literal notranslate"><span class="pre">JobTests.cs</span></code> file will hold all of the tests for the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class.</p>
+<div class="section" id="test-the-empty-constructor">
+<h3>Test the Empty Constructor<a class="headerlink" href="#test-the-empty-constructor" title="Permalink to this headline">¶</a></h3>
+<p>Each <code class="docutils literal notranslate"><span class="pre">Job</span></code> object should contain a unique ID number, and these should also be
+sequential integers.</p>
+<ol class="arabic">
+<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">JobTests</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestSettingJobId</span></code>.</p>
+</li>
+<li><p class="first">Create two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects using the empty constructor.
+Use <code class="docutils literal notranslate"><span class="pre">Assert.AreEqual</span></code>, <code class="docutils literal notranslate"><span class="pre">Assert.IsTrue</span></code>, or <code class="docutils literal notranslate"><span class="pre">Assert.IsFalse</span></code> to test that the
+ID values for the two objects are NOT the same and differ by 1.</p>
+</li>
+<li><p class="first">Run the test to verify that your <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor correctly assigns
+ID numbers.</p>
+</li>
+<li><p class="first">If the test doesn’t pass, what should be your first thought?</p>
+<ol class="loweralpha simple">
+<li>“I need to fix the unit test.”</li>
+<li>“I need to fix my <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor code.”</li>
+</ol>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>The answer is NOT “a”.</p>
+<p class="last">Your test code <em>might</em> be incorrect, but that should not be your FIRST
+thought. TDD begins with writing tests for desired behaviors. If the
+tests fail, that indicates errors in the methods trying to produce the
+behavior rather than in the tests that define that behavior.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="test-the-full-constructor">
+<h3>Test the Full Constructor<a class="headerlink" href="#test-the-full-constructor" title="Permalink to this headline">¶</a></h3>
+<p>Each <code class="docutils literal notranslate"><span class="pre">Job</span></code> object should contain six properties—<code class="docutils literal notranslate"><span class="pre">Id</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>,
+<code class="docutils literal notranslate"><span class="pre">EmployerLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, and <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.</p>
+<ol class="arabic simple">
+<li>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called
+<code class="docutils literal notranslate"><span class="pre">TestJobConstructorSetsAllFields</span></code>.</li>
+<li>Declare and initialize a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object with the following data: <code class="docutils literal notranslate"><span class="pre">&quot;Product</span> <span class="pre">tester&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ACME&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Desert&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Quality</span> <span class="pre">control&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Persistence&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">Assert</span></code> statements to test that the constructor correctly assigns the value of each field.</li>
+</ol>
+</div>
+<div class="section" id="test-the-equals-method">
+<h3>Test the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> Method<a class="headerlink" href="#test-the-equals-method" title="Permalink to this headline">¶</a></h3>
+<p>Two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects are considered equal if they have the same <code class="docutils literal notranslate"><span class="pre">id</span></code> value,
+even if one or more of the other fields differ. Similarly, the two objects
+are NOT equal if their <code class="docutils literal notranslate"><span class="pre">id</span></code> values differ, even if all the other fields are
+identical.</p>
+<ol class="arabic simple">
+<li>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestJobsForEquality</span></code>.</li>
+<li>Generate two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects that have identical field values EXCEPT for
+<code class="docutils literal notranslate"><span class="pre">id</span></code>. Test that <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</li>
+</ol>
+<p>It might seem logical to follow up the <code class="docutils literal notranslate"><span class="pre">false</span></code> case by testing to make sure
+that <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when two objects have the same ID. However,
+the positive test is irrelevant in this case.</p>
+<p>The way you build your <code class="docutils literal notranslate"><span class="pre">Job</span></code> class, each <code class="docutils literal notranslate"><span class="pre">id</span></code> field gets assigned a unique
+value, and the class does not contain a setter for the <code class="docutils literal notranslate"><span class="pre">id</span></code> field. You also verified
+that each new object gets a different ID when you tested the constructors.
+Without modifying the constructors or adding a setter, there is no scenario in
+which two different jobs will have the same ID number. Thus, we can skip the
+test for this condition.</p>
+</div>
+<div class="section" id="id2">
+<h3>Run Your Tests<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> unit tests.  Refactor your code as needed.
+Do not move onto Task 5 until you have passed all of Task 4’s auto-grading unit tests.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">Time to save, commit, and push your work to GitHub again.</p>
+</div>
+</div>
+</div>
+<div class="section" id="task-5-use-tdd-to-build-the-tostring-method">
+<h2>Task 5: Use TDD to Build The <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> Method<a class="headerlink" href="#task-5-use-tdd-to-build-the-tostring-method" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>This tests in <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> are commented out right now.</p>
+<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 167</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> tests.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
+</div>
+<p>To display the data for a particular <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, you need to implement a
+custom <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method. Rather than creating this method and then testing
+it, you will flip that process using TDD.</p>
+<div class="section" id="create-first-test-for-tostring">
+<h3>Create First Test for <code class="docutils literal notranslate"><span class="pre">ToString()</span></code><a class="headerlink" href="#create-first-test-for-tostring" title="Permalink to this headline">¶</a></h3>
+<p>Before writing your first test, consider how we want the method to behave:</p>
+<ol class="arabic">
+<li><p class="first">When passed a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, it should return a string that contains a
+blank line before and after the job information.</p>
+</li>
+<li><p class="first">The string should contain a label for each field, followed by the data
+stored in that field. Each field should be on its own line.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ID:  _______
+Name: _______
+Employer: _______
+Location: _______
+Position Type: _______
+Core Competency: _______
+</pre></div>
+</div>
+</li>
+<li><p class="first">If a field is empty, the method should add, “Data not available” after
+the label.</p>
+</li>
+<li><p class="first">(Bonus) If a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object ONLY contains data for the <code class="docutils literal notranslate"><span class="pre">id</span></code> field, the
+method should return, “OOPS! This job does not seem to exist.”</p>
+</li>
+</ol>
+<p>We will need three tests to test our <code class="docutils literal notranslate"><span class="pre">ToString</span></code> method.</p>
+</div>
+<div class="section" id="test-1-testtostringstartsandendswithnewline">
+<h3>Test 1: <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code><a class="headerlink" href="#test-1-testtostringstartsandendswithnewline" title="Permalink to this headline">¶</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">JobTests</span></code>, add a new test called <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code> to check the first requirement (item 1 in the above list), then run
+that test (it should fail).</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">When testing the <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code>, do NOT test this one individually or it will fail.
+You need to test this one by running all <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> tests or the <code class="docutils literal notranslate"><span class="pre">Id</span></code> numbers will cause a failure.</p>
+</div>
+<p>Woo hoo! Failure is what we want here! Now you get to fix that.</p>
+</div>
+<div class="section" id="code-tostring-to-pass-test-1">
+<h3>Code <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to Pass Test 1<a class="headerlink" href="#code-tostring-to-pass-test-1" title="Permalink to this headline">¶</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class, create a <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method that passes the first test.
+Since the test only checks if the returned string starts and ends with a blank
+line, make that happen.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">Do NOT add anything beyond what is needed to make the test pass. You will
+add the remaining behaviors for <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> as you code each new test.</p>
+</div>
+</div>
+<div class="section" id="test-2-testtostringcontainscorrectlabelsanddata">
+<h3>Test 2: <code class="docutils literal notranslate"><span class="pre">TestToStringContainsCorrectLabelsAndData</span></code><a class="headerlink" href="#test-2-testtostringcontainscorrectlabelsanddata" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Code a new test for the second required behavior, then run the tests to make
+sure the new one fails.  Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringContainsCorrectLabelsAndData</span></code>.</li>
+<li>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass. Also, make sure that your
+updates still pass all of the old tests.</li>
+<li>Continue this test-refactor cycle until all of the behaviors we want for
+<code class="docutils literal notranslate"><span class="pre">ToString()</span></code> work. Remember to add only ONE new test at a time.</li>
+</ol>
+</div>
+<div class="section" id="test-3-testtostringhandlesemptyfield">
+<h3>Test 3: <code class="docutils literal notranslate"><span class="pre">TestToStringHandlesEmptyField</span></code><a class="headerlink" href="#test-3-testtostringhandlesemptyfield" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Code your final test for the last required behavior,
+then run the tests to make sure the new one fails. Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringHandlesEmptyField</span></code>.</li>
+<li>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass.  Also make sure that your updates still pass all the old tests.</li>
+</ol>
+<p>Cool! Your <code class="docutils literal notranslate"><span class="pre">Job</span></code> class is now complete and operates as desired.</p>
+</div>
+<div class="section" id="id3">
+<h3>Run Your Tests<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> unit tests.  Refactor your code as needed.
+Do not move onto Task 6 until you have passed all of Task 5’s auto-grading unit tests.</p>
+<p>And don’t forget to <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> the latest version of your code.</p>
+</div>
+</div>
+<div class="section" id="task-6-refactor-to-dry-the-support-classes">
+<h2>Task 6: Refactor to DRY the Support Classes<a class="headerlink" href="#task-6-refactor-to-dry-the-support-classes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The tests in <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> are commented out right now.</p>
+<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 96</strong> to run all of the <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> tests.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
+</div>
+<p>Review the code in the <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes. What similarities do you see?</p>
+<p>There is a fair amount of repetition between the classes. As a good coder,
+anytime you find yourself adding identical code in multiple locations you
+should consider how to streamline the process.</p>
+<blockquote>
+<div>DRY = “Don’t Repeat Yourself”.</div></blockquote>
+<div class="section" id="create-a-base-class">
+<h3>Create a Base Class<a class="headerlink" href="#create-a-base-class" title="Permalink to this headline">¶</a></h3>
+<p>Let’s move all of the repeated code into a separate class. We will then have
+<code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> <em>inherit</em>
+this common code.</p>
+<ol class="arabic simple">
+<li>Create a new class called <code class="docutils literal notranslate"><span class="pre">JobField</span></code>.</li>
+<li>Consider the following questions to help you decide what code to put in the
+<code class="docutils literal notranslate"><span class="pre">JobField</span></code> class:<ol class="loweralpha">
+<li>What fields do ALL FOUR of the classes have in common?</li>
+<li>Which constructors are the same in ALL FOUR classes?</li>
+<li>Which custom methods are identical in ALL of the classes?</li>
+</ol>
+</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">JobField</span></code>, declare each of the common class members.</li>
+<li>Code the constructors.</li>
+<li>Add in any inherited method overrides.</li>
+<li>Finally, to prevent the creation of a <code class="docutils literal notranslate"><span class="pre">JobField</span></code> object, make this class
+<em>abstract</em>.</li>
+</ol>
+</div>
+<div class="section" id="extend-jobfield-into-employer">
+<h3>Extend <code class="docutils literal notranslate"><span class="pre">JobField</span></code> into <code class="docutils literal notranslate"><span class="pre">Employer</span></code><a class="headerlink" href="#extend-jobfield-into-employer" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have the common code located in the <code class="docutils literal notranslate"><span class="pre">JobField</span></code> file, we can
+modify the other classes to reference this shared code. Let’s begin with
+<code class="docutils literal notranslate"><span class="pre">Employer</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">Modify line 5 to <em>extend</em> the <code class="docutils literal notranslate"><span class="pre">JobField</span></code> class into <code class="docutils literal notranslate"><span class="pre">Employer</span></code>.</p>
+</li>
+<li><p class="first">Next, remove any code in <code class="docutils literal notranslate"><span class="pre">Employer</span></code> that matches code from <code class="docutils literal notranslate"><span class="pre">JobField</span></code>
+(e.g. the <code class="docutils literal notranslate"><span class="pre">Id</span></code> and <code class="docutils literal notranslate"><span class="pre">Value</span></code> properties and the <code class="docutils literal notranslate"><span class="pre">nextId</span></code> field are shared).</p>
+</li>
+<li><p class="first">Remove any of the methods that are identical.</p>
+</li>
+<li><p class="first">The empty constructor is shared, but not the second. Replace the two
+constructors with the following:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Employer</span><span class="p">(</span><span class="kt">string</span> <span class="k">value</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">Rerun your unit tests to verify your refactored code.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="finish-drying-your-code">
+<h3>Finish DRYing Your Code<a class="headerlink" href="#finish-drying-your-code" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Repeat the process above for the <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</li>
+<li>Rerun your unit tests to verify that your classes and methods still work.</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>Run Your Tests<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> unit tests.  Refactor your code as needed.
+This is the last set of tests!  Congrats!
+Submit your assignment once you have passed all of Task 6’s auto-graded unit tests.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">You know you need to do this, but here is the reminder anyway. Save, commit,
+and push your work to GitHub.</p>
+</div>
+</div>
+</div>
+<div class="section" id="sanity-check">
+<h2>Sanity Check<a class="headerlink" href="#sanity-check" title="Permalink to this headline">¶</a></h2>
+<p>Once you finish all of the tasks outlined above, all that remains is to check
+the console display.</p>
+<p>Sally has provided some commented-out code in <code class="docutils literal notranslate"><span class="pre">TechJobs.cs</span></code> that prints out a small
+list of <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects. Go ahead and activate this code and run it.
+Properly done, your output should look something like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ID: 1
+Name: Product tester
+Employer: ACME
+Location: Desert
+Position Type: Quality control
+Core Competency: Persistence
+
+
+ID: 2
+Name: Web Developer
+Employer: LaunchCode
+Location: St. Louis
+Position Type: Front-end developer
+Core Competency: JavaScript
+
+
+ID: 3
+Name: Ice cream tester
+Employer: Data not available
+Location: Home
+Position Type: UX
+Core Competency: Tasting ability
+</pre></div>
+</div>
+<p>Excellent! You successfully shifted the old console app into a more useful
+object oriented configuration.</p>
+<p>Now that the new structure is ready, another team member can refactor the
+import and display methods from the previous assignment to use the new classes. Once these are ready, our
+team will refine the search features and move the app online to provide a
+better user interface.</p>
+</div>
+<div class="section" id="how-to-submit">
+<h2>How to Submit<a class="headerlink" href="#how-to-submit" title="Permalink to this headline">¶</a></h2>
+<p>To turn in your assignment and get credit, follow the
+<a class="reference internal" href="hello-world.html#submitting-your-work"><span class="std std-ref">submission instructions</span></a>.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="tech-jobs-console.html"><span aria-hidden="true">&larr;</span> Assignment #1: Tech Jobs (Console Edition)</a></li>
+        
+        
+        <li class="next"><a href="tech-jobs-mvc.html">Assignment #3: Tech Jobs (MVC Edition) <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/assignments/tech-jobs-oo.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

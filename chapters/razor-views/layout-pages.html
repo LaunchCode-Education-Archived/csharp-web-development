@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.7. The Shared Directory &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.8. Static Resources" href="static-resources.html" />
+    <link rel="prev" title="13.6. Razor Forms" href="template-forms.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.7. </span>The Shared Directory</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="the-shared-directory">
+<h1><span class="section-number">13.7. </span>The Shared Directory<a class="headerlink" href="#the-shared-directory" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="create-template.html#layout-cshtml"><span class="std std-ref">Earlier in the lesson</span></a>, we touched upon the role of <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code>. When we
+set <code class="docutils literal notranslate"><span class="pre">Layout</span></code> to <code class="docutils literal notranslate"><span class="pre">null</span></code>, the header, footer, and Bootstrap disappear from
+our site and we are left with static HTML. <code class="docutils literal notranslate"><span class="pre">_Layout</span></code> is in the <code class="docutils literal notranslate"><span class="pre">Shared</span></code>
+directory of the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory. Files inside this <code class="docutils literal notranslate"><span class="pre">Shared</span></code> directory
+are used sitewide and can be accessed by the templates we create when we are
+working with our controllers. These files help us DRY our code.</p>
+<div class="section" id="layout-pages">
+<h2><span class="section-number">13.7.1. </span>Layout pages<a class="headerlink" href="#layout-pages" title="Permalink to this headline">¶</a></h2>
+<p>Whenever we create a new project, we get one layout page, <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code>, and this file contains links to Bootstrap.
+Layout pages in ASP.NET MVC focus on the header and footer of the site.
+The header and footer of our site when we first create it contains links to important info like a privacy statement.
+As you work on your application, you may want your header and footer for each page to include your own privacy statement or a contact page.
+When you make updates to <code class="docutils literal notranslate"><span class="pre">_Layout</span></code>, every template in the application using <code class="docutils literal notranslate"><span class="pre">_Layout</span></code> reflects the updates you have made.</p>
+</div>
+<div class="section" id="partial-views">
+<span id="index-0"></span><h2><span class="section-number">13.7.2. </span>Partial Views<a class="headerlink" href="#partial-views" title="Permalink to this headline">¶</a></h2>
+<p>If you want to create repeatable elements of your webpage that are contained within the main body of the page, you can use a <strong>partial view</strong>.
+Partial views are blocks of HTML elements that we want to use across multiple templates.</p>
+<div class="section" id="making-a-partial-view">
+<h3><span class="section-number">13.7.2.1. </span>Making a Partial View<a class="headerlink" href="#making-a-partial-view" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume that you want to add the same set of links to multiple pages within your web project.</p>
+<div class="highlight-HTML notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.launchcode.org&quot;</span><span class="p">&gt;</span>LaunchCode<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.lego.com&quot;</span><span class="p">&gt;</span>Play Well<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.webelements.com&quot;</span><span class="p">&gt;</span>Other Building Blocks<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Instead of pasting this code into every template, we will store the HTML in
+a separate file.</p>
+<ol class="arabic">
+<li><p class="first">Create a new view inside the <code class="docutils literal notranslate"><span class="pre">Shared</span></code> folder and give it a clear
+name, such as <code class="docutils literal notranslate"><span class="pre">_LinkListPartial.cshtml</span></code>.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">If the partial view you are creating is only going to be used for the views for one controller, you can put the partial view in the controller’s folder in the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory.</p>
+</div>
+</li>
+<li><p class="first">Add the code to your file and save!</p>
+</li>
+</ol>
+<p>We can now pull our partial view into any template in our project.</p>
+</div>
+<div class="section" id="partial">
+<h3><span class="section-number">13.7.2.2. </span><code class="docutils literal notranslate"><span class="pre">&lt;partial&gt;</span></code><a class="headerlink" href="#partial" title="Permalink to this headline">¶</a></h3>
+<p>This tag helper does just what the name implies—it <em>replaces</em> the tag that
+contains it with the selected partial view.</p>
+<p>Now let’s see how to pull a partial view into a template:</p>
+<div class="admonition-examples admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Examples</p>
+<div class="last highlight-HTML notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- template code --&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">partial</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;/Views/Shared/_LinkListPartial.cshtml&quot;</span> <span class="p">/&gt;</span>
+
+  <span class="c">&lt;!-- more template code --&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>When the code runs, the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;partial&gt;</span></code> tag helper gives the path to the partial view.
+In the example above, the partial view is named <code class="docutils literal notranslate"><span class="pre">_LinkListPartial.cshtml</span></code> and is in the <code class="docutils literal notranslate"><span class="pre">Shared</span></code> folder in the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory.
+The code inside the partial view is then rendered as part of the HTML page.</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">13.7.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Given our code in <code class="docutils literal notranslate"><span class="pre">_LinkListPartial.cshtml</span></code>, which is stored in the <code class="docutils literal notranslate"><span class="pre">Events</span></code> directory:</p>
+<div class="highlight-HTML notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.launchcode.org&quot;</span><span class="p">&gt;</span>LaunchCode<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.lego.com&quot;</span><span class="p">&gt;</span>Play Well<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">&quot;https://www.webelements.com&quot;</span><span class="p">&gt;</span>Other Building Blocks<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Which of the following would place the partial view inside a
+<code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> element in the template?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">name=&quot;Views/Events/_LinkListPartial.cshtml&quot;&gt;&lt;/div&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;partial&gt;Views/Events/_LinkListPartial&lt;/div&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;partial</span> <span class="pre">name=&quot;/Views/Events/_LinkListPartial.cshtml&quot;</span> <span class="pre">/&gt;&lt;/div&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;p&gt;&lt;div</span> <span class="pre">partial=&quot;/Views/Events/_LinkListPartial.cshtml&quot;&gt;&lt;/div&gt;&lt;/p&gt;</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="template-forms.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.6. </span>Razor Forms</a></li>
+        
+        
+        <li class="next"><a href="static-resources.html"><span class="section-number">13.8. </span>Static Resources <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/layout-pages.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

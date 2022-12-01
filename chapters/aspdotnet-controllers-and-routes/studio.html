@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10.6. Studio: Skills Tracker &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. Rules to the Exceptions" href="../exceptions/index.html" />
+    <link rel="prev" title="10.5. Exercises: Controllers and Routing" href="exercises.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">10. </span>Controllers and Routing</a></li>
+    <li class="active"><span class="section-number">10.6. </span>Studio: Skills Tracker</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="studio-skills-tracker">
+<h1><span class="section-number">10.6. </span>Studio: Skills Tracker<a class="headerlink" href="#studio-skills-tracker" title="Permalink to this headline">¶</a></h1>
+<p>Wouldn’t it be nice to have a small tracker to show us what programming skills we are working on?
+Let’s build something that would let us do just that!</p>
+<p>As always, read through the whole studio before starting.</p>
+<p>At the end of the studio, your final project should be able to take input from a user via a form and post the information
+in a way that is easy to read.</p>
+<div class="section" id="create-the-mvc-project">
+<h2><span class="section-number">10.6.1. </span>Create the MVC Project<a class="headerlink" href="#create-the-mvc-project" title="Permalink to this headline">¶</a></h2>
+<p>In Visual Studio, create a new ASP.NET project using the <em>Web Application (Model-View-Controller)</em> option. Name your
+new project <code class="docutils literal notranslate"><span class="pre">SkillsTracker</span></code>. Once created, run the project and go to <code class="docutils literal notranslate"><span class="pre">localhost:5001</span></code> to ensure that there are no
+underlying build errors to fix before coding. Now you are ready to start tracking skills.</p>
+</div>
+<div class="section" id="creating-controllers">
+<h2><span class="section-number">10.6.2. </span>Creating Controllers<a class="headerlink" href="#creating-controllers" title="Permalink to this headline">¶</a></h2>
+<p>In your project, add a controller class called <code class="docutils literal notranslate"><span class="pre">SkillsController</span></code> inside the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> folder.
+Inside <code class="docutils literal notranslate"><span class="pre">SkillsController</span></code>, you will add several methods to accomplish the following:</p>
+<ol class="arabic">
+<li><p class="first">At <code class="docutils literal notranslate"><span class="pre">localhost:5001/skills</span></code>, add text that states the three possible programming languages someone could be working on.
+You need to have an <code class="docutils literal notranslate"><span class="pre">h1</span></code> with the title “Skills Tracker”, an <code class="docutils literal notranslate"><span class="pre">h2</span></code>, and an <code class="docutils literal notranslate"><span class="pre">ol</span></code> containing three programming languages
+of your choosing.</p>
+</li>
+<li><p class="first">At <code class="docutils literal notranslate"><span class="pre">localhost:5001/skills/form</span></code>, add a form that lets the user enter a date and choose their learning progress in each of
+the programming skills listed at <code class="docutils literal notranslate"><span class="pre">/skills</span></code>.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Use the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date" target="_blank">date input type<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. Note that the value is
+a <code class="docutils literal notranslate"><span class="pre">string</span></code> type.</p>
+<p class="last">For each of the skills, use <code class="docutils literal notranslate"><span class="pre">select</span></code> elements for selecting a description of progress.</p>
+</div>
+</li>
+<li><p class="first">Also at <code class="docutils literal notranslate"><span class="pre">localhost:5001/skills/form</span></code>, use <code class="docutils literal notranslate"><span class="pre">[HttpPost]</span></code> and request parameters to update the HTML with an <code class="docutils literal notranslate"><span class="pre">h1</span></code> stating the
+submitted date and a list showing the user’s learning progress in the three programming languages they chose.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="end-result">
+<h2><span class="section-number">10.6.3. </span>End Result<a class="headerlink" href="#end-result" title="Permalink to this headline">¶</a></h2>
+<p>At the end of the studio, when you navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/skills</span></code>, you should see the following:</p>
+<div class="figure align-default" id="id1">
+<img alt="Image showing functioning home page." src="../../_images/studio-home-page.png" />
+<p class="caption"><span class="caption-text">Skill Tracker app home page.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>When you navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/skills/form</span></code>, you should see a blank form that looks something like:</p>
+<div class="figure align-default" id="id2">
+<img alt="Image showing the blank form." src="../../_images/blank-studio-form.png" />
+<p class="caption"><span class="caption-text">Skill Tracker app blank skill form.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>If you fill out the form, your page may render like so:</p>
+<div class="figure align-default" id="id3">
+<img alt="Image showing the web page with information from the completed form." src="../../_images/completed-studio-form.png" />
+<p class="caption"><span class="caption-text">Skill Tracker app result of skill form submission.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="bonus-missions">
+<h2><span class="section-number">10.6.4. </span>Bonus Missions<a class="headerlink" href="#bonus-missions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Reformat your <code class="docutils literal notranslate"><span class="pre">form</span></code> page to use a table instead of an ordered list.</li>
+<li>Add a new path to the site to display the information from the completed form.</li>
+</ol>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="exercises.html"><span aria-hidden="true">&larr;</span> <span class="section-number">10.5. </span>Exercises: Controllers and Routing</a></li>
+        
+        
+        <li class="next"><a href="../exceptions/index.html"><span class="section-number">11. </span>Rules to the Exceptions <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-controllers-and-routes/studio.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

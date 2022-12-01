@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18.3. Creating a One-to-Many Relationship &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18.4. Some Setup" href="some-setup.html" />
+    <link rel="prev" title="18.2. A Primer on Lambda Expressions" href="lambda-expressions.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">18. </span>Relationships in Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">18.3. </span>Creating a One-to-Many Relationship</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="creating-a-one-to-many-relationship">
+<h1><span class="section-number">18.3. </span>Creating a One-to-Many Relationship<a class="headerlink" href="#creating-a-one-to-many-relationship" title="Permalink to this headline">¶</a></h1>
+<p>The first relationship we implement will be between the <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> classes. We will allow multiple events to be in the same category, but each event will only have one category. Thus, this will be a one-to-many relationship. In this case, we will set up both sides of the relationship, so a many-to-one relationship will result as well.</p>
+<div class="section" id="setting-up-the-relationship-video">
+<h2><span class="section-number">18.3.1. </span>Setting Up the Relationship - Video<a class="headerlink" href="#setting-up-the-relationship-video" title="Permalink to this headline">¶</a></h2>
+<p>We are now ready to create a relationship between <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-category" target="_blank">event-category branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many" target="_blank">one-to-many branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/9V_7j6ARM00" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="setting-up-the-relationship-text">
+<h2><span class="section-number">18.3.2. </span>Setting Up the Relationship - Text<a class="headerlink" href="#setting-up-the-relationship-text" title="Permalink to this headline">¶</a></h2>
+<p>We want to relate <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects to <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects, and vice versa. Currently, similar functionality is enabled via the <code class="docutils literal notranslate"><span class="pre">EventType</span></code> field of <code class="docutils literal notranslate"><span class="pre">Event</span></code>. However, <code class="docutils literal notranslate"><span class="pre">EventType</span></code> is an enum, which means that new values can not be added without changing the code and re-compiling. Using the persistent <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> class to organize events will be a much more flexible and user-friendly approach.</p>
+<div class="section" id="replacing-eventtype-with-eventcategory">
+<h3><span class="section-number">18.3.2.1. </span>Replacing <code class="docutils literal notranslate"><span class="pre">EventType</span></code> With <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code><a class="headerlink" href="#replacing-eventtype-with-eventcategory" title="Permalink to this headline">¶</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Event</span></code> class, replace the <code class="docutils literal notranslate"><span class="pre">Type</span></code> property with a new property of type <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>. In order for EntityFrameworkCore to be able to persist relationships between <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects and <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects, we must also have a property that stores the <code class="docutils literal notranslate"><span class="pre">Id</span></code> of the given <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">EventCategory</span> <span class="n">Category</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">int</span> <span class="n">CategoryId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">CategoryId</span></code> property functions as a <a class="reference external" href="https://education.launchcode.org/SQL/chapters/mysql-part-2/relationships.html#adding-a-foreign-key" target="_blank">foreign key<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. EF will create a <code class="docutils literal notranslate"><span class="pre">CategoryId</span></code> column in the <code class="docutils literal notranslate"><span class="pre">Event</span></code> table. The value of this column for a given row will determine which row in the <code class="docutils literal notranslate"><span class="pre">Category</span></code> table is related to the given event. Our code is now set up so that each <code class="docutils literal notranslate"><span class="pre">Event</span></code> will knows about its <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> object, and that relationship persists.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">It is <em>very</em> important that the ID field corresponding to the <code class="docutils literal notranslate"><span class="pre">Category</span></code> property be named <code class="docutils literal notranslate"><span class="pre">CategoryId</span></code>. This naming convention lets EF know that it should set <code class="docutils literal notranslate"><span class="pre">Category</span></code> to be the object with <code class="docutils literal notranslate"><span class="pre">Id</span></code> value the same as <code class="docutils literal notranslate"><span class="pre">CategoryId</span></code>.</p>
+</div>
+<p>Now, let’s remove all references to <code class="docutils literal notranslate"><span class="pre">EventType</span></code> in the project.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>, which is in the <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory. Recall that this ViewModel represents the data that is needed to display and process the form used to create new <code class="docutils literal notranslate"><span class="pre">Event</span></code> instances. Replace its <code class="docutils literal notranslate"><span class="pre">Type</span></code> and <code class="docutils literal notranslate"><span class="pre">EventType</span></code> properties with similar properties that use <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[Required(ErrorMessage = &quot;Category is required&quot;)]</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">CategoryID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SelectListItem</span><span class="p">&gt;</span> <span class="n">Categories</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The constructor for this class populates the <code class="docutils literal notranslate"><span class="pre">EventTypes</span></code> collection, which we have just removed. This collection stored a collection of <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code> objects, one for each possible value of <code class="docutils literal notranslate"><span class="pre">Type</span></code>. The corresponding code to work with categories should populate <code class="docutils literal notranslate"><span class="pre">Categories</span></code> with each possible value of <code class="docutils literal notranslate"><span class="pre">Category</span></code>. In other words, <code class="docutils literal notranslate"><span class="pre">Categories</span></code> should have one <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code> for each item in the <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> table.</p>
+<p>We’ll rely on the controller to provide our constructor with a list of all <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects, so we can update the constructor to look like this:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">AddEventViewModel</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">EventCategory</span><span class="p">&gt;</span> <span class="n">categories</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Categories</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SelectListItem</span><span class="p">&gt;();</span>
+
+   <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">category</span> <span class="k">in</span> <span class="n">categories</span><span class="p">)</span>
+   <span class="p">{</span>
+         <span class="n">Categories</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">SelectListItem</span>
+         <span class="p">{</span>
+            <span class="n">Value</span> <span class="p">=</span> <span class="n">category</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
+            <span class="n">Text</span> <span class="p">=</span> <span class="n">category</span><span class="p">.</span><span class="n">Name</span>
+         <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Value</span></code> of each <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code> will be the <code class="docutils literal notranslate"><span class="pre">Id</span></code> of the given category. The <code class="docutils literal notranslate"><span class="pre">Id</span></code> of a category is unique (in fact, it functions as a primary key) while the <code class="docutils literal notranslate"><span class="pre">Name</span></code> may not be. Therefore, we must use <code class="docutils literal notranslate"><span class="pre">Id</span></code> for the <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute.</p>
+<p>Since we no longer have a no-arg constructor, we must add one to allow model binding.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">AddEventViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>There is another reference to <code class="docutils literal notranslate"><span class="pre">EventType</span></code>, and it is in <code class="docutils literal notranslate"><span class="pre">Views/Events/Add.cshtml</span></code>. Within that file, update the <code class="docutils literal notranslate"><span class="pre">select</span></code> input and its label to reference our new <code class="docutils literal notranslate"><span class="pre">Category</span></code> and <code class="docutils literal notranslate"><span class="pre">Categories</span></code> properties.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;CategoryId&quot;</span><span class="p">&gt;</span>Category<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;CategoryId&quot;</span> <span class="na">asp-items</span><span class="o">=</span><span class="s">&quot;Model.Categories&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Finally, we have a reference to <code class="docutils literal notranslate"><span class="pre">EventType</span></code> in the <code class="docutils literal notranslate"><span class="pre">EventsController.Add</span></code> method that handles POST requests. This method creates a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using data from the <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> parameter.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>46
+47
+48
+49
+50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Event</span> <span class="n">newEvent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Event</span>
+<span class="p">{</span>
+   <span class="n">Name</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+   <span class="n">Description</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+   <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">ContactEmail</span><span class="p">,</span>
+   <span class="n">Type</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Type</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>When this method runs, <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> contains form data. The data that specifies which <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> and <code class="docutils literal notranslate"><span class="pre">Event</span></code> should be assigned to is <code class="docutils literal notranslate"><span class="pre">CatgoryId</span></code> and NOT and actually <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> object. Therefore, we must first retrieve the category object, and then pass it into the <code class="docutils literal notranslate"><span class="pre">Event</span></code> constructor.</p>
+<p>The code above can be refactored as follows:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>46
+47
+48
+49
+50
+51
+52
+53</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">EventCategory</span> <span class="n">category</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">addEventViewModel</span><span class="p">.</span><span class="n">CategoryId</span><span class="p">);</span>
+<span class="n">Event</span> <span class="n">newEvent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Event</span>
+<span class="p">{</span>
+   <span class="n">Name</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+   <span class="n">Description</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+   <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">ContactEmail</span><span class="p">,</span>
+   <span class="n">Category</span> <span class="p">=</span> <span class="n">category</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Our app is now free of all references to <code class="docutils literal notranslate"><span class="pre">EventType</span></code>, so we may delete this unused class.</p>
+</div>
+<div class="section" id="defining-the-inverse-relationship">
+<h3><span class="section-number">18.3.2.2. </span>Defining the Inverse Relationship<a class="headerlink" href="#defining-the-inverse-relationship" title="Permalink to this headline">¶</a></h3>
+<p>For categories to be aware of the events that they relate to, we must add an <code class="docutils literal notranslate"><span class="pre">Event</span></code> collection property to <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">Events</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The new property on <code class="docutils literal notranslate"><span class="pre">Event</span></code> is a single <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> reference, while the new property on <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> is a <em>collection</em> of <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects. This is due to the one-to-many nature of the relationship. Each <code class="docutils literal notranslate"><span class="pre">Event</span></code> can have only one <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code>, but an <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> may be related to multiple <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects.</p>
+</div>
+</div>
+</div>
+<div class="section" id="refactoring-the-controller-and-view-video">
+<h2><span class="section-number">18.3.3. </span>Refactoring the Controller and View - Video<a class="headerlink" href="#refactoring-the-controller-and-view-video" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/one-to-many" target="_blank">one-to-many branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-controller" target="_blank">refactoring-controller branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/xj2EZl37Ooo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="refactoring-the-controller-and-view-text">
+<h2><span class="section-number">18.3.4. </span>Refactoring the Controller and View - Text<a class="headerlink" href="#refactoring-the-controller-and-view-text" title="Permalink to this headline">¶</a></h2>
+<p>Our <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> requires a few updates now that <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects reference <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Index</span></code> method passes the collection of all <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects into the view for display:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">events</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Events</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p id="index-0">When we reference <code class="docutils literal notranslate"><span class="pre">context.Events</span></code>, all <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects will be queried from the database. By default, EF uses <strong>lazy loading</strong> to retrieve objects. Lazy loading results in <em>only</em> the data in the <code class="docutils literal notranslate"><span class="pre">Event</span></code> table being returned in the result set. Any data stored in other tables, such as data belonging to a referenced object, will NOT be loaded. In our case, this means that <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects in <code class="docutils literal notranslate"><span class="pre">context.Events</span></code> will NOT have their <code class="docutils literal notranslate"><span class="pre">Category</span></code> properties set by EF. As-is, our code would display an empty category column in the main view.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>While lazy loading is not what we want now, it can be a useful strategy in a lot of cases. Suppose your application wants to display a list of all users, where each <code class="docutils literal notranslate"><span class="pre">User</span></code> has a <code class="docutils literal notranslate"><span class="pre">UserDetails</span></code> property that stores info like profile image, email, etc.</p>
+<p class="last">If all we need is a list of users, loading all of the additional data in <code class="docutils literal notranslate"><span class="pre">UserProfile</span></code> is unnecessary and will slow down the application. Lazy loading minimizes the data returned to optimize performance and reduce queries.</p>
+</div>
+<p>The solution is to use <strong>eager loading</strong>. Eager loading is a technique that allows us to specify that data from other tables/objects be loaded when the querying a specific table/object. In our case, we want our <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects to be returned with their corresponding <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects. We can tell EF to load the categories eagerly with the following code:</p>
+<div class="highlight-csharp notranslate" id="index-1"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">events</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Events</span><span class="p">.</span><span class="n">Include</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Category</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Include</span></code> method takes a lambda expression which specifies the property of each <code class="docutils literal notranslate"><span class="pre">Event</span></code> object that should be included in the query results. The effect of this additional method is that a <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> query is performed between the <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> tables, with <code class="docutils literal notranslate"><span class="pre">Event.CategoryId</span></code> being joined on <code class="docutils literal notranslate"><span class="pre">EventCategory.Id</span></code>.</p>
+<p>Our next update is more straightforward. Recall that we modified the main controller in <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> to take a list of all <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects. This constructor is called in the <code class="docutils literal notranslate"><span class="pre">Add</span></code> method of our controller. Let’s update it to pass in a list of all <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> objects, as queried from the database.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">AddEventViewModel</span> <span class="n">addEventViewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AddEventViewModel</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">ToList</span><span class="p">());</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="database-migration-and-testing-video">
+<h2><span class="section-number">18.3.5. </span>Database Migration and Testing - Video<a class="headerlink" href="#database-migration-and-testing-video" title="Permalink to this headline">¶</a></h2>
+<p>We are done updating our code for now, but before we can test we must update the database. Recall that we changed the structure of the model by relating <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> classes, and by removing <code class="docutils literal notranslate"><span class="pre">EventType</span></code>. Any model change requires a database update.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/refactoring-contoller" target="_blank">refactoring-contoller branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing" target="_blank">migration-testing branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/Ihjgp8oG3Wg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="database-migration-and-testing-text">
+<span id="create-migration"></span><h2><span class="section-number">18.3.6. </span>Database Migration and Testing - Text<a class="headerlink" href="#database-migration-and-testing-text" title="Permalink to this headline">¶</a></h2>
+<p>Open a terminal and navigate to the <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project directory within the solution. Then run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span> <span class="pre">migrations</span> <span class="pre">add</span> <span class="pre">RelateEventsAndCategories</span></code> to create a new migration.</p>
+<p>To apply the migration, run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span> <span class="pre">database</span> <span class="pre">update</span></code>.</p>
+<p>If you look at the database, you’ll see that the <code class="docutils literal notranslate"><span class="pre">Event</span></code> table no longer has a <code class="docutils literal notranslate"><span class="pre">Type</span></code> column. In addition, it now has a <code class="docutils literal notranslate"><span class="pre">CategoryId</span></code> column that is a foreign key to <code class="docutils literal notranslate"><span class="pre">EventCategory.Id</span></code>.</p>
+<p>Now, start up the app and test!</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">18.3.7. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>You are working on an ASP.NET application tracking elected officials. Your model class, <code class="docutils literal notranslate"><span class="pre">Senator</span></code> has a many-to-one relationship with another model class, <code class="docutils literal notranslate"><span class="pre">State</span></code>. To properly configure this relationship in the EF context, what must be present?</p>
+<ol class="last arabic simple">
+<li>In <code class="docutils literal notranslate"><span class="pre">Senator</span></code>, a <code class="docutils literal notranslate"><span class="pre">State</span></code> property and a <code class="docutils literal notranslate"><span class="pre">StateId</span></code> property</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">Senator</span></code>, only a <code class="docutils literal notranslate"><span class="pre">State</span></code> property</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">State</span></code>, a <code class="docutils literal notranslate"><span class="pre">Senator</span></code> property and a <code class="docutils literal notranslate"><span class="pre">SenatorId</span></code> property</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">State</span></code>, only a <code class="docutils literal notranslate"><span class="pre">Senator</span></code> property</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>What is the default technique for loading child objects of persistent objects?</p>
+<ol class="last arabic simple">
+<li>Eager loading</li>
+<li>Lazy loading</li>
+<li>Explicit loading</li>
+<li>There is no default, the technique must always be explicitly specified</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="lambda-expressions.html"><span aria-hidden="true">&larr;</span> <span class="section-number">18.2. </span>A Primer on Lambda Expressions</a></li>
+        
+        
+        <li class="next"><a href="some-setup.html"><span class="section-number">18.4. </span>Some Setup <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-relationships/one-to-many.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

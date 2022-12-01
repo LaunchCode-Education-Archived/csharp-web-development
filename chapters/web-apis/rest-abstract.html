@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20.2. What is REST? &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="20.3. REST: Practical Fundamentals" href="rest-practical.html" />
+    <link rel="prev" title="20.1. Web APIs" href="intro-web-apis.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">20. </span>Introduction to Web APIs &amp; REST</a></li>
+    <li class="active"><span class="section-number">20.2. </span>What is REST?</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="what-is-rest">
+<span id="index-0"></span><h1><span class="section-number">20.2. </span>What is REST?<a class="headerlink" href="#what-is-rest" title="Permalink to this headline">¶</a></h1>
+<p><strong>REST</strong> is an acronym that stands for <strong>REpresentational State Transfer</strong>. <strong>RESTful web services</strong> refer to web technologies that use
+this design pattern. REST, as we’ve mentioned, is an architectural pattern that provides uniformity and predictability to any API
+that adheres to it. The same benefits are experienced by the API consumer. REST is a set of guiding principles for supporting
+the organization of an API’s core responsibilities – managing and transferring data. The REST pattern organizes the external
+interface, or contract, and does not concern itself with the internal implementation of the API.</p>
+<p>Adopting the REST specification into the design of an API provides consistency during development and consumption. Much like
+following the patterns of MVC allows other developers to easily understand your code, following REST patterns gives other developers
+the benefit of understanding how your API is structured and behaves. As an added bonus, a REST API also gives the client application
+a base-line understanding on how to interact with your API.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">The topics of state and representation are <em>purposefully abstract</em> in REST so that they can be applied to any API. Don’t get overwhelmed!</p>
+</div>
+<div class="section" id="what-is-state">
+<h2><span class="section-number">20.2.1. </span>What is State?<a class="headerlink" href="#what-is-state" title="Permalink to this headline">¶</a></h2>
+<p>State is transitional application data that can be viewed or changed by external interaction. Though state is abstract, programmers interact with it
+using CRUD operations.</p>
+<p>Imagine viewing, or reading, the state of an application’s data as it transitions through each of the following interactions:</p>
+<ol class="arabic simple">
+<li><strong>Before creating</strong>: Empty state</li>
+<li><strong>After creating</strong>: Initial state</li>
+<li><strong>After updating</strong>: New state</li>
+<li><strong>After deleting</strong>: Empty state</li>
+</ol>
+<p>You can see that the state is defined by how the data exists after its latest interaction.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The concept of state is both the most abstract and most fundamental aspect of REST.</p>
+</div>
+</div>
+<div class="section" id="what-is-a-representation">
+<h2><span class="section-number">20.2.2. </span>What is a Representation?<a class="headerlink" href="#what-is-a-representation" title="Permalink to this headline">¶</a></h2>
+<p>Representation refers to a depiction of state that is usable in a given context. In the REST context, state must be
+represented in a way that is portable and compatible with both the client and API. JSON is a data format that provides structure, portability and
+compatibility. For these reasons, JSON is the standard representation used when transferring state between a client application and an API.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>The state of a <em>single</em> <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> entity is represented as a single JSON object:</p>
+<div class="highlight-js notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;Id&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+   <span class="s2">&quot;Title&quot;</span><span class="o">:</span> <span class="s2">&quot;Halloween Hackathon!&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;Description&quot;</span><span class="o">:</span> <span class="s2">&quot;A gathering of nerdy ghouls...&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;Date&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-10-31&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Whereas the state of a collection of <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> is represented by a JSON array of objects.</p>
+<div class="highlight-js notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">[</span>
+   <span class="p">{</span>
+      <span class="s2">&quot;Id&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+      <span class="s2">&quot;Title&quot;</span><span class="o">:</span> <span class="s2">&quot;Halloween Hackathon!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Description&quot;</span><span class="o">:</span> <span class="s2">&quot;A gathering of nerdy ghouls...&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Date&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-10-31&quot;</span>
+   <span class="p">},</span>
+   <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+</td></tr></table></div>
+<p class="last">Notice that the state here is represented as the collective state of all of the <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> in the collection.</p>
+</div>
+<div class="admonition-tip admonition" id="index-1">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>The process of converting an object representation to a JSON representation is called <strong>JSON serialization</strong>.</p>
+<p class="last">The inverse process, where JSON is parsed, or converted back to object representation, is called <strong>JSON deserialization</strong>.</p>
+</div>
+</div>
+<div class="section" id="transferring-a-representation-of-state">
+<h2><span class="section-number">20.2.3. </span>Transferring a Representation of State<a class="headerlink" href="#transferring-a-representation-of-state" title="Permalink to this headline">¶</a></h2>
+<p>In REST, state is transitioned by interactions between a client and an API. Each transition is driven by transferring a JSON object or collection. A
+RESTful API is designed to be stateless.</p>
+<p>This has the following implications:</p>
+<ul class="simple">
+<li>The state of data is maintained by the client application and the database that are on either side of the interface.</li>
+<li>State transitions are signals containing data representations, driven by the client and facilitated by the API.</li>
+</ul>
+<p>In order to maintain portability between different client and API contexts, we transfer representations of state. These representations can then be
+converted between the <em>portable representation</em> (JSON) and the representation that fits a given context (a JavaScript or C# object). Remember, state
+is defined by an application’s latest CRUD operation. Because every interaction is initiated by the client, we consider the client to be in control
+of state.</p>
+<p>What this means is that the client can:</p>
+<ul class="simple">
+<li>Read: request the current representation of state</li>
+<li>Create &amp; Update: transition to a new state by sending a new representation</li>
+<li>Delete: transition to an empty state by requesting its removal</li>
+</ul>
+<p>However, it is up to the API to define the contract, or expose:</p>
+<ul class="simple">
+<li>the types of state, or resources, the client can interact with</li>
+<li>which (CRUD) interactions are supported for each resource</li>
+</ul>
+<p>These decisions are what drive the design of the contract.</p>
+</div>
+<div class="section" id="resources">
+<span id="index-2"></span><h2><span class="section-number">20.2.4. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<p>While state is an abstract concept, a resource is something more tangible. Simply put, a <strong>resource</strong> is a type of object that an API allows
+client applications to interact with. Resources are categorized as an individual entity or a collection.</p>
+<p><strong>Entity</strong>: a single resource that is uniquely identifiable in a collection.</p>
+<p><strong>Collection</strong>: entities of the same resource type treated as a whole.</p>
+<p>We refer to the state of a resource in terms of a single entity or the shared state of a collection.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Initially, a collection’s state is just empty. If you were to read the collection’s state, it would be represented as an empty JSON array, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+</div>
+<p>In RESTful design, an individual entity only exists as a part of a collection. A change to the state of an entity inherently changes the state of
+the collection it is a part of.</p>
+<p>When creating an entity, you are operating on the state of the collection that holds it. In order to create it, you must know what collection the entity
+belongs to.</p>
+<p>When reading, updating or deleting an entity, you are directly operating on the state of the entity and indirectly on the state of its collection.</p>
+<p>In order to fulfill these operations, you need to know:</p>
+<ul class="simple">
+<li>what collection the entity belongs to</li>
+<li>how to uniquely identify the entity within the collection</li>
+</ul>
+<p>This hierarchal relationship between collections and the entities within them is an integral aspect of RESTful design. The contract of a RESTful API
+defines the shape, or structure, of its resources along with the hierarchal organization of the endpoints used for interacting with them.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">20.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True or False: Using HTTP requests, we can perform all four CRUD operations.</p>
+<ol class="last loweralpha simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Reshaping data from object representation to JSON representation is called:</p>
+<ol class="last loweralpha simple">
+<li>JSON parsing</li>
+<li>JSON reshaping</li>
+<li>JSON reserialization</li>
+<li>JSON serialization</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="intro-web-apis.html"><span aria-hidden="true">&larr;</span> <span class="section-number">20.1. </span>Web APIs</a></li>
+        
+        
+        <li class="next"><a href="rest-practical.html"><span class="section-number">20.3. </span>REST: Practical Fundamentals <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/web-apis/rest-abstract.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

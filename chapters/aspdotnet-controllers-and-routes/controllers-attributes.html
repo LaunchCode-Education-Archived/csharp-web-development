@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10.4. Cleaning Up Your Controllers &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10.5. Exercises: Controllers and Routing" href="exercises.html" />
+    <link rel="prev" title="10.3. Controllers with Forms" href="controllers-forms.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">10. </span>Controllers and Routing</a></li>
+    <li class="active"><span class="section-number">10.4. </span>Cleaning Up Your Controllers</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="cleaning-up-your-controllers">
+<h1><span class="section-number">10.4. </span>Cleaning Up Your Controllers<a class="headerlink" href="#cleaning-up-your-controllers" title="Permalink to this headline">¶</a></h1>
+<p>So far, we have been adding attributes to our methods as we go along for each specific use case.
+However, now our controller is rather unorganized and full of commented out attributes.
+We can use a couple tips and tricks from attribute routing to clean this controller up.</p>
+<div class="section" id="cleaning-up-the-controller-video">
+<h2><span class="section-number">10.4.1. </span>Cleaning Up the Controller - Video<a class="headerlink" href="#cleaning-up-the-controller-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/aDEkGpBKLyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/forms" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">forms</span></code> branch.
+If you ever want to verify what code you end this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/attribute-routing" target="_blank">final code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">attribute-routing</span></code> branch.</p>
+</div>
+</div>
+<div class="section" id="cleaning-up-the-controller-text">
+<span id="index-0"></span><h2><span class="section-number">10.4.2. </span>Cleaning Up the Controller - Text<a class="headerlink" href="#cleaning-up-the-controller-text" title="Permalink to this headline">¶</a></h2>
+<p>Once you have written several action methods within a class, you may notice some similar behavior.
+You may also want to expand upon the behavior that different action methods can make use of.
+So far, we have been adding multiple different <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> attributes to each method to get every method to respond to a path that starts with <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld</span></code>.
+We also want to use the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method to respond to <code class="docutils literal notranslate"><span class="pre">GET``requests</span> <span class="pre">and</span> <span class="pre">``POST</span></code> requests, not just one or the other.
+Time to DRY our code!</p>
+<div class="section" id="class-level-attributes">
+<h3><span class="section-number">10.4.2.1. </span>Class-Level Attributes<a class="headerlink" href="#class-level-attributes" title="Permalink to this headline">¶</a></h3>
+<p>In addition to adding attributes above action methods, we can also add attributes for routing above the class.
+When we do so, we are designating class-wide behavior.
+In <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>, we want every action method to respond to requests at paths that start with <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld</span></code>.
+We can use <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> once above the class to designate that every path for each action method needs to start with <code class="docutils literal notranslate"><span class="pre">/helloworld</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[Route(&quot;/helloworld&quot;)]</span>
+ <span class="k">public</span> <span class="k">class</span> <span class="nc">HelloController</span> <span class="p">:</span> <span class="n">Controller</span>
+ <span class="p">{</span>
+     <span class="c1">// action methods here</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now that we have added that <code class="docutils literal notranslate"><span class="pre">[Route(&quot;/helloworld&quot;)]</span></code> above the class, we can start to modify the attributes we placed above the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpGet]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="kt">string</span> <span class="n">html</span> <span class="p">=</span> <span class="s">&quot;&lt;form method=&#39;post&#39; action=&#39;/helloworld/welcome&#39;&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;input type=&#39;text&#39; name=&#39;name&#39; /&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;input type=&#39;submit&#39; value=&#39;Greet Me!&#39; /&gt;&quot;</span> <span class="p">+</span>
+         <span class="s">&quot;&lt;/form&gt;&quot;</span><span class="p">;</span>
+
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Since we want to map <code class="docutils literal notranslate"><span class="pre">Index()</span></code> to the path <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld</span></code>, we removed the <code class="docutils literal notranslate"><span class="pre">[Route(&quot;/helloworld&quot;)]</span></code> attribute above the method.
+If we hadn’t, we would have inadvertently mapped the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method to the path, <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/helloworld</span></code>.
+We want to leave the <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute above the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method so we can still specify that <code class="docutils literal notranslate"><span class="pre">Index()</span></code> responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests.</p>
+<p>Now that just leaves us the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method!</p>
+</div>
+<div class="section" id="one-method-two-request-types">
+<h3><span class="section-number">10.4.2.2. </span>One Method, Two Request Types<a class="headerlink" href="#one-method-two-request-types" title="Permalink to this headline">¶</a></h3>
+<p>When we modified the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method to respond to a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request, we commented out the attributes that we added when we were working with route parameters.
+With attributes, we can DRY our code and create one method that can respond to two different request types at two different routes.
+Before we begin, we should note that we can add route info directly to <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> and <code class="docutils literal notranslate"><span class="pre">[HttpPost]</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpPost(&quot;welcome&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;World&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>On line 1, we modified the <code class="docutils literal notranslate"><span class="pre">[HttpPost]</span></code> attribute to include the end of our path.
+Now <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> still responds to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome</span></code>.
+However, this is just the beginning of us DRYing our code.</p>
+<p>We also want <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> to respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests.
+We can modify an <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute to do so.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpGet(&quot;welcome/{name?}&quot;)]</span>
+<span class="na">[HttpPost(&quot;welcome&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">&quot;World&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;&lt;h1&gt;Welcome to my app, &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;!&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>We added a different path to the <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> attribute on line 1.
+Now <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> can respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome</span></code>, <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome?name=Tillie</span></code>, and <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome/Tille</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> can also still respond to the <code class="docutils literal notranslate"><span class="pre">POST</span></code> request at <code class="docutils literal notranslate"><span class="pre">localhost:5001/helloworld/welcome</span></code> upon submission of the form.</p>
+<p>Now when we run our code, our app will still have the same functionalities, but now we have a more refined and organized code base!</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">10.4.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: Routing attributes go below the class definition, but above the method signature.</p>
+<ol class="last loweralpha simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="controllers-forms.html"><span aria-hidden="true">&larr;</span> <span class="section-number">10.3. </span>Controllers with Forms</a></li>
+        
+        
+        <li class="next"><a href="exercises.html"><span class="section-number">10.5. </span>Exercises: Controllers and Routing <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-controllers-and-routes/controllers-attributes.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

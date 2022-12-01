@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12.4. Studio: If It Ain’t Broke, Add a Breakpoint! &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13. Razor Views" href="../razor-views/index.html" />
+    <link rel="prev" title="12.3. Debugger" href="debugger.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">12. </span>Tools in Visual Studio</a></li>
+    <li class="active"><span class="section-number">12.4. </span>Studio: If It Ain’t Broke, Add a Breakpoint!</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="studio-if-it-ain-t-broke-add-a-breakpoint">
+<h1><span class="section-number">12.4. </span>Studio: If It Ain’t Broke, Add a Breakpoint!<a class="headerlink" href="#studio-if-it-ain-t-broke-add-a-breakpoint" title="Permalink to this headline">¶</a></h1>
+<p>On your machine, open up your copy of <code class="docutils literal notranslate"><span class="pre">csharp-web-dev-interfaces-studio</span></code> in Visual Studio.
+The purpose of this studio is to talk about your current debugging strategies and how to make the most of the debugger tools discussed in this chapter.</p>
+<p>Before we start practicing with debugging tools, go over with the group one error you encountered when working on your own version of last lesson’s studio.
+This could be the result of a typo or a logical error.</p>
+<ol class="arabic simple">
+<li>What was the error?</li>
+<li>How did you solve this error? What have been the strategies and tools you have been using so far to debug your code?</li>
+<li>Could one of the debugging tools help you when addressing this error?
+For example, if you encountered an error where data was not being written onto a disc object, could you track the properties of the object with a debugging tool?</li>
+</ol>
+<p>Now, checkout the <a class="reference external" href="https://github.com/LaunchCodeEducation/csharp-web-dev-interfaces-studio/tree/debugging" target="_blank">debugging branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of
+the studio repo. Review the code and use the debugging tools in Visual Studio to practice assessing the program.</p>
+<p>To get started, try the following:</p>
+<ol class="arabic simple">
+<li>Add <code class="docutils literal notranslate"><span class="pre">cd.Name</span></code> to the <em>Watch</em> pane to track the value of that property. Does it change?</li>
+<li>Add a few breakpoints inside of <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> and make note of where you expect the program to break its execution.</li>
+<li><dl class="first docutils">
+<dt>Add a breakpoint inside of some of the methods in <code class="docutils literal notranslate"><span class="pre">BaseDisc.cs</span></code>. Anticipate what you expect to see as the last line in the</dt><dd><em>Call Stack</em> pane when the debugger stops.</dd>
+</dl>
+</li>
+</ol>
+<p>After you look through the code and try out these tasks, take it one step further by answering these questions.</p>
+<ol class="arabic simple">
+<li>When would you use the <em>Call Stack</em> pane? If you run the app and it is already functioning, what shows up there?</li>
+<li>Would a conditional breakpoint make sense to use in the context of this app? Try changing one of the breakpoints you have already added to a conditional breakpoint and run your app!</li>
+</ol>
+<p>Once you have gone through the code, open up a piece of code you have been struggling with.
+In what ways could making use of debugging tools help you figure out what is going on with the code?</p>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="debugger.html"><span aria-hidden="true">&larr;</span> <span class="section-number">12.3. </span>Debugger</a></li>
+        
+        
+        <li class="next"><a href="../razor-views/index.html"><span class="section-number">13. </span>Razor Views <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/vstools/studio.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

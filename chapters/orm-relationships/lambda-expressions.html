@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18.2. A Primer on Lambda Expressions &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18.3. Creating a One-to-Many Relationship" href="one-to-many.html" />
+    <link rel="prev" title="18.1. Types of Relationships" href="types-of-relationships.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">18. </span>Relationships in Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">18.2. </span>A Primer on Lambda Expressions</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="a-primer-on-lambda-expressions">
+<h1><span class="section-number">18.2. </span>A Primer on Lambda Expressions<a class="headerlink" href="#a-primer-on-lambda-expressions" title="Permalink to this headline">¶</a></h1>
+<p>Before diving into relationships in EF, we need to introduce a new concept.</p>
+<p id="index-0">A <strong>lambda expression</strong> is an <em>inline</em> function defined using the symbol <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code>. This symbol is sometimes called a “fat arrow,” and lambda expressions are sometimes called “fat arrow functions.” The most basic syntax for creating a lambda expression is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>argument =&gt; return expression
+</pre></div>
+</div>
+<p>The left-hand side of the expression consists of the arguments to be passed into the function, and the right-hand side states the return expression. There are more complicated ways to write a lambda expression, but we will only use this one.</p>
+<p>Lambda expressions can seem confusing until you see them in action. We will look at some below.</p>
+<div class="section" id="select-example">
+<span id="index-1"></span><h2><span class="section-number">18.2.1. </span><code class="docutils literal notranslate"><span class="pre">Select</span></code> Example<a class="headerlink" href="#select-example" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Select</span></code> method for arrays can be used to create a new array with elements that are <em>transformations</em> of elements of an initial array.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MainClass</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span> <span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span><span class="p">[]</span> <span class="n">nums</span> <span class="p">=</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">};</span>
+      <span class="kt">var</span> <span class="n">doubledNums</span> <span class="p">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="m">2</span><span class="p">*</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">doubledNums</span><span class="p">));</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>Output</strong></p>
+<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>2 4 6 8
+</pre></div>
+</div>
+</div>
+<p>Let’s look at line 7 in more detail.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">doubledNums</span> <span class="p">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="m">2</span><span class="p">*</span><span class="n">x</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Select</span></code> method takes a lambda expression as a parameter. The lambda expression is <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">2*x</span></code>. This is a function that takes a single element of the <code class="docutils literal notranslate"><span class="pre">nums</span></code> array, as represented by x on the left side of the expression, and returns the results of multiplying each of those array elements by 2. We can think of the execution of <code class="docutils literal notranslate"><span class="pre">Select</span></code> as follows:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Select</span></code> begins by creating an empty array. This array will be returned at the end of the method.</li>
+<li>It then loops over <code class="docutils literal notranslate"><span class="pre">nums</span></code>.</li>
+<li>Within the loop, each entry of <code class="docutils literal notranslate"><span class="pre">nums</span></code> is passed into the lambda expression.</li>
+<li>The return value of the lambda expression is appended to the new array.</li>
+<li>At the end of the loop, <code class="docutils literal notranslate"><span class="pre">Select</span></code> returns the new array of transformed values.</li>
+</ol>
+</div>
+<div class="section" id="where-example">
+<span id="index-2"></span><h2><span class="section-number">18.2.2. </span><code class="docutils literal notranslate"><span class="pre">Where</span></code> Example<a class="headerlink" href="#where-example" title="Permalink to this headline">¶</a></h2>
+<p>The array method <code class="docutils literal notranslate"><span class="pre">Where</span></code> can be used to <em>filter</em> elements of an array. In this case, <code class="docutils literal notranslate"><span class="pre">Where</span></code> takes a lambda expression that returns a boolean. If the boolean value is <code class="docutils literal notranslate"><span class="pre">true</span></code> then the value is included in the returned array. Otherwise, the value is NOT included in the returned array.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>Given an array of integers, we can use <code class="docutils literal notranslate"><span class="pre">Where</span></code> to filter out all of the odds, keeping only evens. Recall that a number <code class="docutils literal notranslate"><span class="pre">x</span></code> is even if <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span></code> is zero, and is odd otherwise.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MainClass</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span> <span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span><span class="p">[]</span> <span class="n">nums</span> <span class="p">=</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">};</span>
+         <span class="kt">var</span> <span class="n">evens</span> <span class="p">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">));</span>
+         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">evens</span><span class="p">));</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>Output</strong></p>
+<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>2 4
+</pre></div>
+</div>
+</div>
+<p>In this example, the flow of execution of <code class="docutils literal notranslate"><span class="pre">Where</span></code> on line 7 is similar to that of <code class="docutils literal notranslate"><span class="pre">Select</span></code> above. The main difference is that instead of <em>transforming</em> every element of <code class="docutils literal notranslate"><span class="pre">nums</span></code>, it is filtered based on the lambda expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">(x</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0)</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">While the examples we have given use arrays, the <code class="docutils literal notranslate"><span class="pre">Select</span></code> and <code class="docutils literal notranslate"><span class="pre">Where</span></code> methods work with most collection types. More generally, you’ll find various specialized methods that use lambdas whenever you encounter a specialized collection type (such as <code class="docutils literal notranslate"><span class="pre">DbSet</span></code>, as we’ll soon see).</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">18.2.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Suppose you have an array of first names, <code class="docutils literal notranslate"><span class="pre">firstNames</span></code>, of people each with the last name Smith. What lambda expression would you pass to <code class="docutils literal notranslate"><span class="pre">Select</span></code> in the following code so that each name is appended by its surname?</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">smiths</span> <span class="p">=</span> <span class="n">firstNames</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">_______</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">&quot;Smith&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">&quot;</span> <span class="pre">Smith&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">lastName</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">==</span> <span class="pre">&quot;Smith</span></code></li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Given an array of numbers, <code class="docutils literal notranslate"><span class="pre">nums</span></code>, what lambda expression would you pass to <code class="docutils literal notranslate"><span class="pre">Where</span></code> in the following code so that the resulting array consists of only the numbers greater than 42?</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">bigNums</span> <span class="p">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">______</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">42</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">==</span> <span class="pre">42</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">42</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">42</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="types-of-relationships.html"><span aria-hidden="true">&larr;</span> <span class="section-number">18.1. </span>Types of Relationships</a></li>
+        
+        
+        <li class="next"><a href="one-to-many.html"><span class="section-number">18.3. </span>Creating a One-to-Many Relationship <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-relationships/lambda-expressions.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

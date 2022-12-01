@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9.2. Create a New ASP.NET Project &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10. Controllers and Routing" href="../aspdotnet-controllers-and-routes/index.html" />
+    <link rel="prev" title="9.1. Design Patterns, MVC, and ASP.NET, Oh My!" href="mvc.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">9. </span>Introduction to ASP.NET</a></li>
+    <li class="active"><span class="section-number">9.2. </span>Create a New ASP.NET Project</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="create-a-new-asp-net-project">
+<h1><span class="section-number">9.2. </span>Create a New ASP.NET Project<a class="headerlink" href="#create-a-new-asp-net-project" title="Permalink to this headline">¶</a></h1>
+<p>ASP.NET is a framework in the .NET Core family that is used to build web applications.
+While <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0" target="_blank">ASP.NET<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> can be used to build a wide variety of web applications,
+we will be focusing on using it to build MVC web applications.</p>
+<div class="section" id="getting-started">
+<span id="initialize-aspdotnet-project"></span><h2><span class="section-number">9.2.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To create a new ASP.NET MVC project, start a new project in Visual Studio.</p>
+<div class="section" id="windows-users">
+<h3><span class="section-number">9.2.1.1. </span>Windows Users<a class="headerlink" href="#windows-users" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Use the <strong>Get started</strong> Menu to <strong>Create a new project</strong>.</p>
+</li>
+<li><p class="first">When selecting the type of project, select <strong>ASP.NET Core Web App (Model-View-Controller)</strong>.</p>
+<dl class="docutils">
+<dt>There are 2 ways to find this easily:</dt><dd><ol class="upperalpha simple">
+<li>Use the search bar.</li>
+<li>Select “Web” from the dropdown menu.</li>
+</ol>
+</dd>
+</dl>
+<p>Once you have your project type, click <em>Next</em>.</p>
+</li>
+<li><p class="first">Name your project <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code> and put it in the appropriate directory for all of your classwork.
+Hit Next.</p>
+</li>
+<li><p class="first">Select the Framework.  We are going to use <em>.NET Core 6.0</em>.
+You do not need to adjust any other options at this point.  Select Create!</p>
+</li>
+<li><p class="first">Visual Studio creates a fully-functional web application for you.</p>
+</li>
+</ol>
+<dl class="docutils">
+<dt>Troubleshooting</dt><dd>This <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&amp;tabs=visual-studio" target="_blank">tutorial for Windows<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+can help you if you are stuck.</dd>
+</dl>
+</div>
+<div class="section" id="mac-users">
+<h3><span class="section-number">9.2.1.2. </span>Mac Users<a class="headerlink" href="#mac-users" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Open Visual Studio for Mac and select a <strong>New</strong></li>
+<li>The type of project is a <strong>Web Application (Model-View-Controller)</strong>.
+In the left-side menu, select <strong>App</strong> from under the <strong>Web and Console</strong> list.
+Continue on to the next screen.</li>
+<li>Target Framework will be <code class="docutils literal notranslate"><span class="pre">.NET</span> <span class="pre">6.0</span></code>.  You don’t need to adjust any other settings at this time.</li>
+<li>Name your project <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code> and put it in the appropriate directory for all of your classwork.
+Hit Next.</li>
+<li>Visual Studio creates a fully-functional web application for you.</li>
+</ol>
+<dl class="docutils">
+<dt>Troubleshooting</dt><dd>Microsoft created a tutorial for creating an MVC in Visual Studio, but for the Mac version they recommend the following <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&amp;tabs=visual-studio-mac" target="_blank">guide<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</dd>
+</dl>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The guide is working with <code class="docutils literal notranslate"><span class="pre">.NET</span> <span class="pre">5.0</span></code> which is no longer supported.  Make you that you are using <code class="docutils literal notranslate"><span class="pre">.NET</span> <span class="pre">6.0</span></code>.</p>
+</div>
+</div>
+<div class="section" id="all-users">
+<h3><span class="section-number">9.2.1.3. </span>All Users<a class="headerlink" href="#all-users" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Now launch the application!<ol class="loweralpha">
+<li><strong>Mac Users</strong>: Click <em>Run</em>.  It is a button that looks like a triangle pointing to the right.</li>
+<li><strong>Windows Users</strong>: Try clicking <em>IIS Express</em> first. If this results in
+an <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">Error</span> <span class="pre">500.0</span></code>, use the dropdown arrow next to <em>IIS Express</em>.
+Select <code class="docutils literal notranslate"><span class="pre">HelloAspDotNet</span></code> (or whatever you named your project) and try
+launching the application again.</li>
+</ol>
+</li>
+<li>Eventually, your browser will open and display your application.
+Take note of the port number in the address bar.</li>
+</ol>
+<dl class="docutils">
+<dt>Troubleshooting</dt><dd>Refer to the guides mentioned above</dd>
+</dl>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The home page of your application already contains a link to a tutorial from Microsoft on how to use ASP.NET MVC.
+If you want extra study materials, check out
+that <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&amp;tabs=visual-studio" target="_blank">tutorial<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from the home page Microsoft designed!</p>
+</div>
+</div>
+</div>
+<div class="section" id="explore-the-code">
+<h2><span class="section-number">9.2.2. </span>Explore the Code<a class="headerlink" href="#explore-the-code" title="Permalink to this headline">¶</a></h2>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory, check out <code class="docutils literal notranslate"><span class="pre">HomeController.cs</span></code>.
+Microsoft provided the code in <code class="docutils literal notranslate"><span class="pre">HomeController</span></code> and that is why our application ran immediately after we created it and was full of content.
+As we work on our new application, we will be adding a new controller, <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">As you code along with the videos, you will be working on your own project.
+However, should you want to review a step or double-check your code, fork LaunchCode’s <code class="docutils literal notranslate"><span class="pre">HelloASPDotNETDemo</span></code> repository to see what the code looked like at each stage.
+The repository is up on <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo" target="_blank">Github<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+The <code class="docutils literal notranslate"><span class="pre">main</span></code> branch contains the code after creation and also shows the starting point for the next chapter.</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">9.2.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: You should take note of the port number the server is using to run your application.</p>
+<ol class="last loweralpha simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="mvc.html"><span aria-hidden="true">&larr;</span> <span class="section-number">9.1. </span>Design Patterns, MVC, and ASP.NET, Oh My!</a></li>
+        
+        
+        <li class="next"><a href="../aspdotnet-controllers-and-routes/index.html"><span class="section-number">10. </span>Controllers and Routing <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-intro/initialize.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

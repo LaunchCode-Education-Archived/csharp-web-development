@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.2. Setup For C# &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.3. Windows Users: Visual Studio Community Edition" href="windows-setup.html" />
+    <link rel="prev" title="1.1. Why Learn C#?" href="why-csharp.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">1. </span>Introduction and Setup</a></li>
+    <li class="active"><span class="section-number">1.2. </span>Setup For C#</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="setup-for-c">
+<h1><span class="section-number">1.2. </span>Setup For C#<a class="headerlink" href="#setup-for-c" title="Permalink to this headline">¶</a></h1>
+<p>For the entirety of this course, we will be coding in C# with the help of Visual Studio and .NET.</p>
+<div class="section" id="the-integrated-development-environment">
+<span id="install-visual-studio"></span><span id="index-0"></span><h2><span class="section-number">1.2.1. </span>The Integrated Development Environment<a class="headerlink" href="#the-integrated-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>Visual Studio (VS) is an <strong>integrated development environment (IDE)</strong>.
+An IDE is like a text editor on steroids.
+We can write and edit code <em>and</em> make use of additional features that enhance our coding experience.
+VS offers code completion hints, debugging, and even it’s own compiler.</p>
+<p>We’ll be using it throughout this course, so it’s time to get familiar with some of the basics.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Visual Studio IDE is <em>not</em> the same application as the source-code editor called Visual Studio Code (VS Code).
+If you already have VS Code installed on your machine, you will still need to install and configure VS.</p>
+</div>
+<span class="target" id="dotnet-intro"></span></div>
+<div class="section" id="development-frameworks">
+<span id="index-1"></span><h2><span class="section-number">1.2.2. </span>Development Frameworks<a class="headerlink" href="#development-frameworks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="net">
+<h3><span class="section-number">1.2.2.1. </span>.NET<a class="headerlink" href="#net" title="Permalink to this headline">¶</a></h3>
+<p><strong>.NET</strong> is a set of tools for developing software in a number of different programming languages, including C#.
+The tools together make what is known as a <strong>software development kit</strong>, or <strong>SDK</strong>.</p>
+<p>Some of its featuers:</p>
+<ul class="simple">
+<li>Open-source and available on several operating systems.</li>
+<li>The SDK provides the runtime environment and the virtual machine for compiling and running C# programs.</li>
+<li>Contains the <strong>base class libraries</strong> which include the built-in code that takes care of common programming items, such as object types.</li>
+<li>Able to be extended using additional frameworks such as ASP.NET.</li>
+</ul>
+<p>You can learn more about .NET <a class="reference external" href="https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet" target="_blank">here<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+</div>
+<div class="section" id="asp-net-core">
+<h3><span class="section-number">1.2.2.2. </span>ASP.NET Core<a class="headerlink" href="#asp-net-core" title="Permalink to this headline">¶</a></h3>
+<p>As we progress through this portion of the course, we will start creating web projects.
+.NET will compile C#, but does not contain any libraries for web development.
+ASP.NET Core is an open source collection of libraries specifically for web development and creating dynamic web applications.</p>
+<p>We will use ASP.NET Core midway through this course; however, you can to learn more about this framework at <a class="reference external" href="https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet-core" target="_blank">this<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> site.</p>
+</div>
+</div>
+<div class="section" id="c-and-the-frameworks">
+<span id="compiling-csharp"></span><h2><span class="section-number">1.2.3. </span>C# and the Frameworks<a class="headerlink" href="#c-and-the-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>A summary of the relationship between the code you write in C# and tools provided by .NET:</p>
+<ol class="arabic simple">
+<li>We write code in C#.</li>
+<li>The source code is compiled (like translating) into another intermediate language.</li>
+<li>The intermediate code is read by a runtime program included in the .NET SDK.</li>
+<li>The runtime environment translates the intermediate code into machine-readable language.</li>
+</ol>
+<p>Fortunately for us, .NET can be installed along with Visual Studio IDE.</p>
+</div>
+<div class="section" id="windows-users-vs-mac-users">
+<h2><span class="section-number">1.2.4. </span>Windows Users vs. Mac Users<a class="headerlink" href="#windows-users-vs-mac-users" title="Permalink to this headline">¶</a></h2>
+<p>Windows users will setup their C# development environment with a community version of Visual Studio. Mac users
+need to download and install a different version of Visual Studio called Visual Studio for Mac. While the names of
+these two programs are very similar, the user-experiences are quite different.</p>
+<p>An important note for this class: The content of this book is designed to inform both Windows and Mac users on the
+basics of web programming in C#. There are sometimes significant, and other times more minor, discrepancies between
+how to use the IDE tools provided in Visual Studio on Windows machines and Visual Studio for Mac. We will do our
+best to provide either instructions that are application neutral, or instructions that are tailored to the development
+experiences on both operating systems. There may be times when your C# project view will not look exactly like that in
+the book because you are on a different operating system and are therefore using a different Visual Studio application.
+The actions you take or buttons to click may be slightly different from what you see in the book.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">1.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Visual Studio is a framework.</p>
+<ol class="last arabic simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>.NET contains:
+(Select all that apply)</p>
+<ol class="last arabic simple">
+<li>A C# compiler</li>
+<li>A virtual machine</li>
+<li>Visual Studio IDE</li>
+<li>C# class library</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="why-csharp.html"><span aria-hidden="true">&larr;</span> <span class="section-number">1.1. </span>Why Learn C#?</a></li>
+        
+        
+        <li class="next"><a href="windows-setup.html"><span class="section-number">1.3. </span>Windows Users: Visual Studio Community Edition <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/introduction-and-setup/setup.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

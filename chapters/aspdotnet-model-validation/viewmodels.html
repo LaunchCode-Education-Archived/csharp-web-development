@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15.1. ViewModels and Passing Data To and From Views &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15.2. Server-Side Validation" href="server-side-validation.html" />
+    <link rel="prev" title="15. ViewModels and Model Validation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">15. </span>ViewModels and Model Validation</a></li>
+    <li class="active"><span class="section-number">15.1. </span>ViewModels and Passing Data To and From Views</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="viewmodels-and-passing-data-to-and-from-views">
+<span id="index-0"></span><h1><span class="section-number">15.1. </span>ViewModels and Passing Data To and From Views<a class="headerlink" href="#viewmodels-and-passing-data-to-and-from-views" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have an understanding for what a model is, we can focus on how to effectively pass information between the three elements of MVC applications.
+With our current MVC application, we can add new events and remove events.
+However, our application is also susceptible to run-time errors.
+Our view can accept any type of input and if we mistype something in our view, we can run into issues later down the line.</p>
+<p>A <strong>ViewModel</strong> is a model class designed specifically to be used in a view.
+By utilizing ViewModels in our application, we can make our views strongly-typed and add validation to forms to prevent bad user input.
+Also, if we have information we want to collect as part of a form, but not save as part of a model, we can store that data as a property of a ViewModel.
+An example of this would be if we have a form for users to create an account on our site.
+The form includes two fields: one for the password and one for confirming the new user’s password.
+While we only want to save the password and may only have a <code class="docutils literal notranslate"><span class="pre">Password</span></code> property in our model, we can add a <code class="docutils literal notranslate"><span class="pre">ConfirmPassword</span></code> property to the ViewModel so we can check that the two match before saving the user’s info.
+These benefits of ViewModels will help reduce potential errors in our application.</p>
+<div class="section" id="refactoring-the-view-and-controller-to-use-a-model-in-a-view-video">
+<h2><span class="section-number">15.1.1. </span>Refactoring the View and Controller to Use a Model in a View - Video<a class="headerlink" href="#refactoring-the-view-and-controller-to-use-a-model-in-a-view-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/_lUUT1oDE-U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/model-binding" target="_blank">model-binding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views" target="_blank">models-in-views<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+</div>
+</div>
+<div class="section" id="refactoring-the-view-and-controller-to-use-a-model-in-a-view-text">
+<h2><span class="section-number">15.1.2. </span>Refactoring the View and Controller to Use a Model in a View - Text<a class="headerlink" href="#refactoring-the-view-and-controller-to-use-a-model-in-a-view-text" title="Permalink to this headline">¶</a></h2>
+<p>To start with understanding why we may want to use a ViewModel, let’s refactor our code to use a model directly in our view.</p>
+<p>First, in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, we want to convert the collection of Events we have been holding into a list.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>19</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">events</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;(</span><span class="n">EventData</span><span class="p">.</span><span class="n">GetAll</span><span class="p">());</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now that we are storing our items in a <code class="docutils literal notranslate"><span class="pre">List</span></code>, we need to import the model into our <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code> view so we can use the new <code class="docutils literal notranslate"><span class="pre">events</span></code> collection.
+We can add a small statement up on line 1 to do so:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">@model</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">CodingEventsDemo</span><span class="p">.</span><span class="n">Models</span><span class="p">.</span><span class="n">Event</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Or, as we write in the video:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="n">@using</span> <span class="n">CodingEventsDemo</span><span class="p">.</span><span class="n">Models</span>
+
+   <span class="n">@model</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Wherever we used our <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property, we can now use <code class="docutils literal notranslate"><span class="pre">Model</span></code> syntax.
+Once the view has been updated, run the application!</p>
+<p>This was merely a refactor so the functionality of the app hasn’t changed, but we have eliminated some of the possibility of bugs in our code being discovered at runtime!
+Using a model in a view like this makes our view <em>strongly-typed</em>.
+Before if we misspelled a property of <code class="docutils literal notranslate"><span class="pre">Event</span></code> or <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>, those errors would have been caught at run-time and possibly interfered with users’ experience.
+With a strongly-typed view, the same errors would be caught at compile-time before users see the application.
+Strongly-typed views also support intellisense, so as we work with properties of a model, we can make sure we have the correct property name.</p>
+</div>
+<div class="section" id="adding-a-viewmodel-video">
+<h2><span class="section-number">15.1.3. </span>Adding a ViewModel - Video<a class="headerlink" href="#adding-a-viewmodel-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/XAPP0VTiwk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views" target="_blank">models-in-views<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/adding-viewmodels" target="_blank">adding-viewmodels<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+</div>
+</div>
+<div class="section" id="adding-a-viewmodel-text">
+<h2><span class="section-number">15.1.4. </span>Adding a ViewModel - Text<a class="headerlink" href="#adding-a-viewmodel-text" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have refactored our <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code> view and <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> to use a model, let’s investigate how to create a ViewModel.
+We can do so by following these steps:</p>
+<ol class="arabic">
+<li><p class="first">Add a <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory at the top level of the project.</p>
+</li>
+<li><p class="first">Add a new class to the <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory and name it <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p>
+</li>
+<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code> properties to the new class.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">For now, your ViewModel does not need a constructor!</p>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method responsible for retrieving the form to add events, in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, create a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> called <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> and add it to the <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</p>
+</li>
+<li><p class="first">Import the ViewModel to the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> view with the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> syntax.</p>
+</li>
+<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">asp-controller</span> <span class="pre">=</span> <span class="pre">Events</span></code> and <code class="docutils literal notranslate"><span class="pre">asp-action</span> <span class="pre">=</span> <span class="pre">NewEvent</span></code> to the <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag to designate which method the form data should be sent to.</p>
+</li>
+<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">asp-for</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags. This allows us to specify which form field corresponds to which property in our ViewModel.</p>
+</li>
+<li><p class="first">Refactor the <code class="docutils literal notranslate"><span class="pre">NewEvent()</span></code> action method to be named <code class="docutils literal notranslate"><span class="pre">Add()</span></code>. Have it also now use the ViewModel as its parameter. Set values of a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using the values of the properties stored in the instance of the <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p>
+</li>
+<li><p class="first">Add the new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object to <code class="docutils literal notranslate"><span class="pre">EventData</span></code> and make sure that the method still returns a <code class="docutils literal notranslate"><span class="pre">Redirect</span></code> to <code class="docutils literal notranslate"><span class="pre">/Events</span></code>.</p>
+</li>
+<li><p class="first">Run your application.</p>
+</li>
+</ol>
+<p>Following these steps, we effectively refactored our application to use a ViewModel.
+While the functionality of the application remains the same, we are now in a position to easily add validation to our application.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">15.1.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="last"><strong>True or False</strong> ViewModels are views designed to specifically be used in models.</p>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="index.html"><span aria-hidden="true">&larr;</span> <span class="section-number">15. </span>ViewModels and Model Validation</a></li>
+        
+        
+        <li class="next"><a href="server-side-validation.html"><span class="section-number">15.2. </span>Server-Side Validation <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-model-validation/viewmodels.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

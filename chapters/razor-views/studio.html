@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.11. Studio: Spa Day! &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14. Models and Model Binding" href="../aspdotnet-model-classes/index.html" />
+    <link rel="prev" title="13.10. Exercises: Razor Views" href="exercises.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.11. </span>Studio: Spa Day!</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="studio-spa-day">
+<h1><span class="section-number">13.11. </span>Studio: Spa Day!<a class="headerlink" href="#studio-spa-day" title="Permalink to this headline">¶</a></h1>
+<p>After all of the hard work we have put into learning about Razor templates, it is
+time for a spa day. Let’s make an application to select some spa services.</p>
+<p>Our application needs to do the following:</p>
+<ol class="arabic simple">
+<li>Display the user’s name and skin type under their customer profile.</li>
+<li>Display the appropriate facial treatments for their skin type.</li>
+<li>Display the description of the spa’s manicures or pedicures depending on the
+user’s interest.</li>
+</ol>
+<p>As always, read through the whole page before starting to code.</p>
+<div class="section" id="setup">
+<h2><span class="section-number">13.11.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Fork and clone the <a class="reference external" href="https://github.com/LaunchCodeEducation/SpaDay" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+Check out the project via Version Control in Visual Studio.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last"><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+Refer to <a class="reference internal" href="../../appendices/vs-troubleshooting.html#vs-troubleshooting"><span class="std std-ref">Visual Studio Operational Tips</span></a> for help.</p>
+</div>
+<p>Once you have the project opened in your IDE, and run it and click the <em>SpaDay</em> link that appears in
+the upper left of the home page. You should see a small form at the <code class="docutils literal notranslate"><span class="pre">/Spa</span></code> route.</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/startingform.png"><img alt="Image showing an empty form with three fields for name, skin type, and whether the person wants a pedicure or manicure." src="../../_images/startingform.png" style="width: 568.0px; height: 305.6px;" /></a>
+<p class="caption"><span class="caption-text">The form located at <code class="docutils literal notranslate"><span class="pre">/Spa</span></code>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="the-customer-profile">
+<h2><span class="section-number">13.11.2. </span>The Customer Profile<a class="headerlink" href="#the-customer-profile" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">Controllers</span></code>, we have a controller called <code class="docutils literal notranslate"><span class="pre">SpaController</span></code>. Inside
+<code class="docutils literal notranslate"><span class="pre">SpaController</span></code> are three methods.</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">CheckSkinType()</span></code> method: Contains the logic to determine which facial treatments are appropriate for which skin type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Index</span></code> view when <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Menu()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Menu</span></code> view when <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</li>
+</ol>
+<p>In <code class="docutils literal notranslate"><span class="pre">Views/Spa</span></code>, we have a Razor template called <code class="docutils literal notranslate"><span class="pre">Menu</span></code>.
+Inside <code class="docutils literal notranslate"><span class="pre">Menu.cshtml</span></code>, there are two <code class="docutils literal notranslate"><span class="pre">div</span></code> elements.
+Let’s add some children to the <code class="docutils literal notranslate"><span class="pre">div</span></code> with the id, <code class="docutils literal notranslate"><span class="pre">clientProfile</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">Add an <code class="docutils literal notranslate"><span class="pre">h3</span></code> that says “Client profile”.</p>
+</li>
+<li><p class="first">Next, display the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter from the form.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>This is a two step process.</p>
+<ol class="last arabic simple">
+<li>In the controller, add a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to hold the <code class="docutils literal notranslate"><span class="pre">name</span></code> value.</li>
+<li>In the view, use that <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to display the <code class="docutils literal notranslate"><span class="pre">name</span></code> in a <code class="docutils literal notranslate"><span class="pre">p</span></code> tag.</li>
+</ol>
+</div>
+</li>
+</ol>
+<p>Run the application and head to <code class="docutils literal notranslate"><span class="pre">localhost:5001/spa</span></code> to see the results. When we
+fill out the form, we should see a new page with the client profile heading and name
+at the top.</p>
+</div>
+<div class="section" id="list-all-appropriate-facial-treatments">
+<h2><span class="section-number">13.11.3. </span>List All Appropriate Facial Treatments<a class="headerlink" href="#list-all-appropriate-facial-treatments" title="Permalink to this headline">¶</a></h2>
+<p>To provide treatment suggestions, <code class="docutils literal notranslate"><span class="pre">SpaController.Menu()</span></code> uses the <code class="docutils literal notranslate"><span class="pre">CheckSkinType()</span></code> method
+and fills a list with facial treatments that benefit the user’s skin type. Now, we just need to use Razor to
+display the contents of the <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> list.</p>
+<ol class="arabic simple">
+<li>Add the client’s <code class="docutils literal notranslate"><span class="pre">skintype</span></code> and the <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> list as a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property.</li>
+<li>Now, head back to <code class="docutils literal notranslate"><span class="pre">Menu.cshtml</span></code> and checkout the empty <code class="docutils literal notranslate"><span class="pre">div</span></code> with the id,
+<code class="docutils literal notranslate"><span class="pre">servicesMenu</span></code>.</li>
+<li>Pass in the <code class="docutils literal notranslate"><span class="pre">skintype</span></code> variable to the <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tag.</li>
+<li>Iteratively add the values in <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> to an unordered list. If you need a quick reminder of
+the syntax, review the <a class="reference internal" href="template-iteration.html#razor-foreach"><span class="std std-ref">&#64;foreach section</span></a> .</li>
+</ol>
+</div>
+<div class="section" id="mani-or-pedi">
+<h2><span class="section-number">13.11.4. </span>Mani or Pedi?<a class="headerlink" href="#mani-or-pedi" title="Permalink to this headline">¶</a></h2>
+<p>We want to display a description for the nail service the user selects.
+Inside the <code class="docutils literal notranslate"><span class="pre">servicesMenu</span></code> div, use <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> to determine if the value of
+<code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;manicure&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pedicure&quot;</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;manicure&quot;</span></code>, display this description:</p>
+<blockquote>
+<div><p>Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.</p>
+</div></blockquote>
+</li>
+<li><p class="first">If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;pedicure&quot;</span></code>, display this description:</p>
+<blockquote>
+<div><p>Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="end-result">
+<h2><span class="section-number">13.11.5. </span>End Result<a class="headerlink" href="#end-result" title="Permalink to this headline">¶</a></h2>
+<p>After you are done with the studio, you should be able to fill out the form,
+click “Submit”, and see your profile page.</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/completedform.png"><img alt="Form completed with the name, &quot;Yolanda&quot;, combination skin and a preference for pedicures." src="../../_images/completedform.png" style="width: 399.20000000000005px; height: 272.8px;" /></a>
+<p class="caption"><span class="caption-text">A client completes the spa day form.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/endresultprofilepage.png"><img alt="Profile showing Yolanda's information, recommended facial treatments, and pedicure description." src="../../_images/endresultprofilepage.png" style="width: 842.0999999999999px; height: 349.29999999999995px;" /></a>
+<p class="caption"><span class="caption-text">The client’s service menu.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="bonus-mission">
+<h2><span class="section-number">13.11.6. </span>Bonus Mission<a class="headerlink" href="#bonus-mission" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Try adding an element to the bottom of the page with square
+shaped <code class="docutils literal notranslate"><span class="pre">div</span></code> elements. Each square should be a different color for
+different available nail polishes. At the base of the project is a folder called <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.
+Inside of that is another folder called <code class="docutils literal notranslate"><span class="pre">css</span></code>. Modify the <code class="docutils literal notranslate"><span class="pre">site.css</span></code> file inside of it to
+get some CSS practice. There are already a number of style rules present so remember to be
+give your <code class="docutils literal notranslate"><span class="pre">div</span></code> elements class identifiers to give your elements specificity.</li>
+<li>Modify the form to allow the user to select either a manicure or pedicure or
+<em>both</em>. If the user selects both, display both the manicure and pedicure
+descriptions in the <code class="docutils literal notranslate"><span class="pre">Menu</span></code> view.</li>
+<li>Work with routes and paths to display the spa menu page on a separate route
+from the form.</li>
+</ol>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="exercises.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.10. </span>Exercises: Razor Views</a></li>
+        
+        
+        <li class="next"><a href="../aspdotnet-model-classes/index.html"><span class="section-number">14. </span>Models and Model Binding <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/studio.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

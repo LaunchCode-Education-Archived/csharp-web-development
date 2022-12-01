@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.6. Razor Forms &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.7. The Shared Directory" href="layout-pages.html" />
+    <link rel="prev" title="13.5. Conditionals in a Template" href="template-conditionals.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.6. </span>Razor Forms</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="razor-forms">
+<h1><span class="section-number">13.6. </span>Razor Forms<a class="headerlink" href="#razor-forms" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Many changes have happened in the world of Visual Studio and ASP.NET since the original writing of this book.
+We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.
+If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
+Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.</p>
+</div>
+<p>Already we have seen that templates allow us to build generic forms.
+Using templates, you can reuse the structure by rendering the same form, but with different labels and data.
+Thus, a single form can serve different purposes, saving you extra effort.</p>
+<p>Whenever possible, reuse existing templates!</p>
+<div class="section" id="start-a-new-project">
+<h2><span class="section-number">13.6.1. </span>Start a New Project<a class="headerlink" href="#start-a-new-project" title="Permalink to this headline">¶</a></h2>
+<p>You will build a new project so you can practice with templates and forms.
+If you have not done so, commit and push any unsaved work from your <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code> project.</p>
+<p>Your new project will keep track of some coding events, such as meetups and conferences.
+To get started, follow the <a class="reference internal" href="../aspdotnet-intro/initialize.html#initialize-aspdotnet-project"><span class="std std-ref">steps</span></a> you took to create <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code>, but call the project <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>.</p>
+</div>
+<div class="section" id="codingevents-setup-video">
+<h2><span class="section-number">13.6.2. </span>CodingEvents Setup - Video<a class="headerlink" href="#codingevents-setup-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/30uNDl80lIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/views-setup" target="_blank">views-setup branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repository.</p>
+</div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last"><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+Refer to <a class="reference internal" href="../../appendices/vs-troubleshooting.html#vs-troubleshooting"><span class="std std-ref">Visual Studio Operational Tips</span></a> for help.</p>
+</div>
+</div>
+<div class="section" id="codingevents-setup-text">
+<h2><span class="section-number">13.6.3. </span>CodingEvents Setup - Text<a class="headerlink" href="#codingevents-setup-text" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory, create a new controller named <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>.</li>
+<li>In the new controller, create an action method for <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests.</li>
+<li>Within the action method, create an empty <code class="docutils literal notranslate"><span class="pre">List</span></code> and add a few event names to it.</li>
+<li>Add the <code class="docutils literal notranslate"><span class="pre">List</span></code> to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>. Then return the corresponding view.</li>
+<li>Within the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory, create a new directory named <code class="docutils literal notranslate"><span class="pre">Events</span></code>. Within this directory, create a new view named <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</li>
+<li>Within the new template, loop over the <code class="docutils literal notranslate"><span class="pre">List</span></code> and display the name of each event.  Make sure your template can handle an empty <code class="docutils literal notranslate"><span class="pre">List</span></code>.</li>
+</ol>
+</div>
+<div class="section" id="create-and-render-a-form-video">
+<h2><span class="section-number">13.6.4. </span>Create and Render a Form - Video<a class="headerlink" href="#create-and-render-a-form-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/rdEsTOYhM_E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/views-setup" target="_blank">views-setup branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repository.
+The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/render-form" target="_blank">render-form branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repository.</p>
+</div>
+</div>
+<div class="section" id="create-and-render-a-form-text">
+<h2><span class="section-number">13.6.5. </span>Create and Render a Form - Text<a class="headerlink" href="#create-and-render-a-form-text" title="Permalink to this headline">¶</a></h2>
+<p>A Razor form can be made simply with a template that includes a <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> element.
+The method for the form should be of type <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c">&lt;!-- Other HTML --&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;inputName&quot;</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;submitButtonText&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+  <span class="c">&lt;!-- Other HTML --&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>You can include as many inputs as you need in the form, and these can be of
+different types (e.g. text, email, checkbox, etc.). However, each different
+piece of data you want to collect needs to have a unique <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.</p>
+<p>To <em>render</em> the form in the view, add a method to the controller with an <code class="docutils literal notranslate"><span class="pre">[HttpGet]</span></code> annotation:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">  [HttpGet]</span>
+  <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Add</span><span class="p">()</span>
+  <span class="p">{</span>
+     <span class="c1">// Any additional method code here</span>
+
+     <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+  <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If the <code class="docutils literal notranslate"><span class="pre">action</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag leads to the same route as the form is being rendered at, you do not have to include an <code class="docutils literal notranslate"><span class="pre">action</span></code> attribute.</p>
+</div>
+</div>
+<div class="section" id="handle-form-submission-video">
+<h2><span class="section-number">13.6.6. </span>Handle Form Submission - Video<a class="headerlink" href="#handle-form-submission-video" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have created and rendered a form in your <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>
+project, you need to add a method to the controller to <em>handle</em> its submission.
+Code along with the video below to add this functionality.</p>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/ElaXOEpFQZQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<p>As usual, the following summary outlines the ideas from the clip.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/render-form" target="_blank">render-form branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repository.
+The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handle-form-submission" target="_blank">handle-form-submission branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repository.</p>
+</div>
+</div>
+<div class="section" id="handle-form-submission-text">
+<h2><span class="section-number">13.6.7. </span>Handle Form Submission - Text<a class="headerlink" href="#handle-form-submission-text" title="Permalink to this headline">¶</a></h2>
+<p>To <em>process</em> a form after the user clicks the <em>Submit</em> button, you need to add
+a method to the controller using the <code class="docutils literal notranslate"><span class="pre">[HttpPost]</span></code> annotation:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">  [HttpPost]</span>
+<span class="na">  [Route(&quot;/Events/Add&quot;)]</span>
+  <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">NewEvent</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+  <span class="p">{</span>
+     <span class="c1">// Method code...</span>
+
+     <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Some points to note:</p>
+<ol class="arabic simple">
+<li><strong>Line 2:</strong> For each piece of data that needs to be retrieved from the form,
+declare a parameter of the appropriate type.</li>
+<li>The method code performs any data manipulation required after the
+information gets submitted.</li>
+<li><strong>Line 6:</strong> We may want to send the user to a different page after they
+successfully submit a form. Instead of re-rendering the form, we want
+to use <code class="docutils literal notranslate"><span class="pre">Redirect()</span></code> to <em>redirect</em> the user to a different template.</li>
+</ol>
+<p>Now that we have a form and can handle the form submission, we want to create a link to the form to add an event in our <code class="docutils literal notranslate"><span class="pre">Index</span></code> template.
+This way, after reviewing the list of events, users can click on the link to the form and add an event.
+To do this, we use anchor tag helpers. If we put in the following line in our template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">asp-controller</span><span class="o">=</span><span class="s">&quot;Events&quot;</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Add&quot;</span><span class="p">&gt;</span>Add Event<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Then when we build our application, the generated HTML of the page will look like:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/Events/Add&quot;</span><span class="p">&gt;</span>Add Event<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Users can now click on the link on our page at <code class="docutils literal notranslate"><span class="pre">localhost:5001/Events</span></code> and are directed to the form to add an event.
+Once they hit the button to submit the form, the data is passed to the <code class="docutils literal notranslate"><span class="pre">NewEvent()</span></code> method, the user’s event is added to the <code class="docutils literal notranslate"><span class="pre">Events</span></code> list, and the application redirects back to <code class="docutils literal notranslate"><span class="pre">localhost:5001/Events</span></code> where an updated <code class="docutils literal notranslate"><span class="pre">Events</span></code> list is displayed.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="template-conditionals.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.5. </span>Conditionals in a Template</a></li>
+        
+        
+        <li class="next"><a href="layout-pages.html"><span class="section-number">13.7. </span>The Shared Directory <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/template-forms.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

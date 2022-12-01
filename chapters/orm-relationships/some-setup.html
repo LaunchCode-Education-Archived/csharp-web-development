@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18.4. Some Setup &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18.5. Creating a Many-to-Many Relationship" href="many-to-many.html" />
+    <link rel="prev" title="18.3. Creating a One-to-Many Relationship" href="one-to-many.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">18. </span>Relationships in Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">18.4. </span>Some Setup</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="some-setup">
+<h1><span class="section-number">18.4. </span>Some Setup<a class="headerlink" href="#some-setup" title="Permalink to this headline">¶</a></h1>
+<p>Before introducing many-to-many relationships in EntityFrameworkCore, we need to add a new model and view to our app.</p>
+<p>In the next section, we explore how we can work with many-to-many relationships in ASP.NET using EntityFrameworkCore. To do so, we need a class that we can relate to <code class="docutils literal notranslate"><span class="pre">Event</span></code> in a many-to-many fashion. This is the <code class="docutils literal notranslate"><span class="pre">Tag</span></code> class.</p>
+<div class="section" id="the-tag-model-class">
+<h2><span class="section-number">18.4.1. </span>The <code class="docutils literal notranslate"><span class="pre">Tag</span></code> Model Class<a class="headerlink" href="#the-tag-model-class" title="Permalink to this headline">¶</a></h2>
+<p>Between the last section and this one, we have added a new persistent model class to the code, <code class="docutils literal notranslate"><span class="pre">Tag</span></code>. This class represents a tag of the type used for blog or social media posts. For us, a tag will be a topical label that can be applied to any event. Thus, we’ll eventually relate <code class="docutils literal notranslate"><span class="pre">Event</span></code> and <code class="docutils literal notranslate"><span class="pre">Tag</span></code> to each other in a many-to-many way.</p>
+<p>The steps to add this code follow the exact same process that we used to add a <a class="reference internal" href="../orm-intro/exercises.html#orm1-exercises"><span class="std std-ref">persistent EventCategory class</span></a>, so we won’t go through them in detail here.</p>
+</div>
+<div class="section" id="the-detail-view-video">
+<h2><span class="section-number">18.4.2. </span>The <code class="docutils literal notranslate"><span class="pre">Detail</span></code> View - Video<a class="headerlink" href="#the-detail-view-video" title="Permalink to this headline">¶</a></h2>
+<p>Before working with tags, we will add a new view, along with the corresponding controller, ViewModel, and template. The new view will live at the route <code class="docutils literal notranslate"><span class="pre">/Events/Detail/X</span></code>, where <code class="docutils literal notranslate"><span class="pre">X</span></code> is the ID of a specific event. This view will display the details of a specific event on its own page.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migration-testing" target="_blank">migration-testing branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/event-detail-view" target="_blank">event-detail-view branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/vLWOsHFB5BQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="the-detail-view-text">
+<h2><span class="section-number">18.4.3. </span>The <code class="docutils literal notranslate"><span class="pre">Detail</span></code> View - Text<a class="headerlink" href="#the-detail-view-text" title="Permalink to this headline">¶</a></h2>
+<p>Adding a <code class="docutils literal notranslate"><span class="pre">Detail</span></code> view for events is relatively straightforward, but it also involves a couple of new concepts. We’ll start by creating a ViewModel to model the data we want to display in the view.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">CodingEventsDemo.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">CodingEventsDemo.ViewModels</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">EventDetailViewModel</span>
+   <span class="p">{</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">ContactEmail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">CategoryName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">public</span> <span class="nf">EventDetailViewModel</span><span class="p">(</span><span class="n">Event</span> <span class="n">theEvent</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="n">Name</span> <span class="p">=</span> <span class="n">theEvent</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+            <span class="n">Description</span> <span class="p">=</span> <span class="n">theEvent</span><span class="p">.</span><span class="n">Description</span><span class="p">;</span>
+            <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">theEvent</span><span class="p">.</span><span class="n">ContactEmail</span><span class="p">;</span>
+            <span class="n">CategoryName</span> <span class="p">=</span> <span class="n">theEvent</span><span class="p">.</span><span class="n">Category</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The model replicates the <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Description</span></code>, and <code class="docutils literal notranslate"><span class="pre">Email</span></code> properties of <code class="docutils literal notranslate"><span class="pre">Event</span></code> while storing <code class="docutils literal notranslate"><span class="pre">Category.Name</span></code> as a string. This is a minor variant of the <code class="docutils literal notranslate"><span class="pre">Event</span></code> class, but by the end of this section we’ll add more behavior to <code class="docutils literal notranslate"><span class="pre">EventDetailViewModel</span></code> that will make the benefits of using a ViewModel in this case more clear.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> we add a handler method to display the view.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>86
+87
+88
+89
+90
+91
+92
+93
+94</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Detail</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Event</span> <span class="n">theEvent</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Events</span>
+      <span class="p">.</span><span class="n">Include</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Category</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">Single</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+
+   <span class="n">EventDetailViewModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventDetailViewModel</span><span class="p">(</span><span class="n">theEvent</span><span class="p">);</span>
+   <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">viewModel</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p id="index-0">There are two new concepts to introduce here. First, our method takes a parameter named <code class="docutils literal notranslate"><span class="pre">id</span></code>. You have worked with such parameters in the past, as query parameters mapped to method parameters. For example, we could reach this handler with the request path <code class="docutils literal notranslate"><span class="pre">/Events/Detail?id=X</span></code>. What’s new now is that we will use the same parameter mapping, but with a <strong>path parameter</strong>. A path parameter is a parameter that is part of the request path. In this case, we will be able to make requests to a path like <code class="docutils literal notranslate"><span class="pre">Events/Detail/X</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>This parameter mapping works seamlessly because the of default path template specified in the <code class="docutils literal notranslate"><span class="pre">Configure</span></code> method of <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code>. This template is <code class="docutils literal notranslate"><span class="pre">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span></code>. The last portion, <code class="docutils literal notranslate"><span class="pre">{id?}</span></code>, means that any path parameter following the action method will map to a method parameter named <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p class="last">If we wanted to use a different URL structure, or a different method parameter name, we would need to include additional configuration. See <a class="reference external" href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1" target="_blank">the documentation on routing<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for more details.</p>
+</div>
+<p>The other new concept here is the use of the EF method <code class="docutils literal notranslate"><span class="pre">Single</span></code>:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>88
+89
+90</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Event</span> <span class="n">theEvent</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Events</span>
+   <span class="p">.</span><span class="n">Include</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Category</span><span class="p">)</span>
+   <span class="p">.</span><span class="n">Single</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>This method takes a boolean lambda expression and filters the <code class="docutils literal notranslate"><span class="pre">Context.Events</span></code> collection down to the <em>one</em> event that satisfies <code class="docutils literal notranslate"><span class="pre">e.Id</span> <span class="pre">==</span> <span class="pre">id</span></code>. In other words, it finds the single event with <code class="docutils literal notranslate"><span class="pre">Id</span></code> matching the path parameter.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">We use <code class="docutils literal notranslate"><span class="pre">Single</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Find</span></code> here because we also need to call <code class="docutils literal notranslate"><span class="pre">Include</span></code> to eagerly fetch the <code class="docutils literal notranslate"><span class="pre">Category</span></code> property. <code class="docutils literal notranslate"><span class="pre">Include</span></code> can not be chained with <code class="docutils literal notranslate"><span class="pre">Find</span></code>.</p>
+</div>
+<p>The only remaining task is to create the view. It should consist of a table displaying the properties of the <code class="docutils literal notranslate"><span class="pre">Event</span></code>. This is straightforward, so we’ll skip over the details here.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="one-to-many.html"><span aria-hidden="true">&larr;</span> <span class="section-number">18.3. </span>Creating a One-to-Many Relationship</a></li>
+        
+        
+        <li class="next"><a href="many-to-many.html"><span class="section-number">18.5. </span>Creating a Many-to-Many Relationship <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-relationships/some-setup.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

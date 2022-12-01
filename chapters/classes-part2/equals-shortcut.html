@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.4. Visual Studio Generator Shortcut &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.5. Exercises: Objects and Classes, Part 2" href="exercises.html" />
+    <link rel="prev" title="5.3. Special Methods" href="special-methods.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">5. </span>Classes and Objects, Part 2</a></li>
+    <li class="active"><span class="section-number">5.4. </span>Visual Studio Generator Shortcut</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="visual-studio-generator-shortcut">
+<span id="equals-shortcut"></span><h1><span class="section-number">5.4. </span>Visual Studio Generator Shortcut<a class="headerlink" href="#visual-studio-generator-shortcut" title="Permalink to this headline">¶</a></h1>
+<p>Instead of cutting, pasting, and refactoring old code to ensure that you create a well-structured <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> method whenever you define your own <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> method, you can use Visual Studio’s code generation tool!
+Just right-click in your class file on the class name and follow these prompts.</p>
+<p>Let’s use a Course class to demonstrate:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Course</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Topic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="n">Teacher</span> <span class="n">Instructor</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;</span> <span class="n">EnrolledStudents</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic">
+<li><p class="first">In Visual Studio, right-click on the class name and select <em>Quick Fix</em> for Mac users or <em>Quick Actions and Refactorings</em> for Windows users from the menu.
+You can also skip this step by placing your cursor on the line with the class name and clicking on the screwdriver icon to the left.</p>
+<div class="figure align-default">
+<img alt="Screenshot showing the Quick Fix option at the top of the menu when one right-clicks on the class name." src="../../_images/select-quick-fix.png" />
+</div>
+</li>
+<li><p class="first">Select the <em>Generate Equals() and GetHashCode()</em> option from the resulting menu:</p>
+<div class="figure align-default">
+<img alt="Screenshot showing the Generate Equals() and GetHashCode() option in the pop up." src="../../_images/generate-equals.png" />
+</div>
+</li>
+<li><p class="first">A new menu will appear where you can make selections about which class members you want to use for the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods.
+In the case of equality between two <code class="docutils literal notranslate"><span class="pre">Course</span></code> objects, we want to establish that two <code class="docutils literal notranslate"><span class="pre">Course</span></code> objects are equal if the <code class="docutils literal notranslate"><span class="pre">Topic</span></code> members and <code class="docutils literal notranslate"><span class="pre">Instructor</span></code> members are equal.
+Once you select the necessary members, click <em>Ok</em>!</p>
+<div class="figure align-default">
+<img alt="Screenshot showing the topic and instructor members selected in a pop-up." src="../../_images/make-selections.png" />
+</div>
+</li>
+<li><p class="first">Once you click <em>Ok</em>, Visual Studio generates the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods, resulting in the following class.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Course</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Topic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="n">Teacher</span> <span class="n">Instructor</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;</span> <span class="n">EnrolledStudents</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">Equals</span><span class="p">(</span><span class="kt">object</span> <span class="n">obj</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">return</span> <span class="n">obj</span> <span class="k">is</span> <span class="n">Course</span> <span class="n">course</span> <span class="p">&amp;&amp;</span>
+         <span class="n">Topic</span> <span class="p">==</span> <span class="n">course</span><span class="p">.</span><span class="n">Topic</span> <span class="p">&amp;&amp;</span>
+         <span class="n">EqualityComparer</span><span class="p">&lt;</span><span class="n">Teacher</span><span class="p">&gt;.</span><span class="n">Default</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">Instructor</span><span class="p">,</span> <span class="n">course</span><span class="p">.</span><span class="n">Instructor</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">override</span> <span class="kt">int</span> <span class="nf">GetHashCode</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="k">return</span> <span class="n">HashCode</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Topic</span><span class="p">,</span> <span class="n">Instructor</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+</ol>
+<p>In order to gain an understanding at what Visual Studio just did for us, review the section on the <a class="reference internal" href="special-methods.html#equals-method"><span class="std std-ref">Equals() method</span></a> and take note of the following lines of code in the code block above.
+While the behavior of the code is the same as the various implementations of the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> methods on the previous page, Visual Studio’s method does not necessarily look similar to the ones we wrote before.</p>
+<ol class="arabic simple">
+<li>On line 9, we see some new syntax. With <code class="docutils literal notranslate"><span class="pre">is</span></code>, the compiler confirms that it is possible to cast <code class="docutils literal notranslate"><span class="pre">obj</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">course</span></code> of type <code class="docutils literal notranslate"><span class="pre">Course</span></code>. If it is, the value of <code class="docutils literal notranslate"><span class="pre">course</span></code> is set to <code class="docutils literal notranslate"><span class="pre">obj</span></code>. All in one line!</li>
+<li>On line 10, the value of <code class="docutils literal notranslate"><span class="pre">course.Topic</span></code> and <code class="docutils literal notranslate"><span class="pre">Topic</span></code> is compared for equality.</li>
+<li>On line 11, the value of <code class="docutils literal notranslate"><span class="pre">course.Instructor</span></code> and <code class="docutils literal notranslate"><span class="pre">Instructor</span></code> is compared for equality.</li>
+</ol>
+<p>If <em>all</em> of the equality checks on lines 9, 10, and 11 come out to be true, then the generated <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> method will return true.</p>
+<div class="section" id="try-it">
+<h2><span class="section-number">5.4.1. </span>Try It!<a class="headerlink" href="#try-it" title="Permalink to this headline">¶</a></h2>
+<p>Try using the Visual Studio shortcut to generate a different method in the <code class="docutils literal notranslate"><span class="pre">Course</span></code> class!</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="special-methods.html"><span aria-hidden="true">&larr;</span> <span class="section-number">5.3. </span>Special Methods</a></li>
+        
+        
+        <li class="next"><a href="exercises.html"><span class="section-number">5.5. </span>Exercises: Objects and Classes, Part 2 <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/classes-part2/equals-shortcut.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

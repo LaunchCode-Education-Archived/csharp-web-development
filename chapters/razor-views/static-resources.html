@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.8. Static Resources &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.9. Bootstrap" href="bootstrap.html" />
+    <link rel="prev" title="13.7. The Shared Directory" href="layout-pages.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.8. </span>Static Resources</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="static-resources">
+<h1><span class="section-number">13.8. </span>Static Resources<a class="headerlink" href="#static-resources" title="Permalink to this headline">¶</a></h1>
+<p>Previously, we briefly saw that when adding a view, we inherited some CSS from the <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Shared</span></code> directory.
+While every view we add for our action methods in the controllers inherits from this template, we can also add additional static resources, such as images, scripts, and styles.</p>
+<div class="section" id="adding-custom-styles">
+<h2><span class="section-number">13.8.1. </span>Adding Custom Styles<a class="headerlink" href="#adding-custom-styles" title="Permalink to this headline">¶</a></h2>
+<p>In large applications, we may find more CSS files than just <code class="docutils literal notranslate"><span class="pre">site.css</span></code>.
+To add styles that only apply to the view we are currently working on, we can use the same <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> tag we normally do for a static HTML page.</p>
+<p>Two things to keep in mind before we start adding our own CSS:</p>
+<ol class="arabic simple">
+<li>We need to take into account any CSS in <code class="docutils literal notranslate"><span class="pre">site.css</span></code>. This file contains the site-wide CSS and is included in <code class="docutils literal notranslate"><span class="pre">_Layout</span></code>.
+If we want to modify something for the whole site CSS-wise, this is a good place to start.</li>
+<li>We need to organize and store our CSS files in the appropriate location, just as we need to do with other files in ASP.NET Core MVC.
+In our application, we have a <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory. Inside that directory, we can add CSS files to the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory.
+The <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory is the default location for static files so when the application is served, ASP.NET Core MVC can easily locate these files.</li>
+</ol>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>Let’s say we add a custom CSS file to our application called <code class="docutils literal notranslate"><span class="pre">custom.css</span></code> and store this file in the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory in <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.
+If we want to link to this file to use it for a view, we would use the following line of HTML.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/css/custom.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p class="last">Because we added our file to the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory inside the <code class="docutils literal notranslate"><span class="pre">wwwwroot</span></code> directory, our link is simply <code class="docutils literal notranslate"><span class="pre">&quot;~/css/custom.css&quot;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="add-custom-scripts">
+<h2><span class="section-number">13.8.2. </span>Add Custom Scripts<a class="headerlink" href="#add-custom-scripts" title="Permalink to this headline">¶</a></h2>
+<p>We can also add custom JavaScript files the same way we add our CSS files.
+Inside the <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory, we can add JavaScript files to the <code class="docutils literal notranslate"><span class="pre">js</span></code> subdirectory.</p>
+<p>When adding custom scripts, we want to keep the same things in mind as when we adding custom CSS files.
+Our application includes site-wide JavaScript in <code class="docutils literal notranslate"><span class="pre">site.js</span></code>. If we want to override site-wide scripts, that is where we should start.
+If we want to add an additional script, we can add it in the <code class="docutils literal notranslate"><span class="pre">js</span></code> subdirectory inside <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p>We added an additional JavaScript script called <code class="docutils literal notranslate"><span class="pre">custom.js</span></code> and stored this file in the <code class="docutils literal notranslate"><span class="pre">js</span></code> subdirectory inside the <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory.
+To add this file to a view, we can use the following HTML.</p>
+<div class="last highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/js/custom.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-images-to-the-site">
+<h2><span class="section-number">13.8.3. </span>Adding Images to the Site<a class="headerlink" href="#adding-images-to-the-site" title="Permalink to this headline">¶</a></h2>
+<p>We can also add images that we want to use to the <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory.
+To start, we need to create a new subdirectory called <code class="docutils literal notranslate"><span class="pre">images</span></code>.
+If we add an image called <code class="docutils literal notranslate"><span class="pre">testimage.png</span></code> to <code class="docutils literal notranslate"><span class="pre">images</span></code>, we can reference it in our view with the <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> tag:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/images/testimage.png&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">13.8.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>If we add an image called <code class="docutils literal notranslate"><span class="pre">fluffy.jpg</span></code> to the <code class="docutils literal notranslate"><span class="pre">images</span></code> directory inside of <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>, what is the path we could use for the <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> tag?</p>
+<ol class="last loweralpha simple">
+<li><code class="docutils literal notranslate"><span class="pre">&quot;/Views/images/fluffy.jpg&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;~/images/fluffy.jpg&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;~/img/fluffy.jpg&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;wwwroot/fluffy.jpg&quot;</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="layout-pages.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.7. </span>The Shared Directory</a></li>
+        
+        
+        <li class="next"><a href="bootstrap.html"><span class="section-number">13.9. </span>Bootstrap <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/static-resources.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11.1. Exceptions &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11.2. Handling Exceptions" href="handling.html" />
+    <link rel="prev" title="11. Rules to the Exceptions" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">11. </span>Rules to the Exceptions</a></li>
+    <li class="active"><span class="section-number">11.1. </span>Exceptions</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exceptions">
+<span id="index-0"></span><h1><span class="section-number">11.1. </span>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
+<p>Like most programming languages, C# includes exceptions and exception handling tooling.
+Some exception objects are provided by .NET itself. Other exception objects we may get from
+external C# libraries. We may even write these objects ourselves.</p>
+<p><strong>Exceptions</strong> in C# are objects derived from the <code class="docutils literal notranslate"><span class="pre">System.Exception</span></code> class.
+You see exception objects at runtime when some event takes place outside of the expected flow of our code.
+When you want to explicitly call an exception in your code, you do so
+with the <strong>throw</strong> keyword. We’ve actually done this before in this book and will return to that example shortly.</p>
+<p>Maybe you see the term “exception” and instinctively groan or roll your eyes? Isn’t programming
+only enjoyable when it works? While it would be nice if our code ran perfectly every time,
+exceptions are a key component of a healthy codebase. When an exception arises, we, as programmers,
+can use the info to debug our code. For our fellow programmers, the exceptions we provide give them
+necessary intel on how our app runs and is meant to be used.</p>
+<div class="section" id="when-exceptions-arise">
+<span id="index-1"></span><h2><span class="section-number">11.1.1. </span>When Exceptions Arise<a class="headerlink" href="#when-exceptions-arise" title="Permalink to this headline">¶</a></h2>
+<p>You may have seen exceptions in C# or another programming language already, perhaps in one
+of these scenarios:</p>
+<ul class="simple">
+<li>Failure to connect to services external to your application, such as a database or API.</li>
+<li>Failure to read or write to or from a file.</li>
+<li>Failure to convert data, such as trying to convert something like <code class="docutils literal notranslate"><span class="pre">&quot;dog&quot;</span></code> to an <code class="docutils literal notranslate"><span class="pre">int</span></code> type.</li>
+<li>Failure to reach an actual object.</li>
+</ul>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">This last scenario is a <strong>null pointer</strong>. This is an object reference that doesn’t actually
+contain an object.</p>
+</div>
+<p>Indeed, we have even used exceptions in this book already. Recall this
+<a class="reference internal" href="../classes/encapsulation.html#temp-argument-exception"><span class="std std-ref">temperature example</span></a> where we throw a built-in exception when a
+provided argument falls outside of an acceptable range. Later, we refine our
+<a class="reference internal" href="../classes-part2/customize-fields.html#temp-argument-out-of-range-exception"><span class="std std-ref">temperature app</span></a> and throw the more targeted
+<code class="docutils literal notranslate"><span class="pre">ArgumentOutOfRangeException</span></code>.</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Temperature</span>
+<span class="p">{</span>
+
+   <span class="k">private</span> <span class="kt">double</span> <span class="n">fahrenheit</span><span class="p">;</span>
+   <span class="k">public</span> <span class="k">static</span> <span class="kt">double</span> <span class="n">AbsoluteZeroFahrenheit</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="p">-</span><span class="m">459.67</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="nf">Temperature</span><span class="p">(</span><span class="kt">double</span> <span class="n">fahrenheit</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Fahrenheit</span> <span class="p">=</span> <span class="n">fahrenheit</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="kt">double</span> <span class="n">Fahrenheit</span>
+   <span class="p">{</span>
+      <span class="k">get</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">fahrenheit</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">set</span>
+      <span class="p">{</span>
+
+         <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">&lt;</span> <span class="n">AbsoluteZeroFahrenheit</span><span class="p">)</span>
+         <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentOutOfRangeException</span><span class="p">(</span><span class="s">&quot;Value is below absolute zero&quot;</span><span class="p">);</span>
+         <span class="p">}</span>
+
+         <span class="n">fahrenheit</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This example is also provided in the <code class="docutils literal notranslate"><span class="pre">TemperatureExceptions</span></code> project in
+<a class="reference external" href="https://github.com/LaunchCodeEducation/csharp-web-dev-exceptions" target="_blank">this repo<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p>The program provides a plan for what to do in the event that bad data is passed into a class’s field.
+Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value outside of the appropriate range.</p>
+<p>Try this yourself to witness the breaking exception:</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p><em>Input:</em></p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Temperature</span> <span class="n">insideTemp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Temperature</span><span class="p">(</span><span class="m">73</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">insideTemp</span><span class="p">.</span><span class="n">Fahrenheit</span><span class="p">);</span>
+
+<span class="n">Temperature</span> <span class="n">outsideTemp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Temperature</span><span class="p">(-</span><span class="m">8200</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">outsideTemp</span><span class="p">.</span><span class="n">Fahrenheit</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p><em>Output:</em></p>
+<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>73
+Unhandled exception. System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values. (Parameter &#39;Value is below absolute zero&#39;)
+at lsn4_demos.Temperature.set_Fahrenheit(Double value) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 26
+at lsn4_demos.Temperature..ctor(Double fahrenheit) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 40
+at lsn4_demos.Program.Main(String[] args) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Program.cs:line 14
+</pre></div>
+</div>
+</div>
+<p>Above, the Temperature constructor predictably sets the Fahrenheit value of <code class="docutils literal notranslate"><span class="pre">insideTemp</span></code> and
+throws an exception when provided a Fahrenheit value outside of the appropriate range. We don’t
+see any results of the print statement on the input’s line 5 since the exception has caused the program
+to stop running.</p>
+<p id="index-2">When we throw an exception like in the example above, we flag the anomalous circumstance. If we choose to
+do nothing when the exception is thrown, the program will stop and a record of the exception
+can be found in the stack trace. Alternatively, we can <strong>handle</strong> an exception and offer an alternative
+action, bypassing the need to stop the program. We’ll cover how to handle exceptions on the next page.</p>
+<p>This is a common reason to include exception handling in your code. User input opens the door to a
+variety of erroneous figures and good programs account for this uncertainty. Without exceptions in these
+circumstances, a small typo could lead to any number of errors down the stack trace.</p>
+</div>
+<div class="section" id="when-to-use-exceptions">
+<h2><span class="section-number">11.1.2. </span>When to Use Exceptions<a class="headerlink" href="#when-to-use-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>It is wise to use an exception if you find that there is some level of chance involved in your
+program. This could be a situation where a variable is dependent on user input or a connection to
+another service.</p>
+<p>You may want to address those uncertainties in a different fashion. With our temperature app for example, rather than
+throwing an exception, we can add a conditional statement to tell the user not to set the Fahrenheit
+value to an unacceptable level. This is perfectly acceptable if the app in production allows for such a message.
+As you will see on the next page, exception handling works very similarly to conditional statements like this.</p>
+<p>There are many places where user-directed error messages simply won’t be appropriate. For example,
+what if the value being set doesn’t come from a user but from a different method in the program? In a
+situation like this, where the anomaly is not visible to the user, an exception conveys the issue to
+fellow programmers who are using our codebase.</p>
+<p>Or another hypothetical. What if managing the variety of errors that may arise is outside the scope of the project? In these
+cases where we do not, or cannot, make up for the edge cases with coded solutions, we can throw an exception. Exceptions are an
+informed way to convey the constraints of your program.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">11.1.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>What is the action of invoking an exception called?</p>
+<ol class="last arabic simple">
+<li>excepting</li>
+<li>catching</li>
+<li>throwing</li>
+<li>handling</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: Encountering an exception will always result in terminating a running program.</p>
+<ol class="last arabic simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="index.html"><span aria-hidden="true">&larr;</span> <span class="section-number">11. </span>Rules to the Exceptions</a></li>
+        
+        
+        <li class="next"><a href="handling.html"><span class="section-number">11.2. </span>Handling Exceptions <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/exceptions/introduction.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

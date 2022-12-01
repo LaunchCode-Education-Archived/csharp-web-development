@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment #0: Hello, World! &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment #1: Tech Jobs (Console Edition)" href="tech-jobs-console.html" />
+    <link rel="prev" title="How to Submit Assignments" href="how-to-submit.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../index.html"><span><img src="../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../index.html">Contents</a></li>
+    <li class="active">Assignment #0: Hello, World!</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="assignment-0-hello-world">
+<span id="assignment0"></span><h1>Assignment #0: Hello, World!<a class="headerlink" href="#assignment-0-hello-world" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this initial assignment is to familiarize yourself with the process of running the autograding tests and submitting your work via GitHub Classroom. Even if you are familiar with GitHub Classroom, this assignment will contain several new items that are specific to working with C# assignments.</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Let’s set up the assignment on our computer and learn about its basic structure.</p>
+<p>First, find Assignment #0 in Canvas and click on the invitation link. After accepting the assignment on the Github Classroom page, go to your assignment repository on GitHub.</p>
+<p>Follow the instructions to <a class="reference internal" href="../chapters/introduction-and-setup/cloning-a-csharp-project.html#clone-csharp-project"><span class="std std-ref">clone your repository</span></a> and open it in Visual Studio.</p>
+<p>When the solution opens, check out what the repository contains in the <em>Solution Explorer</em> on the left. You will find two projects within the solution.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you do not see the <em>Solution Explorer</em>, you can open it by selecting <em>View</em>, then <em>Solution Explorer</em>.</p>
+</div>
+<p>Open up the <code class="docutils literal notranslate"><span class="pre">SayHelloClass</span></code> class in the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. This is where you will work on your code.</p>
+<p>Now, turn your attention to <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> in the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. We have given you some code that will output the string returned by the <code class="docutils literal notranslate"><span class="pre">SayHello()</span></code> function in <code class="docutils literal notranslate"><span class="pre">SayHelloClass</span></code>.</p>
+<p>To run the program, do the following:</p>
+<ol class="arabic simple">
+<li><strong>Mac Users</strong>: Hit the <em>Run</em> button at the top right-hand corner of the window or right-click on the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project and select <em>Run Project</em>.</li>
+<li><strong>Windows Users</strong>: Click on the solid green triangle next to the name of the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. You can also press F5 to run the project.</li>
+</ol>
+<p>When the program runs, Visual Studio will open a pane and display program output. Currently, the program has no output. You’ll fix that in a bit.</p>
+</div>
+<div class="section" id="running-the-autograding-script">
+<h2>Running the Autograding Script<a class="headerlink" href="#running-the-autograding-script" title="Permalink to this headline">¶</a></h2>
+<p>For this unit, we encourage you to run the autograding tests yourself <em>before</em> you push your code.
+This will make it quicker and easier to know whether or not your code is correct. Let’s learn how to run the tests.</p>
+<p>In the <em>Solution Explorer</em>, navigate to the test class, <code class="docutils literal notranslate"><span class="pre">AutogradingTests</span></code>, in the project <code class="docutils literal notranslate"><span class="pre">HelloWorldTests</span></code>.
+For each assignment, there will be a test project, which contains all of the autograding tests and may have more than one class.</p>
+<p>A test is a single method in a test file that has <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> just above it. A test file may have multiple tests. To run just one test, you can right-click on the test method name and select <em>Run Test</em>.
+To run all of the auto-grading tests (in this case, there is only one), you should do the following:</p>
+<ol class="arabic simple">
+<li><strong>Mac Users</strong>: Select <em>Run</em> from the top menu and select <em>Run Unit Tests</em>. After you first run the tests, you can also right-click on the project name and selecting <em>Run Project</em>.</li>
+<li><strong>Windows Users</strong>: Right-click on the project name and select <em>Run Tests</em>. You can also select <em>Run All Tests</em> in the <em>Test</em> menu tab.</li>
+</ol>
+<p>When Visual Studio runs the tests, it opens a pane to display test results. At the left, we see that the test has failed. We can expand the tree to see each of the individual tests (again, in this case there is only one). Selecting one of the tests shows its results to the right.</p>
+<p>In this case, the test expected our code to output <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World!</span></code>. Instead, it provided no output at all.</p>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">The autograding tests are VERY exacting.
+A difference of just one character will result in a failed test.
+The tests are also case-sensitive. You’ll need to pay attention to detail in order complete your assignments.</p>
+</div>
+<p>When your code is correct, Visual Studio will display a green checkmark indicating passing tests.</p>
+</div>
+<div class="section" id="your-task">
+<h2>Your Task<a class="headerlink" href="#your-task" title="Permalink to this headline">¶</a></h2>
+<p>Your task is simple: make the program print out the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;</span></code>.
+Edit the code in the <code class="docutils literal notranslate"><span class="pre">SayHelloClass</span></code> class, within the <code class="docutils literal notranslate"><span class="pre">SayHello()</span></code> method. When your code is correct, running the tests will display passing results.</p>
+</div>
+<div class="section" id="submitting-your-work">
+<span id="id1"></span><h2>Submitting Your Work<a class="headerlink" href="#submitting-your-work" title="Permalink to this headline">¶</a></h2>
+<p>Once you get all of the tests to pass, open up Visual Studio’s <em>Terminal</em> pane. Then you should commit and push your code to GitHub.</p>
+<p>Visit your assignment repository page. Near the top right, you’ll see a green checkmark indicating that GitHub has graded your assignment as passing. If you see a red X, then your assignment is not yet correct.</p>
+<p>This process will be the same for all of your assignments in this unit. Revisit this page as needed to review instructions on running tests in C# projects.</p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="how-to-submit.html"><span aria-hidden="true">&larr;</span> How to Submit Assignments</a></li>
+        
+        
+        <li class="next"><a href="tech-jobs-console.html">Assignment #1: Tech Jobs (Console Edition) <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/assignments/hello-world.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

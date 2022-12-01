@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Solutions: Unit Testing &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercise Solutions: Inheritance" href="inheritance.html" />
+    <link rel="prev" title="Exercise Solutions: Classes Part 2" href="classes-2.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html">Exercise Solutions</a></li>
+    <li class="active">Exercise Solutions: Unit Testing</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercise-solutions-unit-testing">
+<h1>Exercise Solutions: Unit Testing<a class="headerlink" href="#exercise-solutions-unit-testing" title="Permalink to this headline">¶</a></h1>
+<p>Line numbers are for reference. They may not match your code exactly.</p>
+<div class="section" id="testgastankafterdriving">
+<span id="unit-testing-solution-1"></span><h2><code class="docutils literal notranslate"><span class="pre">TestGasTankAfterDriving()</span></code><a class="headerlink" href="#testgastankafterdriving" title="Permalink to this headline">¶</a></h2>
+<p>Add a test for the third TODO, “GasTankLevel is accurate after driving within tank range”.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [TestMethod]</span>
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">TestGasTankAfterDriving</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">test_car</span><span class="p">.</span><span class="n">Drive</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+      <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="n">test_car</span><span class="p">.</span><span class="n">GasTankLevel</span><span class="p">,</span> <span class="p">.</span><span class="m">001</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises1"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+<div class="section" id="testgastankafterexceedingtankrange">
+<span id="unit-testing-solution-2"></span><h2><code class="docutils literal notranslate"><span class="pre">TestGasTankAfterExceedingTankRange()</span></code><a class="headerlink" href="#testgastankafterexceedingtankrange" title="Permalink to this headline">¶</a></h2>
+<p>Add a test for the fourth TODO, “GasTankLevel is accurate after attempting to drive past tank range”.</p>
+<ol class="arabic simple">
+<li>You’re on your own for this one. You’ll need to simulate the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
+travelling farther than it’s <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> allows.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [TestMethod]</span>
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">TestGasTankAfterExceedingTankRange</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">test_car</span><span class="p">.</span><span class="n">Drive</span><span class="p">(</span><span class="m">501</span><span class="p">);</span>
+      <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="n">test_car</span><span class="p">.</span><span class="n">GasTankLevel</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="p">.</span><span class="m">001</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises2"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+<div class="section" id="testgasoverfillexception">
+<span id="unit-testing-solution-3"></span><h2><code class="docutils literal notranslate"><span class="pre">TestGasOverfillException()</span></code><a class="headerlink" href="#testgasoverfillexception" title="Permalink to this headline">¶</a></h2>
+<p>The test for our last TODO is a little different. We are going to
+perform an action on our car object, and we are expecting the object
+to throw an error. In this case, we are going to attempt to add gas
+to our car that exceeds the gas tank size.</p>
+<ol class="arabic simple" start="2">
+<li>Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute <code class="docutils literal notranslate"><span class="pre">[ExpectedException]</span></code>.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="c1">//TODO: can&#39;t have more gas than tank size, expect an exception</span>
+<span class="na">   [TestMethod]</span>
+<span class="na">   [ExpectedException(typeof(ArgumentOutOfRangeException))]</span>
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">TestGasOverfillException</span><span class="p">()</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises3"><span class="std std-ref">Back to the exercises</span></a></p>
+<ol class="arabic simple" start="4">
+<li>Back in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, implement the new <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and a
+<code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> scenario.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="c1">//TODO: can&#39;t have more gas than tank size, expect an exception</span>
+<span class="na">   [TestMethod]</span>
+<span class="na">   [ExpectedException(typeof(ArgumentOutOfRangeException))]</span>
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">TestGasOverfillException</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">test_car</span><span class="p">.</span><span class="n">AddGas</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+      <span class="n">Assert</span><span class="p">.</span><span class="n">Fail</span><span class="p">(</span><span class="s">&quot;Shouldn&#39;t get here, car cannot have more gas in tank than the size of the tank&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises3"><span class="std std-ref">Back to the exercises</span></a></p>
+<ol class="arabic simple" start="6">
+<li>We need to refactor <code class="docutils literal notranslate"><span class="pre">Car</span></code> to throw an exception when too much
+gas is added to the tank. Find the <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and
+modify it by adding the following code in the appropriate place.</li>
+</ol>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="k">void</span> <span class="nf">AddGas</span><span class="p">(</span><span class="kt">double</span> <span class="n">gas</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">GasTankLevel</span> <span class="p">+=</span> <span class="n">gas</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">GasTankLevel</span> <span class="p">&gt;</span> <span class="n">GasTankSize</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentOutOfRangeException</span><span class="p">(</span><span class="s">&quot;Can&#39;t exceed tank size&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises3"><span class="std std-ref">Back to the exercises</span></a></p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="classes-2.html"><span aria-hidden="true">&larr;</span> Exercise Solutions: Classes Part 2</a></li>
+        
+        
+        <li class="next"><a href="inheritance.html">Exercise Solutions: Inheritance <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/appendices/exercise-solutions/unit-testing.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

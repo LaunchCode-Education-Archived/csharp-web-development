@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15.4. Validating Models in a Controller &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15.5. Validation and Views" href="validation-views.html" />
+    <link rel="prev" title="15.3. Validation Attributes" href="validation-attributes.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">15. </span>ViewModels and Model Validation</a></li>
+    <li class="active"><span class="section-number">15.4. </span>Validating Models in a Controller</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="validating-models-in-a-controller">
+<span id="validating-models"></span><h1><span class="section-number">15.4. </span>Validating Models in a Controller<a class="headerlink" href="#validating-models-in-a-controller" title="Permalink to this headline">¶</a></h1>
+<p>Validation involves both model and controller components of an MVC application.
+After we have defined validation rules using attributes on the model, we must also update the controller to ensure that the rules are
+checked and appropriate action is taken when validation fails.</p>
+<div class="section" id="validation-flow">
+<h2><span class="section-number">15.4.1. </span>Validation Flow<a class="headerlink" href="#validation-flow" title="Permalink to this headline">¶</a></h2>
+<p>Before diving into the details of the code, let’s consider the logical flow of control for validating data in a request.
+Let’s check out our <code class="docutils literal notranslate"><span class="pre">POST</span></code> action method for processing the <em>Add Event</em> form. Remember that this method uses model binding to create new <code class="docutils literal notranslate"><span class="pre">Event</span></code>
+objects from form submissions.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [HttpPost]</span>
+   <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Add</span><span class="p">(</span><span class="n">AddEventViewModel</span> <span class="n">addEventViewModel</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Event</span> <span class="n">newEvent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Event</span>
+      <span class="p">{</span>
+         <span class="n">Name</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+         <span class="n">Description</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+         <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">ContactEmail</span>
+      <span class="p">};</span>
+
+      <span class="n">EventData</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newEvent</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The flow of this request can be described as follows:</p>
+<ol class="arabic simple">
+<li>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
+<li>Server creates <code class="docutils literal notranslate"><span class="pre">newEvent</span></code> object using request parameters</li>
+<li><code class="docutils literal notranslate"><span class="pre">Add()</span></code> is called with <code class="docutils literal notranslate"><span class="pre">newEvent</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">newEvent</span></code> is saved</li>
+<li>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></li>
+</ol>
+<p>The request creates an <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using data from the incoming request.
+Regardless of what the data looks like, the new object is saved to the data layer.
+The user could submit an empty form, with no name or description filled in, and our code would be happy to create an <code class="docutils literal notranslate"><span class="pre">Event</span></code> and save it.
+Similarly, a user could submit the full text of the massive novel “War and Peace” as the description.
+This isn’t great.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Technically, submitting a request containing “War and Peace” would fail with most applications.
+This is because web servers typically set a limit on the maximum size of a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request.
+However, our application code is willing to take requests of any size, at this point.</p>
+</div>
+<p>Now that we have created <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> and added validation attributes, we want to refactor our controller to use the ViewModel and handle errors in form submission.
+Instead of using model binding to create a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object, we will use model binding to create a new <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> object called <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code>.
+Our modest validation rules for a new <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> object are as follows:</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">Name</span></code> property must contain between 3 and 50 characters,</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">Description</span></code> property may contain no more than 500 characters, and</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">ContactEmail</span></code> property must satisfy email formatting rules.</li>
+</ul>
+<p>With these rules in place, conceptually, the flow of our controller code should look more like the following:</p>
+<ol class="arabic simple">
+<li>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
+<li>Server creates <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> object using request parameters</li>
+<li><code class="docutils literal notranslate"><span class="pre">Add()</span></code> (<code class="docutils literal notranslate"><span class="pre">POST</span></code> request type) is called with <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code></li>
+<li><strong>Controller checks for validation errors in the ViewModel object. If errors are found, return the user to the form. Otherwise, proceed.</strong></li>
+<li><code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> is used to create a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object called <code class="docutils literal notranslate"><span class="pre">newEvent</span></code>, which is saved to the data store.</li>
+<li>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></li>
+</ol>
+<p>Let’s look at how we can practically do this within ASP.NET Core MVC.</p>
+</div>
+<div class="section" id="handling-validation-errors-video">
+<h2><span class="section-number">15.4.2. </span>Handling Validation Errors - Video<a class="headerlink" href="#handling-validation-errors-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/n1KMXzDzvuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes" target="_blank">validation-attributes<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handling-errors" target="_blank">handling-errors<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+<p class="last">Actually, the first 4 minutes of the video above cover some of the code changes to get the project to the starting state of the <code class="docutils literal notranslate"><span class="pre">validation-attributes</span></code> branch.</p>
+</div>
+</div>
+<div class="section" id="handling-validation-errors-text">
+<h2><span class="section-number">15.4.3. </span>Handling Validation Errors - Text<a class="headerlink" href="#handling-validation-errors-text" title="Permalink to this headline">¶</a></h2>
+<p>When using model binding, we can use tools to validate new model objects before they are saved to a data layer or database.</p>
+<div class="section" id="using-modelstate-isvalid">
+<h3><span class="section-number">15.4.3.1. </span>Using <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code><a class="headerlink" href="#using-modelstate-isvalid" title="Permalink to this headline">¶</a></h3>
+<p>Within <code class="docutils literal notranslate"><span class="pre">EventController</span></code>, the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method uses model binding to receive an <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> object when the form is posted.
+That ViewModel instance is created using form data.
+This object is NOT validated automatically, even if validation attributes are present on its fields.</p>
+<p>Recall that <em>both</em> the model and controller play a role in validation.
+The model’s responsibility is simply to define validation rules.
+The controller must check that those rules are satisfied.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> will check if the constraints on the model properties are met.
+If these constraints are met, <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> equates to true and we want to create and add an <code class="docutils literal notranslate"><span class="pre">Event</span></code> object to our list of events.
+If these constraints are not met and the ViewModel object is <em>not</em> valid, we want to redirect the user back to the <em>Add Event</em> form.</p>
+<p>Once we are done refactoring the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method to use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code>, our action method will look like the code below.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">   [HttpPost]</span>
+   <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Add</span><span class="p">(</span><span class="n">AddEventViewModel</span> <span class="n">addEventViewModel</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Event</span> <span class="n">newEvent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Event</span>
+         <span class="p">{</span>
+            <span class="n">Name</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+            <span class="n">Description</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+            <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">addEventViewModel</span><span class="p">.</span><span class="n">ContactEmail</span>
+         <span class="p">};</span>
+
+         <span class="n">EventData</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newEvent</span><span class="p">);</span>
+
+         <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">addEventViewModel</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now we have refactored our action method to handle any errors in form submission.
+However, if you submit a value that doesn’t meet our conditions, you won’t see any error messages indicating what was wrong with your submission.
+Let’s tackle that next!</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">15.4.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Which of the following statements about <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> are true?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> can only be used in conjunction with model binding.</li>
+<li>Using <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> means that a method will never be called with invalid data.</li>
+<li>ASP.NET can infer validation requirements based on the name of a field.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="validation-attributes.html"><span aria-hidden="true">&larr;</span> <span class="section-number">15.3. </span>Validation Attributes</a></li>
+        
+        
+        <li class="next"><a href="validation-views.html"><span class="section-number">15.5. </span>Validation and Views <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-model-validation/validation-controller.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

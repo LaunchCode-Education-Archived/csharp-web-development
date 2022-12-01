@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14.2. Create a Model &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14.3. Models and Data" href="data-layer.html" />
+    <link rel="prev" title="14.1. Models in MVC" href="model-intro.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">14. </span>Models and Model Binding</a></li>
+    <li class="active"><span class="section-number">14.2. </span>Create a Model</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="create-a-model">
+<h1><span class="section-number">14.2. </span>Create a Model<a class="headerlink" href="#create-a-model" title="Permalink to this headline">¶</a></h1>
+<p>In this book section, we will continue to make incremental changes to <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>. The next set of
+changes show model creation, how models relate to data, and the practice of model binding. First, we
+replace the dictionary in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> with a list of <code class="docutils literal notranslate"><span class="pre">Event</span></code> models. We’ll then update our
+action methods to take advantage of the new model and its properties. Lastly, we refactor the view template
+to reflect the changes in the controller.</p>
+<div class="section" id="create-a-model-class-video">
+<h2><span class="section-number">14.2.1. </span>Create a Model Class - Video<a class="headerlink" href="#create-a-model-class-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/fs7m2Qo84d4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models1-start" target="_blank">models1-start branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-model" target="_blank">create-model branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+</div>
+<div class="section" id="create-a-model-class-text">
+<h2><span class="section-number">14.2.2. </span>Create a Model Class - Text<a class="headerlink" href="#create-a-model-class-text" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">Like controllers, model classes are conventionally located in a <code class="docutils literal notranslate"><span class="pre">Models</span></code>
+folder. Model classes resemble the kinds of classes we practiced making at
+the start of this course. In other words, models are <strong>plain old C# objects</strong>, or <strong>POCOs</strong>.</p>
+<p>To create a model, we’ll transform the information that we once stored in an <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary into a class.
+This new <code class="docutils literal notranslate"><span class="pre">Event</span></code> class will include a property for <code class="docutils literal notranslate"><span class="pre">Name</span></code>, a constructor, and a <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> override.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">Models/Event.cs</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">CodingEventsDemo.Models</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">Event</span>
+   <span class="p">{</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">public</span> <span class="nf">Event</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">Name</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>We now need to update the <code class="docutils literal notranslate"><span class="pre">POST</span></code> handler that creates new events.</p>
+<p>First, replace the <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary with a list of <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects.</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">Events</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Update the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> method inside of
+<code class="docutils literal notranslate"><span class="pre">NewEvent()</span></code> to add a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> instance to the list:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpPost]</span>
+<span class="na">[Route(&quot;Events/Add&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">NewEvent</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Events</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="p">));</span>
+
+   <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Back in <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>, update the HTML to use the <code class="docutils literal notranslate"><span class="pre">Event</span></code> object’s fields, rather than strings.</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span>@foreach (var evt in ViewBag.events)
+{
+   <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>@evt.Name<span class="nt">&lt;/td&gt;</span>
+   <span class="nt">&lt;/tr&gt;</span>
+}
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Here’s a shorthand to create auto-implementing properties. In a class, type the word “prop” followed
+by hitting the Tab key twice. This swiftly supplies the property’s scaffolding:</p>
+<div class="last highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="n">MyProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="add-a-model-property-video">
+<h2><span class="section-number">14.2.3. </span>Add a Model Property - Video<a class="headerlink" href="#add-a-model-property-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/ajHm5DQFaYU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-model" target="_blank">create-model branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-property" target="_blank">add-property branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+</div>
+</div>
+<div class="section" id="add-a-model-property-text">
+<h2><span class="section-number">14.2.4. </span>Add a Model Property - Text<a class="headerlink" href="#add-a-model-property-text" title="Permalink to this headline">¶</a></h2>
+<p>To round out the <code class="docutils literal notranslate"><span class="pre">Event</span></code> class, we’ll add a <code class="docutils literal notranslate"><span class="pre">Description</span></code> property to showcase what our events are all about.</p>
+<p>Updates to <code class="docutils literal notranslate"><span class="pre">Models/Event.cs</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">CodingEventsDemo.Models</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">Event</span>
+   <span class="p">{</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">public</span> <span class="nf">Event</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">description</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+         <span class="n">Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">Name</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now that our data is object-oriented, it’s quick and easy to add a new property affiliated with an event.
+If we decide to add properties, such as <code class="docutils literal notranslate"><span class="pre">Date</span></code> or <code class="docutils literal notranslate"><span class="pre">Location</span></code>, we can follow the pattern established.
+Think about when we stored events as key-value pairs. At that stage, more significant changes were necessary
+to add fields.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Views</span></code> folder, the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template still uses a <code class="docutils literal notranslate"><span class="pre">desc</span></code> field so we don’t need to update
+this view. We do, however, need to go into <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code> to add the table data for an event’s description.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>:</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;td&gt;</span>@evt.Description<span class="nt">&lt;/td&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Lastly, add a parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action method. This parameter passes the description value into
+the creation of the <code class="docutils literal notranslate"><span class="pre">Event</span></code> object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EventController</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpPost]</span>
+<span class="na">[Route(&quot;Events/Add&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">NewEvent</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">desc</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Events</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">));</span>
+
+   <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">14.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: Model code is framework independent.</p>
+<ol class="last arabic simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Say we do add a <code class="docutils literal notranslate"><span class="pre">Date</span></code> property to the <code class="docutils literal notranslate"><span class="pre">Event</span></code> class. Which line would we add to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>
+to also display that value in our table of events?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;evt.Date&lt;/li&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;td&gt;evt.Date&lt;/td&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;td&gt;&#64;event.Date&lt;/td&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;td&gt;&#64;evt.date&lt;/td&gt;</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="model-intro.html"><span aria-hidden="true">&larr;</span> <span class="section-number">14.1. </span>Models in MVC</a></li>
+        
+        
+        <li class="next"><a href="data-layer.html"><span class="section-number">14.3. </span>Models and Data <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-model-classes/model-class.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

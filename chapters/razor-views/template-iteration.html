@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.4. Iterating in a Template &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.5. Conditionals in a Template" href="template-conditionals.html" />
+    <link rel="prev" title="13.3. Using a Template" href="using-templates.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.4. </span>Iterating in a Template</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="iterating-in-a-template">
+<span id="razor-iteration"></span><h1><span class="section-number">13.4. </span>Iterating in a Template<a class="headerlink" href="#iterating-in-a-template" title="Permalink to this headline">¶</a></h1>
+<p>Let’s revisit part of the non-efficient HTML from the introduction, where we
+hard-coded coffee options in a list.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>French Roast<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Espresso<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Kopi Luwak<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Instant<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>If we want to add, remove, or edit the list items, we need to go in and change
+the individual tags, which is a poor use of our time. Fortunately, there is a
+way to streamline the process.</p>
+<p>In C#, we use a <a class="reference internal" href="../control-flow-and-collections/loops.html#foreach-loop"><span class="std std-ref">foreach Loop</span></a> to iterate through the items in a data
+collection.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> <span class="p">(</span><span class="n">type</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// Code to repeat...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p id="razor-foreach">Razor templates allow us to use a <code class="docutils literal notranslate"><span class="pre">foreach</span></code> loop to display items in a
+collection.</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nt">&lt;ol&gt;</span>
+     @foreach (type collectionItem in ViewBag.collectionProperty)
+    {
+        <span class="nt">&lt;li&gt;</span>@collectionItem<span class="nt">&lt;/li&gt;</span>
+     }
+  <span class="nt">&lt;/ol&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">&#64;foreach</span></code> loop is initiated inside of a list element (either <code class="docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">ViewBag.collectionProperty</span></code> represents any collection that has been assigned as a property on <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">collectionItem</span></code> represents an individual item or element within the collection.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> specifies the C# portion of the template.</li>
+</ol>
+<p>We can think of this syntax as saying, <em>“For each item within
+ViewBag’s property, ‘collectionProperty’, repeat this HTML tag, but use the current value of
+‘collectionItem’.”</em></p>
+<p>Let’s apply this new concept to the HTML coffee list example. Assume that we store each of
+the coffee names as strings in a <code class="docutils literal notranslate"><span class="pre">List</span></code> called <code class="docutils literal notranslate"><span class="pre">ViewBag.coffeeOptions</span></code>.</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nt">&lt;ol&gt;</span>
+     @foreach (string coffeeType in ViewBag.coffeeOptions)
+     {
+        <span class="nt">&lt;li&gt;</span>@coffeeType<span class="nt">&lt;/li&gt;</span>
+     }
+  <span class="nt">&lt;/ol&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Some points to note:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">coffeeOptions</span></code> is accessible to the template because it is a property of the <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> object.</li>
+<li>In the first pass through the loop, <code class="docutils literal notranslate"><span class="pre">coffeeType</span></code> takes the value of the first
+coffee name in the <code class="docutils literal notranslate"><span class="pre">coffeeOptions</span></code> list.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&#64;coffeeType</span></code> displays the value of <code class="docutils literal notranslate"><span class="pre">coffeeType</span></code> in the view, so the
+<code class="docutils literal notranslate"><span class="pre">li</span></code> element will show the first coffee name.</li>
+<li>Each successive iteration, <code class="docutils literal notranslate"><span class="pre">coffeeType</span></code> takes the next value in the list, and
+Razor adds a new <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&lt;/li&gt;</span></code> element to display that data.</li>
+</ol>
+<div class="admonition-warning admonition" id="location-matters">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;foreach</span></code> creates one HTML tag for each item in a collection.
+BE CAREFUL where you place it.</p>
+<p>Consider the following Razor code:</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nt">&lt;div&gt;</span>
+     <span class="nt">&lt;h3&gt;</span>Coffee Types<span class="nt">&lt;/h3&gt;</span>
+     @foreach (string coffeeType in ViewBag.coffeeTypes)
+     {
+        <span class="nt">&lt;ol&gt;</span>
+           <span class="nt">&lt;li&gt;</span>@coffeeType<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+     }
+  <span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The final HTML produced is one heading, 4 ordered lists, and 4 coffee names.
+When this view is rendered, each coffee type is labelled with “1”.</p>
+<div class="last highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Coffee Types<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>French Roast<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+     <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Espresso<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+     <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Kopi Luwak<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+     <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Instant<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="nested-loops">
+<span id="index-0"></span><h2><span class="section-number">13.4.1. </span>Nested Loops<a class="headerlink" href="#nested-loops" title="Permalink to this headline">¶</a></h2>
+<p>Assume you have a collection of different <code class="docutils literal notranslate"><span class="pre">CoffeeShop</span></code> objects. Each
+object contains a string field for <code class="docutils literal notranslate"><span class="pre">name</span></code> and a field that is a list of
+of the brews available, <code class="docutils literal notranslate"><span class="pre">coffeeOptions</span></code>.</p>
+<p>Below, we nest loops to display a list of the shop names and their brew
+options.</p>
+<p>Sample Razor template:</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  @foreach (var coffeeShop in ViewBag.coffeeShops)
+  {
+     @*Each shop name*@
+     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>@coffeeShop.Name<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        @foreach(string coffeeType in coffeeShop.CoffeeOptions)
+        {
+           @*Each coffee type available*@
+           <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>@coffeeType<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        }
+     <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  }
+</pre></div>
+</td></tr></table></div>
+<p>Sample HTML output:</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Central Perk<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Espresso<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Instant<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Brews Brothers<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>French Roast<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Kopi Luwak<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Apart from the nested loops displayed above, here are some other items you may find useful
+to note from the example above.</p>
+<ul class="simple">
+<li>Razor comments are seen on lines 3 and 8 in the first
+code block above. Comments in Razor are nested between <code class="docutils literal notranslate"><span class="pre">&#64;*</span></code> and <code class="docutils literal notranslate"><span class="pre">*&#64;</span></code>.
+You may have noticed the comment block present on the top of a new view file.</li>
+</ul>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">ViewBag.coffeeShops</span></code> is a list of <code class="docutils literal notranslate"><span class="pre">CoffeeShop</span></code> objects but we’ve used <code class="docutils literal notranslate"><span class="pre">var</span></code>
+on line 1 to type the <code class="docutils literal notranslate"><span class="pre">coffeeShop</span></code> item.</p>
+<p>In some limited circumstances, we can use the <strong>var</strong> keyword to implicitly type a variable.
+When this keyword is used, C# still assigns a type to <code class="docutils literal notranslate"><span class="pre">coffeeShop</span></code> through inference. It
+looks and sees that we are assigning <code class="docutils literal notranslate"><span class="pre">coffeeShop</span></code> to the value at the list index, which is a
+<code class="docutils literal notranslate"><span class="pre">CoffeeShop</span></code> object. Thus, <code class="docutils literal notranslate"><span class="pre">coffeeShop</span></code> is of type <code class="docutils literal notranslate"><span class="pre">CoffeeShop</span></code>.</p>
+<p>Alternatively, Razor does also allow us to import a custom class, such as <code class="docutils literal notranslate"><span class="pre">CoffeeShop</span></code>.
+If we wanted to do so, we could import the class or its namespace at the top of
+the template with a <a class="reference internal" href="../data-types/some-csharp-practice.html#using-statement"><span class="std std-ref">using</span></a> statement.</p>
+</li>
+</ul>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">We use <code class="docutils literal notranslate"><span class="pre">var</span></code> above to simplify the example and focus on the loop action.
+In general, we recommend that you avoid using <code class="docutils literal notranslate"><span class="pre">var</span></code> while you are learning C#.
+Even after you become more experienced with the language, you will still only
+want to use it sparingly and in specific circumstances. Explicitly
+declaring the type of your variables makes for more readable code, to name
+only one benefit.</p>
+</div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">13.4.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>What is the HTML outcome you expect from the Razor code below?</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="nt">&lt;div&gt;</span>
+     <span class="nt">&lt;h3&gt;</span>Coffee Types<span class="nt">&lt;/h3&gt;</span>
+     <span class="nt">&lt;ol&gt;</span>
+        @foreach (string coffeeType in ViewBag.coffeeTypes)
+        {
+           <span class="nt">&lt;li&gt;</span>@coffeeType<span class="nt">&lt;/li&gt;</span>
+        }
+     <span class="nt">&lt;/ol&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="last arabic simple">
+<li>One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?</li>
+<li>One heading, one ordered list, and 4 coffee names (with the names labeled “1”, “2”, “3”…)?</li>
+<li>4 headings, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?</li>
+<li>4 headings, 4 ordered lists, and 16 coffee names (with the names labeled “1”, “2”, “3”…)?</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>What is the HTML outcome you expect from the Razor code below?</p>
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  @foreach (string coffeeType in ViewBag.coffeeTypes)
+  {
+     <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>Coffee Types<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+           <span class="nt">&lt;li&gt;</span>@coffeeType<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+  }
+</pre></div>
+</td></tr></table></div>
+<ol class="last arabic simple">
+<li>One heading, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?</li>
+<li>One heading, one ordered list, and 4 coffee names (with the names labeled “1”, “2”, “3”…)?</li>
+<li>4 headings, 4 ordered lists, and 4 coffee names (each name labeled as “1”)?</li>
+<li>4 headings, 4 ordered lists, and 16 coffee names (with the names labeled “1”, “2”, “3”…)?</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="using-templates.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.3. </span>Using a Template</a></li>
+        
+        
+        <li class="next"><a href="template-conditionals.html"><span class="section-number">13.5. </span>Conditionals in a Template <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/template-iteration.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

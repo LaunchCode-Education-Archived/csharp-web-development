@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.10. Exercises: Razor Views &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.11. Studio: Spa Day!" href="studio.html" />
+    <link rel="prev" title="13.9. Bootstrap" href="bootstrap.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">13. </span>Razor Views</a></li>
+    <li class="active"><span class="section-number">13.10. </span>Exercises: Razor Views</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercises-razor-views">
+<h1><span class="section-number">13.10. </span>Exercises: Razor Views<a class="headerlink" href="#exercises-razor-views" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we started working on an application for tracking various
+coding events around town.</p>
+<div class="section" id="getting-started">
+<h2><span class="section-number">13.10.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Open up your <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project in Visual Studio. Create and checkout a new branch to
+complete these exercises.</p>
+<p>The code you start with should roughly resemble
+<a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo" target="_blank">this branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+If you have been coding along with the video lessons, you’re probably in good shape.</p>
+<p>As always, give the branch a useful name, like <code class="docutils literal notranslate"><span class="pre">view-exercises</span></code>.</p>
+<p>Now, let’s add descriptions to our events.</p>
+</div>
+<div class="section" id="expanding-our-events-schedule">
+<span id="ex-part-1"></span><h2><span class="section-number">13.10.2. </span>Expanding our Events Schedule<a class="headerlink" href="#expanding-our-events-schedule" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In the video lessons, we learned how to use templates to display the elements in a
+static list called <code class="docutils literal notranslate"><span class="pre">Events</span></code>. Let’s convert our <code class="docutils literal notranslate"><span class="pre">Events</span></code> list to a <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>.
+The structure of a dictionary enables us to add descriptions to our events. You’ll
+need to think about what data types the event name and description will be.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">If you need to refresh your memory on dictionaries, refer to <a class="reference internal" href="../control-flow-and-collections/dictionary.html#dictionary"><span class="std std-ref">this page</span></a>.</p>
+</div>
+</li>
+<li><p class="first">Update the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template with a new field for a user to submit an event
+description.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">You’ll want to also add some <code class="docutils literal notranslate"><span class="pre">label</span></code> tags to your form to let the user know what
+data they are entering.</p>
+</div>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-dictionary"><span class="std std-ref">Check your solution</span></a></p>
+</li>
+<li><p class="first">Back in <code class="docutils literal notranslate"><span class="pre">EventsController.cs</span></code>, add the description parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action method
+and within the method, add the new event key/value pair to the <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">Whatever value you provided in the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute of your new description field
+is the name of the parameter.</p>
+</div>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-kvp"><span class="std std-ref">Check your solution</span></a></p>
+</li>
+<li><p class="first">Now to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>. Replace the <code class="docutils literal notranslate"><span class="pre">ul</span></code> with a <code class="docutils literal notranslate"><span class="pre">table</span></code> to display event names
+and descriptions.</p>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-table"><span class="std std-ref">Check your solution</span></a></p>
+</li>
+<li><p class="first">Lastly, modify <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> to display links for the Coding Events app (only <code class="docutils literal notranslate"><span class="pre">Events/Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Events/Add</span></code> for now).</p>
+</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-layout"><span class="std std-ref">Check your solution</span></a></p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="bootstrap.html"><span aria-hidden="true">&larr;</span> <span class="section-number">13.9. </span>Bootstrap</a></li>
+        
+        
+        <li class="next"><a href="studio.html"><span class="section-number">13.11. </span>Studio: Spa Day! <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/razor-views/exercises.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

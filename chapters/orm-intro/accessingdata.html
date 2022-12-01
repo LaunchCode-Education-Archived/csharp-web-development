@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17.2. Accessing Data &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="17.3. Working with Data Stores" href="data-stores.html" />
+    <link rel="prev" title="17.1. Object-Relational Mapping" href="background.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">17. </span>Introduction to Object-Relational Mapping</a></li>
+    <li class="active"><span class="section-number">17.2. </span>Accessing Data</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="accessing-data">
+<span id="id1"></span><h1><span class="section-number">17.2. </span>Accessing Data<a class="headerlink" href="#accessing-data" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the new schema. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.</p>
+<div class="admonition-warning admonition" id="intro-to-data-stores">
+<span id="index-0"></span><p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
+We will provide notes in the text for working with the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repos as well as
+projects you created yourself.</p>
+</div>
+<div class="section" id="data-stores-video">
+<h2><span class="section-number">17.2.1. </span>Data Stores - Video<a class="headerlink" href="#data-stores-video" title="Permalink to this headline">¶</a></h2>
+<p>While classes determine the structure of a table in our relational database,
+a <strong>data store</strong> does the work of inserting, updating, and retrieving data from the database.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you want to verify what code this video starts with, c
+heck out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup" target="_blank">db-setup<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch. If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store" target="_blank">persistent-data-store<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+</div>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">The video is using an out of date syntax for registering a data store.
+The text that accompanies the video has the most current syntax.</p>
+</div>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/NV_Tw9sQeEQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="data-stores-text">
+<h2><span class="section-number">17.2.2. </span>Data Stores - Text<a class="headerlink" href="#data-stores-text" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">In our work so far, we have been using an in-application data store. This is the class <code class="docutils literal notranslate"><span class="pre">EventData</span></code>. The <code class="docutils literal notranslate"><span class="pre">EventData</span></code> class is an
+<strong>in-memory data store</strong>. It keeps track of new events using a C# data structure, which gets deleted from memory every time the app shuts
+down. With EF, we can create a <strong>persistent data store</strong>. A persistent data store retains data even when an app shuts down.</p>
+<div class="section" id="creating-a-dbcontext">
+<h3><span class="section-number">17.2.2.1. </span>Creating a <code class="docutils literal notranslate"><span class="pre">DbContext</span></code><a class="headerlink" href="#creating-a-dbcontext" title="Permalink to this headline">¶</a></h3>
+<p>To create a persistent data store for our <code class="docutils literal notranslate"><span class="pre">Event</span></code> class, we can extend the class <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>, which is provided by EF. Here’s what that looks like.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">using</span> <span class="nn">CodingEventsDemo.Models</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+   <span class="k">namespace</span> <span class="nn">CodingEventsDemo.Data</span>
+   <span class="p">{</span>
+      <span class="k">public</span> <span class="k">class</span> <span class="nc">EventDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+      <span class="p">{</span>
+         <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">Events</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+         <span class="k">public</span> <span class="nf">EventDbContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">EventDbContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
+               <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+         <span class="p">{</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This new class is placed in the <code class="docutils literal notranslate"><span class="pre">Data</span></code> directory and namespace.
+By convention, we name it <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> since it is going to be used to work with
+<code class="docutils literal notranslate"><span class="pre">Event</span></code> objects and data. We extend <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>, which will provide most of the base
+functionality that we need. More on this in the next section.</p>
+<p>This extension <em>must</em> provide a property of type <code class="docutils literal notranslate"><span class="pre">DbSet&lt;Event&gt;</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">DbSet</span></code> class provides methods for querying sets of objects of the
+given type (in this case, <code class="docutils literal notranslate"><span class="pre">Event</span></code>). In the next section, we will explore how to use these methods.</p>
+<p>The only additional code that we need to add is a constructor that calls
+the constructor from the base class.</p>
+<p>This basic data store template can be used for any class that you
+want to persist in a database. Each such class will need its own data store.</p>
+</div>
+<div class="section" id="registering-a-data-store">
+<h3><span class="section-number">17.2.2.2. </span>Registering a Data Store<a class="headerlink" href="#registering-a-data-store" title="Permalink to this headline">¶</a></h3>
+<p>If you are using the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repos, follow these instructions.
+If you created the project on your own, skip to <a class="reference internal" href="#usingyourowncodingevents"><span class="std std-ref">17.2.2.2.2 Using Your Own Code</span></a>.</p>
+<div class="section" id="using-the-codingeventsdemo-repos">
+<h4><span class="section-number">17.2.2.2.1. </span>Using the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repos<a class="headerlink" href="#using-the-codingeventsdemo-repos" title="Permalink to this headline">¶</a></h4>
+<p>To make ASP.NET aware of this data store, we need to register <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> in the <code class="docutils literal notranslate"><span class="pre">Startup</span></code> class. <code class="docutils literal notranslate"><span class="pre">Startup</span></code> is automatically executed every time our app starts up, and is a place where application configuration can be customized.</p>
+<p>Open up <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> and find the <code class="docutils literal notranslate"><span class="pre">ConfigureServices</span></code> method. By default, it looks like this.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">services</span><span class="p">.</span><span class="n">AddControllersWithViews</span><span class="p">();</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>A persistent data store is considered a service in ASP.NET,
+and we can register this service by adding the following code to <code class="docutils literal notranslate"><span class="pre">ConfigureServices</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">var</span> <span class="n">serverVersion</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MySqlServerVersion</span><span class="p">(</span><span class="k">new</span> <span class="n">Version</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">29</span><span class="p">));</span>
+   <span class="kt">var</span> <span class="n">defaultConnection</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;DefaultConnection&quot;</span><span class="p">);</span>
+
+   <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">EventDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> <span class="n">options</span><span class="p">.</span><span class="n">UseMySql</span><span class="p">(</span><span class="n">defaultConnection</span><span class="p">,</span> <span class="n">serverVersion</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Don’t worry too much about the intricate details of what this code is doing. Simply note the following points:</p>
+<ul class="simple">
+<li>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the <code class="docutils literal notranslate"><span class="pre">services</span></code> object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Configuration.GetConnectionString(&quot;DefaultConnection&quot;)</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</li>
+<li>The method <code class="docutils literal notranslate"><span class="pre">options.UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database.</li>
+</ul>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
+This is important if you drop tables or schemas and update any of these elements.</p>
+</div>
+</div>
+<div class="section" id="using-your-own-code">
+<h4><span class="section-number">17.2.2.2.2. </span>Using Your Own Code<a class="headerlink" href="#using-your-own-code" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-warning admonition">
+<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="last">The video is using an older version of Visual Studio.
+Visual Studio 2022 uses a minimal format and has combined the <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> file into the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> file.
+The functionality is the same, but the syntax has changed.
+Use the syntax below to connect your C# project to your MySql Workbench.</p>
+</div>
+<p>To make ASP.NET aware of this data store,
+we need to register <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> in the <code class="docutils literal notranslate"><span class="pre">Program</span></code> class.
+<code class="docutils literal notranslate"><span class="pre">Program</span></code> is automatically executed every time our app starts up,
+and is a place where application configuration can be customized.</p>
+<p>We will be using the <code class="docutils literal notranslate"><span class="pre">WebApplication</span></code> class to customize our configurations.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="n">WebApplication</span><span class="p">.</span><span class="n">CreateBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+
+   <span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddControllersWithViews</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>A persistent data store is considered a service in ASP.NET, and we can register this service by applying the following code to <code class="docutils literal notranslate"><span class="pre">builder</span></code>.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">var</span> <span class="n">connectionString</span> <span class="p">=</span> <span class="s">&quot;server=localhost;user=username;password=password;database=database&quot;</span><span class="p">;</span>
+   <span class="kt">var</span> <span class="n">serverVersion</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MySqlServerVersion</span><span class="p">(</span><span class="k">new</span> <span class="n">Version</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">29</span><span class="p">));</span>
+
+   <span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">EventDbContext</span><span class="p">&gt;(</span><span class="n">dbContextOptions</span> <span class="p">=&gt;</span> <span class="n">dbContextOptions</span><span class="p">.</span><span class="n">UseMySql</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">serverVersion</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+<p>Don’t worry too much about the intricate details of what this code is doing.
+Simply note the following points:</p>
+<ul class="simple">
+<li>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the builder object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</li>
+<li><code class="docutils literal notranslate"><span class="pre">dbContextOptions</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</li>
+<li>The method <code class="docutils literal notranslate"><span class="pre">UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database</li>
+</ul>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
+This is important if you drop tables or schemas and update any of these elements.</p>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-a-primary-key">
+<span id="index-2"></span><h3><span class="section-number">17.2.2.3. </span>Configuring a Primary Key<a class="headerlink" href="#configuring-a-primary-key" title="Permalink to this headline">¶</a></h3>
+<p>As you learned previously, every relational table should have a primary key. When working with ORM, this means that every <strong>persistent class</strong> needs a primary key property. A persistent class is a class that we want to store (or persist) in a database.</p>
+<p>Our <code class="docutils literal notranslate"><span class="pre">Event</span></code> class currently has an ID field.</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">static</span> <span class="k">private</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="nf">Event</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">Id</span> <span class="p">=</span> <span class="n">nextId</span><span class="p">;</span>
+      <span class="n">nextId</span><span class="p">++;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">Event</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">description</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contactEmail</span><span class="p">)</span> <span class="p">:</span> <span class="k">this</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="n">Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+      <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">contactEmail</span><span class="p">;</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>When introducing this property previously,
+we intentionally named it <code class="docutils literal notranslate"><span class="pre">Id</span></code> in anticipation of using EF and a data store to persist <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects.
+EF will <em>automatically</em> <a class="reference external" href="https://learn.microsoft.com/en-us/ef/core/modeling/keys?tabs=data-annotations#configuring-a-primary-key" target="_blank">configure<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+any property named <code class="docutils literal notranslate"><span class="pre">Id</span></code> to be the primary key for that class.
+Therefore, we already have the necessary property!</p>
+<p>So the code sample above can be simplified to the following.</p>
+<div class="highlight-csharp notranslate" id="usingyourowncodingevents"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">Event</span><span class="p">()</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="nf">Event</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">description</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contactEmail</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="n">Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+      <span class="n">ContactEmail</span> <span class="p">=</span> <span class="n">contactEmail</span><span class="p">;</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<span class="target" id="index-3"></span></div>
+</div>
+<div class="section" id="migrations-video">
+<span id="index-4"></span><h2><span class="section-number">17.2.3. </span>Migrations - Video<a class="headerlink" href="#migrations-video" title="Permalink to this headline">¶</a></h2>
+<p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store" target="_blank">persistent-data-store<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch. If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/migrations" target="_blank">migrations<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/q6PfagaiHqE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+</div>
+<div class="section" id="migrations-text">
+<h2><span class="section-number">17.2.4. </span>Migrations - Text<a class="headerlink" href="#migrations-text" title="Permalink to this headline">¶</a></h2>
+<p>Our application is now completely configured to store <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects in our MySQL database. However, if you look at the <code class="docutils literal notranslate"><span class="pre">coding_events</span></code> database, you’ll notice that it has no table in which to store such data. To create such a table, we need to create and run a <strong>database migration</strong>. A database migration (or migration, for short) is an update to a database made in order to reflect changes in an application’s model. Every time we change our application’s model by adding or removing a new persistent class, or by modifying a persistent class, we will need to create and run a migration.</p>
+<p>The EntityFrameworkCore Tools package we installed in the last section provides tools for working with migrations. To get started, open a terminal (the Terminal app on MacOS or Powershell on Windows). Navigate to the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> project folder <em>within</em> your <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> solution. This is the folder that contains <code class="docutils literal notranslate"><span class="pre">Controllers/</span></code>, <code class="docutils literal notranslate"><span class="pre">Views/</span></code>, and so on, and is NOT the main project folder.</p>
+<p>Then run the following command to create a migration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dotnet ef migrations add InitialMigration
+</pre></div>
+</div>
+<p>This instructs the EF tools to create a migration named <code class="docutils literal notranslate"><span class="pre">InitialMigration</span></code>. In doing so, EF scans our project looking for persistent classes (i.e. classes with data stores that have been registered in <code class="docutils literal notranslate"><span class="pre">Startup</span></code>) and compares them to the current state of the MySQL database. If any classes have been added, removed, or changed, it will generate code to update the database to be in sync with the application’s model. This code is stored in the <code class="docutils literal notranslate"><span class="pre">Migrations/</span></code> folder of your project.</p>
+<p>In order to run a migration, we issue the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dotnet ef database update
+</pre></div>
+</div>
+<p>This command will apply the changes to the database. To verify the changes, open MySQL Workbench and notice that there is now an <code class="docutils literal notranslate"><span class="pre">Events</span></code> table with columns corresponding to the properties of our class.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">EntityFrameworkCore uses the <code class="docutils literal notranslate"><span class="pre">_EFMigrationsHistory</span></code> table in the database to keep track of which migrations have already been run. When we run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span> <span class="pre">migrations</span> <span class="pre">update</span></code>, EF will reference this table and run <em>all</em> migrations that have not yet been applied, in the correct order.</p>
+</div>
+<p>The next section will look at how we can store and retrieve <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects from within our controller.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">17.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="last"><strong>True/False:</strong> Every persistent class will automatically have a MySQL table created to use to store its data.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>A data store should extend which of the following classes in the <code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore</span></code> package?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">DataStore</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">DbContext</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">MySqlStore</span></code></li>
+<li>None of the above</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="background.html"><span aria-hidden="true">&larr;</span> <span class="section-number">17.1. </span>Object-Relational Mapping</a></li>
+        
+        
+        <li class="next"><a href="data-stores.html"><span class="section-number">17.3. </span>Working with Data Stores <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/orm-intro/accessingdata.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.2. MSTest &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3. Exercises: Unit Testing" href="exercises.html" />
+    <link rel="prev" title="6.1. Testing in C#" href="testing-in-csharp.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">6. </span>Unit Testing</a></li>
+    <li class="active"><span class="section-number">6.2. </span>MSTest</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="mstest">
+<h1><span class="section-number">6.2. </span>MSTest<a class="headerlink" href="#mstest" title="Permalink to this headline">¶</a></h1>
+<p><strong>MSTest</strong> is a framework that provides the methods and assertions
+for writing and executing unit tests in C#.</p>
+<span class="target" id="csharp-attributes"></span><div class="section" id="c-attributes">
+<span id="index-0"></span><h2><span class="section-number">6.2.1. </span>C# Attributes<a class="headerlink" href="#c-attributes" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">In C#, <strong>attributes</strong> are formalized bits of information about a program. They operate
+somewhere between actual code syntax and a comment on the code. Attributes do not
+directly affect the code they annotate, but they do supply information to the compiler.
+An attribute is enclosed in square brackets, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, and placed above the item it decorates.</p>
+<p>To run unit tests using the native tools available in Visual Studio, the attributes <strong>[TestClass]</strong> and
+<strong>[TestMethod]</strong> are used to indicate that certain classes and methods should be treated as test cases. We
+describe how to use these in the examples that follow.</p>
+</div>
+<div class="section" id="testing-setup">
+<h2><span class="section-number">6.2.2. </span>Testing Setup<a class="headerlink" href="#testing-setup" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">To test a simple .NET Core console project, we add an MSTest project into the same solution. An MSTest
+project is a console project with an added MSTest dependency.</p>
+<p>Fork and clone <a class="reference external" href="https://github.com/LaunchCodeEducation/csharp-web-dev-unittesting" target="_blank">this repo<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. Inside the solution, we have two projects,
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> and <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>. The <code class="docutils literal notranslate"><span class="pre">Car</span></code> project is a simple .NET Console app like the others you have encountered
+in this course so far. <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> is a new type of project, MSTest Project.</p>
+<p>On a Mac, to select this type of project looks like so:</p>
+<div class="figure align-default" id="id1">
+<img alt="MAC: User selects MSTest project template in Visual Studio" src="../../_images/mac-create-mstest-project.png" />
+<p class="caption"><span class="caption-text">MAC: Creating MSTest project in Visual Studio</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>On a Windows:</p>
+<div class="figure align-default" id="id2">
+<img alt="WINDOWS: User selects MSTest project template in Visual Studio" src="../../_images/windows-create-mstest-project.png" />
+<p class="caption"><span class="caption-text">WINDOWS: Creating MSTest project in Visual Studio</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>MSTest is a C# testing framework. When we create a Visual Studio MSTest Project, the
+necessary API and classes are added as <strong>dependencies</strong> of the <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> project. A dependency
+is a separately developed program or piece of code that another program or piece of code
+uses to carry out its function. Our C# tests will <em>depend</em> on MSTest code.</p>
+<p>Along the same lines, since <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> tests the methods inside of <code class="docutils literal notranslate"><span class="pre">Car</span></code>, we must add the
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> project as a dependency of <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>.</p>
+<p>Right click on the <code class="docutils literal notranslate"><span class="pre">Dependencies</span></code> directory in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> and add a reference to
+the <code class="docutils literal notranslate"><span class="pre">Car</span></code> project.</p>
+<div class="figure align-default" id="id3">
+<img alt="User selects project to add as a dependency reference to test project" src="../../_images/vs-add-dependency-reference.png" />
+<p class="caption"><span class="caption-text">Add main project as dependency for test project</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="car-and-cartests">
+<h3><span class="section-number">6.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">Car</span></code> and <code class="docutils literal notranslate"><span class="pre">CarTests</span></code><a class="headerlink" href="#car-and-cartests" title="Permalink to this headline">¶</a></h3>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class and look around. Here, we provide a class, <code class="docutils literal notranslate"><span class="pre">Car</span></code>, with basic
+information about a make, model, gas level, and mileage. We also give it getters, setters, and a few other methods.</p>
+<p>In the same project, the <code class="docutils literal notranslate"><span class="pre">Program</span></code> class contains a main method that prints the
+<code class="docutils literal notranslate"><span class="pre">make</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code> of a given <code class="docutils literal notranslate"><span class="pre">Car</span></code> object. Run the project to verify it works.
+Now, open <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>. It’s empty, save for a few TODOs. Let’s tackle the
+first TODO to make a new empty test. Starting with an empty test lets us validate that we can
+use MSTest in our current environment.</p>
+</div>
+</div>
+<div class="section" id="testclass-and-testmethod">
+<span id="index-3"></span><h2><span class="section-number">6.2.3. </span><code class="docutils literal notranslate"><span class="pre">[TestClass]</span></code> and <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code><a class="headerlink" href="#testclass-and-testmethod" title="Permalink to this headline">¶</a></h2>
+<p>Another benefit of coding in an IDE, Visual Studio contains its own <strong>test runner</strong>. A test runner is
+simply a tool to execute tests and deliver their results. In order to indicate that <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> contains
+unit tests that we want the test runner to run, we must give it the <code class="docutils literal notranslate"><span class="pre">[TestClass]</span></code> attribute. As you might
+guess, <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> annotates a method to signal it as a test case. Both of these attributes come to us
+via the Visual Studio test runner.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, on top of <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">class</span> <span class="pre">CarTests</span></code>, add <code class="docutils literal notranslate"><span class="pre">[TestClass]</span></code>. Then, create the following empty
+test underneath the first TODO. As usual, be sure write this code rather than copy/paste it:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.VisualStudio.TestTools.UnitTesting</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">CarTests</span>
+<span class="p">{</span>
+<span class="na">   [TestClass]</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">CarTests</span>
+   <span class="p">{</span>
+      <span class="c1">//TODO: add emptyTest so we can configure our runtime environment</span>
+<span class="na">      [TestMethod]</span>
+      <span class="k">public</span> <span class="k">void</span> <span class="nf">EmptyTest</span><span class="p">()</span> <span class="p">{</span>
+         <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">10</span><span class="p">,.</span><span class="m">001</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="c1">// ... other TODOs omitted here</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Our empty test is aptly named <code class="docutils literal notranslate"><span class="pre">EmptyTest()</span></code> as a description of its role. This test does
+not follow the AAA rule from our <a class="reference internal" href="testing-in-csharp.html#testing-best-practices"><span class="std std-ref">Testing Best Practices</span></a>, as it jumps straight to
+asserting. Nor is it relevant, for that matter. The goal of this empty unit test is not to
+demonstrate all of our best practices, but rather, to verify that our testing setup is in place.</p>
+<p>The three arguments in our test care defined as “expected”, “actual”, and “delta”. This empty test
+asserts an expected value of <code class="docutils literal notranslate"><span class="pre">10</span></code> to equal an actual value of <code class="docutils literal notranslate"><span class="pre">10</span></code>,
+with an accepted <code class="docutils literal notranslate"><span class="pre">.001</span></code> variance.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The third argument, called <code class="docutils literal notranslate"><span class="pre">delta</span></code>, is the amount of allowed difference between the
+expected and actual values. If the difference between the two values is within
+that range, then the test still passes.
+This argument is optional for some comparisons and required for others. One
+scenario in which it is required is when comparing doubles.</p>
+<p class="last">Why is it required? Well, that’s kind of a long story. Some number types are
+<a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank">floating-point numbers<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+Due to the nature of their storage, these types carry with them a certain
+degree of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems" target="_blank">inaccuracy<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+In brief, the <code class="docutils literal notranslate"><span class="pre">delta</span></code> argument ensures we can still reasonably compare two doubles.</p>
+</div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Visual Studio can offer info on the parameters of a previously defined function.
+Hover over the function call to see a tooltip:</p>
+<div class="last figure align-default" id="id4">
+<img alt="User hovers mouse over a function to see its parameter names" src="../../_images/function-parameters-tooltip.png" />
+<p class="caption"><span class="caption-text">Hover over a function to see its parameters</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<p>Of course, <code class="docutils literal notranslate"><span class="pre">10</span></code> equals <code class="docutils literal notranslate"><span class="pre">10</span></code>. But let’s run it so
+we know our test runner works.</p>
+<p>Like running console projects, there are many ways to run unit tests and view the results. Here are
+some options to try:</p>
+<div class="section" id="mac-users-running-tests">
+<h3><span class="section-number">6.2.3.1. </span>Mac Users: Running Tests<a class="headerlink" href="#mac-users-running-tests" title="Permalink to this headline">¶</a></h3>
+<p>For Mac users, run the <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> project just like you would any other project.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If the panel does not open once the test are finished running, look for the <em>Test Results</em> panel name on
+the margins of your IDE and open it manually.</p>
+</div>
+</div>
+<div class="section" id="windows-users-running-tests">
+<h3><span class="section-number">6.2.3.2. </span>Windows Users: Running Tests<a class="headerlink" href="#windows-users-running-tests" title="Permalink to this headline">¶</a></h3>
+<p>For Windows users, you’ll want to find and open the <em>Test Explorer</em> panel. If you don’t already have it docked,
+you can find it listed in the top <em>Test</em> menu.</p>
+<div class="figure align-default" id="id5">
+<img alt="WINDOWS: User selecting Test Explorer option in Visual Studio Test Menu" src="../../_images/vs-windows-test-explorer.png" />
+<p class="caption"><span class="caption-text">WINDOWS: Visual Studio open Test Explorer</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>With the panel open, select the <em>Run All Tests</em> option.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you see that the test fails to run, neither passing nor failing, you may need to adjust a setting to use
+64bit processing.</p>
+<div class="figure align-default" id="id6">
+<img alt="WINDOWS: User selecting x64 option from Test Explorer/Settings/Processor Architecture for AnyCPU Projects in Visual Studio" src="../../_images/vs-windows-process-architecture-setting.png" />
+<p class="caption"><span class="caption-text">WINDOWS: Set Test Explorer to use x64 process</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p class="last">You may also need to update some of the testing packages. Right click on the
+<code class="docutils literal notranslate"><span class="pre">CarTests</span></code> project and select <em>Manage NuGet Packages…</em>. If you see some items
+in the <em>Update</em> section of the panel that opens, run the updates. Close and reopen
+the <em>Team Explorer</em> panel and <em>Visual Studio</em> to ensure the changes are applied.</p>
+</div>
+</div>
+<div class="section" id="all-users-output-and-adding-more-tests">
+<h3><span class="section-number">6.2.3.3. </span>All Users: Output and Adding More Tests<a class="headerlink" href="#all-users-output-and-adding-more-tests" title="Permalink to this headline">¶</a></h3>
+<p>Once you run the test, you will see a new output panel with a green check mark indicating the test passed
+and a message stating the test passed.</p>
+<p>We know now how the test runner behaves when a test passes and can begin the real work of unit
+testing the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class. One responsibility of the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class constructor is to set its initial
+<code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> field. This field is determined by the constructor argument for <code class="docutils literal notranslate"><span class="pre">gasTankSize</span></code> .</p>
+<p><code class="docutils literal notranslate"><span class="pre">Car.cs</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Gas tank level defaults to a full tank</span>
+<span class="n">GasTankLevel</span> <span class="p">=</span> <span class="n">gasTankSize</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>This class-specific behavior is a good item to test. Under your second TODO, write a test to verify that the
+constructor sets the <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> field.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">To test the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class, we must make it available to us by adding <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">CarNS;</span></code> to the top of your
+file. <code class="docutils literal notranslate"><span class="pre">CarNS</span></code> is the <strong>namespace</strong> we have assigned to the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class. Namespaces are used in C# to
+organize code. You’ve seen them before in other <a class="reference internal" href="../data-types/some-csharp-practice.html#using-statement"><span class="std std-ref">using statements</span></a>.</p>
+</div>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//TODO: constructor sets gasTankLevel properly</span>
+<span class="na">[TestMethod]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">TestInitialGasTank</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">Car</span> <span class="n">test_car</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Car</span><span class="p">(</span><span class="s">&quot;Toyota&quot;</span><span class="p">,</span> <span class="s">&quot;Prius&quot;</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">50</span><span class="p">);</span>
+   <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="n">test_car</span><span class="p">.</span><span class="n">GasTankLevel</span><span class="p">,</span> <span class="p">.</span><span class="m">001</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here, we give the test a descriptive name, <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code>, initialize a new
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> object, and test that the constructor correctly sets the <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> field.</p>
+<p>We’ve done our best to address <a class="reference internal" href="testing-in-csharp.html#testing-best-practices"><span class="std std-ref">Testing Best Practices</span></a>:</p>
+<ol class="arabic">
+<li><p class="first">The AAAs</p>
+<ol class="arabic simple">
+<li>We arrange the one variable our test requires: <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.</li>
+<li>We act on the <code class="docutils literal notranslate"><span class="pre">Car</span></code> constructor method as well: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Car(&quot;Toyota&quot;,</span> <span class="pre">&quot;Prius&quot;,</span> <span class="pre">10,</span> <span class="pre">50);</span></code>.</li>
+<li>We assert that the expected value of <code class="docutils literal notranslate"><span class="pre">10</span></code> will equal the actual value returned from getting the
+tank level (<code class="docutils literal notranslate"><span class="pre">test_car.GasTankLevel</span></code>).</li>
+</ol>
+</li>
+<li><p class="first">Deterministic</p>
+<p>As it is written, we expect that our test will always pass.</p>
+</li>
+<li><p class="first">Relevant</p>
+<p>This is our first real test, so we don’t yet have much to group it with. That said, the test assesses a method
+in <code class="docutils literal notranslate"><span class="pre">Car</span></code> and is situated in a class called <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, so it meets the minimum requirements or relevancy.
+The next section gives us another attribute to use to help group testing variables.</p>
+</li>
+<li><p class="first">Meaningful</p>
+<p>Our test evaluates a simple field assignment but it is not trivial. The line in the constructor being tested
+is not very complex, but this makes for a good unit test. We want to make sure the basic functionality of our
+class works as we expect.</p>
+</li>
+</ol>
+<p>Run <code class="docutils literal notranslate"><span class="pre">CarTest</span></code> to see that both tests pass.</p>
+<div class="admonition-tip admonition">
+<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="last">If you want to rerun only one test, right click on its listing in the results pane.</p>
+</div>
+</div>
+</div>
+<div class="section" id="testinitialize">
+<span id="index-4"></span><h2><span class="section-number">6.2.4. </span><code class="docutils literal notranslate"><span class="pre">[TestInitialize]</span></code><a class="headerlink" href="#testinitialize" title="Permalink to this headline">¶</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">[TestClass]</span></code> and <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> are required to run tests, there are many other
+attributes you may find useful as your test files grow in scope. One such item to know
+is <strong>[TestInitialize]</strong>. Methods with the attribute <code class="docutils literal notranslate"><span class="pre">[TestInitialize]</span></code> will run before each
+test method is run in a class.</p>
+<p>In the case of <code class="docutils literal notranslate"><span class="pre">CarTest</span></code>, it would be nice to not need to create a new <code class="docutils literal notranslate"><span class="pre">Car</span></code> instance for
+each test we write. In your <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code> method, remove the line initiating <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.
+Above your relevant test, add the following <code class="docutils literal notranslate"><span class="pre">[TestInitialize]</span></code> method:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Car</span> <span class="n">test_car</span><span class="p">;</span>
+
+<span class="na">[TestInitialize]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">CreateCarObject</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">test_car</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Car</span><span class="p">(</span><span class="s">&quot;Toyota&quot;</span><span class="p">,</span> <span class="s">&quot;Prius&quot;</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">50</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now, run the test project and ensure your test still passes.</p>
+</div>
+<div class="section" id="testcleanup">
+<span id="index-5"></span><h2><span class="section-number">6.2.5. </span><code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code><a class="headerlink" href="#testcleanup" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code>, conversely, defines a set of conditions to be met after each test in a
+suite is run.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">We won’t encounter a scenario where we ask you to use <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> in this class. As you explore writing
+your own unit tests, you may find a yourself in a situation where you need or want it. One use case for
+<code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> might be testing database transactions. You don’t want changes to a database to persist
+after test execution, so you can use <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> to rollback, or reverse, a test transaction.</p>
+</div>
+<p>You can find more information on this attribute and other items available in the Visual Studio testing
+namespace <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting?view=mstest-net-1.2.0" target="_blank">here<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+</div>
+<div class="section" id="common-assert-methods">
+<h2><span class="section-number">6.2.6. </span>Common <code class="docutils literal notranslate"><span class="pre">Assert</span></code> Methods<a class="headerlink" href="#common-assert-methods" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the very commonly used <code class="docutils literal notranslate"><span class="pre">Assert.AreEqual()</span></code> method
+you see above, here are a few other methods you should have in
+your unit testing playbook.</p>
+<table border="1" class="docutils align-default" id="id7">
+<caption><span class="caption-text">MSTest Assert Methods</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Assertion</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">AreEqual(expected,</span> <span class="pre">actual,</span> <span class="pre">optional_delta)</span></code></td>
+<td>Asserts that two values, expected and actual, are equal to each other (optionally, within a given range of difference)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsFalse(condition)</span></code></td>
+<td>Asserts that a given condition is false</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">IsTrue(condition)</span></code></td>
+<td>Asserts that a given condition is true</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsNotNull(object)</span></code></td>
+<td>Asserts that a given object is not null</td>
+</tr>
+</tbody>
+</table>
+<p>Checkout <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert?redirectedfrom=MSDN&amp;view=mstest-net-1.2.0" target="_blank">the Assert class<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+for a full listing of methods.</p>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">6.2.7. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Write another version of <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code> using <code class="docutils literal notranslate"><span class="pre">IsFalse()</span></code>, comparing the value to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.False(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">=</span> <span class="pre">0);</span></code></li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Write another version of <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code> using <code class="docutils literal notranslate"><span class="pre">IsTrue()</span></code>.</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.gasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="testing-in-csharp.html"><span aria-hidden="true">&larr;</span> <span class="section-number">6.1. </span>Testing in C#</a></li>
+        
+        
+        <li class="next"><a href="exercises.html"><span class="section-number">6.3. </span>Exercises: Unit Testing <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/unit-testing/mstest.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

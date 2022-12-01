@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14.3. Models and Data &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14.4. Model-Binding" href="model-binding.html" />
+    <link rel="prev" title="14.2. Create a Model" href="model-class.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">14. </span>Models and Model Binding</a></li>
+    <li class="active"><span class="section-number">14.3. </span>Models and Data</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="models-and-data">
+<span id="data-layer"></span><h1><span class="section-number">14.3. </span>Models and Data<a class="headerlink" href="#models-and-data" title="Permalink to this headline">¶</a></h1>
+<p>To effectively work with data, we need to add another element to our MVC application. Say for example,
+we want to remove an event from our list. If two events both have the same name, we can’t yet identify which
+of the events to delete.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>, we add a unique identifier field to <code class="docutils literal notranslate"><span class="pre">Events</span></code> to better handle and track distinct
+<code class="docutils literal notranslate"><span class="pre">Event</span></code> instances. Next, we’ll also create another model class called <code class="docutils literal notranslate"><span class="pre">EventData</span></code>. This allows us
+to encapsulate data storage and prepare ourselves for decoupling the <code class="docutils literal notranslate"><span class="pre">Event</span></code> model from the controller.</p>
+<div class="section" id="add-a-unique-id-video">
+<h2><span class="section-number">14.3.1. </span>Add a Unique Id - Video<a class="headerlink" href="#add-a-unique-id-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/thyNHEyNluQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-property" target="_blank">add-property branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-id" target="_blank">add-id branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+</div>
+<div class="section" id="add-a-unique-id-text">
+<span id="index-0"></span><h2><span class="section-number">14.3.2. </span>Add a Unique Id - Text<a class="headerlink" href="#add-a-unique-id-text" title="Permalink to this headline">¶</a></h2>
+<p>Identifying data by a user-defined string called <code class="docutils literal notranslate"><span class="pre">name</span></code> is not a sustainable or scalable method
+of handling data in most situations. Consider the address book example. How can
+we distinguish between two contact entries with the same name field? It is a frequent
+practice to add a <strong>unique identifier</strong> field (sometimes called, or even labelled, <strong>uid</strong>) to a class
+responsible for modelling data. This ensures that our address book can contain two separate entries for
+our contacts who have the same name as one another.</p>
+<p>To accomplish the same data clarity with events, we’ll add a few things to the event model class:</p>
+<ol class="arabic simple">
+<li>A readonly <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</li>
+<li>A static counter variable, <code class="docutils literal notranslate"><span class="pre">nextId</span></code>.</li>
+<li>Additional constructor code that:<ol class="loweralpha">
+<li>Sets <code class="docutils literal notranslate"><span class="pre">id</span></code> to the <code class="docutils literal notranslate"><span class="pre">nextId</span></code> value.</li>
+<li>Increments <code class="docutils literal notranslate"><span class="pre">nextId</span></code>.</li>
+</ol>
+</li>
+</ol>
+<p>The result in <code class="docutils literal notranslate"><span class="pre">Models/Event.cs</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">CodingEventsDemo.Models</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">Event</span>
+   <span class="p">{</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+      <span class="k">static</span> <span class="k">private</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+      <span class="k">public</span> <span class="nf">Event</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="n">description</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+         <span class="n">Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+         <span class="n">Id</span> <span class="p">=</span> <span class="n">nextId</span><span class="p">;</span>
+         <span class="n">nextId</span><span class="p">++;</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">Name</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition-note admonition" id="index-1">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Here’s a closer look at what’s going on in line 8.</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">Id</span></code> is created as a <strong>get-only auto-implemented property</strong>. You’ve seen this
+syntax a few times before. The backing field, <code class="docutils literal notranslate"><span class="pre">id</span></code> is readonly because no setter
+method has been written for the field. The only place <code class="docutils literal notranslate"><span class="pre">id</span></code>’s value
+may be assigned is in a constructor (as it is on line 15).</p>
+</div>
+<p>With these additions, every time a new event object is created it is assigned a unique integer to its <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</p>
+</div>
+<div class="section" id="create-a-data-layer-video">
+<h2><span class="section-number">14.3.3. </span>Create a Data Layer - Video<a class="headerlink" href="#create-a-data-layer-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/w4Y5ULttveI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/add-id" target="_blank">add-id branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-data-layer" target="_blank">create-data-layer branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+</div>
+<div class="section" id="create-a-data-layer-text">
+<h2><span class="section-number">14.3.4. </span>Create a Data Layer - Text<a class="headerlink" href="#create-a-data-layer-text" title="Permalink to this headline">¶</a></h2>
+<p>Now that we’ve begun building a model, it’s a good time to remind ourselves that models are not designed to be
+data storage containers. Rather, models are meant to shape the data stored in another location. They shape data into
+objects that fit into the logic of our applications. As we work our way into learning about database usage and service
+calls, however, we’ll use a C# class to store some data temporarily.</p>
+<span class="target" id="data-layer-dev"></span><p id="index-2">A <strong>data layer</strong> adds abstraction between models and the data we want to store. As we’ll see, a data layer allows us to pass on responsibility of exactly <em>how</em> our data is stored.</p>
+<p>To get started with a data layer, create a new directory called <code class="docutils literal notranslate"><span class="pre">Data</span></code> at the root of your project, on the same level as the rest of the MVC components.
+Inside of <code class="docutils literal notranslate"><span class="pre">Data/</span></code>, add a class <code class="docutils literal notranslate"><span class="pre">EventData</span></code>. Whereas <code class="docutils literal notranslate"><span class="pre">Event</span></code> is responsible for organizing
+user-inputted information into a C# object, <code class="docutils literal notranslate"><span class="pre">EventData</span></code> is responsible for maintaining those objects once they
+are created. <code class="docutils literal notranslate"><span class="pre">EventData</span></code> is itself a C# class that stores events. It contains several methods for managing and
+maintaining the event data that simply extend System-provided collection methods.</p>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">Data/EventData.cs</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">CodingEventsDemo.Data</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">class</span> <span class="nc">EventData</span>
+   <span class="p">{</span>
+      <span class="k">static</span> <span class="k">private</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Event</span><span class="p">&gt;</span> <span class="n">Events</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Event</span><span class="p">&gt;();</span>
+
+      <span class="c1">// GetAll</span>
+      <span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Event</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">Events</span><span class="p">.</span><span class="n">Values</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Add</span>
+      <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">Event</span> <span class="n">newEvent</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Events</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newEvent</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">newEvent</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Remove</span>
+      <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">Events</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// GetById</span>
+      <span class="k">public</span> <span class="k">static</span> <span class="n">Event</span> <span class="nf">GetById</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="k">return</span> <span class="n">Events</span><span class="p">[</span><span class="n">id</span><span class="p">];</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>With <code class="docutils literal notranslate"><span class="pre">EventData</span></code> now managing a collection of events, we must once again refactor <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> to update the items stored in
+the dictionary. In keeping with the objective to remove data handling from the controller, we’ll remove the list
+of events at the top of the class. Consequently, for the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method, we’ll now use events from
+<code class="docutils literal notranslate"><span class="pre">EventData</span></code> to populate a <code class="docutils literal notranslate"><span class="pre">ViewBag.events</span></code> property:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">ViewBag</span><span class="p">.</span><span class="n">events</span> <span class="p">=</span> <span class="n">EventData</span><span class="p">.</span><span class="n">GetAll</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>And back to <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code>, we’ll make use of the <code class="docutils literal notranslate"><span class="pre">.add()</span></code> method from <code class="docutils literal notranslate"><span class="pre">EventData</span></code>:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">EventData</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">));</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="delete-an-event-video">
+<h2><span class="section-number">14.3.5. </span>Delete an Event - Video<a class="headerlink" href="#delete-an-event-video" title="Permalink to this headline">¶</a></h2>
+
+<div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/dYwDTJBJIsg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p></p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/create-data-layer" target="_blank">create-data-layer branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+of <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>. The final code presented in this
+video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/delete-events" target="_blank">delete-events branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
+As always, code along to the videos on your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> project.</p>
+</div>
+</div>
+<div class="section" id="delete-an-event-text">
+<h2><span class="section-number">14.3.6. </span>Delete an Event - Text<a class="headerlink" href="#delete-an-event-text" title="Permalink to this headline">¶</a></h2>
+<p>Now that we’ve refined our events storage method, we are able to tackle the task of deleting an object.
+To delete an event object from storage, we’ll grab the event’s id and use that
+information to call the <code class="docutils literal notranslate"><span class="pre">Remove()</span></code> method of <code class="docutils literal notranslate"><span class="pre">EventData</span></code>.
+Since the delete event is user-initiated, a controller will be involved to pass
+the information from the user-accessible view to the data layer. So our first step
+with this task is to create an action method to return a view designed to delete events.</p>
+<p>Onto the end of <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, add the following method:</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>39
+40
+41
+42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Delete</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">ViewBag</span><span class="p">.</span><span class="n">events</span> <span class="p">=</span> <span class="n">EventData</span><span class="p">.</span><span class="n">GetAll</span><span class="p">();</span>
+
+   <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>We’ll now need to create a new view for the path mapped in the method above. Add a new template,
+<code class="docutils literal notranslate"><span class="pre">Views/Events/Delete.cshtml</span></code>. This view will reference event id fields in order to distinguish which items the user
+will request to delete via checkbox inputs.</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Delete Event<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+   @foreach (var evt in ViewBag.events)
+   {
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>@evt.Name<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;eventIds&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;@evt.Id&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+   }
+
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Delete Selected Events&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-danger&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>We also need a <code class="docutils literal notranslate"><span class="pre">POST</span></code> handler to take care of what to do when the delete event information
+is submitted by the user. We’ll have this post handler redirect the user back to the events home
+page once they have selected which event, or events, to remove from storage.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, add another controller method:</p>
+<div class="highlight-C# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">eventIds</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">eventId</span> <span class="k">in</span> <span class="n">eventIds</span><span class="p">)</span>
+   <span class="p">{</span>
+         <span class="n">EventData</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">eventId</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/Events&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="check-your-understanding">
+<h2><span class="section-number">14.3.7. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>, which method can we call to list every event object?</p>
+<ol class="last arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Events.Get()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">EventData.GetEvery()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Event.GetAll()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">EventData.GetAll()</span></code></li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>, breaking up the event storage from the <code class="docutils literal notranslate"><span class="pre">Event</span></code> model is an example of which
+object-oriented concept?</p>
+<ol class="last arabic simple">
+<li>Inheritance</li>
+<li>Polymorphism</li>
+<li>Encapsulation</li>
+<li>MVC design</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="model-class.html"><span aria-hidden="true">&larr;</span> <span class="section-number">14.2. </span>Create a Model</a></li>
+        
+        
+        <li class="next"><a href="model-binding.html"><span class="section-number">14.4. </span>Model-Binding <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/aspdotnet-model-classes/data-layer.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

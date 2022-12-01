@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12.2. NuGet &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="12.3. Debugger" href="debugger.html" />
+    <link rel="prev" title="12.1. MSBuild" href="msbuild.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">12. </span>Tools in Visual Studio</a></li>
+    <li class="active"><span class="section-number">12.2. </span>NuGet</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="nuget">
+<h1><span class="section-number">12.2. </span>NuGet<a class="headerlink" href="#nuget" title="Permalink to this headline">¶</a></h1>
+<p id="index-0"><strong>NuGet</strong> is a package management tool for .NET software.
+NuGet allows you to use external code sources without including the codebase itself. You can make
+use of compiled libraries that other developers have already built. You can choose to use a
+specific version of a package hosted by NuGet, and update that version as need be.</p>
+<p>As with MSBuild, we will only scratch the surface of the utility of a .NET package manager. That
+said, it is still a good idea to get <a class="reference external" href="https://learn.microsoft.com/en-us/nuget/what-is-nuget" target="_blank">familiar with these tools<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>. As your programs grow larger,
+MSBuild and NuGet will help to maintain a robust codebase.</p>
+<p>NuGet packages are readily available within the IDE itself. Perhaps you have noticed the
+<em>Dependencies</em> directory that is created in our projects?</p>
+<p>To browse available NuGet packages:</p>
+<ol class="arabic simple">
+<li>Right-click on that directory</li>
+<li>Select “Manage NuGet Packages” from the dropdown menu</li>
+<li>The resulting window will show you a catalog of software packages you may add to your project</li>
+</ol>
+<div class="section" id="managing-nuget-packages">
+<h2><span class="section-number">12.2.1. </span>Managing NuGet Packages<a class="headerlink" href="#managing-nuget-packages" title="Permalink to this headline">¶</a></h2>
+<p>The following documentation can help you become more familiar with downloading and managing NuGet packages.</p>
+<p><strong>Windows Users:</strong> <a class="reference external" href="https://learn.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio" target="_blank">Follow this guide<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p><strong>Mac Users:</strong> <a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/mac/nuget-walkthrough?toc=%2Fnuget%2Ftoc.json&amp;view=vsmac-2022" target="_blank">Use this guide<i class="fas fa-external-link-alt" aria-hidden="true"></i></a></p>
+<div class="section" id="check-your-understanding">
+<h3><span class="section-number">12.2.1.1. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>Select which item best describes the job of NuGet.</p>
+<ol class="last loweralpha simple">
+<li>NuGet compiles your C# programs to be deployed in different conditions.</li>
+<li>NuGet is a marshmallow-like confection found in many candy bars.</li>
+<li>NuGet is a package manager for .NET programs.</li>
+<li>NuGet allows you to download dependency library source code into your solution.</li>
+</ol>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>NuGet and MSBuild share responsibilities and only one is needed to deploy a C# app.</p>
+<ol class="last loweralpha simple">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="msbuild.html"><span aria-hidden="true">&larr;</span> <span class="section-number">12.1. </span>MSBuild</a></li>
+        
+        
+        <li class="next"><a href="debugger.html"><span class="section-number">12.3. </span>Debugger <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/vstools/nuget.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

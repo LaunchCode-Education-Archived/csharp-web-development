@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.8. Exercises: Inheritance &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.9. Studio: Fun with Quizzes" href="studio.html" />
+    <link rel="prev" title="7.7. Class Diagrams" href="class-diagrams.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">7. </span>Inheritance</a></li>
+    <li class="active"><span class="section-number">7.8. </span>Exercises: Inheritance</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="exercises-inheritance">
+<span id="inheritance-exercises"></span><h1><span class="section-number">7.8. </span>Exercises: Inheritance<a class="headerlink" href="#exercises-inheritance" title="Permalink to this headline">¶</a></h1>
+<p>Work on these exercises in a new Visual Studio .NET Core console app.
+Name your solution <code class="docutils literal notranslate"><span class="pre">Technology</span></code> and make a project inside of it with the same name.</p>
+<div class="section" id="class-design">
+<h2><span class="section-number">7.8.1. </span>Class design<a class="headerlink" href="#class-design" title="Permalink to this headline">¶</a></h2>
+<p>Create three classes inside your solution: <code class="docutils literal notranslate"><span class="pre">Computer</span></code>, <code class="docutils literal notranslate"><span class="pre">Laptop</span></code>, and <code class="docutils literal notranslate"><span class="pre">SmartPhone</span></code></p>
+<p>Before you start coding anything inside these classes, <a class="reference internal" href="csharp-inheritance.html#inheritance-diagram"><span class="std std-ref">diagram</span></a> how the three classes are going to be related
+to each other.</p>
+<p>Remember to add properties and methods to your diagram.</p>
+<ol class="arabic simple">
+<li>For a <strong>parent</strong> class: add 3 fields, 2 methods, and a constructor.</li>
+<li>For a <strong>child</strong> class: add <em>at least</em> 1 additional field and 1 additional method.</li>
+<li><em>At least one</em> of your fields should be either <code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">readonly</span></code>, or a <code class="docutils literal notranslate"><span class="pre">const</span></code>.</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/inheritance.html#inheritance-solution-1"><span class="std std-ref">Check your solution</span></a></p>
+</div>
+<div class="section" id="class-implementation">
+<h2><span class="section-number">7.8.2. </span>Class implementation<a class="headerlink" href="#class-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Implement your design and add unit tests to a new <code class="docutils literal notranslate"><span class="pre">TechnologyTests</span></code> MSTest project.</p>
+<ol class="arabic simple">
+<li>Add a new MSTest project to your solution.</li>
+<li>Try to add three MSTests tests per class.</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/inheritance.html#inheritance-solution-2"><span class="std std-ref">Check your solution</span></a></p>
+</div>
+<div class="section" id="abstract-class-design">
+<h2><span class="section-number">7.8.3. </span>Abstract class design<a class="headerlink" href="#abstract-class-design" title="Permalink to this headline">¶</a></h2>
+<p>Consider the group of classes that you designed. Suppose you have a web program
+that uses these classes and you need to assign a unique ID to every object created from them.
+Each class should have an <code class="docutils literal notranslate"><span class="pre">id</span></code> field, and no two objects created from any of the classes may have the
+same value for <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<ol class="arabic simple">
+<li>Create an abstract class, <code class="docutils literal notranslate"><span class="pre">AbstractEntity</span></code>, that contains the behavior for assigning and accessing such a unique ID for each class that extends it.</li>
+<li>Add this class to your <code class="docutils literal notranslate"><span class="pre">Technology</span></code> project above, and add <code class="docutils literal notranslate"><span class="pre">AbstractEntity</span></code> to the class hierarchy in the correct place.</li>
+</ol>
+<p><a class="reference internal" href="../../appendices/exercise-solutions/inheritance.html#inheritance-solution-3"><span class="std std-ref">Check your solution</span></a></p>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="class-diagrams.html"><span aria-hidden="true">&larr;</span> <span class="section-number">7.7. </span>Class Diagrams</a></li>
+        
+        
+        <li class="next"><a href="studio.html"><span class="section-number">7.9. </span>Studio: Fun with Quizzes <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/inheritance/exercises.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>19.5. Configuring Identity &#8212; C# Web Development  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fa/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/launchcode.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/site.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="19.6. Identity and Authorization" href="authorization.html" />
+    <link rel="prev" title="19.4. Registrations and Logins" href="users.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+  </head><body class="body-bc">
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="../../index.html"><span><img src="../../_static/lc-ed-logo.png" alt="LaunchCode logo"></span>
+       </a>
+       <span class="navbar-text navbar-version pull-left"><b></b></span>
+     </div>
+
+       <div class="collapse navbar-collapse nav-collapse">
+         <ul class="nav navbar-nav">
+           
+           
+             
+           
+           
+           
+           
+           
+         </ul>
+
+         
+           
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+    <label for="q" class="searchLabel">Search</label>
+    <input type="text" name="q" class="form-control" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+         
+       </div>
+   </div>
+ </div>
+
+<ol class="breadcrumb container">
+    <li><a href="../../index.html">Contents</a></li>
+    <li><a href="index.html"><span class="section-number">19. </span>Authentication</a></li>
+    <li class="active"><span class="section-number">19.5. </span>Configuring Identity</li>
+</ol>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 content " role="main">
+
+    
+  <div class="section" id="configuring-identity">
+<h1><span class="section-number">19.5. </span>Configuring Identity<a class="headerlink" href="#configuring-identity" title="Permalink to this headline">¶</a></h1>
+<p>With Identity in place, we can start to configure the settings of the library to meet our authentication requirements.
+The first place to start with configuring Identity to fit the needs of the project is in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code>.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">Try and code along as you read more about Identity!
+This page starts off with the code in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding" target="_blank">identity-scaffolding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.
+The final code for this page is in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-config" target="_blank">identity-config<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.
+If you are looking for an additional walkthrough, check out this <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?source=recommendations&amp;view=aspnetcore-6.0" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from Microsoft.</p>
+</div>
+<div class="section" id="startup-cs">
+<h2><span class="section-number">19.5.1. </span><code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code><a class="headerlink" href="#startup-cs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configureservices">
+<h3><span class="section-number">19.5.1.1. </span><code class="docutils literal notranslate"><span class="pre">ConfigureServices()</span></code><a class="headerlink" href="#configureservices" title="Permalink to this headline">¶</a></h3>
+<p>Now that we are getting to configure our user, let’s check out the code in <code class="docutils literal notranslate"><span class="pre">ConfigureServices()</span></code>.
+Earlier you may have added the following:</p>
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">.</span><span class="n">AddDefaultIdentity</span><span class="p">&lt;</span><span class="n">IdentityUser</span><span class="p">&gt;</span>
+<span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">SignIn</span><span class="p">.</span><span class="n">RequireConfirmedAccount</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">RequireDigit</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">RequiredLength</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">RequireNonAlphanumeric</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">RequireUppercase</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+   <span class="n">options</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">RequireLowercase</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}).</span><span class="n">AddEntityFrameworkStores</span><span class="p">&lt;</span><span class="n">EventDbContext</span><span class="p">&gt;();</span>
+</pre></div>
+</td></tr></table></div>
+<p>This code is dictating the settings for account creation. Right now, for a user to create an account, they have to have the following:</p>
+<ol class="arabic simple">
+<li>They have to click a link to confirm their account.</li>
+<li>Their password has to be more than 10 characters long.</li>
+<li>Their password has to include an uppercase letter(s).</li>
+</ol>
+<p>The following is not true for a user to create an account.</p>
+<ol class="arabic simple">
+<li>Their password does not have to include a number.</li>
+<li>Their password does not have to include a special character such as a question mark.</li>
+<li>Their password does not have to include lowercase letters.</li>
+</ol>
+<p>These are just some basic requirements that can be changed to suit the needs of your application.
+For a full list of the default settings for users’ passwords and how we can change those settings, check out the <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordoptions?view=aspnetcore-6.0" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">ConfigureServices()</span></code>, we can also configure cookie settings, password hashers, user validation requirements, sign in settings and more.</p>
+</div>
+</div>
+<div class="section" id="additional-customizations">
+<h2><span class="section-number">19.5.2. </span>Additional Customizations<a class="headerlink" href="#additional-customizations" title="Permalink to this headline">¶</a></h2>
+<p>As you learn more about what Identity can do, you may find yourself wanting to customize it more and more to suit your needs!
+Here are some examples of what you can do with it.</p>
+<ol class="arabic simple">
+<li>Customize user information</li>
+<li>Customize user roles</li>
+<li>Customize the UI</li>
+<li>Add new settings to user passwords</li>
+<li>Change the default settings around user sign-in</li>
+</ol>
+<div class="admonition-note admonition">
+<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="last">If you want to customize user data, it is best to do so when initially scaffolding the app.
+<a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1" target="_blank">IdentityUser<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> has a number of properties that are important and relevant to storing user data.
+However, when you read through the requirements you may notice that you need additional properties, such as the user’s first and last name.
+If you want to add custom properties, check out this <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/security/authentication/add-user-data?view=aspnetcore-6.0&amp;tabs=visual-studio" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from Microsoft.</p>
+</div>
+</div>
+</div>
+
+
+
+    
+    <nav aria-label="Next and Previous Pages">
+      <ul class="pager">
+        
+        <li class="previous"><a href="users.html"><span aria-hidden="true">&larr;</span> <span class="section-number">19.4. </span>Registrations and Logins</a></li>
+        
+        
+        <li class="next"><a href="authorization.html"><span class="section-number">19.6. </span>Identity and Authorization <span aria-hidden="true">&rarr;</span></a></li>
+        
+      </ul>
+    </nav>
+    
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/chapters/auth/configuration.rst.txt"
+     rel="nofollow">Page Source</a>
+</div>
+      
+    </p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

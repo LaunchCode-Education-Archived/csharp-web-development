@@ -177,7 +177,6 @@ You can test that it has been installed by running the following in your termina
         |___||_|       /   \\\/\\
 
         Entity Framework Core .NET Command-line Tools 6.0.X
-
         
 .. admonition:: Note
 

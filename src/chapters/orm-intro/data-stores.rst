@@ -3,10 +3,18 @@ Working with Data Stores
 
 With our data store and persistent class configured, we are ready to realize the full power of ORM.
 
+.. admonition:: Note
+
+   This chapter has no syntax changes.  
+   You should be able to follow along with your own code or the ``CodingEventsDemo`` projects.
+
 Data Stores in the Controller - Video
 -------------------------------------
 
-Since our data store, ``EventDbContext``, extends ``DbContext``, we have access to all of the methods defined by ``DbContext``. There are quite a few such methods (see `the documentation <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext?view=efcore-3.1#methods>`_ for details), but we will only use ``SaveChanges``. 
+Since our data store, ``EventDbContext``, extends ``DbContext``, 
+we have access to all of the methods defined by ``DbContext``. 
+There are quite a few such methods 
+(see `the documentation <https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext?view=efcore-6.0#methods>`_ for details), but we will only use ``SaveChanges``. 
 
 We will make more extensive use of the ``Events`` property of ``EventDbContext``, which is of type ``DbSet``. As mentioned in the previous section, this property allows us to query for objects directly from the database. It too `has quite a few methods <https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1?view=efcore-3.1#methods>`_, and we will demonstrate usage of ``Add``, ``Remove``, ``ToList``, and ``Find``.
 
@@ -136,6 +144,13 @@ Our final refactored method looks like this:
    }
 
 Now that we are no longer using ``EventData``, we can delete it from our application. And as always, be sure to start your app and test after refactoring.
+
+.. admonition:: Tip
+
+   Remember that any time you update your database, 
+   you need to add a migration to your project and update your database. 
+
+   If you do not, you will not see any of the changes you made.
 
 Check Your Understanding
 ------------------------

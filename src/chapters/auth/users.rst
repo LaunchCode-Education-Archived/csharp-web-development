@@ -29,6 +29,10 @@ Here are some things to note:
 #. If the new user row in the database is successfully created, then we want to direct the user to a page to start working.
    If not, the user registration form is reloaded, just as when the validation requirements are not met.
 
+.. admonition:: Note
+
+   If you are interested in learning more about asynchronous return types in C#, check out the `documentation <https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/async-return-types>`__.
+
 Login
 -----
 

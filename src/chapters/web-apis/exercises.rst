@@ -199,8 +199,6 @@ If the request fails because of a client error, then it will respond with a ``40
 
 - ``Title``: 10-100 characters
 - ``Description``: less than 1000 characters
-
-.. _delete_coding_event:
  
 .. admonition:: Question
 
@@ -214,7 +212,7 @@ If the request fails because of a client error, then it will respond with a ``40
    #. If the request is successful, what information can we expect to be included in the response?
    #. If the request contains an error, what information can we expect to be included in the response?
 
-
+.. _delete_coding_event:
 
 Delete a Coding Event
 ~~~~~~~~~~~~~~~~~~~~~

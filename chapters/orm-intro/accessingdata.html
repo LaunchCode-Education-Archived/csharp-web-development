@@ -88,8 +88,8 @@
 <span id="id1"></span><h1><span class="section-number">17.2. </span>Accessing Data<a class="headerlink" href="#accessing-data" title="Permalink to this headline">¶</a></h1>
 <p>Now that we have connected our C# application to a MySQL database, we need to set up our C# code to interact with the new schema. In the previous chapters, we learned about performing basic operations on a database and its tables, such as creating, reading, updating, and deleting rows. One of the reasons we use ORM is so that now we can write C# code in our application to manage our relational database.</p>
 <div class="admonition-warning admonition" id="intro-to-data-stores">
-<span id="index-0"></span><p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
+<span id="index-0"></span><p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
 We will provide notes in the text for working with the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repos as well as
 projects you created yourself.</p>
 </div>
@@ -98,13 +98,13 @@ projects you created yourself.</p>
 <p>While classes determine the structure of a table in our relational database,
 a <strong>data store</strong> does the work of inserting, updating, and retrieving data from the database.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you want to verify what code this video starts with, c
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to verify what code this video starts with, c
 heck out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup" target="_blank">db-setup<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch. If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-data-store" target="_blank">persistent-data-store<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
 </div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">The video is using an out of date syntax for registering a data store.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>The video is using an out of date syntax for registering a data store.
 The text that accompanies the video has the most current syntax.</p>
 </div>
 
@@ -192,21 +192,21 @@ and we can register this service by adding the following code to <code class="do
 </td></tr></table></div>
 <p>Don’t worry too much about the intricate details of what this code is doing. Simply note the following points:</p>
 <ul class="simple">
-<li>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the <code class="docutils literal notranslate"><span class="pre">services</span></code> object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Configuration.GetConnectionString(&quot;DefaultConnection&quot;)</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</li>
-<li>The method <code class="docutils literal notranslate"><span class="pre">options.UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database.</li>
+<li><p>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the <code class="docutils literal notranslate"><span class="pre">services</span></code> object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Configuration.GetConnectionString(&quot;DefaultConnection&quot;)</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">options.UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database.</p></li>
 </ul>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
 This is important if you drop tables or schemas and update any of these elements.</p>
 </div>
 </div>
 <div class="section" id="using-your-own-code">
 <h4><span class="section-number">17.2.2.2.2. </span>Using Your Own Code<a class="headerlink" href="#using-your-own-code" title="Permalink to this headline">¶</a></h4>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">The video is using an older version of Visual Studio.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>The video is using an older version of Visual Studio.
 Visual Studio 2022 uses a minimal format and has combined the <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> file into the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> file.
 The functionality is the same, but the syntax has changed.
 Use the syntax below to connect your C# project to your MySql Workbench.</p>
@@ -236,13 +236,13 @@ and is a place where application configuration can be customized.</p>
 <p>Don’t worry too much about the intricate details of what this code is doing.
 Simply note the following points:</p>
 <ul class="simple">
-<li>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the builder object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</li>
-<li><code class="docutils literal notranslate"><span class="pre">dbContextOptions</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</li>
-<li>The method <code class="docutils literal notranslate"><span class="pre">UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database</li>
+<li><p>We are calling the <code class="docutils literal notranslate"><span class="pre">AddDbContext&lt;EventDbContext&gt;</span></code> method of the builder object. Referencing <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> here ensures that we are registering the data store that we just created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dbContextOptions</span></code> will retrieve the database connection string from <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> that we configured in the previous section. This ensures that the data store interacts with the specific database configured there. Note that it is possible for an application to have connections to multiple databases.</p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">UseMySql</span></code> is called. This ensures that <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> is a data store that interacts with a MySQL database</p></li>
 </ul>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you have connection troubles, make sure your username, password, and database information match the connection string in your <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file.
 This is important if you drop tables or schemas and update any of these elements.</p>
 </div>
 </div>
@@ -337,25 +337,25 @@ Therefore, we already have the necessary property!</p>
 </div>
 <p>This command will apply the changes to the database. To verify the changes, open MySQL Workbench and notice that there is now an <code class="docutils literal notranslate"><span class="pre">Events</span></code> table with columns corresponding to the properties of our class.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">EntityFrameworkCore uses the <code class="docutils literal notranslate"><span class="pre">_EFMigrationsHistory</span></code> table in the database to keep track of which migrations have already been run. When we run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span> <span class="pre">migrations</span> <span class="pre">update</span></code>, EF will reference this table and run <em>all</em> migrations that have not yet been applied, in the correct order.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>EntityFrameworkCore uses the <code class="docutils literal notranslate"><span class="pre">_EFMigrationsHistory</span></code> table in the database to keep track of which migrations have already been run. When we run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span> <span class="pre">migrations</span> <span class="pre">update</span></code>, EF will reference this table and run <em>all</em> migrations that have not yet been applied, in the correct order.</p>
 </div>
 <p>The next section will look at how we can store and retrieve <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects from within our controller.</p>
 </div>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">17.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last"><strong>True/False:</strong> Every persistent class will automatically have a MySQL table created to use to store its data.</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p><strong>True/False:</strong> Every persistent class will automatically have a MySQL table created to use to store its data.</p>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>A data store should extend which of the following classes in the <code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore</span></code> package?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">DataStore</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">DbContext</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">MySqlStore</span></code></li>
-<li>None of the above</li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataStore</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DbContext</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MySqlStore</span></code></p></li>
+<li><p>None of the above</p></li>
 </ol>
 </div>
 </div>

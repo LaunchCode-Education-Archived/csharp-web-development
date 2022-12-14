@@ -90,10 +90,10 @@
 time for a spa day. Let’s make an application to select some spa services.</p>
 <p>Our application needs to do the following:</p>
 <ol class="arabic simple">
-<li>Display the user’s name and skin type under their customer profile.</li>
-<li>Display the appropriate facial treatments for their skin type.</li>
-<li>Display the description of the spa’s manicures or pedicures depending on the
-user’s interest.</li>
+<li><p>Display the user’s name and skin type under their customer profile.</p></li>
+<li><p>Display the appropriate facial treatments for their skin type.</p></li>
+<li><p>Display the description of the spa’s manicures or pedicures depending on the
+user’s interest.</p></li>
 </ol>
 <p>As always, read through the whole page before starting to code.</p>
 <div class="section" id="setup">
@@ -101,8 +101,8 @@ user’s interest.</li>
 <p>Fork and clone the <a class="reference external" href="https://github.com/LaunchCodeEducation/SpaDay" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
 Check out the project via Version Control in Visual Studio.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last"><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
 Refer to <a class="reference internal" href="../../appendices/vs-troubleshooting.html#vs-troubleshooting"><span class="std std-ref">Visual Studio Operational Tips</span></a> for help.</p>
 </div>
 <p>Once you have the project opened in your IDE, and run it and click the <em>SpaDay</em> link that appears in
@@ -117,23 +117,22 @@ the upper left of the home page. You should see a small form at the <code class=
 <p>In <code class="docutils literal notranslate"><span class="pre">Controllers</span></code>, we have a controller called <code class="docutils literal notranslate"><span class="pre">SpaController</span></code>. Inside
 <code class="docutils literal notranslate"><span class="pre">SpaController</span></code> are three methods.</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">CheckSkinType()</span></code> method: Contains the logic to determine which facial treatments are appropriate for which skin type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Index</span></code> view when <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Menu()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Menu</span></code> view when <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CheckSkinType()</span></code> method: Contains the logic to determine which facial treatments are appropriate for which skin type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Index</span></code> view when <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Menu()</span></code> action method: Returns the <code class="docutils literal notranslate"><span class="pre">Spa/Menu</span></code> view when <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests are made to <code class="docutils literal notranslate"><span class="pre">/spa/</span></code>.</p></li>
 </ol>
 <p>In <code class="docutils literal notranslate"><span class="pre">Views/Spa</span></code>, we have a Razor template called <code class="docutils literal notranslate"><span class="pre">Menu</span></code>.
 Inside <code class="docutils literal notranslate"><span class="pre">Menu.cshtml</span></code>, there are two <code class="docutils literal notranslate"><span class="pre">div</span></code> elements.
 Let’s add some children to the <code class="docutils literal notranslate"><span class="pre">div</span></code> with the id, <code class="docutils literal notranslate"><span class="pre">clientProfile</span></code>.</p>
 <ol class="arabic">
-<li><p class="first">Add an <code class="docutils literal notranslate"><span class="pre">h3</span></code> that says “Client profile”.</p>
-</li>
-<li><p class="first">Next, display the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter from the form.</p>
+<li><p>Add an <code class="docutils literal notranslate"><span class="pre">h3</span></code> that says “Client profile”.</p></li>
+<li><p>Next, display the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter from the form.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>This is a two step process.</p>
-<ol class="last arabic simple">
-<li>In the controller, add a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to hold the <code class="docutils literal notranslate"><span class="pre">name</span></code> value.</li>
-<li>In the view, use that <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to display the <code class="docutils literal notranslate"><span class="pre">name</span></code> in a <code class="docutils literal notranslate"><span class="pre">p</span></code> tag.</li>
+<ol class="arabic simple">
+<li><p>In the controller, add a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to hold the <code class="docutils literal notranslate"><span class="pre">name</span></code> value.</p></li>
+<li><p>In the view, use that <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property to display the <code class="docutils literal notranslate"><span class="pre">name</span></code> in a <code class="docutils literal notranslate"><span class="pre">p</span></code> tag.</p></li>
 </ol>
 </div>
 </li>
@@ -148,12 +147,12 @@ at the top.</p>
 and fills a list with facial treatments that benefit the user’s skin type. Now, we just need to use Razor to
 display the contents of the <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> list.</p>
 <ol class="arabic simple">
-<li>Add the client’s <code class="docutils literal notranslate"><span class="pre">skintype</span></code> and the <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> list as a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property.</li>
-<li>Now, head back to <code class="docutils literal notranslate"><span class="pre">Menu.cshtml</span></code> and checkout the empty <code class="docutils literal notranslate"><span class="pre">div</span></code> with the id,
-<code class="docutils literal notranslate"><span class="pre">servicesMenu</span></code>.</li>
-<li>Pass in the <code class="docutils literal notranslate"><span class="pre">skintype</span></code> variable to the <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tag.</li>
-<li>Iteratively add the values in <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> to an unordered list. If you need a quick reminder of
-the syntax, review the <a class="reference internal" href="template-iteration.html#razor-foreach"><span class="std std-ref">&#64;foreach section</span></a> .</li>
+<li><p>Add the client’s <code class="docutils literal notranslate"><span class="pre">skintype</span></code> and the <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> list as a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property.</p></li>
+<li><p>Now, head back to <code class="docutils literal notranslate"><span class="pre">Menu.cshtml</span></code> and checkout the empty <code class="docutils literal notranslate"><span class="pre">div</span></code> with the id,
+<code class="docutils literal notranslate"><span class="pre">servicesMenu</span></code>.</p></li>
+<li><p>Pass in the <code class="docutils literal notranslate"><span class="pre">skintype</span></code> variable to the <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tag.</p></li>
+<li><p>Iteratively add the values in <code class="docutils literal notranslate"><span class="pre">appropriateFacials</span></code> to an unordered list. If you need a quick reminder of
+the syntax, review the <a class="reference internal" href="template-iteration.html#razor-foreach"><span class="std std-ref">&#64;foreach section</span></a> .</p></li>
 </ol>
 </div>
 <div class="section" id="mani-or-pedi">
@@ -162,12 +161,12 @@ the syntax, review the <a class="reference internal" href="template-iteration.ht
 Inside the <code class="docutils literal notranslate"><span class="pre">servicesMenu</span></code> div, use <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> to determine if the value of
 <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;manicure&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pedicure&quot;</span></code>.</p>
 <ol class="arabic">
-<li><p class="first">If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;manicure&quot;</span></code>, display this description:</p>
+<li><p>If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;manicure&quot;</span></code>, display this description:</p>
 <blockquote>
 <div><p>Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.</p>
 </div></blockquote>
 </li>
-<li><p class="first">If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;pedicure&quot;</span></code>, display this description:</p>
+<li><p>If the value of <code class="docutils literal notranslate"><span class="pre">manipedi</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;pedicure&quot;</span></code>, display this description:</p>
 <blockquote>
 <div><p>Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!</p>
 </div></blockquote>
@@ -190,17 +189,17 @@ click “Submit”, and see your profile page.</p>
 <div class="section" id="bonus-mission">
 <h2><span class="section-number">13.11.6. </span>Bonus Mission<a class="headerlink" href="#bonus-mission" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Try adding an element to the bottom of the page with square
+<li><p>Try adding an element to the bottom of the page with square
 shaped <code class="docutils literal notranslate"><span class="pre">div</span></code> elements. Each square should be a different color for
 different available nail polishes. At the base of the project is a folder called <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.
 Inside of that is another folder called <code class="docutils literal notranslate"><span class="pre">css</span></code>. Modify the <code class="docutils literal notranslate"><span class="pre">site.css</span></code> file inside of it to
 get some CSS practice. There are already a number of style rules present so remember to be
-give your <code class="docutils literal notranslate"><span class="pre">div</span></code> elements class identifiers to give your elements specificity.</li>
-<li>Modify the form to allow the user to select either a manicure or pedicure or
+give your <code class="docutils literal notranslate"><span class="pre">div</span></code> elements class identifiers to give your elements specificity.</p></li>
+<li><p>Modify the form to allow the user to select either a manicure or pedicure or
 <em>both</em>. If the user selects both, display both the manicure and pedicure
-descriptions in the <code class="docutils literal notranslate"><span class="pre">Menu</span></code> view.</li>
-<li>Work with routes and paths to display the spa menu page on a separate route
-from the form.</li>
+descriptions in the <code class="docutils literal notranslate"><span class="pre">Menu</span></code> view.</p></li>
+<li><p>Work with routes and paths to display the spa menu page on a separate route
+from the form.</p></li>
 </ol>
 </div>
 </div>

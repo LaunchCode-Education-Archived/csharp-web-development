@@ -110,11 +110,11 @@ Check out the <a class="reference external" href="https://github.com/LaunchCodeE
 <p>Open up your <code class="docutils literal notranslate"><span class="pre">HelloASPDotNET</span></code> project in Visual Studio and make sure you have committed any recent changes.
 Make a new branch and code along with the following video.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
 <p>In the videos in this chapter, we select the <em>View Page</em> type when creating a new view instead of <em>Razor View</em>.
 In this system, these are the same!
 However, it is good practice to make sure that you are selecting for a Razor view no matter what option you choose.</p>
-<p class="last">The videos in this chapter walk you through building small web-based
+<p>The videos in this chapter walk you through building small web-based
 projects. Do NOT skip this practice, because the end of chapter exercises
 pick up where the tutorials end.</p>
 </div>
@@ -122,8 +122,8 @@ pick up where the tutorials end.</p>
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/mdrsb7yKGKs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter" target="_blank">views-starter branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The starter code for this video is found at the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-starter" target="_blank">views-starter branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 of <code class="docutils literal notranslate"><span class="pre">HelloASPDotNETDemo</span></code>. The final code presented in this
 video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static" target="_blank">views-static branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
 </div>
@@ -141,8 +141,8 @@ inside of <code class="docutils literal notranslate"><span class="pre">HomeContr
 <p>In order to return that template, the action method calls a <strong>View() method</strong>. The <code class="docutils literal notranslate"><span class="pre">View()</span></code> method finds
 a template that’s associated with the particular controller and action method that it is called from.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">To override the default behavior of the <code class="docutils literal notranslate"><span class="pre">View()</span></code> method, you can pass in a
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>To override the default behavior of the <code class="docutils literal notranslate"><span class="pre">View()</span></code> method, you can pass in a
 parameter which is the name of the template you want to render. For example,
 if we want an action method named <code class="docutils literal notranslate"><span class="pre">Form()</span></code> to return a Razor template named
 <code class="docutils literal notranslate"><span class="pre">WelcomeForm.cshtml</span></code>, we have <code class="docutils literal notranslate"><span class="pre">Form()</span></code> return <code class="docutils literal notranslate"><span class="pre">View(&quot;WelcomeForm&quot;);</span></code>.</p>
@@ -153,20 +153,20 @@ if we want an action method named <code class="docutils literal notranslate"><sp
 <p>To create a template, we update <code class="docutils literal notranslate"><span class="pre">HelloController.Index()</span></code> to return a Razor template instead of a
 string of HTML. In <code class="docutils literal notranslate"><span class="pre">Views</span></code>, create a new subdirectory called <code class="docutils literal notranslate"><span class="pre">Hello</span></code>.</p>
 <p>Within <code class="docutils literal notranslate"><span class="pre">Hello</span></code> create a new file of the <em>Razor View</em> file template.</p>
-<dl class="docutils">
+<dl class="simple">
 <dt><strong>Windows Users:</strong></dt><dd><ul class="simple">
-<li>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New Item</em>.</li>
-<li>The <em>Razor View - Empty</em> option is found in the <em>ASP.NET Core</em> menu.</li>
+<li><p>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New Item</em>.</p></li>
+<li><p>The <em>Razor View - Empty</em> option is found in the <em>ASP.NET Core</em> menu.</p></li>
 </ul>
 </dd>
 <dt><strong>Mac Users:</strong></dt><dd><ul class="simple">
-<li>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New File</em>.</li>
-<li>The <em>Razor View</em> option is found in the <em>ASP.NET Core</em> menu.</li>
+<li><p>Right click on the <code class="docutils literal notranslate"><span class="pre">Views</span></code> directory or any subdirectory and select <em>Add -&gt; New File</em>.</p></li>
+<li><p>The <em>Razor View</em> option is found in the <em>ASP.NET Core</em> menu.</p></li>
 </ul>
 </dd>
 <dt><strong>All Users:</strong></dt><dd><ul class="simple">
-<li>Once you have your <em>Razor View</em> or <em>Razor View - Empty</em> selected, name it <code class="docutils literal notranslate"><span class="pre">Index</span></code>.</li>
-<li>We are naming our Views after there corresponding action methods.</li>
+<li><p>Once you have your <em>Razor View</em> or <em>Razor View - Empty</em> selected, name it <code class="docutils literal notranslate"><span class="pre">Index</span></code>.</p></li>
+<li><p>We are naming our Views after there corresponding action methods.</p></li>
 </ul>
 </dd>
 </dl>
@@ -186,23 +186,23 @@ the top of the template will cause this shared layout template to be ignored.</p
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">13.2.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Which symbol is required to use C# code in a Razor template?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">#</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">!</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is the file type for Razor templates?</p>
-<ol class="last arabic simple">
-<li>.razor</li>
-<li>.rzr</li>
-<li>.html</li>
-<li>.cshtml</li>
+<ol class="arabic simple">
+<li><p>.razor</p></li>
+<li><p>.rzr</p></li>
+<li><p>.html</p></li>
+<li><p>.cshtml</p></li>
 </ol>
 </div>
 </div>

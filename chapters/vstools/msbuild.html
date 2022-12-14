@@ -92,10 +92,10 @@ Microsoft program called <strong>MSBuild</strong>.  MSBuild creates the code to 
 it can be run.</p>
 <p>An <strong>automated build tool</strong>, such as MSBuild, is responsible for tasks like:</p>
 <ul class="simple">
-<li>Compiling the source code</li>
-<li>Managing dependencies</li>
-<li>Testing protocol</li>
-<li>Packaging the executable program for deployment</li>
+<li><p>Compiling the source code</p></li>
+<li><p>Managing dependencies</p></li>
+<li><p>Testing protocol</p></li>
+<li><p>Packaging the executable program for deployment</p></li>
 </ul>
 <p>MSBuild is included in the Visual Studio IDE and has so far been doing its work under the radar.
 Other build tools are available for us to use in C# projects. However, like in the unit testing
@@ -108,20 +108,20 @@ written in <strong>XML (Extensible Markup Language)</strong>. XML is another mem
 family, like HTML. It is most often used for transferring data.</p>
 <p>The four principal elements of a project file are:</p>
 <ol class="arabic simple">
-<li><strong>Tasks</strong>: Units of executable code. Any build action that needs to take place will be done via tasks.
-The other elements pass information into tasks.</li>
-<li><strong>Targets</strong>: Group and order related tasks for execution.</li>
-<li><strong>Properties</strong>: Key/value pairs used for build configuration information.</li>
-<li><strong>Items</strong>: Used to input resources, such as files, into the build system.</li>
+<li><p><strong>Tasks</strong>: Units of executable code. Any build action that needs to take place will be done via tasks.
+The other elements pass information into tasks.</p></li>
+<li><p><strong>Targets</strong>: Group and order related tasks for execution.</p></li>
+<li><p><strong>Properties</strong>: Key/value pairs used for build configuration information.</p></li>
+<li><p><strong>Items</strong>: Used to input resources, such as files, into the build system.</p></li>
 </ol>
 <p>So far, in our simple projects, there is not much complexity in what MSBuild and the <code class="docutils literal notranslate"><span class="pre">.csproj</span></code>
 file need to do. Our C# code is designed to be tested and executed within the IDE with very few
 dependencies. When you are working as a C# developer on the job, things will start to get more
 complicated. You will likely need at least three target environments for your application:</p>
 <ol class="loweralpha simple">
-<li>debugging in the IDE.</li>
-<li>a development server for testing your deployed program before it is released to the user.</li>
-<li>the final production environment.</li>
+<li><p>debugging in the IDE.</p></li>
+<li><p>a development server for testing your deployed program before it is released to the user.</p></li>
+<li><p>the final production environment.</p></li>
 </ol>
 <p>The <code class="docutils literal notranslate"><span class="pre">.csproj</span></code> file is where any project dependencies are stored and also organized.
 These will have different responsibilities in those different environments.
@@ -133,8 +133,8 @@ So while we don’t do much with the project file yet, we will later on.</p>
 <p class="caption"><span class="caption-text">User selecting “Edit Project File”.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">At the time of writing, the version of .NET Core used is 6.0. If that is no longer the most recent version, make note.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>At the time of writing, the version of .NET Core used is 6.0. If that is no longer the most recent version, make note.
 Barring any major updates to the framework, the following explanation still applies.</p>
 </div>
 <p>Most of our project files from this class will look like this:</p>
@@ -150,8 +150,8 @@ Barring any major updates to the framework, the following explanation still appl
 </div>
 <p>This project example contains two property elements: <code class="docutils literal notranslate"><span class="pre">OutputType</span></code> and <code class="docutils literal notranslate"><span class="pre">TargetFramework</span></code>.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">&lt;OutputType&gt;</span></code> specifies the format of the build’s output. <code class="docutils literal notranslate"><span class="pre">OutputType</span></code> is the key, and <code class="docutils literal notranslate"><span class="pre">Exe</span></code> is the value. This build outputs an <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file.</li>
-<li><code class="docutils literal notranslate"><span class="pre">&lt;TargetFramework&gt;</span></code> provides the version of .NET Core that the program uses.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;OutputType&gt;</span></code> specifies the format of the build’s output. <code class="docutils literal notranslate"><span class="pre">OutputType</span></code> is the key, and <code class="docutils literal notranslate"><span class="pre">Exe</span></code> is the value. This build outputs an <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;TargetFramework&gt;</span></code> provides the version of .NET Core that the program uses.</p></li>
 </ul>
 <p>Both of these properties are wrapped in a <code class="docutils literal notranslate"><span class="pre">&lt;PropertyGroup&gt;</span></code> element. In
 fact, all property elements must be nested within a <code class="docutils literal notranslate"><span class="pre">&lt;PropertyGroup&gt;</span></code> tag. Finally, <code class="docutils literal notranslate"><span class="pre">&lt;Project&gt;</span></code> is a special element that
@@ -160,23 +160,23 @@ forms the base of all project files.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">12.1.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is the language of the C# project file?</p>
-<ol class="last loweralpha simple">
-<li>MSBuild</li>
-<li>C#</li>
-<li>csproj</li>
-<li>XML</li>
+<ol class="loweralpha simple">
+<li><p>MSBuild</p></li>
+<li><p>C#</p></li>
+<li><p>csproj</p></li>
+<li><p>XML</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is the element type used for the individual units of the build process?</p>
-<ol class="last loweralpha simple">
-<li>item</li>
-<li>task</li>
-<li>property</li>
-<li>target</li>
+<ol class="loweralpha simple">
+<li><p>item</p></li>
+<li><p>task</p></li>
+<li><p>property</p></li>
+<li><p>target</p></li>
 </ol>
 </div>
 </div>

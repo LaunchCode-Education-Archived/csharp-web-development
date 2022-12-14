@@ -94,8 +94,8 @@ in runtime.</p>
 <p>Here’s some advice to consider when contemplating when to handle an exception. This comes from Karl Seguin’s
 <a class="reference external" href="https://www.openmymind.net/FoundationsOfProgramming.pdf" target="_blank">Foundations of Programming<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
 <ol class="arabic simple">
-<li>Only handle exceptions that you can actually do something about.</li>
-<li>You can’t do anything about the vast majority of exceptions.</li>
+<li><p>Only handle exceptions that you can actually do something about.</p></li>
+<li><p>You can’t do anything about the vast majority of exceptions.</p></li>
 </ol>
 <p>For example, if your code cannot connect to a database, there is probably nothing your program can
 do about it. However, as we allude to on the previous page, if you receive invalid input from a user, you can still throw an
@@ -144,7 +144,7 @@ running app. It also an option to rethrow an exception after it has been caught.
 exceptions in this course, but just know that it can be done.</p>
 <p>Now, running the same sample input from the previous page does not output an exception:</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p><em>Input:</em></p>
 <div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -158,7 +158,7 @@ exceptions in this course, but just know that it can be done.</p>
 </pre></div>
 </td></tr></table></div>
 <p><em>Output:</em></p>
-<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>73
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>73
 -459.67
 </pre></div>
 </div>
@@ -246,21 +246,21 @@ on why this is the case.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">11.2.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Select an anomalous event when you may choose to not <code class="docutils literal notranslate"><span class="pre">catch</span></code> a thrown exception.</p>
-<ol class="last arabic simple">
-<li>None. All exceptions should be handled with <code class="docutils literal notranslate"><span class="pre">catch</span></code>.</li>
-<li>A database responsible for providing all of the image data on your site cannot be reached.</li>
-<li>A user inputs string data into a form designed to handle integers.</li>
-<li>It’s the bottom of the ninth and you just want the game to be over.</li>
+<ol class="arabic simple">
+<li><p>None. All exceptions should be handled with <code class="docutils literal notranslate"><span class="pre">catch</span></code>.</p></li>
+<li><p>A database responsible for providing all of the image data on your site cannot be reached.</p></li>
+<li><p>A user inputs string data into a form designed to handle integers.</p></li>
+<li><p>It’s the bottom of the ninth and you just want the game to be over.</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True/False: Exception swallowing is a good choice to ensure no exceptions break your code.</p>
-<ol class="last arabic simple">
-<li>True</li>
-<li>False</li>
+<ol class="arabic simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 </div>

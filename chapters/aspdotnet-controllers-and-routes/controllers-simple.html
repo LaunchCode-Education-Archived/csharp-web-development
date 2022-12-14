@@ -87,8 +87,8 @@
   <div class="section" id="simple-controllers">
 <span id="index-0"></span><h1><span class="section-number">10.1. </span>Simple Controllers<a class="headerlink" href="#simple-controllers" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Many changes have happened in the world of Visual Studio and ASP.NET since the writing of this book.
 We reviewed the videos and instructions in the latest environment and framework and made notes to help you through any discrepancies.
 If you get stuck following along with a video, we suggest comparing the written instructions for the problematic area.
 Notes have been added to the reading that will help you locate or code what is needed to complete each chapter project.</p>
@@ -103,10 +103,10 @@ A <strong>route</strong> is the mechanism by which a request path gets assigned 
 <p class="caption"><span class="caption-text">MVC Flow</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>Do HTTP requests and responses feel unfamiliar?
 If you’re feeling rusty on these topics, it’s a good idea to brush up now, as routing requires a foundational understanding of HTTP data transfer.</p>
-<p class="last">Here’s our <a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html" target="_blank">introduction to HTTP<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+<p>Here’s our <a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html" target="_blank">introduction to HTTP<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 for reviewing the concepts.</p>
 </div>
 <div class="section" id="controllers-and-static-responses-video">
@@ -115,19 +115,19 @@ for reviewing the concepts.</p>
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/wpk2q5zOIG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.
 If you ever want to verify what code you end this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/static-responses" target="_blank">final code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">static-responses</span></code> branch.</p>
 <p>If you are exploring the starter code and are not able to build a website by using the “Run” button in Visual Studio,
 try the following in your terminal:</p>
-<ol class="last arabic simple">
-<li>Using the terminal, navigate into your project</li>
-<li>Enter the command: <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">run</span></code> and follow the prompts in your terminal</li>
+<ol class="arabic simple">
+<li><p>Using the terminal, navigate into your project</p></li>
+<li><p>Enter the command: <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">run</span></code> and follow the prompts in your terminal</p></li>
 </ol>
 </div>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last"><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p><strong>Windows Users</strong>: You might need to change some solution settings if you pull down this demo repository and run it on your computer.
 Refer to <a class="reference internal" href="../../appendices/vs-troubleshooting.html#vs-troubleshooting"><span class="std std-ref">Visual Studio Operational Tips</span></a> for help.</p>
 </div>
 </div>
@@ -160,13 +160,13 @@ ASP.NET MVC has two different ways to map these routes: conventional routing and
 When an HTTP request comes in, routing matches the request with an endpoint.
 <strong>Endpoints</strong> designate the controller action that executes when the appropriate HTTP request comes into the application.</p>
 <div class="admonition-note-on-the-startup-cs-file admonition">
-<p class="first admonition-title">Note on the Startup.cs file</p>
+<p class="admonition-title">Note on the Startup.cs file</p>
 <p>ASP.NET 6.0 combines the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> and <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> files.
 If you are following along with Sally’s video, you will see the files are separated.  She is using ASP.NET 3.1 in her video.
 This discrepancy between ASP.NET frameworks should not affect this project.</p>
 <p>If you started your project on your own in .NET 6.0, we recommend exploring <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo" target="_blank">Sally’s repo<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 and see if you can identify where and how these two files were combined.</p>
-<p class="last">This <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/migration/50-to-60-samples?view=aspnetcore-6.0" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+<p>This <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/migration/50-to-60-samples?view=aspnetcore-6.0" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 illustrates some of the changes between .NET 5.0 and .NET 6.0.</p>
 </div>
 <p>When we created a new ASP.NET application, without adding any code, we were immediately able to run it.
@@ -182,12 +182,12 @@ To see the result of any given action method in a controller, we can count on th
 Navigating to <code class="docutils literal notranslate"><span class="pre">localhost:5001/home/index</span></code>, we see the result of the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method, a view.
 If we added a new method, <code class="docutils literal notranslate"><span class="pre">Hello()</span></code>, to the <code class="docutils literal notranslate"><span class="pre">HomeController</span></code>, we would see the result of that method at <code class="docutils literal notranslate"><span class="pre">localhost:5001/home/hello</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>Throughout this book, we will be using attribute routing to break the pattern established by conventional routing.
 However, if you want to investigate further on how to use an endpoint for a rule-breaking route in conventional routing,
 Microsoft has a great <a class="reference external" href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.1#special-case-for-dedicated-conventional-routes" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> on the subject.
 For example, endpoints preconfigured in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> is how we can navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001</span></code> and <code class="docutils literal notranslate"><span class="pre">localhost:5001/Home/Index</span></code> to see the same page.</p>
-<p class="last"><strong>Remember:</strong> <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> contain the endpoints in an ASP.NET 6.0 application.</p>
+<p><strong>Remember:</strong> <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> contain the endpoints in an ASP.NET 6.0 application.</p>
 </div>
 <p>When adding a new controller, such as <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>, we need to make sure that routing is properly configured whether
 we use conventional routing or attribute routing.
@@ -214,8 +214,8 @@ So even though we made a note that we want the <code class="docutils literal not
 Attribute routing is a way for us to specify which request type the method can respond to.
 But for now, let’s run the app and navigate to <code class="docutils literal notranslate"><span class="pre">localhost:5001/hello</span></code> to check our work.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Conventional routing makes use of the controller’s name and action method’s name.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Conventional routing makes use of the controller’s name and action method’s name.
 If you mistype either in the URL when testing out your application, you will run into an error.</p>
 </div>
 <p>We also want to make use of attribute routing in our new <code class="docutils literal notranslate"><span class="pre">HelloController</span></code>.
@@ -269,8 +269,8 @@ The result is a simple web page with one heading that says “Hello World!”.</
 <p class="caption"><span class="caption-text">Our end result!</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">While the book focuses on attribute routing, in this chapter, we will map our routes with both approaches.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>While the book focuses on attribute routing, in this chapter, we will map our routes with both approaches.
 Many applications contain a combination of both conventional and attribute routing.
 We encourage you to try out both approaches to make sure that you can recognize and understand both approaches to routing.</p>
 </div>
@@ -290,29 +290,29 @@ We will only scratch the surface of what <code class="docutils literal notransla
 We use <code class="docutils literal notranslate"><span class="pre">Content()</span></code> to specify which string we want to use for our content and we specify the content type with <code class="docutils literal notranslate"><span class="pre">&quot;text/html&quot;</span></code>.
 When using <code class="docutils literal notranslate"><span class="pre">Content()</span></code>, we need to specify the content type in order the page to render how we want it to!</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">For more info on the different types of results we could specify as return types, check out this <a class="reference external" href="https://exceptionnotfound.net/asp-net-core-demystified-action-results/" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>!</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>For more info on the different types of results we could specify as return types, check out this <a class="reference external" href="https://exceptionnotfound.net/asp-net-core-demystified-action-results/" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>!</p>
 </div>
 </div>
 </div>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">10.1.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True/False: The <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class does not have to be extended to classify a class as a controller.</p>
-<ol class="last loweralpha simple">
-<li>True</li>
-<li>False</li>
+<ol class="loweralpha simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Which of the following is true about controllers?</p>
-<ol class="last loweralpha simple">
-<li>Controllers handle the data storage of an MVC app.</li>
-<li>Controllers manage what the user of an MVC application sees.</li>
-<li>Controllers relay the messages between data and views in an MVC application.</li>
-<li>Controllers determine what information can be submitted in an online form.</li>
+<ol class="loweralpha simple">
+<li><p>Controllers handle the data storage of an MVC app.</p></li>
+<li><p>Controllers manage what the user of an MVC application sees.</p></li>
+<li><p>Controllers relay the messages between data and views in an MVC application.</p></li>
+<li><p>Controllers determine what information can be submitted in an online form.</p></li>
 </ol>
 </div>
 </div>

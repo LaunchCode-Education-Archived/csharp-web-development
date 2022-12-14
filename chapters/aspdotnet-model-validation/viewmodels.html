@@ -103,8 +103,8 @@ These benefits of ViewModels will help reduce potential errors in our applicatio
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/_lUUT1oDE-U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/model-binding" target="_blank">model-binding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/model-binding" target="_blank">model-binding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
 If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views" target="_blank">models-in-views<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
 </div>
 </div>
@@ -142,8 +142,8 @@ Strongly-typed views also support intellisense, so as we work with properties of
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/XAPP0VTiwk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views" target="_blank">models-in-views<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/models-in-views" target="_blank">models-in-views<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
 If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/adding-viewmodels" target="_blank">adding-viewmodels<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
 </div>
 </div>
@@ -152,30 +152,21 @@ If you want to verify what code this video ends with, check out the <a class="re
 <p>Now that we have refactored our <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code> view and <code class="docutils literal notranslate"><span class="pre">EventsController</span></code> to use a model, let’s investigate how to create a ViewModel.
 We can do so by following these steps:</p>
 <ol class="arabic">
-<li><p class="first">Add a <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory at the top level of the project.</p>
-</li>
-<li><p class="first">Add a new class to the <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory and name it <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p>
-</li>
-<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code> properties to the new class.</p>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory at the top level of the project.</p></li>
+<li><p>Add a new class to the <code class="docutils literal notranslate"><span class="pre">ViewModels</span></code> directory and name it <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Description</span></code> properties to the new class.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">For now, your ViewModel does not need a constructor!</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>For now, your ViewModel does not need a constructor!</p>
 </div>
 </li>
-<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method responsible for retrieving the form to add events, in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, create a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> called <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> and add it to the <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</p>
-</li>
-<li><p class="first">Import the ViewModel to the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> view with the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> syntax.</p>
-</li>
-<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">asp-controller</span> <span class="pre">=</span> <span class="pre">Events</span></code> and <code class="docutils literal notranslate"><span class="pre">asp-action</span> <span class="pre">=</span> <span class="pre">NewEvent</span></code> to the <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag to designate which method the form data should be sent to.</p>
-</li>
-<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">asp-for</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags. This allows us to specify which form field corresponds to which property in our ViewModel.</p>
-</li>
-<li><p class="first">Refactor the <code class="docutils literal notranslate"><span class="pre">NewEvent()</span></code> action method to be named <code class="docutils literal notranslate"><span class="pre">Add()</span></code>. Have it also now use the ViewModel as its parameter. Set values of a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using the values of the properties stored in the instance of the <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p>
-</li>
-<li><p class="first">Add the new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object to <code class="docutils literal notranslate"><span class="pre">EventData</span></code> and make sure that the method still returns a <code class="docutils literal notranslate"><span class="pre">Redirect</span></code> to <code class="docutils literal notranslate"><span class="pre">/Events</span></code>.</p>
-</li>
-<li><p class="first">Run your application.</p>
-</li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method responsible for retrieving the form to add events, in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, create a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> called <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> and add it to the <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</p></li>
+<li><p>Import the ViewModel to the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> view with the <code class="docutils literal notranslate"><span class="pre">&#64;model</span></code> syntax.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">asp-controller</span> <span class="pre">=</span> <span class="pre">Events</span></code> and <code class="docutils literal notranslate"><span class="pre">asp-action</span> <span class="pre">=</span> <span class="pre">NewEvent</span></code> to the <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag to designate which method the form data should be sent to.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">asp-for</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags. This allows us to specify which form field corresponds to which property in our ViewModel.</p></li>
+<li><p>Refactor the <code class="docutils literal notranslate"><span class="pre">NewEvent()</span></code> action method to be named <code class="docutils literal notranslate"><span class="pre">Add()</span></code>. Have it also now use the ViewModel as its parameter. Set values of a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using the values of the properties stored in the instance of the <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code>.</p></li>
+<li><p>Add the new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object to <code class="docutils literal notranslate"><span class="pre">EventData</span></code> and make sure that the method still returns a <code class="docutils literal notranslate"><span class="pre">Redirect</span></code> to <code class="docutils literal notranslate"><span class="pre">/Events</span></code>.</p></li>
+<li><p>Run your application.</p></li>
 </ol>
 <p>Following these steps, we effectively refactored our application to use a ViewModel.
 While the functionality of the application remains the same, we are now in a position to easily add validation to our application.</p>
@@ -183,8 +174,8 @@ While the functionality of the application remains the same, we are now in a pos
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">15.1.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last"><strong>True or False</strong> ViewModels are views designed to specifically be used in models.</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p><strong>True or False</strong> ViewModels are views designed to specifically be used in models.</p>
 </div>
 </div>
 </div>

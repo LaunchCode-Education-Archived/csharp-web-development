@@ -88,7 +88,7 @@
 <span id="model-ex-2"></span><h1>Exercises Solutions: Edit Model Classes<a class="headerlink" href="#exercises-solutions-edit-model-classes" title="Permalink to this headline">¶</a></h1>
 <p>Line numbers are for reference. They may not match your code exactly.</p>
 <ol class="arabic" id="model-ex-3" start="2">
-<li><p class="first">Add the necessary annotations to the <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code> method for it to live at the path <code class="docutils literal notranslate"><span class="pre">/Events/Edit</span></code>.  See <strong>Line 2</strong>.</p>
+<li><p>Add the necessary annotations to the <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code> method for it to live at the path <code class="docutils literal notranslate"><span class="pre">/Events/Edit</span></code>.  See <strong>Line 2</strong>.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -106,7 +106,7 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-5" start="3">
-<li><p class="first">You’ll need to configure the route for <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> to include the path variable <code class="docutils literal notranslate"><span class="pre">eventId</span></code>, so that paths like <code class="docutils literal notranslate"><span class="pre">/Events/Edit/3</span></code> will work.  See <strong>Line 2</strong>.</p>
+<li><p>You’ll need to configure the route for <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> to include the path variable <code class="docutils literal notranslate"><span class="pre">eventId</span></code>, so that paths like <code class="docutils literal notranslate"><span class="pre">/Events/Edit/3</span></code> will work.  See <strong>Line 2</strong>.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -124,9 +124,9 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-6" start="5">
-<li><p class="first">Copy the code from <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> into <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>.</p>
+<li><p>Copy the code from <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> into <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>.</p>
 <ol class="loweralpha simple">
-<li>You’ll want to update the text of the submit button and the heading to reflect the edit functionality.</li>
+<li><p>You’ll want to update the text of the submit button and the heading to reflect the edit functionality.</p></li>
 </ol>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -159,7 +159,7 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-7" start="6">
-<li><p class="first">Back in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, round out the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> method.</p>
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, round out the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> method.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -181,10 +181,10 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-8" start="7">
-<li><p class="first">Within the form fields in <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>,</p>
+<li><p>Within the form fields in <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>,</p>
 <ol class="loweralpha simple">
-<li>Get the name and description from the event that was passed in via <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> and set them as the values of the form fields.</li>
-<li>Add <code class="docutils literal notranslate"><span class="pre">action=&quot;/events/edit&quot;</span></code> to the form tag.</li>
+<li><p>Get the name and description from the event that was passed in via <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> and set them as the values of the form fields.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">action=&quot;/events/edit&quot;</span></code> to the form tag.</p></li>
 </ol>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -219,7 +219,7 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-9" start="8">
-<li><p class="first">Add another input to hold the id of the event being edited. This should be hidden from the user:</p>
+<li><p>Add another input to hold the id of the event being edited. This should be hidden from the user:</p>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
 11
 12
@@ -235,7 +235,7 @@
 </li>
 </ol>
 <ol class="arabic" id="model-ex-10" start="9">
-<li><p class="first">Back in the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> action method, add a title to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> that reads <code class="docutils literal notranslate"><span class="pre">“Edit</span> <span class="pre">Event</span> <span class="pre">NAME</span> <span class="pre">(id=ID)”</span></code> where <code class="docutils literal notranslate"><span class="pre">&quot;NAME&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;ID&quot;</span></code> are replaced by the values for the given event.</p>
+<li><p>Back in the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> action method, add a title to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> that reads <code class="docutils literal notranslate"><span class="pre">“Edit</span> <span class="pre">Event</span> <span class="pre">NAME</span> <span class="pre">(id=ID)”</span></code> where <code class="docutils literal notranslate"><span class="pre">&quot;NAME&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;ID&quot;</span></code> are replaced by the values for the given event.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -259,14 +259,12 @@
 </li>
 </ol>
 <ol class="arabic simple" id="model-ex-11" start="10">
-<li>In <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code>,</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code>,</p></li>
 </ol>
 <ol class="loweralpha">
-<li><p class="first">Query <code class="docutils literal notranslate"><span class="pre">EventData</span></code> for the event being edited with the given id parameter.</p>
-</li>
-<li><p class="first">Update the name and description of the event.</p>
-</li>
-<li><p class="first">Redirect the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code> (the event listing page).</p>
+<li><p>Query <code class="docutils literal notranslate"><span class="pre">EventData</span></code> for the event being edited with the given id parameter.</p></li>
+<li><p>Update the name and description of the event.</p></li>
+<li><p>Redirect the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code> (the event listing page).</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -290,7 +288,7 @@
 </ol>
 <p><a class="reference internal" href="../../chapters/aspdotnet-model-classes/exercises.html#model-exercises"><span class="std std-ref">Back to exercises</span></a></p>
 <ol class="arabic simple" start="11">
-<li>In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, add a link to edit the event as a column in the event table.  See <strong>Line 38</strong>.</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, add a link to edit the event as a column in the event table.  See <strong>Line 38</strong>.</p></li>
 </ol>
 <blockquote>
 <div><div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>32

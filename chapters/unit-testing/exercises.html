@@ -90,8 +90,8 @@
 You were directed to fork and clone this repo earlier in the chapter. If you have not done so, do so now!
 Before starting work on the exercises, check out the <code class="docutils literal notranslate"><span class="pre">exercises-start</span></code> branch.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Earlier in the chapter, we instantiated an object of the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class called <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Earlier in the chapter, we instantiated an object of the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class called <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.
 Be sure to take note of the values of the <code class="docutils literal notranslate"><span class="pre">make</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">gasTankSize</span></code>, and <code class="docutils literal notranslate"><span class="pre">milesPerGallon</span></code> fields!
 Having a note you can quickly reference of how big the gas tank is will you help you decide on values to use in your tests!</p>
 </div>
@@ -99,12 +99,12 @@ Having a note you can quickly reference of how big the gas tank is will you help
 <span id="unit-testing-exercises1"></span><h2><span class="section-number">6.3.1. </span><code class="docutils literal notranslate"><span class="pre">TestGasTankAfterDriving()</span></code><a class="headerlink" href="#testgastankafterdriving" title="Permalink to this headline">¶</a></h2>
 <p>Add a test for the third TODO, “GasTankLevel is accurate after driving within tank range”.</p>
 <ol class="arabic">
-<li><p class="first">Your test must use the <code class="docutils literal notranslate"><span class="pre">Car</span></code> method <code class="docutils literal notranslate"><span class="pre">Drive()</span></code></p>
+<li><p>Your test must use the <code class="docutils literal notranslate"><span class="pre">Car</span></code> method <code class="docutils literal notranslate"><span class="pre">Drive()</span></code></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">test_car</span><span class="p">.</span><span class="n">Drive</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">With a value of <code class="docutils literal notranslate"><span class="pre">50</span></code> miles passed into <code class="docutils literal notranslate"><span class="pre">Drive()</span></code>, we expect
+<li><p>With a value of <code class="docutils literal notranslate"><span class="pre">50</span></code> miles passed into <code class="docutils literal notranslate"><span class="pre">Drive()</span></code>, we expect
 <code class="docutils literal notranslate"><span class="pre">test_car</span></code> to have a <code class="docutils literal notranslate"><span class="pre">GasTankLevel</span></code> of <code class="docutils literal notranslate"><span class="pre">9</span></code>.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">9</span><span class="p">,</span> <span class="n">test_car</span><span class="p">.</span><span class="n">GasTankLevel</span><span class="p">,</span> <span class="p">.</span><span class="m">001</span><span class="p">);</span>
 </pre></div>
@@ -117,7 +117,7 @@ Having a note you can quickly reference of how big the gas tank is will you help
 <span id="unit-testing-exercises2"></span><h2><span class="section-number">6.3.2. </span><code class="docutils literal notranslate"><span class="pre">TestGasTankAfterExceedingTankRange()</span></code><a class="headerlink" href="#testgastankafterexceedingtankrange" title="Permalink to this headline">¶</a></h2>
 <p>Add a test for the fourth TODO, “GasTankLevel is accurate after attempting to drive past tank range”.</p>
 <ol class="arabic">
-<li><p class="first">You’re on your own for this one. You’ll need to simulate the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
+<li><p>You’re on your own for this one. You’ll need to simulate the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
 travelling farther than it’s <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> allows.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/unit-testing.html#unit-testing-solution-2"><span class="std std-ref">Check your solution</span></a></p>
 </li>
@@ -130,7 +130,7 @@ perform an action on our car object, and we are expecting the object
 to throw an error. In this case, we are going to attempt to add gas
 to our car that exceeds the gas tank size.</p>
 <ol class="arabic">
-<li><p class="first">First, we’ll add our <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> annotation to tell MSTest
+<li><p>First, we’ll add our <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> annotation to tell MSTest
 this is a test.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">//TODO: can&#39;t have more gas than tank size, expect an exception</span>
 <span class="na">[TestMethod]</span>
@@ -140,7 +140,7 @@ this is a test.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute <code class="docutils literal notranslate"><span class="pre">[ExpectedException]</span></code>.</p>
+<li><p>Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute <code class="docutils literal notranslate"><span class="pre">[ExpectedException]</span></code>.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">//TODO: can&#39;t have more gas than tank size, expect an exception</span>
 <span class="na">[TestMethod]</span>
 <span class="na">[ExpectedException(typeof(ArgumentOutOfRangeException))]</span>
@@ -153,14 +153,14 @@ this is a test.</p>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/unit-testing.html#unit-testing-solution-3"><span class="std std-ref">Check your solution</span></a></p>
 <ol class="arabic" start="3">
-<li><p class="first">Update the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class to include an <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method.</p>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class to include an <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">AddGas</span><span class="p">(</span><span class="kt">double</span> <span class="n">gas</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">GasTankLevel</span> <span class="p">+=</span> <span class="n">gas</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Back in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, implement the new <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and a
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, implement the new <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and a
 <code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> scenario.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">test_car</span><span class="p">.</span><span class="n">AddGas</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 <span class="n">Assert</span><span class="p">.</span><span class="n">Fail</span><span class="p">(</span><span class="s">&quot;Shouldn&#39;t get here, car cannot have more gas in tank than the size of the tank&quot;</span><span class="p">);</span>
@@ -170,10 +170,9 @@ this is a test.</p>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/unit-testing.html#unit-testing-solution-3"><span class="std std-ref">Check your solution</span></a></p>
 <ol class="arabic" start="5">
-<li><p class="first">Run the test. It should fail! In the output log, we can see our
-<code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> statement about not being able to add more gas printed out.</p>
-</li>
-<li><p class="first">We need to refactor <code class="docutils literal notranslate"><span class="pre">Car</span></code> to throw an exception when too much
+<li><p>Run the test. It should fail! In the output log, we can see our
+<code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> statement about not being able to add more gas printed out.</p></li>
+<li><p>We need to refactor <code class="docutils literal notranslate"><span class="pre">Car</span></code> to throw an exception when too much
 gas is added to the tank. Find the <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and
 modify it by adding the following code in the appropriate place.</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">GasTankLevel</span> <span class="p">&gt;</span> <span class="n">GasTankSize</span><span class="p">)</span>
@@ -186,7 +185,7 @@ modify it by adding the following code in the appropriate place.</p>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/unit-testing.html#unit-testing-solution-3"><span class="std std-ref">Check your solution</span></a></p>
 <ol class="arabic simple" start="7">
-<li>Now, run the test - it should pass!</li>
+<li><p>Now, run the test - it should pass!</p></li>
 </ol>
 </div>
 </div>

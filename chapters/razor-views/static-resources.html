@@ -94,20 +94,20 @@ While every view we add for our action methods in the controllers inherits from 
 To add styles that only apply to the view we are currently working on, we can use the same <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> tag we normally do for a static HTML page.</p>
 <p>Two things to keep in mind before we start adding our own CSS:</p>
 <ol class="arabic simple">
-<li>We need to take into account any CSS in <code class="docutils literal notranslate"><span class="pre">site.css</span></code>. This file contains the site-wide CSS and is included in <code class="docutils literal notranslate"><span class="pre">_Layout</span></code>.
-If we want to modify something for the whole site CSS-wise, this is a good place to start.</li>
-<li>We need to organize and store our CSS files in the appropriate location, just as we need to do with other files in ASP.NET Core MVC.
+<li><p>We need to take into account any CSS in <code class="docutils literal notranslate"><span class="pre">site.css</span></code>. This file contains the site-wide CSS and is included in <code class="docutils literal notranslate"><span class="pre">_Layout</span></code>.
+If we want to modify something for the whole site CSS-wise, this is a good place to start.</p></li>
+<li><p>We need to organize and store our CSS files in the appropriate location, just as we need to do with other files in ASP.NET Core MVC.
 In our application, we have a <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory. Inside that directory, we can add CSS files to the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory.
-The <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory is the default location for static files so when the application is served, ASP.NET Core MVC can easily locate these files.</li>
+The <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory is the default location for static files so when the application is served, ASP.NET Core MVC can easily locate these files.</p></li>
 </ol>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>Let’s say we add a custom CSS file to our application called <code class="docutils literal notranslate"><span class="pre">custom.css</span></code> and store this file in the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory in <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.
 If we want to link to this file to use it for a view, we would use the following line of HTML.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/css/custom.css&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p class="last">Because we added our file to the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory inside the <code class="docutils literal notranslate"><span class="pre">wwwwroot</span></code> directory, our link is simply <code class="docutils literal notranslate"><span class="pre">&quot;~/css/custom.css&quot;</span></code>.</p>
+<p>Because we added our file to the <code class="docutils literal notranslate"><span class="pre">css</span></code> subdirectory inside the <code class="docutils literal notranslate"><span class="pre">wwwwroot</span></code> directory, our link is simply <code class="docutils literal notranslate"><span class="pre">&quot;~/css/custom.css&quot;</span></code>.</p>
 </div>
 </div>
 <div class="section" id="add-custom-scripts">
@@ -118,10 +118,10 @@ Inside the <code class="docutils literal notranslate"><span class="pre">wwwroot<
 Our application includes site-wide JavaScript in <code class="docutils literal notranslate"><span class="pre">site.js</span></code>. If we want to override site-wide scripts, that is where we should start.
 If we want to add an additional script, we can add it in the <code class="docutils literal notranslate"><span class="pre">js</span></code> subdirectory inside <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>We added an additional JavaScript script called <code class="docutils literal notranslate"><span class="pre">custom.js</span></code> and stored this file in the <code class="docutils literal notranslate"><span class="pre">js</span></code> subdirectory inside the <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code> directory.
 To add this file to a view, we can use the following HTML.</p>
-<div class="last highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/js/custom.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/js/custom.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -138,13 +138,13 @@ If we add an image called <code class="docutils literal notranslate"><span class
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">13.8.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>If we add an image called <code class="docutils literal notranslate"><span class="pre">fluffy.jpg</span></code> to the <code class="docutils literal notranslate"><span class="pre">images</span></code> directory inside of <code class="docutils literal notranslate"><span class="pre">wwwroot</span></code>, what is the path we could use for the <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> tag?</p>
-<ol class="last loweralpha simple">
-<li><code class="docutils literal notranslate"><span class="pre">&quot;/Views/images/fluffy.jpg&quot;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;~/images/fluffy.jpg&quot;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;~/img/fluffy.jpg&quot;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;wwwroot/fluffy.jpg&quot;</span></code></li>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;/Views/images/fluffy.jpg&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;~/images/fluffy.jpg&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;~/img/fluffy.jpg&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;wwwroot/fluffy.jpg&quot;</span></code></p></li>
 </ol>
 </div>
 </div>

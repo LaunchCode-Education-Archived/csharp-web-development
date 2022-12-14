@@ -106,22 +106,22 @@ comfortable assigning you to a set of tasks that are a notch up in difficulty.</
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
 <p>In this project, you’ll show that you can:</p>
 <ol class="arabic simple">
-<li>Read and understand code written by others.</li>
-<li>Work with objects to encapsulate data and methods.</li>
-<li>Use the generator in Visual Studio to automate routine tasks.</li>
-<li>Use unit testing and Test-Driven-Development (TDD) to verify and create new
-methods.</li>
-<li>Apply the concept of inheritance to streamline your classes (the DRY
-idea—Don’t Repeat Yourself).</li>
+<li><p>Read and understand code written by others.</p></li>
+<li><p>Work with objects to encapsulate data and methods.</p></li>
+<li><p>Use the generator in Visual Studio to automate routine tasks.</p></li>
+<li><p>Use unit testing and Test-Driven-Development (TDD) to verify and create new
+methods.</p></li>
+<li><p>Apply the concept of inheritance to streamline your classes (the DRY
+idea—Don’t Repeat Yourself).</p></li>
 </ol>
 </div>
 <div class="section" id="get-the-starter-code">
 <h2>Get the Starter Code<a class="headerlink" href="#get-the-starter-code" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>In <strong>Canvas, Graded Assignment #2: TechJobs (Object-Oriented Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio.  Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</li>
-<li>Open Visual Studio.</li>
-<li>If the app opens up to an existing project, close it.</li>
-<li>From the Visual Studio dialog box, open your copy of the starter code.</li>
+<li><p>In <strong>Canvas, Graded Assignment #2: TechJobs (Object-Oriented Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio.  Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</p></li>
+<li><p>Open Visual Studio.</p></li>
+<li><p>If the app opens up to an existing project, close it.</p></li>
+<li><p>From the Visual Studio dialog box, open your copy of the starter code.</p></li>
 </ol>
 </div>
 <div class="section" id="techjobs-object-oriented-edition">
@@ -193,7 +193,7 @@ reference to the given object. Similarly, we can have one <code class="docutils 
 for each employer.</p>
 <p>Aside from reducing the amount of raw data / memory that the application uses,
 this will allow data to be updated more easily and properly. If we need to
-change the name of an employer (e.g.&nbsp;due to a typo or a name change at the
+change the name of an employer (e.g. due to a typo or a name change at the
 company), we can change it in one place, the single <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object that
 represents that company.</p>
 <p>As you continue to work on the assignment, you will find further ways to streamline the application.</p>
@@ -254,10 +254,10 @@ Each <code class="docutils literal notranslate"><span class="pre">TestTaskX</spa
 Select <code class="docutils literal notranslate"><span class="pre">TestTask2</span></code> tests.  You should see 8 tests listed by their names.
 These are all of the tests that will be run after you complete <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">2</span></code> in the instructions below.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>Upon initial examination of the starter code, you may notice that there ONLY 2 <code class="docutils literal notranslate"><span class="pre">TestTaskXs</span></code>
 in the <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Explorer</span></code> and 6 <code class="docutils literal notranslate"><span class="pre">TestTaskXs</span></code> in the <code class="docutils literal notranslate"><span class="pre">Solution</span> <span class="pre">Explorer</span></code>.</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">TestTask4</span></code>, <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code>, and <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> have all been commented out so that you can run
+<p><code class="docutils literal notranslate"><span class="pre">TestTask4</span></code>, <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code>, and <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> have all been commented out so that you can run
 the auto-grading unit tests for tasks 2-3.</p>
 </div>
 <p>To run a <em>single</em> group of tests, you will right-click on the name of the Task.
@@ -276,17 +276,17 @@ As you expand your codebase, none of your earlier tests should fail.</p>
 details for each part appear in the following sections, so be sure to read them
 carefully as you solve each problem.</p>
 <ol class="arabic simple">
-<li>Review Sally’s code in the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class to learn how to assign a
-unique ID.</li>
-<li>Add properties and custom methods as needed to the <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</li>
-<li>Complete the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class using what you learned in steps 1 and 2.</li>
-<li>Use unit testing to verify the constructors and <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> methods for the
-<code class="docutils literal notranslate"><span class="pre">Job</span></code> class.</li>
-<li>Use TDD to design and code a custom <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method for the <code class="docutils literal notranslate"><span class="pre">Job</span></code>
-class.</li>
-<li>Use inheritance to DRY the code within <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code>.</li>
+<li><p>Review Sally’s code in the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class to learn how to assign a
+unique ID.</p></li>
+<li><p>Add properties and custom methods as needed to the <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</p></li>
+<li><p>Complete the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class using what you learned in steps 1 and 2.</p></li>
+<li><p>Use unit testing to verify the constructors and <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> methods for the
+<code class="docutils literal notranslate"><span class="pre">Job</span></code> class.</p></li>
+<li><p>Use TDD to design and code a custom <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method for the <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+class.</p></li>
+<li><p>Use inheritance to DRY the code within <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code>.</p></li>
 </ol>
 </div>
 </div>
@@ -301,9 +301,9 @@ classes, but for now let’s take a closer look at the constructors.</p>
 <p>One neat trick we can use is to automatically assign each new object a unique
 ID number.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>Examine the two constructors in <code class="docutils literal notranslate"><span class="pre">Employer.cs</span></code>:</p>
-<div class="last highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -342,19 +342,19 @@ ID number.</p>
 </td></tr></table></div>
 </div>
 <ol class="arabic simple">
-<li>Line 3 declares the field <code class="docutils literal notranslate"><span class="pre">nextId</span></code>. Since it is <code class="docutils literal notranslate"><span class="pre">static</span></code>, its
-changing value is NOT stored within any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object.</li>
-<li>The first constructor (lines 6 - 10) accepts no arguments and assigns the
+<li><p>Line 3 declares the field <code class="docutils literal notranslate"><span class="pre">nextId</span></code>. Since it is <code class="docutils literal notranslate"><span class="pre">static</span></code>, its
+changing value is NOT stored within any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object.</p></li>
+<li><p>The first constructor (lines 6 - 10) accepts no arguments and assigns the
 value of <code class="docutils literal notranslate"><span class="pre">nextId</span></code> to the <code class="docutils literal notranslate"><span class="pre">id</span></code> field. It then increments <code class="docutils literal notranslate"><span class="pre">nextId</span></code>.
-Thus, every new <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object will get a different ID number.</li>
-<li>The second constructor (lines 12 - 15) assigns the <code class="docutils literal notranslate"><span class="pre">value</span></code>
+Thus, every new <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object will get a different ID number.</p></li>
+<li><p>The second constructor (lines 12 - 15) assigns the <code class="docutils literal notranslate"><span class="pre">value</span></code>
 field. It ALSO initializes <code class="docutils literal notranslate"><span class="pre">id</span></code> for the object by calling the
 first constructor statement with the <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> syntax. Including <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> in
-any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor makes initializing <code class="docutils literal notranslate"><span class="pre">id</span></code> a default behavior.</li>
+any <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor makes initializing <code class="docutils literal notranslate"><span class="pre">id</span></code> a default behavior.</p></li>
 </ol>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">By adding <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> to the signature of the second <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor, we are using a new technique called constructor chaining.
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>By adding <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">this()</span></code> to the signature of the second <code class="docutils literal notranslate"><span class="pre">Employer</span></code> constructor, we are using a new technique called constructor chaining.
 For more info on how this chaining technique works, check out this <a class="reference external" href="https://www.codecompiled.com/csharp/constructor-chaining-c/" target="_blank">blog post<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>!</p>
 </div>
 </div>
@@ -364,8 +364,8 @@ For more info on how this chaining technique works, check out this <a class="ref
 <p>Sally needs you to build up the remaining classes. In each case, refer to the
 <code class="docutils literal notranslate"><span class="pre">Employer</span></code> class for hints on how to structure your code.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Due to the fact that this code is being auto-graded as you work through it,
 make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
 </div>
 <div class="section" id="the-location-class">
@@ -376,8 +376,8 @@ methods for this class are done, as is the constructor for initializing the
 <p>Sally left you a <code class="docutils literal notranslate"><span class="pre">TODO</span></code> comment with instructions for coding a second
 constructor:</p>
 <ol class="arabic simple">
-<li>It should call the first constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</li>
-<li>It must also initialize the <code class="docutils literal notranslate"><span class="pre">value</span></code> field for a new <code class="docutils literal notranslate"><span class="pre">Location</span></code> object.</li>
+<li><p>It should call the first constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</p></li>
+<li><p>It must also initialize the <code class="docutils literal notranslate"><span class="pre">value</span></code> field for a new <code class="docutils literal notranslate"><span class="pre">Location</span></code> object.</p></li>
 </ol>
 </div>
 <div class="section" id="the-corecompetency-class">
@@ -390,13 +390,13 @@ ready. Sally needs you to change the <code class="docutils literal notranslate">
 <p>Open the class file. This time the constructors are done.
 Sally’s comments direct you to where you need to add the custom methods.</p>
 <ol class="arabic simple">
-<li>Code a <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method that just returns the <code class="docutils literal notranslate"><span class="pre">value</span></code> of a
-<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> object.</li>
-<li>Use the <em>Generate</em> option again to add the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code>
+<li><p>Code a <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> method that just returns the <code class="docutils literal notranslate"><span class="pre">value</span></code> of a
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> object.</p></li>
+<li><p>Use the <em>Generate</em> option again to add the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code>
 methods. Refer to the <a class="reference internal" href="../chapters/classes-part2/equals-shortcut.html#equals-shortcut"><span class="std std-ref">final section</span></a> of the
-“Classes and Objects, Part 2” chapter if you need a quick review.</li>
-<li>Assume that two <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> objects are equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields
-match.</li>
+“Classes and Objects, Part 2” chapter if you need a quick review.</p></li>
+<li><p>Assume that two <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> objects are equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields
+match.</p></li>
 </ol>
 </div>
 <div class="section" id="run-your-tests">
@@ -404,55 +404,55 @@ match.</li>
 <p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask2</span></code> unit tests.  Refactor your code as needed.
 Do not move onto Task 3 until you have passed all of Task 2’s auto-grading unit tests.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Now would be a good time to save, commit, and push your work up to GitHub.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Now would be a good time to save, commit, and push your work up to GitHub.</p>
 </div>
 </div>
 </div>
 <div class="section" id="task-3-complete-the-job-class">
 <h2>Task 3: Complete the <code class="docutils literal notranslate"><span class="pre">Job</span></code> Class<a class="headerlink" href="#task-3-complete-the-job-class" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>The starter code in the <code class="docutils literal notranslate"><span class="pre">Job</span></code> class has been commented out for the rest of the tests to run.</p>
-<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 6</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 20</strong>.</p>
+<p>Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 6</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 20</strong>.</p>
 </div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Due to the fact that this code is being auto-graded as you work through it,
 make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
 </div>
 <p>Now open the <code class="docutils literal notranslate"><span class="pre">Job</span></code> file. OOF! There are a lot of fields and properties declared and not much
 else.</p>
 <ol class="arabic simple">
-<li>Code a constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field with a unique value. This
-constructor should take no parameters.</li>
-<li>Code a second constructor that takes 5 parameters and assigns values to
+<li><p>Code a constructor to initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field with a unique value. This
+constructor should take no parameters.</p></li>
+<li><p>Code a second constructor that takes 5 parameters and assigns values to
 <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">employerName</span></code>, <code class="docutils literal notranslate"><span class="pre">employerLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">jobType</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">jobCoreCompetency</span></code>. Also, this constructor should call the first in order to
-initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</li>
-<li>Generate the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods. Consider two <code class="docutils literal notranslate"><span class="pre">Job</span></code>
-objects equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields match.</li>
+initialize the <code class="docutils literal notranslate"><span class="pre">id</span></code> field.</p></li>
+<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods. Consider two <code class="docutils literal notranslate"><span class="pre">Job</span></code>
+objects equal when their <code class="docutils literal notranslate"><span class="pre">id</span></code> fields match.</p></li>
 </ol>
 <div class="section" id="id1">
 <h3>Run Your Tests<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask3</span></code> unit tests.  Refactor your code as needed.
 Do not move onto Task 4 until you have passed all of Task 3’s auto-grading unit tests.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Save, commit, and push your work to GitHub.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Save, commit, and push your work to GitHub.</p>
 </div>
 </div>
 </div>
 <div class="section" id="task-4-use-unit-testing-to-verify-parts-of-the-job-class">
 <h2>Task 4: Use Unit Testing to Verify Parts of the <code class="docutils literal notranslate"><span class="pre">Job</span></code> Class<a class="headerlink" href="#task-4-use-unit-testing-to-verify-parts-of-the-job-class" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>All of the tests in <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> are commented out right now.</p>
-<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 155</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> tests.</p>
+<p>Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 155</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> tests.</p>
 </div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Due to the fact that this code is being auto-graded as you work through it,
 make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
 </div>
 <p>The solution currently contains a testing project called <code class="docutils literal notranslate"><span class="pre">TechJobsTests</span></code>.
@@ -464,24 +464,21 @@ The <code class="docutils literal notranslate"><span class="pre">JobTests.cs</sp
 <p>Each <code class="docutils literal notranslate"><span class="pre">Job</span></code> object should contain a unique ID number, and these should also be
 sequential integers.</p>
 <ol class="arabic">
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">JobTests</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestSettingJobId</span></code>.</p>
-</li>
-<li><p class="first">Create two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects using the empty constructor.
+<li><p>In <code class="docutils literal notranslate"><span class="pre">JobTests</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestSettingJobId</span></code>.</p></li>
+<li><p>Create two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects using the empty constructor.
 Use <code class="docutils literal notranslate"><span class="pre">Assert.AreEqual</span></code>, <code class="docutils literal notranslate"><span class="pre">Assert.IsTrue</span></code>, or <code class="docutils literal notranslate"><span class="pre">Assert.IsFalse</span></code> to test that the
-ID values for the two objects are NOT the same and differ by 1.</p>
-</li>
-<li><p class="first">Run the test to verify that your <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor correctly assigns
-ID numbers.</p>
-</li>
-<li><p class="first">If the test doesn’t pass, what should be your first thought?</p>
+ID values for the two objects are NOT the same and differ by 1.</p></li>
+<li><p>Run the test to verify that your <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor correctly assigns
+ID numbers.</p></li>
+<li><p>If the test doesn’t pass, what should be your first thought?</p>
 <ol class="loweralpha simple">
-<li>“I need to fix the unit test.”</li>
-<li>“I need to fix my <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor code.”</li>
+<li><p>“I need to fix the unit test.”</p></li>
+<li><p>“I need to fix my <code class="docutils literal notranslate"><span class="pre">Job()</span></code> constructor code.”</p></li>
 </ol>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
 <p>The answer is NOT “a”.</p>
-<p class="last">Your test code <em>might</em> be incorrect, but that should not be your FIRST
+<p>Your test code <em>might</em> be incorrect, but that should not be your FIRST
 thought. TDD begins with writing tests for desired behaviors. If the
 tests fail, that indicates errors in the methods trying to produce the
 behavior rather than in the tests that define that behavior.</p>
@@ -494,10 +491,10 @@ behavior rather than in the tests that define that behavior.</p>
 <p>Each <code class="docutils literal notranslate"><span class="pre">Job</span></code> object should contain six properties—<code class="docutils literal notranslate"><span class="pre">Id</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>,
 <code class="docutils literal notranslate"><span class="pre">EmployerLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, and <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.</p>
 <ol class="arabic simple">
-<li>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called
-<code class="docutils literal notranslate"><span class="pre">TestJobConstructorSetsAllFields</span></code>.</li>
-<li>Declare and initialize a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object with the following data: <code class="docutils literal notranslate"><span class="pre">&quot;Product</span> <span class="pre">tester&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ACME&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Desert&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Quality</span> <span class="pre">control&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Persistence&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.</li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">Assert</span></code> statements to test that the constructor correctly assigns the value of each field.</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called
+<code class="docutils literal notranslate"><span class="pre">TestJobConstructorSetsAllFields</span></code>.</p></li>
+<li><p>Declare and initialize a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object with the following data: <code class="docutils literal notranslate"><span class="pre">&quot;Product</span> <span class="pre">tester&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ACME&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">EmployerName</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Desert&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobLocation</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Quality</span> <span class="pre">control&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobType</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Persistence&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">JobCoreCompetency</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Assert</span></code> statements to test that the constructor correctly assigns the value of each field.</p></li>
 </ol>
 </div>
 <div class="section" id="test-the-equals-method">
@@ -507,9 +504,9 @@ even if one or more of the other fields differ. Similarly, the two objects
 are NOT equal if their <code class="docutils literal notranslate"><span class="pre">id</span></code> values differ, even if all the other fields are
 identical.</p>
 <ol class="arabic simple">
-<li>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestJobsForEquality</span></code>.</li>
-<li>Generate two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects that have identical field values EXCEPT for
-<code class="docutils literal notranslate"><span class="pre">id</span></code>. Test that <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">JobTest</span></code>, define a test called <code class="docutils literal notranslate"><span class="pre">TestJobsForEquality</span></code>.</p></li>
+<li><p>Generate two <code class="docutils literal notranslate"><span class="pre">Job</span></code> objects that have identical field values EXCEPT for
+<code class="docutils literal notranslate"><span class="pre">id</span></code>. Test that <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
 </ol>
 <p>It might seem logical to follow up the <code class="docutils literal notranslate"><span class="pre">false</span></code> case by testing to make sure
 that <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when two objects have the same ID. However,
@@ -526,21 +523,21 @@ test for this condition.</p>
 <p>Run your <code class="docutils literal notranslate"><span class="pre">TestTask4</span></code> unit tests.  Refactor your code as needed.
 Do not move onto Task 5 until you have passed all of Task 4’s auto-grading unit tests.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Time to save, commit, and push your work to GitHub again.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Time to save, commit, and push your work to GitHub again.</p>
 </div>
 </div>
 </div>
 <div class="section" id="task-5-use-tdd-to-build-the-tostring-method">
 <h2>Task 5: Use TDD to Build The <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> Method<a class="headerlink" href="#task-5-use-tdd-to-build-the-tostring-method" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>This tests in <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> are commented out right now.</p>
-<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 167</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> tests.</p>
+<p>Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 167</strong> to run the <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> tests.</p>
 </div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Due to the fact that this code is being auto-graded as you work through it,
 make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
 </div>
 <p>To display the data for a particular <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, you need to implement a
@@ -550,10 +547,9 @@ it, you will flip that process using TDD.</p>
 <h3>Create First Test for <code class="docutils literal notranslate"><span class="pre">ToString()</span></code><a class="headerlink" href="#create-first-test-for-tostring" title="Permalink to this headline">¶</a></h3>
 <p>Before writing your first test, consider how we want the method to behave:</p>
 <ol class="arabic">
-<li><p class="first">When passed a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, it should return a string that contains a
-blank line before and after the job information.</p>
-</li>
-<li><p class="first">The string should contain a label for each field, followed by the data
+<li><p>When passed a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object, it should return a string that contains a
+blank line before and after the job information.</p></li>
+<li><p>The string should contain a label for each field, followed by the data
 stored in that field. Each field should be on its own line.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ID:  _______
 Name: _______
@@ -564,12 +560,10 @@ Core Competency: _______
 </pre></div>
 </div>
 </li>
-<li><p class="first">If a field is empty, the method should add, “Data not available” after
-the label.</p>
-</li>
-<li><p class="first">(Bonus) If a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object ONLY contains data for the <code class="docutils literal notranslate"><span class="pre">id</span></code> field, the
-method should return, “OOPS! This job does not seem to exist.”</p>
-</li>
+<li><p>If a field is empty, the method should add, “Data not available” after
+the label.</p></li>
+<li><p>(Bonus) If a <code class="docutils literal notranslate"><span class="pre">Job</span></code> object ONLY contains data for the <code class="docutils literal notranslate"><span class="pre">id</span></code> field, the
+method should return, “OOPS! This job does not seem to exist.”</p></li>
 </ol>
 <p>We will need three tests to test our <code class="docutils literal notranslate"><span class="pre">ToString</span></code> method.</p>
 </div>
@@ -578,8 +572,8 @@ method should return, “OOPS! This job does not seem to exist.”</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">JobTests</span></code>, add a new test called <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code> to check the first requirement (item 1 in the above list), then run
 that test (it should fail).</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">When testing the <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code>, do NOT test this one individually or it will fail.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>When testing the <code class="docutils literal notranslate"><span class="pre">TestToStringStartsAndEndsWithNewLine</span></code>, do NOT test this one individually or it will fail.
 You need to test this one by running all <code class="docutils literal notranslate"><span class="pre">TestTask5</span></code> tests or the <code class="docutils literal notranslate"><span class="pre">Id</span></code> numbers will cause a failure.</p>
 </div>
 <p>Woo hoo! Failure is what we want here! Now you get to fix that.</p>
@@ -590,28 +584,28 @@ You need to test this one by running all <code class="docutils literal notransla
 Since the test only checks if the returned string starts and ends with a blank
 line, make that happen.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Do NOT add anything beyond what is needed to make the test pass. You will
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Do NOT add anything beyond what is needed to make the test pass. You will
 add the remaining behaviors for <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> as you code each new test.</p>
 </div>
 </div>
 <div class="section" id="test-2-testtostringcontainscorrectlabelsanddata">
 <h3>Test 2: <code class="docutils literal notranslate"><span class="pre">TestToStringContainsCorrectLabelsAndData</span></code><a class="headerlink" href="#test-2-testtostringcontainscorrectlabelsanddata" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Code a new test for the second required behavior, then run the tests to make
-sure the new one fails.  Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringContainsCorrectLabelsAndData</span></code>.</li>
-<li>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass. Also, make sure that your
-updates still pass all of the old tests.</li>
-<li>Continue this test-refactor cycle until all of the behaviors we want for
-<code class="docutils literal notranslate"><span class="pre">ToString()</span></code> work. Remember to add only ONE new test at a time.</li>
+<li><p>Code a new test for the second required behavior, then run the tests to make
+sure the new one fails.  Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringContainsCorrectLabelsAndData</span></code>.</p></li>
+<li><p>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass. Also, make sure that your
+updates still pass all of the old tests.</p></li>
+<li><p>Continue this test-refactor cycle until all of the behaviors we want for
+<code class="docutils literal notranslate"><span class="pre">ToString()</span></code> work. Remember to add only ONE new test at a time.</p></li>
 </ol>
 </div>
 <div class="section" id="test-3-testtostringhandlesemptyfield">
 <h3>Test 3: <code class="docutils literal notranslate"><span class="pre">TestToStringHandlesEmptyField</span></code><a class="headerlink" href="#test-3-testtostringhandlesemptyfield" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Code your final test for the last required behavior,
-then run the tests to make sure the new one fails. Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringHandlesEmptyField</span></code>.</li>
-<li>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass.  Also make sure that your updates still pass all the old tests.</li>
+<li><p>Code your final test for the last required behavior,
+then run the tests to make sure the new one fails. Call this test <code class="docutils literal notranslate"><span class="pre">TestToStringHandlesEmptyField</span></code>.</p></li>
+<li><p>Modify <code class="docutils literal notranslate"><span class="pre">ToString()</span></code> to make the new test pass.  Also make sure that your updates still pass all the old tests.</p></li>
 </ol>
 <p>Cool! Your <code class="docutils literal notranslate"><span class="pre">Job</span></code> class is now complete and operates as desired.</p>
 </div>
@@ -625,13 +619,13 @@ Do not move onto Task 6 until you have passed all of Task 5’s auto-grading uni
 <div class="section" id="task-6-refactor-to-dry-the-support-classes">
 <h2>Task 6: Refactor to DRY the Support Classes<a class="headerlink" href="#task-6-refactor-to-dry-the-support-classes" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>The tests in <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> are commented out right now.</p>
-<p class="last">Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 96</strong> to run all of the <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> tests.</p>
+<p>Remove the <code class="docutils literal notranslate"><span class="pre">/*</span></code> in <strong>line 1</strong> and <code class="docutils literal notranslate"><span class="pre">*/</span></code> in <strong>line 96</strong> to run all of the <code class="docutils literal notranslate"><span class="pre">TestTask6</span></code> tests.</p>
 </div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Due to the fact that this code is being auto-graded as you work through it,
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Due to the fact that this code is being auto-graded as you work through it,
 make sure that you use any and all names for classes, variables, methods, etc provided to you in these directions.</p>
 </div>
 <p>Review the code in the <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and
@@ -640,26 +634,28 @@ make sure that you use any and all names for classes, variables, methods, etc pr
 anytime you find yourself adding identical code in multiple locations you
 should consider how to streamline the process.</p>
 <blockquote>
-<div>DRY = “Don’t Repeat Yourself”.</div></blockquote>
+<div><p>DRY = “Don’t Repeat Yourself”.</p>
+</div></blockquote>
 <div class="section" id="create-a-base-class">
 <h3>Create a Base Class<a class="headerlink" href="#create-a-base-class" title="Permalink to this headline">¶</a></h3>
 <p>Let’s move all of the repeated code into a separate class. We will then have
 <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and <code class="docutils literal notranslate"><span class="pre">PositionType</span></code> <em>inherit</em>
 this common code.</p>
 <ol class="arabic simple">
-<li>Create a new class called <code class="docutils literal notranslate"><span class="pre">JobField</span></code>.</li>
-<li>Consider the following questions to help you decide what code to put in the
-<code class="docutils literal notranslate"><span class="pre">JobField</span></code> class:<ol class="loweralpha">
-<li>What fields do ALL FOUR of the classes have in common?</li>
-<li>Which constructors are the same in ALL FOUR classes?</li>
-<li>Which custom methods are identical in ALL of the classes?</li>
+<li><p>Create a new class called <code class="docutils literal notranslate"><span class="pre">JobField</span></code>.</p></li>
+<li><p>Consider the following questions to help you decide what code to put in the
+<code class="docutils literal notranslate"><span class="pre">JobField</span></code> class:</p>
+<ol class="loweralpha simple">
+<li><p>What fields do ALL FOUR of the classes have in common?</p></li>
+<li><p>Which constructors are the same in ALL FOUR classes?</p></li>
+<li><p>Which custom methods are identical in ALL of the classes?</p></li>
 </ol>
 </li>
-<li>In <code class="docutils literal notranslate"><span class="pre">JobField</span></code>, declare each of the common class members.</li>
-<li>Code the constructors.</li>
-<li>Add in any inherited method overrides.</li>
-<li>Finally, to prevent the creation of a <code class="docutils literal notranslate"><span class="pre">JobField</span></code> object, make this class
-<em>abstract</em>.</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">JobField</span></code>, declare each of the common class members.</p></li>
+<li><p>Code the constructors.</p></li>
+<li><p>Add in any inherited method overrides.</p></li>
+<li><p>Finally, to prevent the creation of a <code class="docutils literal notranslate"><span class="pre">JobField</span></code> object, make this class
+<em>abstract</em>.</p></li>
 </ol>
 </div>
 <div class="section" id="extend-jobfield-into-employer">
@@ -668,14 +664,11 @@ this common code.</p>
 modify the other classes to reference this shared code. Let’s begin with
 <code class="docutils literal notranslate"><span class="pre">Employer</span></code>.</p>
 <ol class="arabic">
-<li><p class="first">Modify line 5 to <em>extend</em> the <code class="docutils literal notranslate"><span class="pre">JobField</span></code> class into <code class="docutils literal notranslate"><span class="pre">Employer</span></code>.</p>
-</li>
-<li><p class="first">Next, remove any code in <code class="docutils literal notranslate"><span class="pre">Employer</span></code> that matches code from <code class="docutils literal notranslate"><span class="pre">JobField</span></code>
-(e.g. the <code class="docutils literal notranslate"><span class="pre">Id</span></code> and <code class="docutils literal notranslate"><span class="pre">Value</span></code> properties and the <code class="docutils literal notranslate"><span class="pre">nextId</span></code> field are shared).</p>
-</li>
-<li><p class="first">Remove any of the methods that are identical.</p>
-</li>
-<li><p class="first">The empty constructor is shared, but not the second. Replace the two
+<li><p>Modify line 5 to <em>extend</em> the <code class="docutils literal notranslate"><span class="pre">JobField</span></code> class into <code class="docutils literal notranslate"><span class="pre">Employer</span></code>.</p></li>
+<li><p>Next, remove any code in <code class="docutils literal notranslate"><span class="pre">Employer</span></code> that matches code from <code class="docutils literal notranslate"><span class="pre">JobField</span></code>
+(e.g. the <code class="docutils literal notranslate"><span class="pre">Id</span></code> and <code class="docutils literal notranslate"><span class="pre">Value</span></code> properties and the <code class="docutils literal notranslate"><span class="pre">nextId</span></code> field are shared).</p></li>
+<li><p>Remove any of the methods that are identical.</p></li>
+<li><p>The empty constructor is shared, but not the second. Replace the two
 constructors with the following:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>7
 8
@@ -685,16 +678,15 @@ constructors with the following:</p>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Rerun your unit tests to verify your refactored code.</p>
-</li>
+<li><p>Rerun your unit tests to verify your refactored code.</p></li>
 </ol>
 </div>
 <div class="section" id="finish-drying-your-code">
 <h3>Finish DRYing Your Code<a class="headerlink" href="#finish-drying-your-code" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Repeat the process above for the <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</li>
-<li>Rerun your unit tests to verify that your classes and methods still work.</li>
+<li><p>Repeat the process above for the <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> classes.</p></li>
+<li><p>Rerun your unit tests to verify that your classes and methods still work.</p></li>
 </ol>
 </div>
 <div class="section" id="id4">
@@ -703,8 +695,8 @@ constructors with the following:</p>
 This is the last set of tests!  Congrats!
 Submit your assignment once you have passed all of Task 6’s auto-graded unit tests.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You know you need to do this, but here is the reminder anyway. Save, commit,
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You know you need to do this, but here is the reminder anyway. Save, commit,
 and push your work to GitHub.</p>
 </div>
 </div>

@@ -91,44 +91,42 @@
 in <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>. You should refer back to the tutorial starting
 <a class="reference internal" href="scaffolding.html#user-auth-walkthrough"><span class="std std-ref">here</span></a>.</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="#auth-studio-scaffolding"><span class="std std-ref">Scaffolding</span></a></li>
-<li><a class="reference internal" href="#auth-studio-config"><span class="std std-ref">Configuration</span></a></li>
-<li><a class="reference internal" href="#auth-studio-user"><span class="std std-ref">Authorization</span></a></li>
+<li><p><a class="reference internal" href="#auth-studio-scaffolding"><span class="std std-ref">Scaffolding</span></a></p></li>
+<li><p><a class="reference internal" href="#auth-studio-config"><span class="std std-ref">Configuration</span></a></p></li>
+<li><p><a class="reference internal" href="#auth-studio-user"><span class="std std-ref">Authorization</span></a></p></li>
 </ol>
 <div class="section" id="the-starter-code">
 <h2><span class="section-number">19.7.1. </span>The Starter Code<a class="headerlink" href="#the-starter-code" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Fork and clone the starter code for
-<a class="reference external" href="https://github.com/LaunchCodeEducation/TechJobsAuthentication" target="_blank">TechJobsAuthentication<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
-</li>
-<li><p class="first">You will need to do some work to ensure that the schema, user, and database password
+<li><p>Fork and clone the starter code for
+<a class="reference external" href="https://github.com/LaunchCodeEducation/TechJobsAuthentication" target="_blank">TechJobsAuthentication<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p></li>
+<li><p>You will need to do some work to ensure that the schema, user, and database password
 match your own local MySQL setup.</p>
 <ol class="arabic">
-<li><p class="first">Open <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> and find the following statement:</p>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> and find the following statement:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;ConnectionStrings&quot;: {
    &quot;DefaultConnection&quot;: &quot;server=localhost;userid=techjobs_auth;password=ILoveTechJobs;database=techjobs_auth;&quot;
 }
 </pre></div>
 </div>
 </li>
-<li><p class="first">You likely do not already have a schema named <code class="docutils literal notranslate"><span class="pre">techjobs_auth</span></code> or
+<li><p>You likely do not already have a schema named <code class="docutils literal notranslate"><span class="pre">techjobs_auth</span></code> or
 this combination of username and password so you must create them.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>To create a new schema in your current connection, refer
 back to the instructions in the <a class="reference external" href="https://education.launchcode.org/SQL/chapters/mysql-part-1/exercises.html" target="_blank">SQL Part 1 Exercises<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
-<p class="last">To create a new user with permissions, refresh your memory
+<p>To create a new user with permissions, refresh your memory
 in <a class="reference internal" href="../orm-intro/background.html#setup-orm-database"><span class="std std-ref">Setting up a Persistent Database - Video</span></a>.</p>
 </div>
 </li>
-<li><p class="first">Before getting started with setting up Identity, run a new migration to make sure that all of the database info is correct.</p>
-</li>
+<li><p>Before getting started with setting up Identity, run a new migration to make sure that all of the database info is correct.</p></li>
 </ol>
 </li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We’ve greatly reduced the functionality of the app so you can focus
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We’ve greatly reduced the functionality of the app so you can focus
 on the work to set up authentication. Running the application now
 gives you a familiar-looking navbar with one menu option, <em>Add Jobs</em>.
 You can add jobs right away and an astute observer of the starter code and
@@ -139,30 +137,32 @@ complex objects.</p>
 <div class="section" id="scaffolding">
 <span id="auth-studio-scaffolding"></span><h2><span class="section-number">19.7.2. </span>Scaffolding<a class="headerlink" href="#scaffolding" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>In the project you have cloned, scaffold Identity onto the codebase.<ol class="arabic">
-<li>Use the same files as the chapter content and <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code>.</li>
+<li><p>In the project you have cloned, scaffold Identity onto the codebase.</p>
+<ol class="arabic simple">
+<li><p>Use the same files as the chapter content and <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code>.</p></li>
 </ol>
 </li>
-<li>Update <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> and <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code> as necessary.</li>
-<li>Add the <code class="docutils literal notranslate"><span class="pre">LoginPartial</span></code> partial view to the navbar.</li>
-<li>Run a new migration and test the application.</li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> and <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code> as necessary.</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">LoginPartial</span></code> partial view to the navbar.</p></li>
+<li><p>Run a new migration and test the application.</p></li>
 </ol>
 </div>
 <div class="section" id="configuration">
 <span id="auth-studio-config"></span><h2><span class="section-number">19.7.3. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Use the appropriate methods to set the following validation conditions on the password:<ol class="arabic">
-<li>The password must be at a minimum of 8 characters.</li>
-<li>The password does NOT need to contain an uppercase letter.</li>
+<li><p>Use the appropriate methods to set the following validation conditions on the password:</p>
+<ol class="arabic simple">
+<li><p>The password must be at a minimum of 8 characters.</p></li>
+<li><p>The password does NOT need to contain an uppercase letter.</p></li>
 </ol>
 </li>
-<li>Complete any additional necessary configuration steps in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code>.</li>
+<li><p>Complete any additional necessary configuration steps in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code>.</p></li>
 </ol>
 </div>
 <div class="section" id="authorization">
 <span id="auth-studio-user"></span><h2><span class="section-number">19.7.4. </span>Authorization<a class="headerlink" href="#authorization" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Add the necessary attributes so only logged-in users can add jobs, but all visitors to the application can see the listing of jobs.</li>
+<li><p>Add the necessary attributes so only logged-in users can add jobs, but all visitors to the application can see the listing of jobs.</p></li>
 </ol>
 <p>That’s it, that’s all. You’re done. Go forth and test the auth flow by visiting the home page, registering for a new account, and logging into and out of an existing account.
 Then add this to any other ASP.NET project you’re working on!</p>

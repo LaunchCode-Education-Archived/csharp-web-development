@@ -103,25 +103,25 @@ Just right-click in your class file on the class name and follow these prompts.<
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic">
-<li><p class="first">In Visual Studio, right-click on the class name and select <em>Quick Fix</em> for Mac users or <em>Quick Actions and Refactorings</em> for Windows users from the menu.
+<li><p>In Visual Studio, right-click on the class name and select <em>Quick Fix</em> for Mac users or <em>Quick Actions and Refactorings</em> for Windows users from the menu.
 You can also skip this step by placing your cursor on the line with the class name and clicking on the screwdriver icon to the left.</p>
 <div class="figure align-default">
 <img alt="Screenshot showing the Quick Fix option at the top of the menu when one right-clicks on the class name." src="../../_images/select-quick-fix.png" />
 </div>
 </li>
-<li><p class="first">Select the <em>Generate Equals() and GetHashCode()</em> option from the resulting menu:</p>
+<li><p>Select the <em>Generate Equals() and GetHashCode()</em> option from the resulting menu:</p>
 <div class="figure align-default">
 <img alt="Screenshot showing the Generate Equals() and GetHashCode() option in the pop up." src="../../_images/generate-equals.png" />
 </div>
 </li>
-<li><p class="first">A new menu will appear where you can make selections about which class members you want to use for the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods.
+<li><p>A new menu will appear where you can make selections about which class members you want to use for the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods.
 In the case of equality between two <code class="docutils literal notranslate"><span class="pre">Course</span></code> objects, we want to establish that two <code class="docutils literal notranslate"><span class="pre">Course</span></code> objects are equal if the <code class="docutils literal notranslate"><span class="pre">Topic</span></code> members and <code class="docutils literal notranslate"><span class="pre">Instructor</span></code> members are equal.
 Once you select the necessary members, click <em>Ok</em>!</p>
 <div class="figure align-default">
 <img alt="Screenshot showing the topic and instructor members selected in a pop-up." src="../../_images/make-selections.png" />
 </div>
 </li>
-<li><p class="first">Once you click <em>Ok</em>, Visual Studio generates the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods, resulting in the following class.</p>
+<li><p>Once you click <em>Ok</em>, Visual Studio generates the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> and <code class="docutils literal notranslate"><span class="pre">GetHashCode()</span></code> methods, resulting in the following class.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -164,9 +164,9 @@ Once you select the necessary members, click <em>Ok</em>!</p>
 <p>In order to gain an understanding at what Visual Studio just did for us, review the section on the <a class="reference internal" href="special-methods.html#equals-method"><span class="std std-ref">Equals() method</span></a> and take note of the following lines of code in the code block above.
 While the behavior of the code is the same as the various implementations of the <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> methods on the previous page, Visual Studio’s method does not necessarily look similar to the ones we wrote before.</p>
 <ol class="arabic simple">
-<li>On line 9, we see some new syntax. With <code class="docutils literal notranslate"><span class="pre">is</span></code>, the compiler confirms that it is possible to cast <code class="docutils literal notranslate"><span class="pre">obj</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">course</span></code> of type <code class="docutils literal notranslate"><span class="pre">Course</span></code>. If it is, the value of <code class="docutils literal notranslate"><span class="pre">course</span></code> is set to <code class="docutils literal notranslate"><span class="pre">obj</span></code>. All in one line!</li>
-<li>On line 10, the value of <code class="docutils literal notranslate"><span class="pre">course.Topic</span></code> and <code class="docutils literal notranslate"><span class="pre">Topic</span></code> is compared for equality.</li>
-<li>On line 11, the value of <code class="docutils literal notranslate"><span class="pre">course.Instructor</span></code> and <code class="docutils literal notranslate"><span class="pre">Instructor</span></code> is compared for equality.</li>
+<li><p>On line 9, we see some new syntax. With <code class="docutils literal notranslate"><span class="pre">is</span></code>, the compiler confirms that it is possible to cast <code class="docutils literal notranslate"><span class="pre">obj</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">course</span></code> of type <code class="docutils literal notranslate"><span class="pre">Course</span></code>. If it is, the value of <code class="docutils literal notranslate"><span class="pre">course</span></code> is set to <code class="docutils literal notranslate"><span class="pre">obj</span></code>. All in one line!</p></li>
+<li><p>On line 10, the value of <code class="docutils literal notranslate"><span class="pre">course.Topic</span></code> and <code class="docutils literal notranslate"><span class="pre">Topic</span></code> is compared for equality.</p></li>
+<li><p>On line 11, the value of <code class="docutils literal notranslate"><span class="pre">course.Instructor</span></code> and <code class="docutils literal notranslate"><span class="pre">Instructor</span></code> is compared for equality.</p></li>
 </ol>
 <p>If <em>all</em> of the equality checks on lines 9, 10, and 11 come out to be true, then the generated <code class="docutils literal notranslate"><span class="pre">Equals()</span></code> method will return true.</p>
 <div class="section" id="try-it">

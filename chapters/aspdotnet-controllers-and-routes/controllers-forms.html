@@ -92,8 +92,8 @@
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/t2snajyFFzc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/query-parameters" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">query-parameters</span></code> branch.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you ever want to verify what code you started this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/query-parameters" target="_blank">starter code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">query-parameters</span></code> branch.
 If you ever want to verify what code you end this video with, the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/forms" target="_blank">final code<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> for this video is on the <code class="docutils literal notranslate"><span class="pre">forms</span></code> branch.</p>
 </div>
 </div>
@@ -183,8 +183,8 @@ Once we fill out the form and hit <em>Greet Me!</em>, the app redirects to <code
 We didn’t update <code class="docutils literal notranslate"><span class="pre">action</span></code> in our <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag in the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method.
 Once we change the value of <code class="docutils literal notranslate"><span class="pre">action</span></code> to <code class="docutils literal notranslate"><span class="pre">/helloworld/welcome</span></code>, we can re-run our app and see it fully functioning.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method can respond to a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request and the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method can respond to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request at the same URL.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method can respond to a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request and the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method can respond to a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request at the same URL.
 To make this happen, we change the route in the <code class="docutils literal notranslate"><span class="pre">action</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> tag and change the route in the <code class="docutils literal notranslate"><span class="pre">[Route(&quot;path&quot;)]</span></code> attribute above the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method to <code class="docutils literal notranslate"><span class="pre">/helloworld</span></code>.
 Re-running the app, we can submit the form and the page reloads to display our welcome message.</p>
 </div>
@@ -192,28 +192,28 @@ Re-running the app, we can submit the form and the page reloads to display our w
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">10.3.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Which type of request should the <code class="docutils literal notranslate"><span class="pre">Index()</span></code> method respond to?</p>
-<ol class="last loweralpha simple">
-<li><code class="docutils literal notranslate"><span class="pre">GET</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">PUT</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request</li>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Which type of request should the <code class="docutils literal notranslate"><span class="pre">Welcome()</span></code> method respond to?</p>
-<ol class="last loweralpha simple">
-<li><code class="docutils literal notranslate"><span class="pre">GET</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">PUT</span></code> request</li>
-<li><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request</li>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span></code> request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> request</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last">True/False: two different action methods cannot respond to different request types at the same URL.</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p>True/False: two different action methods cannot respond to different request types at the same URL.</p>
 </div>
 </div>
 </div>

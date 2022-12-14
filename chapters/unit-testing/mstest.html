@@ -186,13 +186,13 @@ demonstrate all of our best practices, but rather, to verify that our testing se
 asserts an expected value of <code class="docutils literal notranslate"><span class="pre">10</span></code> to equal an actual value of <code class="docutils literal notranslate"><span class="pre">10</span></code>,
 with an accepted <code class="docutils literal notranslate"><span class="pre">.001</span></code> variance.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>The third argument, called <code class="docutils literal notranslate"><span class="pre">delta</span></code>, is the amount of allowed difference between the
 expected and actual values. If the difference between the two values is within
 that range, then the test still passes.
 This argument is optional for some comparisons and required for others. One
 scenario in which it is required is when comparing doubles.</p>
-<p class="last">Why is it required? Well, that’s kind of a long story. Some number types are
+<p>Why is it required? Well, that’s kind of a long story. Some number types are
 <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank">floating-point numbers<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
 Due to the nature of their storage, these types carry with them a certain
 degree of
@@ -200,10 +200,10 @@ degree of
 In brief, the <code class="docutils literal notranslate"><span class="pre">delta</span></code> argument ensures we can still reasonably compare two doubles.</p>
 </div>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>Visual Studio can offer info on the parameters of a previously defined function.
 Hover over the function call to see a tooltip:</p>
-<div class="last figure align-default" id="id4">
+<div class="figure align-default" id="id4">
 <img alt="User hovers mouse over a function to see its parameter names" src="../../_images/function-parameters-tooltip.png" />
 <p class="caption"><span class="caption-text">Hover over a function to see its parameters</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
@@ -216,8 +216,8 @@ some options to try:</p>
 <h3><span class="section-number">6.2.3.1. </span>Mac Users: Running Tests<a class="headerlink" href="#mac-users-running-tests" title="Permalink to this headline">¶</a></h3>
 <p>For Mac users, run the <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> project just like you would any other project.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If the panel does not open once the test are finished running, look for the <em>Test Results</em> panel name on
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If the panel does not open once the test are finished running, look for the <em>Test Results</em> panel name on
 the margins of your IDE and open it manually.</p>
 </div>
 </div>
@@ -231,14 +231,14 @@ you can find it listed in the top <em>Test</em> menu.</p>
 </div>
 <p>With the panel open, select the <em>Run All Tests</em> option.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>If you see that the test fails to run, neither passing nor failing, you may need to adjust a setting to use
 64bit processing.</p>
 <div class="figure align-default" id="id6">
 <img alt="WINDOWS: User selecting x64 option from Test Explorer/Settings/Processor Architecture for AnyCPU Projects in Visual Studio" src="../../_images/vs-windows-process-architecture-setting.png" />
 <p class="caption"><span class="caption-text">WINDOWS: Set Test Explorer to use x64 process</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-<p class="last">You may also need to update some of the testing packages. Right click on the
+<p>You may also need to update some of the testing packages. Right click on the
 <code class="docutils literal notranslate"><span class="pre">CarTests</span></code> project and select <em>Manage NuGet Packages…</em>. If you see some items
 in the <em>Update</em> section of the panel that opens, run the updates. Close and reopen
 the <em>Team Explorer</em> panel and <em>Visual Studio</em> to ensure the changes are applied.</p>
@@ -260,8 +260,8 @@ testing the <code class="docutils literal notranslate"><span class="pre">Car</sp
 <p>This class-specific behavior is a good item to test. Under your second TODO, write a test to verify that the
 constructor sets the <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> field.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">To test the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class, we must make it available to us by adding <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">CarNS;</span></code> to the top of your
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>To test the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class, we must make it available to us by adding <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">CarNS;</span></code> to the top of your
 file. <code class="docutils literal notranslate"><span class="pre">CarNS</span></code> is the <strong>namespace</strong> we have assigned to the <code class="docutils literal notranslate"><span class="pre">Car</span></code> class. Namespaces are used in C# to
 organize code. You’ve seen them before in other <a class="reference internal" href="../data-types/some-csharp-practice.html#using-statement"><span class="std std-ref">using statements</span></a>.</p>
 </div>
@@ -284,23 +284,23 @@ organize code. You’ve seen them before in other <a class="reference internal" 
 <code class="docutils literal notranslate"><span class="pre">Car</span></code> object, and test that the constructor correctly sets the <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> field.</p>
 <p>We’ve done our best to address <a class="reference internal" href="testing-in-csharp.html#testing-best-practices"><span class="std std-ref">Testing Best Practices</span></a>:</p>
 <ol class="arabic">
-<li><p class="first">The AAAs</p>
+<li><p>The AAAs</p>
 <ol class="arabic simple">
-<li>We arrange the one variable our test requires: <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.</li>
-<li>We act on the <code class="docutils literal notranslate"><span class="pre">Car</span></code> constructor method as well: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Car(&quot;Toyota&quot;,</span> <span class="pre">&quot;Prius&quot;,</span> <span class="pre">10,</span> <span class="pre">50);</span></code>.</li>
-<li>We assert that the expected value of <code class="docutils literal notranslate"><span class="pre">10</span></code> will equal the actual value returned from getting the
-tank level (<code class="docutils literal notranslate"><span class="pre">test_car.GasTankLevel</span></code>).</li>
+<li><p>We arrange the one variable our test requires: <code class="docutils literal notranslate"><span class="pre">test_car</span></code>.</p></li>
+<li><p>We act on the <code class="docutils literal notranslate"><span class="pre">Car</span></code> constructor method as well: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Car(&quot;Toyota&quot;,</span> <span class="pre">&quot;Prius&quot;,</span> <span class="pre">10,</span> <span class="pre">50);</span></code>.</p></li>
+<li><p>We assert that the expected value of <code class="docutils literal notranslate"><span class="pre">10</span></code> will equal the actual value returned from getting the
+tank level (<code class="docutils literal notranslate"><span class="pre">test_car.GasTankLevel</span></code>).</p></li>
 </ol>
 </li>
-<li><p class="first">Deterministic</p>
+<li><p>Deterministic</p>
 <p>As it is written, we expect that our test will always pass.</p>
 </li>
-<li><p class="first">Relevant</p>
+<li><p>Relevant</p>
 <p>This is our first real test, so we don’t yet have much to group it with. That said, the test assesses a method
 in <code class="docutils literal notranslate"><span class="pre">Car</span></code> and is situated in a class called <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, so it meets the minimum requirements or relevancy.
 The next section gives us another attribute to use to help group testing variables.</p>
 </li>
-<li><p class="first">Meaningful</p>
+<li><p>Meaningful</p>
 <p>Our test evaluates a simple field assignment but it is not trivial. The line in the constructor being tested
 is not very complex, but this makes for a good unit test. We want to make sure the basic functionality of our
 class works as we expect.</p>
@@ -308,8 +308,8 @@ class works as we expect.</p>
 </ol>
 <p>Run <code class="docutils literal notranslate"><span class="pre">CarTest</span></code> to see that both tests pass.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">If you want to rerun only one test, right click on its listing in the results pane.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>If you want to rerun only one test, right click on its listing in the results pane.</p>
 </div>
 </div>
 </div>
@@ -344,8 +344,8 @@ Above your relevant test, add the following <code class="docutils literal notran
 <p><code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code>, conversely, defines a set of conditions to be met after each test in a
 suite is run.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We won’t encounter a scenario where we ask you to use <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> in this class. As you explore writing
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We won’t encounter a scenario where we ask you to use <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> in this class. As you explore writing
 your own unit tests, you may find a yourself in a situation where you need or want it. One use case for
 <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> might be testing database transactions. You don’t want changes to a database to persist
 after test execution, so you can use <code class="docutils literal notranslate"><span class="pre">[TestCleanup]</span></code> to rollback, or reverse, a test transaction.</p>
@@ -358,29 +358,29 @@ namespace <a class="reference external" href="https://docs.microsoft.com/en-us/d
 <p>In addition to the very commonly used <code class="docutils literal notranslate"><span class="pre">Assert.AreEqual()</span></code> method
 you see above, here are a few other methods you should have in
 your unit testing playbook.</p>
-<table border="1" class="docutils align-default" id="id7">
+<table class="docutils align-default" id="id7">
 <caption><span class="caption-text">MSTest Assert Methods</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Assertion</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Assertion</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">AreEqual(expected,</span> <span class="pre">actual,</span> <span class="pre">optional_delta)</span></code></td>
-<td>Asserts that two values, expected and actual, are equal to each other (optionally, within a given range of difference)</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AreEqual(expected,</span> <span class="pre">actual,</span> <span class="pre">optional_delta)</span></code></p></td>
+<td><p>Asserts that two values, expected and actual, are equal to each other (optionally, within a given range of difference)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsFalse(condition)</span></code></td>
-<td>Asserts that a given condition is false</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IsFalse(condition)</span></code></p></td>
+<td><p>Asserts that a given condition is false</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">IsTrue(condition)</span></code></td>
-<td>Asserts that a given condition is true</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IsTrue(condition)</span></code></p></td>
+<td><p>Asserts that a given condition is true</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsNotNull(object)</span></code></td>
-<td>Asserts that a given object is not null</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IsNotNull(object)</span></code></p></td>
+<td><p>Asserts that a given object is not null</p></td>
 </tr>
 </tbody>
 </table>
@@ -390,23 +390,23 @@ for a full listing of methods.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">6.2.7. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Write another version of <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code> using <code class="docutils literal notranslate"><span class="pre">IsFalse()</span></code>, comparing the value to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.False(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">=</span> <span class="pre">0);</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.False(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsFalse(test_car.GasTankLevel</span> <span class="pre">=</span> <span class="pre">0);</span></code></p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Write another version of <code class="docutils literal notranslate"><span class="pre">TestInitialGasTank()</span></code> using <code class="docutils literal notranslate"><span class="pre">IsTrue()</span></code>.</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.gasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.gasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(Car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">0);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert.IsTrue(test_car.GasTankLevel</span> <span class="pre">==</span> <span class="pre">10);</span></code></p></li>
 </ol>
 </div>
 </div>

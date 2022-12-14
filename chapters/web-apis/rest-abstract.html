@@ -96,8 +96,8 @@ following the patterns of MVC allows other developers to easily understand your 
 the benefit of understanding how your API is structured and behaves. As an added bonus, a REST API also gives the client application
 a base-line understanding on how to interact with your API.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">The topics of state and representation are <em>purposefully abstract</em> in REST so that they can be applied to any API. Don’t get overwhelmed!</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>The topics of state and representation are <em>purposefully abstract</em> in REST so that they can be applied to any API. Don’t get overwhelmed!</p>
 </div>
 <div class="section" id="what-is-state">
 <h2><span class="section-number">20.2.1. </span>What is State?<a class="headerlink" href="#what-is-state" title="Permalink to this headline">¶</a></h2>
@@ -105,15 +105,15 @@ a base-line understanding on how to interact with your API.</p>
 using CRUD operations.</p>
 <p>Imagine viewing, or reading, the state of an application’s data as it transitions through each of the following interactions:</p>
 <ol class="arabic simple">
-<li><strong>Before creating</strong>: Empty state</li>
-<li><strong>After creating</strong>: Initial state</li>
-<li><strong>After updating</strong>: New state</li>
-<li><strong>After deleting</strong>: Empty state</li>
+<li><p><strong>Before creating</strong>: Empty state</p></li>
+<li><p><strong>After creating</strong>: Initial state</p></li>
+<li><p><strong>After updating</strong>: New state</p></li>
+<li><p><strong>After deleting</strong>: Empty state</p></li>
 </ol>
 <p>You can see that the state is defined by how the data exists after its latest interaction.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">The concept of state is both the most abstract and most fundamental aspect of REST.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The concept of state is both the most abstract and most fundamental aspect of REST.</p>
 </div>
 </div>
 <div class="section" id="what-is-a-representation">
@@ -122,7 +122,7 @@ using CRUD operations.</p>
 represented in a way that is portable and compatible with both the client and API. JSON is a data format that provides structure, portability and
 compatibility. For these reasons, JSON is the standard representation used when transferring state between a client application and an API.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>The state of a <em>single</em> <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> entity is represented as a single JSON object:</p>
 <div class="highlight-js notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -157,12 +157,12 @@ compatibility. For these reasons, JSON is the standard representation used when 
 <span class="p">]</span>
 </pre></div>
 </td></tr></table></div>
-<p class="last">Notice that the state here is represented as the collective state of all of the <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> in the collection.</p>
+<p>Notice that the state here is represented as the collective state of all of the <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> in the collection.</p>
 </div>
 <div class="admonition-tip admonition" id="index-1">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>The process of converting an object representation to a JSON representation is called <strong>JSON serialization</strong>.</p>
-<p class="last">The inverse process, where JSON is parsed, or converted back to object representation, is called <strong>JSON deserialization</strong>.</p>
+<p>The inverse process, where JSON is parsed, or converted back to object representation, is called <strong>JSON deserialization</strong>.</p>
 </div>
 </div>
 <div class="section" id="transferring-a-representation-of-state">
@@ -171,8 +171,8 @@ compatibility. For these reasons, JSON is the standard representation used when 
 RESTful API is designed to be stateless.</p>
 <p>This has the following implications:</p>
 <ul class="simple">
-<li>The state of data is maintained by the client application and the database that are on either side of the interface.</li>
-<li>State transitions are signals containing data representations, driven by the client and facilitated by the API.</li>
+<li><p>The state of data is maintained by the client application and the database that are on either side of the interface.</p></li>
+<li><p>State transitions are signals containing data representations, driven by the client and facilitated by the API.</p></li>
 </ul>
 <p>In order to maintain portability between different client and API contexts, we transfer representations of state. These representations can then be
 converted between the <em>portable representation</em> (JSON) and the representation that fits a given context (a JavaScript or C# object). Remember, state
@@ -180,14 +180,14 @@ is defined by an application’s latest CRUD operation. Because every interactio
 of state.</p>
 <p>What this means is that the client can:</p>
 <ul class="simple">
-<li>Read: request the current representation of state</li>
-<li>Create &amp; Update: transition to a new state by sending a new representation</li>
-<li>Delete: transition to an empty state by requesting its removal</li>
+<li><p>Read: request the current representation of state</p></li>
+<li><p>Create &amp; Update: transition to a new state by sending a new representation</p></li>
+<li><p>Delete: transition to an empty state by requesting its removal</p></li>
 </ul>
 <p>However, it is up to the API to define the contract, or expose:</p>
 <ul class="simple">
-<li>the types of state, or resources, the client can interact with</li>
-<li>which (CRUD) interactions are supported for each resource</li>
+<li><p>the types of state, or resources, the client can interact with</p></li>
+<li><p>which (CRUD) interactions are supported for each resource</p></li>
 </ul>
 <p>These decisions are what drive the design of the contract.</p>
 </div>
@@ -199,8 +199,8 @@ client applications to interact with. Resources are categorized as an individual
 <p><strong>Collection</strong>: entities of the same resource type treated as a whole.</p>
 <p>We refer to the state of a resource in terms of a single entity or the shared state of a collection.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Initially, a collection’s state is just empty. If you were to read the collection’s state, it would be represented as an empty JSON array, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Initially, a collection’s state is just empty. If you were to read the collection’s state, it would be represented as an empty JSON array, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 </div>
 <p>In RESTful design, an individual entity only exists as a part of a collection. A change to the state of an entity inherently changes the state of
 the collection it is a part of.</p>
@@ -209,8 +209,8 @@ belongs to.</p>
 <p>When reading, updating or deleting an entity, you are directly operating on the state of the entity and indirectly on the state of its collection.</p>
 <p>In order to fulfill these operations, you need to know:</p>
 <ul class="simple">
-<li>what collection the entity belongs to</li>
-<li>how to uniquely identify the entity within the collection</li>
+<li><p>what collection the entity belongs to</p></li>
+<li><p>how to uniquely identify the entity within the collection</p></li>
 </ul>
 <p>This hierarchal relationship between collections and the entities within them is an integral aspect of RESTful design. The contract of a RESTful API
 defines the shape, or structure, of its resources along with the hierarchal organization of the endpoints used for interacting with them.</p>
@@ -218,21 +218,21 @@ defines the shape, or structure, of its resources along with the hierarchal orga
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">20.2.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True or False: Using HTTP requests, we can perform all four CRUD operations.</p>
-<ol class="last loweralpha simple">
-<li>True</li>
-<li>False</li>
+<ol class="loweralpha simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Reshaping data from object representation to JSON representation is called:</p>
-<ol class="last loweralpha simple">
-<li>JSON parsing</li>
-<li>JSON reshaping</li>
-<li>JSON reserialization</li>
-<li>JSON serialization</li>
+<ol class="loweralpha simple">
+<li><p>JSON parsing</p></li>
+<li><p>JSON reshaping</p></li>
+<li><p>JSON reserialization</p></li>
+<li><p>JSON serialization</p></li>
 </ol>
 </div>
 </div>

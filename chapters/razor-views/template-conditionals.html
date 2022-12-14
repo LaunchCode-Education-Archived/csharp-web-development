@@ -110,9 +110,9 @@ the webpage and the content is displayed in the view. If <code class="docutils l
 off the page.</p>
 <p>Let’s look at an example:</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>Assume that <code class="docutils literal notranslate"><span class="pre">userSelection</span></code> represents a string property on <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>.</p>
-<div class="last highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -146,8 +146,8 @@ a paragraph element with different internal text is added. Lastly, if neither
 of those conditions is met, then the paragraph element with text on line 11
 is rendered.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We don’t add an additional <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbols on lines 5 and 9 in the
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We don’t add an additional <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbols on lines 5 and 9 in the
 example above. <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code> clauses are dependent
 and treated as one C# code block in Razor.</p>
 </div>
@@ -155,9 +155,9 @@ and treated as one C# code block in Razor.</p>
 <h3><span class="section-number">13.5.1.1. </span>Nesting Logic<a class="headerlink" href="#nesting-logic" title="Permalink to this headline">¶</a></h3>
 <p>Just as we can nest loops, we can nest any C# in Razor for advanced control flow.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p><code class="docutils literal notranslate"><span class="pre">coffeeOptions</span></code> is a list property on <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>.</p>
-<div class="last highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -200,8 +200,8 @@ the clip.</p>
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/2Bysx_Fs-ZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">The starter code for this video is found at the
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>The starter code for this video is found at the
 <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-static" target="_blank">views-static branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 of <code class="docutils literal notranslate"><span class="pre">HelloASPDotNETDemo</span></code>. The final code presented in this video is found on the <a class="reference external" href="https://github.com/LaunchCodeEducation/HelloASPDotNETDemo/tree/views-dynamic" target="_blank">views-dynamic branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
 </div>
@@ -228,25 +228,25 @@ the values in an unordered list.</p>
 </pre></div>
 </td></tr></table></div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>You want to display the list only if <code class="docutils literal notranslate"><span class="pre">ViewBag.numbers</span></code> contains data.
 Where is the best spot to put this conditional?</p>
-<ol class="last arabic simple">
-<li>Above line 1</li>
-<li>Above line 2</li>
-<li>Above line 3</li>
-<li>Above line 4</li>
+<ol class="arabic simple">
+<li><p>Above line 1</p></li>
+<li><p>Above line 2</p></li>
+<li><p>Above line 3</p></li>
+<li><p>Above line 4</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>You want to display the list only if <code class="docutils literal notranslate"><span class="pre">ViewBag.numbers</span></code> contains data.
 What is the best way to write this conditional statement?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(numbers.Count)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(ViewBag.numbers</span> <span class="pre">!=</span> <span class="pre">null)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&#64;if</span> <span class="pre">ViewBag.numbers</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&#64;if</span> <span class="pre">(ViewBag.numbers.Count</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(numbers.Count)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(ViewBag.numbers</span> <span class="pre">!=</span> <span class="pre">null)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;if</span> <span class="pre">ViewBag.numbers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;if</span> <span class="pre">(ViewBag.numbers.Count</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code></p></li>
 </ol>
 </div>
 </div>

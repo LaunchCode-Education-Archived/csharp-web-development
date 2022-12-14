@@ -93,15 +93,15 @@
 <p>Follow the instructions to <a class="reference internal" href="../chapters/introduction-and-setup/cloning-a-csharp-project.html#clone-csharp-project"><span class="std std-ref">clone your repository</span></a> and open it in Visual Studio.</p>
 <p>When the solution opens, check out what the repository contains in the <em>Solution Explorer</em> on the left. You will find two projects within the solution.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you do not see the <em>Solution Explorer</em>, you can open it by selecting <em>View</em>, then <em>Solution Explorer</em>.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you do not see the <em>Solution Explorer</em>, you can open it by selecting <em>View</em>, then <em>Solution Explorer</em>.</p>
 </div>
 <p>Open up the <code class="docutils literal notranslate"><span class="pre">SayHelloClass</span></code> class in the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. This is where you will work on your code.</p>
 <p>Now, turn your attention to <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> in the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. We have given you some code that will output the string returned by the <code class="docutils literal notranslate"><span class="pre">SayHello()</span></code> function in <code class="docutils literal notranslate"><span class="pre">SayHelloClass</span></code>.</p>
 <p>To run the program, do the following:</p>
 <ol class="arabic simple">
-<li><strong>Mac Users</strong>: Hit the <em>Run</em> button at the top right-hand corner of the window or right-click on the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project and select <em>Run Project</em>.</li>
-<li><strong>Windows Users</strong>: Click on the solid green triangle next to the name of the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. You can also press F5 to run the project.</li>
+<li><p><strong>Mac Users</strong>: Hit the <em>Run</em> button at the top right-hand corner of the window or right-click on the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project and select <em>Run Project</em>.</p></li>
+<li><p><strong>Windows Users</strong>: Click on the solid green triangle next to the name of the <code class="docutils literal notranslate"><span class="pre">HelloWorldAutograded</span></code> project. You can also press F5 to run the project.</p></li>
 </ol>
 <p>When the program runs, Visual Studio will open a pane and display program output. Currently, the program has no output. You’ll fix that in a bit.</p>
 </div>
@@ -114,14 +114,14 @@ For each assignment, there will be a test project, which contains all of the aut
 <p>A test is a single method in a test file that has <code class="docutils literal notranslate"><span class="pre">[TestMethod]</span></code> just above it. A test file may have multiple tests. To run just one test, you can right-click on the test method name and select <em>Run Test</em>.
 To run all of the auto-grading tests (in this case, there is only one), you should do the following:</p>
 <ol class="arabic simple">
-<li><strong>Mac Users</strong>: Select <em>Run</em> from the top menu and select <em>Run Unit Tests</em>. After you first run the tests, you can also right-click on the project name and selecting <em>Run Project</em>.</li>
-<li><strong>Windows Users</strong>: Right-click on the project name and select <em>Run Tests</em>. You can also select <em>Run All Tests</em> in the <em>Test</em> menu tab.</li>
+<li><p><strong>Mac Users</strong>: Select <em>Run</em> from the top menu and select <em>Run Unit Tests</em>. After you first run the tests, you can also right-click on the project name and selecting <em>Run Project</em>.</p></li>
+<li><p><strong>Windows Users</strong>: Right-click on the project name and select <em>Run Tests</em>. You can also select <em>Run All Tests</em> in the <em>Test</em> menu tab.</p></li>
 </ol>
 <p>When Visual Studio runs the tests, it opens a pane to display test results. At the left, we see that the test has failed. We can expand the tree to see each of the individual tests (again, in this case there is only one). Selecting one of the tests shows its results to the right.</p>
 <p>In this case, the test expected our code to output <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World!</span></code>. Instead, it provided no output at all.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">The autograding tests are VERY exacting.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>The autograding tests are VERY exacting.
 A difference of just one character will result in a failed test.
 The tests are also case-sensitive. You’ll need to pay attention to detail in order complete your assignments.</p>
 </div>

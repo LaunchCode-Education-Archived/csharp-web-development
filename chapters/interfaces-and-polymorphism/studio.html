@@ -93,9 +93,9 @@ interface.</p>
 <h2><span class="section-number">8.7.1. </span>Getting Ready<a class="headerlink" href="#getting-ready" title="Permalink to this headline">¶</a></h2>
 <p>Set up a local copy of the project:</p>
 <ol class="arabic simple">
-<li>Visit the <a class="reference external" href="https://github.com/LaunchCodeEducation/csharp-web-dev-interfaces-studio" target="_blank">repository page<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-for this project and fork it to create a copy under your own GitHub account.</li>
-<li>Open up the solution in Visual Studio to get started.</li>
+<li><p>Visit the <a class="reference external" href="https://github.com/LaunchCodeEducation/csharp-web-dev-interfaces-studio" target="_blank">repository page<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+for this project and fork it to create a copy under your own GitHub account.</p></li>
+<li><p>Open up the solution in Visual Studio to get started.</p></li>
 </ol>
 </div>
 <div class="section" id="disc-project-overview">
@@ -113,12 +113,12 @@ and paper (or similar tools).</p>
 <h2><span class="section-number">8.7.3. </span>Consider Generic Behaviors<a class="headerlink" href="#consider-generic-behaviors" title="Permalink to this headline">¶</a></h2>
 <p>Here are a few behaviors that both CDs and DVDs share:</p>
 <ol class="loweralpha simple">
-<li>They both spin.</li>
-<li>They both store data.</li>
-<li>Data gets written to the discs by using a laser.</li>
-<li>The data on the discs can be read by using a laser.</li>
-<li>Once loaded, they both report information like name, capacity, contents, and
-disc type.</li>
+<li><p>They both spin.</p></li>
+<li><p>They both store data.</p></li>
+<li><p>Data gets written to the discs by using a laser.</p></li>
+<li><p>The data on the discs can be read by using a laser.</p></li>
+<li><p>Once loaded, they both report information like name, capacity, contents, and
+disc type.</p></li>
 </ol>
 <p>With your partner, add one or two more behaviors to the list. Feel free to
 do some quick research online if needed. Note that information like storage
@@ -144,18 +144,19 @@ like the title of a DVD.</p>
 speeds. Their behavior (spinning) is the same, but the details of that
 behavior vary. Thus, a method like <code class="docutils literal notranslate"><span class="pre">SpinDisc()</span></code> fits well into an interface.</p>
 <ol class="arabic simple">
-<li>For the other behaviors you and your partner sorted, decide which ones
-belong in the interface.</li>
-<li>Write down details about how these behaviors differ for CDs and DVDs. This
-guides your thinking about how each class should implement the methods.</li>
-<li>For the behaviors that cannot go into the interface, decide if they could be
+<li><p>For the other behaviors you and your partner sorted, decide which ones
+belong in the interface.</p></li>
+<li><p>Write down details about how these behaviors differ for CDs and DVDs. This
+guides your thinking about how each class should implement the methods.</p></li>
+<li><p>For the behaviors that cannot go into the interface, decide if they could be
 placed in an abstract class or if they need to appear in the separate <code class="docutils literal notranslate"><span class="pre">CD</span></code>
-and <code class="docutils literal notranslate"><span class="pre">DVD</span></code> classes.</li>
-<li>Finally, write down the fields and properties needed to define the properties of a CD or
-DVD (e.g. <code class="docutils literal notranslate"><span class="pre">StorageCapacity</span></code>). Consider:<ol class="loweralpha">
-<li>Which members are shared by both types of discs, and which ones are
-unique to each class?</li>
-<li>Do any of the members represent <em>constants</em>?</li>
+and <code class="docutils literal notranslate"><span class="pre">DVD</span></code> classes.</p></li>
+<li><p>Finally, write down the fields and properties needed to define the properties of a CD or
+DVD (e.g. <code class="docutils literal notranslate"><span class="pre">StorageCapacity</span></code>). Consider:</p>
+<ol class="loweralpha simple">
+<li><p>Which members are shared by both types of discs, and which ones are
+unique to each class?</p></li>
+<li><p>Do any of the members represent <em>constants</em>?</p></li>
 </ol>
 </li>
 </ol>
@@ -165,13 +166,11 @@ unique to each class?</li>
 <p>Now that your team has completed the before-coding thinking, it’s time to
 start building!</p>
 <ol class="arabic">
-<li><p class="first">Add an <code class="docutils literal notranslate"><span class="pre">IOpticalDisc</span></code> file for the interface. Refer back to
+<li><p>Add an <code class="docutils literal notranslate"><span class="pre">IOpticalDisc</span></code> file for the interface. Refer back to
 <a class="reference internal" href="interfaces.html#create-an-interface"><span class="std std-ref">Creating an Interface</span></a> if you need a quick
-review of the syntax.</p>
-</li>
-<li><p class="first">Declare and initialize any constants.</p>
-</li>
-<li><p class="first">Add a method signature for each of the behaviors you identified for the
+review of the syntax.</p></li>
+<li><p>Declare and initialize any constants.</p></li>
+<li><p>Add a method signature for each of the behaviors you identified for the
 interface. For example:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span> <span class="nf">SpinDisc</span><span class="p">();</span>
 </pre></div>
@@ -186,19 +185,19 @@ care of the remaining methods and fields.</p>
 <p>To streamline the field and constructor code for <code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code>, you
 need to start with a base class.</p>
 <ol class="arabic simple">
-<li>Create an abstract <code class="docutils literal notranslate"><span class="pre">BaseDisc</span></code> class and declare the fields used by both
-<code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code>.</li>
-<li>Code the shared constructors and required methods.</li>
+<li><p>Create an abstract <code class="docutils literal notranslate"><span class="pre">BaseDisc</span></code> class and declare the fields used by both
+<code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code>.</p></li>
+<li><p>Code the shared constructors and required methods.</p></li>
 </ol>
 <p>OK. Now put your code to work.</p>
 </div>
 <div class="section" id="complete-the-disc-classes">
 <h2><span class="section-number">8.7.7. </span>Complete the Disc Classes<a class="headerlink" href="#complete-the-disc-classes" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Extend the base class into the <code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code> classes.</li>
-<li>Implement the interface in each class.</li>
-<li>Fill in the code for each of the interface methods.</li>
-<li>Add any other necessary methods needed by each class.</li>
+<li><p>Extend the base class into the <code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code> classes.</p></li>
+<li><p>Implement the interface in each class.</p></li>
+<li><p>Fill in the code for each of the interface methods.</p></li>
+<li><p>Add any other necessary methods needed by each class.</p></li>
 </ol>
 </div>
 <div class="section" id="add-method-calls-to-main">
@@ -206,14 +205,14 @@ need to start with a base class.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">Main</span></code> method, declare and initialize a <code class="docutils literal notranslate"><span class="pre">CD</span></code> and <code class="docutils literal notranslate"><span class="pre">DVD</span></code> object,
 then run each of the behaviors you and your partner identified.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">myCd</span><span class="p">.</span><span class="n">SpinDisc</span><span class="p">();</span>
 <span class="n">myDvd</span><span class="p">.</span><span class="n">SpinDisc</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
 <p><strong>Output</strong></p>
-<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>A CD spins at a rate of 200 - 500 rpm.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A CD spins at a rate of 200 - 500 rpm.
 A DVD spins at a rate of 570 - 1600 rpm.
 </pre></div>
 </div>
@@ -222,24 +221,26 @@ A DVD spins at a rate of 570 - 1600 rpm.
 <div class="section" id="bonus-missions-other-discs-disks">
 <h2><span class="section-number">8.7.9. </span>Bonus Missions: Other Discs &amp; Disks?<a class="headerlink" href="#bonus-missions-other-discs-disks" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>CDs and DVDs are not the only flat, circular media that have been used to
-store and return data.<ol class="loweralpha">
-<li>Add classes for vinyl records (LPs) and floppy disks.</li>
-<li>Does your interface apply to all four classes? If so, implement the
-interface and its methods in the LP and floppy classes.</li>
-<li>If your interface does NOT apply to all of the classes, modify it to do so.
-(Note: At the very least, you need to rename the interface).</li>
-<li>Does your abstract class apply to LPs and floppy disks? If so, extend it
+<li><p>CDs and DVDs are not the only flat, circular media that have been used to
+store and return data.</p>
+<ol class="loweralpha simple">
+<li><p>Add classes for vinyl records (LPs) and floppy disks.</p></li>
+<li><p>Does your interface apply to all four classes? If so, implement the
+interface and its methods in the LP and floppy classes.</p></li>
+<li><p>If your interface does NOT apply to all of the classes, modify it to do so.
+(Note: At the very least, you need to rename the interface).</p></li>
+<li><p>Does your abstract class apply to LPs and floppy disks? If so, extend it
 into the new classes. If not, should you modify it or extend a
-<em>different</em> abstract class?</li>
+<em>different</em> abstract class?</p></li>
 </ol>
 </li>
-<li>What about wheels and Frisbees? These are also spinning disks, but they are
-not used for data storage.<ol class="loweralpha">
-<li>Abstract class or interface? Which one can be applied to the <code class="docutils literal notranslate"><span class="pre">Wheel</span></code>
-and <code class="docutils literal notranslate"><span class="pre">Frisbee</span></code> classes?</li>
-<li>Discuss these questions with your peers, then code one of the classes
-just for fun.</li>
+<li><p>What about wheels and Frisbees? These are also spinning disks, but they are
+not used for data storage.</p>
+<ol class="loweralpha simple">
+<li><p>Abstract class or interface? Which one can be applied to the <code class="docutils literal notranslate"><span class="pre">Wheel</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Frisbee</span></code> classes?</p></li>
+<li><p>Discuss these questions with your peers, then code one of the classes
+just for fun.</p></li>
 </ol>
 </li>
 </ol>

@@ -89,12 +89,12 @@
 <p>Line numbers are for reference. They may not match your code exactly.</p>
 <div class="section" id="the-eventcategory-class">
 <h2>The <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> Class<a class="headerlink" href="#the-eventcategory-class" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> needs to have the following:</dt><dd><ol class="arabic simple">
-<li>An <code class="docutils literal notranslate"><span class="pre">Id</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</li>
-<li>A <code class="docutils literal notranslate"><span class="pre">Name</span></code> property of type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</li>
-<li>A no arg constructor.</li>
-<li>A constructor that sets the value of <code class="docutils literal notranslate"><span class="pre">Name</span></code>.</li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">Id</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Name</span></code> property of type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></li>
+<li><p>A no arg constructor.</p></li>
+<li><p>A constructor that sets the value of <code class="docutils literal notranslate"><span class="pre">Name</span></code>.</p></li>
 </ol>
 </dd>
 </dl>
@@ -143,10 +143,10 @@
 <div class="section" id="the-eventcategorycontroller-class">
 <span id="orm1-ex-3"></span><h2>The <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code> Class<a class="headerlink" href="#the-eventcategorycontroller-class" title="Permalink to this headline">¶</a></h2>
 <p>Create <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code> in the <code class="docutils literal notranslate"><span class="pre">Controllers</span></code> directory. To get our action methods working, we also need a variable of type <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code>.</p>
-<dl class="docutils">
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">Index()</span></code> needs to do the following:</dt><dd><ol class="arabic simple">
-<li>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Index</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</li>
-<li>Pass the <code class="docutils literal notranslate"><span class="pre">DbContext</span></code> category values as a list into the view template as a model</li>
+<li><p>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Index</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</p></li>
+<li><p>Pass the <code class="docutils literal notranslate"><span class="pre">DbContext</span></code> category values as a list into the view template as a model</p></li>
 </ol>
 </dd>
 </dl>
@@ -191,11 +191,11 @@
 </div>
 <div class="section" id="adding-a-view">
 <span id="orm1-ex-4"></span><h2>Adding a View<a class="headerlink" href="#adding-a-view" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> needs to have the following:</dt><dd><ol class="arabic simple">
-<li>Use the list passed in from the action method in the controller as a model to populate the view.</li>
-<li>An <code class="docutils literal notranslate"><span class="pre">h1</span></code> with an appropriate heading for the page.</li>
-<li>A table that will display all of the category names of the event categories stored in our database.</li>
+<li><p>Use the list passed in from the action method in the controller as a model to populate the view.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">h1</span></code> with an appropriate heading for the page.</p></li>
+<li><p>A table that will display all of the category names of the event categories stored in our database.</p></li>
 </ol>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2

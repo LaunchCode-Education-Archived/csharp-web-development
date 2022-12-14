@@ -89,8 +89,8 @@
 Before we get started learning the ins and outs of the language, let’s make sure we have everything properly installed!
 For this class, we will be using MySQL version 8.0.18, the most current version. Windows and Mac installations look a little different, so make sure you are following the appropriate directions for your machine.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">No matter your operating system, before you download any MySQL product, you are prompted to create an account.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>No matter your operating system, before you download any MySQL product, you are prompted to create an account.
 You do not have to do so if you do not want to! Below the buttons to log in, there is an option to skip creating an account and proceed with the download.</p>
 </div>
 <div class="section" id="mac-users">
@@ -101,14 +101,12 @@ Make sure you have selected MacOS before clicking <em>Download</em>!
 You want to download the version called <code class="docutils literal notranslate"><span class="pre">&quot;macOS</span> <span class="pre">10.14</span> <span class="pre">(x86,</span> <span class="pre">64-bit),</span> <span class="pre">DMG</span> <span class="pre">Archive&quot;</span></code> that specifies it is the <code class="docutils literal notranslate"><span class="pre">&quot;(mysql-8.0.18-macos10.14-x86_64.dmg)&quot;</span></code>.
 This option should also be at least 300 MB.</p>
 <ol class="arabic">
-<li><p class="first">When MySQL is done downloading, double-click on the disk image to launch the installer.</p>
-</li>
-<li><p class="first">Click through the windows to install MySQL and agree to the terms and conditions.</p>
-</li>
-<li><p class="first">When you reach the configuration window, you may have to enter a password for the root user. Pick a good password that you can remember.</p>
+<li><p>When MySQL is done downloading, double-click on the disk image to launch the installer.</p></li>
+<li><p>Click through the windows to install MySQL and agree to the terms and conditions.</p></li>
+<li><p>When you reach the configuration window, you may have to enter a password for the root user. Pick a good password that you can remember.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Once you create a password for the root user, you cannot change it! Be careful when typing out the password.</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Once you create a password for the root user, you cannot change it! Be careful when typing out the password.</p>
 </div>
 </li>
 </ol>
@@ -118,15 +116,15 @@ When working with MySQL in the terminal, you can’t use any fun tools to visual
 Sounds like you should use a desktop client at first to practice! For these reasons, we will be using MySQL Workbench as our GUI client to work with our databases.</p>
 <p>The <a class="reference external" href="https://dev.mysql.com/downloads/workbench/" target="_blank">MySQL Workbench 8.0.18 download page<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> has a dropdown menu for the operating system. Make sure MacOS is selected before downloading.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
 <p>If you are using a MacOS version prior to 10.14, use an older version of MySQL Workbench (6.3.10) by clicking the link that reads
 “Looking for previous GA versions?”.</p>
 <p>This previous version is only compatible with a <em>legacy password encryption</em> option. If you did not select this when downloading MySQL
 (or you are not sure),</p>
-<ol class="last arabic simple">
-<li>Open MySQL from System Preferences and select <em>Initialize Database</em>.</li>
-<li>Enter your root user password choose the <em>Use Legacy Password Encryption</em> option.</li>
-<li>After hitting <em>OK</em>, start the MySQL Server again by clicking <em>Start MySQL Server</em>.</li>
+<ol class="arabic simple">
+<li><p>Open MySQL from System Preferences and select <em>Initialize Database</em>.</p></li>
+<li><p>Enter your root user password choose the <em>Use Legacy Password Encryption</em> option.</p></li>
+<li><p>After hitting <em>OK</em>, start the MySQL Server again by clicking <em>Start MySQL Server</em>.</p></li>
 </ol>
 </div>
 <p>Once you have downloaded MySQL workbench, double-click on the disk image to launch the installer.
@@ -142,22 +140,20 @@ The <a class="reference external" href="https://dev.mysql.com/downloads/installe
 You want to download the version called <code class="docutils literal notranslate"><span class="pre">&quot;Windows</span> <span class="pre">(x86,</span> <span class="pre">32-bit),</span> <span class="pre">MSI</span> <span class="pre">Installer&quot;</span></code> that uses at least 400 MB (not the <em>web-community</em> version).
 Make sure you have selected the correct option before clicking <em>Download</em>!</p>
 <ol class="arabic">
-<li><p class="first">When MySQL is done downloading, open the installer.</p>
-</li>
-<li><p class="first">The installer will install MySQL server and related tools. Select <em>Developer Default</em> and proceed.</p>
+<li><p>When MySQL is done downloading, open the installer.</p></li>
+<li><p>The installer will install MySQL server and related tools. Select <em>Developer Default</em> and proceed.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>If you receive a message on the <em>Check Requirements</em> page for any MySQL products or tools other than MySQL Workbench, you
 can safely ignore these and continue with <em>Next</em>.</p>
-<p class="last">With the exception of creating and entering a password, you can move forward with the default selections to install and configure.</p>
+<p>With the exception of creating and entering a password, you can move forward with the default selections to install and configure.</p>
 </div>
 </li>
-<li><p class="first">The installer will check that the installs are compatible and install each one in turn. This may take a while so grab a snack!</p>
-</li>
-<li><p class="first">When you reach the configuration window for MySQL server, you may have to enter a password for the root user. Pick a good password that you can remember.</p>
+<li><p>The installer will check that the installs are compatible and install each one in turn. This may take a while so grab a snack!</p></li>
+<li><p>When you reach the configuration window for MySQL server, you may have to enter a password for the root user. Pick a good password that you can remember.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Once you create a password for the root user, you cannot change it! Be careful when typing out the password.</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Once you create a password for the root user, you cannot change it! Be careful when typing out the password.</p>
 </div>
 </li>
 </ol>

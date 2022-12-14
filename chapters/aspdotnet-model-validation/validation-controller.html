@@ -125,11 +125,11 @@ objects from form submissions.</p>
 </td></tr></table></div>
 <p>The flow of this request can be described as follows:</p>
 <ol class="arabic simple">
-<li>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
-<li>Server creates <code class="docutils literal notranslate"><span class="pre">newEvent</span></code> object using request parameters</li>
-<li><code class="docutils literal notranslate"><span class="pre">Add()</span></code> is called with <code class="docutils literal notranslate"><span class="pre">newEvent</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">newEvent</span></code> is saved</li>
-<li>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></li>
+<li><p>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</p></li>
+<li><p>Server creates <code class="docutils literal notranslate"><span class="pre">newEvent</span></code> object using request parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add()</span></code> is called with <code class="docutils literal notranslate"><span class="pre">newEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">newEvent</span></code> is saved</p></li>
+<li><p>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></p></li>
 </ol>
 <p>The request creates an <code class="docutils literal notranslate"><span class="pre">Event</span></code> object using data from the incoming request.
 Regardless of what the data looks like, the new object is saved to the data layer.
@@ -137,8 +137,8 @@ The user could submit an empty form, with no name or description filled in, and 
 Similarly, a user could submit the full text of the massive novel “War and Peace” as the description.
 This isn’t great.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Technically, submitting a request containing “War and Peace” would fail with most applications.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Technically, submitting a request containing “War and Peace” would fail with most applications.
 This is because web servers typically set a limit on the maximum size of a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request.
 However, our application code is willing to take requests of any size, at this point.</p>
 </div>
@@ -146,18 +146,18 @@ However, our application code is willing to take requests of any size, at this p
 Instead of using model binding to create a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object, we will use model binding to create a new <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> object called <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code>.
 Our modest validation rules for a new <code class="docutils literal notranslate"><span class="pre">AddEventViewModel</span></code> object are as follows:</p>
 <ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">Name</span></code> property must contain between 3 and 50 characters,</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">Description</span></code> property may contain no more than 500 characters, and</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">ContactEmail</span></code> property must satisfy email formatting rules.</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Name</span></code> property must contain between 3 and 50 characters,</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Description</span></code> property may contain no more than 500 characters, and</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ContactEmail</span></code> property must satisfy email formatting rules.</p></li>
 </ul>
 <p>With these rules in place, conceptually, the flow of our controller code should look more like the following:</p>
 <ol class="arabic simple">
-<li>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</li>
-<li>Server creates <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> object using request parameters</li>
-<li><code class="docutils literal notranslate"><span class="pre">Add()</span></code> (<code class="docutils literal notranslate"><span class="pre">POST</span></code> request type) is called with <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code></li>
-<li><strong>Controller checks for validation errors in the ViewModel object. If errors are found, return the user to the form. Otherwise, proceed.</strong></li>
-<li><code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> is used to create a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object called <code class="docutils literal notranslate"><span class="pre">newEvent</span></code>, which is saved to the data store.</li>
-<li>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></li>
+<li><p>Server receives <code class="docutils literal notranslate"><span class="pre">POST</span></code> request</p></li>
+<li><p>Server creates <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> object using request parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add()</span></code> (<code class="docutils literal notranslate"><span class="pre">POST</span></code> request type) is called with <code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code></p></li>
+<li><p><strong>Controller checks for validation errors in the ViewModel object. If errors are found, return the user to the form. Otherwise, proceed.</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addEventViewModel</span></code> is used to create a new <code class="docutils literal notranslate"><span class="pre">Event</span></code> object called <code class="docutils literal notranslate"><span class="pre">newEvent</span></code>, which is saved to the data store.</p></li>
+<li><p>A redirect response is returned, redirecting the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code></p></li>
 </ol>
 <p>Let’s look at how we can practically do this within ASP.NET Core MVC.</p>
 </div>
@@ -167,10 +167,10 @@ Our modest validation rules for a new <code class="docutils literal notranslate"
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/n1KMXzDzvuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <p></p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/validation-attributes" target="_blank">validation-attributes<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
 If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/handling-errors" target="_blank">handling-errors<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
-<p class="last">Actually, the first 4 minutes of the video above cover some of the code changes to get the project to the starting state of the <code class="docutils literal notranslate"><span class="pre">validation-attributes</span></code> branch.</p>
+<p>Actually, the first 4 minutes of the video above cover some of the code changes to get the project to the starting state of the <code class="docutils literal notranslate"><span class="pre">validation-attributes</span></code> branch.</p>
 </div>
 </div>
 <div class="section" id="handling-validation-errors-text">
@@ -235,12 +235,12 @@ Let’s tackle that next!</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">15.4.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Which of the following statements about <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> are true?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> can only be used in conjunction with model binding.</li>
-<li>Using <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> means that a method will never be called with invalid data.</li>
-<li>ASP.NET can infer validation requirements based on the name of a field.</li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> can only be used in conjunction with model binding.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> means that a method will never be called with invalid data.</p></li>
+<li><p>ASP.NET can infer validation requirements based on the name of a field.</p></li>
 </ol>
 </div>
 </div>

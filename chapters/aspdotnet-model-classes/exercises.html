@@ -91,19 +91,19 @@ These exercises assume that you have added all of the code from this section of 
 application resembles the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/model-binding" target="_blank">model-binding branch<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
 <p>The edit form will resemble the form used to create an event.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">As you work through these steps, test your code along the way!
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>As you work through these steps, test your code along the way!
 With each change you apply to your code, ask yourself what you expect to see when the application
 is run. You may not find that all of the steps result in observable changes, though.
 Use Visual Studio’s debugging tools and read your error messages if you run into issues after applying any of
 the changes.</p>
 </div>
 <ol class="arabic">
-<li><p class="first">Create the two action methods listed below in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>. We’ll add code
+<li><p>Create the two action methods listed below in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>. We’ll add code
 to these in a moment, so just put the outline in place for
 now.</p>
 <ol class="arabic">
-<li><p class="first">Create an action method to display an edit form with this signature:</p>
+<li><p>Create an action method to display an edit form with this signature:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">eventId</span><span class="p">)</span> <span class="p">{</span>
@@ -112,7 +112,7 @@ now.</p>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Create an action method to process the form with this signature:</p>
+<li><p>Create an action method to process the form with this signature:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -125,67 +125,65 @@ now.</p>
 </li>
 </ol>
 </li>
-<li><p class="first">Add the necessary annotations to the <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code> method for it to live at the path <code class="docutils literal notranslate"><span class="pre">/Events/Edit</span></code>.</p>
+<li><p>Add the necessary annotations to the <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code> method for it to live at the path <code class="docutils literal notranslate"><span class="pre">/Events/Edit</span></code>.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-2"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">You’ll need to configure the route for <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> to include the path variable <code class="docutils literal notranslate"><span class="pre">eventId</span></code>,
+<li><p>You’ll need to configure the route for <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> to include the path variable <code class="docutils literal notranslate"><span class="pre">eventId</span></code>,
 so that paths like <code class="docutils literal notranslate"><span class="pre">/Events/Edit/3</span></code> will work.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-3"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Create an <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code> view in <code class="docutils literal notranslate"><span class="pre">Views/Events</span></code>.</p>
-</li>
-<li><p class="first">Copy the code from <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> into <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>.</p>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code> view in <code class="docutils literal notranslate"><span class="pre">Views/Events</span></code>.</p></li>
+<li><p>Copy the code from <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> into <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>.</p>
 <ol class="arabic simple">
-<li>You’ll want to update the text of the submit button and the heading to reflect the edit functionality.</li>
+<li><p>You’ll want to update the text of the submit button and the heading to reflect the edit functionality.</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-5"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Back in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, round out the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> method.</p>
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">EventsController</span></code>, round out the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> method.</p>
 <ol class="arabic simple">
-<li>Use an <code class="docutils literal notranslate"><span class="pre">EventData</span></code> method to find the event object with the given <code class="docutils literal notranslate"><span class="pre">eventId</span></code>.</li>
-<li>Put the event object in <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>.</li>
-<li>Return the appropriate view.</li>
+<li><p>Use an <code class="docutils literal notranslate"><span class="pre">EventData</span></code> method to find the event object with the given <code class="docutils literal notranslate"><span class="pre">eventId</span></code>.</p></li>
+<li><p>Put the event object in <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code>.</p></li>
+<li><p>Return the appropriate view.</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-6"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Within the form fields in <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>,</p>
+<li><p>Within the form fields in <code class="docutils literal notranslate"><span class="pre">Edit.cshtml</span></code>,</p>
 <ol class="arabic">
-<li><p class="first">Get the name and description from the event that was passed in via <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> and
-set them as the values of the form fields.</p>
-</li>
-<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">action=&quot;/events/edit&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">form</span></code> tag.</p>
+<li><p>Get the name and description from the event that was passed in via <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> and
+set them as the values of the form fields.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">action=&quot;/events/edit&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">form</span></code> tag.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-7"><span class="std std-ref">Check your solution</span></a></p>
 </li>
 </ol>
 </li>
-<li><p class="first">Add another input to hold the id of the event being edited. This
+<li><p>Add another input to hold the id of the event being edited. This
 should be hidden from the user:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;@ViewBag.eventToEdit.Id&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;eventId&quot;</span> <span class="p">/&gt;</span>
 </pre></div>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">You may not have named your <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property <code class="docutils literal notranslate"><span class="pre">eventToEdit</span></code>.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You may not have named your <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property <code class="docutils literal notranslate"><span class="pre">eventToEdit</span></code>.
 Make sure you are using the name you gave your property!</p>
 </div>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-8"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Back in the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> action method, add a title to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> that reads <code class="docutils literal notranslate"><span class="pre">“Edit</span> <span class="pre">Event</span>
+<li><p>Back in the <code class="docutils literal notranslate"><span class="pre">Edit()</span></code> action method, add a title to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> that reads <code class="docutils literal notranslate"><span class="pre">“Edit</span> <span class="pre">Event</span>
 <span class="pre">NAME</span> <span class="pre">(id=ID)”</span></code> where <code class="docutils literal notranslate"><span class="pre">&quot;NAME&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;ID&quot;</span></code> are replaced by the values for the
 given event.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-9"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code>,</p>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">SubmitEditEventForm()</span></code>,</p>
 <ol class="arabic simple">
-<li>Query <code class="docutils literal notranslate"><span class="pre">EventData</span></code> for the event being edited with the given id parameter.</li>
-<li>Update the name and description of the event.</li>
-<li>Redirect the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code> (the event listing page).</li>
+<li><p>Query <code class="docutils literal notranslate"><span class="pre">EventData</span></code> for the event being edited with the given id parameter.</p></li>
+<li><p>Update the name and description of the event.</p></li>
+<li><p>Redirect the user to <code class="docutils literal notranslate"><span class="pre">/Events</span></code> (the event listing page).</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/models.html#model-ex-10"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">To access event editing, the user will need an edit option in the list of event data.</p>
+<li><p>To access event editing, the user will need an edit option in the list of event data.</p>
 <ol class="arabic">
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, add a link to edit the
+<li><p>In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, add a link to edit the
 event as a column in the event table:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">asp-controller</span><span class="o">=</span><span class="s">&quot;Events&quot;</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Edit&quot;</span> <span class="na">asp-route-id</span><span class="o">=</span><span class="s">&quot;@evt.Id&quot;</span><span class="p">&gt;</span>Edit Event<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
 </pre></div>

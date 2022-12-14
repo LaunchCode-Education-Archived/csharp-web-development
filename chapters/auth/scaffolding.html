@@ -88,14 +88,14 @@
 <span id="user-auth-walkthrough"></span><span id="index-0"></span><h1><span class="section-number">19.3. </span>Getting Started with Identity<a class="headerlink" href="#getting-started-with-identity" title="Permalink to this headline">¶</a></h1>
 <p>As a developer, you may find yourself wanting to add Identity in one of the two following situations:</p>
 <ol class="arabic simple">
-<li>You are creating a new project and you know that you need Identity in the project.</li>
-<li>You are working with an existing project and need to add Identity to continue your work.</li>
+<li><p>You are creating a new project and you know that you need Identity in the project.</p></li>
+<li><p>You are working with an existing project and need to add Identity to continue your work.</p></li>
 </ol>
 <p>For this chapter, we are going to focus on the second situation and how we might add Identity to <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>.
 The process of adding Identity to an existing code base is called <strong>scaffolding</strong>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Try and code along as you read more about Identity!
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Try and code along as you read more about Identity!
 This page starts off with the code in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/display-tag-items" target="_blank">display-tag-items<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.
 The final code for this page is in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding" target="_blank">identity-scaffolding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.</p>
 </div>
@@ -146,26 +146,26 @@ Inside the project directory, run the following command:</p>
 </td></tr></table></div>
 <p>If the .NET Core SDK listed on line 2 does not match the SDK specified in your <code class="docutils literal notranslate"><span class="pre">csproj</span></code> file, you may need to open up your <code class="docutils literal notranslate"><span class="pre">global.json</span></code> and edit it so that the SDK used by the project matches.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>If you do not have a <code class="docutils literal notranslate"><span class="pre">global.json</span></code> file, but the .NET Core SDK is still not matching your <code class="docutils literal notranslate"><span class="pre">csproj</span></code> file, you can create a new <code class="docutils literal notranslate"><span class="pre">global.json</span></code> file with the following command:</p>
-<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>dotnet new globaljson --sdk-version 6.0.403
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dotnet new globaljson --sdk-version 6.0.403
 </pre></div>
 </div>
 </div>
 <p>You need to install six NuGet packages before getting started with this process:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Design</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.AspNetCore.Identity.UI</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.AspNetCore.Identity.EntityFrameworkCore</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.SqlServer</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.VisualStudio.Web.CodeGeneration.Design</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Tools</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Design</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.AspNetCore.Identity.UI</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.AspNetCore.Identity.EntityFrameworkCore</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.SqlServer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.VisualStudio.Web.CodeGeneration.Design</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Tools</span></code></p></li>
 </ol>
 <p>When installing these packages, make sure that the versions are the same as the .NET Core version your project is using. You can confirm this is the case by reviewing the code in your <code class="docutils literal notranslate"><span class="pre">csproj</span></code> file.</p>
 <p>With these packages installed, you are ready to go!</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you are a Mac user and are getting errors related to versioning with package installs because you have multiple versions of .NET on your machine, you may need to uninstall several versions of .NET.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you are a Mac user and are getting errors related to versioning with package installs because you have multiple versions of .NET on your machine, you may need to uninstall several versions of .NET.
 You will find a number of approaches for uninstalling .NET online, but here is <a class="reference external" href="https://devkimchi.com/2021/11/24/removing-dotnet-sdks-from-macos-manually/" target="_blank">one<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> to get you started.</p>
 </div>
 </div>
@@ -175,9 +175,9 @@ You will find a number of approaches for uninstalling .NET online, but here is <
 <div class="section" id="adding-identity-through-the-ui">
 <h3><span class="section-number">19.3.2.1. </span>Adding Identity Through the UI<a class="headerlink" href="#adding-identity-through-the-ui" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Right click on the project folder at the top of the solution.</li>
-<li>Select <em>Add</em> &gt; <em>New Scaffolded Item</em>.</li>
-<li>From the menu, select <em>Identity</em>.</li>
+<li><p>Right click on the project folder at the top of the solution.</p></li>
+<li><p>Select <em>Add</em> &gt; <em>New Scaffolded Item</em>.</p></li>
+<li><p>From the menu, select <em>Identity</em>.</p></li>
 </ol>
 <p>This approach is the simpler of the two approaches. However, for some Mac users, you may not find Identity as an option when you use this approach.
 If that is the case, use the terminal method.</p>
@@ -186,18 +186,18 @@ If that is the case, use the terminal method.</p>
 <h3><span class="section-number">19.3.2.2. </span>Adding Identity through the Command Line<a class="headerlink" href="#adding-identity-through-the-command-line" title="Permalink to this headline">¶</a></h3>
 <p>All of these commmands should be run in the project directory <em>inside</em> of the solution.</p>
 <ol class="arabic">
-<li><p class="first">Use the following command to make sure you have the necessary code generator tools installed.</p>
+<li><p>Use the following command to make sure you have the necessary code generator tools installed.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">dotnet</span> <span class="k">tool</span> <span class="n">install</span> <span class="o">--</span><span class="n">global</span> <span class="n">dotnet</span><span class="o">-</span><span class="n">aspnet</span><span class="o">-</span><span class="n">codegenerator</span> <span class="o">--</span><span class="n">version</span> <span class="o">&lt;</span><span class="n">YOUR</span> <span class="o">.</span><span class="n">NET</span> <span class="n">VERSION</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>If the tool is installed, check the version before proceeding to make sure it works with your .NET version.</p>
 </li>
-<li><p class="first">Use the following command to add the full package necessary to generate the actual Identity code.</p>
+<li><p>Use the following command to add the full package necessary to generate the actual Identity code.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 </pre></div>
 </div>
 </li>
-<li><p class="first">Now you are ready to add Identity to your project! You can configure Identity in any number of ways to fit the project requirements. To see all of the options use this command:</p>
+<li><p>Now you are ready to add Identity to your project! You can configure Identity in any number of ways to fit the project requirements. To see all of the options use this command:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>dotnet aspnet-codegenerator identity -h
 </pre></div>
 </div>
@@ -231,25 +231,24 @@ Generator Options:
 </pre></div>
 </div>
 </li>
-<li><p class="first">Configuration of Identity is dependent on you and your project requirements. In the case of <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>, you would want to continue to use <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code>.
+<li><p>Configuration of Identity is dependent on you and your project requirements. In the case of <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>, you would want to continue to use <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code>.
 This is how your final generation command would look:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>dotnet aspnet-codegenerator identity --dbContext EventDbContext --files &quot;Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation&quot;
 </pre></div>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">In the above command, we used the option for <code class="docutils literal notranslate"><span class="pre">files</span></code>.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>In the above command, we used the option for <code class="docutils literal notranslate"><span class="pre">files</span></code>.
 Identity is a Razor Class Library so it comes with Razor pages preconfigured for registration, login, etc.
 This option means that we want the scaffolder to generate these files and add them to the solution, making it easier for us to customize these files in the future.
 The option for <code class="docutils literal notranslate"><span class="pre">defaultUI</span></code> means that we have no need to have these files in the solution and so we won’t have the ability to customize them.</p>
 </div>
 </li>
-<li><p class="first">Once we run this series of commands, we will have successfully scaffolded Identity code onto our existing project.</p>
-</li>
+<li><p>Once we run this series of commands, we will have successfully scaffolded Identity code onto our existing project.</p></li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you do not see any new scaffolding, try using the command <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">restore</span></code>. This will restore our NuGet packages manually as opposed to them automatically restoring.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you do not see any new scaffolding, try using the command <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">restore</span></code>. This will restore our NuGet packages manually as opposed to them automatically restoring.</p>
 </div>
 </div>
 <div class="section" id="dbcontext">
@@ -314,11 +313,11 @@ This is not an oversight! With <code class="docutils literal notranslate"><span 
 </pre></div>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>While you are editing <code class="docutils literal notranslate"><span class="pre">ConfigureServices()</span></code>, you may need to also add a default identity user.
 We will learn more about how to configure this user in a later section.
 For now, you can add code to <code class="docutils literal notranslate"><span class="pre">ConfigureServices()</span></code> to address this:</p>
-<div class="last highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -383,8 +382,8 @@ For now, you can add code to <code class="docutils literal notranslate"><span cl
 <p>These initial steps were to make sure that the application is still using <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code> for its connection to the database now that we have added Identity.
 However, if you take a look inside the <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Data</span></code> directory, you will find a file also called <code class="docutils literal notranslate"><span class="pre">EventDbContext</span></code>. Delete that generated file and continue to use the one we initially created for <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you do not immediately see Identity scaffolding, that is okay! Sometimes it takes a moment to appear.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you do not immediately see Identity scaffolding, that is okay! Sometimes it takes a moment to appear.</p>
 </div>
 </div>
 <div class="section" id="views">

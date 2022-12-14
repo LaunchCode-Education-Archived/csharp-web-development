@@ -89,11 +89,11 @@
 <p>In order for users to successfully navigate through the application, Identity will handle a number of functions related to both authentication and authorization.
 For the purposes of this book, we will focus on just two: registering for a new account and logging in.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>Razor Class Libraries do not have separate controllers like in the traditional MVC design pattern.
 The logic that we might be inclined to put in a controller for each of the actions that we look at is actually contained within a Razor page.
 Our goal is to locate the correct page and understand what is going on.</p>
-<p class="last">The pages we are looking at end with the file extension <code class="docutils literal notranslate"><span class="pre">.cshtml.cs</span></code>.
+<p>The pages we are looking at end with the file extension <code class="docutils literal notranslate"><span class="pre">.cshtml.cs</span></code>.
 Some Mac users may have to click on a small arrow on to expand the <code class="docutils literal notranslate"><span class="pre">.cshtml</span></code> pages to find the <code class="docutils literal notranslate"><span class="pre">cshtml.cs</span></code> files.</p>
 </div>
 <div class="section" id="registration">
@@ -101,19 +101,19 @@ Some Mac users may have to click on a small arrow on to expand the <code class="
 <p>Open up <code class="docutils literal notranslate"><span class="pre">Register.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code> and inspect it.
 Here are some things to note:</p>
 <ol class="arabic simple">
-<li>The return type of the action to register a new user is <code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code>.
+<li><p>The return type of the action to register a new user is <code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code>.
 We have encountered <code class="docutils literal notranslate"><span class="pre">IActionResult</span></code> before.
 <code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is an asynchronous return type.
-The action of adding a new user to a database is asynchronous so our function must return an asynchronous action.</li>
-<li>We can still use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> to make sure that the user’s input matches our validation requirements.</li>
-<li><code class="docutils literal notranslate"><span class="pre">UserManager</span></code> comes back into play here for the addition of the new user to the database.
-The method used for that action is called <code class="docutils literal notranslate"><span class="pre">CreateAsync()</span></code>. The new user’s password is hashed as part of this method, so there aren’t any additional method calls here.</li>
-<li>If the new user row in the database is successfully created, then we want to direct the user to a page to start working.
-If not, the user registration form is reloaded, just as when the validation requirements are not met.</li>
+The action of adding a new user to a database is asynchronous so our function must return an asynchronous action.</p></li>
+<li><p>We can still use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> to make sure that the user’s input matches our validation requirements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UserManager</span></code> comes back into play here for the addition of the new user to the database.
+The method used for that action is called <code class="docutils literal notranslate"><span class="pre">CreateAsync()</span></code>. The new user’s password is hashed as part of this method, so there aren’t any additional method calls here.</p></li>
+<li><p>If the new user row in the database is successfully created, then we want to direct the user to a page to start working.
+If not, the user registration form is reloaded, just as when the validation requirements are not met.</p></li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you are interested in learning more about asynchronous return types in C#, check out the <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/async-return-types" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you are interested in learning more about asynchronous return types in C#, check out the <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/async-return-types" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
 </div>
 </div>
 <div class="section" id="login">
@@ -121,19 +121,19 @@ If not, the user registration form is reloaded, just as when the validation requ
 <p>Open up <code class="docutils literal notranslate"><span class="pre">Login.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code>.
 Here are some things to note:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is back meaning the action of signing in is asynchronous.</li>
-<li>If the form input is valid, then we want to try and sign in the user.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">PasswordSignInAsync()</span></code> which takes in parameters like the inputted email and password and compares those values to the values stored in the database.</li>
-<li>If the action of signing in is successful, the user is directed on to a new page.
-If the action is not successful, then the user is redirected back to the login form with an error message explaining that they could not log in.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is back meaning the action of signing in is asynchronous.</p></li>
+<li><p>If the form input is valid, then we want to try and sign in the user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">PasswordSignInAsync()</span></code> which takes in parameters like the inputted email and password and compares those values to the values stored in the database.</p></li>
+<li><p>If the action of signing in is successful, the user is directed on to a new page.
+If the action is not successful, then the user is redirected back to the login form with an error message explaining that they could not log in.</p></li>
 </ol>
 </div>
 <div class="section" id="logout">
 <h2><span class="section-number">19.4.3. </span>Logout<a class="headerlink" href="#logout" title="Permalink to this headline">¶</a></h2>
 <p>There are two main things to note about <code class="docutils literal notranslate"><span class="pre">Logout.cshtml.cs</span></code> in <code class="docutils literal notranslate"><span class="pre">Areas/Identity/Pages/Account</span></code>:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is the return type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">SignOutAsync()</span></code> which ends the session. Once that action is completed, the user is redirected to an unrestricted page.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Task&lt;IActionResult&gt;</span></code> is the return type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SignInManager</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">SignOutAsync()</span></code> which ends the session. Once that action is completed, the user is redirected to an unrestricted page.</p></li>
 </ol>
 <p>These are the three main actions we want to focus on when it comes to authentication with user accounts.
 We could additional elements to these three actions such as 2FA or two factor authentication on log in as the authentication requirements of our project grow.</p>

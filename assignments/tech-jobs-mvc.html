@@ -110,10 +110,10 @@ project and left you some <code class="docutils literal notranslate"><span class
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
 <p>In this project, you’ll show that you can:</p>
 <ol class="arabic simple">
-<li>Read and understand code written by others.</li>
-<li>Work within the controller and view portions of a ASP.NET MVC application.</li>
-<li>Use Razor syntax to display data within a view.</li>
-<li>Create new action methods to process form submission.</li>
+<li><p>Read and understand code written by others.</p></li>
+<li><p>Work within the controller and view portions of a ASP.NET MVC application.</p></li>
+<li><p>Use Razor syntax to display data within a view.</p></li>
+<li><p>Create new action methods to process form submission.</p></li>
 </ol>
 </div>
 <div class="section" id="techjobs-mvc-edition">
@@ -133,13 +133,13 @@ functionality lets you focus on the views and controllers for now.</p>
 details for each part appear in the following sections, so be sure to read them
 carefully as you solve each problem.</p>
 <ol class="arabic simple">
-<li>Review Carly’s code in the <code class="docutils literal notranslate"><span class="pre">JobData</span></code> file as well as in the existing
-controllers and views.</li>
-<li>Carly needs your help completing the code to display only certain jobs. She has the code to display all of the values that users can select to filter the jobs.</li>
-<li>Carly started working on the search feature, but only got as far as
+<li><p>Review Carly’s code in the <code class="docutils literal notranslate"><span class="pre">JobData</span></code> file as well as in the existing
+controllers and views.</p></li>
+<li><p>Carly needs your help completing the code to display only certain jobs. She has the code to display all of the values that users can select to filter the jobs.</p></li>
+<li><p>Carly started working on the search feature, but only got as far as
 writing the code to display the search form. She’s handed the project to you
-to finish the rest. First, you’ll create a controller method to retrieve search results.</li>
-<li>Finally, you’ll display search results in the view.</li>
+to finish the rest. First, you’ll create a controller method to retrieve search results.</p></li>
+<li><p>Finally, you’ll display search results in the view.</p></li>
 </ol>
 <p>Throughout your work, refer to our <a class="reference external" href="https://csharp-mvc.launchcodetechnicaltraining.org/" target="_blank">demo app<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> as needed to clarify questions about intended application behavior.</p>
 </div>
@@ -147,20 +147,20 @@ to finish the rest. First, you’ll create a controller method to retrieve searc
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Set up a local copy of the project:</p>
 <ol class="arabic simple">
-<li>In Canvas, <strong>Graded Assignment #3: TechJobs (MVC Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</li>
-<li>Launch the application to make sure it starts up properly. Then shut it down.</li>
-<li>Run the autograding tests. The tests for this assignment are set up the same way as for <a class="reference internal" href="tech-jobs-oo.html#tech-jobs-oo"><span class="std std-ref">assignment 2</span></a>. There are four tasks for this assignment, but the first doesn’t require any coding on your part. Therefore, there are 3 tests files (for tasks 2-4). As with assignment 2, we recommend that you only run the tests for the task you are currently working on.</li>
+<li><p>In Canvas, <strong>Graded Assignment #3: TechJobs (MVC Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</p></li>
+<li><p>Launch the application to make sure it starts up properly. Then shut it down.</p></li>
+<li><p>Run the autograding tests. The tests for this assignment are set up the same way as for <a class="reference internal" href="tech-jobs-oo.html#tech-jobs-oo"><span class="std std-ref">assignment 2</span></a>. There are four tasks for this assignment, but the first doesn’t require any coding on your part. Therefore, there are 3 tests files (for tasks 2-4). As with assignment 2, we recommend that you only run the tests for the task you are currently working on.</p></li>
 </ol>
 </div>
 <div class="section" id="review-the-code">
 <h2>1) Review the Code<a class="headerlink" href="#review-the-code" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>One essential programming skill that you will develop is the ability to read
 and understand someone else’s code. This assignment begins with you
 practicing exactly that. Make sure you carefully examine the provided code
 BEFORE you start changing things.</p>
-<p class="last">Trying to “fix” a code sample before understanding how it works leads to
+<p>Trying to “fix” a code sample before understanding how it works leads to
 confusion, frustration, and a broken program. DO NOT SKIP the code review!</p>
 </div>
 <p>Carly created a ASP.NET MVC application and filled in some features. She
@@ -272,16 +272,16 @@ the link text.</p>
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">TableChoices</span></code> is a Dictionary from <code class="docutils literal notranslate"><span class="pre">ListController</span></code>, and it contains the names of
+<li><p><code class="docutils literal notranslate"><span class="pre">TableChoices</span></code> is a Dictionary from <code class="docutils literal notranslate"><span class="pre">ListController</span></code>, and it contains the names of
 the <code class="docutils literal notranslate"><span class="pre">Job</span></code> fields as keys (<code class="docutils literal notranslate"><span class="pre">Employer</span></code>, etc.). The value for each key is
 a List of <code class="docutils literal notranslate"><span class="pre">Employer</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, <code class="docutils literal notranslate"><span class="pre">CoreCompetency</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> objects.</li>
-<li>In line 17, <code class="docutils literal notranslate"><span class="pre">category</span></code> represents one key/value pair from
+<code class="docutils literal notranslate"><span class="pre">PositionType</span></code> objects.</p></li>
+<li><p>In line 17, <code class="docutils literal notranslate"><span class="pre">category</span></code> represents one key/value pair from
 <code class="docutils literal notranslate"><span class="pre">TableChoices</span></code>, and in line 21, <code class="docutils literal notranslate"><span class="pre">item</span></code> represents one entry from the
-stored <code class="docutils literal notranslate"><span class="pre">List</span></code>.</li>
-<li>We’ve seen some of the syntax to generate a link within a Razor
+stored <code class="docutils literal notranslate"><span class="pre">List</span></code>.</p></li>
+<li><p>We’ve seen some of the syntax to generate a link within a Razor
 template, but we don’t have as much experience with <code class="docutils literal notranslate"><span class="pre">asp-route-column</span></code> and <code class="docutils literal notranslate"><span class="pre">asp-route-value</span></code>.This syntax causes Razor
-to dynamically generate query parameters for our URL.</li>
+to dynamically generate query parameters for our URL.</p></li>
 </ol>
 <p>In line 24, we set these parameters by using <code class="docutils literal notranslate"><span class="pre">asp-route-column=</span></code> and <code class="docutils literal notranslate"><span class="pre">asp-route-value=</span></code>. The
 values of these parameters are determined dynamically based on
@@ -299,13 +299,13 @@ outlined above, but doing so only leads to an error.</p>
 the <code class="docutils literal notranslate"><span class="pre">Jobs.cshtml</span></code> template. It has a similar structure as <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>,
 but the table consists of only one column.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>Select “Kansas City” from the list of locations, and then check the address
 bar of your browser:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/list/jobs?column<span class="o">=</span>location<span class="p">&amp;</span><span class="nv">value</span><span class="o">=</span>Kansas%20City
 </pre></div>
 </div>
-<p class="last">Razor inserts <code class="docutils literal notranslate"><span class="pre">%20</span></code> for us, to represent a space, but this may
+<p>Razor inserts <code class="docutils literal notranslate"><span class="pre">%20</span></code> for us, to represent a space, but this may
 actually be hidden in your browser’s address bar.</p>
 </div>
 </div>
@@ -330,8 +330,8 @@ the bottom of the window. This list is populated by any code comments that
 start with <code class="docutils literal notranslate"><span class="pre">TODO</span></code>. You’ll see your tasks listed, and clicking on any one will
 open the relevant file.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">You may not see a <code class="docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">#4</span></code>. This is because TODO comments in views do not always show up in the Task List.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You may not see a <code class="docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">#4</span></code>. This is because TODO comments in views do not always show up in the Task List.
 If it is not there, check out the <code class="docutils literal notranslate"><span class="pre">Search/Index.cshtml</span></code> view to locate it!</p>
 </div>
 </div>
@@ -340,9 +340,9 @@ If it is not there, check out the <code class="docutils literal notranslate"><sp
 <h2>2) Complete <code class="docutils literal notranslate"><span class="pre">ListController</span></code><a class="headerlink" href="#complete-listcontroller" title="Permalink to this headline">¶</a></h2>
 <p>Complete the <code class="docutils literal notranslate"><span class="pre">Jobs()</span></code> action method in <code class="docutils literal notranslate"><span class="pre">ListController</span></code>. Right now, it returns a view, but we need to send some details about jobs to that view.</p>
 <ol class="arabic simple">
-<li>The view relies on <code class="docutils literal notranslate"><span class="pre">ViewBag.jobs</span></code>, so to start create a list in the action method called <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</li>
-<li>If the user selects “View All”, you should use <code class="docutils literal notranslate"><span class="pre">JobData.FindAll()</span></code> to populate <code class="docutils literal notranslate"><span class="pre">jobs</span></code> with all the jobs and update <code class="docutils literal notranslate"><span class="pre">ViewBag.title</span></code>. If the user selects something specific, you should use <code class="docutils literal notranslate"><span class="pre">JobData.FindJobsByColumnAndValue()</span></code> to populate <code class="docutils literal notranslate"><span class="pre">jobs</span></code> with jobs that only match that criteria and update <code class="docutils literal notranslate"><span class="pre">ViewBag.title</span></code> to include the criteria the user chose.</li>
-<li>Make sure to set <code class="docutils literal notranslate"><span class="pre">ViewBag.jobs</span></code> equal to <code class="docutils literal notranslate"><span class="pre">jobs</span></code> and run the program to see how it is working now!</li>
+<li><p>The view relies on <code class="docutils literal notranslate"><span class="pre">ViewBag.jobs</span></code>, so to start create a list in the action method called <code class="docutils literal notranslate"><span class="pre">jobs</span></code>.</p></li>
+<li><p>If the user selects “View All”, you should use <code class="docutils literal notranslate"><span class="pre">JobData.FindAll()</span></code> to populate <code class="docutils literal notranslate"><span class="pre">jobs</span></code> with all the jobs and update <code class="docutils literal notranslate"><span class="pre">ViewBag.title</span></code>. If the user selects something specific, you should use <code class="docutils literal notranslate"><span class="pre">JobData.FindJobsByColumnAndValue()</span></code> to populate <code class="docutils literal notranslate"><span class="pre">jobs</span></code> with jobs that only match that criteria and update <code class="docutils literal notranslate"><span class="pre">ViewBag.title</span></code> to include the criteria the user chose.</p></li>
+<li><p>Make sure to set <code class="docutils literal notranslate"><span class="pre">ViewBag.jobs</span></code> equal to <code class="docutils literal notranslate"><span class="pre">jobs</span></code> and run the program to see how it is working now!</p></li>
 </ol>
 <p>If everything looks good to you, run the tests in <code class="docutils literal notranslate"><span class="pre">TestTaskTwo</span></code> in <code class="docutils literal notranslate"><span class="pre">AutogradingTests</span></code> to make sure you are on the right track before proceeding to task three.</p>
 </div>
@@ -350,31 +350,31 @@ If it is not there, check out the <code class="docutils literal notranslate"><sp
 <h2>3) Complete <code class="docutils literal notranslate"><span class="pre">SearchController</span></code><a class="headerlink" href="#complete-searchcontroller" title="Permalink to this headline">¶</a></h2>
 <p>Add a <code class="docutils literal notranslate"><span class="pre">Results()</span></code> action method to <code class="docutils literal notranslate"><span class="pre">SearchController</span></code>:</p>
 <ol class="arabic simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">Results()</span></code> method should take in two parameters. Both parameters must be strings and the first one should be called “searchType” and the second one should be called “searchTerm”.</li>
-<li>First, you need to create a local variable called “jobs” that is of type <code class="docutils literal notranslate"><span class="pre">List&lt;Job&gt;</span></code>.</li>
-<li>If the user enters “all” in the search box, or if they leave the box empty,
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Results()</span></code> method should take in two parameters. Both parameters must be strings and the first one should be called “searchType” and the second one should be called “searchTerm”.</p></li>
+<li><p>First, you need to create a local variable called “jobs” that is of type <code class="docutils literal notranslate"><span class="pre">List&lt;Job&gt;</span></code>.</p></li>
+<li><p>If the user enters “all” in the search box, or if they leave the box empty,
 call the <code class="docutils literal notranslate"><span class="pre">FindAll()</span></code> method from <code class="docutils literal notranslate"><span class="pre">JobData</span></code>. Otherwise, send the search
 information to <code class="docutils literal notranslate"><span class="pre">FindByColumnAndValue</span></code>. In either case, store
-the results in a <code class="docutils literal notranslate"><span class="pre">jobs</span></code> List.</li>
-<li>Pass <code class="docutils literal notranslate"><span class="pre">jobs</span></code> into the <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> view.</li>
-<li>Pass <code class="docutils literal notranslate"><span class="pre">ListController.ColumnChoices</span></code> into the view, as the existing
-<code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method does.</li>
+the results in a <code class="docutils literal notranslate"><span class="pre">jobs</span></code> List.</p></li>
+<li><p>Pass <code class="docutils literal notranslate"><span class="pre">jobs</span></code> into the <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> view.</p></li>
+<li><p>Pass <code class="docutils literal notranslate"><span class="pre">ListController.ColumnChoices</span></code> into the view, as the existing
+<code class="docutils literal notranslate"><span class="pre">Index()</span></code> action method does.</p></li>
 </ol>
 <p>Run the tests in <code class="docutils literal notranslate"><span class="pre">TestTaskThree</span></code> to see how you did!</p>
 </div>
 <div class="section" id="display-search-results">
 <h2>4) Display Search Results<a class="headerlink" href="#display-search-results" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Before starting this task, un-comment out the tests in <code class="docutils literal notranslate"><span class="pre">TestTaskFour</span></code>. You can do so by removing the <code class="docutils literal notranslate"><span class="pre">/*</span></code> on line 18 and the <code class="docutils literal notranslate"><span class="pre">*/</span></code> on line 44.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Before starting this task, un-comment out the tests in <code class="docutils literal notranslate"><span class="pre">TestTaskFour</span></code>. You can do so by removing the <code class="docutils literal notranslate"><span class="pre">/*</span></code> on line 18 and the <code class="docutils literal notranslate"><span class="pre">*/</span></code> on line 44.</p>
 </div>
 <p>Once you have your <code class="docutils literal notranslate"><span class="pre">Results()</span></code> action method passing information to the
 view, you need to display the data.</p>
 <ol class="arabic simple">
-<li>In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, create a loop to display each job passed in from the
-controller.</li>
-<li>Put the job results into a set of tables, similar to what you did for the
-<code class="docutils literal notranslate"><span class="pre">List/Jobs.cshtml</span></code> view.</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>, create a loop to display each job passed in from the
+controller.</p></li>
+<li><p>Put the job results into a set of tables, similar to what you did for the
+<code class="docutils literal notranslate"><span class="pre">List/Jobs.cshtml</span></code> view.</p></li>
 </ol>
 <p>Run the tests in <code class="docutils literal notranslate"><span class="pre">TestTaskFour</span></code> to make sure that you have passed everything properly to the view!</p>
 </div>
@@ -391,18 +391,18 @@ controller.</li>
 <h2>Bonus Missions<a class="headerlink" href="#bonus-missions" title="Permalink to this headline">¶</a></h2>
 <p>Here are some additional challenges, for those willing to take them on:</p>
 <ol class="arabic simple">
-<li>When we select a given field to search within and then submit, our choice is
+<li><p>When we select a given field to search within and then submit, our choice is
 forgotten and returns to “All” by default. Modify the view template to keep
-the previous search field selected when displaying the results.</li>
-<li>In the tables displaying the full job data, find a way to manipulate the
+the previous search field selected when displaying the results.</p></li>
+<li><p>In the tables displaying the full job data, find a way to manipulate the
 font, style, capitalization, etc. to further distinguish the labels from the
 data (e.g. <strong>Employer:</strong> <em>LaunchCode</em>). (<em>Hint:</em> We capitalize the title
-string in multiple templates, so have a look around).</li>
-<li>In the tables of the job results, make each value (except <code class="docutils literal notranslate"><span class="pre">name</span></code>)
+string in multiple templates, so have a look around).</p></li>
+<li><p>In the tables of the job results, make each value (except <code class="docutils literal notranslate"><span class="pre">name</span></code>)
 hyperlinked to a new listing of all jobs with that same value. For example,
 if we have a list of jobs with the <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> skill, clicking on a
 location value like <code class="docutils literal notranslate"><span class="pre">Saint</span> <span class="pre">Louis</span></code> will generate a new list with all the
-jobs available in that city.</li>
+jobs available in that city.</p></li>
 </ol>
 </div>
 </div>

@@ -90,8 +90,8 @@
 The exercise instructions assume that your code resembles the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/persistent-controller" target="_blank">persistent-controller<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.
 Create a new branch in your own <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> repo to get started on the exercises.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">You will be making one model class and adding to <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You will be making one model class and adding to <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>.
 If you are not sure what these classes should look like, refer back to the <a class="reference internal" href="accessingdata.html#intro-to-data-stores"><span class="std std-ref">section</span></a> on data stores and <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>.</p>
 </div>
 <div class="section" id="the-eventcategory-class">
@@ -99,10 +99,10 @@ If you are not sure what these classes should look like, refer back to the <a cl
 <p>First, create a new class called <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> in the <code class="docutils literal notranslate"><span class="pre">Models</span></code> directory.</p>
 <p><code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> needs to have the following:</p>
 <ol class="arabic simple">
-<li>An <code class="docutils literal notranslate"><span class="pre">Id</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</li>
-<li>A <code class="docutils literal notranslate"><span class="pre">Name</span></code> property of type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</li>
-<li>A no arg constructor.</li>
-<li>A constructor that sets the value of <code class="docutils literal notranslate"><span class="pre">Name</span></code>.</li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">Id</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Name</span></code> property of type <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></li>
+<li><p>A no arg constructor.</p></li>
+<li><p>A constructor that sets the value of <code class="docutils literal notranslate"><span class="pre">Name</span></code>.</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> represents data that will be stored in our database.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-1"><span class="std std-ref">Check your solutions</span></a></p>
@@ -117,32 +117,34 @@ If you are not sure what these classes should look like, refer back to the <a cl
 <p>With the two steps completed above, you now need to add a new migration and update your database.
 You should see a new table in your database!</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p><strong>Where is my table!?</strong></p>
 <p>If you are not able to see your new <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> table try the following:</p>
 <ol class="arabic simple">
-<li><strong>Drop tables</strong><ol class="loweralpha">
-<li>Start by dropping all of your tables in MySql Workbench</li>
-<li>Add a new migration in your terminal</li>
-<li>Update your database in the terminal</li>
-<li>Refresh your schema in MySql Workbench</li>
+<li><p><strong>Drop tables</strong></p>
+<ol class="loweralpha simple">
+<li><p>Start by dropping all of your tables in MySql Workbench</p></li>
+<li><p>Add a new migration in your terminal</p></li>
+<li><p>Update your database in the terminal</p></li>
+<li><p>Refresh your schema in MySql Workbench</p></li>
 </ol>
 </li>
 </ol>
 <p>If you still can’t see your table, then you will need to drop your schema and delete old migrations.</p>
 <ol class="arabic simple" start="2">
-<li><strong>Drop schema</strong><ol class="loweralpha">
-<li>Drop the schema in MySql Workbench.  Don’t worry, we’ll get it back.</li>
-<li>Recreate your schema in MySql Workbench like you did earlier.
-You can use the same names and passwords if you like.  If you change any of the names and passwords, make sure you update your MySql connections that you made in the <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file as well as either you <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> or <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> files.</li>
-<li>Delete your old migrations from your C# project.</li>
-<li>Add a new migration in your terminal</li>
-<li>Update your database in the terminal</li>
-<li>Refresh your schema in MySql Workbench</li>
+<li><p><strong>Drop schema</strong></p>
+<ol class="loweralpha simple">
+<li><p>Drop the schema in MySql Workbench.  Don’t worry, we’ll get it back.</p></li>
+<li><p>Recreate your schema in MySql Workbench like you did earlier.
+You can use the same names and passwords if you like.  If you change any of the names and passwords, make sure you update your MySql connections that you made in the <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> file as well as either you <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> or <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> files.</p></li>
+<li><p>Delete your old migrations from your C# project.</p></li>
+<li><p>Add a new migration in your terminal</p></li>
+<li><p>Update your database in the terminal</p></li>
+<li><p>Refresh your schema in MySql Workbench</p></li>
 </ol>
 </li>
 </ol>
-<p class="last">You should see your new table in MySql Workbench now.</p>
+<p>You should see your new table in MySql Workbench now.</p>
 </div>
 </div>
 <div class="section" id="the-eventcategorycontroller-class">
@@ -154,8 +156,8 @@ To get our action methods working, we also need a variable of type <code class="
 <h3><span class="section-number">17.4.4.1. </span><code class="docutils literal notranslate"><span class="pre">Index()</span></code><a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Index()</span></code> needs to do the following:</p>
 <ol class="arabic simple">
-<li>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Index</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</li>
-<li>Pass the <code class="docutils literal notranslate"><span class="pre">DbContext</span></code> category values as a list into the view template as a model.</li>
+<li><p>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Index</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</p></li>
+<li><p>Pass the <code class="docutils literal notranslate"><span class="pre">DbContext</span></code> category values as a list into the view template as a model.</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-3"><span class="std std-ref">Check your solutions</span></a></p>
 </div>
@@ -166,9 +168,9 @@ To get our action methods working, we also need a variable of type <code class="
 Add a new view called <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> needs to have the following:</p>
 <ol class="arabic simple">
-<li>Use the list passed in from the action method in the controller as a model to populate the view.</li>
-<li>An <code class="docutils literal notranslate"><span class="pre">h1</span></code> with an appropriate heading for the page.</li>
-<li>A table that will display all of the category names of the event categories stored in our database.</li>
+<li><p>Use the list passed in from the action method in the controller as a model to populate the view.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">h1</span></code> with an appropriate heading for the page.</p></li>
+<li><p>A table that will display all of the category names of the event categories stored in our database.</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/orm-1.html#orm1-ex-4"><span class="std std-ref">Check your solutions</span></a></p>
 </div>

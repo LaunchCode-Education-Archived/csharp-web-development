@@ -107,19 +107,19 @@ data that is typically associated with a student (in the sense of a high
 school or college student). There are a lot of possibilities, but here
 are the most important:</p>
 <ol class="arabic simple">
-<li>Name</li>
-<li>Student ID</li>
-<li>Number of credits</li>
-<li>GPA</li>
+<li><p>Name</p></li>
+<li><p>Student ID</p></li>
+<li><p>Number of credits</p></li>
+<li><p>GPA</p></li>
 </ol>
 <p>In order to declare these fields within our class, we’ll need to
 determine the best data type for each. A field may be of any primitive
 or object type. In this case, the following types will work best:</p>
 <ol class="arabic simple">
-<li>Name: <code class="docutils literal notranslate"><span class="pre">string</span></code></li>
-<li>Student ID: <code class="docutils literal notranslate"><span class="pre">int</span></code></li>
-<li>Number of credits: <code class="docutils literal notranslate"><span class="pre">int</span></code></li>
-<li>GPA: <code class="docutils literal notranslate"><span class="pre">double</span></code></li>
+<li><p>Name: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>Student ID: <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p>Number of credits: <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p>GPA: <code class="docutils literal notranslate"><span class="pre">double</span></code></p></li>
 </ol>
 <p>Let’s put these inside of a class. While they may be declared anywhere
 within a class, fields should always be declared at the top of the
@@ -178,8 +178,8 @@ set a given field. If we make the getter and/or setter method for a
 given property public, then others will be able to access or modify the
 field in that way.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Getter setter methods are also often called <strong>accessors</strong>.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Getter setter methods are also often called <strong>accessors</strong>.</p>
 </div>
 <p>Here is a getter/setter pair for <code class="docutils literal notranslate"><span class="pre">name</span></code> (you can imagine how the
 others would be written).</p>
@@ -225,26 +225,26 @@ private if you’re just going to allow people to get and set them
 anyway!?” Great question. There are lots of reasons to use getters and
 setters to control access. Here are just a few:</p>
 <ol class="arabic simple">
-<li>Getters and setters allow you to implement behavior that happens every time a
+<li><p>Getters and setters allow you to implement behavior that happens every time a
 field is accessed (get) or changed (set). For example, you may want track the
 number of times a change is made to a field. With a private field and setter
 method, this can be done simply by incrementing a counter variable (e.g. <code class="docutils literal notranslate"><span class="pre">i++</span></code>.)
 With a publicly available field, the steps to track its changes would be much more diffuse,
-if not error-prone.</li>
-<li>You can perform validation within a setter. For example, we might
+if not error-prone.</p></li>
+<li><p>You can perform validation within a setter. For example, we might
 want to ensure that a student’s name contains only certain
-characters, or that their student ID is positive.</li>
-<li>You can use different access modifiers on getters and setters for the
+characters, or that their student ID is positive.</p></li>
+<li><p>You can use different access modifiers on getters and setters for the
 same field, based on desired usage. For example, you might want to
 allow anyone to be able to read the value of a field, but only
 classes within the same assembly to modify it. You could do this with
 a public getter and an internal setter, but not as a field
 without getters and setters, which could only be public to everyone
-or internal to everyone.</li>
+or internal to everyone.</p></li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">One of the four fields in our <code class="docutils literal notranslate"><span class="pre">Student</span></code> class is a prime candidate for
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>One of the four fields in our <code class="docutils literal notranslate"><span class="pre">Student</span></code> class is a prime candidate for
 the scenario described in item 3. Which one do you think it is?</p>
 </div>
 <p>To set access levels on accessors so that they are different than the access
@@ -368,8 +368,8 @@ to change in the future, such as changing the acceesibility of only the getter o
 and more capable when used in your user interface through data binding, which we will
 explore more in later chapters.</p>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">If you were to try to use the same identifier for both the backing field and
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>If you were to try to use the same identifier for both the backing field and
 the property, you’ll see a <em>StackOverflowException</em> due to infinite recursion
 – i.e., the property would infinitely call itself!</p>
 </div>
@@ -381,13 +381,13 @@ we need in our student class.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">4.3.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is a method that is used to give a private field a value?</p>
-<ol class="last loweralpha simple">
-<li>getter</li>
-<li>method</li>
-<li>property</li>
-<li>setter</li>
+<ol class="loweralpha simple">
+<li><p>getter</p></li>
+<li><p>method</p></li>
+<li><p>property</p></li>
+<li><p>setter</p></li>
 </ol>
 </div>
 </div>

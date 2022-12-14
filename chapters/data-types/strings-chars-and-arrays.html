@@ -110,44 +110,44 @@ digit, punctuation, or whitespace like tab (<code class="docutils literal notran
 <p>The table below summarizes some of the most common string methods available in
 C#. For these examples, we use the string variable
 <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;Rutabaga&quot;</span></code>.</p>
-<table border="1" class="docutils align-default" id="id1">
+<table class="docutils align-default" id="id1">
 <caption><span class="caption-text">String methods and properties in C#</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">C# Syntax</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>C# Syntax</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">str.Substring(3,1)</span></code></td>
-<td>Returns the character in 3rd position, (<code class="docutils literal notranslate"><span class="pre">a</span></code>).</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.Substring(3,1)</span></code></p></td>
+<td><p>Returns the character in 3rd position, (<code class="docutils literal notranslate"><span class="pre">a</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">str.Substring(2,3)</span></code></td>
-<td>Return substring from 2nd to 4th, i.e.&nbsp;substring starting at
-index 2 and 3 characters long, (<code class="docutils literal notranslate"><span class="pre">tab</span></code>).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.Substring(2,3)</span></code></p></td>
+<td><p>Return substring from 2nd to 4th, i.e. substring starting at
+index 2 and 3 characters long, (<code class="docutils literal notranslate"><span class="pre">tab</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">str.Length</span></code></td>
-<td>Tells us the length of the string, (<code class="docutils literal notranslate"><span class="pre">8</span></code>).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.Length</span></code></p></td>
+<td><p>Tells us the length of the string, (<code class="docutils literal notranslate"><span class="pre">8</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">str.IndexOf('a')</span></code></td>
-<td>Returns the index for the first occurrence of ‘a’, (<code class="docutils literal notranslate"><span class="pre">3</span></code>).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.IndexOf('a')</span></code></p></td>
+<td><p>Returns the index for the first occurrence of ‘a’, (<code class="docutils literal notranslate"><span class="pre">3</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">str.Split('a')</span></code></td>
-<td>Splits the string into sections at each <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> and stores the
-sections as elements in an array, ({<code class="docutils literal notranslate"><span class="pre">Rut</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>}).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.Split('a')</span></code></p></td>
+<td><p>Splits the string into sections at each <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> and stores the
+sections as elements in an array, ({<code class="docutils literal notranslate"><span class="pre">Rut</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>}).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">+</span> <span class="pre">str</span></code></td>
-<td>Concatenate two strings together, (<code class="docutils literal notranslate"><span class="pre">RutabagaRutabaga</span></code>).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">+</span> <span class="pre">str</span></code></p></td>
+<td><p>Concatenate two strings together, (<code class="docutils literal notranslate"><span class="pre">RutabagaRutabaga</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">str.Trim()</span></code></td>
-<td>Removes any whitespace at the beginning or end of the string, (<code class="docutils literal notranslate"><span class="pre">Rutabaga</span></code> — there’s not whitespace here).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.Trim()</span></code></p></td>
+<td><p>Removes any whitespace at the beginning or end of the string, (<code class="docutils literal notranslate"><span class="pre">Rutabaga</span></code> — there’s not whitespace here).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">str.ToUpper(),</span> <span class="pre">str.ToLower()</span></code></td>
-<td>Changes all alphabetic characters in the string to UPPERCASE or
-lowercase, respectively,(<code class="docutils literal notranslate"><span class="pre">RUTABAGA</span></code>, <code class="docutils literal notranslate"><span class="pre">rutabaga</span></code>).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.ToUpper(),</span> <span class="pre">str.ToLower()</span></code></p></td>
+<td><p>Changes all alphabetic characters in the string to UPPERCASE or
+lowercase, respectively,(<code class="docutils literal notranslate"><span class="pre">RUTABAGA</span></code>, <code class="docutils literal notranslate"><span class="pre">rutabaga</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -195,27 +195,27 @@ how they work.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">2.3.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Name the C# method or property responsible for removing whitespace from a string value:</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">.Length</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.Trim()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.Split()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.Strip()</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.Length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Trim()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Split()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Strip()</span></code></p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Assume that we declare the following C# array:</p>
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="p">[]</span> <span class="n">someWords</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[</span><span class="m">5</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>Which of the following shows a correct initialization for the array?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{'hello',</span> <span class="pre">'world',</span> <span class="pre">'123',</span> <span class="pre">'LaunchCode</span> <span class="pre">ROCKS!'}</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">&quot;123&quot;,</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;,</span> <span class="pre">&quot;Java&quot;}</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">'a',</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;,</span> <span class="pre">&quot;Java&quot;}</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">&quot;avocado&quot;,</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;}</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{'hello',</span> <span class="pre">'world',</span> <span class="pre">'123',</span> <span class="pre">'LaunchCode</span> <span class="pre">ROCKS!'}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">&quot;123&quot;,</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;,</span> <span class="pre">&quot;Java&quot;}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">'a',</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;,</span> <span class="pre">&quot;Java&quot;}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">someWords</span> <span class="pre">=</span> <span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;,</span> <span class="pre">&quot;avocado&quot;,</span> <span class="pre">&quot;LaunchCode</span> <span class="pre">ROCKS!&quot;}</span></code></p></li>
 </ol>
 </div>
 </div>

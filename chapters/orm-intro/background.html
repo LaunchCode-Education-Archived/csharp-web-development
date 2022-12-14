@@ -87,8 +87,8 @@
   <div class="section" id="object-relational-mapping">
 <h1><span class="section-number">17.1. </span>Object-Relational Mapping<a class="headerlink" href="#object-relational-mapping" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-warning admonition" id="index-0">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>Look for notes regarding any changes between the videos, Visual Studio, and Entity Framework Core.
 We will provide notes in the text for working with the <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code> repos as well as
 projects you created yourself.</p>
 </div>
@@ -96,7 +96,7 @@ projects you created yourself.</p>
 <p><strong>Object-Relational Mapping</strong> or <strong>ORM</strong> is a technique for converting data between C# objects and relational databases.
 ORM converts data between two incompatible type systems (C# and MySQL), such that each model class becomes a table in our database and each instance a row of the table.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>Let’s say we have a C# class called <code class="docutils literal notranslate"><span class="pre">ContactInfo</span></code>. <code class="docutils literal notranslate"><span class="pre">ContactInfo</span></code> has three properties: an integer <code class="docutils literal notranslate"><span class="pre">Id</span></code>, a string <code class="docutils literal notranslate"><span class="pre">Name</span></code>, and a string <code class="docutils literal notranslate"><span class="pre">Email</span></code>.
 Now we want to store this information in a MySQL database.
 We can use ORM so that the database of our application has a table to contain all objects instantiated from the <code class="docutils literal notranslate"><span class="pre">ContactInfo</span></code> class.
@@ -111,7 +111,7 @@ While we will write the code to add Frank’s info to our database in C#, the fr
 <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;Frank&quot;</span><span class="p">,</span><span class="s2">&quot;frank@email.com&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p class="last">Now Frank’s info is stored in our MySQL database in the <code class="docutils literal notranslate"><span class="pre">contactinfo</span></code> table!</p>
+<p>Now Frank’s info is stored in our MySQL database in the <code class="docutils literal notranslate"><span class="pre">contactinfo</span></code> table!</p>
 </div>
 <p>To make ORM work in our C# applications, we need an <strong>object-relational mapper</strong> to convert between C# and MySQL.
 When we create a new model class and configure it to be stored in a database, a mapper creates a MySQL query to make the corresponding table. In our example above, the query to create the <code class="docutils literal notranslate"><span class="pre">contactinfo</span></code> table from the <code class="docutils literal notranslate"><span class="pre">ContactInfo</span></code> class would be:</p>
@@ -128,8 +128,8 @@ When we create a new model class and configure it to be stored in a database, a 
 </td></tr></table></div>
 <p>One of the most widely used object-relational mappers available for C# and ASP.NET Core is <strong>Entity Framework Core</strong>. This framework makes use of <strong>data layers</strong>. When we learned about models, we learned that <a class="reference internal" href="../aspdotnet-model-classes/data-layer.html#data-layer-dev"><span class="std std-ref">data layers</span></a> add abstraction between models and the data we want to store. With Entity FrameworkCore, data layers take the form of classes that extend <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>. Models are NOT persistent data stores and relational databases do NOT shape the C# objects we will be using. We want to make sure that the two remain separate.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We’ll often shorten Entity Framework Core to EF. The “Core” in the name indicates that we’re talking about the version of EF that is compatible with ASP.NET Core.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We’ll often shorten Entity Framework Core to EF. The “Core” in the name indicates that we’re talking about the version of EF that is compatible with ASP.NET Core.</p>
 </div>
 <div class="section" id="orm-in-asp-net">
 <span id="index-1"></span><h2><span class="section-number">17.1.1. </span>ORM in ASP.NET<a class="headerlink" href="#orm-in-asp-net" title="Permalink to this headline">¶</a></h2>
@@ -138,8 +138,8 @@ When we create a new model class and configure it to be stored in a database, a 
 <span id="setup-orm-database"></span><h3><span class="section-number">17.1.1.1. </span>Setting up a Persistent Database - Video<a class="headerlink" href="#setting-up-a-persistent-database-video" title="Permalink to this headline">¶</a></h3>
 <p>The following video explains how we can add a MySQL database to our <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> application and configure our app to connect to the database.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums" target="_blank">enums<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch. If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup" target="_blank">db-setup<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to verify what code this video starts with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/enums" target="_blank">enums<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch. If you want to verify what code this video ends with, check out the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/db-setup" target="_blank">db-setup<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch.</p>
 </div>
 
 <div style="text-align:center;"><iframe width="800" height="450" src="https://www.youtube.com/embed/RJ0NRG1FjIA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -150,8 +150,8 @@ When we create a new model class and configure it to be stored in a database, a 
 <p>To get started with using a relational database with our MVC applications, we need to first go to MySQL Workbench.</p>
 <p>In MySQL Workbench, do the following:</p>
 <ol class="arabic simple">
-<li>Create a new schema, <code class="docutils literal notranslate"><span class="pre">coding_events</span></code>.</li>
-<li>Add a new user, <code class="docutils literal notranslate"><span class="pre">coding_events</span></code>, with a new password. Give the user all privileges to modify your new schema.</li>
+<li><p>Create a new schema, <code class="docutils literal notranslate"><span class="pre">coding_events</span></code>.</p></li>
+<li><p>Add a new user, <code class="docutils literal notranslate"><span class="pre">coding_events</span></code>, with a new password. Give the user all privileges to modify your new schema.</p></li>
 </ol>
 <p>Now, attach MySQL to your project in <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> by adding the following property.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ConnectionStrings&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -166,34 +166,37 @@ When we create a new model class and configure it to be stored in a database, a 
 <p><strong>Working with the NuGet Package Manager</strong></p>
 <p>Open the NuGet Package Manager in Visual Studio:</p>
 <ul class="simple">
-<li><strong>Windows</strong> - <em>Tools &gt; NuGet Package Manager &gt; Manage NuGet Packages for Solution</em></li>
-<li><strong>Mac</strong> - <em>Project &gt; Manage NuGet Dependencies</em></li>
+<li><p><strong>Windows</strong> - <em>Tools &gt; NuGet Package Manager &gt; Manage NuGet Packages for Solution</em></p></li>
+<li><p><strong>Mac</strong> - <em>Project &gt; Manage NuGet Dependencies</em></p></li>
 </ul>
 <p>Search for for all of the packages listed below. Select the package and install.</p>
 <p>When installing these packages, make sure that the versions are the same as the .NET Core version your project is using.
 You can confirm this is the case by reviewing the code in your csproj file.</p>
 <p>We will need to install the following NuGet packages:</p>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">Pomelo.EntityFrameworkCore.MySql</span></code></dt><dd>This dependency provides code that is able to connect to a MySQL database
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Pomelo.EntityFrameworkCore.MySql</span></code></dt><dd><p>This dependency provides code that is able to connect to a MySQL database
 from within an ASP.NET Core application using EF. Note that this package
-itself depends on the following EF packages:</dd>
+itself depends on the following EF packages:</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Relational</span></code></dt><dd>This is a mapping framework that automates access and storage of data in your project’s database.</dd>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Relational</span></code></dt><dd><p>This is a mapping framework that automates access and storage of data in your project’s database.</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Design</span></code></dt><dd>This helps manage data migrations and the design-time logic.
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Microsoft.EntityFrameworkCore.Design</span></code></dt><dd><p>This helps manage data migrations and the design-time logic.
 <strong>Note:</strong> This was not installed in the video above.
-If you do not install it, Entity Framework Core will print an error message asking you to install it.</dd>
+If you do not install it, Entity Framework Core will print an error message asking you to install it.</p>
+</dd>
 </dl>
 </li>
 </ul>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You can view installed packages and their dependencies by navigating to
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You can view installed packages and their dependencies by navigating to
 <em>Dependencies &gt; NuGet</em> in the Solution Explorer (or the Solution pane on Mac)
 and expanding a given package.</p>
 </div>
@@ -203,7 +206,7 @@ and expanding a given package.</p>
 <p>EF 6.0.X is typically installed with Visual Studio 2022.</p>
 <p>You can test that it has been installed by running the following in your terminal.</p>
 <ol class="arabic">
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">cd</span></code> your way down into the project folders.
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> your way down into the project folders.
 Verify your location by running the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.  You should see all the folders within your project.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>student-computer:CodingEventsDemo student$ ls
 CodingEventsDemo.csproj           ViewModels
@@ -216,7 +219,7 @@ Startup.cs                        wwwroot
 </pre></div>
 </div>
 </li>
-<li><p class="first">When you are this level run the following command:</p>
+<li><p>When you are this level run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dotnet ef
 </pre></div>
 </div>
@@ -236,8 +239,8 @@ Startup.cs                        wwwroot
 </li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We recommend installing either version 6.0.11 or higher</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We recommend installing either version 6.0.11 or higher</p>
 </div>
 </div>
 <div class="section" id="troubleshooting-ef-core-tools">
@@ -245,9 +248,8 @@ Startup.cs                        wwwroot
 <p>If you are not able to see the Entity Framework Core logo,
 then try the following steps to troubleshoot the issue.</p>
 <ol class="arabic">
-<li><p class="first">Open a terminal window using your terminal app outside of Visual Studio.</p>
-</li>
-<li><p class="first">Open a terminal and run:</p>
+<li><p>Open a terminal window using your terminal app outside of Visual Studio.</p></li>
+<li><p>Open a terminal and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dotnet tool install -g dotnet-ef
 </pre></div>
 </div>
@@ -255,34 +257,30 @@ then try the following steps to troubleshoot the issue.</p>
 which means it will be available for any ASP.NET project we use in the future.
 We will use the tools provided by this package to update our database schema after adding or changing model classes.</p>
 </li>
-<li><p class="first">Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We’ll do that in the next section.</p>
-</li>
-<li><p class="first">To test that this install worked, run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span></code>. The output should be a message displaying basic EF tool commands and options.</p>
-</li>
+<li><p>Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We’ll do that in the next section.</p></li>
+<li><p>To test that this install worked, run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span></code>. The output should be a message displaying basic EF tool commands and options.</p></li>
 </ol>
 <div class="admonition-note-for-mac-users-only admonition">
-<p class="first admonition-title">Note for Mac users only</p>
+<p class="admonition-title">Note for Mac users only</p>
 <p>For these tools to be accessible from the command line, they must be within your user path.
 We create or update your <a class="reference external" href="https://friendly-101.readthedocs.io/en/latest/bashprofile.html" target="_blank">bash profile<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.
 Your bash profile is a text file that you can add any paths needed.
 You may add to this as you continue on your programming journey.</p>
-<ol class="last arabic">
-<li><p class="first">Open your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> with this command:</p>
+<ol class="arabic">
+<li><p>Open your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> with this command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open ~/.bash_profile
 </pre></div>
 </div>
 <p><a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/terminal/basic-commands.html" target="_blank">Recall<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 that <code class="docutils literal notranslate"><span class="pre">~</span></code> is shorthand for your home directory, which is the directory you are in when you open a new terminal window.</p>
 </li>
-<li><p class="first">Add the following line to the very bottom of your profile:</p>
+<li><p>Add the following line to the very bottom of your profile:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/.dotnet/tools/&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Save and close the file. Then close your terminal window and open a new one, so that the changes can take effect.</p>
-</li>
-<li><p class="first">To test that this install worked, run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span></code>. The output should be a message displaying basic EF tool commands and options.</p>
-</li>
+<li><p>Save and close the file. Then close your terminal window and open a new one, so that the changes can take effect.</p></li>
+<li><p>To test that this install worked, run <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">ef</span></code>. The output should be a message displaying basic EF tool commands and options.</p></li>
 </ol>
 </div>
 <p>Once you have taken these steps, you are ready to set up the appropriate models and controllers for the application. We’ll do that in the next section.</p>
@@ -294,8 +292,8 @@ that <code class="docutils literal notranslate"><span class="pre">~</span></code
 <p>If we do not do these steps, then our application will not be able to use a persistent data source.</p>
 <p>Setting the value of the <code class="docutils literal notranslate"><span class="pre">DefaultConnection</span></code> property using the values of the username and password is NOT a best practice. We regularly commit our code to Github, meaning anyone who reads the code in our repository can see the username and password. While you can do it for the applications in this class, you do not want to do it in the future.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">To avoid this in the future, you can configure your <code class="docutils literal notranslate"><span class="pre">DefaultConnection</span></code> string to reference <strong>environment variables</strong>. You then hide the appropriate info by setting the environment variable’s value equal to the password, for example.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>To avoid this in the future, you can configure your <code class="docutils literal notranslate"><span class="pre">DefaultConnection</span></code> string to reference <strong>environment variables</strong>. You then hide the appropriate info by setting the environment variable’s value equal to the password, for example.</p>
 </div>
 <p>See Microsoft <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-6.0#environment-variables" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> to learn how to keep the username and password to your database safe and secure.</p>
 </div>
@@ -303,16 +301,16 @@ that <code class="docutils literal notranslate"><span class="pre">~</span></code
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">17.1.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last"><strong>True/False:</strong> Writing usernames and passwords in plain text in a file is a GREAT idea!</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p><strong>True/False:</strong> Writing usernames and passwords in plain text in a file is a GREAT idea!</p>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last"><strong>True/False:</strong> An ORM converts data between C# objects and relational databases.</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p><strong>True/False:</strong> An ORM converts data between C# objects and relational databases.</p>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
-<p class="last"><strong>True/False:</strong> We need Entity Framework Core AND a MySQL provider to successfully use ORM in this project.</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p><strong>True/False:</strong> We need Entity Framework Core AND a MySQL provider to successfully use ORM in this project.</p>
 </div>
 </div>
 </div>

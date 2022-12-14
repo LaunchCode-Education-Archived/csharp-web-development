@@ -109,8 +109,8 @@
 <span id="unit-testing-solution-2"></span><h2><code class="docutils literal notranslate"><span class="pre">TestGasTankAfterExceedingTankRange()</span></code><a class="headerlink" href="#testgastankafterexceedingtankrange" title="Permalink to this headline">¶</a></h2>
 <p>Add a test for the fourth TODO, “GasTankLevel is accurate after attempting to drive past tank range”.</p>
 <ol class="arabic simple">
-<li>You’re on your own for this one. You’ll need to simulate the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
-travelling farther than it’s <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> allows.</li>
+<li><p>You’re on your own for this one. You’ll need to simulate the <code class="docutils literal notranslate"><span class="pre">Car</span></code>
+travelling farther than it’s <code class="docutils literal notranslate"><span class="pre">gasTankLevel</span></code> allows.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -134,7 +134,7 @@ perform an action on our car object, and we are expecting the object
 to throw an error. In this case, we are going to attempt to add gas
 to our car that exceeds the gas tank size.</p>
 <ol class="arabic simple" start="2">
-<li>Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute <code class="docutils literal notranslate"><span class="pre">[ExpectedException]</span></code>.</li>
+<li><p>Now we need to tell MSTest the test passes if an exception is thrown. We will use a new attribute <code class="docutils literal notranslate"><span class="pre">[ExpectedException]</span></code>.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -153,8 +153,8 @@ to our car that exceeds the gas tank size.</p>
 </td></tr></table></div>
 <p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises3"><span class="std std-ref">Back to the exercises</span></a></p>
 <ol class="arabic simple" start="4">
-<li>Back in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, implement the new <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and a
-<code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> scenario.</li>
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">CarTests</span></code>, implement the new <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and a
+<code class="docutils literal notranslate"><span class="pre">Assert.Fail()</span></code> scenario.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -175,9 +175,9 @@ to our car that exceeds the gas tank size.</p>
 </td></tr></table></div>
 <p><a class="reference internal" href="../../chapters/unit-testing/exercises.html#unit-testing-exercises3"><span class="std std-ref">Back to the exercises</span></a></p>
 <ol class="arabic simple" start="6">
-<li>We need to refactor <code class="docutils literal notranslate"><span class="pre">Car</span></code> to throw an exception when too much
+<li><p>We need to refactor <code class="docutils literal notranslate"><span class="pre">Car</span></code> to throw an exception when too much
 gas is added to the tank. Find the <code class="docutils literal notranslate"><span class="pre">AddGas()</span></code> method and
-modify it by adding the following code in the appropriate place.</li>
+modify it by adding the following code in the appropriate place.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2

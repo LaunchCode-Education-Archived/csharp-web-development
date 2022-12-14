@@ -90,17 +90,16 @@
 <p>To help overcome this, let’s consider a common occurrence—sorting a
 <code class="docutils literal notranslate"><span class="pre">List</span></code> of objects.</p>
 <ol class="arabic">
-<li><p class="first">If the list contains <code class="docutils literal notranslate"><span class="pre">string</span></code> or numerical entries, then sorting the list
+<li><p>If the list contains <code class="docutils literal notranslate"><span class="pre">string</span></code> or numerical entries, then sorting the list
 is <a class="reference internal" href="../control-flow-and-collections/list.html#listsort"><span class="std std-ref">trivial</span></a>:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">listName</span><span class="p">.</span><span class="n">Sort</span><span class="p">();</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">However, if the elements are custom objects (like <code class="docutils literal notranslate"><span class="pre">Cat</span></code>), then sorting the
+<li><p>However, if the elements are custom objects (like <code class="docutils literal notranslate"><span class="pre">Cat</span></code>), then sorting the
 list becomes more complicated. This is because the objects may contain
 multiple fields, any of which could be used as a sorting option. For
-<code class="docutils literal notranslate"><span class="pre">Cat</span></code> objects, this could include <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span></code>, or <code class="docutils literal notranslate"><span class="pre">mass</span></code>.</p>
-</li>
+<code class="docutils literal notranslate"><span class="pre">Cat</span></code> objects, this could include <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span></code>, or <code class="docutils literal notranslate"><span class="pre">mass</span></code>.</p></li>
 </ol>
 <div class="section" id="getting-started">
 <h2><span class="section-number">8.6.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
@@ -110,8 +109,8 @@ cream store. It consists of a refrigerated display <code class="docutils literal
 a collection of ice cream <code class="docutils literal notranslate"><span class="pre">Flavor</span></code> objects and a selection of <code class="docutils literal notranslate"><span class="pre">Cone</span></code>
 objects.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Did you notice the abstract <code class="docutils literal notranslate"><span class="pre">Ingredient</span></code> class? This gets extended by
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Did you notice the abstract <code class="docutils literal notranslate"><span class="pre">Ingredient</span></code> class? This gets extended by
 <code class="docutils literal notranslate"><span class="pre">Flavor</span></code> and <code class="docutils literal notranslate"><span class="pre">Cone</span></code> to help streamline the code.</p>
 </div>
 </div>
@@ -121,24 +120,24 @@ objects.</p>
 alphabetically by the <code class="docutils literal notranslate"><span class="pre">name</span></code> field. Fortunately, the <code class="docutils literal notranslate"><span class="pre">IComparer</span></code>
 interface helps you solve the sorting-objects-by-field problem.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Before proceeding, make sure you have read the section on the <a class="reference internal" href="given-interfaces.html#icomparer"><span class="std std-ref">IComparer interface</span></a>!</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Before proceeding, make sure you have read the section on the <a class="reference internal" href="given-interfaces.html#icomparer"><span class="std std-ref">IComparer interface</span></a>!</p>
 </div>
 <div class="section" id="create-a-sorting-class">
 <h3><span class="section-number">8.6.2.1. </span>Create a Sorting Class<a class="headerlink" href="#create-a-sorting-class" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Create a new class called <code class="docutils literal notranslate"><span class="pre">FlavorComparer</span></code> and have it implement the
+<li><p>Create a new class called <code class="docutils literal notranslate"><span class="pre">FlavorComparer</span></code> and have it implement the
 <code class="docutils literal notranslate"><span class="pre">IComparer</span></code> interface:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">FlavorComparer</span> <span class="p">:</span> <span class="n">IComparer</span><span class="p">&lt;</span><span class="n">Flavor</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Notice that Visual Studio flags a couple of errors that you need to fix:</p>
+<li><p>Notice that Visual Studio flags a couple of errors that you need to fix:</p>
 <ol class="loweralpha simple">
-<li>Add the namespace <code class="docutils literal notranslate"><span class="pre">System.Collections.Generic</span></code>.</li>
+<li><p>Add the namespace <code class="docutils literal notranslate"><span class="pre">System.Collections.Generic</span></code>.</p></li>
 </ol>
 </li>
-<li><p class="first">To start sorting, we need a <code class="docutils literal notranslate"><span class="pre">Compare()</span></code> method. Add the following code to create one:</p>
+<li><p>To start sorting, we need a <code class="docutils literal notranslate"><span class="pre">Compare()</span></code> method. Add the following code to create one:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -165,19 +164,19 @@ as well as specific <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic">
-<li><p class="first">To sort the <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> list, first create a new <code class="docutils literal notranslate"><span class="pre">FlavorComparer</span></code>
+<li><p>To sort the <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> list, first create a new <code class="docutils literal notranslate"><span class="pre">FlavorComparer</span></code>
 object.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">FlavorComparer</span> <span class="n">comparer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FlavorComparer</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Next, call the <code class="docutils literal notranslate"><span class="pre">Sort</span></code> method on <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> and pass the <code class="docutils literal notranslate"><span class="pre">comparer</span></code>
+<li><p>Next, call the <code class="docutils literal notranslate"><span class="pre">Sort</span></code> method on <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> and pass the <code class="docutils literal notranslate"><span class="pre">comparer</span></code>
 object as the argument.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">availableFlavors</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">comparer</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Iterating through the <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> list with a loop before and after the sort shows
+<li><p>Iterating through the <code class="docutils literal notranslate"><span class="pre">availableFlavors</span></code> list with a loop before and after the sort shows
 the results. (The output below displays just the <code class="docutils literal notranslate"><span class="pre">name</span></code> fields).</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Before:                 After:
 
@@ -191,10 +190,10 @@ Strawberry Sorbet       Vanilla
 </li>
 </ol>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>Instead of declaring and initializing the <code class="docutils literal notranslate"><span class="pre">comparer</span></code> object, we could
 combine steps 1 and 2 by using a single statement:</p>
-<div class="last highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">availableFlavors</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="k">new</span> <span class="n">FlavorComparer</span><span class="p">());</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">availableFlavors</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="k">new</span> <span class="n">FlavorComparer</span><span class="p">());</span>
 </pre></div>
 </div>
 </div>
@@ -205,14 +204,13 @@ combine steps 1 and 2 by using a single statement:</p>
 <p>Now let’s sort our <code class="docutils literal notranslate"><span class="pre">availableCones</span></code> list by cost, from least expensive to most
 expensive.</p>
 <ol class="arabic">
-<li><p class="first">Create the new class <code class="docutils literal notranslate"><span class="pre">ConeComparer</span></code>.</p>
-</li>
-<li><p class="first">Follow the example above to implement the <code class="docutils literal notranslate"><span class="pre">IComparer</span></code> interface and
+<li><p>Create the new class <code class="docutils literal notranslate"><span class="pre">ConeComparer</span></code>.</p></li>
+<li><p>Follow the example above to implement the <code class="docutils literal notranslate"><span class="pre">IComparer</span></code> interface and
 evaluate <code class="docutils literal notranslate"><span class="pre">Cone</span></code> objects by cost.
 Since comparing two numbers is different from comparing strings, try getting the difference between the two numbers. If the difference is positive, then we know the first number is greater. If the difference is negative, then we know that the second number is greater.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/interfaces.html#interfaces-cones"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">Main()</span></code> method, sort the <code class="docutils literal notranslate"><span class="pre">availableCones</span></code> list, then print the elements to the screen
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Main()</span></code> method, sort the <code class="docutils literal notranslate"><span class="pre">availableCones</span></code> list, then print the elements to the screen
 to verify the results.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Before:           After:
 
@@ -226,8 +224,8 @@ Bowl: $0.05          Waffle: $1.25
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/interfaces.html#interfaces-sort"><span class="std std-ref">Check your solutions</span></a></p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Remember that the <code class="docutils literal notranslate"><span class="pre">cost</span></code> field is of type <code class="docutils literal notranslate"><span class="pre">double</span></code> and <code class="docutils literal notranslate"><span class="pre">Compare()</span></code> has a return type of type <code class="docutils literal notranslate"><span class="pre">int</span></code>!</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Remember that the <code class="docutils literal notranslate"><span class="pre">cost</span></code> field is of type <code class="docutils literal notranslate"><span class="pre">double</span></code> and <code class="docutils literal notranslate"><span class="pre">Compare()</span></code> has a return type of type <code class="docutils literal notranslate"><span class="pre">int</span></code>!</p>
 </div>
 </div>
 <div class="section" id="bonus-mission">

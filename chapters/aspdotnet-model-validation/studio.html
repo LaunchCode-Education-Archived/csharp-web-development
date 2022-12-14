@@ -105,11 +105,11 @@ Also, add a new property called <code class="docutils literal notranslate"><span
 attributes<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
 to ensure these conditions are satisfied:</p>
 <ol class="arabic simple">
-<li>Username, password, and <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code> are required.</li>
-<li>Username is between 5 and 15 characters.</li>
-<li>Email is optional.</li>
-<li>If provided, the email has the format of a valid email address.</li>
-<li>The password is between 6 and 20 characters.</li>
+<li><p>Username, password, and <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code> are required.</p></li>
+<li><p>Username is between 5 and 15 characters.</p></li>
+<li><p>Email is optional.</p></li>
+<li><p>If provided, the email has the format of a valid email address.</p></li>
+<li><p>The password is between 6 and 20 characters.</p></li>
 </ol>
 <p>Remember to add error messages to your attributes!</p>
 </div>
@@ -119,17 +119,15 @@ to ensure these conditions are satisfied:</p>
 First, pass an instance of <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> to <code class="docutils literal notranslate"><span class="pre">User/Add.cshtml</span></code> via our <code class="docutils literal notranslate"><span class="pre">Add()</span></code> action method.
 Next, to refactor the <code class="docutils literal notranslate"><span class="pre">SubmitAddUserForm()</span></code> action method, we need to do the following:</p>
 <ol class="arabic">
-<li><p class="first">Take in the instance of <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> as a parameter.</p>
-</li>
-<li><p class="first">Use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> to make sure that the conditions outlined using validation attributes have been met.</p>
-</li>
-<li><p class="first">If <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, we want to double check that the value of <code class="docutils literal notranslate"><span class="pre">Password</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code>.
+<li><p>Take in the instance of <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> as a parameter.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> to make sure that the conditions outlined using validation attributes have been met.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, we want to double check that the value of <code class="docutils literal notranslate"><span class="pre">Password</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code>.
 If it is, we can create an instance of <code class="docutils literal notranslate"><span class="pre">User</span></code> and pass it to the <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code> view.
 If the two passwords do not match, we need to reload the form with an error message displayed.</p>
 <div class="admonition-hint admonition">
-<p class="first admonition-title">Hint</p>
+<p class="admonition-title">Hint</p>
 <p>We can pass an object and the name of a view to the <code class="docutils literal notranslate"><span class="pre">View()</span></code> method by using the following syntax:</p>
-<div class="last highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">&quot;ViewName&quot;</span><span class="p">,</span> <span class="n">objectName</span><span class="p">);</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">&quot;ViewName&quot;</span><span class="p">,</span> <span class="n">objectName</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -144,8 +142,8 @@ that the password fields match. Make sure they work in-sync with each
 other to properly return to the form if any of the validation conditions
 fail.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You can, in fact, validate that passwords match using attributes by
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You can, in fact, validate that passwords match using attributes by
 taking a slightly different approach than we’ve done here. We
 outline how to do so in the Bonus Mission section.</p>
 </div>
@@ -156,17 +154,15 @@ outline how to do so in the Bonus Mission section.</p>
 <p>The final step in adding ViewModels and validation to our <code class="docutils literal notranslate"><span class="pre">SpaDay</span></code> application is to refactor our views!</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>:</p>
 <ol class="arabic simple">
-<li>Make the <code class="docutils literal notranslate"><span class="pre">User</span></code> model accessible to the view.</li>
-<li>Replace instances of <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> with the <code class="docutils literal notranslate"><span class="pre">&#64;Model</span></code> syntax.</li>
+<li><p>Make the <code class="docutils literal notranslate"><span class="pre">User</span></code> model accessible to the view.</p></li>
+<li><p>Replace instances of <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> with the <code class="docutils literal notranslate"><span class="pre">&#64;Model</span></code> syntax.</p></li>
 </ol>
 <p>If we do this correctly, when a form with valid data is submitted, we should still see our personalized greeting!</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">User/Add.cshtml</span></code>:</p>
 <ol class="arabic">
-<li><p class="first">Make <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> accessible to the view.</p>
-</li>
-<li><p class="first">Keep the <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> statement up at the top so if the two passwords don’t match, we can see the error message.</p>
-</li>
-<li><p class="first">Replace the inner contents of the form with a properly formatted form field for each property in the ViewModel.
+<li><p>Make <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> accessible to the view.</p></li>
+<li><p>Keep the <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> statement up at the top so if the two passwords don’t match, we can see the error message.</p></li>
+<li><p>Replace the inner contents of the form with a properly formatted form field for each property in the ViewModel.
 Each of your form fields should look something like this:</p>
 <div class="highlight-guess notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -192,13 +188,13 @@ everything works as expected.</p>
 <h2><span class="section-number">15.7.7. </span>Bonus Mission<a class="headerlink" href="#bonus-mission" title="Permalink to this headline">¶</a></h2>
 <p>Let’s set up our application so we can validate that the password fields match using attributes.</p>
 <ol class="arabic">
-<li><p class="first">Add a <code class="docutils literal notranslate"><span class="pre">[Compare]</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">Password</span></code> property in <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> to check if the value of <code class="docutils literal notranslate"><span class="pre">Password</span></code> is equal to the value of <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code>.</p>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">[Compare]</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">Password</span></code> property in <code class="docutils literal notranslate"><span class="pre">AddUserViewModel</span></code> to check if the value of <code class="docutils literal notranslate"><span class="pre">Password</span></code> is equal to the value of <code class="docutils literal notranslate"><span class="pre">VerifyPassword</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">[Compare]</span></code> can be used to validate that the values of two properties are equal.
 If the two values are not equal, you can add an optional <code class="docutils literal notranslate"><span class="pre">ErrorMessage</span></code> parameter with a helpful message (for example, “Passwords do not match.”)
 Here is an example of how this might look:</p>
-<div class="last highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="n">PropertyA</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="n">PropertyA</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="na">[Compare(&quot;PropertyA&quot;, ErrorMessage = &quot;The two properties must match!&quot;)]</span>
 <span class="k">public</span> <span class="kt">string</span> <span class="n">PropertyB</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -206,11 +202,9 @@ Here is an example of how this might look:</p>
 </div>
 </div>
 </li>
-<li><p class="first">Remove the <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> statement from the top of the <code class="docutils literal notranslate"><span class="pre">User/Add.cshtml</span></code> form.</p>
-</li>
-<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">SubmitAddUserForm()</span></code> method in <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> checks for if the validation conditions have been met.
-Now that we have added the validation attribute to the <code class="docutils literal notranslate"><span class="pre">Password</span></code> property, we can simplify our code so that we are not separately checking the password form fields against each other.</p>
-</li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">&#64;if</span></code> statement from the top of the <code class="docutils literal notranslate"><span class="pre">User/Add.cshtml</span></code> form.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">SubmitAddUserForm()</span></code> method in <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> checks for if the validation conditions have been met.
+Now that we have added the validation attribute to the <code class="docutils literal notranslate"><span class="pre">Password</span></code> property, we can simplify our code so that we are not separately checking the password form fields against each other.</p></li>
 </ol>
 </div>
 </div>

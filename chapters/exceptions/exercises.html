@@ -95,13 +95,13 @@ She and the other TAs have encountered some problems with the code in the past w
 Occasionally, they accidentally enter <code class="docutils literal notranslate"><span class="pre">0</span></code> for the total number of possible points and the program encounters a fatal error when trying to divide by 0.</p>
 <p>To help out with this issue, complete a function called <code class="docutils literal notranslate"><span class="pre">Divide()</span></code> in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>.</p>
 <ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">Divide()</span></code> method takes in two parameters: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</li>
-<li>Your function should return the result of <code class="docutils literal notranslate"><span class="pre">x/y</span></code>.</li>
-<li>However, if <code class="docutils literal notranslate"><span class="pre">y</span></code> is zero, you should throw an exception, such as <code class="docutils literal notranslate"><span class="pre">ArgumentOutOfRangeException</span></code>.</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Divide()</span></code> method takes in two parameters: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p>Your function should return the result of <code class="docutils literal notranslate"><span class="pre">x/y</span></code>.</p></li>
+<li><p>However, if <code class="docutils literal notranslate"><span class="pre">y</span></code> is zero, you should throw an exception, such as <code class="docutils literal notranslate"><span class="pre">ArgumentOutOfRangeException</span></code>.</p></li>
 </ul>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/exceptions.html#id1"><span class="std std-ref">Check your solutions</span></a></p>
 <ul class="simple">
-<li>Put your <code class="docutils literal notranslate"><span class="pre">try/catch</span></code> block in <code class="docutils literal notranslate"><span class="pre">Main()</span></code> to test out your error-handling skills.  If an exception is caught, make sure to print out the error message.</li>
+<li><p>Put your <code class="docutils literal notranslate"><span class="pre">try/catch</span></code> block in <code class="docutils literal notranslate"><span class="pre">Main()</span></code> to test out your error-handling skills.  If an exception is caught, make sure to print out the error message.</p></li>
 </ul>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/exceptions.html#try-catch"><span class="std std-ref">Check your solutions</span></a></p>
 </div>
@@ -111,11 +111,11 @@ Occasionally, they accidentally enter <code class="docutils literal notranslate"
 Before she gives you full control over auto-grading students’ work, she asked if you could write a function called <code class="docutils literal notranslate"><span class="pre">CheckFileExtension()</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">CheckFileExtension()</span></code> function should do the following:</p>
 <ul class="simple">
-<li>Take in one parameter: <code class="docutils literal notranslate"><span class="pre">fileName</span></code>.</li>
-<li>Return an integer representing the number of points a student receives for properly submitting a file in C#.</li>
-<li>If a student’s submitted file ends in <code class="docutils literal notranslate"><span class="pre">.cs</span></code>, they get 1 point.</li>
-<li>If a student’s submitted file doesn’t end in <code class="docutils literal notranslate"><span class="pre">.cs</span></code>, they get 0 points.</li>
-<li>If the file submitted is <code class="docutils literal notranslate"><span class="pre">null</span></code> or an empty string, an exception should be thrown. What kind of exception is up to you!</li>
+<li><p>Take in one parameter: <code class="docutils literal notranslate"><span class="pre">fileName</span></code>.</p></li>
+<li><p>Return an integer representing the number of points a student receives for properly submitting a file in C#.</p></li>
+<li><p>If a student’s submitted file ends in <code class="docutils literal notranslate"><span class="pre">.cs</span></code>, they get 1 point.</p></li>
+<li><p>If a student’s submitted file doesn’t end in <code class="docutils literal notranslate"><span class="pre">.cs</span></code>, they get 0 points.</p></li>
+<li><p>If the file submitted is <code class="docutils literal notranslate"><span class="pre">null</span></code> or an empty string, an exception should be thrown. What kind of exception is up to you!</p></li>
 </ul>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/exceptions.html#test-student-labs"><span class="std std-ref">Check your solution</span></a></p>
 <p>In <code class="docutils literal notranslate"><span class="pre">Main()</span></code>, Professor Jackson has provided a dictionary of students and the names of their submitted files for you to test out your work.

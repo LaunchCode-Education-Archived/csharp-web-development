@@ -88,7 +88,7 @@
 <p>For Windows users, opening and running some of the ASP.NET applications we provide in this book may require some extra steps.
 Here are some tips to help you troubleshoot. You may find some (or none!) of them relevant to you.</p>
 <ul>
-<li><p class="first">Whether you clone a project directly onto your computer and open it in Visual Studio, or choose to find a project to clone from the Visual Studio
+<li><p>Whether you clone a project directly onto your computer and open it in Visual Studio, or choose to find a project to clone from the Visual Studio
 <em>Team Explorer</em> pane, always be sure to open the <strong>solution</strong>, the file with the <code class="docutils literal notranslate"><span class="pre">.sln</span></code> ending. If you’re not sure what item is opened in your
 <em>Solution Explorer</em> window, go to <em>File &gt; Start Window</em>. From the <em>Start Window</em>, find the <code class="docutils literal notranslate"><span class="pre">.sln</span></code> file for your project and open that directly
 (instead of any parent directory).</p>
@@ -99,7 +99,7 @@ Here are some tips to help you troubleshoot. You may find some (or none!) of the
 </div>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>BEFORE</strong> you attempt to run or debug your program, we recommend navigating to <em>Debug &gt; &lt;ProjectName&gt; Debug Properties</em>. This will open a
+<li><p><strong>BEFORE</strong> you attempt to run or debug your program, we recommend navigating to <em>Debug &gt; &lt;ProjectName&gt; Debug Properties</em>. This will open a
 window where you can change some application settings. Scroll down to the bottom of the <em>Debug</em> view and under <em>Web Server Settings</em>, make sure
 the <em>Enable SSL</em> box is unchecked and <em>Enable Anonymous Authentication</em> is checked.</p>
 <blockquote>
@@ -109,12 +109,11 @@ the <em>Enable SSL</em> box is unchecked and <em>Enable Anonymous Authentication
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Ensuring you have opened the <strong>solution</strong> file for your project will help set you up for the opportunity to run the application using the <em>IIS Express</em>
+<li><p>Ensuring you have opened the <strong>solution</strong> file for your project will help set you up for the opportunity to run the application using the <em>IIS Express</em>
 server. Visual Studio will probably show you that option to run <em>IIS Express</em> in your toolbar, where your green arrow to <em>Run</em> console applications
 had appeared. If you don’t see that button with the green arrow to run <em>IIS Express</em>, go to <em>Debug &gt; Start Debugging</em>.
-This should start your ASP.NET application.</p>
-</li>
-<li><p class="first">If, after trying to launch your program, you see a NuGet-type error, you may try going to <em>Tools &gt; NuGet Package Manager &gt; Package Manager Console</em>.
+This should start your ASP.NET application.</p></li>
+<li><p>If, after trying to launch your program, you see a NuGet-type error, you may try going to <em>Tools &gt; NuGet Package Manager &gt; Package Manager Console</em>.
 From the console pane that opens up in your Visual Studio editor, type this command as you would in your own computer’s command line: <code class="docutils literal notranslate"><span class="pre">dotnet</span> <span class="pre">restore</span></code>.</p>
 <p>Here’s the error we saw that this command fixed:</p>
 <blockquote>

@@ -88,57 +88,54 @@
 <span id="create-new-csharp-project"></span><h1><span class="section-number">1.5. </span>Creating a C# Project<a class="headerlink" href="#creating-a-c-project" title="Permalink to this headline">¶</a></h1>
 <p>Following the “Hello World” trend, let’s create a new Visual Studio project.</p>
 <ol class="arabic">
-<li><p class="first">Create a new folder to hold your C# practice files. Since you will be
+<li><p>Create a new folder to hold your C# practice files. Since you will be
 creating lots of small projects as you move through this course, we
 suggest that you also add sub-folders with names corresponding to the
 related chapters and projects. Something like
-<code class="docutils literal notranslate"><span class="pre">csharp-practice/chapter-name/project-name</span></code>.</p>
-</li>
-<li><p class="first">In Visual Studio, from the project opener window, select the
-option to create a <em>New</em> Visual Studio project.</p>
-</li>
-<li><p class="first">You next need to choose what project template to use. For this first project
+<code class="docutils literal notranslate"><span class="pre">csharp-practice/chapter-name/project-name</span></code>.</p></li>
+<li><p>In Visual Studio, from the project opener window, select the
+option to create a <em>New</em> Visual Studio project.</p></li>
+<li><p>You next need to choose what project template to use. For this first project
 (and those in the next several lessons), select the
 <strong>.NET Core Console Application</strong> option for C#.</p>
-<dl class="docutils">
+<dl class="simple">
 <dt>Mac Users:</dt><dd><ul class="simple">
-<li>You can find this by selecting <strong>Web and Console</strong> options in the left menu.</li>
-<li>Select the <strong>App</strong> subdirectory</li>
-<li>Select <strong>Console Application</strong> from the <strong>General</strong> menu option in the center menu pane</li>
+<li><p>You can find this by selecting <strong>Web and Console</strong> options in the left menu.</p></li>
+<li><p>Select the <strong>App</strong> subdirectory</p></li>
+<li><p>Select <strong>Console Application</strong> from the <strong>General</strong> menu option in the center menu pane</p></li>
 </ul>
 </dd>
 <dt>Windows Users:</dt><dd><ul class="simple">
-<li>Select <strong>Console App</strong></li>
-<li>If you can’t find it easily, you can search “Console App”</li>
+<li><p>Select <strong>Console App</strong></p></li>
+<li><p>If you can’t find it easily, you can search “Console App”</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Select <strong>.NET 6.0</strong> as your Target Framework.</p>
-</li>
-<li><p class="first">Then, give your new project a name. Following <a class="reference internal" href="naming-conventions.html#naming-conventions"><span class="std std-ref">C# Naming Conventions</span></a>,
+<li><p>Select <strong>.NET 6.0</strong> as your Target Framework.</p></li>
+<li><p>Then, give your new project a name. Following <a class="reference internal" href="naming-conventions.html#naming-conventions"><span class="std std-ref">C# Naming Conventions</span></a>,
 call your project <code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code>. The solution name will be the same. Choose
 where you want this project to be saved, ideally somewhere inside the
 directory you created in Step 1 of this tutorial.</p>
-<dl class="docutils">
+<dl class="simple">
 <dt>Mac Users:</dt><dd><ul class="simple">
-<li>Pick the options for “Use git for version control.”  and “Create a .gitignore file to ignore inessential files”</li>
+<li><p>Pick the options for “Use git for version control.”  and “Create a .gitignore file to ignore inessential files”</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Visual Studio will now create a <strong>Solution</strong> to hold your console <strong>Project</strong>.
+<li><p>Visual Studio will now create a <strong>Solution</strong> to hold your console <strong>Project</strong>.
 The project is your current app.  The project contains all of the files that app needs to build and run.
 The solution is a workspace that combines multiple projects, which are usually related to each other.
 The solution file type is <em>.sln</em>.</p>
 <p>Once created, Visual Studio opens a new project window that displays your <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> file.</p>
 </li>
-<li><p class="first">To see the other files inside this solution, you will need to <strong>View</strong> either the
+<li><p>To see the other files inside this solution, you will need to <strong>View</strong> either the
 <strong>Solution</strong> (Mac Users) or the <strong>Solution Explorer</strong> (Windows Users).</p>
 <p>You’ll see the project file tree containing a file called <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>
 in a pane called <em>Solution Explorer</em>.</p>
 </li>
-<li><p class="first">You are new to C# and we’ll go over the syntax present in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>
+<li><p>You are new to C# and we’ll go over the syntax present in <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code>
 in time. For now, can you guess what line 2 accomplishes?</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c1">// See https://aka.ms/new-console-template for more information</span>
@@ -148,13 +145,13 @@ in time. For now, can you guess what line 2 accomplishes?</p>
 <p>Click on the <strong>Run</strong> button (a triangle button located above the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> panel) indicated in one of the images above to
 run the project and see the output.</p>
 </li>
-<li><p class="first">A console window should pop up with the line “Hello World” printed.
+<li><p>A console window should pop up with the line “Hello World” printed.
 That’s it. You have created and executed your first C# application.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>The first time you run a console app in Visual Studio, you may be prompted
 to allow VS to access the terminal. This is ok.</p>
-<p class="last">This may also take longer than a few seconds to run the very first time.</p>
+<p>This may also take longer than a few seconds to run the very first time.</p>
 </div>
 </li>
 </ol>
@@ -163,8 +160,8 @@ to allow VS to access the terminal. This is ok.</p>
 <p>This app is printing to the terminal.  If you are not able to see the output, look inside the project’s terminal.</p>
 <p>If you would like more instructions on creating and running this project check out the following documentation:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/get-started/csharp/visual-studio-ide?view=vs-2022" target="_blank">Windows Users<i class="fas fa-external-link-alt" aria-hidden="true"></i></a></li>
-<li><a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/mac/ide-tour?view=vsmac-2022" target="_blank">Mac Users<i class="fas fa-external-link-alt" aria-hidden="true"></i></a></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/get-started/csharp/visual-studio-ide?view=vs-2022" target="_blank">Windows Users<i class="fas fa-external-link-alt" aria-hidden="true"></i></a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/mac/ide-tour?view=vsmac-2022" target="_blank">Mac Users<i class="fas fa-external-link-alt" aria-hidden="true"></i></a></p></li>
 </ul>
 <div class="section" id="hello-solution">
 <span id="index-0"></span><h3><span class="section-number">1.5.1.1. </span>Hello, Solution!<a class="headerlink" href="#hello-solution" title="Permalink to this headline">¶</a></h3>
@@ -184,32 +181,32 @@ the project name from the menu next to the <em>Run</em> button.</p>
 <div class="section" id="check-your-understanding">
 <h3><span class="section-number">1.5.1.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Given the code below, which line is responsible for printing a message?</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c1">// See https://aka.ms/new-console-template for more information</span>
   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<ol class="last arabic simple">
-<li>Line 1</li>
-<li>Line 2</li>
-<li>None of the above</li>
+<ol class="arabic simple">
+<li><p>Line 1</p></li>
+<li><p>Line 2</p></li>
+<li><p>None of the above</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Where does to the following code print out?</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="c1">// See https://aka.ms/new-console-template for more information</span>
   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<ol class="last arabic simple">
-<li>In line 3 of the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> file</li>
-<li>In the browser</li>
-<li>In the terminal</li>
-<li>None of the above</li>
+<ol class="arabic simple">
+<li><p>In line 3 of the <code class="docutils literal notranslate"><span class="pre">Program.cs</span></code> file</p></li>
+<li><p>In the browser</p></li>
+<li><p>In the terminal</p></li>
+<li><p>None of the above</p></li>
 </ol>
 </div>
 </div>

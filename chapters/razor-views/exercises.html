@@ -101,39 +101,38 @@ If you have been coding along with the video lessons, you’re probably in good 
 <div class="section" id="expanding-our-events-schedule">
 <span id="ex-part-1"></span><h2><span class="section-number">13.10.2. </span>Expanding our Events Schedule<a class="headerlink" href="#expanding-our-events-schedule" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">In the video lessons, we learned how to use templates to display the elements in a
+<li><p>In the video lessons, we learned how to use templates to display the elements in a
 static list called <code class="docutils literal notranslate"><span class="pre">Events</span></code>. Let’s convert our <code class="docutils literal notranslate"><span class="pre">Events</span></code> list to a <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>.
 The structure of a dictionary enables us to add descriptions to our events. You’ll
 need to think about what data types the event name and description will be.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">If you need to refresh your memory on dictionaries, refer to <a class="reference internal" href="../control-flow-and-collections/dictionary.html#dictionary"><span class="std std-ref">this page</span></a>.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>If you need to refresh your memory on dictionaries, refer to <a class="reference internal" href="../control-flow-and-collections/dictionary.html#dictionary"><span class="std std-ref">this page</span></a>.</p>
 </div>
 </li>
-<li><p class="first">Update the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template with a new field for a user to submit an event
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template with a new field for a user to submit an event
 description.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You’ll want to also add some <code class="docutils literal notranslate"><span class="pre">label</span></code> tags to your form to let the user know what
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You’ll want to also add some <code class="docutils literal notranslate"><span class="pre">label</span></code> tags to your form to let the user know what
 data they are entering.</p>
 </div>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-dictionary"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Back in <code class="docutils literal notranslate"><span class="pre">EventsController.cs</span></code>, add the description parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action method
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">EventsController.cs</span></code>, add the description parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action method
 and within the method, add the new event key/value pair to the <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Whatever value you provided in the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute of your new description field
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Whatever value you provided in the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute of your new description field
 is the name of the parameter.</p>
 </div>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-kvp"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Now to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>. Replace the <code class="docutils literal notranslate"><span class="pre">ul</span></code> with a <code class="docutils literal notranslate"><span class="pre">table</span></code> to display event names
+<li><p>Now to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>. Replace the <code class="docutils literal notranslate"><span class="pre">ul</span></code> with a <code class="docutils literal notranslate"><span class="pre">table</span></code> to display event names
 and descriptions.</p>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-table"><span class="std std-ref">Check your solution</span></a></p>
 </li>
-<li><p class="first">Lastly, modify <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> to display links for the Coding Events app (only <code class="docutils literal notranslate"><span class="pre">Events/Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Events/Add</span></code> for now).</p>
-</li>
+<li><p>Lastly, modify <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> to display links for the Coding Events app (only <code class="docutils literal notranslate"><span class="pre">Events/Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Events/Add</span></code> for now).</p></li>
 </ol>
 <p><a class="reference internal" href="../../appendices/exercise-solutions/razor-views.html#view-layout"><span class="std std-ref">Check your solution</span></a></p>
 </div>

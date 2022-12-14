@@ -100,25 +100,25 @@ Add validation attributes to the property so that it is required and that it has
 <h2><span class="section-number">17.5.2. </span>Updating <code class="docutils literal notranslate"><span class="pre">EventCategoryController</span></code><a class="headerlink" href="#updating-eventcategorycontroller" title="Permalink to this headline">¶</a></h2>
 <p>We will be creating 2 new action methods in our controller:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">Create()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Create()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code></p></li>
 </ol>
 <div class="section" id="create">
 <h3><span class="section-number">17.5.2.1. </span><code class="docutils literal notranslate"><span class="pre">Create()</span></code><a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Create()</span></code> needs to do the following:</p>
 <ol class="arabic simple">
-<li>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Create</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Create.cshtml</span></code>.</li>
-<li>Pass a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventCategoryViewModel</span></code> to <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</li>
+<li><p>Responds to <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests at <code class="docutils literal notranslate"><span class="pre">EventCategory/Create</span></code> and returns a view called <code class="docutils literal notranslate"><span class="pre">Create.cshtml</span></code>.</p></li>
+<li><p>Pass a new instance of <code class="docutils literal notranslate"><span class="pre">AddEventCategoryViewModel</span></code> to <code class="docutils literal notranslate"><span class="pre">View()</span></code>.</p></li>
 </ol>
 </div>
 <div class="section" id="processcreateeventcategoryform">
 <h3><span class="section-number">17.5.2.2. </span><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code><a class="headerlink" href="#processcreateeventcategoryform" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">ProcessCreateEventCategoryForm()</span></code> needs to do the following:</p>
 <ol class="arabic simple">
-<li>Responds to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests at the route of your choosing.</li>
-<li>Use error validation and <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> appropriately. If you want to review how to use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code>, check out the section on <a class="reference internal" href="../aspdotnet-model-validation/validation-controller.html#validating-models"><span class="std std-ref">error validation</span></a>.</li>
-<li>Create a new instance of <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> and add it to the database if the form input meets the validation conditions.</li>
-<li>Either reload the form or add a new event category to the database and direct the user back to the <code class="docutils literal notranslate"><span class="pre">EventCategory/Index.cshtml</span></code> template.</li>
+<li><p>Responds to <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests at the route of your choosing.</p></li>
+<li><p>Use error validation and <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code> appropriately. If you want to review how to use <code class="docutils literal notranslate"><span class="pre">ModelState.IsValid</span></code>, check out the section on <a class="reference internal" href="../aspdotnet-model-validation/validation-controller.html#validating-models"><span class="std std-ref">error validation</span></a>.</p></li>
+<li><p>Create a new instance of <code class="docutils literal notranslate"><span class="pre">EventCategory</span></code> and add it to the database if the form input meets the validation conditions.</p></li>
+<li><p>Either reload the form or add a new event category to the database and direct the user back to the <code class="docutils literal notranslate"><span class="pre">EventCategory/Index.cshtml</span></code> template.</p></li>
 </ol>
 </div>
 </div>

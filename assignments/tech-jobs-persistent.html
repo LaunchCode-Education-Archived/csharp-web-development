@@ -99,9 +99,9 @@ you’ll need to do the work to connect the project to a database for storing us
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Set up a local copy of the project:</p>
 <ol class="arabic simple">
-<li>In Canvas, <strong>Graded Assignment #4: TechJobs (Persistent Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</li>
-<li>Launch the application to make sure it starts up properly. Then shut it down.</li>
-<li>Run the autograding tests. The tests for this assignment are set up the same way as for <a class="reference internal" href="tech-jobs-oo.html#tech-jobs-oo"><span class="std std-ref">assignment 2</span></a>. There are four tasks for this assignment, but the first doesn’t require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.</li>
+<li><p>In Canvas, <strong>Graded Assignment #4: TechJobs (Persistent Edition)</strong> contains a GitHub Classroom assignment invitation link and then set up the project in Visual Studio. Refer back to the GitHub Classroom instructions from <a class="reference internal" href="hello-world.html#assignment0"><span class="std std-ref">Assignment #0: Hello, World!</span></a> for details.</p></li>
+<li><p>Launch the application to make sure it starts up properly. Then shut it down.</p></li>
+<li><p>Run the autograding tests. The tests for this assignment are set up the same way as for <a class="reference internal" href="tech-jobs-oo.html#tech-jobs-oo"><span class="std std-ref">assignment 2</span></a>. There are four tasks for this assignment, but the first doesn’t require any coding on your part. Therefore, there are 3 tests files (for tasks 1-3). As with previous assignments, we recommend that you only run the tests for the task you are currently working on.</p></li>
 </ol>
 </div>
 <div class="section" id="checkout-and-review-the-starter-code">
@@ -135,43 +135,38 @@ This is a widely-accepted design pattern when making ASP.NET Core MVC apps calle
 <div class="section" id="task-1-connect-a-database-to-an-asp-net-app">
 <span id="tech-jobs-persistent-pt1"></span><h2>Task 1: Connect a Database to an ASP.NET App<a class="headerlink" href="#task-1-connect-a-database-to-an-asp-net-app" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Start MySQL Workbench and create a new schema named <code class="docutils literal notranslate"><span class="pre">techjobs</span></code>.</p>
+<li><p>Start MySQL Workbench and create a new schema named <code class="docutils literal notranslate"><span class="pre">techjobs</span></code>.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Remember to double click on the schema name in the file tree to make it the default schema.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Remember to double click on the schema name in the file tree to make it the default schema.</p>
 </div>
 </li>
-<li><p class="first">In the administration tab, create a new user, <code class="docutils literal notranslate"><span class="pre">techjobs</span></code> with the same settings as described in
-the lesson tutorial and set the password to <code class="docutils literal notranslate"><span class="pre">techjobs</span></code>.</p>
-</li>
-<li><p class="first">Make sure that <code class="docutils literal notranslate"><span class="pre">TechJobsPersistent</span></code> has all of the necessary dependencies.</p>
-</li>
-<li><p class="first">Read through the code that is currently in <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code> to get an idea for what the database will look like.</p>
-</li>
-<li><p class="first">Update <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> with the right info. This will include the name of the database, as well as the username and password
-for a user you have created.</p>
-</li>
-<li><p class="first">Check that <code class="docutils literal notranslate"><span class="pre">ConfigureServices</span></code> in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> includes the configuration for the database.</p>
+<li><p>In the administration tab, create a new user, <code class="docutils literal notranslate"><span class="pre">techjobs</span></code> with the same settings as described in
+the lesson tutorial and set the password to <code class="docutils literal notranslate"><span class="pre">techjobs</span></code>.</p></li>
+<li><p>Make sure that <code class="docutils literal notranslate"><span class="pre">TechJobsPersistent</span></code> has all of the necessary dependencies.</p></li>
+<li><p>Read through the code that is currently in <code class="docutils literal notranslate"><span class="pre">JobDbContext</span></code> to get an idea for what the database will look like.</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">appsettings.json</span></code> with the right info. This will include the name of the database, as well as the username and password
+for a user you have created.</p></li>
+<li><p>Check that <code class="docutils literal notranslate"><span class="pre">ConfigureServices</span></code> in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code> includes the configuration for the database.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You can double check your setup against what you’ve already done for
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You can double check your setup against what you’ve already done for
 <a class="reference internal" href="../chapters/orm-intro/background.html#setup-orm-database"><span class="std std-ref">your CodingEvents repo</span></a>. You can copy these property assignments from your <code class="docutils literal notranslate"><span class="pre">CodingEvents</span></code> repo, only needing to change the database address and username/password values.</p>
 </div>
 </li>
-<li><p class="first">Run a new migration and update the database.</p>
-</li>
+<li><p>Run a new migration and update the database.</p></li>
 </ol>
 <div class="admonition-progress-check admonition">
-<p class="first admonition-title">Progress Check</p>
+<p class="admonition-title">Progress Check</p>
 <p><strong>Testing:</strong> You may now run the tests found in <code class="docutils literal notranslate"><span class="pre">TaskOne.Test</span></code>.</p>
-<p class="last"><strong>Build:</strong> You should be able to connect to your MySQL database and perform an initial migration.  Your project should open a localhost browser window, but not much else. You need to add more to your project.</p>
+<p><strong>Build:</strong> You should be able to connect to your MySQL database and perform an initial migration.  Your project should open a localhost browser window, but not much else. You need to add more to your project.</p>
 </div>
 <div class="section" id="test-it-with-sql">
 <h3>Test It with SQL<a class="headerlink" href="#test-it-with-sql" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>In your MySQL workbench, open a new query tab to check your database connection.</li>
-<li><strong>SQL TASK:</strong> At this point, you will have tables for <code class="docutils literal notranslate"><span class="pre">Jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">Employers</span></code>, <code class="docutils literal notranslate"><span class="pre">Skills</span></code>, and <code class="docutils literal notranslate"><span class="pre">JobSkills</span></code>. In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 1”, list the columns and their data types
-in the <code class="docutils literal notranslate"><span class="pre">Jobs</span></code> table.</li>
+<li><p>In your MySQL workbench, open a new query tab to check your database connection.</p></li>
+<li><p><strong>SQL TASK:</strong> At this point, you will have tables for <code class="docutils literal notranslate"><span class="pre">Jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">Employers</span></code>, <code class="docutils literal notranslate"><span class="pre">Skills</span></code>, and <code class="docutils literal notranslate"><span class="pre">JobSkills</span></code>. In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 1”, list the columns and their data types
+in the <code class="docutils literal notranslate"><span class="pre">Jobs</span></code> table.</p></li>
 </ol>
 <p>Before moving on to Task 2, run the autograding tests for Task 1. Once the tests pass, you are ready to go!</p>
 <p>Your running application still has limited functionality. You won’t yet be able to add a job with the <em>Add Job</em> form. You also
@@ -186,26 +181,25 @@ section.</p>
 <div class="section" id="viewmodels">
 <h3>ViewModels<a class="headerlink" href="#viewmodels" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Create a new ViewModel called <code class="docutils literal notranslate"><span class="pre">AddEmployerViewModel</span></code> that has 2 properties: <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Location</span></code>.</p>
+<li><p>Create a new ViewModel called <code class="docutils literal notranslate"><span class="pre">AddEmployerViewModel</span></code> that has 2 properties: <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Location</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">For the purposes of this application, an employer can only have one location.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>For the purposes of this application, an employer can only have one location.</p>
 </div>
 </li>
-<li><p class="first">Add validation to both properties in the ViewModel so that both properties are required.</p>
-</li>
+<li><p>Add validation to both properties in the ViewModel so that both properties are required.</p></li>
 </ol>
 </div>
 <div class="section" id="controllers">
 <h3>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">EmployerController</span></code> contains four relatively empty action methods. Take the following steps to handle traffic between the views and the model:</p>
 <ol class="arabic simple">
-<li>Set up a private <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> variable so you can perform CRUD operations on the database. Pass it into a <code class="docutils literal notranslate"><span class="pre">EmployerController</span></code> constructor.</li>
-<li>Complete <code class="docutils literal notranslate"><span class="pre">Index()</span></code> so that it passes all of the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> objects in the database to the view.  For the purpose of this assignment,
-you will need to use <code class="docutils literal notranslate"><span class="pre">IEnumerable&lt;Employers&gt;</span></code> in order for your code to interact with the <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> and the interface <code class="docutils literal notranslate"><span class="pre">IJobRepository</span></code>.</li>
-<li>Create an instance of <code class="docutils literal notranslate"><span class="pre">AddEmployerViewModel</span></code> inside of the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> method and pass the instance into the <code class="docutils literal notranslate"><span class="pre">View()</span></code> return method.</li>
-<li>Add the appropriate code to <code class="docutils literal notranslate"><span class="pre">ProcessAddEmployerForm()</span></code> so that it will process form submissions and make sure that only valid <code class="docutils literal notranslate"><span class="pre">Employer</span></code> objects are being saved to the database.</li>
-<li><code class="docutils literal notranslate"><span class="pre">About()</span></code> currently returns a view with vital information about each employer such as their name and location. Make sure that the method is actually passing an <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object to the view for display.</li>
+<li><p>Set up a private <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> variable so you can perform CRUD operations on the database. Pass it into a <code class="docutils literal notranslate"><span class="pre">EmployerController</span></code> constructor.</p></li>
+<li><p>Complete <code class="docutils literal notranslate"><span class="pre">Index()</span></code> so that it passes all of the <code class="docutils literal notranslate"><span class="pre">Employer</span></code> objects in the database to the view.  For the purpose of this assignment,
+you will need to use <code class="docutils literal notranslate"><span class="pre">IEnumerable&lt;Employers&gt;</span></code> in order for your code to interact with the <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> and the interface <code class="docutils literal notranslate"><span class="pre">IJobRepository</span></code>.</p></li>
+<li><p>Create an instance of <code class="docutils literal notranslate"><span class="pre">AddEmployerViewModel</span></code> inside of the <code class="docutils literal notranslate"><span class="pre">Add()</span></code> method and pass the instance into the <code class="docutils literal notranslate"><span class="pre">View()</span></code> return method.</p></li>
+<li><p>Add the appropriate code to <code class="docutils literal notranslate"><span class="pre">ProcessAddEmployerForm()</span></code> so that it will process form submissions and make sure that only valid <code class="docutils literal notranslate"><span class="pre">Employer</span></code> objects are being saved to the database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">About()</span></code> currently returns a view with vital information about each employer such as their name and location. Make sure that the method is actually passing an <code class="docutils literal notranslate"><span class="pre">Employer</span></code> object to the view for display.</p></li>
 </ol>
 </div>
 <div class="section" id="views">
@@ -222,31 +216,28 @@ In the <code class="docutils literal notranslate"><span class="pre">Home</span><
 Right now, there is only one field to the form and that is for the job’s name.
 As you work on the application, you will add more fields to this form to add employer and skill info.</p>
 <ol class="arabic">
-<li><p class="first">Create a new ViewModel called <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code>. You will need properties for the job’s name, the selected employer’s ID, and a list of all employers as <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code>.</p>
+<li><p>Create a new ViewModel called <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code>. You will need properties for the job’s name, the selected employer’s ID, and a list of all employers as <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">This is different from the given ViewModel, <code class="docutils literal notranslate"><span class="pre">JobDetailViewModel</span></code>.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>This is different from the given ViewModel, <code class="docutils literal notranslate"><span class="pre">JobDetailViewModel</span></code>.
 <code class="docutils literal notranslate"><span class="pre">JobDetailViewModel</span></code> has properties for the selected employer’s info and the selected skill’s info.
 <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> has properties for all of the employers and skills in the database.
 We need both ViewModels for the application.
 If you want to see more of <code class="docutils literal notranslate"><span class="pre">JobDetailViewModel</span></code> in action, check out <code class="docutils literal notranslate"><span class="pre">ListController</span></code> and <code class="docutils literal notranslate"><span class="pre">SearchController</span></code>.</p>
 </div>
 </li>
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">AddJob()</span></code> pass an instance of <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> to the view.</p>
-</li>
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">AddJob.cshtml</span></code>, add a new <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;form-group&quot;&gt;</span></code> element to the form.
+<li><p>In <code class="docutils literal notranslate"><span class="pre">AddJob()</span></code> pass an instance of <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> to the view.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">AddJob.cshtml</span></code>, add a new <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;form-group&quot;&gt;</span></code> element to the form.
 Add the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags to the new <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> element to create the form field to add employer information to the job.
 This field should be a dropdown menu with all of the employers in the database.
 In addition, add a link to the <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> element to add new employers.
-This way, if a user doesn’t see the employer they are looking for, they can easily click on the link and add a new employer to the database.</p>
-</li>
-<li><p class="first">In <code class="docutils literal notranslate"><span class="pre">ProcessAddJobForm()</span></code>, you need to take in an instance of <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> and make sure that any validation conditions you want to add are met before creating a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object and saving it to the database.</p>
-</li>
+This way, if a user doesn’t see the employer they are looking for, they can easily click on the link and add a new employer to the database.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">ProcessAddJobForm()</span></code>, you need to take in an instance of <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> and make sure that any validation conditions you want to add are met before creating a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object and saving it to the database.</p></li>
 </ol>
 <div class="admonition-progress-check admonition">
-<p class="first admonition-title">Progress Check</p>
+<p class="admonition-title">Progress Check</p>
 <p><strong>Testing:</strong>  You can run the tests found in <code class="docutils literal notranslate"><span class="pre">TaskTwo.Tests</span></code> folder.</p>
-<p class="last"><strong>Build:</strong>  You may have a website at this point with more functionality, but it will not be complete.  You should have data in your MySQL database.</p>
+<p><strong>Build:</strong>  You may have a website at this point with more functionality, but it will not be complete.  You should have data in your MySQL database.</p>
 </div>
 </div>
 <div class="section" id="id1">
@@ -254,26 +245,26 @@ This way, if a user doesn’t see the employer they are looking for, they can ea
 <p>Before you move on, test your application now to make sure it runs as expected.
 You should be able to create Employer objects and view them.</p>
 <ol class="arabic simple">
-<li>Open <em>MySQL Workbench</em> and make sure you have an <code class="docutils literal notranslate"><span class="pre">Employers</span></code> table and that it is empty.</li>
-<li>Start up your application – don’t forget to have your SQL server running – and go to the <em>Add Jobs</em>
-view.</li>
-<li>You won’t be able to add a job yet, but you’ll see a link to <em>Add Employers</em> in the form. Click on it and proceed
-to check the functionality of the form that follows.</li>
-<li>Be sure to test your validation requirements and error handling.</li>
-<li><strong>SQL TASK:</strong> In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 2”, write a query to list the names of the employers in St. Louis City.</li>
+<li><p>Open <em>MySQL Workbench</em> and make sure you have an <code class="docutils literal notranslate"><span class="pre">Employers</span></code> table and that it is empty.</p></li>
+<li><p>Start up your application – don’t forget to have your SQL server running – and go to the <em>Add Jobs</em>
+view.</p></li>
+<li><p>You won’t be able to add a job yet, but you’ll see a link to <em>Add Employers</em> in the form. Click on it and proceed
+to check the functionality of the form that follows.</p></li>
+<li><p>Be sure to test your validation requirements and error handling.</p></li>
+<li><p><strong>SQL TASK:</strong> In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 2”, write a query to list the names of the employers in St. Louis City.</p></li>
 </ol>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
 <p>If everything seems to work – that is, you are
 able to submit the form without any errors – but you don’t see your
 employers in the list after submission, here’s what you should check:</p>
-<ol class="last arabic simple">
-<li>Is there any data in the <code class="docutils literal notranslate"><span class="pre">Employers</span></code> table? Check by going to MySQL Workbench
-and looking for the employer data within your schema.</li>
-<li>If there’s data in the database, check that you are correctly
+<ol class="arabic simple">
+<li><p>Is there any data in the <code class="docutils literal notranslate"><span class="pre">Employers</span></code> table? Check by going to MySQL Workbench
+and looking for the employer data within your schema.</p></li>
+<li><p>If there’s data in the database, check that you are correctly
 querying for the list of all objects in the controller
-Are you calling for the proper list with <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>?</li>
-<li>Ensure you’re passing the list into the view.</li>
+Are you calling for the proper list with <code class="docutils literal notranslate"><span class="pre">DbContext</span></code>?</p></li>
+<li><p>Ensure you’re passing the list into the view.</p></li>
 </ol>
 </div>
 <p>Un-comment and then run the tests in <code class="docutils literal notranslate"><span class="pre">TaskTwo</span></code> to make sure that you have completed everything. When your tests pass, move on to Part 3 below.</p>
@@ -292,23 +283,24 @@ With this in mind, the form to add a job needs to contain all of the skills avai
 <h3>Updaing <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code><a class="headerlink" href="#updaing-addjobviewmodel" title="Permalink to this headline">¶</a></h3>
 <p>In order to add additional functionality to the form for adding a job, we need to add properties to <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code>.</p>
 <ol class="arabic simple">
-<li>Add a property for a list of each <code class="docutils literal notranslate"><span class="pre">Skill</span></code> object in the database.</li>
-<li>Previously, in an <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> constructor, you probably set up a <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code> list of <code class="docutils literal notranslate"><span class="pre">Employer</span></code> information.
-Pass another parameter of a list of <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects. Set the <code class="docutils literal notranslate"><span class="pre">List&lt;Skill&gt;</span></code> property equal to the parameter you have just passed in.</li>
+<li><p>Add a property for a list of each <code class="docutils literal notranslate"><span class="pre">Skill</span></code> object in the database.</p></li>
+<li><p>Previously, in an <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> constructor, you probably set up a <code class="docutils literal notranslate"><span class="pre">SelectListItem</span></code> list of <code class="docutils literal notranslate"><span class="pre">Employer</span></code> information.
+Pass another parameter of a list of <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects. Set the <code class="docutils literal notranslate"><span class="pre">List&lt;Skill&gt;</span></code> property equal to the parameter you have just passed in.</p></li>
 </ol>
 </div>
 <div class="section" id="updating-homecontroller">
 <h3>Updating <code class="docutils literal notranslate"><span class="pre">HomeController</span></code><a class="headerlink" href="#updating-homecontroller" title="Permalink to this headline">¶</a></h3>
 <p>You next need to update <code class="docutils literal notranslate"><span class="pre">HomeController</span></code> so that skills data is being shared with the form and that the user’s skill selections are properly handled.</p>
 <ol class="arabic simple">
-<li>In the <code class="docutils literal notranslate"><span class="pre">AddJob()</span></code> method, update the <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> object so that you pass all of the <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects in the database to the constructor.</li>
-<li>In the <code class="docutils literal notranslate"><span class="pre">ProcessAddJobForm()</span></code> method, pass in a new parameter: an array of strings called <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code>.
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">AddJob()</span></code> method, update the <code class="docutils literal notranslate"><span class="pre">AddJobViewModel</span></code> object so that you pass all of the <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects in the database to the constructor.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">ProcessAddJobForm()</span></code> method, pass in a new parameter: an array of strings called <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code>.
 When we allow the user to select multiple checkboxes, the user’s selections are stored in a string array.
 The way we connect the checkboxes together is by giving the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute on the <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tag the name of the array.
-In this case, each <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tag on the form for the skills checkboxes should have <code class="docutils literal notranslate"><span class="pre">&quot;selectedSkills&quot;</span></code> as the name.<ol class="loweralpha">
-<li>After you add a new parameter, you want to set up a loop to go through each item in <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code>. This loop should go right after you create a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object and before you add that <code class="docutils literal notranslate"><span class="pre">Job</span></code> object to the database.</li>
-<li>Inside the loop, you will create a new <code class="docutils literal notranslate"><span class="pre">JobSkill</span></code> object with the newly-created <code class="docutils literal notranslate"><span class="pre">Job</span></code> object. You will also need to parse each item in <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code> as an integer to use for <code class="docutils literal notranslate"><span class="pre">SkillId</span></code>.</li>
-<li>Add each new <code class="docutils literal notranslate"><span class="pre">JobSkill</span></code> object to the database using the appropriate <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> method, but do not add an additional call to <code class="docutils literal notranslate"><span class="pre">SaveChanges()</span></code> inside the loop! One call at the end of the method is enough to get the updated info to the database.</li>
+In this case, each <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tag on the form for the skills checkboxes should have <code class="docutils literal notranslate"><span class="pre">&quot;selectedSkills&quot;</span></code> as the name.</p>
+<ol class="loweralpha simple">
+<li><p>After you add a new parameter, you want to set up a loop to go through each item in <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code>. This loop should go right after you create a new <code class="docutils literal notranslate"><span class="pre">Job</span></code> object and before you add that <code class="docutils literal notranslate"><span class="pre">Job</span></code> object to the database.</p></li>
+<li><p>Inside the loop, you will create a new <code class="docutils literal notranslate"><span class="pre">JobSkill</span></code> object with the newly-created <code class="docutils literal notranslate"><span class="pre">Job</span></code> object. You will also need to parse each item in <code class="docutils literal notranslate"><span class="pre">selectedSkills</span></code> as an integer to use for <code class="docutils literal notranslate"><span class="pre">SkillId</span></code>.</p></li>
+<li><p>Add each new <code class="docutils literal notranslate"><span class="pre">JobSkill</span></code> object to the database using the appropriate <code class="docutils literal notranslate"><span class="pre">JobRepository</span></code> method, but do not add an additional call to <code class="docutils literal notranslate"><span class="pre">SaveChanges()</span></code> inside the loop! One call at the end of the method is enough to get the updated info to the database.</p></li>
 </ol>
 </li>
 </ol>
@@ -317,18 +309,15 @@ In this case, each <code class="docutils literal notranslate"><span class="pre">
 <h3>Updating <code class="docutils literal notranslate"><span class="pre">Home/AddJob.cshtml</span></code><a class="headerlink" href="#updating-home-addjob-cshtml" title="Permalink to this headline">¶</a></h3>
 <p>Now that we have the controller and ViewModel set up, we need to update the form to add a job.</p>
 <ol class="arabic">
-<li><p class="first">Add a new <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;form-group&quot;&gt;</span></code> element to the form for collecting skills.</p>
-</li>
-<li><p class="first">Loop through each object in the list of <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects.</p>
-</li>
-<li><p class="first">Give each checkbox a label and add the checkbox input itself.
+<li><p>Add a new <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;form-group&quot;&gt;</span></code> element to the form for collecting skills.</p></li>
+<li><p>Loop through each object in the list of <code class="docutils literal notranslate"><span class="pre">Skill</span></code> objects.</p></li>
+<li><p>Give each checkbox a label and add the checkbox input itself.
 Here is an example of how that <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tag might look:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>&lt;input type=&quot;checkbox&quot; name=&quot;selectedSkills&quot; value=&quot;@skill.Id&quot; /&gt;
 </pre></div>
 </div>
 </li>
-<li><p class="first">Add a link to the form to add skills to the database so if a user doesn’t see the skills they need, they can add skills themselves!</p>
-</li>
+<li><p>Add a link to the form to add skills to the database so if a user doesn’t see the skills they need, they can add skills themselves!</p></li>
 </ol>
 </div>
 <div class="section" id="id2">
@@ -336,22 +325,22 @@ Here is an example of how that <code class="docutils literal notranslate"><span 
 <p>Run your application and make sure you can create a new job with an employer and several skills. You should now also have restored
 full list and search capabilities.</p>
 <ol class="arabic">
-<li><p class="first"><strong>SQL TASK:</strong> In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 3”, write a query to return a list of the names
+<li><p><strong>SQL TASK:</strong> In <code class="docutils literal notranslate"><span class="pre">queries.sql</span></code> under “Part 3”, write a query to return a list of the names
 and descriptions of all skills that are attached to jobs in alphabetical order.
 If a skill does not have a job listed, it should not be
 included in the results of this query.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">You will need to make use of “is not null”.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>You will need to make use of “is not null”.</p>
 </div>
 </li>
 </ol>
 <p>When you are able to add new employers and skills and use those objects to create a new job, you’re ready to un-comment and run the tests in <code class="docutils literal notranslate"><span class="pre">TaskThree</span></code>.
 If those tests pass, you are done! Congrats!</p>
 <div class="admonition-progress-check admonition">
-<p class="first admonition-title">Progress Check</p>
+<p class="admonition-title">Progress Check</p>
 <p><strong>Testing:</strong>  Run the tests found in <code class="docutils literal notranslate"><span class="pre">TaskThree.Tests</span></code>.</p>
-<p class="last"><strong>Build:</strong> You should have a working website and see data in MySQL database.</p>
+<p><strong>Build:</strong> You should have a working website and see data in MySQL database.</p>
 </div>
 </div>
 </div>

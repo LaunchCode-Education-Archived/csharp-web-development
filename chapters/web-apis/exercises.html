@@ -145,10 +145,10 @@ conversion, or serialization, so that our API can output data in a portable form
 <h3><span class="section-number">20.4.1.2. </span>The Endpoints<a class="headerlink" href="#the-endpoints" title="Permalink to this headline">¶</a></h3>
 <p>This branch of the API has four endpoints:</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="#get-coding-events"><span class="std std-ref">GET Coding Events</span></a></li>
-<li><a class="reference internal" href="#get-single-coding-event"><span class="std std-ref">GET a Single Coding Event</span></a></li>
-<li><a class="reference internal" href="#create-coding-event"><span class="std std-ref">Create a Coding Event</span></a></li>
-<li><a class="reference internal" href="#delete-coding-event"><span class="std std-ref">Delete a Coding Event</span></a></li>
+<li><p><a class="reference internal" href="#get-coding-events"><span class="std std-ref">GET Coding Events</span></a></p></li>
+<li><p><a class="reference internal" href="#get-single-coding-event"><span class="std std-ref">GET a Single Coding Event</span></a></p></li>
+<li><p><a class="reference internal" href="#create-coding-event"><span class="std std-ref">Create a Coding Event</span></a></p></li>
+<li><p><a class="reference internal" href="#delete-coding-event"><span class="std std-ref">Delete a Coding Event</span></a></p></li>
 </ol>
 <p id="get-coding-events">We’ll ask you to consider some details of how to describe these endpoints.</p>
 <p>Remember, an endpoint is made up of a path (to the resource) and a method (action to take on the
@@ -172,14 +172,14 @@ is a JSON array with <code class="docutils literal notranslate"><span class="pre
 </pre></div>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Using our endpoint shorthand, how would we describe this action?</p>
 <p>Some items to consider:</p>
-<ol class="last arabic simple">
-<li>What is the HTTP request type being used?</li>
-<li>What is the resource path being requested?</li>
-<li>Is there a request body being sent? What is included in it?</li>
-<li>If the request is successful, what information can we expect to be included in the response?</li>
+<ol class="arabic simple">
+<li><p>What is the HTTP request type being used?</p></li>
+<li><p>What is the resource path being requested?</p></li>
+<li><p>Is there a request body being sent? What is included in it?</p></li>
+<li><p>If the request is successful, what information can we expect to be included in the response?</p></li>
 </ol>
 </div>
 <p id="get-single-coding-event"><a class="reference internal" href="../../appendices/exercise-solutions/web-api.html#web-api-ex-1"><span class="std std-ref">Check your solutions</span></a></p>
@@ -193,15 +193,15 @@ entity.</p>
 <p>If an entity with the given <code class="docutils literal notranslate"><span class="pre">codingEventId</span></code> is found, we will get a single <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> JSON object back. If it is not found, we will receive a
 response with a <code class="docutils literal notranslate"><span class="pre">404</span></code> status code to indicate the failed lookup.</p>
 <div class="admonition-question admonition" id="create-coding-event">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Using our endpoint shorthand, how would we describe this action?</p>
 <p>Some items to consider:</p>
-<ol class="last arabic simple">
-<li>What is the HTTP request type being used?</li>
-<li>What is the resource path being requested?</li>
-<li>Is there a request body being sent? What is included in it?</li>
-<li>If the request is successful, what information can we expect to be included in the response?</li>
-<li>If the request contains an error, what information can we expect to be included in the response?</li>
+<ol class="arabic simple">
+<li><p>What is the HTTP request type being used?</p></li>
+<li><p>What is the resource path being requested?</p></li>
+<li><p>Is there a request body being sent? What is included in it?</p></li>
+<li><p>If the request is successful, what information can we expect to be included in the response?</p></li>
+<li><p>If the request contains an error, what information can we expect to be included in the response?</p></li>
 </ol>
 </div>
 </div>
@@ -237,8 +237,8 @@ required to create the entity.</p>
 </pre></div>
 </td></tr></table></div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">We only provide the user editable fields, not the unique <code class="docutils literal notranslate"><span class="pre">Id</span></code> which the API handles internally when saving to the database.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>We only provide the user editable fields, not the unique <code class="docutils literal notranslate"><span class="pre">Id</span></code> which the API handles internally when saving to the database.</p>
 </div>
 <p>Recall that when a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request is successful, the API should respond with the <code class="docutils literal notranslate"><span class="pre">201</span></code>, or <em>Created</em>, HTTP status code. As part of the <code class="docutils literal notranslate"><span class="pre">2XX</span></code>
 HTTP success status codes, it indicates a particular type of successful response with a special header.</p>
@@ -255,19 +255,19 @@ the URL of the new entity:</p>
 <p>If the request fails because of a client error, then it will respond with a <code class="docutils literal notranslate"><span class="pre">400</span></code> status code and a message about what went wrong. In the case of
 <code class="docutils literal notranslate"><span class="pre">CodingEvent</span></code> entities, the following validation criteria must be met:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Title</span></code>: 10-100 characters</li>
-<li><code class="docutils literal notranslate"><span class="pre">Description</span></code>: less than 1000 characters</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Title</span></code>: 10-100 characters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Description</span></code>: less than 1000 characters</p></li>
 </ul>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Using our endpoint shorthand, how would we describe this action?</p>
 <p>Some items to consider:</p>
-<ol class="last arabic simple">
-<li>What is the HTTP request type being used?</li>
-<li>What is the resource path being requested?</li>
-<li>Is there a request body being sent? What is included in it?</li>
-<li>If the request is successful, what information can we expect to be included in the response?</li>
-<li>If the request contains an error, what information can we expect to be included in the response?</li>
+<ol class="arabic simple">
+<li><p>What is the HTTP request type being used?</p></li>
+<li><p>What is the resource path being requested?</p></li>
+<li><p>Is there a request body being sent? What is included in it?</p></li>
+<li><p>If the request is successful, what information can we expect to be included in the response?</p></li>
+<li><p>If the request contains an error, what information can we expect to be included in the response?</p></li>
 </ol>
 </div>
 </div>
@@ -279,15 +279,15 @@ code indicates a success with no response body or special headers.</p>
 <p>If you attempt to delete a resource that doesn’t exist (with an incorrect <code class="docutils literal notranslate"><span class="pre">codingEventId</span></code>), then the endpoint will respond with an expected <code class="docutils literal notranslate"><span class="pre">404</span></code>
 status and message.</p>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Using our endpoint shorthand, how would we describe this action?</p>
 <p>Some items to consider:</p>
-<ol class="last arabic simple">
-<li>What is the HTTP request type being used?</li>
-<li>What is the resource path being requested?</li>
-<li>Is there a request body being sent? What is included in it?</li>
-<li>If the request is successful, what information can we expect to be included in the response?</li>
-<li>If the request contains an error, what information can we expect to be included in the response?</li>
+<ol class="arabic simple">
+<li><p>What is the HTTP request type being used?</p></li>
+<li><p>What is the resource path being requested?</p></li>
+<li><p>Is there a request body being sent? What is included in it?</p></li>
+<li><p>If the request is successful, what information can we expect to be included in the response?</p></li>
+<li><p>If the request contains an error, what information can we expect to be included in the response?</p></li>
 </ol>
 </div>
 </div>

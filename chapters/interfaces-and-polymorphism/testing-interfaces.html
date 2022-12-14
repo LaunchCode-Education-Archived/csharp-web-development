@@ -90,7 +90,7 @@
 <p>The best practices to testing interfaces are very similar to those of <a class="reference internal" href="../inheritance/testing-inheritance.html#testinginheritance"><span class="std std-ref">testing inheritance</span></a>. You want to focus on testing the contract
 that the interface is supposed to be upholding as opposed to the interface itself.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>We have an <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface and a <code class="docutils literal notranslate"><span class="pre">HouseCat</span></code> class.</p>
 <div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -150,17 +150,17 @@ a <code class="docutils literal notranslate"><span class="pre">HouseCat</span></
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<p class="last">In this situation, we test the contract that the interface is supposed to be upholding, but not the interface itself.
+<p>In this situation, we test the contract that the interface is supposed to be upholding, but not the interface itself.
 While there are strategies to test interface code itself using <em>mock objects</em>, we won’t approach those tactics in this course.</p>
 </div>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">8.5.1. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True or False: A class <code class="docutils literal notranslate"><span class="pre">PetDog</span></code> also implements <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> and contains its own <code class="docutils literal notranslate"><span class="pre">Eat()</span></code> method. Should we test that method’s results?</p>
-<ol class="last arabic simple">
-<li>No, the interface contract will not be tested in this scenario.</li>
-<li>Yes, testing the class’s custom methods is always a worthy endeavor.</li>
+<ol class="arabic simple">
+<li><p>No, the interface contract will not be tested in this scenario.</p></li>
+<li><p>Yes, testing the class’s custom methods is always a worthy endeavor.</p></li>
 </ol>
 </div>
 </div>

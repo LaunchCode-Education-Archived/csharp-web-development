@@ -89,8 +89,8 @@
 <p>With Identity in place, we can start to configure the settings of the library to meet our authentication requirements.
 The first place to start with configuring Identity to fit the needs of the project is in <code class="docutils literal notranslate"><span class="pre">Startup.cs</span></code>.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Try and code along as you read more about Identity!
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Try and code along as you read more about Identity!
 This page starts off with the code in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-scaffolding" target="_blank">identity-scaffolding<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.
 The final code for this page is in the <a class="reference external" href="https://github.com/LaunchCodeEducation/CodingEventsDemo/tree/identity-config" target="_blank">identity-config<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> branch in <code class="docutils literal notranslate"><span class="pre">CodingEventsDemo</span></code>.
 If you are looking for an additional walkthrough, check out this <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?source=recommendations&amp;view=aspnetcore-6.0" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from Microsoft.</p>
@@ -124,15 +124,15 @@ Earlier you may have added the following:</p>
 </td></tr></table></div>
 <p>This code is dictating the settings for account creation. Right now, for a user to create an account, they have to have the following:</p>
 <ol class="arabic simple">
-<li>They have to click a link to confirm their account.</li>
-<li>Their password has to be more than 10 characters long.</li>
-<li>Their password has to include an uppercase letter(s).</li>
+<li><p>They have to click a link to confirm their account.</p></li>
+<li><p>Their password has to be more than 10 characters long.</p></li>
+<li><p>Their password has to include an uppercase letter(s).</p></li>
 </ol>
 <p>The following is not true for a user to create an account.</p>
 <ol class="arabic simple">
-<li>Their password does not have to include a number.</li>
-<li>Their password does not have to include a special character such as a question mark.</li>
-<li>Their password does not have to include lowercase letters.</li>
+<li><p>Their password does not have to include a number.</p></li>
+<li><p>Their password does not have to include a special character such as a question mark.</p></li>
+<li><p>Their password does not have to include lowercase letters.</p></li>
 </ol>
 <p>These are just some basic requirements that can be changed to suit the needs of your application.
 For a full list of the default settings for users’ passwords and how we can change those settings, check out the <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordoptions?view=aspnetcore-6.0" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
@@ -144,15 +144,15 @@ For a full list of the default settings for users’ passwords and how we can ch
 <p>As you learn more about what Identity can do, you may find yourself wanting to customize it more and more to suit your needs!
 Here are some examples of what you can do with it.</p>
 <ol class="arabic simple">
-<li>Customize user information</li>
-<li>Customize user roles</li>
-<li>Customize the UI</li>
-<li>Add new settings to user passwords</li>
-<li>Change the default settings around user sign-in</li>
+<li><p>Customize user information</p></li>
+<li><p>Customize user roles</p></li>
+<li><p>Customize the UI</p></li>
+<li><p>Add new settings to user passwords</p></li>
+<li><p>Change the default settings around user sign-in</p></li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">If you want to customize user data, it is best to do so when initially scaffolding the app.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>If you want to customize user data, it is best to do so when initially scaffolding the app.
 <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1" target="_blank">IdentityUser<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> has a number of properties that are important and relevant to storing user data.
 However, when you read through the requirements you may notice that you need additional properties, such as the user’s first and last name.
 If you want to add custom properties, check out this <a class="reference external" href="https://learn.microsoft.com/en-us/aspnet/core/security/authentication/add-user-data?view=aspnetcore-6.0&amp;tabs=visual-studio" target="_blank">article<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> from Microsoft.</p>

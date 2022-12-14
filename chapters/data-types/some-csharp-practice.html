@@ -92,13 +92,13 @@ Celsius.</p>
 <div class="section" id="temperature-conversion">
 <span id="temp-conversion"></span><h2><span class="section-number">2.2.1. </span>Temperature Conversion<a class="headerlink" href="#temperature-conversion" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Open the <code class="docutils literal notranslate"><span class="pre">TempConverter</span></code> project in your <code class="docutils literal notranslate"><span class="pre">csharp-web-dev-datatypes</span></code> solution in Visual Studio.</p>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">TempConverter</span></code> project in your <code class="docutils literal notranslate"><span class="pre">csharp-web-dev-datatypes</span></code> solution in Visual Studio.</p>
 <div class="figure align-default" id="id1">
 <img alt="The ``TempConverter`` project." src="../../_images/tempConverterTree.png" />
 <p class="caption"><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">TempConverter</span></code> project.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </li>
-<li><p class="first">Here’s what the file should look like. We will analyze the different statements
+<li><p>Here’s what the file should look like. We will analyze the different statements
 in a moment.</p>
 <div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -146,17 +146,16 @@ in a moment.</p>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Run the program to verify that it works. Entering a Fahrenheit
+<li><p>Run the program to verify that it works. Entering a Fahrenheit
 temperature of <code class="docutils literal notranslate"><span class="pre">212</span></code> yields the result, <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">temperature</span> <span class="pre">in</span> <span class="pre">Celsius</span> <span class="pre">is:</span>
-<span class="pre">100</span></code>.</p>
-</li>
+<span class="pre">100</span></code>.</p></li>
 </ol>
 <p>There are several new concepts introduced in this example. We will look
 at them in the following order:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#using-statement"><span class="std std-ref">using</span></a></li>
-<li><a class="reference internal" href="#variable-declaration"><span class="std std-ref">Declaring Variables</span></a></li>
-<li><a class="reference internal" href="#console-class"><span class="std std-ref">Input / Output and the Console Class</span></a></li>
+<li><p><a class="reference internal" href="#using-statement"><span class="std std-ref">using</span></a></p></li>
+<li><p><a class="reference internal" href="#variable-declaration"><span class="std std-ref">Declaring Variables</span></a></p></li>
+<li><p><a class="reference internal" href="#console-class"><span class="std std-ref">Input / Output and the Console Class</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="using">
@@ -166,8 +165,8 @@ data stored in different files other than the one we are currently in.</p>
 <p>In C#, you can use any class that is available without having to import
 the class - subject to two very important conditions:</p>
 <ol class="arabic simple">
-<li>The C# compiler must know that the class exists.</li>
-<li>You must use the full name of the class.</li>
+<li><p>The C# compiler must know that the class exists.</p></li>
+<li><p>You must use the full name of the class.</p></li>
 </ol>
 <p>Classes that are available to you may be those in the project you are currently working on,
 or those that come along with the .NET class library, as well as anything you might get
@@ -226,8 +225,8 @@ Build: 4 errors, 0 warnings
 Visual Studio will notify you of the errors detected in a few locations, including
 the errors pane and the Application Output pane.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">You may have expected to receive an error from some red in your program file.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You may have expected to receive an error from some red in your program file.
 When using an IDE such as Visual Studio, your code is typically checked
 by the IDE’s built-in compiler as you write your code. Thus, errors are
 usually visually indicated within your code by the IDE as you write your
@@ -287,8 +286,8 @@ could <em>comment out</em> the line. This would create the same compiler errors 
 wanted to witness, but it would preserve the original code and allow us to
 easily reactivate it by removing the <code class="docutils literal notranslate"><span class="pre">//</span></code> token from the line.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
-<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -343,8 +342,8 @@ easily reactivate it by removing the <code class="docutils literal notranslate">
 </td></tr></table></div>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">In addition to single-line comments and multi-line comments, C# developers can also use XML documentation comments.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>In addition to single-line comments and multi-line comments, C# developers can also use XML documentation comments.
 XML documentation comments start with <code class="docutils literal notranslate"><span class="pre">///</span></code> and when properly written, can be used to generate documentation for a project.
 This comment type is something you may encounter working on enterprise code for a company, but is not something that you would use in smaller, personal projects.
 For more information on XML documentation comments, check out the <a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/codedoc" target="_blank">documentation<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>.</p>
@@ -353,21 +352,21 @@ For more information on XML documentation comments, check out the <a class="refe
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">2.2.6. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">using</span></code> statement is required to use a C# class defined outside of your current file.</p>
-<ol class="last arabic simple">
-<li>True</li>
-<li>False</li>
+<ol class="arabic simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is the name of the method used to convert input strings to different types?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">.Convert()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.ToString()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.Parse()</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">.ReadLine()</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.Convert()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ToString()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Parse()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ReadLine()</span></code></p></li>
 </ol>
 </div>
 </div>

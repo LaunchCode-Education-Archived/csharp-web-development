@@ -93,61 +93,61 @@ straightforward.</p>
 <p>Before we review the syntax for conditionals, let’s go over the comparison and logical operators that we need to use in control flow statements.</p>
 <div class="section" id="comparison-operators">
 <h3><span class="section-number">3.1.1.1. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils align-default" id="id3">
+<table class="docutils align-default" id="id3">
 <caption><span class="caption-text">Comparison Operators</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operator</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">==</span></code></td>
-<td>Checks if two items are equal</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>Checks if two items are equal</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">!=</span></code></td>
-<td>Checks if two items are not equal</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>Checks if two items are not equal</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></td>
-<td>Checks if item on left is lesser than item on right</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Checks if item on left is lesser than item on right</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></td>
-<td>Checks if item on left is lesser than or equal to item on right</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>Checks if item on left is lesser than or equal to item on right</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></td>
-<td>Checks if item on left is greater than item on right</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Checks if item on left is greater than item on right</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></td>
-<td>Checks if item on left is greater than or equal to item on right</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>Checks if item on left is greater than or equal to item on right</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="logical-operators">
 <h3><span class="section-number">3.1.1.2. </span>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils align-default" id="id4">
+<table class="docutils align-default" id="id4">
 <caption><span class="caption-text">Logical Operators</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operator</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">!</span></code></td>
-<td>Reverses the evaluation of the operand</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td><p>Reverses the evaluation of the operand</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">||</span></code></td>
-<td>Combines two expressions with OR</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">||</span></code></p></td>
+<td><p>Combines two expressions with OR</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></td>
-<td>Combines two expressions with AND</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></p></td>
+<td><p>Combines two expressions with AND</p></td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +429,7 @@ Fallthrough is what happens when a <code class="docutils literal notranslate"><s
 In C#, you can take advantage of fallthrough behavior in specific circumstances with blank cases.
 If the behavior we want matches for two cases, then we can take advantage of this fallthrough action.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>We want to use a switch statement to tell us if it is the weekend or a weekday. Here is how we might modify the switch statement from above and make use of fallthrough.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -482,24 +482,24 @@ If the behavior we want matches for two cases, then we can take advantage of thi
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">day</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<p class="last">Because we want to set the value of <code class="docutils literal notranslate"><span class="pre">weekZone</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Week</span> <span class="pre">Day&quot;</span></code> for cases 1-5, we omit the <code class="docutils literal notranslate"><span class="pre">break</span></code> statements and any other code.</p>
+<p>Because we want to set the value of <code class="docutils literal notranslate"><span class="pre">weekZone</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Week</span> <span class="pre">Day&quot;</span></code> for cases 1-5, we omit the <code class="docutils literal notranslate"><span class="pre">break</span></code> statements and any other code.</p>
 </div>
 </div>
 </div>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">3.1.6. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>When does fallthrough occur in C#?</p>
-<ol class="last arabic simple">
-<li>Omitting an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause from a conditional.</li>
-<li>Omitting an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause from switch statement.</li>
-<li>Omitting a <code class="docutils literal notranslate"><span class="pre">default</span></code> case from a <code class="docutils literal notranslate"><span class="pre">switch</span></code> statement.</li>
-<li>Omitting a <code class="docutils literal notranslate"><span class="pre">break</span></code> line from a <code class="docutils literal notranslate"><span class="pre">switch</span></code> statement.</li>
+<ol class="arabic simple">
+<li><p>Omitting an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause from a conditional.</p></li>
+<li><p>Omitting an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause from switch statement.</p></li>
+<li><p>Omitting a <code class="docutils literal notranslate"><span class="pre">default</span></code> case from a <code class="docutils literal notranslate"><span class="pre">switch</span></code> statement.</p></li>
+<li><p>Omitting a <code class="docutils literal notranslate"><span class="pre">break</span></code> line from a <code class="docutils literal notranslate"><span class="pre">switch</span></code> statement.</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -524,27 +524,26 @@ If the behavior we want matches for two cases, then we can take advantage of thi
 </pre></div>
 </td></tr></table></div>
 <p>Given the code above, what prints if the user enters <code class="docutils literal notranslate"><span class="pre">no</span></code> after the prompt?</p>
-<ol class="last arabic">
-<li><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings cadet.
+<ol class="arabic">
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings cadet.
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings normie.
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings normie.
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings normie.
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings normie.
 Are you an alien?
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings cadet.
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Greetings cadet.
 Greetings normie.
 </pre></div>
 </div>
 </li>
-<li><p class="first">The program doesn’t work as written.</p>
-</li>
+<li><p>The program doesn’t work as written.</p></li>
 </ol>
 </div>
 </div>

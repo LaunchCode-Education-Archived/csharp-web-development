@@ -92,14 +92,14 @@ creating classes that behave like interfaces to improve software design, C# is a
 as a formal construction. Like abstract classes, interfaces cannot be instantiated and they have limitations on what
 kind of behavioral information they may contain. A C# interface may contain:</p>
 <ol class="arabic simple">
-<li>Constants</li>
-<li>Method signatures</li>
-<li>Static methods</li>
-<li>Default methods</li>
+<li><p>Constants</p></li>
+<li><p>Method signatures</p></li>
+<li><p>Static methods</p></li>
+<li><p>Default methods</p></li>
 </ol>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Some of these are newer features of the latest language version. This text supports .NET Core 3.1,
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Some of these are newer features of the latest language version. This text supports .NET Core 3.1,
 which provides C# version 8.0. If you are using an earlier version of either .NET Core or C#, you
 may only define a method signature within an interface.</p>
 </div>
@@ -113,8 +113,8 @@ type of a method, but no body.</p>
 <p>As part of our cat application, let’s create a method signature, <code class="docutils literal notranslate"><span class="pre">Eat</span></code>, as part of an
 interface, <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>. “I” for interface, of course! More on this name below.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
-<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -130,18 +130,18 @@ interface, <code class="docutils literal notranslate"><span class="pre">IFeedabl
 </div>
 <p>In the code above, notice the following:</p>
 <ol class="arabic simple">
-<li>We need to use the <code class="docutils literal notranslate"><span class="pre">interface</span></code> keyword to define our interface, <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Eat</span></code> only has a signature. We only provide a body for methods defined
-in interfaces in special circumstances, defined below under <em>Default Methods</em>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Eat</span></code> also does not have an access modifier. Interface members are <code class="docutils literal notranslate"><span class="pre">public</span></code> by default and it’s
-best practice to keep them public.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface itself is declared <code class="docutils literal notranslate"><span class="pre">public</span></code>, which means any other class may
+<li><p>We need to use the <code class="docutils literal notranslate"><span class="pre">interface</span></code> keyword to define our interface, <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Eat</span></code> only has a signature. We only provide a body for methods defined
+in interfaces in special circumstances, defined below under <em>Default Methods</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Eat</span></code> also does not have an access modifier. Interface members are <code class="docutils literal notranslate"><span class="pre">public</span></code> by default and it’s
+best practice to keep them public.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface itself is declared <code class="docutils literal notranslate"><span class="pre">public</span></code>, which means any other class may
 use it. We may also leave off <code class="docutils literal notranslate"><span class="pre">public</span></code>, making the interface <code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">internal</span></code>, or
 usable only within the same assembly. Recall this access modifier described in this
-<a class="reference internal" href="../classes/modifiers.html#access-modifier-table"><span class="std std-ref">table</span></a>.</li>
-<li>The name is indicative of the behavior that the interface is intended to describe. While this
+<a class="reference internal" href="../classes/modifiers.html#access-modifier-table"><span class="std std-ref">table</span></a>.</p></li>
+<li><p>The name is indicative of the behavior that the interface is intended to describe. While this
 is only a convention, most interfaces have names that are adjectives preceded with an “I”.
-While this is only a convention, you should follow it in the interest of code-readability.</li>
+While this is only a convention, you should follow it in the interest of code-readability.</p></li>
 </ol>
 </div>
 <div class="section" id="static-methods">
@@ -189,8 +189,8 @@ the same as that for inheritance — so adhering to the interface naming convent
 handy to identify a case of extension versus implementation. Here’s how we can use the
 <code class="docutils literal notranslate"><span class="pre">IFeedable</span></code> interface in defining our <code class="docutils literal notranslate"><span class="pre">Cat</span></code> class.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
-<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -220,11 +220,11 @@ specified in the interface definition.</p>
 <p>Note the absence of the <code class="docutils literal notranslate"><span class="pre">virtual</span></code> and <code class="docutils literal notranslate"><span class="pre">override</span></code> keywords we used in <a class="reference internal" href="../inheritance/cat-classes.html#method-overriding"><span class="std std-ref">inheritance</span></a>. The class is
 <em>implementing</em> the interface, rather than extending it so different method rules apply.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
 <p>You may both extend a class and implement an interface at the same time.
 Here’s an example of how we might define <code class="docutils literal notranslate"><span class="pre">HouseCat</span></code> to extend the class <code class="docutils literal notranslate"><span class="pre">Cat</span></code>,
 as well as an interface <code class="docutils literal notranslate"><span class="pre">IPetable</span></code> that is not already inherited by <code class="docutils literal notranslate"><span class="pre">Cat</span></code>:</p>
-<div class="last highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -371,14 +371,14 @@ coding to classes, and your code will become more flexible and
 extensible.</p>
 <p>Here are a few benefits of using interfaces:</p>
 <ol class="arabic simple">
-<li>You can only extend one class, but you may implement many interfaces.</li>
-<li>You can extend a class and implement an interface at the same time.</li>
-<li>By declaring variables and parameters as interface types, you make
-your code useful for a much wider variety of situations.</li>
-<li>When you declare properties and return types to be interface types,
+<li><p>You can only extend one class, but you may implement many interfaces.</p></li>
+<li><p>You can extend a class and implement an interface at the same time.</p></li>
+<li><p>By declaring variables and parameters as interface types, you make
+your code useful for a much wider variety of situations.</p></li>
+<li><p>When you declare properties and return types to be interface types,
 you decouple code using your classes from the actual class types you
 use. This means that you are free to change the specific
-implementation of your classes without affecting those using them.</li>
+implementation of your classes without affecting those using them.</p></li>
 </ol>
 <p>You don’t need to start creating interfaces to use their
 power! As we cover later in this chapter, there are several interface types provided by
@@ -387,20 +387,20 @@ the C# language spec that you may find handy.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">8.2.4. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Choose the appropriate option to fill in the blanks.</p>
 <p>A class can extend _______ class(es) and implement ________ interface(s).</p>
-<ol class="last loweralpha simple">
-<li>one, one</li>
-<li>one, more than one</li>
-<li>more than one, one</li>
-<li>more than one, more than one</li>
+<ol class="loweralpha simple">
+<li><p>one, one</p></li>
+<li><p>one, more than one</p></li>
+<li><p>more than one, one</p></li>
+<li><p>more than one, more than one</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True or False:</p>
-<p class="last">An interface in C# must begin with the letter “I”.</p>
+<p>An interface in C# must begin with the letter “I”.</p>
 </div>
 </div>
 </div>

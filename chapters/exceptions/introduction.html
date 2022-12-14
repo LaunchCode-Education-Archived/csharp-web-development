@@ -103,14 +103,14 @@ necessary intel on how our app runs and is meant to be used.</p>
 <p>You may have seen exceptions in C# or another programming language already, perhaps in one
 of these scenarios:</p>
 <ul class="simple">
-<li>Failure to connect to services external to your application, such as a database or API.</li>
-<li>Failure to read or write to or from a file.</li>
-<li>Failure to convert data, such as trying to convert something like <code class="docutils literal notranslate"><span class="pre">&quot;dog&quot;</span></code> to an <code class="docutils literal notranslate"><span class="pre">int</span></code> type.</li>
-<li>Failure to reach an actual object.</li>
+<li><p>Failure to connect to services external to your application, such as a database or API.</p></li>
+<li><p>Failure to read or write to or from a file.</p></li>
+<li><p>Failure to convert data, such as trying to convert something like <code class="docutils literal notranslate"><span class="pre">&quot;dog&quot;</span></code> to an <code class="docutils literal notranslate"><span class="pre">int</span></code> type.</p></li>
+<li><p>Failure to reach an actual object.</p></li>
 </ul>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">This last scenario is a <strong>null pointer</strong>. This is an object reference that doesn’t actually
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>This last scenario is a <strong>null pointer</strong>. This is an object reference that doesn’t actually
 contain an object.</p>
 </div>
 <p>Indeed, we have even used exceptions in this book already. Recall this
@@ -183,7 +183,7 @@ provided argument falls outside of an acceptable range. Later, we refine our
 Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value outside of the appropriate range.</p>
 <p>Try this yourself to witness the breaking exception:</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p><em>Input:</em></p>
 <div class="highlight-c# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -197,7 +197,7 @@ Imagine that a user or fellow programmer unintentionally sets a Fahrenheit value
 </pre></div>
 </td></tr></table></div>
 <p><em>Output:</em></p>
-<div class="last highlight-none notranslate"><div class="highlight"><pre><span></span>73
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>73
 Unhandled exception. System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values. (Parameter &#39;Value is below absolute zero&#39;)
 at lsn4_demos.Temperature.set_Fahrenheit(Double value) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 26
 at lsn4_demos.Temperature..ctor(Double fahrenheit) in /Users/carlylanglois/launchcode/csharp/web-dev-exercises/lsn4-demos/lsn4-demos/Temperature.cs:line 40
@@ -237,21 +237,21 @@ informed way to convey the constraints of your program.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">11.1.3. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>What is the action of invoking an exception called?</p>
-<ol class="last arabic simple">
-<li>excepting</li>
-<li>catching</li>
-<li>throwing</li>
-<li>handling</li>
+<ol class="arabic simple">
+<li><p>excepting</p></li>
+<li><p>catching</p></li>
+<li><p>throwing</p></li>
+<li><p>handling</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True/False: Encountering an exception will always result in terminating a running program.</p>
-<ol class="last arabic simple">
-<li>True</li>
-<li>False</li>
+<ol class="arabic simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 </div>

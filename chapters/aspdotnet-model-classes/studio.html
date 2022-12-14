@@ -99,10 +99,10 @@ a user is logging in who is not also <code class="docutils literal notranslate">
 <h2><span class="section-number">14.6.1. </span>Getting Ready<a class="headerlink" href="#getting-ready" title="Permalink to this headline">¶</a></h2>
 <p>Within <code class="docutils literal notranslate"><span class="pre">SpaDay</span></code>, create the following files.</p>
 <ol class="arabic simple">
-<li>Create a <code class="docutils literal notranslate"><span class="pre">UserController</span></code> in <code class="docutils literal notranslate"><span class="pre">Controllers</span></code>.</li>
-<li>Create a new folder, <code class="docutils literal notranslate"><span class="pre">User</span></code>, within <code class="docutils literal notranslate"><span class="pre">Views</span></code>.</li>
-<li>Create <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> and <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> templates within <code class="docutils literal notranslate"><span class="pre">Views/User/</span></code>.</li>
-<li>Create a <code class="docutils literal notranslate"><span class="pre">User</span></code> class within <code class="docutils literal notranslate"><span class="pre">Models</span></code>.</li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">UserController</span></code> in <code class="docutils literal notranslate"><span class="pre">Controllers</span></code>.</p></li>
+<li><p>Create a new folder, <code class="docutils literal notranslate"><span class="pre">User</span></code>, within <code class="docutils literal notranslate"><span class="pre">Views</span></code>.</p></li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">Index.cshtml</span></code> and <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> templates within <code class="docutils literal notranslate"><span class="pre">Views/User/</span></code>.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">User</span></code> class within <code class="docutils literal notranslate"><span class="pre">Models</span></code>.</p></li>
 </ol>
 </div>
 <div class="section" id="creating-the-model">
@@ -112,30 +112,28 @@ a user is logging in who is not also <code class="docutils literal notranslate">
 <div class="section" id="rendering-the-add-user-form">
 <h2><span class="section-number">14.6.3. </span>Rendering the Add User Form<a class="headerlink" href="#rendering-the-add-user-form" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, create an action method <code class="docutils literal notranslate"><span class="pre">Add()</span></code> to
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, create an action method <code class="docutils literal notranslate"><span class="pre">Add()</span></code> to
 render the form. This action method should correspond to the path
 <code class="docutils literal notranslate"><span class="pre">/user/add</span></code>, and for now, it can just return the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> view.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">Don’t forget to add <code class="docutils literal notranslate"><span class="pre">/user/add</span></code> to your path when you test your new features.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>Don’t forget to add <code class="docutils literal notranslate"><span class="pre">/user/add</span></code> to your path when you test your new features.</p>
 </div>
 </li>
-<li><p class="first">Within the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> template, create a form that accepts inputs for
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">Add.cshtml</span></code> template, create a form that accepts inputs for
 each of the <code class="docutils literal notranslate"><span class="pre">User</span></code> class properties. Include an additional password input field to verify
-the password input. The form should be set up to <code class="docutils literal notranslate"><span class="pre">POST</span></code> to <code class="docutils literal notranslate"><span class="pre">/user</span></code>.</p>
-</li>
-<li><p class="first">Be sure to set <code class="docutils literal notranslate"><span class="pre">type=&quot;password&quot;</span></code> for the password and verify inputs,
+the password input. The form should be set up to <code class="docutils literal notranslate"><span class="pre">POST</span></code> to <code class="docutils literal notranslate"><span class="pre">/user</span></code>.</p></li>
+<li><p>Be sure to set <code class="docutils literal notranslate"><span class="pre">type=&quot;password&quot;</span></code> for the password and verify inputs,
 to ensure the passwords are not visible when being typed into the form.
 You can also set <code class="docutils literal notranslate"><span class="pre">type=&quot;email&quot;</span></code> on the email input, which will enable
 some basic client-side validation. We’ll tackle validation in more detail
-in the next lesson.</p>
-</li>
+in the next lesson.</p></li>
 </ol>
 </div>
 <div class="section" id="processing-form-submission">
 <h2><span class="section-number">14.6.4. </span>Processing Form Submission<a class="headerlink" href="#processing-form-submission" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Within the <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, create an action method with this signature:</p>
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">UserController</span></code>, create an action method with this signature:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">SubmitAddUserForm</span><span class="p">(</span><span class="n">User</span> <span class="n">newUser</span><span class="p">,</span> <span class="kt">string</span> <span class="n">verify</span><span class="p">)</span> <span class="p">{</span>
    <span class="c1">// add form submission handling code here</span>
 <span class="p">}</span>
@@ -144,18 +142,18 @@ in the next lesson.</p>
 <p>This will use model binding to create a new user object, <code class="docutils literal notranslate"><span class="pre">newUser</span></code>, and
 pass it into your action method.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">You don’t need to store the <code class="docutils literal notranslate"><span class="pre">User</span></code> object anywhere for this studio.
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>You don’t need to store the <code class="docutils literal notranslate"><span class="pre">User</span></code> object anywhere for this studio.
 We’re focusing on form handling and validation in this exercise. If you
 want to keep track of users using the method we employed in the models
 lesson video, check out the Bonus Missions below.</p>
 </div>
 </li>
-<li><p class="first">Check that the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter matches the
+<li><p>Check that the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter matches the
 password within the <code class="docutils literal notranslate"><span class="pre">newUser</span></code> object.</p>
 <ol class="loweralpha simple">
-<li>If it does, store the user’s name in a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property and render the <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code> view by returning <code class="docutils literal notranslate"><span class="pre">View(&quot;Index&quot;)</span></code>.</li>
-<li>If the passwords don’t match, render the form again.</li>
+<li><p>If it does, store the user’s name in a <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property and render the <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code> view by returning <code class="docutils literal notranslate"><span class="pre">View(&quot;Index&quot;)</span></code>.</p></li>
+<li><p>If the passwords don’t match, render the form again.</p></li>
 </ol>
 </li>
 </ol>
@@ -163,20 +161,22 @@ password within the <code class="docutils literal notranslate"><span class="pre"
 <div class="section" id="refining-form-submission">
 <h2><span class="section-number">14.6.5. </span>Refining Form Submission<a class="headerlink" href="#refining-form-submission" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Once registered, we want the user to access the form selecting their spa services and see a personalized welcome message!<ol class="loweralpha">
-<li>In <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add an <code class="docutils literal notranslate"><span class="pre">h1</span></code> element with a welcome message. Use the <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property containing the user’s name to personalize the message!</li>
-<li>Also in <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add an <code class="docutils literal notranslate"><span class="pre">a</span></code> element to take the user back to the path, <code class="docutils literal notranslate"><span class="pre">/spa</span></code>, where the <code class="docutils literal notranslate"><span class="pre">Spa/Index.cshtml</span></code> template will be rendered.</li>
+<li><p>Once registered, we want the user to access the form selecting their spa services and see a personalized welcome message!</p>
+<ol class="loweralpha simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add an <code class="docutils literal notranslate"><span class="pre">h1</span></code> element with a welcome message. Use the <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> property containing the user’s name to personalize the message!</p></li>
+<li><p>Also in <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add an <code class="docutils literal notranslate"><span class="pre">a</span></code> element to take the user back to the path, <code class="docutils literal notranslate"><span class="pre">/spa</span></code>, where the <code class="docutils literal notranslate"><span class="pre">Spa/Index.cshtml</span></code> template will be rendered.</p></li>
 </ol>
 </li>
-<li>If the form is re-rendered when a password is not verified, we should let the user know that their form
+<li><p>If the form is re-rendered when a password is not verified, we should let the user know that their form
 was not properly submitted. Add an <code class="docutils literal notranslate"><span class="pre">error</span></code> property to <code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> letting the user know
-that their passwords should match. This property will need to correspond to an element in the template that will only render the error text when the passwords do not match.</li>
-<li>If we send a user back to re-populate the form, it would be nice to not clear their previous
-submission. We won’t need to save the password entries in this fashion.<ol class="loweralpha">
-<li>In the form submission action method, add the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">email</span></code> fields of the submitted user as
-<code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> properties.</li>
-<li>Back in the form, add a value attribute to these form fields and make them equal to the
-<code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> properties.</li>
+that their passwords should match. This property will need to correspond to an element in the template that will only render the error text when the passwords do not match.</p></li>
+<li><p>If we send a user back to re-populate the form, it would be nice to not clear their previous
+submission. We won’t need to save the password entries in this fashion.</p>
+<ol class="loweralpha simple">
+<li><p>In the form submission action method, add the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">email</span></code> fields of the submitted user as
+<code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> properties.</p></li>
+<li><p>Back in the form, add a value attribute to these form fields and make them equal to the
+<code class="docutils literal notranslate"><span class="pre">ViewBag</span></code> properties.</p></li>
 </ol>
 </li>
 </ol>
@@ -184,10 +184,10 @@ submission. We won’t need to save the password entries in this fashion.<ol cla
 <div class="section" id="bonus-missions">
 <h2><span class="section-number">14.6.6. </span>Bonus Missions<a class="headerlink" href="#bonus-missions" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Add a <code class="docutils literal notranslate"><span class="pre">Date</span></code> property in <code class="docutils literal notranslate"><span class="pre">User</span></code>, and initialize it to the time the
-user joined (i.e.&nbsp;when the <code class="docutils literal notranslate"><span class="pre">User</span></code> object was created).</li>
-<li>At the bottom of <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add a <code class="docutils literal notranslate"><span class="pre">div</span></code>.
-Inside that element, add account details such as the user’s email and the date they joined.</li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">Date</span></code> property in <code class="docutils literal notranslate"><span class="pre">User</span></code>, and initialize it to the time the
+user joined (i.e. when the <code class="docutils literal notranslate"><span class="pre">User</span></code> object was created).</p></li>
+<li><p>At the bottom of <code class="docutils literal notranslate"><span class="pre">User/Index.cshtml</span></code>, add a <code class="docutils literal notranslate"><span class="pre">div</span></code>.
+Inside that element, add account details such as the user’s email and the date they joined.</p></li>
 </ol>
 </div>
 </div>

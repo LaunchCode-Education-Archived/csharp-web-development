@@ -139,31 +139,31 @@ corresponding change in the text in the view after refreshing.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">13.3.2. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Given the code:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Name: @ViewBag.name<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>What will be displayed on the screen if the controller sends in a <code class="docutils literal notranslate"><span class="pre">name</span></code>
 variable with a value of “Blake”?</p>
-<ol class="last arabic simple">
-<li>Name: name</li>
-<li>Blake</li>
-<li>Blake: Blake</li>
-<li>Name: Blake</li>
+<ol class="arabic simple">
+<li><p>Name: name</p></li>
+<li><p>Blake</p></li>
+<li><p>Blake: Blake</p></li>
+<li><p>Name: Blake</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>We want a list element to read, “Item name: ______, Price: ______”, where
 the blanks need to be filled in with <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">price</span></code> values sent from
 the controller.</p>
 <p>Which of the following will produce the desired result?</p>
-<ol class="last arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;ViewBag.name,</span> <span class="pre">Price:</span> <span class="pre">&#64;ViewBag.price&lt;/li&gt;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;ViewBag(&quot;Item</span> <span class="pre">name:</span> <span class="pre">name,</span> <span class="pre">Price:</span> <span class="pre">price&quot;)&lt;/li&gt;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;Item</span> <span class="pre">name:</span> <span class="pre">,</span> <span class="pre">&#64;Price</span> <span class="pre">=</span> <span class="pre">&lt;/li&gt;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;name,</span> <span class="pre">Price</span> <span class="pre">=</span> <span class="pre">&#64;price&lt;/li&gt;</span></code></li>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;ViewBag.name,</span> <span class="pre">Price:</span> <span class="pre">&#64;ViewBag.price&lt;/li&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;ViewBag(&quot;Item</span> <span class="pre">name:</span> <span class="pre">name,</span> <span class="pre">Price:</span> <span class="pre">price&quot;)&lt;/li&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;&#64;Item</span> <span class="pre">name:</span> <span class="pre">,</span> <span class="pre">&#64;Price</span> <span class="pre">=</span> <span class="pre">&lt;/li&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;li&gt;Item</span> <span class="pre">name:</span> <span class="pre">&#64;name,</span> <span class="pre">Price</span> <span class="pre">=</span> <span class="pre">&#64;price&lt;/li&gt;</span></code></p></li>
 </ol>
 </div>
 </div>

@@ -90,7 +90,7 @@
 <div class="section" id="expanding-our-events-schedule">
 <h2>Expanding our Events Schedule<a class="headerlink" href="#expanding-our-events-schedule" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple" id="view-dictionary" start="2">
-<li>Update the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template with a new field for a user to submit an event description.</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">Events/Add.cshtml</span></code> template with a new field for a user to submit an event description.</p></li>
 </ol>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Add Event<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
@@ -105,8 +105,8 @@
 </div>
 <p id="view-kvp"><a class="reference internal" href="../../chapters/razor-views/exercises.html#ex-part-1"><span class="std std-ref">Return to exercises</span></a></p>
 <ol class="arabic simple" start="3">
-<li>Back in <code class="docutils literal notranslate"><span class="pre">EventsController.cs</span></code>, add the description parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action
-method and within the method, add the new event key/value pair to the <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary.</li>
+<li><p>Back in <code class="docutils literal notranslate"><span class="pre">EventsController.cs</span></code>, add the description parameter to the <code class="docutils literal notranslate"><span class="pre">NewEvent</span></code> action
+method and within the method, add the new event key/value pair to the <code class="docutils literal notranslate"><span class="pre">Events</span></code> dictionary.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[HttpPost]</span>
 <span class="na">[Route(&quot;Events/Add&quot;)]</span>
@@ -120,7 +120,7 @@ method and within the method, add the new event key/value pair to the <code clas
 </div>
 <p id="view-table"><a class="reference internal" href="../../chapters/razor-views/exercises.html#ex-part-1"><span class="std std-ref">Return to exercises</span></a></p>
 <ol class="arabic simple" start="4">
-<li>Now to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>. Replace the <code class="docutils literal notranslate"><span class="pre">ul</span></code> with a <code class="docutils literal notranslate"><span class="pre">table</span></code> to display event names and descriptions.</li>
+<li><p>Now to <code class="docutils literal notranslate"><span class="pre">Events/Index.cshtml</span></code>. Replace the <code class="docutils literal notranslate"><span class="pre">ul</span></code> with a <code class="docutils literal notranslate"><span class="pre">table</span></code> to display event names and descriptions.</p></li>
 </ol>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -161,7 +161,7 @@ method and within the method, add the new event key/value pair to the <code clas
 </td></tr></table></div>
 <p id="view-layout"><a class="reference internal" href="../../chapters/razor-views/exercises.html#ex-part-1"><span class="std std-ref">Return to exercises</span></a></p>
 <ol class="arabic simple" start="5">
-<li>Lastly, modify <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> to display links for the Coding Events app (only <code class="docutils literal notranslate"><span class="pre">Events/Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Events/Add</span></code> for now).</li>
+<li><p>Lastly, modify <code class="docutils literal notranslate"><span class="pre">_Layout.cshtml</span></code> to display links for the Coding Events app (only <code class="docutils literal notranslate"><span class="pre">Events/Index</span></code> and <code class="docutils literal notranslate"><span class="pre">Events/Add</span></code> for now).</p></li>
 </ol>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2

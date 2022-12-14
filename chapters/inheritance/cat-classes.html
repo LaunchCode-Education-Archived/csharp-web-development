@@ -200,8 +200,8 @@ constructor from the base class by providing a subclass constructor that has the
 </pre></div>
 </td></tr></table></div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
-<p class="last">This constructor is a bad one, and is included merely to introduce
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p>This constructor is a bad one, and is included merely to introduce
 syntax and usage. We would not want to have a constructor for
 <code class="docutils literal notranslate"><span class="pre">HouseCat</span></code> that didn’t initialize an essential field such as <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 </div>
@@ -250,11 +250,11 @@ using the method defined in <code class="docutils literal notranslate"><span cla
 </pre></div>
 </td></tr></table></div>
 <div class="admonition-warning admonition">
-<p class="first admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
+<p class="admonition-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Warning</p>
 <p>When overriding a method from a base class, the method name, access level, type and number of parameters, and return type <em>must
 be exactly the same</em>.</p>
 <p>In this example, the parts of our method that we have to match are:</p>
-<div class="last highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="nf">Noise</span><span class="p">();</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="nf">Noise</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -306,7 +306,7 @@ implementations of these methods as well.</p>
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">7.3.5. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>For this question, refer to the code block below.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -335,18 +335,18 @@ implementations of these methods as well.</p>
 <code class="docutils literal notranslate"><span class="pre">Message</span></code> are both defined within a package called <code class="docutils literal notranslate"><span class="pre">Speech</span></code>.
 Select all of the fields, properties, and methods that are inherited by
 <code class="docutils literal notranslate"><span class="pre">Greeting</span></code>.</p>
-<ol class="last loweralpha simple">
-<li><code class="docutils literal notranslate"><span class="pre">Friendly</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Language</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Text</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">Message</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">friendly</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">language</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">text</span></code></li>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Friendly</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Language</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Message</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">friendly</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>For this question, refer to the code block below.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -373,8 +373,8 @@ Select all of the fields, properties, and methods that are inherited by
 </td></tr></table></div>
 <p>A class called <code class="docutils literal notranslate"><span class="pre">Greeting</span></code> extends <code class="docutils literal notranslate"><span class="pre">Message</span></code>. What would a constructor for
 <code class="docutils literal notranslate"><span class="pre">Greeting</span></code> need to be to call the <code class="docutils literal notranslate"><span class="pre">Message</span></code> constructor?</p>
-<ol class="last loweralpha">
-<li><div class="first highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">friendly</span><span class="p">)</span>
+<ol class="loweralpha">
+<li><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">friendly</span><span class="p">)</span>
 <span class="p">{</span>
    <span class="n">super</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">text</span><span class="p">);</span>
    <span class="n">Friendly</span> <span class="p">=</span> <span class="n">friendly</span><span class="p">;</span>
@@ -382,19 +382,19 @@ Select all of the fields, properties, and methods that are inherited by
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<li><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<li><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><div class="first highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+<li><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Greeting</span><span class="p">(</span><span class="kt">string</span> <span class="n">language</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
    <span class="n">Language</span> <span class="p">=</span> <span class="n">language</span><span class="p">;</span>
    <span class="n">Text</span> <span class="p">=</span> <span class="n">text</span><span class="p">;</span>
 <span class="p">}</span>

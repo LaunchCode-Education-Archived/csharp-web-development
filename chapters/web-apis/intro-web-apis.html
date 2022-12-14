@@ -99,13 +99,13 @@ from the model and controller that manage and transfer data. This separation lea
 and a web API (back-end).</p>
 <p>The separation between client and web API provides the following benefits:</p>
 <ul class="simple">
-<li>Client applications can be developed to operate on a range of platforms (web, mobile, CLI, GUI, etc).</li>
-<li>Client and web API applications can be developed by different, specialized programming teams.</li>
-<li>Client and web API applications can be hosted on separate infrastructure.</li>
+<li><p>Client applications can be developed to operate on a range of platforms (web, mobile, CLI, GUI, etc).</p></li>
+<li><p>Client and web API applications can be developed by different, specialized programming teams.</p></li>
+<li><p>Client and web API applications can be hosted on separate infrastructure.</p></li>
 </ul>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">Client applications involve User Interface (UI) and User Experience (UX) development.</p>
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>Client applications involve User Interface (UI) and User Experience (UX) development.</p>
 </div>
 <div class="section" id="client-interacts-with-data">
 <h3><span class="section-number">20.1.1.1. </span>Client Interacts With Data<a class="headerlink" href="#client-interacts-with-data" title="Permalink to this headline">¶</a></h3>
@@ -113,8 +113,8 @@ and a web API (back-end).</p>
 must ultimately present data to an end-user. This means the client must request a representation of the data from the web API. After the client receives the
 representation, it is parsed, styled and rendered to the user.</p>
 <div class="admonition-note admonition">
-<p class="first admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
-<p class="last">A web API interacts with, or <em>is consumed by</em>, a client application. This process involves transferring data representations and instructions
+<p class="admonition-title"><i class="fas fa-sticky-note" aria-hidden="true"></i>Note</p>
+<p>A web API interacts with, or <em>is consumed by</em>, a client application. This process involves transferring data representations and instructions
 like creating, reading, updating and deleting.</p>
 </div>
 </div>
@@ -127,22 +127,22 @@ rules about how end-users may interact with application data.</p>
 <span id="index-1"></span><h3><span class="section-number">20.1.2.1. </span>Data Delivery<a class="headerlink" href="#data-delivery" title="Permalink to this headline">¶</a></h3>
 <p>Think about how a view works in MVC.</p>
 <ol class="arabic simple">
-<li>Data is injected into a template file,</li>
-<li>That template is rendered in HTML in the browser when a controller action method is invoked,</li>
-<li>The data is sent back to the user</li>
+<li><p>Data is injected into a template file,</p></li>
+<li><p>That template is rendered in HTML in the browser when a controller action method is invoked,</p></li>
+<li><p>The data is sent back to the user</p></li>
 </ol>
 <p>We call this approach <strong>server-side rendering</strong>. A client application and web API work in a similar way. However, instead of injecting the data into a
 template on the server, data is transferred over the network through AJAX requests made by the client.</p>
 <p>When a client application receives data, it injects that data into its HTML using JavaScript. This all occurs from within a browser. This approach is
 called <strong>client-side rendering</strong> because the web API only sends data, the HTML is assembled on the user’s end.</p>
 <div class="admonition-example admonition">
-<p class="first admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
+<p class="admonition-title"><i class="fas fa-binoculars" aria-hidden="true"></i>Example</p>
 <p>Consider requesting the <code class="docutils literal notranslate"><span class="pre">/events</span></code> path of your MVC project. The response is an HTML presentation of the data. In other words, the
 data is already included in the presentation.</p>
 <p><strong>MVC</strong>: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/events</span> <span class="pre">-&gt;</span> <span class="pre">HTML</span> <span class="pre">with</span> <span class="pre">data</span></code></p>
 <p>In a web API analog, an <code class="docutils literal notranslate"><span class="pre">/events</span></code> path would return just the underlying data.</p>
 <p><strong>Web API</strong>: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/events</span> <span class="pre">-&gt;</span> <span class="pre">just</span> <span class="pre">data</span></code></p>
-<p class="last">It is then the client application’s responsibility to integrate the received data into its presentation.</p>
+<p>It is then the client application’s responsibility to integrate the received data into its presentation.</p>
 </div>
 </div>
 <div class="section" id="management-of-data">
@@ -158,12 +158,12 @@ files that can handle the requests. As a part of handling the request, the contr
 the data in an accepted format, and send the package as a response to the client application.</p>
 <p id="client-api-transfer">Here’s an overview of the steps to transfer data between a web API and client application:</p>
 <ol class="arabic simple">
-<li>A request for data comes from a client application to the API.</li>
-<li>A controller file in the API catches the request.</li>
-<li>The controller determines if the request is valid.</li>
-<li>The controller transfers data from the database to an object, via the ORM.</li>
-<li>The controller transforms the object into a package the client application can work with.</li>
-<li>The controller responds to the client with the packaged data.</li>
+<li><p>A request for data comes from a client application to the API.</p></li>
+<li><p>A controller file in the API catches the request.</p></li>
+<li><p>The controller determines if the request is valid.</p></li>
+<li><p>The controller transfers data from the database to an object, via the ORM.</p></li>
+<li><p>The controller transforms the object into a package the client application can work with.</p></li>
+<li><p>The controller responds to the client with the packaged data.</p></li>
 </ol>
 </div>
 </div>
@@ -189,12 +189,12 @@ any language, compatible with HTTP, and seamlessly represents the structure of d
 requested by a client application as JSON. The web API also transfers this JSON in its communication with a client application.</p>
 <p>Let’s revisit the last two steps from our web API work flow <a class="reference internal" href="#client-api-transfer"><span class="std std-ref">above</span></a>:</p>
 <ol class="arabic simple" start="5">
-<li>The controller transforms the object into a JSON representation.</li>
-<li>The controller responds to the client with the JSON representation.</li>
+<li><p>The controller transforms the object into a JSON representation.</p></li>
+<li><p>The controller responds to the client with the JSON representation.</p></li>
 </ol>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last"><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction" target="_blank">XML<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> is another popular data format. It is now used less commonly than
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction" target="_blank">XML<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> is another popular data format. It is now used less commonly than
 JSON for web API-to-client communications.</p>
 </div>
 <p>In the next section, we will discuss exactly how a client application makes a request and how a web API responds.</p>
@@ -207,15 +207,15 @@ JSON for web API-to-client communications.</p>
 the internet is HTTP, so it comes as no surprise that HTTP is the language of web APIs. Similarly, our MVC applications use HTTP as the protocol for an
 end-user to access the application. HTTP also facilitates the communication between a client application and a web API.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">We will refer to web APIs as APIs going forward, since the web prefix is implied.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>We will refer to web APIs as APIs going forward, since the web prefix is implied.</p>
 </div>
 <p>Here’s a refresher on <a class="reference external" href="https://education.launchcode.org/intro-to-professional-web-dev/chapters/http/index.html" target="_blank">the basics of HTTP<i class="fas fa-external-link-alt" aria-hidden="true"></i></a>:</p>
 <ul class="simple">
-<li>Is a stateless request/response protocol.</li>
-<li>Requests and responses may include HTTP bodies.</li>
-<li>Responses always contain a three digit HTTP status code.</li>
-<li>Requests and responses always include HTTP headers.</li>
+<li><p>Is a stateless request/response protocol.</p></li>
+<li><p>Requests and responses may include HTTP bodies.</p></li>
+<li><p>Responses always contain a three digit HTTP status code.</p></li>
+<li><p>Requests and responses always include HTTP headers.</p></li>
 </ul>
 <p>We call HTTP a <em>stateless protocol</em>. State can be a complex concept that refers to a number of things. We’ll explore some aspects of it in more depth on the
 next page. In the context of HTTP, think of <strong>state</strong> as information about application data that is transferred via HTTP bodies, HTTP status codes,
@@ -275,35 +275,35 @@ HTTP bodies.</p>
 is the API’s way of telling the client application how their initial request was handled.
 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">HTTP response status codes<i class="fas fa-external-link-alt" aria-hidden="true"></i></a> are a part of the HTTP spec and their usage goes beyond API
 design. However, many of their codes have been adopted as a standard within API design.</p>
-<table border="1" class="colwidths-given docutils align-default" id="id1">
+<table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">Common HTTP status codes in API design</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="24%" />
-<col width="19%" />
-<col width="57%" />
+<col style="width: 24%" />
+<col style="width: 19%" />
+<col style="width: 57%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Status Code Group</th>
-<th class="head">Commonly Used</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status Code Group</p></th>
+<th class="head"><p>Commonly Used</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>2XX</td>
-<td>200, 201, 204</td>
-<td>request was successful</td>
+<tbody>
+<tr class="row-even"><td><p>2XX</p></td>
+<td><p>200, 201, 204</p></td>
+<td><p>request was successful</p></td>
 </tr>
-<tr class="row-odd"><td>3XX</td>
-<td>301, 302</td>
-<td>request was redirected</td>
+<tr class="row-odd"><td><p>3XX</p></td>
+<td><p>301, 302</p></td>
+<td><p>request was redirected</p></td>
 </tr>
-<tr class="row-even"><td>4XX</td>
-<td>400, 401, 403, 404, 405</td>
-<td>client error</td>
+<tr class="row-even"><td><p>4XX</p></td>
+<td><p>400, 401, 403, 404, 405</p></td>
+<td><p>client error</p></td>
 </tr>
-<tr class="row-odd"><td>5XX</td>
-<td>500, 502, 504</td>
-<td>server error</td>
+<tr class="row-odd"><td><p>5XX</p></td>
+<td><p>500, 502, 504</p></td>
+<td><p>server error</p></td>
 </tr>
 </tbody>
 </table>
@@ -314,8 +314,8 @@ design. However, many of their codes have been adopted as a standard within API 
 can be included in a request or response. We saw the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header above. This is the header that informs the API (request header) or client
 application (response header) of the format of the data included in the body.</p>
 <div class="admonition-tip admonition">
-<p class="first admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
-<p class="last">A client can specify which <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> they want to receive in the API response using the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> request header.</p>
+<p class="admonition-title"><i class="fas fa-lightbulb" aria-hidden="true"></i>Tip</p>
+<p>A client can specify which <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> they want to receive in the API response using the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> request header.</p>
 </div>
 </div>
 </div>
@@ -326,10 +326,10 @@ transfer behaviors of the contract. The client application is responsible for co
 <p>As long as both sides of the interface (the client and API logic) uphold the contract, then front and back-end teams can operate independently. This
 provides the following freedoms:</p>
 <ul class="simple">
-<li>Front-end developers can choose, or change, the internal styling, libraries, frameworks and design patterns.</li>
-<li>Back-end developers can choose, or change, the internal server language, libraries, frameworks and design patterns.</li>
-<li>Both sides can choose, or change, their external hosting infrastructure at any time without affecting the other.</li>
-<li>Both sides can make and deploy changes to their code bases at any time, without needing to coordinate with, or wait for, the other.</li>
+<li><p>Front-end developers can choose, or change, the internal styling, libraries, frameworks and design patterns.</p></li>
+<li><p>Back-end developers can choose, or change, the internal server language, libraries, frameworks and design patterns.</p></li>
+<li><p>Both sides can choose, or change, their external hosting infrastructure at any time without affecting the other.</p></li>
+<li><p>Both sides can make and deploy changes to their code bases at any time, without needing to coordinate with, or wait for, the other.</p></li>
 </ul>
 <p>Only when a change must be made to either the client AJAX requests or API behavior do the two teams need to communicate and agree upon a new contract. Up next,
 we discuss how following the REST pattern of API design offers consistency and simplicity in application development.</p>
@@ -337,22 +337,22 @@ we discuss how following the REST pattern of API design offers consistency and s
 <div class="section" id="check-your-understanding">
 <h2><span class="section-number">20.1.6. </span>Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>True or False: Web API programmers must be knowledgeable in HTML/CSS/Javascript to create a client application.</p>
-<ol class="last loweralpha simple">
-<li>True</li>
-<li>False</li>
+<ol class="loweralpha simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
 <div class="admonition-question admonition">
-<p class="first admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
+<p class="admonition-title"><i class="fas fa-question" aria-hidden="true"></i>Question</p>
 <p>Match the class of HTTP response codes to the approximate definition:</p>
 <p><code class="docutils literal notranslate"><span class="pre">2XX</span></code>, <code class="docutils literal notranslate"><span class="pre">3XX</span></code>, <code class="docutils literal notranslate"><span class="pre">4XX</span></code>, <code class="docutils literal notranslate"><span class="pre">5XX</span></code></p>
-<ol class="last loweralpha simple">
-<li>Request is valid, but server cannot receive and accept it.</li>
-<li>Request received and accepted.</li>
-<li>Due to the request containing an error, it cannot be received.</li>
-<li>Another action needs to be done to fulfill request.</li>
+<ol class="loweralpha simple">
+<li><p>Request is valid, but server cannot receive and accept it.</p></li>
+<li><p>Request received and accepted.</p></li>
+<li><p>Due to the request containing an error, it cannot be received.</p></li>
+<li><p>Another action needs to be done to fulfill request.</p></li>
 </ol>
 </div>
 </div>

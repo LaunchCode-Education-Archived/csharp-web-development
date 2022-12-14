@@ -7,3 +7,4 @@ docs/*
 .pyc
 __pycache__/
 docs/
+.travis.yml
